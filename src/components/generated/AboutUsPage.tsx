@@ -613,7 +613,7 @@ const HeroSection = () => {
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '22%']);
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
   return <section ref={heroRef} style={{
-    height: '100vh',
+    minHeight: '100vh',
     background: '#141210',
     display: 'flex',
     flexDirection: 'column',
@@ -3425,14 +3425,14 @@ export const AboutUsPage = () => {
     background: '#141210',
     overflowX: 'hidden'
   }}>
-      <ScrollProgressBar />
+      
       <FloatingCTAPill />
-      <StickyNav />
+      
       <HeroSection />
       <MissionSection />
       <FoundersSection />
       <CapitalPartnersSection />
       <ImpactSection />
-      <SiteFooter />
+      
     </div>;
 };

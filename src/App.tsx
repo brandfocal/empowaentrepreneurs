@@ -5,6 +5,7 @@ import { AgencyLandingPage } from './components/generated/AgencyLandingPage';
 import { AboutUsPage } from './components/generated/AboutUsPage';
 import { ProgrammePage } from './components/generated/ProgrammePage';
 import { ExperienceZonesPage } from './components/generated/ExperienceZones';
+import { UniversalLayout } from './components/layout/UniversalLayout';
 
 let theme: Theme = 'light';
 // only use 'centered' container for standalone components, never for full page apps or websites.
@@ -25,12 +26,14 @@ function App() {
     // THIS IS WHERE THE TOP LEVEL GENRATED COMPONENT WILL BE RETURNED!
     return (
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AgencyLandingPage />} />
-          <Route path="/about" element={<AboutUsPage />} />
-          <Route path="/programme" element={<ProgrammePage />} />
-          <Route path="/experience-zones" element={<ExperienceZonesPage />} />
-        </Routes>
+        <UniversalLayout>
+          <Routes>
+            <Route path="/" element={<AgencyLandingPage />} />
+            <Route path="/about" element={<AboutUsPage />} />
+            <Route path="/programme" element={<ProgrammePage />} />
+            <Route path="/experience-zones" element={<ExperienceZonesPage />} />
+          </Routes>
+        </UniversalLayout>
       </BrowserRouter>
     ); // %EXPORT_STATEMENT%
   }, []);

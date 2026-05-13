@@ -750,7 +750,7 @@ const HeroSection = () => {
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '8%']);
   return <section ref={heroRef} style={{
-    height: '100vh',
+    minHeight: '100vh',
     background: '#141210',
     display: 'flex',
     flexDirection: 'column',
@@ -4356,8 +4356,8 @@ export const AgencyLandingPage = () => {
     background: '#141210',
     overflowX: 'hidden'
   }}>
-    <ScrollProgressBar />
-    <StickyNav />
+    
+    
     <HeroSection />
     <MissionBand />
     <LogoBanner />
@@ -4370,7 +4370,7 @@ export const AgencyLandingPage = () => {
     <StatsSection />
     <TestimonialsSection />
     <DarkCtaSection />
-    <SiteFooter />
+    
     <StickyRegistrationBanner />
   </div>;
 };

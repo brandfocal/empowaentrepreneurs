@@ -302,24 +302,19 @@ const HeroTicker = ({
 // ─── StickyNav ────────────────────────────────────────────────────────────────────
 const STICKY_NAV_ITEMS = [{
   id: 'home',
-  label: 'Home',
-  href: '/'
+  label: 'Home'
 }, {
   id: 'about',
-  label: 'About Us',
-  href: '/about'
+  label: 'About Us'
 }, {
   id: 'programme',
-  label: 'Programme',
-  href: '/programme'
+  label: 'Programme'
 }, {
   id: 'experience',
-  label: 'Experience Zones',
-  href: '/experience-zones'
+  label: 'Experience Zones'
 }, {
   id: 'partnerships',
-  label: 'Partnerships',
-  href: '#'
+  label: 'Partnerships'
 }];
 const StickyNav = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -358,36 +353,56 @@ const StickyNav = () => {
     zIndex: 100,
     boxSizing: 'border-box'
   }}>
-    <div style={{
+      <div style={{
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: scrolled ? '12px 32px' : '20px 32px',
+      padding: scrolled ? `12px ${isMobile ? '16px' : '32px'}` : `20px ${isMobile ? '16px' : '32px'}`,
       background: scrolled ? 'rgba(247,246,243,0.92)' : 'transparent',
       backdropFilter: scrolled ? 'blur(32px) saturate(2.5)' : 'none',
       WebkitBackdropFilter: scrolled ? 'blur(32px) saturate(2.5)' : 'none',
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-      <a href="#" onClick={e => e.preventDefault()} style={{
+        <a href="#" onClick={e => e.preventDefault()} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
         textDecoration: 'none'
       }}>
-        <motion.img 
-          src="/ee-logo.png" 
-          alt="EmpowaSummit Logo"
-          whileHover={{ scale: 1.05 }} 
-          style={{ height: '30px', width: 'auto', objectFit: 'contain' }}
-        />
-      </a>
-      {!isMobile && <div style={{
+          <motion.div whileHover={{
+          scale: 1.08,
+          rotate: 5
+        }} style={{
+          width: '30px',
+          height: '30px',
+          borderRadius: '9px',
+          background: 'linear-gradient(135deg, #DE322D, #ff5a4f)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 14px rgba(222,50,45,0.4)'
+        }}>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+            </svg>
+          </motion.div>
+          <span style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '13px',
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase',
+          color: scrolled ? '#141210' : '#F7F6F3',
+          fontWeight: 700,
+          transition: 'color 0.35s ease'
+        }}>EmpowaSummit</span>
+        </a>
+        {!isMobile && <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '32px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href} style={{
+            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           textDecoration: 'none',
@@ -399,13 +414,13 @@ const StickyNav = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLAnchorElement).style.color = navLinkColor;
         }}>
-          {item.label}
-        </a>)}
-        <div style={{
+                {item.label}
+              </a>)}
+            <div style={{
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -423,9 +438,9 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}>
-            <span>Partner With Us</span>
-          </motion.a>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+                <span>Partner With Us</span>
+              </motion.a>
+              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -444,11 +459,11 @@ const StickyNav = () => {
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)',
             transition: 'box-shadow 0.3s ease'
           }}>
-            <span>Register Now</span>
-          </motion.a>
-        </div>
-      </div>}
-      {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
+                <span>Register Now</span>
+              </motion.a>
+            </div>
+          </div>}
+        {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
         background: 'none',
         border: 'none',
         cursor: 'pointer',
@@ -457,7 +472,7 @@ const StickyNav = () => {
         flexDirection: 'column',
         gap: '5px'
       }}>
-        {[0, 1, 2].map(i => <span key={i} style={{
+            {[0, 1, 2].map(i => <span key={i} style={{
           display: 'block',
           width: '22px',
           height: '1.5px',
@@ -465,10 +480,10 @@ const StickyNav = () => {
           borderRadius: '2px',
           transition: 'background 0.35s ease'
         }} />)}
-      </button>}
-    </div>
-    <AnimatePresence>
-      {isMobile && mobileMenuOpen && <motion.div initial={{
+          </button>}
+      </div>
+      <AnimatePresence>
+        {isMobile && mobileMenuOpen && <motion.div initial={{
         opacity: 0,
         y: -12
       }} animate={{
@@ -485,9 +500,12 @@ const StickyNav = () => {
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
-        padding: '24px 32px 28px'
+        padding: '24px 16px 28px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href} onClick={() => setMobileMenuOpen(false)} style={{
+            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
+          e.preventDefault();
+          setMobileMenuOpen(false);
+        }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -497,15 +515,15 @@ const StickyNav = () => {
           borderBottom: '0.8px solid rgba(20,18,16,0.06)',
           letterSpacing: '0.02em'
         }}>
-          {item.label}
-        </a>)}
-        <div style={{
+                {item.label}
+              </a>)}
+            <div style={{
           display: 'flex',
           gap: '10px',
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -514,7 +532,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -523,75 +541,125 @@ const StickyNav = () => {
             color: '#fff',
             textDecoration: 'none'
           }}>Register Now</a>
-        </div>
-      </motion.div>}
-    </AnimatePresence>
-  </motion.nav>;
+            </div>
+          </motion.div>}
+      </AnimatePresence>
+    </motion.nav>;
 };
 
-// ─── Hero Section ─────────────────────────────────────────────────────────────
-const SERVICE_STRIP_ITEMS = [{
-  id: 'founders',
-  label: 'Ambitious Founders'
+// ─── Zone data ────────────────────────────────────────────────────────────────────
+type ZoneItem = {
+  id: string;
+  index: string;
+  name: string;
+  theme: string;
+  purpose: string;
+  commercialRelevance: string;
+  tags: string[];
+  imageSrc: string;
+  imageAlt: string;
+  variant: 'standard' | 'premium' | 'prestige';
+  icon: string;
+};
+const ZONES: ZoneItem[] = [{
+  id: 'zone-funding',
+  index: '01',
+  name: 'The Funding Corner',
+  theme: 'Capital Access & Deal Flow',
+  purpose: 'A structured environment where vetted African founders engage directly with institutional funders, DFIs, and venture capital firms in curated one-on-one meetings engineered for deal-making.',
+  commercialRelevance: 'Direct access to catalytic capital for high-growth African enterprises seeking seed, Series A, and growth-stage investment.',
+  tags: ['VC', 'DFI', 'Angel Investors', 'Capital'],
+  imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80',
+  imageAlt: 'The Funding Corner — capital access zone at EmpowaWorx House',
+  variant: 'standard',
+  icon: '◈'
 }, {
-  id: 'funders',
-  label: 'Institutional Funders'
+  id: 'zone-women',
+  index: '02',
+  name: 'Women Only Dealmaker Room',
+  theme: 'Exclusive Female Founder Capital Circle',
+  purpose: 'An intimate, invitation-only space exclusively for women founders and women investors — a premium environment where gender lens investing meets Africa\'s most ambitious female-led enterprises.',
+  commercialRelevance: 'Unlocking gender lens investment mandates, procurement pipelines exclusively targeting women-led businesses, and elite mentorship from Africa\'s top female capital allocators.',
+  tags: ['Women Founders', 'Gender Lens', 'Exclusive', 'Invitation Only'],
+  imageSrc: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80',
+  imageAlt: 'Women Only Dealmaker Room — exclusive female founder capital circle',
+  variant: 'premium',
+  icon: '◇'
 }, {
-  id: 'vc',
-  label: 'Venture Capital'
+  id: 'zone-dragons',
+  index: '03',
+  name: "Dragons' Den Pitching Festival",
+  theme: 'Commercially Prestigious Arena',
+  purpose: 'Africa\'s most high-stakes, commercially structured pitch arena. Curated cohorts of investment-ready founders pitch to panels of serious capital allocators in front of a live summit audience.',
+  commercialRelevance: 'Live capital commitments, immediate term sheet conversations, and the highest concentration of deal-ready investors in a single pitch environment on the continent.',
+  tags: ['Live Pitching', 'Term Sheets', 'High Stakes', 'Capital Allocation'],
+  imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80',
+  imageAlt: "Dragons' Den Pitching Festival — high-stakes pitch arena at EmpowaWorx House",
+  variant: 'prestige',
+  icon: '⬡'
 }, {
-  id: 'dfi',
-  label: 'DFIs & Corporates'
+  id: 'zone-legal',
+  index: '04',
+  name: 'Legal & Financial Intelligence Zone',
+  theme: 'Enterprise Legal & Financial Literacy',
+  purpose: 'Structured advisory sessions with top-tier legal and financial experts covering investment structuring, due diligence readiness, corporate governance, tax optimization, and cross-border compliance.',
+  commercialRelevance: 'Building investment-ready businesses that pass institutional due diligence and can confidently negotiate term sheets, shareholder agreements, and regulatory frameworks.',
+  tags: ['Legal Advisory', 'Financial Structuring', 'Due Diligence', 'Compliance'],
+  imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&q=80',
+  imageAlt: 'Legal & Financial Intelligence Zone — enterprise advisory sessions',
+  variant: 'standard',
+  icon: '◉'
 }, {
-  id: 'ecosystem',
-  label: 'Ecosystem Builders'
+  id: 'zone-clinics',
+  index: '05',
+  name: 'Funding Application Clinics',
+  theme: 'Hands-On Funding Readiness',
+  purpose: 'Expert-led clinics where founders receive live, hands-on guidance to complete and strengthen actual funding applications for grants, DFI facilities, blended finance instruments, and venture investment.',
+  commercialRelevance: 'Dramatically increasing the quality and success rate of funding applications submitted to institutional funders and grant-making bodies operating across African markets.',
+  tags: ['Grants', 'Applications', 'Blended Finance', 'Funding Readiness'],
+  imageSrc: 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=900&q=80',
+  imageAlt: 'Funding Application Clinics — hands-on funding readiness sessions',
+  variant: 'standard',
+  icon: '◎'
+}, {
+  id: 'zone-networking',
+  index: '06',
+  name: 'Premium Industry Networking Exhibitions',
+  theme: 'Elite Market Access & B2B Connections',
+  purpose: 'A curated exhibition floor where Africa\'s leading enterprises, corporates, and service providers showcase offerings and forge strategic B2B partnerships, procurement relationships, and distribution alliances.',
+  commercialRelevance: 'Opening continental market access, enterprise procurement pipelines, and strategic alliances that accelerate revenue growth and market penetration across African geographies.',
+  tags: ['B2B', 'Procurement', 'Partnerships', 'Market Access'],
+  imageSrc: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&q=80',
+  imageAlt: 'Premium Industry Networking Exhibitions — elite B2B connections',
+  variant: 'standard',
+  icon: '◈'
+}, {
+  id: 'zone-masterclass',
+  index: '07',
+  name: 'Masterclasses & Investor Engagements',
+  theme: 'Strategic Knowledge & Investor Access',
+  purpose: 'World-class masterclasses delivered by institutional investors, corporate leaders, and successful founders — covering growth strategy, fundraising, international expansion, and impact investing.',
+  commercialRelevance: 'Acquiring the strategic frameworks, investor relationships, and operational intelligence to move from growth stage to continental and global scale.',
+  tags: ['Masterclasses', 'Investor Dialogue', 'Strategy', 'Scale'],
+  imageSrc: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&q=80',
+  imageAlt: 'Masterclasses & Investor Engagements — strategic knowledge sessions',
+  variant: 'standard',
+  icon: '◉'
+}, {
+  id: 'zone-odyssey',
+  index: '08',
+  name: 'Entrepreneurial Odyssey Sessions',
+  theme: 'Founder Journeys & Ecosystem Intelligence',
+  purpose: 'Intimate storytelling sessions where Africa\'s most successful entrepreneurs share their unfiltered journeys — the failures, breakthroughs, and pivotal decisions that defined their enterprises.',
+  commercialRelevance: 'Distilling actionable intelligence from lived entrepreneurial experience, compressed into transformative insights that accelerate decision-making and resilience-building.',
+  tags: ['Founder Stories', 'Resilience', 'Ecosystem', 'Inspiration'],
+  imageSrc: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=900&q=80',
+  imageAlt: 'Entrepreneurial Odyssey Sessions — founder journeys and ecosystem intelligence',
+  variant: 'standard',
+  icon: '◇'
 }];
-const HERO_WORDS_LINE1 = ["Africa's", 'Premier'];
-const HERO_WORDS_LINE2 = ['Funding'];
-const HERO_WORD_PLATFORM = 'Platform';
-const HERO_BG_IMAGE = 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1800&q=80';
-const HeroGrid = () => <div aria-hidden="true" style={{
-  position: 'absolute',
-  inset: 0,
-  pointerEvents: 'none',
-  zIndex: 0,
-  overflow: 'hidden'
-}}>
-  {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: `${pct}%`,
-    width: '1px',
-    background: 'rgba(247,246,243,0.025)'
-  }} />)}
-  {[25, 50, 75].map(pct => <div key={`hl-${pct}`} style={{
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: `${pct}%`,
-    height: '1px',
-    background: 'rgba(247,246,243,0.025)'
-  }} />)}
-  <div style={{
-    position: 'absolute',
-    top: '88px',
-    left: '32px',
-    width: '40px',
-    height: '40px',
-    borderLeft: '1px solid rgba(222,50,45,0.3)',
-    borderTop: '1px solid rgba(222,50,45,0.3)'
-  }} />
-  <div style={{
-    position: 'absolute',
-    bottom: '52px',
-    right: '32px',
-    width: '40px',
-    height: '40px',
-    borderRight: '1px solid rgba(222,50,45,0.3)',
-    borderBottom: '1px solid rgba(222,50,45,0.3)'
-  }} />
-</div>;
+
+// ─── Hero Section ──────────────────────────────────────────────────────────────────
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
@@ -601,12 +669,11 @@ const HeroSection = () => {
     target: heroRef,
     offset: ['start start', 'end start']
   });
-  const orbY = useTransform(scrollYProgress, [0, 1], ['0%', '28%']);
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '8%']);
   return <section ref={heroRef} style={{
-    height: '100vh',
-    background: '#141210',
+    minHeight: '100vh',
+    background: '#0f1c28',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -615,11 +682,12 @@ const HeroSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-    <motion.div aria-hidden="true" style={{
+      {/* BG Image */}
+      <motion.div aria-hidden="true" style={{
       y: imgY,
       position: 'absolute',
       inset: '-10% 0',
-      backgroundImage: `url(${HERO_BG_IMAGE})`,
+      backgroundImage: `url(https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1800&q=80)`,
       backgroundSize: 'cover',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
@@ -627,14 +695,15 @@ const HeroSection = () => {
       zIndex: 0,
       willChange: 'transform'
     }} />
-    <div aria-hidden="true" style={{
+      {/* Overlays */}
+      <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
-      background: 'linear-gradient(160deg, rgba(20,18,16,0.92) 0%, rgba(20,18,16,0.78) 40%, rgba(20,18,16,0.88) 100%)',
+      background: 'linear-gradient(160deg, rgba(15,28,40,0.96) 0%, rgba(15,28,40,0.82) 45%, rgba(15,28,40,0.92) 100%)',
       pointerEvents: 'none',
       zIndex: 1
     }} />
-    <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -642,281 +711,1031 @@ const HeroSection = () => {
       backgroundSize: '128px 128px',
       pointerEvents: 'none',
       zIndex: 2,
-      opacity: 0.5
+      opacity: 0.6
     }} />
-    <div style={{
-      position: 'relative',
-      zIndex: 3
-    }}><HeroGrid /></div>
-    <motion.div aria-hidden="true" style={{
-      y: orbY,
+      {/* Grid lines */}
+      <div aria-hidden="true" style={{
       position: 'absolute',
-      top: '-10%',
-      right: '-8%',
-      width: 'clamp(500px, 55vw, 840px)',
-      height: 'clamp(500px, 55vw, 840px)',
+      inset: 0,
+      pointerEvents: 'none',
+      zIndex: 2
+    }}>
+        {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: `${pct}%`,
+        width: '1px',
+        background: 'rgba(247,246,243,0.02)'
+      }} />)}
+        <div style={{
+        position: 'absolute',
+        top: '88px',
+        left: '32px',
+        width: '40px',
+        height: '40px',
+        borderLeft: '1px solid rgba(222,50,45,0.3)',
+        borderTop: '1px solid rgba(222,50,45,0.3)'
+      }} />
+        <div style={{
+        position: 'absolute',
+        bottom: '52px',
+        right: '32px',
+        width: '40px',
+        height: '40px',
+        borderRight: '1px solid rgba(222,50,45,0.3)',
+        borderBottom: '1px solid rgba(222,50,45,0.3)'
+      }} />
+      </div>
+      {/* Red orb */}
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      top: '-8%',
+      right: '-6%',
+      width: 'clamp(400px, 50vw, 720px)',
+      height: 'clamp(400px, 50vw, 720px)',
       borderRadius: '50%',
-      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.22) 0%, rgba(222,50,45,0.08) 45%, transparent 70%)',
+      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.2) 0%, rgba(222,50,45,0.06) 50%, transparent 70%)',
       pointerEvents: 'none',
       zIndex: 3
     }} />
-    <div aria-hidden="true" style={{
-      position: 'absolute',
-      bottom: '10%',
-      left: '-5%',
-      width: '400px',
-      height: '400px',
-      borderRadius: '50%',
-      background: 'radial-gradient(circle, rgba(222,50,45,0.09) 0%, transparent 65%)',
-      pointerEvents: 'none',
-      zIndex: 3
-    }} />
-    <div style={{
+
+      {/* Nav spacer */}
+      <div style={{
       height: '88px',
       flexShrink: 0,
       position: 'relative',
       zIndex: 4
     }} />
-    <motion.div style={{
+
+      {/* Hero content */}
+      <motion.div style={{
       y: textY,
       flex: 1,
-      display: 'grid',
-      gridTemplateColumns: '1fr',
-      gap: isMobile ? '40px' : '48px',
-      alignItems: 'center',
-      padding: isMobile ? '32px 24px 32px' : '40px 64px 40px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      padding: isMobile ? '40px 24px 48px' : '56px 64px 56px',
       width: '100%',
       boxSizing: 'border-box',
       zIndex: 4,
       position: 'relative'
     }}>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column'
-      }}>
         <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        marginBottom: '40px',
+        flexWrap: 'wrap'
+      }}>
+          <PlusSquareIconLight />
+          <span style={{
+          fontFamily: 'Montserrat, sans-serif',
+          color: 'rgba(247,246,243,0.38)',
+          fontSize: '11px',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          fontWeight: 500
+        }}>
+            <span style={{
+            color: '#DE322D',
+            fontWeight: 600
+          }}>EmpowaEntrepreneurs</span>
+            <span> Funding Summit 2026 — </span>
+            <span style={{
+            color: '#DE322D',
+            fontWeight: 600
+          }}>Experience Zones</span>
+          </span>
+        </motion.div>
+
+        <h1 style={{
+        fontFamily: 'Montserrat, sans-serif',
+        fontWeight: 200,
+        margin: '0 0 32px',
+        lineHeight: 0.91,
+        letterSpacing: isMobile ? '-2px' : '-3.5px'
+      }}>
+          <div style={{
+          overflow: 'hidden',
+          display: 'block'
+        }}>
+            <motion.span initial={{
+            y: '110%',
+            opacity: 0
+          }} animate={{
+            y: '0%',
+            opacity: 1
+          }} transition={{
+            duration: 0.9,
+            delay: 0.15,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'inline-block',
+            fontSize: isMobile ? 'clamp(48px, 13vw, 80px)' : 'clamp(60px, 8.5vw, 132px)',
+            fontWeight: "200",
+            color: "rgb(247, 246, 243)",
+            background: "transparent",
+            backgroundColor: "transparent",
+            backgroundImage: "none",
+            backgroundClip: "unset",
+            WebkitBackgroundClip: "unset",
+            WebkitTextFillColor: "unset"
+          }}>
+              Experience
+            </motion.span>
+          </div>
+          <div style={{
+          overflow: 'hidden',
+          display: 'block'
+        }}>
+            <motion.span initial={{
+            y: '110%',
+            opacity: 0
+          }} animate={{
+            y: '0%',
+            opacity: 1
+          }} transition={{
+            duration: 0.9,
+            delay: 0.28,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'inline-block',
+            fontSize: isMobile ? 'clamp(48px, 13vw, 80px)' : 'clamp(60px, 8.5vw, 132px)',
+            color: "rgb(247 246 243 / 0.25)"
+          }}>
+              Zones
+              <em style={{
+              fontStyle: 'italic',
+              color: '#DE322D',
+              marginLeft: '0.18em'
+            }}>
+                &amp;
+              </em>
+            </motion.span>
+          </div>
+          <div style={{
+          overflow: 'hidden',
+          display: 'block'
+        }}>
+            <motion.span initial={{
+            y: '110%',
+            opacity: 0
+          }} animate={{
+            y: '0%',
+            opacity: 1
+          }} transition={{
+            duration: 0.9,
+            delay: 0.4,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'inline-block',
+            fontSize: isMobile ? 'clamp(36px, 9.5vw, 60px)' : 'clamp(44px, 6.5vw, 100px)',
+            color: "#f7f6f3"
+          }}>
+              The Summit Journey
+            </motion.span>
+          </div>
+        </h1>
+
+        <motion.p custom={0.6} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: isMobile ? '15px' : 'clamp(15px, 1.4vw, 18px)',
+        lineHeight: '1.75',
+        color: 'rgba(247,246,243,0.55)',
+        margin: '0 0 48px',
+        fontWeight: 300,
+        maxWidth: '560px'
+      }}>
+          Strategic Growth Engines for Africa's Next Era. Eight purpose-built zones designed to unlock funding
+          opportunities, market access, and transformative strategic partnerships.
+        </motion.p>
+
+        <motion.div custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px',
+        flexWrap: 'wrap'
+      }}>
+          <motion.a href="#zones" onClick={e => e.preventDefault()} whileHover={{
+          scale: 1.04,
+          boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
+        }} whileTap={{
+          scale: 0.97
+        }} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
-          marginBottom: '40px',
-          flexWrap: 'wrap'
+          background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+          borderRadius: '44px',
+          padding: isMobile ? '14px 28px' : '18px 36px',
+          fontSize: '13px',
+          letterSpacing: '0.05em',
+          color: '#fff',
+          textDecoration: 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 600,
+          boxShadow: '0 8px 36px rgba(222,50,45,0.55)'
         }}>
-          <PlusSquareIconLight />
-          <span style={{
-            fontFamily: 'Montserrat, sans-serif',
-            color: 'rgba(247,246,243,0.38)',
-            fontSize: '11px',
-            letterSpacing: '0.14em',
+            <span>Explore All Zones</span>
+            <ArrowIconDark />
+          </motion.a>
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          scale: 1.04
+        }} whileTap={{
+          scale: 0.97
+        }} style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          border: '1px solid rgba(247,246,243,0.22)',
+          borderRadius: '44px',
+          padding: isMobile ? '14px 24px' : '18px 30px',
+          fontSize: '13px',
+          letterSpacing: '0.04em',
+          color: 'rgba(247,246,243,0.7)',
+          textDecoration: 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          transition: 'border-color 0.3s ease, color 0.3s ease'
+        }} onMouseEnter={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(247,246,243,0.55)';
+          el.style.color = '#F7F6F3';
+        }} onMouseLeave={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(247,246,243,0.22)';
+          el.style.color = 'rgba(247,246,243,0.7)';
+        }}>
+            <span>View Zone Schedule</span>
+            <ArrowIconDark />
+          </motion.a>
+        </motion.div>
+      </motion.div>
+
+      {/* Ticker */}
+      <motion.div initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} transition={{
+      duration: 0.6,
+      delay: 1.0
+    }} style={{
+      borderTop: '0.8px solid rgba(247,246,243,0.07)',
+      zIndex: 4,
+      overflow: 'hidden',
+      position: 'relative'
+    }}>
+        <HeroTicker light />
+      </motion.div>
+
+      {/* Zone count strip */}
+      <motion.div initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} transition={{
+      duration: 0.6,
+      delay: 1.1
+    }} style={{
+      display: 'flex',
+      justifyContent: isMobile ? 'flex-start' : 'space-between',
+      alignItems: 'center',
+      padding: isMobile ? '16px 24px' : '18px 64px',
+      borderTop: '0.8px solid rgba(247,246,243,0.07)',
+      flexWrap: 'wrap',
+      gap: isMobile ? '12px 20px' : '16px',
+      zIndex: 4,
+      position: 'relative'
+    }}>
+        {[{
+        id: 'hs-1',
+        label: '8 Experience Zones'
+      }, {
+        id: 'hs-2',
+        label: 'EmpowaWorx House'
+      }, {
+        id: 'hs-3',
+        label: 'May 28 · 2026'
+      }, {
+        id: 'hs-4',
+        label: 'Curated Access'
+      }].map(item => <div key={item.id} style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '11px',
+        letterSpacing: '0.12em',
+        textTransform: 'uppercase',
+        color: 'rgba(247,246,243,0.22)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px'
+      }}>
+            <span style={{
+          color: '#DE322D',
+          fontSize: '13px'
+        }}>+</span>
+            <span>{item.label}</span>
+          </div>)}
+      </motion.div>
+    </section>;
+};
+
+// ─── Zone Grid Section ──────────────────────────────────────────────────────────────
+const ZoneCard = ({
+  zone,
+  index,
+  isReversed
+}: {
+  zone: ZoneItem;
+  index: number;
+  isReversed: boolean;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, {
+    once: true,
+    margin: '-80px 0px'
+  });
+  const isMobile = useIsMobile();
+  const magnetic = useMagnetic(0.3);
+  const isPremium = zone.variant === 'premium';
+  const isPrestige = zone.variant === 'prestige';
+  const cardBg = isPrestige ? 'linear-gradient(160deg, #06080a 0%, #0c1015 100%)' : isPremium ? 'linear-gradient(160deg, #141822 0%, #0f1520 100%)' : 'linear-gradient(160deg, #0f1c28 0%, #0a1420 100%)';
+  const cardBorder = isPrestige ? '1px solid rgba(222,50,45,0.22)' : isPremium ? '1px solid rgba(200,190,230,0.15)' : '1px solid rgba(247,246,243,0.07)';
+  return <div ref={ref} style={{
+    display: 'grid',
+    gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+    gap: isMobile ? '0' : '0',
+    width: '100%',
+    borderBottom: '1px solid rgba(247,246,243,0.07)'
+  }}>
+      {/* Image side */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isReversed && !isMobile ? slideFromRight : slideFromLeft} custom={0.05} style={{
+      position: 'relative',
+      overflow: 'hidden',
+      order: isReversed && !isMobile ? 2 : 1,
+      minHeight: isMobile ? '280px' : '520px'
+    }}>
+        <img src={zone.imageSrc} alt={zone.imageAlt} style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        display: 'block',
+        filter: isPrestige ? 'brightness(0.5) saturate(0.6)' : isPremium ? 'brightness(0.55) saturate(0.65)' : 'brightness(0.55) saturate(0.7)'
+      }} />
+        {/* Gradient overlay */}
+        <div aria-hidden="true" style={{
+        position: 'absolute',
+        inset: 0,
+        background: isPrestige ? 'linear-gradient(to right, rgba(6,8,10,0.85) 0%, rgba(6,8,10,0.4) 60%, transparent 100%)' : isPremium ? 'linear-gradient(to right, rgba(14,18,32,0.8) 0%, rgba(14,18,32,0.3) 60%, transparent 100%)' : 'linear-gradient(to right, rgba(15,28,40,0.8) 0%, rgba(15,28,40,0.3) 60%, transparent 100%)',
+        pointerEvents: 'none'
+      }} />
+        {/* Zone index */}
+        <div style={{
+        position: 'absolute',
+        top: '28px',
+        left: '32px',
+        fontFamily: 'Montserrat, sans-serif',
+        fontSize: 'clamp(80px, 11vw, 140px)',
+        fontWeight: 800,
+        color: 'rgba(247,246,243,0.04)',
+        lineHeight: 1,
+        letterSpacing: '-6px',
+        userSelect: 'none'
+      }}>
+          {zone.index}
+        </div>
+        {/* Badge */}
+        <div style={{
+        position: 'absolute',
+        bottom: '28px',
+        left: '28px',
+        right: '28px'
+      }}>
+          {(isPremium || isPrestige) && <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          background: isPremium ? 'rgba(180,160,255,0.12)' : 'rgba(222,50,45,0.15)',
+          border: isPremium ? '1px solid rgba(180,160,255,0.28)' : '1px solid rgba(222,50,45,0.32)',
+          borderRadius: '100px',
+          padding: '6px 14px 6px 10px',
+          marginBottom: '12px'
+        }}>
+              <motion.div animate={{
+            opacity: [1, 0.35, 1]
+          }} transition={{
+            duration: 2,
+            repeat: Infinity
+          }} style={{
+            width: '6px',
+            height: '6px',
+            borderRadius: '50%',
+            background: isPremium ? 'rgba(180,160,255,0.9)' : '#DE322D',
+            boxShadow: isPremium ? '0 0 8px rgba(180,160,255,0.7)' : '0 0 8px rgba(222,50,45,0.7)'
+          }} />
+              <span style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '10px',
+            letterSpacing: '0.12em',
             textTransform: 'uppercase',
+            color: isPremium ? 'rgba(180,160,255,0.85)' : 'rgba(247,246,243,0.7)',
+            fontWeight: 600
+          }}>
+                {isPremium ? 'Exclusive Access' : 'Commercially Prestigious'}
+              </span>
+            </div>}
+        </div>
+      </motion.div>
+
+      {/* Content side */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isReversed && !isMobile ? slideFromLeft : slideFromRight} custom={0.15} style={{
+      background: cardBg,
+      border: cardBorder,
+      borderLeft: 'none',
+      borderRight: 'none',
+      borderTop: 'none',
+      padding: isMobile ? '40px 24px 48px' : '56px 56px 64px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      order: isReversed && !isMobile ? 1 : 2,
+      position: 'relative',
+      overflow: 'hidden',
+      boxSizing: 'border-box'
+    }}>
+        {/* Noise */}
+        <div aria-hidden="true" style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: NOISE_SVG,
+        backgroundRepeat: 'repeat',
+        backgroundSize: '128px 128px',
+        pointerEvents: 'none',
+        opacity: 0.5
+      }} />
+        {/* Premium glow */}
+        {isPremium && <div aria-hidden="true" style={{
+        position: 'absolute',
+        top: '-20%',
+        right: '-10%',
+        width: '400px',
+        height: '400px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(180,160,255,0.08) 0%, transparent 65%)',
+        pointerEvents: 'none'
+      }} />}
+        {isPrestige && <div aria-hidden="true" style={{
+        position: 'absolute',
+        bottom: '-20%',
+        left: '-10%',
+        width: '400px',
+        height: '400px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(222,50,45,0.1) 0%, transparent 65%)',
+        pointerEvents: 'none'
+      }} />}
+
+        <div style={{
+        position: 'relative',
+        zIndex: 1
+      }}>
+          {/* Zone number & icon */}
+          <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: '28px'
+        }}>
+            <div style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '11px',
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: 'rgba(247,246,243,0.25)',
             fontWeight: 500
           }}>
-            <span style={{
-              color: '#DE322D',
-              fontWeight: 600
-            }}>EmpowaEntrepreneurs</span>
-            <span> Funding Summit 2026 — </span>
-            <span style={{
-              color: '#DE322D',
-              fontWeight: 600
-            }}>EmpowaWorx House</span>
-          </span>
-        </motion.div>
-        <h1 style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontWeight: 300,
-          margin: '0 0 48px',
-          lineHeight: 0.93,
-          letterSpacing: isMobile ? '-2px' : '-3px'
-        }}>
-          <div style={{
-            overflow: 'hidden',
-            display: 'block'
-          }}>
-            {HERO_WORDS_LINE1.map((word, i) => <motion.span key={`l1-${word}`} initial={{
-              y: '110%',
-              opacity: 0
-            }} animate={{
-              y: '0%',
-              opacity: 1
-            }} transition={{
-              duration: 0.9,
-              delay: 0.2 + i * 0.12,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              display: 'inline-block',
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
-              color: '#F7F6F3',
-              marginRight: '0.22em'
-            }}>
-              {word}
-            </motion.span>)}
-          </div>
-          <div style={{
-            overflow: 'hidden',
-            display: 'block'
-          }}>
-            {HERO_WORDS_LINE2.map((word, i) => <motion.span key={`l2-${word}`} initial={{
-              y: '110%',
-              opacity: 0
-            }} animate={{
-              y: '0%',
-              opacity: 1
-            }} transition={{
-              duration: 0.9,
-              delay: 0.44 + i * 0.12,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              display: 'inline-block',
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
-              color: 'rgba(247,246,243,0.18)',
-              marginRight: '0.22em'
-            }}>
-              {word}
-            </motion.span>)}
-            <motion.em initial={{
-              y: '110%',
-              opacity: 0
-            }} animate={{
-              y: '0%',
-              opacity: 1
-            }} transition={{
-              duration: 0.9,
-              delay: 0.56,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              display: 'inline-block',
-              fontStyle: 'italic',
-              fontWeight: 300,
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
-              color: '#DE322D'
-            }}>
-              {HERO_WORD_PLATFORM}
-            </motion.em>
-          </div>
-        </h1>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '28px',
-          maxWidth: '480px'
-        }}>
-          <motion.p custom={0.62} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: isMobile ? '15px' : 'clamp(15px, 1.4vw, 18px)',
-            lineHeight: '1.75',
-            color: 'rgba(247,246,243,0.72)',
-            margin: 0,
-            fontWeight: 300
-          }}>
-            Where Africa's next generation of scalable businesses meets serious capital, strategic opportunity, and transformative growth.
-          </motion.p>
-          <motion.div custom={0.68} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '20px',
-            padding: '16px 20px',
-            background: 'rgba(247,246,243,0.04)',
-            border: '1px solid rgba(247,246,243,0.1)',
-            borderRadius: '16px',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            width: 'fit-content'
-          }}>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '2px'
-            }}>
-              <div style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '9px',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                color: '#DE322D',
-                fontWeight: 600
-              }}>Summit Countdown</div>
-              <div style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '9px',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'rgba(247,246,243,0.3)',
-                fontWeight: 500
-              }}>May 28 · 2026</div>
+              Zone {zone.index}
             </div>
             <div style={{
-              width: '1px',
-              height: '36px',
-              background: 'rgba(247,246,243,0.1)'
-            }} />
-            <div />
-          </motion.div>
-          <motion.div custom={0.75} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            flexWrap: 'wrap'
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '22px',
+            color: isPrestige ? 'rgba(222,50,45,0.6)' : isPremium ? 'rgba(180,160,255,0.5)' : 'rgba(247,246,243,0.15)',
+            lineHeight: 1
           }}>
+              {zone.icon}
+            </div>
+          </div>
+
+          {/* Theme tag */}
+          <div style={{
+          display: 'inline-block',
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '10px',
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color: isPrestige ? 'rgba(222,50,45,0.8)' : isPremium ? 'rgba(180,160,255,0.7)' : '#DE322D',
+          border: isPrestige ? '1px solid rgba(222,50,45,0.25)' : isPremium ? '1px solid rgba(180,160,255,0.2)' : '1px solid rgba(222,50,45,0.22)',
+          borderRadius: '4px',
+          padding: '4px 12px',
+          marginBottom: '20px',
+          fontWeight: 600
+        }}>
+            {zone.theme}
+          </div>
+
+          <h2 style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: isMobile ? 'clamp(22px, 6vw, 32px)' : 'clamp(24px, 2.6vw, 38px)',
+          fontWeight: isPrestige ? 600 : 300,
+          letterSpacing: '-1px',
+          lineHeight: 1.1,
+          color: '#F7F6F3',
+          margin: '0 0 24px'
+        }}>
+            {zone.name}
+          </h2>
+
+          <p style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '15px',
+          lineHeight: '1.8',
+          color: 'rgba(247,246,243,0.5)',
+          margin: '0 0 28px',
+          fontWeight: 300
+        }}>
+            {zone.purpose}
+          </p>
+
+          {/* Commercial relevance */}
+          <div style={{
+          background: isPrestige ? 'rgba(222,50,45,0.08)' : isPremium ? 'rgba(180,160,255,0.07)' : 'rgba(247,246,243,0.04)',
+          border: isPrestige ? '1px solid rgba(222,50,45,0.16)' : isPremium ? '1px solid rgba(180,160,255,0.12)' : '1px solid rgba(247,246,243,0.08)',
+          borderRadius: '16px',
+          padding: '20px 22px',
+          marginBottom: '32px'
+        }}>
+            <div style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '9px',
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: isPrestige ? 'rgba(222,50,45,0.7)' : isPremium ? 'rgba(180,160,255,0.6)' : 'rgba(247,246,243,0.28)',
+            fontWeight: 600,
+            marginBottom: '10px'
+          }}>
+              Commercial Relevance
+            </div>
+            <p style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '13px',
+            lineHeight: '1.72',
+            color: 'rgba(247,246,243,0.55)',
+            margin: 0,
+            fontStyle: 'italic'
+          }}>
+              {zone.commercialRelevance}
+            </p>
+          </div>
+
+          {/* Tags */}
+          <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '6px',
+          marginBottom: '32px'
+        }}>
+            {zone.tags.map(tag => <span key={tag} style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '10px',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: 'rgba(247,246,243,0.35)',
+            border: '1px solid rgba(247,246,243,0.12)',
+            borderRadius: '100px',
+            padding: '4px 12px'
+          }}>
+                {tag}
+              </span>)}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div style={{
+        display: 'flex',
+        gap: '10px',
+        flexWrap: 'wrap',
+        position: 'relative',
+        zIndex: 1
+      }}>
+          <motion.div ref={magnetic.ref} onMouseMove={magnetic.handleMouseMove} onMouseLeave={magnetic.handleMouseLeave} style={{
+          x: magnetic.springX,
+          y: magnetic.springY,
+          display: 'inline-block'
+        }}>
             <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
-              scale: 1.04,
-              boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
-            }} whileTap={{
-              scale: 0.97
-            }} style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
-              borderRadius: '44px',
-              padding: isMobile ? '14px 28px' : '18px 36px',
-              fontSize: '13px',
-              letterSpacing: '0.05em',
-              color: '#fff',
-              textDecoration: 'none',
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 600,
-              boxShadow: '0 8px 36px rgba(222,50,45,0.55), 0 2px 8px rgba(222,50,45,0.3)',
-              transition: 'box-shadow 0.3s ease'
-            }}>
-              <span>Register Now</span><ArrowIconDark />
+            scale: 1.04,
+            boxShadow: '0 12px 40px rgba(222,50,45,0.55)'
+          }} whileTap={{
+            scale: 0.97
+          }} style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: isPrestige ? 'linear-gradient(135deg, #DE322D, #a81e1a)' : isPremium ? 'linear-gradient(135deg, rgba(180,160,255,0.2), rgba(180,160,255,0.08))' : 'linear-gradient(135deg, #DE322D, #c42823)',
+            border: isPremium ? '1px solid rgba(180,160,255,0.25)' : 'none',
+            borderRadius: '44px',
+            padding: '12px 24px',
+            fontSize: '12px',
+            letterSpacing: '0.06em',
+            color: '#fff',
+            textDecoration: 'none',
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 600,
+            boxShadow: isPrestige ? '0 8px 32px rgba(222,50,45,0.45)' : '0 4px 20px rgba(222,50,45,0.3)',
+            cursor: 'pointer'
+          }}>
+              <span>Inquire About Zone</span>
+              <ArrowIconDark />
             </motion.a>
+          </motion.div>
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          scale: 1.04
+        }} whileTap={{
+          scale: 0.97
+        }} style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          border: '1px solid rgba(247,246,243,0.15)',
+          borderRadius: '44px',
+          padding: '12px 22px',
+          fontSize: '12px',
+          letterSpacing: '0.04em',
+          color: 'rgba(247,246,243,0.5)',
+          textDecoration: 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          transition: 'border-color 0.25s ease, color 0.25s ease'
+        }} onMouseEnter={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(247,246,243,0.4)';
+          el.style.color = '#F7F6F3';
+        }} onMouseLeave={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(247,246,243,0.15)';
+          el.style.color = 'rgba(247,246,243,0.5)';
+        }}>
+            <span>View Zone Schedule</span>
+          </motion.a>
+        </div>
+      </motion.div>
+    </div>;
+};
+
+// ─── Zones Grid Wrapper ─────────────────────────────────────────────────────────────
+const ZonesSection = () => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(headerRef, {
+    once: true,
+    margin: '-60px 0px'
+  });
+  const isMobile = useIsMobile();
+  return <section id="zones" style={{
+    background: '#0f1c28',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    position: 'relative'
+  }}>
+      {/* Section header */}
+      <div ref={headerRef} style={{
+      padding: isMobile ? '80px 24px 56px' : '120px 64px 72px',
+      maxWidth: '1200px',
+      margin: '0 auto',
+      boxSizing: 'border-box'
+    }}>
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        marginBottom: '24px'
+      }}>
+          <PlusSquareIconLight />
+          <span style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '12px',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'rgba(247,246,243,0.35)',
+          fontWeight: 600
+        }}>
+            Eight Strategic Zones
+          </span>
+        </motion.div>
+        <div style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: '40px',
+        alignItems: 'end'
+      }}>
+          <div style={{
+          overflow: 'hidden'
+        }}>
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: isMobile ? 'clamp(32px, 9vw, 52px)' : 'clamp(44px, 5.5vw, 72px)',
+            fontWeight: 200,
+            letterSpacing: isMobile ? '-1.5px' : '-2.5px',
+            lineHeight: 0.97,
+            color: '#F7F6F3',
+            margin: 0
+          }}>
+              <span>Where every zone </span>
+              <em style={{
+              fontStyle: 'italic',
+              color: '#DE322D'
+            }}>unlocks</em>
+              <br />
+              <span style={{
+              color: 'rgba(247,246,243,0.2)'
+            }}>strategic value.</span>
+            </motion.h2>
+          </div>
+          <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '15px',
+          color: 'rgba(247,246,243,0.38)',
+          lineHeight: '1.78',
+          margin: 0,
+          fontWeight: 300
+        }}>
+            Eight purpose-built experience zones — each designed as a distinct ecosystem for capital access, strategic
+            intelligence, and premium market connections across Africa's most dynamic sectors.
+          </motion.p>
+        </div>
+      </div>
+
+      {/* Zone cards */}
+      <div style={{
+      width: '100%',
+      borderTop: '1px solid rgba(247,246,243,0.07)'
+    }}>
+        {ZONES.map((zone, i) => <ZoneCard key={zone.id} zone={zone} index={i} isReversed={i % 2 === 1} />)}
+      </div>
+    </section>;
+};
+
+// ─── Strategic Question CTA Section ─────────────────────────────────────────────────
+const StrategicCTASection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, {
+    once: true,
+    margin: '-60px 0px'
+  });
+  const isMobile = useIsMobile();
+  const magnetic = useMagnetic(0.28);
+  return <section ref={sectionRef} style={{
+    background: '#F7F6F3',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    paddingTop: isMobile ? '96px' : '144px',
+    paddingBottom: isMobile ? '96px' : '144px',
+    position: 'relative'
+  }}>
+      {/* Noise */}
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: NOISE_SVG,
+      backgroundRepeat: 'repeat',
+      backgroundSize: '128px 128px',
+      pointerEvents: 'none',
+      opacity: 0.35
+    }} />
+      {/* Subtle red orb */}
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      top: '-10%',
+      right: '-8%',
+      width: 'clamp(400px, 50vw, 720px)',
+      height: 'clamp(400px, 50vw, 720px)',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(222,50,45,0.05) 0%, transparent 65%)',
+      pointerEvents: 'none'
+    }} />
+
+      <div style={{
+      maxWidth: '1100px',
+      margin: '0 auto',
+      padding: isMobile ? '0 24px' : '0 64px',
+      position: 'relative',
+      zIndex: 1,
+      textAlign: 'center'
+    }}>
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '10px',
+        marginBottom: '40px'
+      }}>
+          <PlusSquareIcon />
+          <span style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '12px',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'rgba(20,18,16,0.4)',
+          fontWeight: 600
+        }}>
+            The Defining Question
+          </span>
+        </motion.div>
+
+        <motion.blockquote initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.12} style={{
+        fontFamily: 'Montserrat, sans-serif',
+        fontSize: isMobile ? 'clamp(24px, 7vw, 40px)' : 'clamp(32px, 4.5vw, 62px)',
+        fontWeight: 200,
+        letterSpacing: isMobile ? '-1.2px' : '-2.5px',
+        lineHeight: 1.12,
+        color: '#141210',
+        margin: '0 auto 52px',
+        maxWidth: '940px',
+        fontStyle: 'normal'
+      }}>
+          <span style={{
+          color: 'rgba(20,18,16,0.3)'
+        }}>"</span>
+          <span>What strategic value, funding opportunity, or market access</span>
+          <em style={{
+          fontStyle: 'italic',
+          color: '#DE322D'
+        }}> does this unlock</em>
+          <span style={{
+          color: 'rgba(20,18,16,0.28)'
+        }}> for you?</span>
+          <span style={{
+          color: 'rgba(20,18,16,0.3)'
+        }}>"</span>
+        </motion.blockquote>
+
+        <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.3} style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: isMobile ? '15px' : '17px',
+        lineHeight: '1.8',
+        color: 'rgba(20,18,16,0.55)',
+        margin: '0 auto 56px',
+        fontWeight: 300,
+        maxWidth: '620px'
+      }}>
+          Each zone at EmpowaEntrepreneurs Funding Summit 2026 is a strategic tool — not a passive session.
+          Every experience is architected to generate measurable outcomes: capital commitments, partnerships,
+          procurement contracts, and the intelligence to scale across African markets.
+        </motion.p>
+
+        {/* Zone metrics */}
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.45} style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+        gap: '1px',
+        background: 'rgba(20,18,16,0.1)',
+        borderRadius: '20px',
+        overflow: 'hidden',
+        marginBottom: '52px',
+        transformOrigin: 'left'
+      }}>
+          {[{
+          id: 'qm-1',
+          number: '8',
+          label: 'Experience Zones',
+          sub: 'Purpose-built ecosystems'
+        }, {
+          id: 'qm-2',
+          number: '4K+',
+          label: 'Summit Attendees',
+          sub: 'Founders, funders & builders'
+        }, {
+          id: 'qm-3',
+          number: '120+',
+          label: 'Verified Investors',
+          sub: 'Institutional capital allocators'
+        }, {
+          id: 'qm-4',
+          number: '30+',
+          label: 'African Markets',
+          sub: 'Continental reach'
+        }].map(metric => <div key={metric.id} style={{
+          background: '#FFFFFF',
+          padding: isMobile ? '24px 16px' : '32px 28px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '4px'
+        }}>
+              <div style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: isMobile ? 'clamp(28px, 7vw, 44px)' : 'clamp(32px, 3.5vw, 52px)',
+            fontWeight: 700,
+            letterSpacing: '-2px',
+            color: '#141210',
+            lineHeight: 1
+          }}>
+                {metric.number}
+              </div>
+              <div style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '12px',
+            fontWeight: 600,
+            color: '#141210',
+            letterSpacing: '-0.1px',
+            marginTop: '6px'
+          }}>
+                {metric.label}
+              </div>
+              <div style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '11px',
+            color: 'rgba(20,18,16,0.38)',
+            letterSpacing: '0.02em',
+            textAlign: 'center'
+          }}>
+                {metric.sub}
+              </div>
+            </div>)}
+        </motion.div>
+
+        {/* CTA buttons */}
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.55} style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '12px',
+        flexWrap: 'wrap'
+      }}>
+          <motion.div ref={magnetic.ref} onMouseMove={magnetic.handleMouseMove} onMouseLeave={magnetic.handleMouseLeave} style={{
+          x: magnetic.springX,
+          y: magnetic.springY
+        }}>
             <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
-              scale: 1.04
-            }} whileTap={{
-              scale: 0.97
-            }} style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              border: '1px solid rgba(247,246,243,0.25)',
-              borderRadius: '44px',
-              padding: isMobile ? '14px 24px' : '18px 30px',
-              fontSize: '13px',
-              letterSpacing: '0.04em',
-              color: 'rgba(247,246,243,0.82)',
-              textDecoration: 'none',
-              fontFamily: 'Montserrat, sans-serif',
-              transition: 'border-color 0.3s ease, color 0.3s ease'
-            }} onMouseEnter={e => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.55)';
-              el.style.color = '#F7F6F3';
-            }} onMouseLeave={e => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.25)';
-              el.style.color = 'rgba(247,246,243,0.82)';
-            }}>
-              <span>Partner With Us</span><ArrowIconDark />
+            scale: 1.04,
+            boxShadow: '0 20px 60px rgba(222,50,45,0.55)'
+          }} whileTap={{
+            scale: 0.97
+          }} style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+            borderRadius: '44px',
+            padding: isMobile ? '16px 28px' : '20px 40px',
+            fontSize: '13px',
+            letterSpacing: '0.05em',
+            color: '#fff',
+            textDecoration: 'none',
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 600,
+            boxShadow: '0 12px 48px rgba(222,50,45,0.45)'
+          }}>
+              <span>Reserve Your Summit Seat</span>
+              <ArrowIconDark />
             </motion.a>
+          </motion.div>
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          scale: 1.04
+        }} whileTap={{
+          scale: 0.97
+        }} style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          border: '1px solid rgba(20,18,16,0.2)',
+          borderRadius: '44px',
+          padding: isMobile ? '16px 24px' : '20px 36px',
+          fontSize: '13px',
+          letterSpacing: '0.04em',
+          color: 'rgba(20,18,16,0.65)',
+          textDecoration: 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          transition: 'border-color 0.3s ease, color 0.3s ease'
+        }} onMouseEnter={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(20,18,16,0.45)';
+          el.style.color = '#141210';
+        }} onMouseLeave={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(20,18,16,0.2)';
+          el.style.color = 'rgba(20,18,16,0.65)';
+        }}>
+            <span>Partner With Us</span>
+          </motion.a>
         </motion.div>
       </div>
-    </div>
-    </motion.div>
     </section>;
 };
 
 // ─── Mini Zone Navigator ──────────────────────────────────────────────────────────────
-const ZONES = [{id: "z1", variant: "prestige", index: "01", name: "Zone 1", theme: "Theme 1"}];
 const ZoneNavigator = () => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, {
@@ -1667,7 +2486,7 @@ const SiteFooter = () => {
             height: '20px',
             background: 'rgba(247,246,243,0.08)'
           }} />}
-          {FOOTER_LEGAL.map(item => <a key={item.id} href="#" style={{
+          {FOOTER_LEGAL.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
             color: 'rgba(247,246,243,0.12)',
@@ -1693,12 +2512,9 @@ export const ExperienceZonesPage = () => {
     background: '#0f1c28',
     overflowX: 'hidden'
   }}>
-      <ScrollProgressBar />
-      <StickyNav />
       <HeroSection />
       <ZoneNavigator />
-      
-      
-      <SiteFooter />
+      <ZonesSection />
+      <StrategicCTASection />
     </div>;
 };

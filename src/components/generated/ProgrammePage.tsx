@@ -317,26 +317,21 @@ const ProgrammeTicker = ({
 // ─── StickyNav ────────────────────────────────────────────────────────────────
 const STICKY_NAV_ITEMS = [{
   id: 'home',
-  label: 'Home',
-  href: '/'
+  label: 'Home'
 }, {
   id: 'about',
-  label: 'About Us',
-  href: '/about'
+  label: 'About Us'
 }, {
   id: 'programme',
-  label: 'Programme',
-  href: '/programme'
+  label: 'Programme'
 }, {
   id: 'experience',
-  label: 'Experience Zones',
-  href: '/experience-zones'
+  label: 'Experience Zones'
 }, {
   id: 'partnerships',
-  label: 'Partnerships',
-  href: '#'
+  label: 'Partnerships'
 }];
-const StickyNav = () => {
+const ProgrammeNav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -373,7 +368,7 @@ const StickyNav = () => {
     zIndex: 100,
     boxSizing: 'border-box'
   }}>
-    <div style={{
+      <div style={{
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -384,25 +379,45 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-      <a href="#" onClick={e => e.preventDefault()} style={{
+        <a href="#" onClick={e => e.preventDefault()} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
         textDecoration: 'none'
       }}>
-        <motion.img 
-          src="/ee-logo.png" 
-          alt="EmpowaSummit Logo"
-          whileHover={{ scale: 1.05 }} 
-          style={{ height: '30px', width: 'auto', objectFit: 'contain' }}
-        />
-      </a>
-      {!isMobile && <div style={{
+          <motion.div whileHover={{
+          scale: 1.08,
+          rotate: 5
+        }} style={{
+          width: '30px',
+          height: '30px',
+          borderRadius: '9px',
+          background: 'linear-gradient(135deg, #DE322D, #ff5a4f)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 14px rgba(222,50,45,0.4)'
+        }}>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+            </svg>
+          </motion.div>
+          <span style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '13px',
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase',
+          color: scrolled ? '#141210' : '#F7F6F3',
+          fontWeight: 700,
+          transition: 'color 0.35s ease'
+        }}>EmpowaSummit</span>
+        </a>
+        {!isMobile && <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '32px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href} style={{
+            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           textDecoration: 'none',
@@ -414,13 +429,13 @@ const StickyNav = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLAnchorElement).style.color = navLinkColor;
         }}>
-          {item.label}
-        </a>)}
-        <div style={{
+                {item.label}
+              </a>)}
+            <div style={{
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -438,9 +453,9 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}>
-            <span>Partner With Us</span>
-          </motion.a>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+                <span>Partner With Us</span>
+              </motion.a>
+              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -459,11 +474,11 @@ const StickyNav = () => {
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)',
             transition: 'box-shadow 0.3s ease'
           }}>
-            <span>Register Now</span>
-          </motion.a>
-        </div>
-      </div>}
-      {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
+                <span>Register Now</span>
+              </motion.a>
+            </div>
+          </div>}
+        {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
         background: 'none',
         border: 'none',
         cursor: 'pointer',
@@ -472,7 +487,7 @@ const StickyNav = () => {
         flexDirection: 'column',
         gap: '5px'
       }}>
-        {[0, 1, 2].map(i => <span key={i} style={{
+            {[0, 1, 2].map(i => <span key={i} style={{
           display: 'block',
           width: '22px',
           height: '1.5px',
@@ -480,10 +495,10 @@ const StickyNav = () => {
           borderRadius: '2px',
           transition: 'background 0.35s ease'
         }} />)}
-      </button>}
-    </div>
-    <AnimatePresence>
-      {isMobile && mobileMenuOpen && <motion.div initial={{
+          </button>}
+      </div>
+      <AnimatePresence>
+        {isMobile && mobileMenuOpen && <motion.div initial={{
         opacity: 0,
         y: -12
       }} animate={{
@@ -502,7 +517,10 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 32px 28px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href} onClick={() => setMobileMenuOpen(false)} style={{
+            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
+          e.preventDefault();
+          setMobileMenuOpen(false);
+        }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -511,16 +529,14 @@ const StickyNav = () => {
           padding: '12px 0',
           borderBottom: '0.8px solid rgba(20,18,16,0.06)',
           letterSpacing: '0.02em'
-        }}>
-          {item.label}
-        </a>)}
-        <div style={{
+        }}>{item.label}</a>)}
+            <div style={{
           display: 'flex',
           gap: '10px',
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -529,7 +545,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -538,76 +554,15 @@ const StickyNav = () => {
             color: '#fff',
             textDecoration: 'none'
           }}>Register Now</a>
-        </div>
-      </motion.div>}
-    </AnimatePresence>
-  </motion.nav>;
+            </div>
+          </motion.div>}
+      </AnimatePresence>
+    </motion.nav>;
 };
 
-// ─── Hero Section ─────────────────────────────────────────────────────────────
-const SERVICE_STRIP_ITEMS = [{
-  id: 'founders',
-  label: 'Ambitious Founders'
-}, {
-  id: 'funders',
-  label: 'Institutional Funders'
-}, {
-  id: 'vc',
-  label: 'Venture Capital'
-}, {
-  id: 'dfi',
-  label: 'DFIs & Corporates'
-}, {
-  id: 'ecosystem',
-  label: 'Ecosystem Builders'
-}];
-const HERO_WORDS_LINE1 = ["Africa's", 'Premier'];
-const HERO_WORDS_LINE2 = ['Funding'];
-const HERO_WORD_PLATFORM = 'Platform';
-const HERO_BG_IMAGE = 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1800&q=80';
-const HeroGrid = () => <div aria-hidden="true" style={{
-  position: 'absolute',
-  inset: 0,
-  pointerEvents: 'none',
-  zIndex: 0,
-  overflow: 'hidden'
-}}>
-  {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: `${pct}%`,
-    width: '1px',
-    background: 'rgba(247,246,243,0.025)'
-  }} />)}
-  {[25, 50, 75].map(pct => <div key={`hl-${pct}`} style={{
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: `${pct}%`,
-    height: '1px',
-    background: 'rgba(247,246,243,0.025)'
-  }} />)}
-  <div style={{
-    position: 'absolute',
-    top: '88px',
-    left: '32px',
-    width: '40px',
-    height: '40px',
-    borderLeft: '1px solid rgba(222,50,45,0.3)',
-    borderTop: '1px solid rgba(222,50,45,0.3)'
-  }} />
-  <div style={{
-    position: 'absolute',
-    bottom: '52px',
-    right: '32px',
-    width: '40px',
-    height: '40px',
-    borderRight: '1px solid rgba(222,50,45,0.3)',
-    borderBottom: '1px solid rgba(222,50,45,0.3)'
-  }} />
-</div>;
-const HeroSection = () => {
+// ─── Programme Hero ────────────────────────────────────────────────────────────
+const HERO_BG = 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1800&q=80';
+const ProgrammeHero = () => {
   const heroRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
   const {
@@ -616,11 +571,10 @@ const HeroSection = () => {
     target: heroRef,
     offset: ['start start', 'end start']
   });
-  const orbY = useTransform(scrollYProgress, [0, 1], ['0%', '28%']);
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '8%']);
+  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
   return <section ref={heroRef} style={{
-    height: '100vh',
+    minHeight: '100vh',
     background: '#141210',
     display: 'flex',
     flexDirection: 'column',
@@ -630,11 +584,11 @@ const HeroSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-    <motion.div aria-hidden="true" style={{
+      <motion.div aria-hidden="true" style={{
       y: imgY,
       position: 'absolute',
       inset: '-10% 0',
-      backgroundImage: `url(${HERO_BG_IMAGE})`,
+      backgroundImage: `url(${HERO_BG})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
@@ -642,14 +596,14 @@ const HeroSection = () => {
       zIndex: 0,
       willChange: 'transform'
     }} />
-    <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
-      background: 'linear-gradient(160deg, rgba(20,18,16,0.92) 0%, rgba(20,18,16,0.78) 40%, rgba(20,18,16,0.88) 100%)',
+      background: 'linear-gradient(160deg, rgba(20,18,16,0.94) 0%, rgba(20,18,16,0.78) 40%, rgba(20,18,16,0.9) 100%)',
       pointerEvents: 'none',
       zIndex: 1
     }} />
-    <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -659,243 +613,1446 @@ const HeroSection = () => {
       zIndex: 2,
       opacity: 0.5
     }} />
-    <div style={{
-      position: 'relative',
-      zIndex: 3
-    }}><HeroGrid /></div>
-    <motion.div aria-hidden="true" style={{
-      y: orbY,
+      {/* Grid lines */}
+      <div aria-hidden="true" style={{
       position: 'absolute',
-      top: '-10%',
+      inset: 0,
+      pointerEvents: 'none',
+      zIndex: 2,
+      overflow: 'hidden'
+    }}>
+        {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: `${pct}%`,
+        width: '1px',
+        background: 'rgba(247,246,243,0.025)'
+      }} />)}
+        <div style={{
+        position: 'absolute',
+        top: '88px',
+        left: '32px',
+        width: '40px',
+        height: '40px',
+        borderLeft: '1px solid rgba(222,50,45,0.3)',
+        borderTop: '1px solid rgba(222,50,45,0.3)'
+      }} />
+        <div style={{
+        position: 'absolute',
+        bottom: '52px',
+        right: '32px',
+        width: '40px',
+        height: '40px',
+        borderRight: '1px solid rgba(222,50,45,0.3)',
+        borderBottom: '1px solid rgba(222,50,45,0.3)'
+      }} />
+      </div>
+      {/* Orbs */}
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      top: '-5%',
       right: '-8%',
-      width: 'clamp(500px, 55vw, 840px)',
-      height: 'clamp(500px, 55vw, 840px)',
+      width: 'clamp(400px, 50vw, 720px)',
+      height: 'clamp(400px, 50vw, 720px)',
       borderRadius: '50%',
-      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.22) 0%, rgba(222,50,45,0.08) 45%, transparent 70%)',
+      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.2) 0%, rgba(222,50,45,0.06) 45%, transparent 70%)',
       pointerEvents: 'none',
       zIndex: 3
     }} />
-    <div aria-hidden="true" style={{
-      position: 'absolute',
-      bottom: '10%',
-      left: '-5%',
-      width: '400px',
-      height: '400px',
-      borderRadius: '50%',
-      background: 'radial-gradient(circle, rgba(222,50,45,0.09) 0%, transparent 65%)',
-      pointerEvents: 'none',
-      zIndex: 3
-    }} />
-    <div style={{
+      <div style={{
       height: '88px',
       flexShrink: 0,
       position: 'relative',
       zIndex: 4
     }} />
-    <motion.div style={{
+      <motion.div style={{
       y: textY,
       flex: 1,
-      display: 'grid',
-      gridTemplateColumns: '1fr',
-      gap: isMobile ? '40px' : '48px',
-      alignItems: 'center',
-      padding: isMobile ? '32px 24px 32px' : '40px 64px 40px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      padding: isMobile ? '40px 24px 40px' : '60px 64px 60px',
       width: '100%',
       boxSizing: 'border-box',
       zIndex: 4,
       position: 'relative'
     }}>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column'
-      }}>
         <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          marginBottom: '40px',
-          flexWrap: 'wrap'
-        }}>
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        marginBottom: '36px',
+        flexWrap: 'wrap'
+      }}>
           <PlusSquareIconLight />
           <span style={{
-            fontFamily: 'Montserrat, sans-serif',
-            color: 'rgba(247,246,243,0.38)',
-            fontSize: '11px',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            fontWeight: 500
-          }}>
+          fontFamily: 'Montserrat, sans-serif',
+          color: 'rgba(247,246,243,0.38)',
+          fontSize: '11px',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          fontWeight: 500
+        }}>
             <span style={{
-              color: '#DE322D',
-              fontWeight: 600
-            }}>EmpowaEntrepreneurs</span>
-            <span> Funding Summit 2026 — </span>
-            <span style={{
-              color: '#DE322D',
-              fontWeight: 600
-            }}>EmpowaWorx House</span>
+            color: '#DE322D',
+            fontWeight: 600
+          }}>Programme</span>
+            <span> — EmpowaEntrepreneurs Funding Summit 2026</span>
           </span>
         </motion.div>
         <h1 style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontWeight: 300,
-          margin: '0 0 48px',
-          lineHeight: 0.93,
-          letterSpacing: isMobile ? '-2px' : '-3px'
-        }}>
+        fontFamily: 'Montserrat, sans-serif',
+        fontWeight: 300,
+        margin: '0 0 36px',
+        lineHeight: 0.93,
+        letterSpacing: isMobile ? '-2px' : '-3px'
+      }}>
           <div style={{
-            overflow: 'hidden',
-            display: 'block'
-          }}>
-            {HERO_WORDS_LINE1.map((word, i) => <motion.span key={`l1-${word}`} initial={{
-              y: '110%',
-              opacity: 0
-            }} animate={{
-              y: '0%',
-              opacity: 1
-            }} transition={{
-              duration: 0.9,
-              delay: 0.2 + i * 0.12,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              display: 'inline-block',
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
-              color: '#F7F6F3',
-              marginRight: '0.22em'
-            }}>
-              {word}
-            </motion.span>)}
+          overflow: 'hidden',
+          display: 'block'
+        }}>
+            <motion.span initial={{
+            y: '110%',
+            opacity: 0
+          }} animate={{
+            y: '0%',
+            opacity: 1
+          }} transition={{
+            duration: 0.9,
+            delay: 0.15,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'inline-block',
+            marginRight: '0.2em',
+            fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
+            color: "#f7f6f3"
+          }}>Where</motion.span>
+            <motion.span initial={{
+            y: '110%',
+            opacity: 0
+          }} animate={{
+            y: '0%',
+            opacity: 1
+          }} transition={{
+            duration: 0.9,
+            delay: 0.27,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'inline-block',
+            marginRight: '0.2em',
+            fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
+            color: '#F7F6F3'
+          }}>Africa's</motion.span>
+            <motion.span initial={{
+            y: '110%',
+            opacity: 0
+          }} animate={{
+            y: '0%',
+            opacity: 1
+          }} transition={{
+            duration: 0.9,
+            delay: 0.39,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'inline-block',
+            marginRight: '0.2em',
+            fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
+            color: "rgb(247 246 243 / 0.25)"
+          }}>Capital</motion.span>
           </div>
           <div style={{
-            overflow: 'hidden',
-            display: 'block'
-          }}>
-            {HERO_WORDS_LINE2.map((word, i) => <motion.span key={`l2-${word}`} initial={{
-              y: '110%',
-              opacity: 0
-            }} animate={{
-              y: '0%',
-              opacity: 1
-            }} transition={{
-              duration: 0.9,
-              delay: 0.44 + i * 0.12,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              display: 'inline-block',
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
-              color: 'rgba(247,246,243,0.18)',
-              marginRight: '0.22em'
-            }}>
-              {word}
-            </motion.span>)}
+          overflow: 'hidden',
+          display: 'block'
+        }}>
             <motion.em initial={{
-              y: '110%',
-              opacity: 0
-            }} animate={{
-              y: '0%',
-              opacity: 1
-            }} transition={{
-              duration: 0.9,
-              delay: 0.56,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              display: 'inline-block',
-              fontStyle: 'italic',
-              fontWeight: 300,
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
-              color: '#DE322D'
-            }}>
-              {HERO_WORD_PLATFORM}
-            </motion.em>
+            y: '110%',
+            opacity: 0
+          }} animate={{
+            y: '0%',
+            opacity: 1
+          }} transition={{
+            duration: 0.9,
+            delay: 0.51,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'inline-block',
+            fontStyle: 'italic',
+            fontWeight: 300,
+            marginRight: '0.2em',
+            fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
+            color: '#DE322D'
+          }}>Forces</motion.em>
+            <motion.span initial={{
+            y: '110%',
+            opacity: 0
+          }} animate={{
+            y: '0%',
+            opacity: 1
+          }} transition={{
+            duration: 0.9,
+            delay: 0.63,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'inline-block',
+            fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
+            color: "#f7f6f3"
+          }}>Converge.</motion.span>
           </div>
         </h1>
-        <div style={{
+        {/* Core theme */}
+        <motion.div custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0',
+        marginBottom: '40px',
+        border: '1px solid rgba(222,50,45,0.3)',
+        borderRadius: '4px',
+        overflow: 'hidden',
+        width: 'fit-content'
+      }}>
+          {['REAL CAPITAL.', 'REAL DEALS.', 'REAL GROWTH.'].map((word, i) => <div key={word} style={{
+          padding: isMobile ? '12px 16px' : '14px 24px',
+          borderRight: i < 2 ? '1px solid rgba(222,50,45,0.3)' : 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: isMobile ? '10px' : '12px',
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: i === 0 ? '#DE322D' : i === 1 ? 'rgba(247,246,243,0.65)' : 'rgba(247,246,243,0.38)',
+          fontWeight: 700,
+          whiteSpace: 'nowrap'
+        }}>{word}</div>)}
+        </motion.div>
+        <motion.div custom={0.82} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px',
+        flexWrap: 'wrap'
+      }}>
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          scale: 1.04,
+          boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
+        }} whileTap={{
+          scale: 0.97
+        }} style={{
           display: 'flex',
-          flexDirection: 'column',
-          gap: '28px',
-          maxWidth: '480px'
+          alignItems: 'center',
+          gap: '10px',
+          background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+          borderRadius: '44px',
+          padding: isMobile ? '14px 28px' : '18px 36px',
+          fontSize: '13px',
+          letterSpacing: '0.05em',
+          color: '#fff',
+          textDecoration: 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 600,
+          boxShadow: '0 8px 36px rgba(222,50,45,0.55)',
+          transition: 'box-shadow 0.3s ease'
         }}>
-          <motion.p custom={0.62} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: isMobile ? '15px' : 'clamp(15px, 1.4vw, 18px)',
-            lineHeight: '1.75',
-            color: 'rgba(247,246,243,0.72)',
-            margin: 0,
-            fontWeight: 300
+            <span>Explore Programme</span><ArrowIconDark />
+          </motion.a>
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          scale: 1.04
+        }} whileTap={{
+          scale: 0.97
+        }} style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          border: '1px solid rgba(247,246,243,0.25)',
+          borderRadius: '44px',
+          padding: isMobile ? '14px 24px' : '18px 30px',
+          fontSize: '13px',
+          letterSpacing: '0.04em',
+          color: 'rgba(247,246,243,0.82)',
+          textDecoration: 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          transition: 'border-color 0.3s ease, color 0.3s ease'
+        }} onMouseEnter={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(247,246,243,0.55)';
+          el.style.color = '#F7F6F3';
+        }} onMouseLeave={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(247,246,243,0.25)';
+          el.style.color = 'rgba(247,246,243,0.82)';
+        }}>
+            <span>Register Now</span><ArrowIconDark />
+          </motion.a>
+        </motion.div>
+      </motion.div>
+      <motion.div initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} transition={{
+      duration: 0.6,
+      delay: 1.0
+    }} style={{
+      borderTop: '0.8px solid rgba(247,246,243,0.07)',
+      zIndex: 4,
+      overflow: 'hidden',
+      position: 'relative'
+    }}>
+        <ProgrammeTicker light />
+      </motion.div>
+    </section>;
+};
+
+// ─── Themed Stages Grid ────────────────────────────────────────────────────────
+type Stage = {
+  id: string;
+  number: string;
+  name: string;
+  theme: string;
+  focus: string;
+  accentColor: string;
+  imageSrc: string;
+  imageAlt: string;
+};
+const STAGES: Stage[] = [{
+  id: 'stage-vc',
+  number: '01',
+  name: 'VC Stage',
+  theme: 'Venture Capital & Growth Equity',
+  focus: 'Connecting high-growth African startups with early and growth-stage venture capital firms deploying catalytic capital across the continent.',
+  accentColor: '#DE322D',
+  imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80',
+  imageAlt: 'VC Stage — Venture Capital sessions at the summit'
+}, {
+  id: 'stage-esd',
+  number: '02',
+  name: 'ESD Stage',
+  theme: 'Enterprise & Supplier Development',
+  focus: "Bridging the gap between corporates and township enterprises. Facilitating supplier development mandates, mentorship pipelines, and procurement opportunities that drive Africa's informal economy forward.",
+  accentColor: '#3c6d9a',
+  imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&q=80',
+  imageAlt: 'ESD Stage — Enterprise Supplier Development sessions'
+}, {
+  id: 'stage-pe',
+  number: '03',
+  name: 'Private Equity Stage',
+  theme: 'Private Equity & Buyouts',
+  focus: 'A dedicated arena for PE firms, family offices, and growth-equity investors to source, diligence, and deploy capital into Africa\'s most promising mid-market businesses.',
+  accentColor: '#5a4a8a',
+  imageSrc: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80',
+  imageAlt: 'Private Equity Stage at EmpowaWorx House'
+}, {
+  id: 'stage-dfi',
+  number: '04',
+  name: 'DFI Stage',
+  theme: 'Development Finance Institutions',
+  focus: 'Development Finance Institutions unlock co-investment mandates, blended finance structures, and concessional funding pipelines for enterprises delivering measurable development impact.',
+  accentColor: '#2D6A4F',
+  imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80',
+  imageAlt: 'DFI Stage — Development Finance sessions'
+}, {
+  id: 'stage-loan',
+  number: '05',
+  name: 'Loan Financing Stage',
+  theme: 'Structured Debt & Loan Finance',
+  focus: 'For businesses beyond the equity curve — connecting revenue-generating SMEs with structured lenders, mezzanine financiers, and alternative credit providers offering bespoke debt solutions.',
+  accentColor: '#8a5a2a',
+  imageSrc: 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=800&q=80',
+  imageAlt: 'Loan Financing Stage at the summit'
+}, {
+  id: 'stage-impact',
+  number: '06',
+  name: 'Impact Funds Stage',
+  theme: 'Impact Investing & Blended Finance',
+  focus: 'Where purpose meets profit. Impact fund managers and ESG-driven investors source enterprises delivering environmental and social returns alongside financial performance.',
+  accentColor: '#4a7a5a',
+  imageSrc: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80',
+  imageAlt: 'Impact Funds Stage — sustainable investing sessions'
+}];
+const StagesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, {
+    once: true,
+    margin: '-60px 0px'
+  });
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const isMobile = useIsMobile();
+  return <section ref={sectionRef} style={{
+    background: '#0f1c28',
+    paddingTop: isMobile ? '96px' : '144px',
+    paddingBottom: isMobile ? '80px' : '120px',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    position: 'relative'
+  }}>
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: NOISE_SVG,
+      backgroundRepeat: 'repeat',
+      backgroundSize: '128px 128px',
+      pointerEvents: 'none',
+      zIndex: 0,
+      opacity: 0.6
+    }} />
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      top: '5%',
+      right: '-12%',
+      width: 'clamp(400px, 55vw, 760px)',
+      height: 'clamp(400px, 55vw, 760px)',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.07) 0%, transparent 70%)',
+      pointerEvents: 'none',
+      zIndex: 0
+    }} />
+      {/* Heading — stays constrained */}
+      <div style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: isMobile ? '0 24px' : '0 64px',
+      position: 'relative',
+      zIndex: 1,
+      marginBottom: '64px'
+    }}>
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        marginBottom: '20px'
+      }}>
+          <PlusSquareIconLight />
+          <span style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '12px',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'rgba(247,246,243,0.35)',
+          fontWeight: 600
+        }}>Programme Stages</span>
+        </motion.div>
+        <div style={{
+        overflow: 'hidden'
+      }}>
+          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: isMobile ? 'clamp(28px, 8vw, 42px)' : 'clamp(32px, 4vw, 58px)',
+          fontWeight: 300,
+          letterSpacing: '-1.8px',
+          lineHeight: 1.04,
+          color: '#F7F6F3',
+          margin: 0,
+          maxWidth: '680px'
+        }}>
+            <span>{'Six stages. '}</span>
+            <em style={{
+            fontStyle: 'italic',
+            color: '#DE322D'
+          }}>Six capital</em>
+            <span style={{
+            color: 'rgba(247,246,243,0.2)'
+          }}>{' mandates.'}</span>
+          </motion.h2>
+        </div>
+      </div>
+      {/* Cards grid — full viewport width, no max-width */}
+      <div style={{
+      width: '100%',
+      padding: isMobile ? '0 24px' : '0 32px',
+      boxSizing: 'border-box',
+      position: 'relative',
+      zIndex: 1
+    }}>
+        <div style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : 'repeat(6, 1fr)',
+        gap: '10px'
+      }}>
+          {STAGES.map((stage, i) => <motion.div key={stage.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={clipReveal} custom={i * 0.1} onMouseEnter={() => setHoveredId(stage.id)} onMouseLeave={() => setHoveredId(null)} style={{
+          borderRadius: '20px',
+          overflow: 'hidden',
+          position: 'relative',
+          minHeight: isMobile ? '280px' : '560px',
+          cursor: 'pointer'
+        }}>
+              <img src={stage.imageSrc} alt={stage.imageAlt} style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+            filter: hoveredId === stage.id ? 'brightness(0.6) saturate(0.8)' : 'brightness(0.72) saturate(0.8)',
+            transform: hoveredId === stage.id ? 'scale(1.04)' : 'scale(1)',
+            transition: 'filter 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1)'
+          }} />
+              <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: hoveredId === stage.id ? 'linear-gradient(to top, rgba(10,9,8,0.94) 0%, rgba(10,9,8,0.38) 55%, rgba(10,9,8,0.12) 100%)' : 'linear-gradient(to top, rgba(10,9,8,0.65) 0%, rgba(10,9,8,0.18) 60%, rgba(10,9,8,0.04) 100%)',
+            transition: 'background 0.6s ease',
+            pointerEvents: 'none'
+          }} />
+              {hoveredId === stage.id && <div aria-hidden="true" style={{
+            position: 'absolute',
+            bottom: '-20%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '280px',
+            height: '280px',
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${stage.accentColor}33 0%, transparent 70%)`,
+            pointerEvents: 'none'
+          }} />}
+              <div style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            padding: isMobile ? '24px 20px' : '32px 28px'
           }}>
-            Where Africa's next generation of scalable businesses meets serious capital, strategic opportunity, and transformative growth.
-          </motion.p>
-          <motion.div custom={0.68} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+                <div style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '10px',
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: hoveredId === stage.id ? `${stage.accentColor}` : 'rgba(247,246,243,0.55)',
+              fontWeight: 600,
+              marginBottom: '12px',
+              transition: 'color 0.4s ease'
+            }}>{stage.number}</div>
+                <h3 style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: isMobile ? 'clamp(18px, 5vw, 24px)' : 'clamp(16px, 1.4vw, 22px)',
+              fontWeight: hoveredId === stage.id ? 400 : 300,
+              letterSpacing: '-0.5px',
+              color: '#F7F6F3',
+              margin: '0 0 0',
+              lineHeight: 1.15,
+              transition: 'font-weight 0.3s ease'
+            }}>{stage.name}</h3>
+                <AnimatePresence initial={false}>
+                  {hoveredId === stage.id && <motion.div key={`s-${stage.id}`} initial={{
+                height: 0,
+                opacity: 0
+              }} animate={{
+                height: 'auto',
+                opacity: 1
+              }} exit={{
+                height: 0,
+                opacity: 0
+              }} transition={{
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1]
+              }} style={{
+                overflow: 'hidden'
+              }}>
+                      <div style={{
+                  width: '32px',
+                  height: '1px',
+                  background: stage.accentColor,
+                  marginTop: '16px',
+                  marginBottom: '12px',
+                  borderRadius: '1px'
+                }} />
+                      <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  color: stage.accentColor,
+                  margin: '0 0 8px'
+                }}>{stage.theme}</p>
+                      <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '12px',
+                  lineHeight: '1.7',
+                  color: 'rgba(247,246,243,0.55)',
+                  margin: 0,
+                  fontWeight: 300
+                }}>{stage.focus}</p>
+                    </motion.div>}
+                </AnimatePresence>
+                <div style={{
+              height: '2px',
+              background: `linear-gradient(90deg, ${stage.accentColor}, transparent)`,
+              marginTop: '24px',
+              opacity: hoveredId === stage.id ? 1 : 0,
+              transition: 'opacity 0.4s ease',
+              borderRadius: '2px'
+            }} />
+              </div>
+            </motion.div>)}
+        </div>
+      </div>
+    </section>;
+};
+
+// ─── Signature Experiences ────────────────────────────────────────────────────
+type Experience = {
+  id: string;
+  label: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  detail: string;
+  imageSrc: string;
+  imageAlt: string;
+  tag1: string;
+  tag2: string;
+  tag3: string;
+  reverse: boolean;
+};
+const EXPERIENCES: Experience[] = [{
+  id: 'exp-women',
+  label: 'Signature Experience · 01',
+  title: "The Women's Fund Room",
+  subtitle: 'Where Women-Led Capital Meets Ambition',
+  description: "A dedicated, curated space where women-led ventures and female founders access specialized funding pipelines, gender-lens investment mandates, and mentorship from Africa's most powerful women in capital.",
+  detail: "The Women's Fund Room is not a sidebar — it is a command center. With dedicated DFI mandates, gender-lens VC panelists, and structured pitch sessions specifically designed for women founders, it represents EmpowaEntrepreneurs' most intentional investment in parity capital.",
+  imageSrc: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=1200&q=80',
+  imageAlt: "The Women's Fund Room — women founders and investors at the summit",
+  tag1: 'Gender-Lens Investing',
+  tag2: 'Women Founders',
+  tag3: 'DFI Mandates',
+  reverse: false
+}, {
+  id: 'exp-dragons',
+  label: "Signature Experience · 02",
+  title: "Dragons' Den Pitching Festival",
+  subtitle: 'High-Stakes. High-Impact. Real Capital.',
+  description: "Africa's most electrifying pitch format — vetted founders step into the arena and present before a panel of seasoned investors ready to deploy real capital. No theatrics. No formality. Just honest conviction meeting serious money.",
+  detail: "Inspired by the global format but forged for Africa — the Dragons' Den Pitching Festival features six rounds of structured pitches across all capital tracks. Founders who enter leave with either a term sheet, a warm introduction, or the most valuable feedback of their entrepreneurial journey.",
+  imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80',
+  imageAlt: "Dragons' Den Pitching Festival at EmpowaWorx House",
+  tag1: "Live Pitching",
+  tag2: 'Investor Panel',
+  tag3: 'Term Sheets',
+  reverse: true
+}, {
+  id: 'exp-master',
+  label: 'Signature Experience · 03',
+  title: 'Executive Masterclasses',
+  subtitle: 'Knowledge That Moves Capital',
+  description: 'Intimate, high-density sessions led by Africa\'s foremost capital allocators, legal architects, and business scaling veterans. No generic panels — every masterclass delivers frameworks you can action within 72 hours of leaving the room.',
+  detail: 'From term sheet negotiation masterclasses to scaling-across-borders operational playbooks, from ESG compliance frameworks to blended finance structuring — these sessions are the intellectual capital behind the financial capital.',
+  imageSrc: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200&q=80',
+  imageAlt: 'Executive Masterclasses at EmpowaEntrepreneurs Summit',
+  tag1: 'Capital Structuring',
+  tag2: 'Scaling Playbooks',
+  tag3: 'Term Sheet Mastery',
+  reverse: false
+}];
+const SignatureExperiencesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, {
+    once: true,
+    margin: '-60px 0px'
+  });
+  const isMobile = useIsMobile();
+  return <section ref={sectionRef} style={{
+    background: '#F7F6F3',
+    paddingTop: isMobile ? '96px' : '144px',
+    paddingBottom: isMobile ? '80px' : '120px',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    position: 'relative'
+  }}>
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: NOISE_SVG,
+      backgroundRepeat: 'repeat',
+      backgroundSize: '128px 128px',
+      pointerEvents: 'none',
+      opacity: 0.4
+    }} />
+      <div style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: isMobile ? '0 24px' : '0 64px',
+      position: 'relative',
+      zIndex: 1
+    }}>
+        <div style={{
+        marginBottom: isMobile ? '60px' : '96px'
+      }}>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          marginBottom: '20px'
+        }}>
+            <PlusSquareIcon />
+            <span style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '12px',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: 'rgba(20,18,16,0.45)',
+            fontWeight: 600
+          }}>Signature Experiences</span>
+          </motion.div>
+          <div style={{
+          overflow: 'hidden'
+        }}>
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: isMobile ? 'clamp(28px, 8vw, 42px)' : 'clamp(32px, 4vw, 58px)',
+            fontWeight: 300,
+            letterSpacing: '-1.8px',
+            lineHeight: 1.04,
+            color: '#141210',
+            margin: 0,
+            maxWidth: '680px'
+          }}>
+              <span>{'Moments that '}</span>
+              <em style={{
+              fontStyle: 'italic',
+              color: '#DE322D'
+            }}>define</em>
+              <span style={{
+              color: 'rgba(20,18,16,0.2)'
+            }}>{' the summit.'}</span>
+            </motion.h2>
+          </div>
+        </div>
+        <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: isMobile ? '80px' : '120px'
+      }}>
+          {EXPERIENCES.map((exp, idx) => <ExperienceBlock key={exp.id} exp={exp} idx={idx} isMobile={isMobile} inView={inView} />)}
+        </div>
+      </div>
+    </section>;
+};
+const ExperienceBlock = ({
+  exp,
+  idx,
+  isMobile,
+  inView
+}: {
+  exp: Experience;
+  idx: number;
+  isMobile: boolean;
+  inView: boolean;
+}) => {
+  const blockRef = useRef<HTMLDivElement>(null);
+  const blockInView = useInView(blockRef, {
+    once: true,
+    margin: '-80px 0px'
+  });
+  return <div ref={blockRef} style={{
+    display: 'grid',
+    gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+    gap: isMobile ? '40px' : '72px',
+    alignItems: 'center',
+    direction: !isMobile && exp.reverse ? 'rtl' : 'ltr'
+  }}>
+      <motion.div initial="hidden" animate={blockInView ? 'visible' : 'hidden'} variants={clipReveal} custom={0} style={{
+      direction: 'ltr'
+    }}>
+        <div style={{
+        borderRadius: '28px',
+        overflow: 'hidden',
+        position: 'relative',
+        height: isMobile ? '280px' : '520px'
+      }}>
+          <img src={exp.imageSrc} alt={exp.imageAlt} style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          display: 'block',
+          filter: 'brightness(0.82) saturate(0.85)'
+        }} />
+          <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to top, rgba(20,18,16,0.6) 0%, rgba(20,18,16,0.1) 55%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+          <div style={{
+          position: 'absolute',
+          bottom: '24px',
+          left: '24px',
+          right: '24px'
+        }}>
+            <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'rgba(20,18,16,0.6)',
+            backdropFilter: 'blur(8px)',
+            borderRadius: '100px',
+            padding: '6px 14px'
+          }}>
+              <span style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '10px',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'rgba(247,246,243,0.7)',
+              fontWeight: 500
+            }}>{exp.label}</span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+      <motion.div initial="hidden" animate={blockInView ? 'visible' : 'hidden'} variants={exp.reverse ? slideFromLeft : slideFromRight} custom={0.18} style={{
+      direction: 'ltr'
+    }}>
+        <div style={{
+        marginBottom: '24px'
+      }}>
+          <div style={{
+          display: 'inline-block',
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '10px',
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
+          color: '#DE322D',
+          fontWeight: 600,
+          marginBottom: '16px'
+        }}>{exp.label}</div>
+          <h3 style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: isMobile ? 'clamp(24px, 7vw, 36px)' : 'clamp(26px, 3vw, 46px)',
+          fontWeight: 300,
+          letterSpacing: '-1.2px',
+          color: '#141210',
+          margin: '0 0 8px',
+          lineHeight: 1.1
+        }}>{exp.title}</h3>
+          <p style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '13px',
+          fontWeight: 600,
+          color: 'rgba(20,18,16,0.45)',
+          margin: 0,
+          textTransform: 'uppercase' as const,
+          letterSpacing: '0.08em'
+        }}>{exp.subtitle}</p>
+        </div>
+        <div style={{
+        width: '40px',
+        height: '1px',
+        background: '#DE322D',
+        marginBottom: '24px',
+        borderRadius: '1px'
+      }} />
+        <p style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: isMobile ? '15px' : '17px',
+        lineHeight: '1.78',
+        color: 'rgba(20,18,16,0.65)',
+        margin: '0 0 20px',
+        fontWeight: 300
+      }}>{exp.description}</p>
+        <p style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: isMobile ? '13px' : '14px',
+        lineHeight: '1.75',
+        color: 'rgba(20,18,16,0.4)',
+        margin: '0 0 32px',
+        fontWeight: 300
+      }}>{exp.detail}</p>
+        <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '8px',
+        marginBottom: '32px'
+      }}>
+          {[exp.tag1, exp.tag2, exp.tag3].map(tag => <span key={tag} style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '10px',
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          color: 'rgba(20,18,16,0.45)',
+          border: '1px solid rgba(20,18,16,0.12)',
+          borderRadius: '100px',
+          padding: '6px 14px'
+        }}>{tag}</span>)}
+        </div>
+        <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+        scale: 1.04
+      }} whileTap={{
+        scale: 0.97
+      }} style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '8px',
+        background: 'linear-gradient(135deg, #DE322D, #c42823)',
+        borderRadius: '44px',
+        padding: '14px 28px',
+        fontSize: '12px',
+        letterSpacing: '0.06em',
+        color: '#fff',
+        textDecoration: 'none',
+        fontFamily: 'Montserrat, sans-serif',
+        fontWeight: 600,
+        boxShadow: '0 6px 24px rgba(222,50,45,0.35)'
+      }}>
+          <span>Reserve Your Seat</span><ArrowIconDark />
+        </motion.a>
+      </motion.div>
+    </div>;
+};
+
+// ─── Summit Journey Zones ──────────────────────────────────────────────────────
+type Zone = {
+  id: string;
+  number: string;
+  name: string;
+  description: string;
+  services: string[];
+  accent: string;
+  icon: string;
+};
+const ZONES: Zone[] = [{
+  id: 'zone-legal',
+  number: '01',
+  name: 'Legal & Financial Advisory Zone',
+  description: 'Dedicated legal and financial advisory booths staffed by leading law firms, auditors, and financial structuring specialists. Get your deal structures, shareholder agreements, and compliance frameworks right — on the spot.',
+  services: ['Term Sheet Review', 'Share Structuring', 'Compliance Frameworks', 'Financial Modeling'],
+  accent: '#DE322D',
+  icon: '⚖'
+}, {
+  id: 'zone-funding',
+  number: '02',
+  name: 'Funding Clinics',
+  description: 'One-on-one sessions between vetted founders and capital allocators. Structured 20-minute clinics designed for laser-focused deal conversations — not presentations, not panels. Pure deal dialogue.',
+  services: ['1-on-1 Investor Meetings', 'Pitch Coaching', 'Capital Matching', 'Due Diligence Prep'],
+  accent: '#3c6d9a',
+  icon: '💼'
+}, {
+  id: 'zone-network',
+  number: '03',
+  name: 'Strategic Networking Lounge',
+  description: "Africa's most curated networking environment. Every conversation is intentional. Seating arranged for optimal deal-flow. Introductions facilitated by our Capital Connectors — specialists in matching the right founder with the right funder.",
+  services: ['Capital Connectors', 'Curated Introductions', 'Deal-Flow Facilitation', 'Partnership Matching'],
+  accent: '#5a4a8a',
+  icon: '🤝'
+}, {
+  id: 'zone-showcase',
+  number: '04',
+  name: 'Innovation Showcase Pavilion',
+  description: 'A physical exhibition space for growth-stage businesses to display their solutions, technologies, and products to investors, corporate buyers, and procurement decision-makers moving through the summit.',
+  services: ['Product Demos', 'Investor Walkthroughs', 'Corporate Buyer Access', 'Media Coverage'],
+  accent: '#2D6A4F',
+  icon: '🏛'
+}];
+const ZonesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, {
+    once: true,
+    margin: '-60px 0px'
+  });
+  const [activeZone, setActiveZone] = useState<string>('zone-legal');
+  const isMobile = useIsMobile();
+  const activeZoneData = ZONES.find(z => z.id === activeZone) || ZONES[0];
+  return <section ref={sectionRef} style={{
+    background: '#141210',
+    paddingTop: isMobile ? '96px' : '144px',
+    paddingBottom: isMobile ? '80px' : '144px',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    position: 'relative'
+  }}>
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: NOISE_SVG,
+      backgroundRepeat: 'repeat',
+      backgroundSize: '128px 128px',
+      pointerEvents: 'none',
+      zIndex: 0,
+      opacity: 0.5
+    }} />
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      top: '20%',
+      left: '-8%',
+      width: 'clamp(400px, 50vw, 700px)',
+      height: 'clamp(400px, 50vw, 700px)',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(222,50,45,0.08) 0%, transparent 65%)',
+      pointerEvents: 'none',
+      zIndex: 0
+    }} />
+      <div style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: isMobile ? '0 24px' : '0 64px',
+      position: 'relative',
+      zIndex: 1
+    }}>
+        <div style={{
+        marginBottom: isMobile ? '56px' : '80px'
+      }}>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          marginBottom: '20px'
+        }}>
+            <PlusSquareIconLight />
+            <span style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '12px',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: 'rgba(247,246,243,0.35)',
+            fontWeight: 600
+          }}>Summit Journey Zones</span>
+          </motion.div>
+          <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+          gap: '40px',
+          alignItems: 'end'
+        }}>
+            <div style={{
+            overflow: 'hidden'
+          }}>
+              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: isMobile ? 'clamp(28px, 8vw, 42px)' : 'clamp(32px, 4vw, 58px)',
+              fontWeight: 300,
+              letterSpacing: '-1.8px',
+              lineHeight: 1.04,
+              color: '#F7F6F3',
+              margin: 0
+            }}>
+                <span>{'Your strategic '}</span>
+                <em style={{
+                fontStyle: 'italic',
+                color: '#DE322D'
+              }}>engine</em>
+                <span style={{
+                color: 'rgba(247,246,243,0.18)'
+              }}>{' on the ground.'}</span>
+              </motion.h2>
+            </div>
+            {!isMobile && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '15px',
+            color: 'rgba(247,246,243,0.35)',
+            lineHeight: '1.75',
+            margin: 0
+          }}>
+                Four purpose-built zones engineered to move you from conversation to commitment — every zone is a strategic instrument in your summit journey.
+              </motion.p>}
+          </div>
+        </div>
+        <div style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : '280px 1fr',
+        gap: '20px',
+        alignItems: 'stretch'
+      }}>
+          {/* Zone selector */}
+          <div style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'row' : 'column',
+          gap: '10px',
+          flexWrap: isMobile ? 'wrap' : 'nowrap'
+        }}>
+            {ZONES.map((zone, i) => <motion.button key={zone.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1} onClick={() => setActiveZone(zone.id)} style={{
+            all: 'unset',
+            cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '20px',
-            padding: '16px 20px',
-            background: 'rgba(247,246,243,0.04)',
-            border: '1px solid rgba(247,246,243,0.1)',
+            gap: isMobile ? '10px' : '14px',
+            background: activeZone === zone.id ? 'rgba(222,50,45,0.12)' : 'rgba(247,246,243,0.04)',
+            border: `1px solid ${activeZone === zone.id ? 'rgba(222,50,45,0.4)' : 'rgba(247,246,243,0.07)'}`,
             borderRadius: '16px',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            width: 'fit-content'
+            padding: isMobile ? '12px 16px' : '18px 20px',
+            transition: 'background 0.35s ease, border-color 0.35s ease',
+            flex: isMobile ? '1 0 calc(50% - 5px)' : 'none'
           }}>
-            <div style={{
+                <div style={{
+              width: isMobile ? '28px' : '36px',
+              height: isMobile ? '28px' : '36px',
+              borderRadius: '10px',
+              flexShrink: 0,
+              background: activeZone === zone.id ? zone.accent : 'rgba(247,246,243,0.06)',
               display: 'flex',
-              flexDirection: 'column',
-              gap: '2px'
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: isMobile ? '14px' : '18px',
+              transition: 'background 0.35s ease'
             }}>
-              <div style={{
+                  <span>{zone.icon}</span>
+                </div>
+                <div style={{
+              textAlign: 'left'
+            }}>
+                  <div style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '9px',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                color: '#DE322D',
-                fontWeight: 600
-              }}>Summit Countdown</div>
-              <div style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '9px',
+                fontSize: '10px',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: 'rgba(247,246,243,0.3)',
-                fontWeight: 500
-              }}>May 28 · 2026</div>
+                color: activeZone === zone.id ? zone.accent : 'rgba(247,246,243,0.25)',
+                fontWeight: 600,
+                marginBottom: '3px',
+                transition: 'color 0.35s ease'
+              }}>Zone {zone.number}</div>
+                  <div style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: isMobile ? '11px' : '13px',
+                fontWeight: 500,
+                letterSpacing: '-0.2px',
+                color: activeZone === zone.id ? '#F7F6F3' : 'rgba(247,246,243,0.35)',
+                lineHeight: 1.3,
+                transition: 'color 0.35s ease'
+              }}>{zone.name.split(' ').slice(0, 3).join(' ')}</div>
+                </div>
+              </motion.button>)}
+          </div>
+          {/* Zone detail */}
+          <AnimatePresence mode="wait">
+            <motion.div key={activeZone} initial={{
+            opacity: 0,
+            y: 24,
+            filter: 'blur(8px)'
+          }} animate={{
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)'
+          }} exit={{
+            opacity: 0,
+            y: -12,
+            filter: 'blur(4px)'
+          }} transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            background: 'linear-gradient(160deg, #1a2a3a 0%, #0f1c28 100%)',
+            borderRadius: '28px',
+            border: '1px solid rgba(247,246,243,0.08)',
+            padding: isMobile ? '32px 24px' : '52px',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+              <div aria-hidden="true" style={{
+              position: 'absolute',
+              top: '-30%',
+              right: '-15%',
+              width: '360px',
+              height: '360px',
+              borderRadius: '50%',
+              background: `radial-gradient(circle, ${activeZoneData.accent}22 0%, transparent 65%)`,
+              pointerEvents: 'none'
+            }} />
+              <motion.div aria-hidden="true" animate={{
+              x: ['-100%', '220%']
+            }} transition={{
+              duration: 4.5,
+              repeat: Infinity,
+              ease: 'linear',
+              repeatDelay: 3
+            }} style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '50%',
+              height: '1px',
+              background: `linear-gradient(90deg, transparent, ${activeZoneData.accent}80, transparent)`,
+              pointerEvents: 'none',
+              zIndex: 2
+            }} />
+              <div style={{
+              position: 'relative',
+              zIndex: 1
+            }}>
+                <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                marginBottom: '28px'
+              }}>
+                  <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '14px',
+                  background: `${activeZoneData.accent}22`,
+                  border: `1px solid ${activeZoneData.accent}55`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '22px'
+                }}>
+                    <span>{activeZoneData.icon}</span>
+                  </div>
+                  <div>
+                    <div style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '10px',
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: activeZoneData.accent,
+                    fontWeight: 600,
+                    marginBottom: '4px'
+                  }}>Zone {activeZoneData.number}</div>
+                    <h3 style={{
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: isMobile ? 'clamp(16px, 4vw, 20px)' : 'clamp(18px, 1.8vw, 26px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.5px',
+                    color: '#F7F6F3',
+                    margin: 0,
+                    lineHeight: 1.2
+                  }}>{activeZoneData.name}</h3>
+                  </div>
+                </div>
+                <p style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: isMobile ? '14px' : '16px',
+                lineHeight: '1.82',
+                color: 'rgba(247,246,243,0.6)',
+                margin: '0 0 36px',
+                fontWeight: 300
+              }}>{activeZoneData.description}</p>
+                <div style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(2, 1fr)',
+                gap: '10px',
+                marginBottom: '36px'
+              }}>
+                  {activeZoneData.services.map(service => <div key={service} style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  background: 'rgba(247,246,243,0.04)',
+                  border: '1px solid rgba(247,246,243,0.07)',
+                  borderRadius: '12px',
+                  padding: '14px 16px'
+                }}>
+                      <div style={{
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    background: activeZoneData.accent,
+                    flexShrink: 0
+                  }} />
+                      <span style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '12px',
+                    color: 'rgba(247,246,243,0.55)',
+                    fontWeight: 400
+                  }}>{service}</span>
+                    </div>)}
+                </div>
+                <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+                scale: 1.04
+              }} whileTap={{
+                scale: 0.97
+              }} style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: `linear-gradient(135deg, ${activeZoneData.accent}, ${activeZoneData.accent}cc)`,
+                borderRadius: '44px',
+                padding: '13px 26px',
+                fontSize: '12px',
+                letterSpacing: '0.06em',
+                color: '#fff',
+                textDecoration: 'none',
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 600,
+                boxShadow: `0 6px 24px ${activeZoneData.accent}55`
+              }}>
+                  <span>Access This Zone</span><ArrowIconDark />
+                </motion.a>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>;
+};
+
+// ─── Programme CTA Section ─────────────────────────────────────────────────────
+const ProgrammeCtaSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, {
+    once: true,
+    margin: '-60px 0px'
+  });
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, {
+    stiffness: 160,
+    damping: 28
+  });
+  const springY = useSpring(mouseY, {
+    stiffness: 160,
+    damping: 28
+  });
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  }, [mouseX, mouseY]);
+  const isMobile = useIsMobile();
+  const magnetic = useMagnetic(0.28);
+  return <section ref={sectionRef} onMouseMove={handleMouseMove} style={{
+    background: '#0f1c28',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    paddingTop: isMobile ? '112px' : '168px',
+    paddingBottom: isMobile ? '112px' : '168px',
+    position: 'relative'
+  }}>
+      <motion.div aria-hidden="true" style={{
+      left: springX,
+      top: springY,
+      x: '-50%',
+      y: '-50%',
+      position: 'absolute',
+      width: '800px',
+      height: '800px',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(222,50,45,0.12) 0%, transparent 65%)',
+      pointerEvents: 'none',
+      zIndex: 0
+    }} />
+      <div aria-hidden="true" style={{
+      position: 'absolute',
+      bottom: '-4%',
+      left: '-2%',
+      fontFamily: 'Montserrat, sans-serif',
+      fontSize: 'clamp(60px, 12vw, 240px)',
+      fontWeight: 800,
+      letterSpacing: '-8px',
+      lineHeight: 1,
+      color: 'rgba(247,246,243,0.015)',
+      pointerEvents: 'none',
+      userSelect: 'none',
+      whiteSpace: 'nowrap',
+      zIndex: 0
+    }}>PROGRAMME</div>
+      <div style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: isMobile ? '0 24px' : '0 64px',
+      position: 'relative',
+      zIndex: 1
+    }}>
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        marginBottom: '48px'
+      }}>
+          <PlusSquareIconLight />
+          <span style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '12px',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'rgba(247,246,243,0.35)',
+          fontWeight: 600
+        }}>Secure Your Place</span>
+        </motion.div>
+        <div style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? '40px' : '80px',
+        alignItems: 'center',
+        marginBottom: '72px'
+      }}>
+          <div>
+            <div style={{
+            overflow: 'hidden'
+          }}>
+              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 200,
+              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(48px, 7vw, 108px)',
+              lineHeight: 0.91,
+              letterSpacing: isMobile ? '-2px' : '-4px',
+              color: '#F7F6F3',
+              margin: '0 0 0'
+            }}>
+                <span>{"Join Africa's"}</span><br />
+                <em style={{
+                fontStyle: 'italic',
+                color: '#DE322D'
+              }}>Capital Summit</em><br />
+                <span style={{
+                color: 'rgba(247,246,243,0.16)'
+              }}>{"2026."}</span>
+              </motion.h2>
+            </div>
+          </div>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3}>
+            <p style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: isMobile ? '15px' : '17px',
+            lineHeight: '1.78',
+            color: 'rgba(247,246,243,0.55)',
+            margin: '0 0 36px',
+            fontWeight: 300
+          }}>
+              Six funded stages. Three signature experiences. Four strategic zones. One summit that defines the trajectory of African enterprise for the decade ahead.
+            </p>
+            <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '12px',
+            marginBottom: '40px'
+          }}>
+              {[{
+              id: 'pd-1',
+              label: 'Summit Date',
+              value: 'May 28, 2026'
+            }, {
+              id: 'pd-2',
+              label: 'Venue',
+              value: 'EmpowaWorx House'
+            }, {
+              id: 'pd-3',
+              label: 'Stages',
+              value: '6 Capital Stages'
+            }, {
+              id: 'pd-4',
+              label: 'Status',
+              value: 'Registration Open'
+            }].map(detail => <div key={detail.id} style={{
+              background: 'rgba(247,246,243,0.04)',
+              border: '1px solid rgba(247,246,243,0.08)',
+              borderRadius: '14px',
+              padding: '16px 18px'
+            }}>
+                  <div style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '9px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'rgba(247,246,243,0.25)',
+                fontWeight: 500,
+                marginBottom: '6px'
+              }}>{detail.label}</div>
+                  <div style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '14px',
+                fontWeight: 500,
+                color: '#F7F6F3',
+                letterSpacing: '-0.2px'
+              }}>{detail.value}</div>
+                </div>)}
             </div>
             <div style={{
-              width: '1px',
-              height: '36px',
-              background: 'rgba(247,246,243,0.1)'
-            }} />
-            <div />
-          </motion.div>
-          <motion.div custom={0.75} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
             display: 'flex',
-            alignItems: 'center',
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
-              scale: 1.04,
-              boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
-            }} whileTap={{
-              scale: 0.97
-            }} style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
-              borderRadius: '44px',
-              padding: isMobile ? '14px 28px' : '18px 36px',
-              fontSize: '13px',
-              letterSpacing: '0.05em',
-              color: '#fff',
-              textDecoration: 'none',
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 600,
-              boxShadow: '0 8px 36px rgba(222,50,45,0.55), 0 2px 8px rgba(222,50,45,0.3)',
-              transition: 'box-shadow 0.3s ease'
-            }}>
-              <span>Register Now</span><ArrowIconDark />
-            </motion.a>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -903,30 +2060,57 @@ const HeroSection = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              border: '1px solid rgba(247,246,243,0.25)',
+              background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
               borderRadius: '44px',
-              padding: isMobile ? '14px 24px' : '18px 30px',
+              padding: isMobile ? '14px 24px' : '16px 30px',
               fontSize: '13px',
-              letterSpacing: '0.04em',
-              color: 'rgba(247,246,243,0.82)',
+              letterSpacing: '0.05em',
+              color: '#fff',
               textDecoration: 'none',
               fontFamily: 'Montserrat, sans-serif',
-              transition: 'border-color 0.3s ease, color 0.3s ease'
+              fontWeight: 600,
+              boxShadow: '0 10px 40px rgba(222,50,45,0.55)',
+              width: isMobile ? '100%' : 'auto',
+              justifyContent: isMobile ? 'center' : 'flex-start'
+            }}>
+                <span>Register Now</span><ArrowIconDark />
+              </motion.a>
+              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              scale: 1.04
+            }} whileTap={{
+              scale: 0.97
+            }} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: 'transparent',
+              borderRadius: '44px',
+              padding: isMobile ? '14px 24px' : '16px 30px',
+              fontSize: '13px',
+              letterSpacing: '0.04em',
+              color: 'rgba(247,246,243,0.75)',
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+              border: '1px solid rgba(247,246,243,0.18)',
+              transition: 'border-color 0.3s ease, color 0.3s ease',
+              width: isMobile ? '100%' : 'auto',
+              justifyContent: isMobile ? 'center' : 'flex-start'
             }} onMouseEnter={e => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.55)';
+              el.style.borderColor = 'rgba(247,246,243,0.45)';
               el.style.color = '#F7F6F3';
             }} onMouseLeave={e => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.25)';
-              el.style.color = 'rgba(247,246,243,0.82)';
+              el.style.borderColor = 'rgba(247,246,243,0.18)';
+              el.style.color = 'rgba(247,246,243,0.75)';
             }}>
-              <span>Partner With Us</span><ArrowIconDark />
-            </motion.a>
+                <span>Partner With Us</span>
+              </motion.a>
+            </div>
           </motion.div>
         </div>
         {/* Bottom stats strip */}
-        <motion.div initial="hidden" animate="visible" variants={lineWipe} custom={0.55} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.55} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
         gap: '1px',
@@ -988,7 +2172,6 @@ const HeroSection = () => {
             </div>)}
         </motion.div>
       </div>
-    </motion.div>
     </section>;
 };
 
@@ -1170,7 +2353,7 @@ const ProgrammeFooter = () => {
         maxWidth: '1440px',
         margin: '0 auto'
       }}>
-          <motion.div initial="hidden" animate="visible" variants={rotateFade} custom={0} style={{
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
@@ -1197,7 +2380,7 @@ const ProgrammeFooter = () => {
             overflow: 'hidden',
             flex: 1
           }}>
-              <motion.h2 initial="hidden" animate="visible" variants={slideUpBlur} custom={0.08} style={{
+              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(60px, 7vw, 104px)',
               fontWeight: 700,
@@ -1219,7 +2402,7 @@ const ProgrammeFooter = () => {
               }}>May 2026.</span>
               </motion.h2>
             </div>
-            <motion.div initial="hidden" animate="visible" variants={slideFromRight} custom={0.22} style={{
+            <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.22} style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
@@ -1280,7 +2463,7 @@ const ProgrammeFooter = () => {
             </motion.div>
           </div>
           {/* Stats strip */}
-          <motion.div initial="hidden" animate="visible" variants={lineWipe} custom={0.4} style={{
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.4} style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
           borderTop: '1px solid rgba(247,246,243,0.1)',
@@ -1646,7 +2829,7 @@ const ProgrammeFooter = () => {
             height: '20px',
             background: 'rgba(247,246,243,0.08)'
           }} />}
-            {FOOTER_LEGAL.map(item => <a key={item.id} href="#" style={{
+            {FOOTER_LEGAL.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
             color: 'rgba(247,246,243,0.12)',
@@ -1672,9 +2855,12 @@ export const ProgrammePage = () => {
     background: '#141210',
     overflowX: 'hidden'
   }}>
-      <ScrollProgressBar />
-      <StickyNav />
-      <HeroSection />
-      <ProgrammeFooter />
+      
+      <ProgrammeHero />
+      <StagesSection />
+      <SignatureExperiencesSection />
+      <ZonesSection />
+      <ProgrammeCtaSection />
+      
     </div>;
 };
