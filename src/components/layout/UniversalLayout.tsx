@@ -128,6 +128,10 @@ const STICKY_NAV_ITEMS = [{
   label: 'Apply to Attend',
   href: '/apply'
 }, {
+  id: 'pitch-power',
+  label: 'EmpowaEntrepreneurs Pitch Power',
+  href: '/pitch-power'
+}, {
   id: 'contact',
   label: 'Contact Us',
   href: '/contact'

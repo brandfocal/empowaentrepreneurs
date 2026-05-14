@@ -8,6 +8,7 @@ import { ExperienceZonesPage } from './components/generated/ExperienceZones';
 import { PartnershipsPage } from './components/generated/PartnershipsPage';
 import { ApplyToAttendPage } from './components/generated/ApplyToAttendPage';
 import { ContactPage } from './components/generated/ContactPage';
+import { PitchingFestivalPage } from './components/generated/PitchingFestivalPage';
 import { UniversalLayout } from './components/layout/UniversalLayout';
 
 let theme: Theme = 'light';
@@ -38,6 +39,7 @@ function App() {
             <Route path="/partnerships" element={<PartnershipsPage />} />
             <Route path="/apply" element={<ApplyToAttendPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/pitch-power" element={<PitchingFestivalPage />} />
           </Routes>
         </UniversalLayout>
       </BrowserRouter>
