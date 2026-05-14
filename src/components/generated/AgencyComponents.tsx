@@ -146,7 +146,6 @@ export const VideoBanner = () => {
   ];
   const [activeMainId, setActiveMainId] = useState(VIDEOS[0].id);
   const [isPlaying, setIsPlaying] = useState(false);
-  const sideVideos = VIDEOS.filter(v => v.id !== activeMainId);
   return <section ref={sectionRef} style={{
     background: '#0F0D0B',
     width: '100%',
@@ -253,31 +252,40 @@ export const VideoBanner = () => {
           </motion.div>
 
           {/* Side Playlist Area */}
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
-            {sideVideos.map((video, index) => (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+            {VIDEOS.map((video, index) => {
+              const isActive = activeMainId === video.id;
+              return (
               <motion.div key={video.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.3 + index * 0.1} onClick={() => { setActiveMainId(video.id); setIsPlaying(true); }} style={{
-                borderRadius: isMobile ? '16px' : '20px',
+                width: isMobile ? 'calc(50% - 8px)' : '240px',
+                borderRadius: isMobile ? '12px' : '16px',
                 overflow: 'hidden',
                 position: 'relative',
                 background: '#141210',
-                border: '1px solid rgba(247,246,243,0.07)',
-                boxShadow: '0 12px 30px rgba(0,0,0,0.3)',
+                border: isActive ? '2px solid #DE322D' : '1px solid rgba(247,246,243,0.07)',
+                boxShadow: isActive ? '0 0 20px rgba(222,50,45,0.3)' : '0 12px 30px rgba(0,0,0,0.3)',
                 aspectRatio: '16/9',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                opacity: isActive ? 1 : 0.6,
+                transition: 'all 0.3s ease'
               }}>
                 <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} style={{ position: 'absolute', inset: 0 }}>
-                  <img src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} alt={video.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'brightness(0.5) saturate(0.8)' }} />
+                  <img src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} alt={video.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'brightness(0.6) saturate(0.8)' }} />
                   <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(20,18,16,0.6)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(247,246,243,0.2)' }}>
-                      <svg width="16" height="16" viewBox="0 0 28 28" fill="none"><path d="M10 7L22 14L10 21V7Z" fill="white" /></svg>
-                    </div>
+                    {isActive ? (
+                      <div style={{ background: 'rgba(222,50,45,0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '11px', color: '#fff', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>PLAYING</div>
+                    ) : (
+                      <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(20,18,16,0.6)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(247,246,243,0.2)' }}>
+                        <svg width="14" height="14" viewBox="0 0 28 28" fill="none"><path d="M10 7L22 14L10 21V7Z" fill="white" /></svg>
+                      </div>
+                    )}
                   </div>
-                  <div style={{ position: 'absolute', bottom: '12px', left: '16px', right: '16px' }}>
-                     <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 400, color: '#F7F6F3', letterSpacing: '-0.2px', display: 'block', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{video.title}</span>
+                  <div style={{ position: 'absolute', bottom: '8px', left: '12px', right: '12px' }}>
+                     <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', fontWeight: 400, color: '#F7F6F3', letterSpacing: '-0.2px', display: 'block', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{video.title}</span>
                   </div>
                 </motion.div>
               </motion.div>
-            ))}
+            )})}
           </div>
         </div>
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.08} style={{
