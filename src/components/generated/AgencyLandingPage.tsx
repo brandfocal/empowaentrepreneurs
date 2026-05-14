@@ -53,17 +53,17 @@ const useMagnetic = (strength = 0.35) => {
 
 // ─── Shared SVG helpers ────────────────────────────────────────────────────────
 const PlusSquareIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
+</svg>;
 const PlusSquareIconLight = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
+</svg>;
 const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>;
+  <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
 const ArrowIconInk = () => <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-    <path d="M1.5 10.5L10.5 1.5M10.5 1.5H3.5M10.5 1.5V8.5" stroke="rgba(20,18,16,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>;
+  <path d="M1.5 10.5L10.5 1.5M10.5 1.5H3.5M10.5 1.5V8.5" stroke="rgba(20,18,16,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 const fadeUpVariants = {
@@ -432,10 +432,10 @@ const StickyNav = () => {
         gap: '9px',
         textDecoration: 'none'
       }}>
-        <motion.img 
-          src="/ee-logo.png" 
+        <motion.img
+          src="/ee-logo.png"
           alt="EmpowaSummit Logo"
-          whileHover={{ scale: 1.05 }} 
+          whileHover={{ scale: 1.05 }}
           style={{ height: '30px', width: 'auto', objectFit: 'contain' }}
         />
       </a>
@@ -2813,36 +2813,52 @@ type Testimonial = {
 };
 const TESTIMONIALS: Testimonial[] = [{
   id: 't-1',
-  quote: "The EmpowaEntrepreneurs Funding Summit was the single most important week of our growth journey. We closed our Series A within 60 days of attending. This is where Africa's real deals get done.",
-  author: 'Amara Diallo',
-  role: 'Founder & CEO',
-  company: 'NovaBridge Finance',
-  avatarInitials: 'AD',
+  quote: "EmpowaEntrepreneurs Funding Summit is a high-impact catalyst for unlocking entrepreneurship, capital access, and inclusive economic growth. It convenes decision-makers and doers in one ecosystem where ideas are converted into investment pathways and scalable enterprise outcomes. This is a platform actively shaping the future of Africa’s entrepreneurial economy.",
+  author: 'Elias Masilela',
+  role: 'Independent Non-Executive Director of Sanlam and Former Chairman of Sanlam Investments',
+  company: 'Sanlam',
+  avatarInitials: 'EM',
   accentColor: '#DE322D'
 }, {
   id: 't-2',
-  quote: "As a DFI, finding investment-ready African businesses at scale is our biggest challenge. The summit solved that completely. The quality of founders was exceptional — we deployed capital to three businesses in one week.",
-  author: 'Kwame Asante',
-  role: 'Investment Director',
-  company: 'Pan-African Development Fund',
-  avatarInitials: 'KA',
+  quote: "EmpowaEntrepreneurs Funding Summit stands out as a powerful convergence point of knowledge, capital, and enterprise development. It equips entrepreneurs not only with insight, but with the networks and strategic exposure required to build competitive, scalable businesses. It is a meaningful contributor to shaping a more innovative and globally relevant entrepreneurial ecosystem.",
+  author: 'Prof Maurice Radebe',
+  role: 'Faculty Director: Commerce, Law and Management',
+  company: 'University of the Witwatersrand (Wits University)',
+  avatarInitials: 'MR',
   accentColor: '#3c4d5d'
 }, {
   id: 't-3',
-  quote: "The Power Seat Roundtables gave us direct access to procurement decision-makers we had been trying to reach for two years. Within a single day, we signed two enterprise contracts that changed our trajectory.",
-  author: 'Fatima El-Rashid',
-  role: 'Head of Growth',
-  company: 'Zenith Agritech',
-  avatarInitials: 'FE',
+  quote: "EmpowaEntrepreneurs Funding Summit is a commercially focused ecosystem that translates ambition into opportunity. It provides entrepreneurs with direct access to funding conversations, strategic partnerships, and growth-enabling networks. It is a strong enabler of investment readiness, business resilience, and sustainable enterprise growth.",
+  author: 'Anthony Govender',
+  role: 'Founder and Group Chief Executive Officer',
+  company: 'ASI Financial Services',
+  avatarInitials: 'AG',
   accentColor: '#6B5E4A'
 }, {
   id: 't-4',
-  quote: "If you are serious about building a scalable African business, your seat at this summit is not optional. The capital, the networks, and the strategic exposure you gain here are simply unmatched on the continent.",
-  author: 'Tobenna Okafor',
-  role: 'Founder',
-  company: 'HealthStack Africa',
-  avatarInitials: 'TO',
+  quote: "EmpowaEntrepreneurs Funding Summit is effectively bridging the gap between entrepreneurship and capital markets. It enables structured engagement between funders, corporates, and entrepreneurs focused on real growth outcomes. The platform is strengthening the foundation for inclusive enterprise development and long-term economic participation.",
+  author: 'Stephen Seaka',
+  role: 'Managing Executive: Public Sector and Growth Capital Solutions',
+  company: 'Absa Corporate and Investment Banking (CIB)',
+  avatarInitials: 'SS',
   accentColor: '#2D6A4F'
+}, {
+  id: 't-5',
+  quote: "EmpowaEntrepreneurs Funding Summit is a strategic platform advancing investment readiness, entrepreneurial capability, and inclusive economic transformation. It creates a structured environment where entrepreneurs and capital providers can engage with purpose and clarity. It is an important contributor to building a more resilient and opportunity-driven entrepreneurial economy.",
+  author: 'Dr Tryphosa Ramano',
+  role: 'Independent Non-Executive Director',
+  company: 'Public Investment Corporation SOC Ltd (PIC)',
+  avatarInitials: 'TR',
+  accentColor: '#7F0000'
+}, {
+  id: 't-6',
+  quote: "EmpowaEntrepreneurs Funding Summit is a high-impact platform driving real enterprise development outcomes, connecting investment-ready entrepreneurs with capital, networks, and growth opportunities at scale. Our partnership has delivered tangible value through stronger deal flow, deeper ecosystem collaboration, and accelerated SME growth pathways aligned to inclusive economic development. Absa is proud to be associated with EmpowaEntrepreneurs Funding Summit as a strategic partner shaping the future of enterprise development and unlocking long-term economic value.",
+  author: 'Kgalaletso Tlhoaele',
+  role: 'Head: Enterprise Development, Retail and Business Banking',
+  company: 'Absa Group',
+  avatarInitials: 'KT',
+  accentColor: '#DE322D'
 }];
 const STAR_KEYS = ['s1', 's2', 's3', 's4', 's5'];
 const AUTO_SCROLL_INTERVAL = 4500;
@@ -2993,7 +3009,7 @@ const TestimonialsSection = () => {
               lineHeight: 0.7,
               color: active.accentColor,
               opacity: 0.12,
-              marginBottom: '16px',
+              marginBottom: '-12px',
               userSelect: 'none'
             }}>"</div>
             <AnimatePresence mode="wait">
@@ -3011,7 +3027,7 @@ const TestimonialsSection = () => {
                 ease: [0.22, 1, 0.36, 1]
               }} style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: isMobile ? '17px' : 'clamp(18px, 2vw, 24px)',
+                fontSize: isMobile ? '15px' : 'clamp(16px, 1.5vw, 20px)',
                 lineHeight: '1.65',
                 color: 'rgba(247,246,243,0.88)',
                 margin: 0,
@@ -3869,10 +3885,10 @@ const SiteFooter = () => {
             alignItems: 'center',
             gap: '12px'
           }}>
-            <motion.img 
-              src="/ee-logo.png" 
+            <motion.img
+              src="/ee-logo.png"
               alt="EmpowaEntrepreneurs Logo"
-              whileHover={{ scale: 1.05 }} 
+              whileHover={{ scale: 1.05 }}
               style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
             />
           </div>
@@ -4356,8 +4372,8 @@ export const AgencyLandingPage = () => {
     background: '#141210',
     overflowX: 'hidden'
   }}>
-    
-    
+
+
     <HeroSection />
     <MissionBand />
     <LogoBanner />
@@ -4365,12 +4381,12 @@ export const AgencyLandingPage = () => {
     <AccordionSection />
     <VideoBanner />
     <SpeakerCarousel />
-    <CaseStudiesSection onOpenModal={() => {}} />
+    <CaseStudiesSection onOpenModal={() => { }} />
     <ScrollGallery />
     <StatsSection />
     <TestimonialsSection />
     <DarkCtaSection />
-    
+
     <StickyRegistrationBanner />
   </div>;
 };

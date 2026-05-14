@@ -139,13 +139,14 @@ export const VideoBanner = () => {
     once: true,
     margin: '-60px 0px'
   });
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [hasClicked, setHasClicked] = useState(false);
   const isMobile = useIsMobile();
-  const handlePlay = () => {
-    setHasClicked(true);
-    setIsPlaying(true);
-  };
+  const VIDEOS = [
+    { id: '6b4FokdWOpE', title: 'EmpowaEntrepreneurs Summit Reel 1' },
+    { id: 'MMMLydb2MY4', title: 'EmpowaEntrepreneurs Summit Reel 2' }
+  ];
+  const [activeMainId, setActiveMainId] = useState(VIDEOS[0].id);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const sideVideos = VIDEOS.filter(v => v.id !== activeMainId);
   return <section ref={sectionRef} style={{
     background: '#0F0D0B',
     width: '100%',
@@ -214,138 +215,71 @@ export const VideoBanner = () => {
             </motion.h2>
           </div>
         </div>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.2} style={{
-        borderRadius: isMobile ? '20px' : '28px',
-        overflow: 'hidden',
-        position: 'relative',
-        background: '#141210',
-        border: '1px solid rgba(247,246,243,0.07)',
-        boxShadow: '0 40px 100px rgba(0,0,0,0.5)',
-        marginBottom: '40px'
-      }}>
-          <AnimatePresence>
-            {!isPlaying && <motion.div initial={{
-            opacity: 1
-          }} exit={{
-            opacity: 0
-          }} transition={{
-            duration: 0.5
-          }} style={{
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '2.5fr 1fr',
+          gap: '24px',
+          marginBottom: '40px',
+          alignItems: 'start'
+        }}>
+          {/* Main Area */}
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.2} style={{
+            borderRadius: isMobile ? '20px' : '28px',
+            overflow: 'hidden',
             position: 'relative',
-            cursor: 'pointer'
-          }} onClick={handlePlay}>
-                <img src="https://cdn.prod.website-files.com/6964d4f3b5db71495b89316b/6977080922893ca4123b196c_ae3206d976800bd4ba52429d40e4bfe1_looping-image4.webp" alt="EmpowaEntrepreneurs Funding Summit 2026 — preview of the summit atmosphere" style={{
-              width: '100%',
-              height: isMobile ? '220px' : 'clamp(380px, 42vw, 560px)',
-              objectFit: 'cover',
-              display: 'block',
-              filter: 'brightness(0.45) saturate(0.7)'
-            }} />
-                <div style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(to top, rgba(10,9,8,0.85) 0%, rgba(10,9,8,0.2) 55%, transparent 100%)',
-              pointerEvents: 'none'
-            }} />
-                <div style={{
-              position: 'absolute',
-              inset: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '20px'
-            }}>
-                  <motion.div whileHover={{
-                scale: 1.1
-              }} whileTap={{
-                scale: 0.95
-              }} style={{
-                width: isMobile ? '64px' : '84px',
-                height: isMobile ? '64px' : '84px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #DE322D, #c42823)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 0 0 16px rgba(222,50,45,0.12), 0 12px 40px rgba(222,50,45,0.5)',
-                flexShrink: 0
-              }}>
+            background: '#141210',
+            border: '1px solid rgba(247,246,243,0.07)',
+            boxShadow: '0 40px 100px rgba(0,0,0,0.5)',
+            aspectRatio: '16/9',
+          }}>
+            {!isPlaying ? (
+              <motion.div style={{ position: 'absolute', inset: 0, cursor: 'pointer' }} onClick={() => setIsPlaying(true)} whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+                <img src={`https://img.youtube.com/vi/${activeMainId}/maxresdefault.jpg`} alt="Main Video" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'brightness(0.65) saturate(0.8)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,9,8,0.85) 0%, rgba(10,9,8,0.2) 55%, transparent 100%)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '20px' }}>
+                  <div style={{ width: isMobile ? '64px' : '84px', height: isMobile ? '64px' : '84px', borderRadius: '50%', background: 'linear-gradient(135deg, #DE322D, #c42823)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 0 16px rgba(222,50,45,0.12), 0 12px 40px rgba(222,50,45,0.5)', flexShrink: 0 }}>
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M10 7L22 14L10 21V7Z" fill="white" /></svg>
-                  </motion.div>
-                  <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '6px'
-              }}>
-                    <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: isMobile ? '15px' : '18px',
-                  fontWeight: 300,
-                  color: '#F7F6F3',
-                  letterSpacing: '-0.3px'
-                }}>Watch the Summit Highlight Reel</span>
-                    <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '12px',
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(247,246,243,0.35)',
-                  fontWeight: 500
-                }}>3 min · Summit 2025</span>
                   </div>
                 </div>
-                <div style={{
-              position: 'absolute',
-              top: '20px',
-              left: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'rgba(10,9,8,0.72)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(247,246,243,0.1)',
-              borderRadius: '100px',
-              padding: '6px 14px 6px 10px'
-            }}>
-                  <motion.div animate={{
-                opacity: [1, 0.3, 1]
-              }} transition={{
-                duration: 1.6,
-                repeat: Infinity
-              }} style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                background: '#DE322D',
-                boxShadow: '0 0 8px rgba(222,50,45,0.7)'
-              }} />
-                  <span style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '10px',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'rgba(247,246,243,0.6)',
-                fontWeight: 500
-              }}>Highlight Reel</span>
+                <div style={{ position: 'absolute', bottom: '24px', left: '24px', right: '24px' }}>
+                   <span style={{ fontFamily: 'Inter, sans-serif', fontSize: isMobile ? '16px' : '20px', fontWeight: 300, color: '#F7F6F3', letterSpacing: '-0.3px', display: 'block' }}>
+                     {VIDEOS.find(v => v.id === activeMainId)?.title}
+                   </span>
                 </div>
-              </motion.div>}
-          </AnimatePresence>
-          {hasClicked && <motion.div initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} transition={{
-          duration: 0.5
-        }}>
-              <iframe width="100%" height={isMobile ? '220' : '560'} src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=1&rel=0" title="EmpowaEntrepreneurs Funding Summit Highlight Reel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{
-            display: 'block',
-            border: 'none'
-          }} />
-            </motion.div>}
-        </motion.div>
+              </motion.div>
+            ) : (
+              <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${activeMainId}?autoplay=1&mute=0&controls=1&rel=0`} title="Main Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ display: 'block', border: 'none', width: '100%', height: '100%' }} />
+            )}
+          </motion.div>
+
+          {/* Side Playlist Area */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {sideVideos.map((video, index) => (
+              <motion.div key={video.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.3 + index * 0.1} onClick={() => { setActiveMainId(video.id); setIsPlaying(true); }} style={{
+                borderRadius: isMobile ? '16px' : '20px',
+                overflow: 'hidden',
+                position: 'relative',
+                background: '#141210',
+                border: '1px solid rgba(247,246,243,0.07)',
+                boxShadow: '0 12px 30px rgba(0,0,0,0.3)',
+                aspectRatio: '16/9',
+                cursor: 'pointer'
+              }}>
+                <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} style={{ position: 'absolute', inset: 0 }}>
+                  <img src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} alt={video.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'brightness(0.5) saturate(0.8)' }} />
+                  <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(20,18,16,0.6)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(247,246,243,0.2)' }}>
+                      <svg width="16" height="16" viewBox="0 0 28 28" fill="none"><path d="M10 7L22 14L10 21V7Z" fill="white" /></svg>
+                    </div>
+                  </div>
+                  <div style={{ position: 'absolute', bottom: '12px', left: '16px', right: '16px' }}>
+                     <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 400, color: '#F7F6F3', letterSpacing: '-0.2px', display: 'block', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{video.title}</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.08} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
