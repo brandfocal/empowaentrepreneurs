@@ -129,7 +129,7 @@ const STICKY_NAV_ITEMS = [{
   href: '/apply'
 }, {
   id: 'pitch-power',
-  label: 'EmpowaEntrepreneurs Pitch Power',
+  label: 'Pitch Power',
   href: '/pitch-power'
 }, {
   id: 'contact',

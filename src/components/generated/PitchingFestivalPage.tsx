@@ -323,6 +323,7 @@ const HeroTicker = ({
               </div>)}
           </div>)}
       </div>
+      {isModalOpen && <PitchApplicationModal onClose={() => setIsModalOpen(false)} />}
     </div>;
 };
 
@@ -2244,7 +2245,7 @@ const BOTTOM_STRIP_ITEMS = [{
   value: 'Applications Open',
   sub: 'Close 60 days before'
 }];
-const CtaSection = () => {
+const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
@@ -2400,7 +2401,7 @@ const CtaSection = () => {
           flexDirection: 'column',
           gap: '12px'
         }}>
-            {CTA_CARDS.map((card, i) => <motion.div key={card.id} initial={{
+            {CTA_CARDS.map((card, i) => <motion.div onClick={() => { if (card.id === 'cta-pitch') onOpenModal(); }} key={card.id} initial={{
             opacity: 0,
             x: isMobile ? 0 : 40
           }} animate={inView ? {
@@ -2972,8 +2973,445 @@ const SiteFooter = () => {
     </footer>;
 };
 
+// ─── Custom Package Modal ─────────────────────────────────────────────────────
+const PitchApplicationModal = ({
+  onClose,
+  initialTier = ''
+}: {
+  onClose: () => void;
+  initialTier?: string;
+}) => {
+  const [name, setName] = useState('');
+  const [org, setOrg] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [selectedTier, setSelectedTier] = useState(initialTier);
+  const [submitted, setSubmitted] = useState(false);
+  const {
+    isMobile
+  } = useBreakpoint();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name && email) setSubmitted(true);
+  };
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    background: 'rgba(247,246,243,0.05)',
+    border: '1px solid rgba(247,246,243,0.1)',
+    borderRadius: '10px',
+    padding: '13px 16px',
+    fontFamily: 'Inter, sans-serif',
+    fontSize: '14px',
+    color: '#F7F6F3',
+    outline: 'none',
+    boxSizing: 'border-box',
+    transition: 'border-color 0.25s ease'
+  };
+  const labelStyle: React.CSSProperties = {
+    display: 'block',
+    fontFamily: 'Inter, sans-serif',
+    fontSize: '10px',
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+    color: 'rgba(247,246,243,0.35)',
+    fontWeight: 500,
+    marginBottom: '7px'
+  };
+  return <AnimatePresence>
+    <motion.div initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} exit={{
+      opacity: 0
+    }} onClick={onClose} style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(10,9,8,0.82)',
+      backdropFilter: 'blur(18px)',
+      WebkitBackdropFilter: 'blur(18px)',
+      zIndex: 300,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: isMobile ? '16px' : '32px',
+      boxSizing: 'border-box',
+      overflowY: 'auto'
+    }}>
+      <motion.div initial={{
+        opacity: 0,
+        y: 40,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        y: 0,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        y: 24,
+        scale: 0.97
+      }} transition={{
+        duration: 0.55,
+        ease: [0.22, 1, 0.36, 1]
+      }} onClick={e => e.stopPropagation()} style={{
+        background: '#0f1c28',
+        border: '1px solid rgba(247,246,243,0.1)',
+        borderRadius: '28px',
+        padding: isMobile ? '32px 20px' : '52px 52px',
+        width: '100%',
+        maxWidth: '560px',
+        boxSizing: 'border-box',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 40px 120px rgba(0,0,0,0.6)',
+        margin: 'auto'
+      }}>
+        <div aria-hidden="true" style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '2px',
+          background: 'linear-gradient(90deg, #DE322D, transparent)'
+        }} />
+        <motion.div aria-hidden="true" animate={{
+          x: ['-100%', '220%']
+        }} transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: 'linear',
+          repeatDelay: 4
+        }} style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '55%',
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, rgba(222,50,45,0.5), transparent)',
+          pointerEvents: 'none',
+          zIndex: 2
+        }} />
+        <div aria-hidden="true" style={{
+          position: 'absolute',
+          top: '-40%',
+          right: '-20%',
+          width: '400px',
+          height: '400px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(222,50,45,0.1) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+        <button onClick={onClose} style={{
+          position: 'absolute',
+          top: '20px',
+          right: '20px',
+          background: 'rgba(247,246,243,0.06)',
+          border: '1px solid rgba(247,246,243,0.1)',
+          borderRadius: '8px',
+          width: '34px',
+          height: '34px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s ease'
+        }} onMouseEnter={e => {
+          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.12)';
+        }} onMouseLeave={e => {
+          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.06)';
+        }}>
+          <CloseIcon />
+        </button>
+        <AnimatePresence mode="wait">
+          {!submitted ? <motion.div key="modal-form" initial={{
+            opacity: 0
+          }} animate={{
+            opacity: 1
+          }} exit={{
+            opacity: 0
+          }} transition={{
+            duration: 0.3
+          }}>
+            <div style={{
+              marginBottom: '32px'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                marginBottom: '12px'
+              }}>
+                <div style={{
+                  width: '5px',
+                  height: '5px',
+                  borderRadius: '50%',
+                  background: '#DE322D',
+                  boxShadow: '0 0 8px rgba(222,50,45,0.5)'
+                }} />
+                <span style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '10px',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(247,246,243,0.35)',
+                  fontWeight: 600
+                }}>Pitch Application</span>
+              </div>
+              <h3 style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: isMobile ? '20px' : '26px',
+                fontWeight: 300,
+                letterSpacing: '-1px',
+                color: '#F7F6F3',
+                margin: '0 0 10px',
+                lineHeight: 1.15
+              }}>
+                <span>Secure your </span>
+                <em style={{
+                  fontStyle: 'italic',
+                  color: '#DE322D'
+                }}>pitch</em>
+                <span style={{
+                  color: 'rgba(247,246,243,0.4)'
+                }}> slot.</span>
+              </h3>
+              <p style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '13px',
+                color: 'rgba(247,246,243,0.38)',
+                margin: 0,
+                lineHeight: '1.65'
+              }}>
+                Submit your venture details. Our investment committee will review your application for the upcoming Pitch Power sessions.
+              </p>
+            </div>
+            <form onSubmit={handleSubmit} style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '13px'
+            }}>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                gap: '13px'
+              }}>
+                <div>
+                  <label htmlFor="modal-name" style={labelStyle}>Full Name</label>
+                  <input id="modal-name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your full name" required style={inputStyle} onFocus={e => {
+                    (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)';
+                  }} onBlur={e => {
+                    (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
+                  }} />
+                </div>
+                <div>
+                  <label htmlFor="modal-org" style={labelStyle}>Organisation</label>
+                  <input id="modal-org" type="text" value={org} onChange={e => setOrg(e.target.value)} placeholder="Your company" style={inputStyle} onFocus={e => {
+                    (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)';
+                  }} onBlur={e => {
+                    (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
+                  }} />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="modal-email" style={labelStyle}>Business Email</label>
+                <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => {
+                  (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)';
+                }} onBlur={e => {
+                  (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
+                }} />
+              </div>
+              <div>
+                <label htmlFor="modal-tier" style={labelStyle}>Funding Stage</label>
+                <div style={{
+                  position: 'relative'
+                }}>
+                  <select id="modal-tier" value={selectedTier} onChange={e => setSelectedTier(e.target.value)} style={{
+                    ...inputStyle,
+                    appearance: 'none',
+                    WebkitAppearance: 'none',
+                    cursor: 'pointer',
+                    paddingRight: '40px',
+                    color: selectedTier ? '#F7F6F3' : 'rgba(247,246,243,0.3)'
+                  }} onFocus={e => {
+                    (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)';
+                  }} onBlur={e => {
+                    (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)';
+                  }}>
+                    <option value="" style={{
+                      background: '#0f1c28',
+                      color: 'rgba(247,246,243,0.4)'
+                    }}>Select your current funding stage</option>
+                    <option value="pre-seed" style={{background:'#0f1c28',color:'#F7F6F3'}}>Pre-Seed</option><option value="seed" style={{background:'#0f1c28',color:'#F7F6F3'}}>Seed</option><option value="series-a" style={{background:'#0f1c28',color:'#F7F6F3'}}>Series A</option><option value="series-b" style={{background:'#0f1c28',color:'#F7F6F3'}}>Series B+</option></select>
+                  <div style={{
+                    position: 'absolute',
+                    right: '14px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    pointerEvents: 'none'
+                  }}>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label htmlFor="modal-message" style={labelStyle}>Pitch Summary</label>
+                <textarea id="modal-message" value={message} onChange={e => setMessage(e.target.value)} placeholder="Briefly describe your business model, traction, and what you are looking to raise..." rows={4} style={{
+                  ...inputStyle,
+                  resize: 'none',
+                  lineHeight: '1.6'
+                }} onFocus={e => {
+                  (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(222,50,45,0.45)';
+                }} onBlur={e => {
+                  (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(247,246,243,0.1)';
+                }} />
+              </div>
+              <motion.button type="submit" whileHover={{
+                scale: 1.03,
+                boxShadow: '0 12px 40px rgba(222,50,45,0.6)'
+              }} whileTap={{
+                scale: 0.97
+              }} style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+                border: 'none',
+                borderRadius: '44px',
+                padding: '16px 32px',
+                fontSize: '13px',
+                letterSpacing: '0.05em',
+                color: '#fff',
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 600,
+                cursor: 'pointer',
+                marginTop: '4px',
+                boxShadow: '0 8px 32px rgba(222,50,45,0.45)'
+              }}>
+                <span>Submit Application</span><ArrowIconDark />
+              </motion.button>
+            </form>
+            <p style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '11px',
+              color: 'rgba(247,246,243,0.2)',
+              margin: '14px 0 0',
+              letterSpacing: '0.02em'
+            }}>By submitting, you agree to our privacy policy. We never share your information.</p>
+          </motion.div> : <motion.div key="modal-success" initial={{
+            opacity: 0,
+            scale: 0.95
+          }} animate={{
+            opacity: 1,
+            scale: 1
+          }} exit={{
+            opacity: 0
+          }} transition={{
+            duration: 0.6,
+            ease: [0.22, 1, 0.36, 1]
+          }} style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '20px',
+            textAlign: 'center',
+            padding: '24px 0 16px'
+          }}>
+            <div style={{
+              width: '60px',
+              height: '60px',
+              borderRadius: '50%',
+              background: 'rgba(34,197,94,0.1)',
+              border: '1px solid rgba(34,197,94,0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <svg width="22" height="16" viewBox="0 0 22 16" fill="none"><path d="M1 8L8 15L21 1" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </div>
+            <div>
+              <h3 style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '22px',
+                fontWeight: 400,
+                letterSpacing: '-0.5px',
+                color: '#F7F6F3',
+                margin: '0 0 10px'
+              }}>Application Received</h3>
+              <p style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px',
+                color: 'rgba(247,246,243,0.45)',
+                margin: 0,
+                lineHeight: '1.7',
+                maxWidth: '340px'
+              }}>
+                <span>{'Thank you, '}</span>
+                <strong style={{
+                  color: 'rgba(247,246,243,0.75)'
+                }}>{name}</strong>
+                <span>{'. Our investment committee will review your application and get back to you shortly.'}</span>
+              </p>
+            </div>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'rgba(34,197,94,0.07)',
+              border: '1px solid rgba(34,197,94,0.18)',
+              borderRadius: '100px',
+              padding: '7px 16px'
+            }}>
+              <motion.div animate={{
+                opacity: [1, 0.3, 1]
+              }} transition={{
+                duration: 2,
+                repeat: Infinity
+              }} style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: '#22c55e',
+                boxShadow: '0 0 8px rgba(34,197,94,0.5)'
+              }} />
+              <span style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '10px',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'rgba(247,246,243,0.4)',
+                fontWeight: 600
+              }}>Response within 24h</span>
+            </div>
+            <motion.button whileHover={{
+              scale: 1.04
+            }} whileTap={{
+              scale: 0.97
+            }} onClick={onClose} style={{
+              marginTop: '8px',
+              background: 'rgba(247,246,243,0.06)',
+              border: '1px solid rgba(247,246,243,0.12)',
+              borderRadius: '44px',
+              padding: '12px 28px',
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: '12px',
+              letterSpacing: '0.04em',
+              color: 'rgba(247,246,243,0.55)',
+              cursor: 'pointer'
+            }}>Close</motion.button>
+          </motion.div>}
+        </AnimatePresence>
+      </motion.div>
+    </motion.div>
+  </AnimatePresence>;
+};
+
+
 // ─── PitchingFestivalPage ─────────────────────────────────────────────────────
 export const PitchingFestivalPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return <div className="w-full min-h-screen" style={{
     background: '#141210'
   }}>
@@ -2981,6 +3419,7 @@ export const PitchingFestivalPage = () => {
       <PillarsSection />
       <EligibilitySection />
       <ExperienceSection />
-      <CtaSection />
+      <CtaSection onOpenModal={() => setIsModalOpen(true)} />
+      {isModalOpen && <PitchApplicationModal onClose={() => setIsModalOpen(false)} />}
     </div>;
 };
