@@ -2244,7 +2244,7 @@ const BOTTOM_STRIP_ITEMS = [{
   value: 'Applications Open',
   sub: 'Close 60 days before'
 }];
-const CtaSection = () => {
+const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
@@ -2400,7 +2400,7 @@ const CtaSection = () => {
           flexDirection: 'column',
           gap: '12px'
         }}>
-            {CTA_CARDS.map((card, i) => <motion.div onClick={() => { if (card.id === 'cta-pitch') document.getElementById('application-section')?.scrollIntoView({ behavior: 'smooth' }); }} key={card.id} initial={{
+            {CTA_CARDS.map((card, i) => <motion.div onClick={() => { if (card.id === 'cta-pitch') onOpenModal(); }} key={card.id} initial={{
             opacity: 0,
             x: isMobile ? 0 : 40
           }} animate={inView ? {
@@ -2973,12 +2973,18 @@ const SiteFooter = () => {
 };
 
 // ─── Custom Package Modal ─────────────────────────────────────────────────────
-const PitchApplicationSection = () => {
+const PitchApplicationModal = ({
+  onClose,
+  initialTier = ''
+}: {
+  onClose: () => void;
+  initialTier?: string;
+}) => {
   const [name, setName] = useState('');
   const [org, setOrg] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [selectedTier, setSelectedTier] = useState('');
+  const [selectedTier, setSelectedTier] = useState(initialTier);
   const [submitted, setSubmitted] = useState(false);
   const {
     isMobile
@@ -3010,15 +3016,27 @@ const PitchApplicationSection = () => {
     fontWeight: 500,
     marginBottom: '7px'
   };
-  return <section id="application-section" style={{
-    padding: isMobile ? '64px 20px' : '120px 64px',
-    background: '#0a0906',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    boxSizing: 'border-box'
-  }}>
+  return <AnimatePresence>
+    <motion.div initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} exit={{
+      opacity: 0
+    }} onClick={onClose} style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(10,9,8,0.82)',
+      backdropFilter: 'blur(18px)',
+      WebkitBackdropFilter: 'blur(18px)',
+      zIndex: 300,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: isMobile ? '16px' : '32px',
+      boxSizing: 'border-box',
+      overflowY: 'auto'
+    }}>
       <motion.div initial={{
         opacity: 0,
         y: 40,
@@ -3082,6 +3100,27 @@ const PitchApplicationSection = () => {
           background: 'radial-gradient(circle, rgba(222,50,45,0.1) 0%, transparent 70%)',
           pointerEvents: 'none'
         }} />
+        <button onClick={onClose} style={{
+          position: 'absolute',
+          top: '20px',
+          right: '20px',
+          background: 'rgba(247,246,243,0.06)',
+          border: '1px solid rgba(247,246,243,0.1)',
+          borderRadius: '8px',
+          width: '34px',
+          height: '34px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s ease'
+        }} onMouseEnter={e => {
+          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.12)';
+        }} onMouseLeave={e => {
+          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.06)';
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="rgba(247,246,243,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
         <AnimatePresence mode="wait">
           {!submitted ? <motion.div key="modal-form" initial={{
             opacity: 0
@@ -3345,16 +3384,33 @@ const PitchApplicationSection = () => {
                 fontWeight: 600
               }}>Response within 24h</span>
             </div>
-            </motion.div>}
+            <motion.button whileHover={{
+              scale: 1.04
+            }} whileTap={{
+              scale: 0.97
+            }} onClick={onClose} style={{
+              marginTop: '8px',
+              background: 'rgba(247,246,243,0.06)',
+              border: '1px solid rgba(247,246,243,0.12)',
+              borderRadius: '44px',
+              padding: '12px 28px',
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: '12px',
+              letterSpacing: '0.04em',
+              color: 'rgba(247,246,243,0.55)',
+              cursor: 'pointer'
+            }}>Close</motion.button>
+          </motion.div>}
         </AnimatePresence>
       </motion.div>
-    </section>;
+    </motion.div>
+  </AnimatePresence>;
 };
-
 
 
 // ─── PitchingFestivalPage ─────────────────────────────────────────────────────
 export const PitchingFestivalPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return <div className="w-full min-h-screen" style={{
     background: '#141210'
   }}>
@@ -3362,7 +3418,7 @@ export const PitchingFestivalPage = () => {
       <PillarsSection />
       <EligibilitySection />
       <ExperienceSection />
-      <PitchApplicationSection />
-      <CtaSection />
+      <CtaSection onOpenModal={() => setIsModalOpen(true)} />
+      {isModalOpen && <PitchApplicationModal onClose={() => setIsModalOpen(false)} />}
     </div>;
 };

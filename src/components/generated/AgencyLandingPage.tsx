@@ -1262,29 +1262,33 @@ const MissionBand = () => {
 
 // ─── Logo Marquee Banner ──────────────────────────────────────────────────────
 const LOGOS = [{
-  id: 'slack',
-  alt: 'Slack',
-  src: 'https://cdn.prod.website-files.com/6964d4f3b5db71495b89316b/6976eaaf7a7890b5a7f0a22e_f8a002782dae4242f6e387041d31bb03_logo-slack%201.svg'
+  id: 'nef',
+  alt: 'National Empowerment Fund (NEF)',
+  src: 'https://www.nefcorp.co.za/wp-content/uploads/2021/08/NEF-Logo-1.png'
 }, {
-  id: 'logo2',
-  alt: 'Logo 2',
-  src: 'https://cdn.prod.website-files.com/6964d4f3b5db71495b89316b/6976ed1831883777db002701_Logo%202.svg'
+  id: 'old-mutual',
+  alt: 'Old Mutual',
+  src: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Old_Mutual_logo.svg'
 }, {
-  id: 'logo3',
-  alt: 'Logo 3',
-  src: 'https://cdn.prod.website-files.com/6964d4f3b5db71495b89316b/6976ed1806fdd4b224aaefd3_Logo%203.svg'
+  id: 'wrseta',
+  alt: 'W&RSETA',
+  src: 'https://www.wrseta.org.za/wp-content/uploads/2022/10/WRSETA-Logo.png'
 }, {
-  id: 'logo5',
-  alt: 'Logo 5',
-  src: 'https://cdn.prod.website-files.com/6964d4f3b5db71495b89316b/6976ed18c4f6f1932bf4e3f0_Logo%205.svg'
+  id: 'absa',
+  alt: 'ABSA',
+  src: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Absa_Group_Limited_Logo.svg'
 }, {
-  id: 'logo6',
-  alt: 'Logo 6',
-  src: 'https://cdn.prod.website-files.com/6964d4f3b5db71495b89316b/6976ed18555e69b5e840b27b_Logo%206.svg'
+  id: 'sedfa',
+  alt: 'SEDFA',
+  src: 'https://www.sefa.org.za/wp-content/uploads/2022/08/sefa-logo.png'
 }, {
-  id: 'logo7',
-  alt: 'Logo 7',
-  src: 'https://cdn.prod.website-files.com/6964d4f3b5db71495b89316b/6976ed18a82e8e9527ae5604_Logo%207.svg'
+  id: 'african-bank',
+  alt: 'African Bank Limited',
+  src: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/African_Bank_logo.svg'
+}, {
+  id: 'idc',
+  alt: 'Industrial Development Corporation (IDC)',
+  src: 'https://upload.wikimedia.org/wikipedia/en/8/87/Industrial_Development_Corporation_logo.png'
 }];
 const MARQUEE_SPEED = 50;
 const MarqueeTrack = () => {
