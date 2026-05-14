@@ -5,6 +5,9 @@ import { AgencyLandingPage } from './components/generated/AgencyLandingPage';
 import { AboutUsPage } from './components/generated/AboutUsPage';
 import { ProgrammePage } from './components/generated/ProgrammePage';
 import { ExperienceZonesPage } from './components/generated/ExperienceZones';
+import { PartnershipsPage } from './components/generated/PartnershipsPage';
+import { ApplyToAttendPage } from './components/generated/ApplyToAttendPage';
+import { ContactPage } from './components/generated/ContactPage';
 import { UniversalLayout } from './components/layout/UniversalLayout';
 
 let theme: Theme = 'light';
@@ -32,6 +35,9 @@ function App() {
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/programme" element={<ProgrammePage />} />
             <Route path="/experience-zones" element={<ExperienceZonesPage />} />
+            <Route path="/partnerships" element={<PartnershipsPage />} />
+            <Route path="/apply" element={<ApplyToAttendPage />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </UniversalLayout>
       </BrowserRouter>

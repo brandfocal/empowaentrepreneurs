@@ -108,10 +108,6 @@ const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill
   </svg>;
 
 const STICKY_NAV_ITEMS = [{
-  id: 'home',
-  label: 'Home',
-  href: '/'
-}, {
   id: 'about',
   label: 'About Us',
   href: '/about'
@@ -126,7 +122,15 @@ const STICKY_NAV_ITEMS = [{
 }, {
   id: 'partnerships',
   label: 'Partnerships',
-  href: '#'
+  href: '/partnerships'
+}, {
+  id: 'apply',
+  label: 'Apply to Attend',
+  href: '/apply'
+}, {
+  id: 'contact',
+  label: 'Contact Us',
+  href: '/contact'
 }];
 
 const FOOTER_NAV_COLS = [{
