@@ -323,7 +323,6 @@ const HeroTicker = ({
               </div>)}
           </div>)}
       </div>
-      {isModalOpen && <PitchApplicationModal onClose={() => setIsModalOpen(false)} />}
     </div>;
 };
 
@@ -3120,7 +3119,7 @@ const PitchApplicationModal = ({
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.06)';
         }}>
-          <CloseIcon />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="rgba(247,246,243,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
         <AnimatePresence mode="wait">
           {!submitted ? <motion.div key="modal-form" initial={{
