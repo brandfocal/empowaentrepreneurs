@@ -1238,7 +1238,7 @@ const MissionSection = () => {
               position: 'relative',
               boxShadow: '0 4px 20px rgba(20,18,16,0.09)'
             }}>
-                <img src={MISSION_IMG_2} alt="Institutional funders and venture capital leaders at the summit" style={{
+                <img src={MISSION_IMG_2} alt="Institutional funders and venture capital leaders at EmpowaEntrepreneurs Funding Summit 2026" style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
@@ -1346,7 +1346,7 @@ const FOUNDER_CARDS: FounderCard[] = [{
   tag: 'Pre-Seed to Series B',
   accent: 'Builders',
   img: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=80',
-  imgAlt: 'Founders networking and building at the summit'
+  imgAlt: 'Founders networking and building at EmpowaEntrepreneurs Funding Summit 2026'
 }, {
   id: 'fc-2',
   index: '02',
@@ -2105,7 +2105,7 @@ const CapitalPartnersSection = () => {
           lineHeight: '1.75',
           margin: 0
         }}>
-              Four categories of capital converge at the summit — each representing a distinct mandate to invest in Africa's future.
+              Four categories of capital converge at EmpowaEntrepreneurs Funding Summit 2026 — each representing a distinct mandate to invest in Africa's future.
             </motion.p>}
         </div>
 
@@ -2755,7 +2755,7 @@ const FOOTER_NAV_COLS = [{
   heading: 'Summit',
   links: [{
     id: 'fl-about',
-    label: 'About the Summit'
+    label: 'About EmpowaEntrepreneurs Funding Summit 2026'
   }, {
     id: 'fl-tracks',
     label: 'Summit Tracks'

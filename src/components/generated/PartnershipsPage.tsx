@@ -1118,7 +1118,7 @@ const BENEFITS: Benefit[] = [{
   description: 'Connect directly with 4,000+ decision-makers — founders, institutional funders, DFIs, VCs, and ecosystem builders — in structured, high-value networking environments engineered for deal-making.',
   tags: ['Deal Flow', 'Networking', 'Decision-Makers'],
   imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=1400&q=80',
-  imageAlt: 'High-impact access and networking at the summit'
+  imageAlt: 'High-impact access and networking at EmpowaEntrepreneurs Funding Summit 2026'
 }, {
   id: 'ben-thought',
   index: '03',
@@ -1134,7 +1134,7 @@ const BENEFITS: Benefit[] = [{
   description: 'Move beyond logos. Co-create curated activations, demonstration zones, and immersive brand experiences that generate genuine connection with the entrepreneurs and investors shaping Africa.',
   tags: ['Activations', 'Co-creation', 'Immersive'],
   imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&q=80',
-  imageAlt: 'Authentic engagement and brand activation at the summit'
+  imageAlt: 'Authentic engagement and brand activation at EmpowaEntrepreneurs Funding Summit 2026'
 }];
 const BenefitsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -1558,7 +1558,7 @@ const VALUE_PILLARS: ValuePillar[] = [{
   id: 'vp-agenda',
   index: '02',
   title: 'Agenda Influence',
-  description: 'Shape the conversation that defines African enterprise for the year ahead. Senior partners influence track themes, panel compositions, and the keynote topics that drive the summit agenda.',
+  description: 'Shape the conversation that defines African enterprise for the year ahead. Senior partners influence track themes, panel compositions, and the keynote topics that drive EmpowaEntrepreneurs Funding Summit 2026 agenda.',
   metric: '48h',
   metricLabel: 'Programme Hours'
 }, {
@@ -2096,7 +2096,7 @@ const CustomPackageModal = ({
               </div>
               <div>
                 <label htmlFor="modal-email" style={labelStyle}>Business Email</label>
-                <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="your@company.com" required style={inputStyle} onFocus={e => {
+                <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => {
                   (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)';
                 }} onBlur={e => {
                   (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
@@ -2974,7 +2974,7 @@ const CTA_INFO_ITEMS = [{
 }, {
   id: 'cs-3',
   label: 'Contact',
-  value: 'partnerships@empowa.co',
+  value: 'info@empowaentrepreneurs.co.za',
   sub: 'Direct partnership enquiries'
 }];
 const CtaSection = () => {
@@ -3148,7 +3148,7 @@ const CtaSection = () => {
             margin: '0 0 36px',
             fontWeight: 300
           }}>
-            Align your organisation with the summit that is reshaping African enterprise. Together, we build the infrastructure of the continent's next growth economy.
+            Align your organisation with EmpowaEntrepreneurs Funding Summit 2026 that is reshaping African enterprise. Together, we build the infrastructure of the continent's next growth economy.
           </motion.p>
           <motion.div ref={statsRef} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.36} style={{
             display: 'grid',
@@ -3280,7 +3280,7 @@ const CtaSection = () => {
                 </div>
                 <div>
                   <label htmlFor="cta-email" style={labelBase}>Business Email</label>
-                  <input id="cta-email" type="email" value={formEmail} onChange={e => setFormEmail(e.target.value)} placeholder="your@company.com" required style={inputBase} onFocus={e => {
+                  <input id="cta-email" type="email" value={formEmail} onChange={e => setFormEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputBase} onFocus={e => {
                     (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.4)';
                   }} onBlur={e => {
                     (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';

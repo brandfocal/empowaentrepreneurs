@@ -868,7 +868,7 @@ const ELIGIBILITY_CARDS: EligibilityCard[] = [{
   id: 'elig-2',
   number: '02',
   title: 'Strategic Clarity',
-  description: 'Clarity of vision and market positioning is essential for serious investor engagement at the summit.',
+  description: 'Clarity of vision and market positioning is essential for serious investor engagement at EmpowaEntrepreneurs Funding Summit 2026.',
   checks: ['Defined target market & customer segment', 'Clear competitive advantage & moat', 'Scalable business model across markets', 'Articulated 3–5 year growth roadmap']
 }, {
   id: 'elig-3',
@@ -1125,7 +1125,7 @@ const PATHWAY_ITEMS: PathwayItem[] = [{
   index: '03',
   title: 'Exhibition Booking',
   subtitle: 'Showcase Your Brand',
-  description: 'Secure your branded exhibition space on the summit floor. Showcase your product, technology, or service to thousands of qualified attendees, investors, and corporate procurement leaders across two days.',
+  description: 'Secure your branded exhibition space on EmpowaEntrepreneurs Funding Summit 2026 floor. Showcase your product, technology, or service to thousands of qualified attendees, investors, and corporate procurement leaders across two days.',
   tag: 'Exhibition · Brand · Showcase',
   cta: 'Book Exhibition Space',
   imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80',
@@ -2364,7 +2364,7 @@ const FOOTER_NAV_COLS = [{
   heading: 'Summit',
   links: [{
     id: 'fl-about',
-    label: 'About the Summit'
+    label: 'About EmpowaEntrepreneurs Funding Summit 2026'
   }, {
     id: 'fl-tracks',
     label: 'Summit Tracks'

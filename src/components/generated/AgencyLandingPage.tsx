@@ -1418,7 +1418,7 @@ const PROCESS_STEPS: ProcessStep[] = [{
   id: 'step-lead',
   number: '04',
   title: 'Lead',
-  description: "Shape Africa's next generation of high-growth enterprises — leaving the summit with capital, networks, and the momentum to define your industry.",
+  description: "Shape Africa's next generation of high-growth enterprises — leaving EmpowaEntrepreneurs Funding Summit 2026 with capital, networks, and the momentum to define your industry.",
   icon: '',
   imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80'
 }];
@@ -1691,7 +1691,7 @@ const SERVICES: ServiceItem[] = [{
   description: 'Ambitious African founders and high-growth entrepreneurs gain direct access to serious capital, strategic mentorship, and a global network of ecosystem builders.',
   tag: 'Pitch · Capital · Mentorship',
   imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80',
-  imageAlt: 'Founders and entrepreneurs at the summit',
+  imageAlt: 'Founders and entrepreneurs at EmpowaEntrepreneurs Funding Summit 2026',
   bgColor: '#F7F6F3',
   tintColor: 'rgba(222,50,45,0.22)'
 }, {
@@ -1711,7 +1711,7 @@ const SERVICES: ServiceItem[] = [{
   description: 'Development Finance Institutions and corporate leaders unlock procurement opportunities, co-investment mandates, and enterprise partnerships that drive continental impact.',
   tag: 'Procurement · DFIs · Co-Investment',
   imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&q=80',
-  imageAlt: 'Corporate and DFI partners at the summit',
+  imageAlt: 'Corporate and DFI partners at EmpowaEntrepreneurs Funding Summit 2026',
   bgColor: '#F3F0EA',
   tintColor: 'rgba(107,94,74,0.30)'
 }, {
@@ -2025,7 +2025,7 @@ const CASE_STUDIES: CaseStudy[] = [{
   description: "Accelerators, incubators, and policy leaders converge to shape the frameworks powering Africa's next enterprise generation.",
   tags: ['Policy', 'Accelerators', 'Ecosystem'],
   imageSrc: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80',
-  imageAlt: 'Ecosystem Builder Forum at the summit',
+  imageAlt: 'Ecosystem Builder Forum at EmpowaEntrepreneurs Funding Summit 2026',
   span: 'normal',
   outcome: "Shape Africa's Future",
   duration: 'EmpowaWorx House',
@@ -3523,7 +3523,7 @@ const FOOTER_NAV_COLS = [{
   heading: 'Summit',
   links: [{
     id: 'fl-about',
-    label: 'About the Summit'
+    label: 'About EmpowaEntrepreneurs Funding Summit 2026'
   }, {
     id: 'fl-tracks',
     label: 'Summit Tracks'

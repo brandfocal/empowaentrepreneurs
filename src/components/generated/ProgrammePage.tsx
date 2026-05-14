@@ -919,7 +919,7 @@ const STAGES: Stage[] = [{
   focus: 'Connecting high-growth African startups with early and growth-stage venture capital firms deploying catalytic capital across the continent.',
   accentColor: '#DE322D',
   imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80',
-  imageAlt: 'VC Stage — Venture Capital sessions at the summit'
+  imageAlt: 'VC Stage — Venture Capital sessions at EmpowaEntrepreneurs Funding Summit 2026'
 }, {
   id: 'stage-esd',
   number: '02',
@@ -955,7 +955,7 @@ const STAGES: Stage[] = [{
   focus: 'For businesses beyond the equity curve — connecting revenue-generating SMEs with structured lenders, mezzanine financiers, and alternative credit providers offering bespoke debt solutions.',
   accentColor: '#8a5a2a',
   imageSrc: 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=800&q=80',
-  imageAlt: 'Loan Financing Stage at the summit'
+  imageAlt: 'Loan Financing Stage at EmpowaEntrepreneurs Funding Summit 2026'
 }, {
   id: 'stage-impact',
   number: '06',
@@ -1211,7 +1211,7 @@ const EXPERIENCES: Experience[] = [{
   description: "A dedicated, curated space where women-led ventures and female founders access specialized funding pipelines, gender-lens investment mandates, and mentorship from Africa's most powerful women in capital.",
   detail: "The Women's Fund Room is not a sidebar — it is a command center. With dedicated DFI mandates, gender-lens VC panelists, and structured pitch sessions specifically designed for women founders, it represents EmpowaEntrepreneurs' most intentional investment in parity capital.",
   imageSrc: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=1200&q=80',
-  imageAlt: "The Women's Fund Room — women founders and investors at the summit",
+  imageAlt: "The Women's Fund Room — women founders and investors at EmpowaEntrepreneurs Funding Summit 2026",
   tag1: 'Gender-Lens Investing',
   tag2: 'Women Founders',
   tag3: 'DFI Mandates',
@@ -1314,7 +1314,7 @@ const SignatureExperiencesSection = () => {
             }}>define</em>
               <span style={{
               color: 'rgba(20,18,16,0.2)'
-            }}>{' the summit.'}</span>
+            }}>{' EmpowaEntrepreneurs Funding Summit 2026.'}</span>
             </motion.h2>
           </div>
         </div>
@@ -1538,7 +1538,7 @@ const ZONES: Zone[] = [{
   id: 'zone-showcase',
   number: '04',
   name: 'Innovation Showcase Pavilion',
-  description: 'A physical exhibition space for growth-stage businesses to display their solutions, technologies, and products to investors, corporate buyers, and procurement decision-makers moving through the summit.',
+  description: 'A physical exhibition space for growth-stage businesses to display their solutions, technologies, and products to investors, corporate buyers, and procurement decision-makers moving through EmpowaEntrepreneurs Funding Summit 2026.',
   services: ['Product Demos', 'Investor Walkthroughs', 'Corporate Buyer Access', 'Media Coverage'],
   accent: '#2D6A4F',
   icon: '🏛'
@@ -2181,7 +2181,7 @@ const FOOTER_NAV_COLS = [{
   heading: 'Summit',
   links: [{
     id: 'fl-about',
-    label: 'About the Summit'
+    label: 'About EmpowaEntrepreneurs Funding Summit 2026'
   }, {
     id: 'fl-tracks',
     label: 'Summit Tracks'

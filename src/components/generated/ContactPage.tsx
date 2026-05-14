@@ -1487,7 +1487,7 @@ const ContactDetailsSection = () => {
     id: 'cb-strategic',
     label: 'Strategic Inquiries',
     title: 'Thulisa Nkosi',
-    lines: ['partnerships@empowasummit.com', '+27 11 000 0000'],
+    lines: ['info@empowaentrepreneurs.co.za', '+27 11 000 0000'],
     accent: false,
     tag: 'Partnerships & Investor Relations',
     icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="rgba(247,246,243,0.4)" /></svg>
@@ -1495,7 +1495,7 @@ const ContactDetailsSection = () => {
     id: 'cb-ticketing',
     label: 'Ticketing Support',
     title: 'Registration Desk',
-    lines: ['tickets@empowasummit.com', 'Mon–Fri, 8:00–17:00 SAST'],
+    lines: ['info@empowaentrepreneurs.co.za', 'Mon–Fri, 8:00–17:00 SAST'],
     accent: false,
     tag: 'General & Delegate Support',
     icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 12c0-1.1.9-2 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v4c1.1 0 2 .9 2 2s-.9 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2z" fill="rgba(247,246,243,0.4)" /></svg>
@@ -1503,7 +1503,7 @@ const ContactDetailsSection = () => {
     id: 'cb-media',
     label: 'Media & Press',
     title: 'Press Office',
-    lines: ['media@empowasummit.com', 'Accreditation Applications Open'],
+    lines: ['info@empowaentrepreneurs.co.za', 'Accreditation Applications Open'],
     accent: true,
     tag: 'Media Accreditation',
     icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="rgba(247,246,243,0.4)" /></svg>
@@ -2001,7 +2001,7 @@ const InquiryFormSection = () => {
                   </div>
                   <div>
                     <label htmlFor="contact-email" style={labelStyle}>Email Address</label>
-                    <input id="contact-email" type="email" placeholder="your@email.com" value={formData.email} onChange={e => handleChange('email', e.target.value)} onFocus={() => setFocused('email')} onBlur={() => setFocused(null)} required style={inputStyle('email')} />
+                    <input id="contact-email" type="email" placeholder="info@empowaentrepreneurs.co.za" value={formData.email} onChange={e => handleChange('email', e.target.value)} onFocus={() => setFocused('email')} onBlur={() => setFocused(null)} required style={inputStyle('email')} />
                   </div>
                 </div>
 
@@ -2649,7 +2649,7 @@ const FOOTER_NAV_COLS = [{
   heading: 'Summit',
   links: [{
     id: 'fl-about',
-    label: 'About the Summit'
+    label: 'About EmpowaEntrepreneurs Funding Summit 2026'
   }, {
     id: 'fl-tracks',
     label: 'Summit Tracks'

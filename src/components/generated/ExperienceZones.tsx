@@ -893,7 +893,7 @@ const HeroSection = () => {
             fontSize: isMobile ? 'clamp(36px, 9.5vw, 60px)' : 'clamp(44px, 6.5vw, 100px)',
             color: "#f7f6f3"
           }}>
-              The Summit Journey
+              EmpowaEntrepreneurs Funding Summit 2026 Journey
             </motion.span>
           </div>
         </h1>
@@ -1850,7 +1850,7 @@ const FOOTER_NAV_COLS = [{
   heading: 'Summit',
   links: [{
     id: 'fl-about',
-    label: 'About the Summit'
+    label: 'About EmpowaEntrepreneurs Funding Summit 2026'
   }, {
     id: 'fl-tracks',
     label: 'Summit Tracks'

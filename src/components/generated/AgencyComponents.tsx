@@ -210,7 +210,7 @@ export const VideoBanner = () => {
             }}>energy</em>
               <span style={{
               color: 'rgba(247,246,243,0.2)'
-            }}>{' of the summit.'}</span>
+            }}>{' of EmpowaEntrepreneurs Funding Summit 2026.'}</span>
             </motion.h2>
           </div>
         </div>
