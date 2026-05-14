@@ -216,11 +216,10 @@ export const VideoBanner = () => {
           </div>
         </div>
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : '2.5fr 1fr',
+          display: 'flex',
+          flexDirection: 'column',
           gap: '24px',
-          marginBottom: '40px',
-          alignItems: 'start'
+          marginBottom: '40px'
         }}>
           {/* Main Area */}
           <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.2} style={{
@@ -231,6 +230,7 @@ export const VideoBanner = () => {
             border: '1px solid rgba(247,246,243,0.07)',
             boxShadow: '0 40px 100px rgba(0,0,0,0.5)',
             aspectRatio: '16/9',
+            width: '100%'
           }}>
             {!isPlaying ? (
               <motion.div style={{ position: 'absolute', inset: 0, cursor: 'pointer' }} onClick={() => setIsPlaying(true)} whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
@@ -253,7 +253,7 @@ export const VideoBanner = () => {
           </motion.div>
 
           {/* Side Playlist Area */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
             {sideVideos.map((video, index) => (
               <motion.div key={video.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.3 + index * 0.1} onClick={() => { setActiveMainId(video.id); setIsPlaying(true); }} style={{
                 borderRadius: isMobile ? '16px' : '20px',
