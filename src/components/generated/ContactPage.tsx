@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { StrategicEnquiryModal } from './StrategicEnquiryModal';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -1775,12 +1776,18 @@ const InquiryFormSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const handleChange = (field: keyof FormData, value: string) => setFormData(prev => ({
     ...prev,
     [field]: value
   }));
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!recaptchaToken) {
+      setError('Please complete the reCAPTCHA to submit your inquiry.');
+      return;
+    }
     setIsSubmitting(true);
     setError(null);
 
@@ -1795,7 +1802,8 @@ const InquiryFormSection = () => {
           "input_3_6": formData.lastName,
           "input_5": formData.email,
           "input_23": formData.subject,
-          "input_24": formData.message
+          "input_24": formData.message,
+          "g-recaptcha-response": recaptchaToken
         })
       });
       
@@ -1804,10 +1812,14 @@ const InquiryFormSection = () => {
         setSubmitted(true);
       } else {
         setError(data.validation_messages ? Object.values(data.validation_messages)[0] as string : 'Something went wrong. Please try again.');
+        recaptchaRef.current?.reset();
+        setRecaptchaToken(null);
       }
     } catch (err) {
       console.error('Gravity Forms submission error:', err);
       setError('A network error occurred. Please try again.');
+      recaptchaRef.current?.reset();
+      setRecaptchaToken(null);
     } finally {
       setIsSubmitting(false);
     }
@@ -2028,6 +2040,17 @@ const InquiryFormSection = () => {
               gap: '16px',
               marginTop: '12px'
             }}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey="6LfZiggpAAAAACLC33h_h2jpw-YwDHMAHlTT08r-"
+                      onChange={(token) => {
+                        setRecaptchaToken(token);
+                        if (token) setError(null);
+                      }}
+                      theme="dark"
+                    />
+                  </div>
                   {error && <div style={{ color: '#DE322D', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>{error}</div>}
                   <div style={{
                     display: 'flex',
