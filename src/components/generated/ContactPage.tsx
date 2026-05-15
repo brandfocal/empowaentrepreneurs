@@ -2149,7 +2149,7 @@ const InquiryFormSection = () => {
                     <strong style={{
                   color: 'rgba(247,246,243,0.75)',
                   fontWeight: 500
-                }}>{formData.name || 'friend'}</strong>
+                }}>{formData.firstName || 'friend'}</strong>
                     <span>. Our team will review your submission and be in touch within 48 hours.</span>
                   </p>
                 </div>
