@@ -1025,7 +1025,7 @@ const HeroSection = () => {
               ease: [0.22, 1, 0.36, 1]
             }} style={{
               display: 'inline-block',
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
+              fontSize: isMobile ? 'clamp(43px, 12vw, 71px)' : 'clamp(53px, 7.5vw, 119px)',
               color: '#F7F6F3',
               marginRight: '0.22em'
             }}>
@@ -1048,7 +1048,7 @@ const HeroSection = () => {
               ease: [0.22, 1, 0.36, 1]
             }} style={{
               display: 'inline-block',
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
+              fontSize: isMobile ? 'clamp(43px, 12vw, 71px)' : 'clamp(53px, 7.5vw, 119px)',
               color: 'rgba(247,246,243,0.18)',
               marginRight: '0.22em'
             }}>
@@ -1068,7 +1068,7 @@ const HeroSection = () => {
               display: 'inline-block',
               fontStyle: 'italic',
               fontWeight: 300,
-              fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(54px, 7.5vw, 120px)',
+              fontSize: isMobile ? 'clamp(43px, 12vw, 71px)' : 'clamp(53px, 7.5vw, 119px)',
               color: '#DE322D'
             }}>
               {HERO_WORD_PLATFORM}
