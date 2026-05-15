@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { FundingAwardsModal } from './FundingAwardsModal';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -1109,7 +1110,7 @@ const HeroSection = () => {
         flexWrap: 'wrap',
         marginBottom: '56px'
       }}>
-          <motion.a href="#"  whileHover={{
+          <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openFundingModal')); }} whileHover={{
           scale: 1.04,
           boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
         }} whileTap={{
@@ -1130,7 +1131,7 @@ const HeroSection = () => {
           boxShadow: '0 8px 36px rgba(222,50,45,0.55), 0 2px 8px rgba(222,50,45,0.3)',
           transition: 'box-shadow 0.3s ease'
         }}>
-            <span>Apply for Accreditation</span>
+            <span>Apply Now</span>
             <ArrowIconDark />
           </motion.a>
           <motion.a href="#"  whileHover={{
@@ -2063,7 +2064,7 @@ const RegistrationSection = () => {
             }}>
                 Attendance is strictly by confirmed invitation and accreditation only. Due to the exclusive nature of the gala, space is limited to 150 distinguished guests.
               </p>
-              <motion.a href="#"  whileHover={{
+              <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openFundingModal')); }} whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.6)'
             }} whileTap={{
@@ -2085,37 +2086,10 @@ const RegistrationSection = () => {
               boxShadow: '0 4px 20px rgba(222,50,45,0.4)',
               marginBottom: '12px'
             }}>
-                <span>Request Accreditation</span>
+                <span>Apply Now</span>
                 <ArrowIconDark />
               </motion.a>
-              <motion.a href="/about"  whileHover={{
-              scale: 1.04
-            }} whileTap={{
-              scale: 0.97
-            }} style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              border: '1px solid rgba(247,246,243,0.18)',
-              borderRadius: '44px',
-              padding: '16px 28px',
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: '13px',
-              color: 'rgba(247,246,243,0.65)',
-              textDecoration: 'none',
-              transition: 'border-color 0.25s ease, color 0.25s ease'
-            }} onMouseEnter={e => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.4)';
-              el.style.color = '#F7F6F3';
-            }} onMouseLeave={e => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.18)';
-              el.style.color = 'rgba(247,246,243,0.65)';
-            }}>
-                <span>Learn More</span>
-              </motion.a>
+
             </div>
           </motion.div>
         </div>
@@ -2328,7 +2302,7 @@ const SiteFooter = () => {
             gap: '12px',
             minWidth: isMobile ? '100%' : '260px'
           }}>
-              <motion.a href="#"  whileHover={{
+              <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openFundingModal')); }} whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2349,7 +2323,7 @@ const SiteFooter = () => {
               fontWeight: 600,
               boxShadow: '0 8px 40px rgba(222,50,45,0.5)'
             }}>
-                <span>Apply for Accreditation</span>
+                <span>Apply Now</span>
                 <ArrowIconDark />
               </motion.a>
               <motion.a href="/partnerships"  whileHover={{
@@ -2757,35 +2731,7 @@ const StickyRegistrationBanner = () => {
                 <span>Apply Now</span>
                 <ArrowIconDark />
               </motion.a>
-              {!isMobile && <motion.a href="/about" whileHover={{
-            scale: 1.04
-          }} whileTap={{
-            scale: 0.97
-          }} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            border: '1px solid rgba(247,246,243,0.22)',
-            borderRadius: '44px',
-            padding: '11px 20px',
-            fontSize: '12px',
-            letterSpacing: '0.04em',
-            color: 'rgba(247,246,243,0.75)',
-            textDecoration: 'none',
-            fontFamily: 'Montserrat, sans-serif',
-            whiteSpace: 'nowrap',
-            transition: 'border-color 0.25s ease, color 0.25s ease'
-          }} onMouseEnter={e => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.borderColor = 'rgba(247,246,243,0.5)';
-            el.style.color = '#F7F6F3';
-          }} onMouseLeave={e => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.borderColor = 'rgba(247,246,243,0.22)';
-            el.style.color = 'rgba(247,246,243,0.75)';
-          }}>
-                  <span>Learn More</span>
-                </motion.a>}
+
             </div>
             <button onClick={() => setDismissed(true)} aria-label="Dismiss registration banner" style={{
           flexShrink: 0,
@@ -2810,6 +2756,14 @@ const StickyRegistrationBanner = () => {
 
 // ─── FundingAwardsPage ────────────────────────────────────────────────────────
 export const FundingAwardsPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setIsModalOpen(true);
+    window.addEventListener('openFundingModal', handleOpen);
+    return () => window.removeEventListener('openFundingModal', handleOpen);
+  }, []);
+
   return <div style={{
     width: '100%',
     minHeight: '100vh',
@@ -2825,5 +2779,6 @@ export const FundingAwardsPage = () => {
       <RegistrationSection />
       <ClosingQuoteSection />
       <StickyRegistrationBanner />
+      <FundingAwardsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>;
 };
