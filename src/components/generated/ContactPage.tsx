@@ -1734,8 +1734,6 @@ const ContactDetailsSection = () => {
 // ─── Inquiry Form Section ─────────────────────────────────────────────────────
 type FormData = {
   name: string;
-  organization: string;
-  role: string;
   email: string;
   pathway: string;
   message: string;
@@ -1786,8 +1784,6 @@ const InquiryFormSection = () => {
   const isTablet = useIsTablet();
   const [formData, setFormData] = useState<FormData>({
     name: '',
-    organization: '',
-    role: '',
     email: '',
     pathway: '',
     message: ''
@@ -2017,21 +2013,6 @@ const InquiryFormSection = () => {
                   <div>
                     <label htmlFor="contact-name" style={labelStyle}>Full Name</label>
                     <input id="contact-name" type="text" placeholder="Your full name" value={formData.name} onChange={e => handleChange('name', e.target.value)} onFocus={() => setFocused('name')} onBlur={() => setFocused(null)} required style={inputStyle('name')} />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-org" style={labelStyle}>Organisation</label>
-                    <input id="contact-org" type="text" placeholder="Company or organisation" value={formData.organization} onChange={e => handleChange('organization', e.target.value)} onFocus={() => setFocused('organization')} onBlur={() => setFocused(null)} style={inputStyle('organization')} />
-                  </div>
-                </div>
-
-                <div style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-              gap: '14px'
-            }}>
-                  <div>
-                    <label htmlFor="contact-role" style={labelStyle}>Role / Title</label>
-                    <input id="contact-role" type="text" placeholder="e.g. Founder, Investor, CMO" value={formData.role} onChange={e => handleChange('role', e.target.value)} onFocus={() => setFocused('role')} onBlur={() => setFocused(null)} style={inputStyle('role')} />
                   </div>
                   <div>
                     <label htmlFor="contact-email" style={labelStyle}>Email Address</label>
