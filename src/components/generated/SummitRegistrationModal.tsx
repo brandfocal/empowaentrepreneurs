@@ -23,7 +23,6 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
   const [org, setOrg] = useState('');
   const [email, setEmail] = useState('');
   const [jobTitle, setJobTitle] = useState('');
-  const [selectedTicket, setSelectedTicket] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   
@@ -135,21 +134,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                       <input id="modal-title" type="text" value={jobTitle} onChange={e => setJobTitle(e.target.value)} placeholder="e.g. Founder, CEO" style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
                     </div>
                   </div>
-                  <div>
-                    <label htmlFor="modal-ticket" style={labelStyle}>Ticket Type</label>
-                    <div style={{ position: 'relative' }}>
-                      <select id="modal-ticket" value={selectedTicket} onChange={e => setSelectedTicket(e.target.value)} style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: selectedTicket ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }}>
-                        <option value="" style={{ background: '#0f1c28', color: 'rgba(247,246,243,0.4)' }}>Select ticket type</option>
-                        <option value="founder" style={{background:'#0f1c28',color:'#F7F6F3'}}>Founder Pass</option>
-                        <option value="investor" style={{background:'#0f1c28',color:'#F7F6F3'}}>Investor / DFI Pass</option>
-                        <option value="general" style={{background:'#0f1c28',color:'#F7F6F3'}}>General Attendee</option>
-                        <option value="vip" style={{background:'#0f1c28',color:'#F7F6F3'}}>VIP Access</option>
-                      </select>
-                      <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                      </div>
-                    </div>
-                  </div>
+
                   <div>
                     <label htmlFor="modal-requests" style={labelStyle}>Dietary / Special Requests</label>
                     <textarea id="modal-requests" value={message} onChange={e => setMessage(e.target.value)} placeholder="Any specific requirements or comments..." rows={2} style={{ ...inputStyle, resize: 'none', lineHeight: '1.6' }} onFocus={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
