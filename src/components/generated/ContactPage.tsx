@@ -247,7 +247,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
                 <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -1107,7 +1107,7 @@ const EngagementSection = () => {
                       {item.title}
                     </div>
                     <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
@@ -1209,7 +1209,7 @@ const EngagementSection = () => {
                   border: '1px solid rgba(222,50,45,0.28)',
                   borderRadius: '44px',
                   padding: '5px 14px',
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
@@ -1648,7 +1648,7 @@ const ContactDetailsSection = () => {
                   {block.icon}
                 </div>
                 <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -1686,7 +1686,7 @@ const ContactDetailsSection = () => {
             border: `1px solid ${block.accent ? 'rgba(255,255,255,0.2)' : 'rgba(222,50,45,0.25)'}`,
             borderRadius: '44px',
             padding: '5px 12px',
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '10px',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -2275,7 +2275,7 @@ const InquiryFormSection = () => {
             gap: '10px'
           }}>
               <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -2337,7 +2337,7 @@ const InquiryFormSection = () => {
               gap: '12px'
             }}>
                 <span style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',

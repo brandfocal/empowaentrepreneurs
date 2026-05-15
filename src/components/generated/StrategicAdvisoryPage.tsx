@@ -305,7 +305,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
                 <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase' as const,
@@ -951,7 +951,7 @@ const HeroSection = () => {
             display: 'block'
           }} />
             <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase' as const,
@@ -978,7 +978,7 @@ const HeroSection = () => {
             display: 'block'
           }} />
             <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase' as const,
@@ -1152,7 +1152,7 @@ const IntroSection = () => {
             }}>{stat.sub}</span>}
               </div>
               <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             color: 'rgba(247,246,243,0.35)',
             letterSpacing: '0.08em',

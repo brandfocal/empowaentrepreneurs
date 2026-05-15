@@ -1014,7 +1014,7 @@ const EligibilitySection = () => {
           }}>
                 <div>
                   <span style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '11px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
@@ -1322,7 +1322,7 @@ const PathwaysSection = () => {
             padding: isMobile ? '24px 20px' : '40px 32px'
           }}>
                 <div style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -2170,7 +2170,7 @@ const LocationFooterBand = () => {
               boxShadow: '0 2px 12px rgba(20,18,16,0.04)'
             }}>
                   <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
@@ -2342,7 +2342,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
                 <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',

@@ -311,7 +311,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
                 <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -989,7 +989,7 @@ const HeroSection = () => {
                   {stat.value}
                 </span>
                 <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
@@ -1223,7 +1223,7 @@ const PillarsSection = () => {
             padding: cardPad
           }}>
                 <div style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -1519,7 +1519,7 @@ const EligibilitySection = () => {
               marginBottom: '24px'
             }}>
                   <span style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
@@ -1639,7 +1639,7 @@ const EligibilitySection = () => {
                 marginBottom: '10px'
               }}>
                     <span style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '9px',
                   letterSpacing: '0.14em',
                   textTransform: 'uppercase',
@@ -2023,7 +2023,7 @@ const ExperienceSection = () => {
                   marginBottom: '8px'
                 }}>
                       <span style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Montserrat, sans-serif',
                     fontSize: '10px',
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
@@ -2033,7 +2033,7 @@ const ExperienceSection = () => {
                         {item.index}
                       </span>
                       <span style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Montserrat, sans-serif',
                     fontSize: '9px',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
@@ -2449,7 +2449,7 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
                 minWidth: 0
               }}>
                     <div style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '9px',
                   letterSpacing: '0.14em',
                   textTransform: 'uppercase',
@@ -2517,7 +2517,7 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
           paddingLeft: i === 0 && !isMobile ? '0' : undefined
         }}>
               <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
             textTransform: 'uppercase',
@@ -3148,7 +3148,7 @@ const PitchApplicationModal = ({
                   boxShadow: '0 0 8px rgba(222,50,45,0.5)'
                 }} />
                 <span style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.14em',
                   textTransform: 'uppercase',

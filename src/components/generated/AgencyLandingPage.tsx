@@ -343,7 +343,7 @@ const CountdownTimer = () => {
         </div>
       </div>
       {i < 3 && <span style={{
-        fontFamily: 'Inter, sans-serif',
+        fontFamily: 'Montserrat, sans-serif',
         fontSize: 'clamp(18px, 2vw, 28px)',
         color: 'rgba(222,50,45,0.6)',
         fontWeight: 200,
@@ -795,7 +795,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
           <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -1109,7 +1109,7 @@ const HeroSection = () => {
               gap: '2px'
             }}>
               <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
@@ -1117,7 +1117,7 @@ const HeroSection = () => {
                 fontWeight: 600
               }}>Summit Countdown</div>
               <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -1373,7 +1373,7 @@ const MissionBand = () => {
               paddingRight: isMobile ? '12px' : '24px'
             }}>
               <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
@@ -1493,7 +1493,7 @@ const LogoBanner = () => {
         fontSize: '11px',
         letterSpacing: '0.1em',
         color: 'rgba(20,18,16,0.5)',
-        fontFamily: 'Inter, sans-serif',
+        fontFamily: 'Montserrat, sans-serif',
         whiteSpace: 'nowrap'
       }}>Ecosystem Partners</span>
     </div>}
@@ -1706,7 +1706,7 @@ const ProcessSection = () => {
             position: 'absolute',
             top: '24px',
             left: '28px',
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -2003,7 +2003,7 @@ const AccordionSection = () => {
             padding: isMobile ? '28px 24px' : '48px 36px'
           }}>
             <div style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -2283,7 +2283,7 @@ const ProjectModal = ({
           alignItems: 'center'
         }}>
           <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '10px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -2295,7 +2295,7 @@ const ProjectModal = ({
             fontWeight: 500
           }}>{project.index}</span>
           <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '10px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
@@ -2376,7 +2376,7 @@ const ProjectModal = ({
             minWidth: isMobile ? '120px' : '140px'
           }}>
             <div style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
@@ -2413,7 +2413,7 @@ const ProjectModal = ({
               <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 7L7 1M7 1H2M7 1V6" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </div>
             <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
@@ -2869,7 +2869,7 @@ const StatsSection = () => {
                 boxShadow: '0 0 8px rgba(222,50,45,0.7)'
               }} />
               <span style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
@@ -2918,7 +2918,7 @@ const StatsSection = () => {
               background: 'rgba(247,246,243,0.03)'
             }}>
               <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
@@ -3629,7 +3629,7 @@ const DarkCtaSection = () => {
           paddingLeft: !isMobile && i === 0 ? '0' : undefined
         }}>
           <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
             textTransform: 'uppercase',

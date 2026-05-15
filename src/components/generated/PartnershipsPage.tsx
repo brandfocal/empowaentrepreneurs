@@ -269,7 +269,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
           <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -653,7 +653,7 @@ const HeroSection = () => {
       }}>
         <PlusSquareIconLight />
         <span style={{
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Montserrat, sans-serif',
           color: 'rgba(247,246,243,0.38)',
           fontSize: isMobile ? '10px' : '11px',
           letterSpacing: '0.14em',
@@ -1151,7 +1151,7 @@ const PartnershipTiersSection = () => {
       }}>
         <PlusSquareIconLight />
         <span style={{
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Montserrat, sans-serif',
           fontSize: '11px',
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
@@ -1169,7 +1169,7 @@ const PartnershipTiersSection = () => {
         <div>
           {/* h2 heading — matched to WhyPartner style: Inter / weight 200 / -2px tracking / 1.04 lh */}
           <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: headingSize,
             fontWeight: 200,
             letterSpacing: '-2px',
@@ -1383,7 +1383,7 @@ const PartnershipTiersSection = () => {
                 }}>
                     <div>
                       <div style={{
-                      fontFamily: 'Inter, sans-serif',
+                      fontFamily: 'Montserrat, sans-serif',
                       fontSize: '10px',
                       letterSpacing: '0.18em',
                       textTransform: 'uppercase',
@@ -1549,7 +1549,7 @@ const PartnershipTiersSection = () => {
                   flexWrap: 'wrap'
                 }}>
                     <span style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Montserrat, sans-serif',
                     fontSize: '9px',
                     letterSpacing: '0.15em',
                     textTransform: 'uppercase',
@@ -1594,7 +1594,7 @@ const PartnershipTiersSection = () => {
               marginBottom: '40px'
             }}>
                 <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
@@ -1748,7 +1748,7 @@ const PartnershipTiersSection = () => {
               flexWrap: 'wrap'
             }}>
                 <span style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
@@ -1850,7 +1850,7 @@ const SpecialisedPackagesSection = () => {
         }}>
           <PlusSquareIconDark />
           <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -1867,7 +1867,7 @@ const SpecialisedPackagesSection = () => {
           <div>
             {/* h2 heading — matched to WhyPartner style: Inter / weight 200 / -2px tracking / 1.04 lh */}
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: headingSize,
               fontWeight: 200,
               letterSpacing: '-2px',
@@ -2019,7 +2019,7 @@ const SpecialisedPackagesSection = () => {
                   {SP_ICONS_LIGHT[i]}
                 </div>
                 <span style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.16em',
                   textTransform: 'uppercase',
@@ -2035,7 +2035,7 @@ const SpecialisedPackagesSection = () => {
                 marginBottom: '-4px'
               }}>
                 <span style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.16em',
                   textTransform: 'uppercase',
@@ -2139,7 +2139,7 @@ const SpecialisedPackagesSection = () => {
                 borderTop: '1px solid rgba(20,18,16,0.07)'
               }}>
                 <span style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '9px',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
@@ -2220,7 +2220,7 @@ const WhyPartnerSection = () => {
           }}>
             <PlusSquareIconDark />
             <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -2232,7 +2232,7 @@ const WhyPartnerSection = () => {
             overflow: 'hidden'
           }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: headingSize,
               fontWeight: 200,
               letterSpacing: '-2px',
@@ -2393,7 +2393,7 @@ const CtaSection = () => {
       }}>
         <PlusSquareIconLight />
         <span style={{
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Montserrat, sans-serif',
           fontSize: '11px',
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
@@ -2546,7 +2546,7 @@ const CtaSection = () => {
           paddingLeft: !isMobile && i === 0 ? '0' : undefined
         }}>
           <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
             textTransform: 'uppercase',

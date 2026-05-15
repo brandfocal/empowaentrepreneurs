@@ -301,7 +301,7 @@ const ProgrammeTicker = ({
             display: 'block'
           }} />
                 <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -1108,7 +1108,7 @@ const StagesSection = () => {
             padding: isMobile ? '24px 20px' : '32px 28px'
           }}>
                 <div style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.16em',
               textTransform: 'uppercase',
@@ -1152,7 +1152,7 @@ const StagesSection = () => {
                   borderRadius: '1px'
                 }} />
                       <p style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '11px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1386,7 +1386,7 @@ const ExperienceBlock = ({
             padding: '6px 14px'
           }}>
               <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
@@ -1405,7 +1405,7 @@ const ExperienceBlock = ({
       }}>
           <div style={{
           display: 'inline-block',
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Montserrat, sans-serif',
           fontSize: '10px',
           letterSpacing: '0.16em',
           textTransform: 'uppercase',
@@ -1423,7 +1423,7 @@ const ExperienceBlock = ({
           lineHeight: 1.1
         }}>{exp.title}</h3>
           <p style={{
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           fontWeight: 600,
           color: 'rgba(20,18,16,0.45)',
@@ -1688,7 +1688,7 @@ const ZonesSection = () => {
               textAlign: 'left'
             }}>
                   <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -1786,7 +1786,7 @@ const ZonesSection = () => {
                   </div>
                   <div>
                     <div style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Montserrat, sans-serif',
                     fontSize: '10px',
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
@@ -2027,7 +2027,7 @@ const ProgrammeCtaSection = () => {
               padding: '16px 18px'
             }}>
                   <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
@@ -2152,7 +2152,7 @@ const ProgrammeCtaSection = () => {
             marginBottom: '6px'
           }}>{item.value}</div>
               <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.08em',
             textTransform: 'uppercase',

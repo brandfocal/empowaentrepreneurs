@@ -308,7 +308,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
                 <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -1163,7 +1163,7 @@ const MissionSection = () => {
               paddingRight: isMobile ? '12px' : '24px'
             }}>
                   <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
@@ -1656,7 +1656,7 @@ const FoundersSection = () => {
                     border: '1px solid rgba(222,50,45,0.3)',
                     borderRadius: '44px',
                     padding: '4px 12px',
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Montserrat, sans-serif',
                     fontSize: '10px',
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
@@ -1792,7 +1792,7 @@ const FoundersSection = () => {
                       {card.title}
                     </div>
                     <div style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '11px',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -1869,7 +1869,7 @@ const FoundersSection = () => {
                 border: '1px solid rgba(222,50,45,0.3)',
                 borderRadius: '44px',
                 padding: '3px 10px',
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -1955,7 +1955,7 @@ const FoundersSection = () => {
                 <span>{inView ? countDisplay : `0${stat.suffix}`}</span>
               </div>
               <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '10px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -2345,7 +2345,7 @@ const CapitalPartnersSection = () => {
                 <span>{stat.number}</span>
               </div>
               <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '10px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',

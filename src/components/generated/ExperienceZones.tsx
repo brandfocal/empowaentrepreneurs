@@ -284,7 +284,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
                 <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -1133,7 +1133,7 @@ const ZoneCard = ({
             boxShadow: isPremium ? '0 0 8px rgba(180,160,255,0.7)' : '0 0 8px rgba(222,50,45,0.7)'
           }} />
               <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '10px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
@@ -1206,7 +1206,7 @@ const ZoneCard = ({
           marginBottom: '28px'
         }}>
             <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.16em',
             textTransform: 'uppercase',
@@ -1228,7 +1228,7 @@ const ZoneCard = ({
           {/* Theme tag */}
           <div style={{
           display: 'inline-block',
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Montserrat, sans-serif',
           fontSize: '10px',
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
@@ -1274,7 +1274,7 @@ const ZoneCard = ({
           marginBottom: '32px'
         }}>
             <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
             textTransform: 'uppercase',
@@ -1807,7 +1807,7 @@ const ZoneNavigator = () => {
           (e.currentTarget as HTMLAnchorElement).style.background = zone.variant === 'prestige' ? 'rgba(20,8,8,0.85)' : zone.variant === 'premium' ? 'rgba(12,10,22,0.85)' : 'rgba(15,28,40,0.85)';
         }}>
               <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
             textTransform: 'uppercase',

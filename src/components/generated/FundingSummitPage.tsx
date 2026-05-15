@@ -304,7 +304,7 @@ const HeroTicker = ({
             display: 'block'
           }} />
           <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -744,7 +744,7 @@ const HeroSection = () => {
       }}>
         <PlusSquareIconLight />
         <span style={{
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Montserrat, sans-serif',
           color: 'rgba(247,246,243,0.38)',
           fontSize: isMobile ? '10px' : '11px',
           letterSpacing: '0.14em',
@@ -990,7 +990,7 @@ const HeroSection = () => {
               lineHeight: 1
             }}>{stat.value}</span>
             <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
@@ -1105,7 +1105,7 @@ const EventLogisticsSection = () => {
           }}>
             <PlusSquareIconDark />
             <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -1117,7 +1117,7 @@ const EventLogisticsSection = () => {
             overflow: 'hidden'
           }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: headingSize,
               fontWeight: 200,
               letterSpacing: isMobile ? '-1.5px' : '-2px',
@@ -1165,7 +1165,7 @@ const EventLogisticsSection = () => {
             borderBottom: '1px solid rgba(20,18,16,0.08)'
           }}>
             <div style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -1296,7 +1296,7 @@ const ExperienceZonesSection = () => {
         }}>
           <PlusSquareIconLight />
           <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -1308,7 +1308,7 @@ const ExperienceZonesSection = () => {
           overflow: 'hidden'
         }}>
           <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: headingSize,
             fontWeight: 200,
             letterSpacing: isMobile ? '-1.5px' : '-2.5px',
@@ -1396,7 +1396,7 @@ const ExperienceZonesSection = () => {
             }}>{zone.index}</div>
             <div>
               <span style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
@@ -1532,7 +1532,7 @@ const CapitalForceSection = () => {
           }}>
             <PlusSquareIconDark />
             <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -1544,7 +1544,7 @@ const CapitalForceSection = () => {
             overflow: 'hidden'
           }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: headingSize,
               fontWeight: 200,
               letterSpacing: isMobile ? '-1.5px' : '-2px',
@@ -1614,7 +1614,7 @@ const CapitalForceSection = () => {
               transition: 'background 0.45s ease'
             }} />
             <div style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.16em',
               textTransform: 'uppercase',
@@ -1724,7 +1724,7 @@ const EligibilitySection = () => {
           }}>
             <PlusSquareIconLight />
             <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -1736,7 +1736,7 @@ const EligibilitySection = () => {
             overflow: 'hidden'
           }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: headingSize,
               fontWeight: 200,
               letterSpacing: isMobile ? '-1.5px' : '-2.5px',
@@ -1810,7 +1810,7 @@ const EligibilitySection = () => {
               marginBottom: '24px'
             }}>
               <span style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
@@ -2057,7 +2057,7 @@ const CtaBannerSection = () => {
       }}>
         <PlusSquareIconLight />
         <span style={{
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Montserrat, sans-serif',
           fontSize: '11px',
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
@@ -2487,7 +2487,7 @@ const CtaBannerSection = () => {
           paddingLeft: !isMobile && i === 0 ? '0' : undefined
         }}>
           <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
             textTransform: 'uppercase',
@@ -3237,7 +3237,7 @@ const PastSpeakersSection = () => {
           }}>
             <PlusSquareIconDark />
             <span style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -3479,7 +3479,7 @@ const PastSpeakersSection = () => {
                   border: `1px solid ${speaker.accentColor}44`,
                   borderRadius: '100px',
                   padding: '4px 10px',
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
@@ -3529,7 +3529,7 @@ const PastSpeakersSection = () => {
               }}>
                 <div>
                   <h3 style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Montserrat, sans-serif',
                     fontSize: isMobile ? '16px' : '19px',
                     fontWeight: 500,
                     letterSpacing: '-0.4px',
@@ -3562,7 +3562,7 @@ const PastSpeakersSection = () => {
                   padding: '10px 14px'
                 }}>
                   <div style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Montserrat, sans-serif',
                     fontSize: '10px',
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',

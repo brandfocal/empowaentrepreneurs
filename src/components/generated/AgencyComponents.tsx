@@ -183,7 +183,7 @@ export const VideoBanner = () => {
         }}>
             <PlusSquareIconLight />
             <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -195,7 +195,7 @@ export const VideoBanner = () => {
           overflow: 'hidden'
         }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? 'clamp(28px, 8vw, 42px)' : 'clamp(32px, 4vw, 58px)',
             fontWeight: 300,
             letterSpacing: '-1.8px',
@@ -314,7 +314,7 @@ export const VideoBanner = () => {
             lineHeight: 1
           }}>{stat.value}</div>
               <div style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
@@ -509,7 +509,7 @@ export const SpeakerCarousel = () => {
         }}>
             <PlusSquareIcon />
             <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -521,7 +521,7 @@ export const SpeakerCarousel = () => {
           overflow: 'hidden'
         }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? 'clamp(32px, 9vw, 52px)' : 'clamp(48px, 5.5vw, 88px)',
             fontWeight: 200,
             letterSpacing: isMobile ? '-1.5px' : '-3px',
@@ -765,7 +765,7 @@ export const SpeakerCarousel = () => {
                 border: `1px solid ${speaker.accentColor}44`,
                 borderRadius: '100px',
                 padding: '4px 12px',
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -792,7 +792,7 @@ export const SpeakerCarousel = () => {
             }}>
                     <div>
                       <h3 style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '19px',
                   fontWeight: 500,
                   letterSpacing: '-0.4px',
@@ -819,7 +819,7 @@ export const SpeakerCarousel = () => {
                 padding: '10px 14px'
               }}>
                       <div style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Montserrat, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
@@ -1121,7 +1121,7 @@ export const AgendaTimeline = () => {
         }}>
             <PlusSquareIcon />
             <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -1133,7 +1133,7 @@ export const AgendaTimeline = () => {
           overflow: 'hidden'
         }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? 'clamp(28px, 8vw, 42px)' : 'clamp(32px, 4vw, 58px)',
             fontWeight: 300,
             letterSpacing: '-1.8px',
@@ -1169,7 +1169,7 @@ export const AgendaTimeline = () => {
           boxShadow: '0 8px 32px rgba(20,18,16,0.14)'
         }}>
             <span style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
@@ -1320,7 +1320,7 @@ export const AgendaTimeline = () => {
                         border: `1px solid ${typeConfig.color}33`,
                         borderRadius: '100px',
                         padding: '3px 10px',
-                        fontFamily: 'Inter, sans-serif',
+                        fontFamily: 'Montserrat, sans-serif',
                         fontSize: '10px',
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
@@ -1332,7 +1332,7 @@ export const AgendaTimeline = () => {
                         border: '1px solid rgba(222,50,45,0.18)',
                         borderRadius: '100px',
                         padding: '3px 10px',
-                        fontFamily: 'Inter, sans-serif',
+                        fontFamily: 'Montserrat, sans-serif',
                         fontSize: '10px',
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
@@ -1359,7 +1359,7 @@ export const AgendaTimeline = () => {
                         </div>
                       </div>
                       <h3 style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Montserrat, sans-serif',
                     fontSize: isMobile ? '16px' : session.featured ? '20px' : '17px',
                     fontWeight: session.featured ? 500 : 400,
                     letterSpacing: '-0.3px',
