@@ -46,6 +46,7 @@ export const PartnershipEnquiryModal = ({ onClose }: { onClose: () => void }) =>
           input_1: name,
           input_3: org,
           input_4: email,
+          input_5: selectedCategory,
           input_6: message
         }),
       });
