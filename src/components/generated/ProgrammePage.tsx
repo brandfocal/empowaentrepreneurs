@@ -826,7 +826,7 @@ const ProgrammeHero = () => {
         gap: '12px',
         flexWrap: 'wrap'
       }}>
-          <motion.a href="#"  whileHover={{
+          <motion.a href="#stages"  whileHover={{
           scale: 1.04,
           boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
         }} whileTap={{
@@ -971,7 +971,7 @@ const StagesSection = () => {
   });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const isMobile = useIsMobile();
-  return <section ref={sectionRef} style={{
+  return <section id="stages" ref={sectionRef} style={{
     background: '#0f1c28',
     paddingTop: isMobile ? '96px' : '144px',
     paddingBottom: isMobile ? '80px' : '120px',
@@ -1067,8 +1067,7 @@ const StagesSection = () => {
           borderRadius: '20px',
           overflow: 'hidden',
           position: 'relative',
-          minHeight: isMobile ? '280px' : '560px',
-          cursor: 'pointer'
+          minHeight: isMobile ? '280px' : '560px'
         }}>
               <img src={stage.imageSrc} alt={stage.imageAlt} style={{
             position: 'absolute',
@@ -1472,7 +1471,8 @@ const ExperienceBlock = ({
           padding: '6px 14px'
         }}>{tag}</span>)}
         </div>
-        <motion.a href="#"  whileHover={{
+        {idx === 1 && (
+        <motion.a href="/summit"  whileHover={{
         scale: 1.04
       }} whileTap={{
         scale: 0.97
@@ -1493,6 +1493,7 @@ const ExperienceBlock = ({
       }}>
           <span>Reserve Your Seat</span><ArrowIconDark />
         </motion.a>
+        )}
       </motion.div>
     </div>;
 };
@@ -1657,7 +1658,7 @@ const ZonesSection = () => {
           gap: '10px',
           flexWrap: isMobile ? 'wrap' : 'nowrap'
         }}>
-            {ZONES.map((zone, i) => <motion.button key={zone.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1}  style={{
+            {ZONES.map((zone, i) => <motion.button key={zone.id} onClick={() => setActiveZone(zone.id)} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1}  style={{
             all: 'unset',
             cursor: 'pointer',
             display: 'flex',
@@ -1843,27 +1844,6 @@ const ZonesSection = () => {
                   }}>{service}</span>
                     </div>)}
                 </div>
-                <motion.a href="#"  whileHover={{
-                scale: 1.04
-              }} whileTap={{
-                scale: 0.97
-              }} style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: `linear-gradient(135deg, ${activeZoneData.accent}, ${activeZoneData.accent}cc)`,
-                borderRadius: '44px',
-                padding: '13px 26px',
-                fontSize: '12px',
-                letterSpacing: '0.06em',
-                color: '#fff',
-                textDecoration: 'none',
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 600,
-                boxShadow: `0 6px 24px ${activeZoneData.accent}55`
-              }}>
-                  <span>Access This Zone</span><ArrowIconDark />
-                </motion.a>
               </div>
             </motion.div>
           </AnimatePresence>
