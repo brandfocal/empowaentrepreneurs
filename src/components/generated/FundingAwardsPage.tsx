@@ -2707,7 +2707,7 @@ const StickyRegistrationBanner = () => {
           flexShrink: 0,
           flexWrap: 'nowrap'
         }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openFundingModal')); }} whileHover={{
             scale: 1.04,
             boxShadow: '0 8px 32px rgba(222,50,45,0.55)'
           }} whileTap={{
