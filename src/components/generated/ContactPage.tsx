@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { StrategicEnquiryModal } from './StrategicEnquiryModal';
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -1776,23 +1775,16 @@ const InquiryFormSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
-  const { executeRecaptcha } = useGoogleReCaptcha();
   const handleChange = (field: keyof FormData, value: string) => setFormData(prev => ({
     ...prev,
     [field]: value
   }));
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!executeRecaptcha) {
-      setError('Security verification is loading. Please wait a moment and try again.');
-      return;
-    }
     setIsSubmitting(true);
     setError(null);
 
     try {
-      const recaptchaToken = await executeRecaptcha('contact_form');
-
       const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/1/submissions', {
         method: 'POST',
         headers: {
@@ -1803,8 +1795,7 @@ const InquiryFormSection = () => {
           "input_3_6": formData.lastName,
           "input_5": formData.email,
           "input_23": formData.subject,
-          "input_24": formData.message,
-          "g-recaptcha-response": recaptchaToken
+          "input_24": formData.message
         })
       });
       
@@ -3099,16 +3090,14 @@ const SiteFooter = () => {
 
 // ─── ContactPage ──────────────────────────────────────────────────────────────
 export const ContactPage = () => {
-  return <GoogleReCaptchaProvider reCaptchaKey="6LfZiggpAAAAACLC33h_h2jpw-YwDHMAHlTT08r-">
-      <div className="w-full min-h-screen" style={{
-        background: '#141210'
-      }}>
-        <ContactHero />
-        <EngagementSection />
-        <ContactDetailsSection />
-        <InquiryFormSection />
-        <CTABand />
-        <StrategicEnquiryModal />
-      </div>
-    </GoogleReCaptchaProvider>;
+  return <div className="w-full min-h-screen" style={{
+    background: '#141210'
+  }}>
+      <ContactHero />
+      <EngagementSection />
+      <ContactDetailsSection />
+      <InquiryFormSection />
+      <CTABand />
+      <StrategicEnquiryModal />
+    </div>;
 };
