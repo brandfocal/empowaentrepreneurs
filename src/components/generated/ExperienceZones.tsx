@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ZoneExperienceModal } from './ZoneExperienceModal';
-
+import { NewsletterForm } from './NewsletterForm';
 // ─── Noise texture ──────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
 
@@ -2319,58 +2319,7 @@ const SiteFooter = () => {
             letterSpacing: '0.02em'
           }}>Summit updates, speaker reveals, and registration news.</div>
         </div>
-        <div style={{
-          display: 'flex',
-          gap: '8px',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          width: isMobile ? '100%' : 'auto'
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            background: 'rgba(247,246,243,0.04)',
-            border: '1px solid rgba(247,246,243,0.08)',
-            borderRadius: '4px',
-            padding: '12px 18px',
-            gap: '10px',
-            flex: isMobile ? '1' : 'none',
-            minWidth: isMobile ? '0' : '240px'
-          }}>
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-              <rect x="1" y="3" width="12" height="9" rx="1.5" stroke="rgba(247,246,243,0.2)" strokeWidth="1.2" />
-              <path d="M1 5l6 4 6-4" stroke="rgba(247,246,243,0.2)" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-            <span style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '12px',
-              color: 'rgba(247,246,243,0.15)',
-              letterSpacing: '0.02em'
-            }}>Your email address</span>
-          </div>
-          <motion.button whileHover={{
-            scale: 1.04
-          }} whileTap={{
-            scale: 0.97
-          }} style={{
-            background: 'linear-gradient(135deg, #DE322D, #c42823)',
-            border: 'none',
-            borderRadius: '4px',
-            padding: '12px 24px',
-            fontFamily: 'Montserrat, sans-serif',
-            fontSize: '11px',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            color: '#fff',
-            cursor: 'pointer',
-            fontWeight: 700,
-            whiteSpace: 'nowrap',
-            boxShadow: '0 4px 20px rgba(222,50,45,0.35)',
-            width: isMobile ? '100%' : 'auto'
-          }}>
-            Subscribe
-          </motion.button>
-        </div>
+        <NewsletterForm variant="square" isMobile={isMobile} />
       </div>
       <div style={{
         display: 'flex',

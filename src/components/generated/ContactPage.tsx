@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { StrategicEnquiryModal } from './StrategicEnquiryModal';
+import { NewsletterForm } from './NewsletterForm';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -2352,61 +2353,7 @@ const InquiryFormSection = () => {
               }}>
                   Get programme updates, speaker announcements, and exclusive pre-summit insights.
                 </p>
-                <div style={{
-                  display: 'flex',
-                  gap: '8px',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  width: '100%',
-                  marginTop: '4px'
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    background: 'rgba(255,255,255,0.1)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: '44px',
-                    padding: '10px 16px',
-                    gap: '10px',
-                    flex: '1',
-                    minWidth: '0'
-                  }}>
-                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                      <rect x="1" y="3" width="12" height="9" rx="1.5" stroke="rgba(247,246,243,0.5)" strokeWidth="1.2" />
-                      <path d="M1 5l6 4 6-4" stroke="rgba(247,246,243,0.5)" strokeWidth="1.2" strokeLinecap="round" />
-                    </svg>
-                    <input type="email" placeholder="Your email address" style={{
-                      background: 'transparent',
-                      border: 'none',
-                      outline: 'none',
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '12px',
-                      color: '#F7F6F3',
-                      width: '100%'
-                    }} />
-                  </div>
-                  <motion.button whileHover={{
-                    scale: 1.04
-                  }} whileTap={{
-                    scale: 0.97
-                  }} style={{
-                    background: '#F7F6F3',
-                    border: 'none',
-                    borderRadius: '44px',
-                    padding: '10px 20px',
-                    fontFamily: 'Montserrat, sans-serif',
-                    fontSize: '11px',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    color: '#DE322D',
-                    cursor: 'pointer',
-                    fontWeight: 700,
-                    whiteSpace: 'nowrap',
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
-                  }}>
-                    Subscribe
-                  </motion.button>
-                </div>
+                <NewsletterForm variant="pill" isMobile={isMobile} />
               </div>
             </div>
           </motion.div>
