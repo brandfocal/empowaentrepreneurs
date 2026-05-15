@@ -1735,28 +1735,9 @@ const ContactDetailsSection = () => {
 type FormData = {
   name: string;
   email: string;
-  pathway: string;
+  subject: string;
   message: string;
 };
-const PATHWAY_OPTIONS = [{
-  value: '',
-  label: 'Select Engagement Pathway'
-}, {
-  value: 'strategic',
-  label: 'Strategic Partnership'
-}, {
-  value: 'investor',
-  label: 'Investor Relations'
-}, {
-  value: 'founder',
-  label: 'Entrepreneurial Growth'
-}, {
-  value: 'media',
-  label: 'Media & Press'
-}, {
-  value: 'general',
-  label: 'General Inquiry'
-}];
 const RESPONSE_TIMES = [{
   id: 'rt-1',
   label: 'Strategic Partnership',
@@ -1785,7 +1766,7 @@ const InquiryFormSection = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    pathway: '',
+    subject: '',
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -1816,7 +1797,7 @@ const InquiryFormSection = () => {
           "3.3": firstName,
           "3.6": lastName,
           "5": formData.email,
-          "23": formData.pathway,
+          "23": formData.subject,
           "24": formData.message
         })
       });
@@ -2021,37 +2002,8 @@ const InquiryFormSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="contact-pathway" style={labelStyle}>Engagement Pathway</label>
-                  <div style={{
-                position: 'relative'
-              }}>
-                    <select id="contact-pathway" value={formData.pathway} onChange={e => handleChange('pathway', e.target.value)} onFocus={() => setFocused('pathway')} onBlur={() => setFocused(null)} style={{
-                  ...inputStyle('pathway'),
-                  appearance: 'none',
-                  WebkitAppearance: 'none',
-                  cursor: 'pointer',
-                  paddingRight: '48px',
-                  color: formData.pathway ? '#F7F6F3' : 'rgba(247,246,243,0.3)'
-                }}>
-                      {PATHWAY_OPTIONS.map(opt => <option key={opt.value} value={opt.value} style={{
-                    background: '#ffffff',
-                    color: '#141210'
-                  }}>
-                          {opt.label}
-                        </option>)}
-                    </select>
-                    <div aria-hidden="true" style={{
-                  position: 'absolute',
-                  right: '18px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  pointerEvents: 'none'
-                }}>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 5L7 10L12 5" stroke="rgba(247,246,243,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </div>
+                  <label htmlFor="contact-subject" style={labelStyle}>Subject</label>
+                  <input id="contact-subject" type="text" placeholder="e.g. Strategic Partnership, General Inquiry" value={formData.subject} onChange={e => handleChange('subject', e.target.value)} onFocus={() => setFocused('subject')} onBlur={() => setFocused(null)} required style={inputStyle('subject')} />
                 </div>
 
                 <div>
