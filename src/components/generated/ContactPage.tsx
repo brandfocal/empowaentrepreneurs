@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
+import { StrategicEnquiryModal } from './StrategicEnquiryModal';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -1281,7 +1282,7 @@ const EngagementSection = () => {
                       </span>)}
                   </div>
 
-                  <motion.a href="#"  whileHover={{
+                  <motion.a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openStrategicModal', { detail: { pathway: activeItem.title.toLowerCase().includes('strategic') ? 'strategic' : activeItem.title.toLowerCase().includes('investor') ? 'investor' : activeItem.title.toLowerCase().includes('growth') ? 'founder' : 'general' }})); }} whileHover={{
                 scale: 1.04,
                 boxShadow: '0 12px 48px rgba(222,50,45,0.6)'
               }} whileTap={{
@@ -1438,7 +1439,7 @@ const EngagementSection = () => {
                               {feat}
                             </span>)}
                         </div>
-                        <a href="#"  style={{
+                        <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openStrategicModal', { detail: { pathway: item.title.toLowerCase().includes('strategic') ? 'strategic' : item.title.toLowerCase().includes('investor') ? 'investor' : item.title.toLowerCase().includes('growth') ? 'founder' : 'general' }})); }} style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
@@ -2366,25 +2367,61 @@ const InquiryFormSection = () => {
               }}>
                   Get programme updates, speaker announcements, and exclusive pre-summit insights.
                 </p>
-                <a href="#"  style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'rgba(255,255,255,0.15)',
-                border: '1px solid rgba(255,255,255,0.25)',
-                borderRadius: '44px',
-                padding: '10px 18px',
-                fontSize: '12px',
-                letterSpacing: '0.04em',
-                color: '#F7F6F3',
-                textDecoration: 'none',
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 500,
-                alignSelf: 'flex-start'
-              }}>
-                  <span>Subscribe Now</span>
-                  <ArrowIconDark />
-                </a>
+                <div style={{
+                  display: 'flex',
+                  gap: '8px',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  width: '100%',
+                  marginTop: '4px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    background: 'rgba(255,255,255,0.1)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: '44px',
+                    padding: '10px 16px',
+                    gap: '10px',
+                    flex: '1',
+                    minWidth: '0'
+                  }}>
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                      <rect x="1" y="3" width="12" height="9" rx="1.5" stroke="rgba(247,246,243,0.5)" strokeWidth="1.2" />
+                      <path d="M1 5l6 4 6-4" stroke="rgba(247,246,243,0.5)" strokeWidth="1.2" strokeLinecap="round" />
+                    </svg>
+                    <input type="email" placeholder="Your email address" style={{
+                      background: 'transparent',
+                      border: 'none',
+                      outline: 'none',
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '12px',
+                      color: '#F7F6F3',
+                      width: '100%'
+                    }} />
+                  </div>
+                  <motion.button whileHover={{
+                    scale: 1.04
+                  }} whileTap={{
+                    scale: 0.97
+                  }} style={{
+                    background: '#F7F6F3',
+                    border: 'none',
+                    borderRadius: '44px',
+                    padding: '10px 20px',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '11px',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: '#DE322D',
+                    cursor: 'pointer',
+                    fontWeight: 700,
+                    whiteSpace: 'nowrap',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
+                  }}>
+                    Subscribe
+                  </motion.button>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -2397,15 +2434,18 @@ const InquiryFormSection = () => {
 const CTA_ACTIONS = [{
   id: 'cta-register',
   label: 'Register Now',
-  primary: true
+  primary: true,
+  href: '/summit'
 }, {
   id: 'cta-pitch',
   label: 'Pitch for Funding',
-  primary: false
+  primary: false,
+  href: '/pitching-festival'
 }, {
   id: 'cta-partner',
   label: 'Become a Partner',
-  primary: false
+  primary: false,
+  href: '/partnerships'
 }];
 const CTABand = () => {
   const ref = useRef<HTMLElement>(null);
@@ -2528,7 +2568,7 @@ const CTABand = () => {
         gap: '12px',
         marginBottom: '44px'
       }}>
-          {CTA_ACTIONS.map((action, i) => <motion.a key={action.id} href="#"  variants={staggerChild} whileHover={{
+          {CTA_ACTIONS.map((action, i) => <motion.a key={action.id} href={action.href}  variants={staggerChild} whileHover={{
           y: -6,
           boxShadow: action.primary ? '0 20px 64px rgba(222,50,45,0.55)' : '0 16px 48px rgba(20,18,16,0.55)',
           transition: {
@@ -3073,5 +3113,6 @@ export const ContactPage = () => {
       <ContactDetailsSection />
       <InquiryFormSection />
       <CTABand />
+      <StrategicEnquiryModal />
     </div>;
 };
