@@ -1507,7 +1507,7 @@ const FoundersSection = () => {
               </motion.h2>
             </div>
           </div>
-          {!isMobile && <motion.a href="#"  initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} whileHover={{
+          {!isMobile && <motion.a href="/summit"  initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -1707,7 +1707,7 @@ const FoundersSection = () => {
           flexDirection: 'column',
           gap: '8px'
         }}>
-              {FOUNDER_CARDS.map((card, i) => <motion.button key={card.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.25 + i * 0.08}  style={{
+              {FOUNDER_CARDS.map((card, i) => <motion.button key={card.id} onClick={() => setActiveId(card.id)} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.25 + i * 0.08}  style={{
             all: 'unset',
             cursor: 'pointer',
             borderRadius: '18px',
@@ -2712,7 +2712,7 @@ const ImpactSection = () => {
               <span>Register Now</span>
               <ArrowIconDark />
             </motion.a>
-            <motion.a href="#"  whileHover={{
+            <motion.a href="/about"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -3359,7 +3359,7 @@ const FloatingCTAPill = () => {
             <span>Register Now</span>
             <ArrowIconDark />
           </motion.a>
-          {!isMobile && <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          {!isMobile && <motion.a href="/about" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97

@@ -2088,7 +2088,7 @@ const RegistrationSection = () => {
                 <span>Request Accreditation</span>
                 <ArrowIconDark />
               </motion.a>
-              <motion.a href="#"  whileHover={{
+              <motion.a href="/about"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2757,7 +2757,7 @@ const StickyRegistrationBanner = () => {
                 <span>Apply Now</span>
                 <ArrowIconDark />
               </motion.a>
-              {!isMobile && <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              {!isMobile && <motion.a href="/about" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97

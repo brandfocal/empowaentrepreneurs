@@ -1361,7 +1361,7 @@ const OfferingsSection = () => {
             fontWeight: 300,
             lineHeight: 1.7
           }}>{item.description}</p>
-              <a href="#"  style={{
+              <a href="/about"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             color: '#DE322D',

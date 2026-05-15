@@ -761,7 +761,7 @@ const ApplyHeroSection = () => {
           }}>
               <span>Register Now</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="#"  whileHover={{
+            <motion.a href="/about"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
