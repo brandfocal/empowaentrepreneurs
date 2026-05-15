@@ -4486,11 +4486,13 @@ export const AgencyLandingPage = () => {
 
 
     <HeroSection />
-    <img 
-      src="/funding-summit-2026-banner.jpg" 
-      alt="EmpowaEntrepreneurs Funding Summit 2026" 
-      style={{ width: '100%', display: 'block', padding: 0, margin: 0 }} 
-    />
+    <a href="/summit" style={{ display: 'block', width: '100%', cursor: 'pointer' }}>
+      <img 
+        src="/funding-summit-2026-banner.jpg" 
+        alt="EmpowaEntrepreneurs Funding Summit 2026" 
+        style={{ width: '100%', display: 'block', padding: 0, margin: 0 }} 
+      />
+    </a>
     <MissionBand />
     <LogoBanner />
     <ProcessSection />
