@@ -1791,11 +1791,11 @@ const InquiryFormSection = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "3.3": formData.firstName,
-          "3.6": formData.lastName,
-          "5": formData.email,
-          "23": formData.subject,
-          "24": formData.message
+          "input_3_3": formData.firstName,
+          "input_3_6": formData.lastName,
+          "input_5": formData.email,
+          "input_23": formData.subject,
+          "input_24": formData.message
         })
       });
       
