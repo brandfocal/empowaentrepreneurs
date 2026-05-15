@@ -1,330 +1,188 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const modalOverlay = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.4 } },
-  exit: { opacity: 0, transition: { duration: 0.3 } }
+const useBreakpoint = () => {
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  useEffect(() => {
+    const check = () => setWidth(window.innerWidth);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+  return { isMobile: width < 640 };
 };
 
-const modalContent = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: { type: "spring", stiffness: 300, damping: 30 }
-  },
-  exit: { 
-    opacity: 0, 
-    y: 20, 
-    scale: 0.95,
-    transition: { duration: 0.2 }
-  }
-};
-
-const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round"/>
+const ArrowIconDark = () => (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+    <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 export const ZoneExperienceModal = ({ isOpen, onClose, zoneName = "" }: { isOpen: boolean, onClose: () => void, zoneName?: string }) => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    company: '',
-    zoneOfInterest: zoneName,
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [company, setCompany] = useState('');
+  const [message, setMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  
+  const { isMobile } = useBreakpoint();
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      setFormData(prev => ({ ...prev, zoneOfInterest: zoneName }));
     } else {
       document.body.style.overflow = '';
       setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({ fullName: '', email: '', company: '', zoneOfInterest: '', message: '' });
+        setSubmitted(false);
+        setName('');
+        setEmail('');
+        setCompany('');
+        setMessage('');
       }, 500);
     }
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen, zoneName]);
-
+  }, [isOpen]);
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1500);
+    if (name && email) setSubmitted(true);
   };
-
+  
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    background: 'rgba(247,246,243,0.05)',
+    border: '1px solid rgba(247,246,243,0.1)',
+    borderRadius: '10px',
+    padding: '13px 16px',
+    fontFamily: 'Inter, sans-serif',
+    fontSize: '14px',
+    color: '#F7F6F3',
+    outline: 'none',
+    boxSizing: 'border-box',
+    transition: 'border-color 0.25s ease'
+  };
+  
+  const labelStyle: React.CSSProperties = {
+    display: 'block',
+    fontFamily: 'Montserrat, sans-serif',
+    fontSize: '10px',
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+    color: 'rgba(247,246,243,0.35)',
+    fontWeight: 600,
+    marginBottom: '7px'
+  };
+  
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          variants={modalOverlay}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '20px',
-            background: 'rgba(10, 9, 6, 0.85)',
-            backdropFilter: 'blur(12px)',
-          }}
-          onClick={onClose}
-        >
-          <motion.div
-            variants={modalContent}
-            onClick={e => e.stopPropagation()}
-            style={{
-              background: '#F7F6F3',
-              borderRadius: '24px',
-              width: '100%',
-              maxWidth: '560px',
-              maxHeight: '90vh',
-              overflowY: 'auto',
-              position: 'relative',
-              boxShadow: '0 24px 64px rgba(0,0,0,0.4)',
-            }}
-          >
-            <button
-              onClick={onClose}
-              style={{
-                position: 'absolute',
-                top: '24px',
-                right: '24px',
-                background: 'rgba(20,18,16,0.05)',
-                border: 'none',
-                width: '40px',
-                height: '40px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                color: '#141210',
-                zIndex: 10,
-                transition: 'background 0.2s',
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(20,18,16,0.1)'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(20,18,16,0.05)'}
-            >
-              <CloseIcon />
-            </button>
-
-            <div style={{ padding: '48px 40px' }}>
-              {!isSubmitted ? (
-                <>
-                  <h2 style={{
-                    fontFamily: 'Montserrat, sans-serif',
-                    fontSize: '28px',
-                    fontWeight: 600,
-                    letterSpacing: '-0.5px',
-                    color: '#141210',
-                    margin: '0 0 12px'
-                  }}>Zone Experience Enquiry</h2>
-                  <p style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '15px',
-                    color: 'rgba(20,18,16,0.6)',
-                    lineHeight: 1.6,
-                    margin: '0 0 32px'
-                  }}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(10,9,8,0.82)',
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        zIndex: 300,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: isMobile ? '16px' : '32px',
+        boxSizing: 'border-box',
+        overflowY: 'auto'
+      }}>
+        <motion.div initial={{ opacity: 0, y: 40, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 24, scale: 0.97 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }} onClick={e => e.stopPropagation()} style={{
+          background: '#0f1c28',
+          border: '1px solid rgba(247,246,243,0.1)',
+          borderRadius: '28px',
+          padding: isMobile ? '32px 20px' : '52px 52px',
+          width: '100%',
+          maxWidth: '560px',
+          boxSizing: 'border-box',
+          position: 'relative',
+          overflow: 'hidden',
+          boxShadow: '0 40px 120px rgba(0,0,0,0.6)',
+          margin: 'auto'
+        }}>
+          <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, #DE322D, transparent)' }} />
+          <button onClick={onClose} style={{
+            position: 'absolute', top: '20px', right: '20px',
+            background: 'rgba(247,246,243,0.06)', border: '1px solid rgba(247,246,243,0.1)',
+            borderRadius: '8px', width: '34px', height: '34px', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s ease'
+          }} onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.12)'; }} onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.06)'; }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="rgba(247,246,243,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+          
+          <AnimatePresence mode="wait">
+            {!submitted ? (
+              <motion.div key="modal-form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+                <div style={{ marginBottom: '32px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                    <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#DE322D', boxShadow: '0 0 8px rgba(222,50,45,0.5)' }} />
+                    <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(247,246,243,0.35)', fontWeight: 600 }}>Zone Experience</span>
+                  </div>
+                  <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: isMobile ? '20px' : '26px', fontWeight: 300, letterSpacing: '-1px', color: '#F7F6F3', margin: '0 0 10px', lineHeight: 1.15 }}>
+                    <span>Inquire about </span><em style={{ fontStyle: 'italic', color: '#DE322D' }}>{zoneName || 'this zone'}</em><span style={{ color: 'rgba(247,246,243,0.4)' }}>.</span>
+                  </h3>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(247,246,243,0.38)', margin: 0, lineHeight: '1.65' }}>
                     Connect with our strategic team to secure access, explore participation, or discover opportunities within {zoneName ? `the ${zoneName}` : 'our specialized zones'}.
                   </p>
-
-                  <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                </div>
+                
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
                     <div>
-                      <label style={{ display: 'block', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', fontWeight: 600, color: '#141210', marginBottom: '8px' }}>Full Name *</label>
-                      <input 
-                        type="text" 
-                        required 
-                        value={formData.fullName}
-                        onChange={e => setFormData({...formData, fullName: e.target.value})}
-                        style={{
-                          width: '100%',
-                          padding: '14px 16px',
-                          borderRadius: '12px',
-                          border: '1px solid rgba(20,18,16,0.15)',
-                          background: '#fff',
-                          fontFamily: 'Inter, sans-serif',
-                          fontSize: '14px',
-                          boxSizing: 'border-box',
-                          outline: 'none'
-                        }}
-                      />
+                      <label htmlFor="modal-name" style={labelStyle}>Full Name</label>
+                      <input id="modal-name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your full name" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
                     </div>
-                    
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                      <div>
-                        <label style={{ display: 'block', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', fontWeight: 600, color: '#141210', marginBottom: '8px' }}>Business Email *</label>
-                        <input 
-                          type="email" 
-                          required 
-                          value={formData.email}
-                          placeholder="info@empowaentrepreneurs.co.za"
-                          onChange={e => setFormData({...formData, email: e.target.value})}
-                          style={{
-                            width: '100%',
-                            padding: '14px 16px',
-                            borderRadius: '12px',
-                            border: '1px solid rgba(20,18,16,0.15)',
-                            background: '#fff',
-                            fontFamily: 'Inter, sans-serif',
-                            fontSize: '14px',
-                            boxSizing: 'border-box',
-                            outline: 'none'
-                          }}
-                        />
-                      </div>
-                      <div>
-                        <label style={{ display: 'block', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', fontWeight: 600, color: '#141210', marginBottom: '8px' }}>Company / Organization *</label>
-                        <input 
-                          type="text" 
-                          required 
-                          value={formData.company}
-                          onChange={e => setFormData({...formData, company: e.target.value})}
-                          style={{
-                            width: '100%',
-                            padding: '14px 16px',
-                            borderRadius: '12px',
-                            border: '1px solid rgba(20,18,16,0.15)',
-                            background: '#fff',
-                            fontFamily: 'Inter, sans-serif',
-                            fontSize: '14px',
-                            boxSizing: 'border-box',
-                            outline: 'none'
-                          }}
-                        />
-                      </div>
-                    </div>
-
                     <div>
-                      <label style={{ display: 'block', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', fontWeight: 600, color: '#141210', marginBottom: '8px' }}>Zone of Interest</label>
-                      <input 
-                        type="text" 
-                        value={formData.zoneOfInterest}
-                        onChange={e => setFormData({...formData, zoneOfInterest: e.target.value})}
-                        style={{
-                          width: '100%',
-                          padding: '14px 16px',
-                          borderRadius: '12px',
-                          border: '1px solid rgba(20,18,16,0.15)',
-                          background: 'rgba(20,18,16,0.02)',
-                          fontFamily: 'Inter, sans-serif',
-                          fontSize: '14px',
-                          boxSizing: 'border-box',
-                          outline: 'none',
-                          color: 'rgba(20,18,16,0.6)'
-                        }}
-                        readOnly
-                      />
+                      <label htmlFor="modal-org" style={labelStyle}>Company / Organization</label>
+                      <input id="modal-org" type="text" value={company} onChange={e => setCompany(e.target.value)} placeholder="Your company name" style={inputStyle} required onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
                     </div>
-
-                    <div>
-                      <label style={{ display: 'block', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', fontWeight: 600, color: '#141210', marginBottom: '8px' }}>Additional Information</label>
-                      <textarea 
-                        rows={4}
-                        value={formData.message}
-                        onChange={e => setFormData({...formData, message: e.target.value})}
-                        placeholder="Please tell us more about your interest in this zone..."
-                        style={{
-                          width: '100%',
-                          padding: '14px 16px',
-                          borderRadius: '12px',
-                          border: '1px solid rgba(20,18,16,0.15)',
-                          background: '#fff',
-                          fontFamily: 'Inter, sans-serif',
-                          fontSize: '14px',
-                          boxSizing: 'border-box',
-                          resize: 'vertical',
-                          outline: 'none'
-                        }}
-                      />
-                    </div>
-
-                    <button 
-                      type="submit" 
-                      disabled={isSubmitting}
-                      style={{
-                        marginTop: '12px',
-                        background: isSubmitting ? '#a81e1a' : '#DE322D',
-                        color: '#fff',
-                        border: 'none',
-                        borderRadius: '44px',
-                        padding: '16px',
-                        fontFamily: 'Montserrat, sans-serif',
-                        fontWeight: 600,
-                        fontSize: '14px',
-                        cursor: isSubmitting ? 'wait' : 'pointer',
-                        transition: 'background 0.2s'
-                      }}
-                    >
-                      {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  style={{ textAlign: 'center', padding: '40px 0' }}
-                >
-                  <div style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: '50%',
-                    background: 'rgba(34, 197, 94, 0.1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 24px',
-                    color: '#22c55e'
-                  }}>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
                   </div>
-                  <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '24px', color: '#141210', margin: '0 0 16px' }}>
-                    Enquiry Received
-                  </h3>
-                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(20,18,16,0.6)', margin: '0 0 32px' }}>
-                    Thank you for your interest. Our strategic team will review your enquiry and connect with you shortly.
+                  <div>
+                    <label htmlFor="modal-email" style={labelStyle}>Business Email</label>
+                    <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                  </div>
+
+                  <div>
+                    <label htmlFor="modal-zone" style={labelStyle}>Zone of Interest</label>
+                    <input id="modal-zone" type="text" value={zoneName} readOnly style={{ ...inputStyle, background: 'rgba(247,246,243,0.02)', color: 'rgba(247,246,243,0.5)' }} />
+                  </div>
+
+                  <div>
+                    <label htmlFor="modal-requests" style={labelStyle}>Additional Information</label>
+                    <textarea id="modal-requests" value={message} onChange={e => setMessage(e.target.value)} placeholder="Please tell us more about your interest in this zone..." rows={2} style={{ ...inputStyle, resize: 'none', lineHeight: '1.6' }} onFocus={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                  </div>
+                  <motion.button type="submit" whileHover={{ scale: 1.03, boxShadow: '0 12px 40px rgba(222,50,45,0.6)' }} whileTap={{ scale: 0.97 }} style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+                    border: 'none', borderRadius: '44px', padding: '16px 32px', fontSize: '13px', letterSpacing: '0.05em', color: '#fff',
+                    fontFamily: 'Montserrat, sans-serif', fontWeight: 600, cursor: 'pointer', marginTop: '4px', boxShadow: '0 8px 32px rgba(222,50,45,0.45)'
+                  }}>
+                    <span>Submit Enquiry</span><ArrowIconDark />
+                  </motion.button>
+                </form>
+                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.2)', margin: '14px 0 0', letterSpacing: '0.02em' }}>By submitting, you agree to our terms and conditions. We process your data securely.</p>
+              </motion.div>
+            ) : (
+              <motion.div key="modal-success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center', padding: '24px 0 16px' }}>
+                <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="22" height="16" viewBox="0 0 22 16" fill="none"><path d="M1 8L8 15L21 1" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </div>
+                <div>
+                  <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '22px', fontWeight: 600, letterSpacing: '-0.5px', color: '#F7F6F3', margin: '0 0 10px' }}>Enquiry Received</h3>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: 'rgba(247,246,243,0.45)', margin: 0, lineHeight: '1.7', maxWidth: '340px' }}>
+                    <span>{'Thank you, '}</span><strong style={{ color: 'rgba(247,246,243,0.75)' }}>{name}</strong><span>{'. Your enquiry has been received. Our strategic team will review and connect with you shortly.'}</span>
                   </p>
-                  <button 
-                    onClick={onClose}
-                    style={{
-                      background: '#141210',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: '44px',
-                      padding: '14px 32px',
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontWeight: 600,
-                      fontSize: '13px',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    Close Window
-                  </button>
-                </motion.div>
-              )}
-            </div>
-          </motion.div>
+                </div>
+                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={onClose} style={{ marginTop: '8px', background: 'rgba(247,246,243,0.06)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '12px 28px', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', letterSpacing: '0.04em', color: 'rgba(247,246,243,0.55)', cursor: 'pointer' }}>Close</motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
+      </motion.div>
       )}
     </AnimatePresence>
   );
