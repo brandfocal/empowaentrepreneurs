@@ -115,49 +115,49 @@ const LEADERSHIP_TEAM = [{
   name: 'Simphiwe Masiza',
   role: 'Founder & Executive Producer',
   org: 'EmpowaEntrepreneurs Funding Summit™',
-  imageSrc: '/speakers/Simphiwe-Masiza.jpeg'
+  imageSrc: '/team/simphiwe-masiza.jpg'
 }, {
   n: 2,
   name: 'Sechaba Motsieloa',
   role: 'Managing Executive: Special Projects & Strategic Communications',
   org: null,
-  imageSrc: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80'
+  imageSrc: '/team/Sechaba-Motsieloa.jpeg'
 }, {
   n: 3,
   name: 'Thulisa Bianca Sosibo',
   role: 'Managing Executive: EmpowaEntrepreneurs Funding & Ecosystem Development',
   org: null,
-  imageSrc: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80'
+  imageSrc: '/team/Thulisa-Bianca-Sosibo.jpg'
 }, {
   n: 4,
   name: 'Carshief Sissing',
   role: 'Digital, Social Media & Platform Experience Lead',
   org: 'EmpowaEntrepreneurs Funding Summit™',
-  imageSrc: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80'
+  imageSrc: '/team/Carshiefa-Sissing.jpg'
 }, {
   n: 5,
   name: 'Thabo Molefe',
   role: 'Strategic Partnerships & Stakeholder Relations Lead',
   org: 'EmpowaEntrepreneurs Funding Summit™',
-  imageSrc: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80'
+  imageSrc: '/team/Thabo-Molefe.jpg'
 }, {
   n: 6,
   name: 'Anita Tirkey',
   role: 'Executive Speaker Relations & Programme Talent Lead',
   org: 'EmpowaEntrepreneurs Funding Summit™',
-  imageSrc: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80'
+  imageSrc: '/team/Anita-Tirkey.jpg'
 }, {
   n: 7,
   name: 'Neo Mathebe',
   role: 'Commercial & Brand Experience Lead',
   org: 'EmpowaEntrepreneurs Funding Summit™',
-  imageSrc: 'https://images.unsplash.com/photo-1614644147798-f8c0fc9da7f6?w=400&q=80'
+  imageSrc: '/team/Neo-Mathebe.jpeg'
 }, {
   n: 8,
   name: 'Bonnie Maponya',
   role: 'Chief of Staff & Integrated Programme Delivery Lead',
   org: null,
-  imageSrc: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80'
+  imageSrc: '/team/Bonnie-Maponya.jpeg'
 }];
 const cardGap = 16;
 
