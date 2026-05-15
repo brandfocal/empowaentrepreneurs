@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { ZoneExperienceModal } from './ZoneExperienceModal';
 
 // ─── Noise texture ──────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -937,35 +938,6 @@ const HeroSection = () => {
             <span>Explore All Zones</span>
             <ArrowIconDark />
           </motion.a>
-          <motion.a href="#"  whileHover={{
-          scale: 1.04
-        }} whileTap={{
-          scale: 0.97
-        }} style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          border: '1px solid rgba(247,246,243,0.22)',
-          borderRadius: '44px',
-          padding: isMobile ? '14px 24px' : '18px 30px',
-          fontSize: '13px',
-          letterSpacing: '0.04em',
-          color: 'rgba(247,246,243,0.7)',
-          textDecoration: 'none',
-          fontFamily: 'Montserrat, sans-serif',
-          transition: 'border-color 0.3s ease, color 0.3s ease'
-        }} onMouseEnter={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.borderColor = 'rgba(247,246,243,0.55)';
-          el.style.color = '#F7F6F3';
-        }} onMouseLeave={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.borderColor = 'rgba(247,246,243,0.22)';
-          el.style.color = 'rgba(247,246,243,0.7)';
-        }}>
-            <span>View Zone Schedule</span>
-            <ArrowIconDark />
-          </motion.a>
         </motion.div>
       </motion.div>
 
@@ -1041,11 +1013,13 @@ const HeroSection = () => {
 const ZoneCard = ({
   zone,
   index,
-  isReversed
+  isReversed,
+  onInquire
 }: {
   zone: ZoneItem;
   index: number;
   isReversed: boolean;
+  onInquire: (zoneName: string) => void;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, {
@@ -1331,7 +1305,7 @@ const ZoneCard = ({
           y: magnetic.springY,
           display: 'inline-block'
         }}>
-            <motion.a href="#"  whileHover={{
+            <motion.a onClick={(e) => { e.preventDefault(); onInquire(zone.name); }}  whileHover={{
             scale: 1.04,
             boxShadow: '0 12px 40px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -1357,41 +1331,13 @@ const ZoneCard = ({
               <ArrowIconDark />
             </motion.a>
           </motion.div>
-          <motion.a href="#"  whileHover={{
-          scale: 1.04
-        }} whileTap={{
-          scale: 0.97
-        }} style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '6px',
-          border: '1px solid rgba(247,246,243,0.15)',
-          borderRadius: '44px',
-          padding: '12px 22px',
-          fontSize: '12px',
-          letterSpacing: '0.04em',
-          color: 'rgba(247,246,243,0.5)',
-          textDecoration: 'none',
-          fontFamily: 'Montserrat, sans-serif',
-          transition: 'border-color 0.25s ease, color 0.25s ease'
-        }} onMouseEnter={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.borderColor = 'rgba(247,246,243,0.4)';
-          el.style.color = '#F7F6F3';
-        }} onMouseLeave={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.borderColor = 'rgba(247,246,243,0.15)';
-          el.style.color = 'rgba(247,246,243,0.5)';
-        }}>
-            <span>View Zone Schedule</span>
-          </motion.a>
         </div>
       </motion.div>
     </div>;
 };
 
 // ─── Zones Grid Wrapper ─────────────────────────────────────────────────────────────
-const ZonesSection = () => {
+const ZonesSection = ({ onInquire }: { onInquire: (zoneName: string) => void }) => {
   const headerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(headerRef, {
     once: true,
@@ -1478,7 +1424,7 @@ const ZonesSection = () => {
       width: '100%',
       borderTop: '1px solid rgba(247,246,243,0.07)'
     }}>
-        {ZONES.map((zone, i) => <ZoneCard key={zone.id} zone={zone} index={i} isReversed={i % 2 === 1} />)}
+        {ZONES.map((zone, i) => <ZoneCard key={zone.id} zone={zone} index={i} isReversed={i % 2 === 1} onInquire={onInquire} />)}
       </div>
     </section>;
 };
@@ -1675,7 +1621,7 @@ const StrategicCTASection = () => {
           x: magnetic.springX,
           y: magnetic.springY
         }}>
-            <motion.a href="#"  whileHover={{
+            <motion.a href="/summit"  whileHover={{
             scale: 1.04,
             boxShadow: '0 20px 60px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -2505,13 +2451,25 @@ const SiteFooter = () => {
 
 // ─── ExperienceZonesPage ──────────────────────────────────────────────────────────────
 export const ExperienceZonesPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedZone, setSelectedZone] = useState('');
+
   return <div className="w-full min-h-screen" style={{
     background: '#0f1c28',
     overflowX: 'hidden'
   }}>
       <HeroSection />
       <ZoneNavigator />
-      <ZonesSection />
+      <ZonesSection onInquire={(zoneName) => {
+        setSelectedZone(zoneName);
+        setIsModalOpen(true);
+      }} />
       <StrategicCTASection />
+      
+      <ZoneExperienceModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        zoneName={selectedZone} 
+      />
     </div>;
 };
