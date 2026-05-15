@@ -874,7 +874,7 @@ const HeroSection = () => {
           x: mag.springX,
           y: mag.springY
         }}>
-            <motion.a href="#"  whileHover={{
+            <motion.a href="#strategic-offerings"  whileHover={{
             scale: 1.04,
             boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
           }} whileTap={{
@@ -1215,7 +1215,7 @@ const OfferingsSection = () => {
   });
   const isMobile = useIsMobile();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  return <section ref={ref} style={{
+  return <section id="strategic-offerings" ref={ref} style={{
     background: '#FFFFFF',
     width: '100%',
     boxSizing: 'border-box',
@@ -2043,7 +2043,7 @@ const ValueSection = () => {
         }}>
             <span>Partner With Us</span>
           </motion.a>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
           scale: 1.04,
           boxShadow: '0 12px 48px rgba(222,50,45,0.65)'
         }} whileTap={{
