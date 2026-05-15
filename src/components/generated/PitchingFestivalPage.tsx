@@ -477,7 +477,7 @@ const StickyNav = () => {
           }}>
                 <span>Become a Funder</span>
               </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -585,7 +585,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="/partnerships" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -596,7 +596,7 @@ const StickyNav = () => {
           }}>
                 Become a Funder
               </a>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -948,8 +948,8 @@ const HeroSection = () => {
           gap: '12px',
           flexWrap: 'wrap'
         }}>
-            <MagneticButton label="Apply to Pitch" variant="primary" />
-            <MagneticButton label="Become a Funder" variant="outline" />
+            <MagneticButton label="Apply to Pitch" variant="primary" onClick={() => window.dispatchEvent(new Event('openPitchModal'))} />
+            <MagneticButton label="Become a Funder" variant="outline" onClick={() => window.location.href = '/partnerships'} />
           </div>
           <div style={{
           display: 'flex',
@@ -1806,7 +1806,7 @@ const EligibilitySection = () => {
           gap: '12px',
           flexWrap: 'wrap'
         }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -2215,13 +2215,6 @@ const CTA_CARDS = [{
   cta: 'Become a Funder',
   desc: 'Vetted panel · Exclusive deal access · Pre-screened founders',
   variant: 'outline' as const
-}, {
-  id: 'cta-seat',
-  icon: '⚡',
-  role: 'Observer',
-  cta: 'Secure Your Power Seat',
-  desc: 'VIP access · Live sessions · Networking priority',
-  variant: 'ghost' as const
 }];
 const BOTTOM_STRIP_ITEMS = [{
   id: 'bs-1',
@@ -2400,7 +2393,7 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
           flexDirection: 'column',
           gap: '12px'
         }}>
-            {CTA_CARDS.map((card, i) => <motion.div onClick={() => { if (card.id === 'cta-pitch') onOpenModal(); }} key={card.id} initial={{
+            {CTA_CARDS.map((card, i) => <motion.div onClick={() => { if (card.id === 'cta-pitch') { onOpenModal(); } else if (card.id === 'cta-funder') { window.location.href = '/partnerships'; } }} key={card.id} initial={{
             opacity: 0,
             x: isMobile ? 0 : 40
           }} animate={inView ? {
@@ -2730,7 +2723,7 @@ const SiteFooter = () => {
             minWidth: isMobile ? '100%' : isTablet ? '220px' : '240px',
             width: isMobile ? '100%' : 'auto'
           }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -3411,6 +3404,13 @@ export const PitchApplicationModal = ({
 // ─── PitchingFestivalPage ─────────────────────────────────────────────────────
 export const PitchingFestivalPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleOpen = () => setIsModalOpen(true);
+    window.addEventListener('openPitchModal', handleOpen);
+    return () => window.removeEventListener('openPitchModal', handleOpen);
+  }, []);
+
   return <div className="w-full min-h-screen" style={{
     background: '#141210'
   }}>
