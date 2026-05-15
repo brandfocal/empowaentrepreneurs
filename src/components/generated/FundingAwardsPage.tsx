@@ -1134,34 +1134,7 @@ const HeroSection = () => {
             <span>Apply Now</span>
             <ArrowIconDark />
           </motion.a>
-          <motion.a href="#"  whileHover={{
-          scale: 1.04
-        }} whileTap={{
-          scale: 0.97
-        }} style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          border: '1px solid rgba(247,246,243,0.25)',
-          borderRadius: '44px',
-          padding: isMobile ? '14px 24px' : '18px 30px',
-          fontSize: '13px',
-          letterSpacing: '0.04em',
-          color: 'rgba(247,246,243,0.82)',
-          textDecoration: 'none',
-          fontFamily: 'Montserrat, sans-serif',
-          transition: 'border-color 0.3s ease, color 0.3s ease'
-        }} onMouseEnter={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.borderColor = 'rgba(247,246,243,0.55)';
-          el.style.color = '#F7F6F3';
-        }} onMouseLeave={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.borderColor = 'rgba(247,246,243,0.25)';
-          el.style.color = 'rgba(247,246,243,0.82)';
-        }}>
-            <span>View Awards Architecture</span>
-          </motion.a>
+
         </motion.div>
       </motion.div>
 
