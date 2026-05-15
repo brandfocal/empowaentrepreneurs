@@ -377,7 +377,7 @@ const SPEAKERS: Speaker[] = [{
   topic: 'EmpowaEntrepreneurs Vision & Capital Access Mission',
   tag: 'Keynote',
   accentColor: '#DE322D',
-  imageSrc: '/speakers/Simphiwe-Masiza.jpeg',
+  imageSrc: '/speakers/Simphiwe-Masiza.jpg',
   year: '2025'
 }, {
   id: 'sp-5',

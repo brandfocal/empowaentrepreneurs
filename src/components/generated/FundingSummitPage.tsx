@@ -2715,7 +2715,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'EmpowaEntrepreneurs Vision & Capital Access Mission',
   tag: 'Keynote',
   accentColor: '#DE322D',
-  imageSrc: '/speakers/Simphiwe-Masiza.jpeg',
+  imageSrc: '/speakers/Simphiwe-Masiza.jpg',
   year: '2025'
 }, {
   id: 'sp-5',
@@ -2794,7 +2794,7 @@ const SPEAKER_TABS = [{
   id: 'tab-mc',
   label: 'Masterclass'
 }];
-const PastSpeakersSection = () => {
+export const PastSpeakersSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
