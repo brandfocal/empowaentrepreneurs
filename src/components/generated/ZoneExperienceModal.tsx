@@ -23,9 +23,16 @@ export const ZoneExperienceModal = ({ isOpen, onClose, zoneName = "" }: { isOpen
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [message, setMessage] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [selectedZone, setSelectedZone] = useState(zoneName || '');
+  
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   
   const { isMobile } = useBreakpoint();
+
+  useEffect(() => {
+    setSelectedZone(zoneName || '');
+  }, [zoneName]);
 
   useEffect(() => {
     if (isOpen) {
@@ -33,21 +40,54 @@ export const ZoneExperienceModal = ({ isOpen, onClose, zoneName = "" }: { isOpen
     } else {
       document.body.style.overflow = '';
       setTimeout(() => {
-        setSubmitted(false);
+        setStatus('idle');
         setName('');
         setEmail('');
         setCompany('');
         setMessage('');
+        setSelectedZone(zoneName || '');
       }, 500);
     }
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isOpen, zoneName]);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && email) setSubmitted(true);
+    if (!name || !email) return;
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/7/submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          input_1: name,
+          input_3: company,
+          input_4: email,
+          input_5: selectedZone,
+          input_6: message
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.is_valid) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        setErrorMessage(data.validation_messages ? Object.values(data.validation_messages).join(', ') : 'An error occurred during submission.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('error');
+      setErrorMessage('A network error occurred. Please try again.');
+    }
   };
   
   const inputStyle: React.CSSProperties = {
@@ -116,7 +156,7 @@ export const ZoneExperienceModal = ({ isOpen, onClose, zoneName = "" }: { isOpen
           </button>
           
           <AnimatePresence mode="wait">
-            {!submitted ? (
+            {status !== 'success' ? (
               <motion.div key="modal-form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                 <div style={{ marginBottom: '32px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
@@ -124,44 +164,66 @@ export const ZoneExperienceModal = ({ isOpen, onClose, zoneName = "" }: { isOpen
                     <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(247,246,243,0.35)', fontWeight: 600 }}>Zone Experience</span>
                   </div>
                   <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: isMobile ? '20px' : '26px', fontWeight: 300, letterSpacing: '-1px', color: '#F7F6F3', margin: '0 0 10px', lineHeight: 1.15 }}>
-                    <span>Inquire about </span><em style={{ fontStyle: 'italic', color: '#DE322D' }}>{zoneName || 'this zone'}</em><span style={{ color: 'rgba(247,246,243,0.4)' }}>.</span>
+                    <span>Inquire about </span><em style={{ fontStyle: 'italic', color: '#DE322D' }}>{selectedZone || 'this zone'}</em><span style={{ color: 'rgba(247,246,243,0.4)' }}>.</span>
                   </h3>
                   <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(247,246,243,0.38)', margin: 0, lineHeight: '1.65' }}>
-                    Connect with our strategic team to secure access, explore participation, or discover opportunities within {zoneName ? `the ${zoneName}` : 'our specialized zones'}.
+                    Connect with our strategic team to secure access, explore participation, or discover opportunities within {selectedZone ? `the ${selectedZone}` : 'our specialized zones'}.
                   </p>
                 </div>
+                
+                {status === 'error' && (
+                  <div style={{ marginBottom: '20px', padding: '12px', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.2)', borderRadius: '8px', color: '#DE322D', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>
+                    {errorMessage}
+                  </div>
+                )}
                 
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
                     <div>
                       <label htmlFor="modal-name" style={labelStyle}>Full Name</label>
-                      <input id="modal-name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your full name" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                      <input id="modal-name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your full name" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                     <div>
                       <label htmlFor="modal-org" style={labelStyle}>Company / Organization</label>
-                      <input id="modal-org" type="text" value={company} onChange={e => setCompany(e.target.value)} placeholder="Your company name" style={inputStyle} required onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                      <input id="modal-org" type="text" value={company} onChange={e => setCompany(e.target.value)} placeholder="Your company name" style={inputStyle} required onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                   </div>
                   <div>
                     <label htmlFor="modal-email" style={labelStyle}>Business Email</label>
-                    <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                    <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                   </div>
 
                   <div>
                     <label htmlFor="modal-zone" style={labelStyle}>Zone of Interest</label>
-                    <input id="modal-zone" type="text" value={zoneName} readOnly style={{ ...inputStyle, background: 'rgba(247,246,243,0.02)', color: 'rgba(247,246,243,0.5)' }} />
+                    <div style={{ position: 'relative' }}>
+                      <select id="modal-zone" value={selectedZone} onChange={e => setSelectedZone(e.target.value)} style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: selectedZone ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
+                        <option value="" style={{ background: '#ffffff', color: '#141210' }}>Select a Zone</option>
+                        <option value="The Funding Corner" style={{background:'#ffffff',color:'#141210'}}>The Funding Corner</option>
+                        <option value="Women Only Dealmaker Room" style={{background:'#ffffff',color:'#141210'}}>Women Only Dealmaker Room</option>
+                        <option value="Dragons' Den Pitching Festival" style={{background:'#ffffff',color:'#141210'}}>Dragons' Den Pitching Festival</option>
+                        <option value="Legal & Financial Intelligence Zone" style={{background:'#ffffff',color:'#141210'}}>Legal & Financial Intelligence Zone</option>
+                        <option value="Funding Application Clinics" style={{background:'#ffffff',color:'#141210'}}>Funding Application Clinics</option>
+                        <option value="Premium Industry Networking Exhibitions" style={{background:'#ffffff',color:'#141210'}}>Premium Industry Networking Exhibitions</option>
+                        <option value="Masterclasses & Investor Engagements" style={{background:'#ffffff',color:'#141210'}}>Masterclasses & Investor Engagements</option>
+                        <option value="Entrepreneurial Odyssey Sessions" style={{background:'#ffffff',color:'#141210'}}>Entrepreneurial Odyssey Sessions</option>
+                      </select>
+                      <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      </div>
+                    </div>
                   </div>
 
                   <div>
                     <label htmlFor="modal-requests" style={labelStyle}>Additional Information</label>
-                    <textarea id="modal-requests" value={message} onChange={e => setMessage(e.target.value)} placeholder="Please tell us more about your interest in this zone..." rows={2} style={{ ...inputStyle, resize: 'none', lineHeight: '1.6' }} onFocus={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                    <textarea id="modal-requests" value={message} onChange={e => setMessage(e.target.value)} placeholder="Please tell us more about your interest in this zone..." rows={2} style={{ ...inputStyle, resize: 'none', lineHeight: '1.6' }} onFocus={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                   </div>
-                  <motion.button type="submit" whileHover={{ scale: 1.03, boxShadow: '0 12px 40px rgba(222,50,45,0.6)' }} whileTap={{ scale: 0.97 }} style={{
+                  <motion.button type="submit" disabled={status === 'loading'} whileHover={status !== 'loading' ? { scale: 1.03, boxShadow: '0 12px 40px rgba(222,50,45,0.6)' } : {}} whileTap={status !== 'loading' ? { scale: 0.97 } : {}} style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
                     border: 'none', borderRadius: '44px', padding: '16px 32px', fontSize: '13px', letterSpacing: '0.05em', color: '#fff',
-                    fontFamily: 'Montserrat, sans-serif', fontWeight: 600, cursor: 'pointer', marginTop: '4px', boxShadow: '0 8px 32px rgba(222,50,45,0.45)'
+                    fontFamily: 'Montserrat, sans-serif', fontWeight: 600, cursor: status === 'loading' ? 'not-allowed' : 'pointer', marginTop: '4px', boxShadow: '0 8px 32px rgba(222,50,45,0.45)',
+                    opacity: status === 'loading' ? 0.7 : 1
                   }}>
-                    <span>Submit Enquiry</span><ArrowIconDark />
+                    <span>{status === 'loading' ? 'Submitting...' : 'Submit Enquiry'}</span>{status !== 'loading' && <ArrowIconDark />}
                   </motion.button>
                 </form>
                 <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.2)', margin: '14px 0 0', letterSpacing: '0.02em' }}>By submitting, you agree to our terms and conditions. We process your data securely.</p>
