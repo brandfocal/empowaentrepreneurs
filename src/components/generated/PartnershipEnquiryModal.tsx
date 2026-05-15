@@ -46,7 +46,7 @@ export const PartnershipEnquiryModal = ({ onClose }: { onClose: () => void }) =>
           input_1: name,
           input_3: org,
           input_4: email,
-          input_5: selectedCategory.replace(/&/g, '&amp;'),
+          input_5: selectedCategory,
           input_6: message
         }),
       });
@@ -173,7 +173,7 @@ export const PartnershipEnquiryModal = ({ onClose }: { onClose: () => void }) =>
                       <select id="modal-category" value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: selectedCategory ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
                         <option value="" style={{ background: '#ffffff', color: '#141210' }}>Select category</option>
                         <option value="Corporate Sponsor" style={{background:'#ffffff',color:'#141210'}}>Corporate Sponsor</option>
-                        <option value="Institutional Funder & VC" style={{background:'#ffffff',color:'#141210'}}>Institutional Funder & VC</option>
+                        <option value="Institutional Funder and VC" style={{background:'#ffffff',color:'#141210'}}>Institutional Funder & VC</option>
                         <option value="Ecosystem Builder" style={{background:'#ffffff',color:'#141210'}}>Ecosystem Builder</option>
                         <option value="Other" style={{background:'#ffffff',color:'#141210'}}>Other</option>
                       </select>
