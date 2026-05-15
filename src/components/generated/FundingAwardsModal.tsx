@@ -155,7 +155,6 @@ export const FundingAwardsModal = ({ isOpen, onClose }: { isOpen: boolean, onClo
           </button>
           
           <AnimatePresence mode="wait">
-          <AnimatePresence mode="wait">
             {status !== 'success' ? (
               <motion.div key="modal-form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                 <div style={{ marginBottom: '32px' }}>
