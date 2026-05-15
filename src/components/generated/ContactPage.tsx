@@ -2017,8 +2017,8 @@ const InquiryFormSection = () => {
                   color: formData.pathway ? '#F7F6F3' : 'rgba(247,246,243,0.3)'
                 }}>
                       {PATHWAY_OPTIONS.map(opt => <option key={opt.value} value={opt.value} style={{
-                    background: '#141210',
-                    color: '#F7F6F3'
+                    background: '#ffffff',
+                    color: '#141210'
                   }}>
                           {opt.label}
                         </option>)}

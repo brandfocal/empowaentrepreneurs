@@ -132,11 +132,11 @@ export const PartnershipEnquiryModal = ({ onClose }: { onClose: () => void }) =>
                     <label htmlFor="modal-category" style={labelStyle}>Partnership Category</label>
                     <div style={{ position: 'relative' }}>
                       <select id="modal-category" value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: selectedCategory ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }}>
-                        <option value="" style={{ background: '#0f1c28', color: 'rgba(247,246,243,0.4)' }}>Select category</option>
-                        <option value="corporate-sponsor" style={{background:'#0f1c28',color:'#F7F6F3'}}>Corporate Sponsor</option>
-                        <option value="institutional-funder" style={{background:'#0f1c28',color:'#F7F6F3'}}>Institutional Funder & VC</option>
-                        <option value="ecosystem-builder" style={{background:'#0f1c28',color:'#F7F6F3'}}>Ecosystem Builder</option>
-                        <option value="other" style={{background:'#0f1c28',color:'#F7F6F3'}}>Other</option>
+                        <option value="" style={{ background: '#ffffff', color: '#141210' }}>Select category</option>
+                        <option value="corporate-sponsor" style={{background:'#ffffff',color:'#141210'}}>Corporate Sponsor</option>
+                        <option value="institutional-funder" style={{background:'#ffffff',color:'#141210'}}>Institutional Funder & VC</option>
+                        <option value="ecosystem-builder" style={{background:'#ffffff',color:'#141210'}}>Ecosystem Builder</option>
+                        <option value="other" style={{background:'#ffffff',color:'#141210'}}>Other</option>
                       </select>
                       <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>

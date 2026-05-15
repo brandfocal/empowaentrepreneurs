@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
 import { LeadershipTeamSection } from './LeadershipTeamSection';
+import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
 
@@ -339,9 +340,6 @@ const STICKY_NAV_ITEMS = [{
   id: 'partnerships',
   label: 'Partnerships'
 }, {
-  id: 'apply',
-  label: 'Apply to Attend'
-}, {
   id: 'contact',
   label: 'Contact Us'
 }];
@@ -516,7 +514,7 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}><span>Become a Funder</span></motion.a>
-          <motion.a href="/summit" whileHover={{
+          <motion.a href="#registration-form" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -608,7 +606,7 @@ const StickyNav = () => {
             textDecoration: 'none',
             textAlign: 'center'
           }}>Become a Funder</a>
-          <a href="/summit"  style={{
+          <a href="#registration-form"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -898,7 +896,7 @@ const HeroSection = () => {
             display: 'inline-flex',
             width: isMobile ? '100%' : 'auto'
           }}>
-            <motion.a href="/summit" whileHover={{
+            <motion.a href="#registration-form" whileHover={{
               scale: 1.04,
               boxShadow: '0 16px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -922,37 +920,6 @@ const HeroSection = () => {
               boxSizing: 'border-box'
             }}><span>Register Now</span><ArrowIconDark /></motion.a>
           </motion.div>
-          <motion.a href="#"  whileHover={{
-            scale: 1.04
-          }} whileTap={{
-            scale: 0.97
-          }} style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            border: '1px solid rgba(247,246,243,0.25)',
-            borderRadius: '44px',
-            padding: isMobile ? '14px 18px' : '16px 28px',
-            fontSize: '13px',
-            letterSpacing: '0.04em',
-            color: 'rgba(247,246,243,0.75)',
-            textDecoration: 'none',
-            fontFamily: 'Montserrat, sans-serif',
-            transition: 'border-color 0.3s ease, color 0.3s ease',
-            width: isMobile ? '100%' : 'auto',
-            boxSizing: 'border-box'
-          }} onMouseEnter={e => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.borderColor = 'rgba(247,246,243,0.55)';
-            el.style.color = '#F7F6F3';
-          }} onMouseLeave={e => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.borderColor = 'rgba(247,246,243,0.25)';
-            el.style.color = 'rgba(247,246,243,0.75)';
-          }}>
-            <span>Apply to Attend</span>
-          </motion.a>
         </div>
         <div style={{
           display: 'flex',
@@ -1863,16 +1830,8 @@ const CTA_BUTTONS = [{
   label: 'Register Now',
   variant: 'primary' as const
 }, {
-  id: 'cta-b2',
-  label: 'Apply to Attend',
-  variant: 'outline' as const
-}, {
   id: 'cta-b3',
   label: 'Become a Partner',
-  variant: 'outline' as const
-}, {
-  id: 'cta-b4',
-  label: 'Secure Exhibition Space',
   variant: 'outline' as const
 }];
 const FIELD_INPUT_STYLE: React.CSSProperties = {
@@ -2000,7 +1959,7 @@ const CtaBannerSection = () => {
     background: 'linear-gradient(180deg, #DE322D, #c42823)',
     borderRadius: '20px 0 0 20px'
   }} />;
-  return <section ref={sectionRef} style={{
+  return <section id="registration-form" ref={sectionRef} style={{
     background: '#141210',
     padding: isMobile ? '72px 0' : isTablet ? '100px 0' : '160px 0',
     width: '100%',
@@ -2110,7 +2069,7 @@ const CtaBannerSection = () => {
           display: 'inline-flex',
           width: isMobile ? '100%' : 'auto'
         }}>
-          <motion.a href="/summit" onClick={e => {
+          <motion.a href="#registration-form" onClick={e => {
             e.preventDefault();
             setActiveForm(prev => prev === 'cta-b1' ? null : 'cta-b1');
           }} whileHover={{
@@ -2147,7 +2106,14 @@ const CtaBannerSection = () => {
             <ArrowIconDark />
           </motion.a>
         </motion.div>
-        {CTA_BUTTONS.slice(1).map(btn => <motion.a key={btn.id} href="#" onClick={e => e.preventDefault()} whileHover={{
+        {CTA_BUTTONS.slice(1).map(btn => <motion.a key={btn.id} href="#" onClick={e => {
+          e.preventDefault();
+          if (btn.id === 'cta-b3') {
+            window.dispatchEvent(new CustomEvent('openPartnershipModal'));
+          } else {
+            setActiveForm(prev => prev === btn.id ? null : btn.id);
+          }
+        }} whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -2234,240 +2200,14 @@ const CtaBannerSection = () => {
                 appearance: 'none',
                 cursor: 'pointer'
               }} onFocus={handleFocus} onBlur={handleBlur}>
-                <option value="">Select…</option>
-                <option value="social">Social Media</option>
-                <option value="referral">Referral</option>
-                <option value="newsletter">Newsletter</option>
-                <option value="other">Other</option>
+                <option value="" style={{ color: '#141210', background: '#fff' }}>Select…</option>
+                <option value="social" style={{ color: '#141210', background: '#fff' }}>Social Media</option>
+                <option value="referral" style={{ color: '#141210', background: '#fff' }}>Referral</option>
+                <option value="newsletter" style={{ color: '#141210', background: '#fff' }}>Newsletter</option>
+                <option value="other" style={{ color: '#141210', background: '#fff' }}>Other</option>
               </select>
             </div>
             <button type="submit" style={SUBMIT_BTN_STYLE}><span>Complete Registration</span></button>
-          </form>
-        </motion.div>}
-        {activeForm === 'cta-b2' && <motion.div key="form-cta-b2" initial={{
-          opacity: 0,
-          y: -16,
-          filter: 'blur(8px)'
-        }} animate={{
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          transition: {
-            duration: 0.45,
-            ease: [0.22, 1, 0.36, 1]
-          }
-        }} exit={{
-          opacity: 0,
-          y: -10,
-          filter: 'blur(6px)',
-          transition: {
-            duration: 0.3
-          }
-        }} style={formWrapStyle}>
-          {accentBar}
-          {dismissBtn}
-          <h3 style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 700,
-            fontSize: '18px',
-            color: '#F7F6F3',
-            margin: '0 0 8px'
-          }}>Apply to Attend</h3>
-          <p style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '13px',
-            color: 'rgba(247,246,243,0.5)',
-            margin: '0'
-          }}>Tell us about yourself — attendance is curated for qualified founders and investors</p>
-          <form onSubmit={e => e.preventDefault()} style={formGridStyle}>
-            <div><label style={FIELD_LABEL_STYLE}><span>Full Name</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Email</span></label><input type="email" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Organisation</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div>
-              <label style={FIELD_LABEL_STYLE}><span>Stage of Business</span></label>
-              <select style={{
-                ...FIELD_INPUT_STYLE,
-                appearance: 'none',
-                cursor: 'pointer'
-              }} onFocus={handleFocus} onBlur={handleBlur}>
-                <option value="">Select…</option>
-                <option value="idea">Idea</option>
-                <option value="early">Early Stage</option>
-                <option value="growth">Growth</option>
-                <option value="established">Established</option>
-              </select>
-            </div>
-            <div>
-              <label style={FIELD_LABEL_STYLE}><span>Annual Revenue Range</span></label>
-              <select style={{
-                ...FIELD_INPUT_STYLE,
-                appearance: 'none',
-                cursor: 'pointer'
-              }} onFocus={handleFocus} onBlur={handleBlur}>
-                <option value="">Select…</option>
-                <option value="pre">Pre-revenue</option>
-                <option value="lt1m">&lt;R1M</option>
-                <option value="1m10m">R1M–R10M</option>
-                <option value="gt10m">R10M+</option>
-              </select>
-            </div>
-            <div style={{
-              gridColumn: '1 / -1'
-            }}>
-              <label style={FIELD_LABEL_STYLE}><span>Brief Motivation</span></label>
-              <textarea rows={3} placeholder="Why do you want to attend?" style={{
-                ...FIELD_INPUT_STYLE,
-                resize: 'vertical',
-                minHeight: '80px'
-              }} onFocus={handleFocus} onBlur={handleBlur} />
-            </div>
-            <button type="submit" style={SUBMIT_BTN_STYLE}><span>Submit Application</span></button>
-          </form>
-        </motion.div>}
-        {activeForm === 'cta-b3' && <motion.div key="form-cta-b3" initial={{
-          opacity: 0,
-          y: -16,
-          filter: 'blur(8px)'
-        }} animate={{
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          transition: {
-            duration: 0.45,
-            ease: [0.22, 1, 0.36, 1]
-          }
-        }} exit={{
-          opacity: 0,
-          y: -10,
-          filter: 'blur(6px)',
-          transition: {
-            duration: 0.3
-          }
-        }} style={formWrapStyle}>
-          {accentBar}
-          {dismissBtn}
-          <h3 style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 700,
-            fontSize: '18px',
-            color: '#F7F6F3',
-            margin: '0 0 8px'
-          }}>Partner With Us</h3>
-          <p style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '13px',
-            color: 'rgba(247,246,243,0.5)',
-            margin: '0'
-          }}>Position your brand alongside Africa's premier entrepreneurial capital summit</p>
-          <form onSubmit={e => e.preventDefault()} style={formGridStyle}>
-            <div><label style={FIELD_LABEL_STYLE}><span>Contact Name</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Email</span></label><input type="email" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Organisation / Brand</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div>
-              <label style={FIELD_LABEL_STYLE}><span>Partnership Interest</span></label>
-              <select style={{
-                ...FIELD_INPUT_STYLE,
-                appearance: 'none',
-                cursor: 'pointer'
-              }} onFocus={handleFocus} onBlur={handleBlur}>
-                <option value="">Select…</option>
-                <option value="title">Title Sponsor</option>
-                <option value="gold">Gold Sponsor</option>
-                <option value="exhibition">Exhibition Partner</option>
-                <option value="media">Media Partner</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div style={{
-              gridColumn: '1 / -1'
-            }}>
-              <label style={FIELD_LABEL_STYLE}><span>Message</span></label>
-              <textarea rows={3} placeholder="Tell us about your partnership goals" style={{
-                ...FIELD_INPUT_STYLE,
-                resize: 'vertical',
-                minHeight: '80px'
-              }} onFocus={handleFocus} onBlur={handleBlur} />
-            </div>
-            <button type="submit" style={SUBMIT_BTN_STYLE}><span>Send Enquiry</span></button>
-          </form>
-        </motion.div>}
-        {activeForm === 'cta-b4' && <motion.div key="form-cta-b4" initial={{
-          opacity: 0,
-          y: -16,
-          filter: 'blur(8px)'
-        }} animate={{
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          transition: {
-            duration: 0.45,
-            ease: [0.22, 1, 0.36, 1]
-          }
-        }} exit={{
-          opacity: 0,
-          y: -10,
-          filter: 'blur(6px)',
-          transition: {
-            duration: 0.3
-          }
-        }} style={formWrapStyle}>
-          {accentBar}
-          {dismissBtn}
-          <h3 style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 700,
-            fontSize: '18px',
-            color: '#F7F6F3',
-            margin: '0 0 8px'
-          }}>Secure Your Exhibition Space</h3>
-          <p style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '13px',
-            color: 'rgba(247,246,243,0.5)',
-            margin: '0'
-          }}>Showcase your brand, product or service to 500+ qualified entrepreneurs and investors</p>
-          <form onSubmit={e => e.preventDefault()} style={formGridStyle}>
-            <div><label style={FIELD_LABEL_STYLE}><span>Contact Name</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Email</span></label><input type="email" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Company Name</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div>
-              <label style={FIELD_LABEL_STYLE}><span>Exhibition Type</span></label>
-              <select style={{
-                ...FIELD_INPUT_STYLE,
-                appearance: 'none',
-                cursor: 'pointer'
-              }} onFocus={handleFocus} onBlur={handleBlur}>
-                <option value="">Select…</option>
-                <option value="standard">Standard Booth</option>
-                <option value="premium">Premium Corner</option>
-                <option value="innovation">Innovation Showcase</option>
-                <option value="demo">Product Demo Area</option>
-              </select>
-            </div>
-            <div>
-              <label style={FIELD_LABEL_STYLE}><span>Preferred Booth Size</span></label>
-              <select style={{
-                ...FIELD_INPUT_STYLE,
-                appearance: 'none',
-                cursor: 'pointer'
-              }} onFocus={handleFocus} onBlur={handleBlur}>
-                <option value="">Select…</option>
-                <option value="3x3">3×3m</option>
-                <option value="6x3">6×3m</option>
-                <option value="9x3">9×3m</option>
-              </select>
-            </div>
-            <div style={{
-              gridColumn: '1 / -1'
-            }}>
-              <label style={FIELD_LABEL_STYLE}><span>Message</span></label>
-              <textarea rows={2} placeholder="Any special requirements?" style={{
-                ...FIELD_INPUT_STYLE,
-                resize: 'vertical',
-                minHeight: '80px'
-              }} onFocus={handleFocus} onBlur={handleBlur} />
-            </div>
-            <button type="submit" style={SUBMIT_BTN_STYLE}><span>Reserve My Space</span></button>
           </form>
         </motion.div>}
       </AnimatePresence>
@@ -4304,6 +4044,14 @@ const EventProgrammeSection = () => {
 
 // ─── FundingSummitPage ─────────────────────────────────────────────────────────
 export const FundingSummitPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleOpen = () => setIsModalOpen(true);
+    window.addEventListener('openPartnershipModal', handleOpen);
+    return () => window.removeEventListener('openPartnershipModal', handleOpen);
+  }, []);
+
   return <div className="w-full min-h-screen" style={{
     background: '#141210',
     overflowX: 'hidden'
@@ -4317,5 +4065,6 @@ export const FundingSummitPage = () => {
     <LeadershipTeamSection />
     <EligibilitySection />
     <CtaBannerSection />
+    {isModalOpen && <PartnershipEnquiryModal onClose={() => setIsModalOpen(false)} />}
   </div>;
 };
