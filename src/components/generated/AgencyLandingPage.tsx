@@ -366,19 +366,142 @@ const STICKY_NAV_ITEMS = [{
   label: 'About Us',
   href: '/about'
 }, {
-  id: 'programme',
-  label: 'Programme',
-  href: '/programme'
+  id: 'ecosystem',
+  label: 'The Ecosystem',
+  href: '#',
+  children: [{
+    id: 'programme',
+    label: 'Programme',
+    href: '/programme'
+  }, {
+    id: 'experience',
+    label: 'Experience Zones',
+    href: '/experience-zones'
+  }, {
+    id: 'pitch-power',
+    label: 'Pitching Festival',
+    href: '/pitch-power'
+  }, {
+    id: 'awards',
+    label: 'Funding Awards',
+    href: '/awards'
+  }]
 }, {
-  id: 'experience',
-  label: 'Experience Zones',
-  href: '/experience-zones'
+  id: 'strategic-advisory',
+  label: 'Strategic Advisory',
+  href: '/strategic-advisory'
 }, {
   id: 'partnerships',
   label: 'Partnerships',
-  href: '#'
+  href: '/partnerships'
 }];
+// ─── DropdownNavItem ────────────────────────────────────────────────────────
+const DropdownNavItem = ({ item, scrolled, navLinkColor, navLinkHoverColor, pathname }: any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const isActive = item.children.some((child: any) => pathname === child.href);
+
+  return (
+    <div
+      style={{ position: 'relative' }}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <div style={{
+        fontFamily: 'Montserrat, sans-serif',
+        fontSize: '13px',
+        letterSpacing: '0.04em',
+        cursor: 'pointer',
+        transition: 'color 0.2s',
+        fontWeight: isActive ? 600 : 400,
+        color: isActive ? (scrolled ? '#DE322D' : '#fff') : navLinkColor,
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px'
+      }}
+      onMouseEnter={e => {
+        if (!isActive) e.currentTarget.style.color = navLinkHoverColor;
+      }}
+      onMouseLeave={e => {
+        if (!isActive) e.currentTarget.style.color = navLinkColor;
+      }}>
+        {item.label}
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{
+          transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+          transition: 'transform 0.2s ease'
+        }}>
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              paddingTop: '20px',
+              zIndex: 100
+            }}
+          >
+            <div style={{
+              background: scrolled ? 'rgba(255,255,255,0.98)' : 'rgba(20,18,16,0.98)',
+              border: scrolled ? '1px solid rgba(20,18,16,0.08)' : '1px solid rgba(247,246,243,0.1)',
+              borderRadius: '16px',
+              padding: '12px',
+              minWidth: '220px',
+              boxShadow: scrolled ? '0 16px 40px rgba(0,0,0,0.08)' : '0 16px 40px rgba(0,0,0,0.4)',
+              backdropFilter: 'blur(16px)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px'
+            }}>
+              {item.children.map((child: any) => {
+                const isChildActive = pathname === child.href;
+                return (
+                  <a key={child.id} href={child.href} style={{
+                    display: 'block',
+                    padding: '10px 16px',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '13px',
+                    textDecoration: 'none',
+                    borderRadius: '8px',
+                    fontWeight: isChildActive ? 500 : 400,
+                    color: isChildActive ? (scrolled ? '#DE322D' : '#fff') : (scrolled ? 'rgba(20,18,16,0.65)' : 'rgba(247,246,243,0.7)'),
+                    background: isChildActive ? (scrolled ? 'rgba(222,50,45,0.05)' : 'rgba(222,50,45,0.15)') : 'transparent',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={e => {
+                    if (!isChildActive) {
+                      e.currentTarget.style.background = scrolled ? 'rgba(20,18,16,0.04)' : 'rgba(247,246,243,0.08)';
+                      e.currentTarget.style.color = scrolled ? '#141210' : '#F7F6F3';
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    if (!isChildActive) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.color = scrolled ? 'rgba(20,18,16,0.65)' : 'rgba(247,246,243,0.7)';
+                    }
+                  }}
+                  >
+                    {child.label}
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const StickyNav = () => {
+  const pathname = window.location.pathname;
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -426,17 +549,22 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-      <a href="#" onClick={e => e.preventDefault()} style={{
+      <a href="#"  style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
         textDecoration: 'none'
       }}>
         <motion.img
-          src="/ee-logo.png"
+          src={scrolled ? "/logos/ee-logo.png" : "/logos/ee-logo-wh.png"}
           alt="EmpowaSummit Logo"
           whileHover={{ scale: 1.05 }}
-          style={{ height: '30px', width: 'auto', objectFit: 'contain' }}
+          style={{ 
+            height: '48px', 
+            width: 'auto', 
+            objectFit: 'contain',
+            mixBlendMode: scrolled ? 'multiply' : 'screen'
+          }}
         />
       </a>
       {!isMobile && <div style={{
@@ -444,25 +572,33 @@ const StickyNav = () => {
         alignItems: 'center',
         gap: '32px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href} style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: '13px',
-          textDecoration: 'none',
-          letterSpacing: '0.04em',
-          transition: 'color 0.2s',
-          color: navLinkColor
-        }} onMouseEnter={e => {
-          (e.currentTarget as HTMLAnchorElement).style.color = navLinkHoverColor;
-        }} onMouseLeave={e => {
-          (e.currentTarget as HTMLAnchorElement).style.color = navLinkColor;
-        }}>
-          {item.label}
-        </a>)}
+        {STICKY_NAV_ITEMS.map(item => {
+          if ('children' in item) {
+            return <DropdownNavItem key={item.id} item={item} scrolled={scrolled} navLinkColor={navLinkColor} navLinkHoverColor={navLinkHoverColor} pathname={pathname} />;
+          }
+
+          const isActive = pathname === item.href;
+          return <a key={item.id} href={item.href} style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '13px',
+            textDecoration: 'none',
+            letterSpacing: '0.04em',
+            transition: 'color 0.2s',
+            fontWeight: isActive ? 600 : 400,
+            color: isActive ? (scrolled ? '#DE322D' : '#fff') : navLinkColor
+          }} onMouseEnter={e => {
+            if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = navLinkHoverColor;
+          }} onMouseLeave={e => {
+            if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = navLinkColor;
+          }}>
+            {item.label}
+          </a>;
+        })}
         <div style={{
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/partnerships"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -482,7 +618,7 @@ const StickyNav = () => {
           }}>
             <span>Partner With Us</span>
           </motion.a>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -544,7 +680,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 32px 28px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href} onClick={() => setMobileMenuOpen(false)} style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href}  style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -562,7 +698,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+          <a href="/partnerships"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -571,7 +707,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+          <a href="/summit"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -1002,7 +1138,7 @@ const HeroSection = () => {
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
             }} whileTap={{
@@ -1025,7 +1161,7 @@ const HeroSection = () => {
             }}>
               <span>Register Now</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/partnerships"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -1264,31 +1400,31 @@ const MissionBand = () => {
 const LOGOS = [{
   id: 'nef',
   alt: 'National Empowerment Fund (NEF)',
-  src: 'https://www.nefcorp.co.za/wp-content/uploads/2021/08/NEF-Logo-1.png'
+  src: '/partners/NEF.jpg'
 }, {
   id: 'old-mutual',
   alt: 'Old Mutual',
-  src: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Old_Mutual_logo.svg'
+  src: '/partners/old-mutual.png'
 }, {
   id: 'wrseta',
   alt: 'W&RSETA',
-  src: 'https://www.wrseta.org.za/wp-content/uploads/2022/10/WRSETA-Logo.png'
+  src: '/partners/WRSETA.png'
 }, {
   id: 'absa',
   alt: 'ABSA',
-  src: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Absa_Group_Limited_Logo.svg'
+  src: '/partners/absa.jpg'
 }, {
   id: 'sedfa',
   alt: 'SEDFA',
-  src: 'https://www.sefa.org.za/wp-content/uploads/2022/08/sefa-logo.png'
+  src: '/partners/SEDFA-Logo.png'
 }, {
   id: 'african-bank',
   alt: 'African Bank Limited',
-  src: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/African_Bank_logo.svg'
+  src: '/partners/african-bank.jpg'
 }, {
   id: 'idc',
   alt: 'Industrial Development Corporation (IDC)',
-  src: 'https://upload.wikimedia.org/wikipedia/en/8/87/Industrial_Development_Corporation_logo.png'
+  src: '/partners/idc-logo.png'
 }];
 const MARQUEE_SPEED = 50;
 const MarqueeTrack = () => {
@@ -1321,9 +1457,11 @@ const MarqueeTrack = () => {
     }}>
       {LOGOS.map(logo => <img key={logo.id} src={logo.src} alt={logo.alt} loading="eager" style={{
         display: 'block',
-        maxWidth: '100%',
-        verticalAlign: 'middle',
-        filter: 'brightness(0) invert(1) opacity(0.35)'
+        height: '50px',
+        width: 'auto',
+        maxWidth: '160px',
+        objectFit: 'contain',
+        verticalAlign: 'middle'
       }} />)}
     </div>)}
   </div>;
@@ -1335,11 +1473,11 @@ const LogoBanner = () => {
     alignItems: 'center',
     padding: isMobile ? '20px 24px' : '24px 64px',
     columnGap: '50px',
-    borderTop: '0.8px solid rgba(247,246,243,0.06)',
-    borderBottom: '0.8px solid rgba(247,246,243,0.06)',
+    borderTop: '0.8px solid rgba(20,18,16,0.06)',
+    borderBottom: '0.8px solid rgba(20,18,16,0.06)',
     width: '100%',
     overflow: 'hidden',
-    backgroundColor: '#14202c',
+    backgroundColor: '#ffffff',
     boxSizing: 'border-box'
   }}>
     {!isMobile && <div style={{
@@ -1354,7 +1492,7 @@ const LogoBanner = () => {
         textTransform: 'uppercase',
         fontSize: '11px',
         letterSpacing: '0.1em',
-        color: 'rgba(247,246,243,0.35)',
+        color: 'rgba(20,18,16,0.5)',
         fontFamily: 'Inter, sans-serif',
         whiteSpace: 'nowrap'
       }}>Ecosystem Partners</span>
@@ -1372,7 +1510,7 @@ const LogoBanner = () => {
         right: 0,
         bottom: 0,
         width: '140px',
-        backgroundImage: 'linear-gradient(270deg, #14202c, transparent)',
+        backgroundImage: 'linear-gradient(270deg, #ffffff, transparent)',
         pointerEvents: 'none'
       }} />
       <div style={{
@@ -1381,7 +1519,7 @@ const LogoBanner = () => {
         left: 0,
         bottom: 0,
         width: '140px',
-        backgroundImage: 'linear-gradient(90deg, #14202c, transparent)',
+        backgroundImage: 'linear-gradient(90deg, #ffffff, transparent)',
         pointerEvents: 'none'
       }} />
     </div>
@@ -1537,17 +1675,15 @@ const ProcessSection = () => {
         gap: '10px',
         width: '100%'
       }}>
-        {PROCESS_STEPS.map(step => <motion.a href="#" key={step.id} variants={scaleReveal} onClick={e => e.preventDefault()} onMouseEnter={() => setHoveredStep(step.id)} onMouseLeave={() => setHoveredStep(null)} style={{
+        {PROCESS_STEPS.map(step => <motion.div key={step.id} variants={scaleReveal} onMouseEnter={() => setHoveredStep(step.id)} onMouseLeave={() => setHoveredStep(null)} style={{
           flex: !isMobile && hoveredStep === step.id ? '1.45 1 0%' : '1 1 0%',
           minHeight: isMobile ? '220px' : '480px',
           borderRadius: '24px',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
-          cursor: 'pointer',
           position: 'relative',
-          transition: 'flex 0.55s cubic-bezier(0.22, 1, 0.36, 1)',
-          textDecoration: 'none'
+          transition: 'flex 0.55s cubic-bezier(0.22, 1, 0.36, 1)'
         }}>
           <img src={step.imageSrc} alt={step.title} style={{
             position: 'absolute',
@@ -1670,7 +1806,7 @@ const ProcessSection = () => {
               </div>
             </div>
           </div>
-        </motion.a>)}
+        </motion.div>)}
       </motion.div>
     </div>
   </section>;
@@ -1935,7 +2071,7 @@ const AccordionSection = () => {
                     {t}
                   </span>)}
                 </div>
-                <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+                <motion.a href="#"  whileHover={{
                   scale: 1.04
                 }} whileTap={{
                   scale: 0.97
@@ -2080,7 +2216,7 @@ const ProjectModal = ({
     opacity: 0
   }} transition={{
     duration: 0.3
-  }} onClick={onClose} style={{
+  }}  style={{
     position: 'fixed',
     inset: 0,
     zIndex: 300,
@@ -2107,7 +2243,7 @@ const ProjectModal = ({
     }} transition={{
       duration: 0.5,
       ease: [0.22, 1, 0.36, 1]
-    }} onClick={e => e.stopPropagation()} style={{
+    }}  style={{
       background: '#F7F6F3',
       borderRadius: isMobile ? '28px 28px 0 0' : '28px',
       maxWidth: '960px',
@@ -2171,7 +2307,7 @@ const ProjectModal = ({
             fontWeight: 500
           }}>{project.category}</span>
         </div>
-        <button onClick={onClose} style={{
+        <button  style={{
           position: 'absolute',
           top: '20px',
           right: '20px',
@@ -2319,7 +2455,7 @@ const ProjectModal = ({
               padding: '6px 14px'
             }}>{tag}</span>)}
           </div>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="#"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -3107,7 +3243,7 @@ const TestimonialsSection = () => {
           flexDirection: 'column',
           gap: '12px'
         }}>
-          {TESTIMONIALS.map((t, i) => <button key={t.id} onClick={() => handleSelect(i)} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => {
+          {TESTIMONIALS.map((t, i) => <button key={t.id}  onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => {
             setIsPaused(false);
             lastTickRef.current = Date.now();
           }} style={{
@@ -3195,7 +3331,7 @@ const TestimonialsSection = () => {
           gap: '8px',
           marginTop: '8px'
         }}>
-          {TESTIMONIALS.map((t, i) => <button key={t.id} onClick={() => handleSelect(i)} style={{
+          {TESTIMONIALS.map((t, i) => <button key={t.id}  style={{
             all: 'unset',
             cursor: 'pointer',
             width: activeIdx === i ? '24px' : '8px',
@@ -3335,7 +3471,7 @@ const DarkCtaSection = () => {
             marginBottom: '32px',
             position: 'relative'
           }}>
-            <img src="https://cdn.prod.website-files.com/6964d4f3b5db71495b89316b/6977080922893ca4123b195b_f53a1bb724cb7be1debd209b39cffdb1_looping-image3.webp" alt="Empowa Summit — Power Seat Roundtables in session" style={{
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80" alt="Empowa Summit — Power Seat Roundtables in session" style={{
               width: '100%',
               height: isMobile ? '200px' : '240px',
               objectFit: 'cover',
@@ -3406,7 +3542,7 @@ const DarkCtaSection = () => {
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/partnerships"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -3429,7 +3565,7 @@ const DarkCtaSection = () => {
             }}>
               <span>Reserve Your Power Seat</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/partnerships"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -3753,7 +3889,7 @@ const SiteFooter = () => {
             gap: '12px',
             minWidth: isMobile ? '100%' : '260px'
           }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -3776,7 +3912,7 @@ const SiteFooter = () => {
             }}>
               <span>Register Now</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/partnerships"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -3976,7 +4112,7 @@ const SiteFooter = () => {
                 gap: '12px'
               }}>
                 {col.links.map(link => <li key={link.id}>
-                  <a href="#" onClick={e => e.preventDefault()} style={{
+                  <a href="#"  style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '13px',
                     color: 'rgba(247,246,243,0.3)',
@@ -4099,7 +4235,7 @@ const SiteFooter = () => {
             display: 'flex',
             gap: '8px'
           }}>
-            {FOOTER_SOCIAL_LINKS.map(soc => <motion.a key={soc.id} href="#" onClick={e => e.preventDefault()} whileHover={{
+            {FOOTER_SOCIAL_LINKS.map(soc => <motion.a key={soc.id} href="#"  whileHover={{
               scale: 1.1,
               y: -2
             }} whileTap={{
@@ -4292,7 +4428,7 @@ const StickyRegistrationBanner = () => {
           flexShrink: 0,
           flexWrap: 'nowrap'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04,
             boxShadow: '0 8px 32px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -4315,35 +4451,6 @@ const StickyRegistrationBanner = () => {
           }}>
             <span>Register Now</span><ArrowIconDark />
           </motion.a>
-          {!isMobile && <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
-            scale: 1.04
-          }} whileTap={{
-            scale: 0.97
-          }} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            border: '1px solid rgba(247,246,243,0.22)',
-            borderRadius: '44px',
-            padding: '11px 20px',
-            fontSize: '12px',
-            letterSpacing: '0.04em',
-            color: 'rgba(247,246,243,0.75)',
-            textDecoration: 'none',
-            fontFamily: 'Montserrat, sans-serif',
-            whiteSpace: 'nowrap',
-            transition: 'border-color 0.25s ease, color 0.25s ease'
-          }} onMouseEnter={e => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.borderColor = 'rgba(247,246,243,0.5)';
-            el.style.color = '#F7F6F3';
-          }} onMouseLeave={e => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.borderColor = 'rgba(247,246,243,0.22)';
-            el.style.color = 'rgba(247,246,243,0.75)';
-          }}>
-            <span>Learn More</span>
-          </motion.a>}
         </div>
         <button onClick={() => setDismissed(true)} aria-label="Dismiss registration banner" style={{
           flexShrink: 0,

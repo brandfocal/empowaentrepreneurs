@@ -393,7 +393,7 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-      <a href="#" onClick={e => e.preventDefault()} style={{
+      <a href="#"  style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
@@ -429,7 +429,7 @@ const StickyNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/partnerships"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -449,7 +449,7 @@ const StickyNav = () => {
           }}>
             <span>Partner With Us</span>
           </motion.a>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -511,7 +511,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 32px 28px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href} onClick={() => setMobileMenuOpen(false)} style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href}  style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -529,7 +529,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+          <a href="/partnerships"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -538,7 +538,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+          <a href="/summit"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -877,7 +877,7 @@ const HeroSection = () => {
         flexWrap: 'wrap',
         marginBottom: '56px'
       }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
           scale: 1.04,
           boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
         }} whileTap={{
@@ -901,7 +901,7 @@ const HeroSection = () => {
             <span>Register Now</span>
             <ArrowIconDark />
           </motion.a>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/partnerships"  whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -1507,7 +1507,7 @@ const FoundersSection = () => {
               </motion.h2>
             </div>
           </div>
-          {!isMobile && <motion.a href="#" onClick={e => e.preventDefault()} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} whileHover={{
+          {!isMobile && <motion.a href="#"  initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -1707,7 +1707,7 @@ const FoundersSection = () => {
           flexDirection: 'column',
           gap: '8px'
         }}>
-              {FOUNDER_CARDS.map((card, i) => <motion.button key={card.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.25 + i * 0.08} onClick={() => setActiveId(card.id)} style={{
+              {FOUNDER_CARDS.map((card, i) => <motion.button key={card.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.25 + i * 0.08}  style={{
             all: 'unset',
             cursor: 'pointer',
             borderRadius: '18px',
@@ -2125,10 +2125,7 @@ const CapitalPartnersSection = () => {
           borderRadius: hoveredAccordionId === cat.id && openId !== cat.id ? '8px' : '0'
         }}>
               {/* Accordion header / trigger */}
-              <button onClick={() => {
-            setOpenId(openId === cat.id ? '' : cat.id);
-            setHoveredAccordionId(null);
-          }} style={{
+              <button onClick={() => setOpenId(openId === cat.id ? "" : cat.id)} style={{
             all: 'unset',
             cursor: 'pointer',
             width: '100%',
@@ -2231,7 +2228,7 @@ const CapitalPartnersSection = () => {
                   }}>
                           {cat.description}
                         </p>
-                        <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+                        <motion.a href="/partnerships"  whileHover={{
                     scale: 1.04,
                     boxShadow: '0 12px 48px rgba(222,50,45,0.6)'
                   }} whileTap={{
@@ -2692,7 +2689,7 @@ const ImpactSection = () => {
           zIndex: 1,
           flexShrink: 0
         }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/summit" whileHover={{
             scale: 1.04,
             boxShadow: '0 12px 48px rgba(222,50,45,0.65)'
           }} whileTap={{
@@ -2715,7 +2712,7 @@ const ImpactSection = () => {
               <span>Register Now</span>
               <ArrowIconDark />
             </motion.a>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="#"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -2933,7 +2930,7 @@ const SiteFooter = () => {
             gap: '12px',
             minWidth: isMobile ? '100%' : '240px'
           }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2957,7 +2954,7 @@ const SiteFooter = () => {
                 <span>Register Now</span>
                 <ArrowIconDark />
               </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/partnerships"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -3116,7 +3113,7 @@ const SiteFooter = () => {
                 gap: '12px'
               }}>
                     {col.links.map(link => <li key={link.id}>
-                        <a href="#" onClick={e => e.preventDefault()} style={{
+                        <a href="#"  style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '13px',
                     color: 'rgba(247,246,243,0.3)',
@@ -3338,7 +3335,7 @@ const FloatingCTAPill = () => {
           flexShrink: 0,
           flexWrap: 'nowrap'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04,
             boxShadow: '0 8px 32px rgba(222,50,45,0.55)'
           }} whileTap={{

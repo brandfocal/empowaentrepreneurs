@@ -361,7 +361,7 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-      <a href="#" onClick={e => e.preventDefault()} style={{
+      <a href="#"  style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
@@ -400,7 +400,7 @@ const StickyNav = () => {
         alignItems: 'center',
         gap: '22px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           textDecoration: 'none',
@@ -417,7 +417,7 @@ const StickyNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="#"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -435,7 +435,7 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}><span>Become a Partner</span></motion.a>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -494,10 +494,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: isTablet ? '24px 32px 28px' : '20px 24px 24px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
-          e.preventDefault();
-          setMobileMenuOpen(false);
-        }} style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -514,7 +511,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+          <a href="#"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -523,7 +520,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Become a Partner</a>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+          <a href="/summit"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',

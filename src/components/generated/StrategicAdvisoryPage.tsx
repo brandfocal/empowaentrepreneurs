@@ -389,7 +389,7 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-        <a href="#" onClick={e => e.preventDefault()} style={{
+        <a href="#"  style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
@@ -428,7 +428,7 @@ const StickyNav = () => {
         alignItems: 'center',
         gap: '28px'
       }}>
-            {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
+            {NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           textDecoration: 'none',
@@ -447,7 +447,7 @@ const StickyNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/partnerships"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -467,7 +467,7 @@ const StickyNav = () => {
           }}>
                 <span>Partner With Us</span>
               </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/summit" whileHover={{
             scale: 1.04,
             boxShadow: '0 8px 32px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -532,10 +532,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 32px 28px'
       }}>
-            {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
-          e.preventDefault();
-          setMobileMenuOpen(false);
-        }} style={{
+            {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -554,7 +551,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap' as const
         }}>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="/partnerships"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -563,7 +560,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="/summit"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -877,7 +874,7 @@ const HeroSection = () => {
           x: mag.springX,
           y: mag.springY
         }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="#"  whileHover={{
             scale: 1.04,
             boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
           }} whileTap={{
@@ -902,7 +899,7 @@ const HeroSection = () => {
               <ArrowIconDark />
             </motion.a>
           </motion.div>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/partnerships"  whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -1291,7 +1288,7 @@ const OfferingsSection = () => {
           }}>
               Each solution is engineered to deliver measurable commercial outcomes — connecting organisations to capital, markets, and enterprise growth ecosystems at the highest level.
             </p>
-            <a href="#" onClick={e => e.preventDefault()} style={{
+            <a href="#"  style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
@@ -1364,7 +1361,7 @@ const OfferingsSection = () => {
             fontWeight: 300,
             lineHeight: 1.7
           }}>{item.description}</p>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="#"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             color: '#DE322D',
@@ -2018,7 +2015,7 @@ const ValueSection = () => {
         gap: '12px',
         flexWrap: 'wrap' as const
       }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/partnerships"  whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97

@@ -379,7 +379,7 @@ const ProgrammeNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-        <a href="#" onClick={e => e.preventDefault()} style={{
+        <a href="#"  style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
@@ -417,7 +417,7 @@ const ProgrammeNav = () => {
         alignItems: 'center',
         gap: '32px'
       }}>
-            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
+            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           textDecoration: 'none',
@@ -435,7 +435,7 @@ const ProgrammeNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/partnerships"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -455,7 +455,7 @@ const ProgrammeNav = () => {
           }}>
                 <span>Partner With Us</span>
               </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/summit" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -517,10 +517,7 @@ const ProgrammeNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 32px 28px'
       }}>
-            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
-          e.preventDefault();
-          setMobileMenuOpen(false);
-        }} style={{
+            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -536,7 +533,7 @@ const ProgrammeNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="/partnerships"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -545,7 +542,7 @@ const ProgrammeNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="/summit"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -829,7 +826,7 @@ const ProgrammeHero = () => {
         gap: '12px',
         flexWrap: 'wrap'
       }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="#"  whileHover={{
           scale: 1.04,
           boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
         }} whileTap={{
@@ -852,7 +849,7 @@ const ProgrammeHero = () => {
         }}>
             <span>Explore Programme</span><ArrowIconDark />
           </motion.a>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -1475,7 +1472,7 @@ const ExperienceBlock = ({
           padding: '6px 14px'
         }}>{tag}</span>)}
         </div>
-        <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+        <motion.a href="#"  whileHover={{
         scale: 1.04
       }} whileTap={{
         scale: 0.97
@@ -1660,7 +1657,7 @@ const ZonesSection = () => {
           gap: '10px',
           flexWrap: isMobile ? 'wrap' : 'nowrap'
         }}>
-            {ZONES.map((zone, i) => <motion.button key={zone.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1} onClick={() => setActiveZone(zone.id)} style={{
+            {ZONES.map((zone, i) => <motion.button key={zone.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1}  style={{
             all: 'unset',
             cursor: 'pointer',
             display: 'flex',
@@ -1846,7 +1843,7 @@ const ZonesSection = () => {
                   }}>{service}</span>
                     </div>)}
                 </div>
-                <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+                <motion.a href="#"  whileHover={{
                 scale: 1.04
               }} whileTap={{
                 scale: 0.97
@@ -2052,7 +2049,7 @@ const ProgrammeCtaSection = () => {
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/summit" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2075,7 +2072,7 @@ const ProgrammeCtaSection = () => {
             }}>
                 <span>Register Now</span><ArrowIconDark />
               </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/partnerships"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2408,7 +2405,7 @@ const ProgrammeFooter = () => {
             gap: '12px',
             minWidth: isMobile ? '100%' : '260px'
           }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2431,7 +2428,7 @@ const ProgrammeFooter = () => {
             }}>
                 <span>Register Now</span><ArrowIconDark />
               </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/partnerships"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97

@@ -112,25 +112,30 @@ const STICKY_NAV_ITEMS = [{
   label: 'About Us',
   href: '/about'
 }, {
-  id: 'programme',
-  label: 'Programme',
-  href: '/programme'
-}, {
-  id: 'experience',
-  label: 'Experience Zones',
-  href: '/experience-zones'
+  id: 'ecosystem',
+  label: 'The Ecosystem',
+  href: '#',
+  children: [{
+    id: 'programme',
+    label: 'Programme',
+    href: '/programme'
+  }, {
+    id: 'experience',
+    label: 'Experience Zones',
+    href: '/experience-zones'
+  }, {
+    id: 'pitch-power',
+    label: 'Pitching Festival',
+    href: '/pitch-power'
+  }, {
+    id: 'awards',
+    label: 'Funding Awards',
+    href: '/awards'
+  }]
 }, {
   id: 'strategic-advisory',
   label: 'Strategic Advisory',
   href: '/strategic-advisory'
-}, {
-  id: 'apply',
-  label: 'Apply to Attend',
-  href: '/apply'
-}, {
-  id: 'pitch-power',
-  label: 'Pitching Festival',
-  href: '/pitch-power'
 }, {
   id: 'contact',
   label: 'Contact Us',
@@ -224,6 +229,111 @@ const ScrollProgressBar = () => {
 
 // ─── Countdown Timer ─────────────────────────────────────────────────────────
 
+// ─── DropdownNavItem ────────────────────────────────────────────────────────
+const DropdownNavItem = ({ item, scrolled, navLinkColor, navLinkHoverColor, pathname }: any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const isActive = item.children.some((child: any) => pathname === child.href);
+
+  return (
+    <div
+      style={{ position: 'relative' }}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <div style={{
+        fontFamily: 'Montserrat, sans-serif',
+        fontSize: '13px',
+        letterSpacing: '0.04em',
+        cursor: 'pointer',
+        transition: 'color 0.2s',
+        fontWeight: isActive ? 600 : 400,
+        color: isActive ? (scrolled ? '#DE322D' : '#fff') : navLinkColor,
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px'
+      }}
+      onMouseEnter={e => {
+        if (!isActive) e.currentTarget.style.color = navLinkHoverColor;
+      }}
+      onMouseLeave={e => {
+        if (!isActive) e.currentTarget.style.color = navLinkColor;
+      }}>
+        {item.label}
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{
+          transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+          transition: 'transform 0.2s ease'
+        }}>
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              paddingTop: '20px',
+              zIndex: 100
+            }}
+          >
+            <div style={{
+              background: scrolled ? 'rgba(255,255,255,0.98)' : 'rgba(20,18,16,0.98)',
+              border: scrolled ? '1px solid rgba(20,18,16,0.08)' : '1px solid rgba(247,246,243,0.1)',
+              borderRadius: '16px',
+              padding: '12px',
+              minWidth: '220px',
+              boxShadow: scrolled ? '0 16px 40px rgba(0,0,0,0.08)' : '0 16px 40px rgba(0,0,0,0.4)',
+              backdropFilter: 'blur(16px)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px'
+            }}>
+              {item.children.map((child: any) => {
+                const isChildActive = pathname === child.href;
+                return (
+                  <Link key={child.id} to={child.href} style={{
+                    display: 'block',
+                    padding: '10px 16px',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '13px',
+                    textDecoration: 'none',
+                    borderRadius: '8px',
+                    fontWeight: isChildActive ? 500 : 400,
+                    color: isChildActive ? (scrolled ? '#DE322D' : '#fff') : (scrolled ? 'rgba(20,18,16,0.65)' : 'rgba(247,246,243,0.7)'),
+                    background: isChildActive ? (scrolled ? 'rgba(222,50,45,0.05)' : 'rgba(222,50,45,0.15)') : 'transparent',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={e => {
+                    if (!isChildActive) {
+                      e.currentTarget.style.background = scrolled ? 'rgba(20,18,16,0.04)' : 'rgba(247,246,243,0.08)';
+                      e.currentTarget.style.color = scrolled ? '#141210' : '#F7F6F3';
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    if (!isChildActive) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.color = scrolled ? 'rgba(20,18,16,0.65)' : 'rgba(247,246,243,0.7)';
+                    }
+                  }}
+                  >
+                    {child.label}
+                  </Link>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const StickyNav = () => {
   const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
@@ -280,10 +390,15 @@ const StickyNav = () => {
         textDecoration: 'none'
       }}>
         <motion.img 
-          src="/ee-logo.png" 
+          src={scrolled ? "/logos/ee-logo.png" : "/logos/ee-logo-wh.png"} 
           alt="EmpowaSummit Logo"
           whileHover={{ scale: 1.05 }} 
-          style={{ height: '30px', width: 'auto', objectFit: 'contain' }}
+          style={{ 
+            height: '48px', 
+            width: 'auto', 
+            objectFit: 'contain',
+            mixBlendMode: scrolled ? 'multiply' : 'screen'
+          }}
         />
       </Link>
       {!isMobile && <div style={{
@@ -292,6 +407,10 @@ const StickyNav = () => {
         gap: '32px'
       }}>
         {STICKY_NAV_ITEMS.map(item => {
+          if ('children' in item) {
+            return <DropdownNavItem key={item.id} item={item} scrolled={scrolled} navLinkColor={navLinkColor} navLinkHoverColor={navLinkHoverColor} pathname={pathname} />;
+          }
+
           const isActive = pathname === item.href;
           return <Link key={item.id} to={item.href} style={{
             fontFamily: 'Montserrat, sans-serif',
@@ -335,7 +454,7 @@ const StickyNav = () => {
               <span>Partner With Us</span>
             </motion.div>
           </Link>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -399,7 +518,7 @@ const StickyNav = () => {
       }}>
         {STICKY_NAV_ITEMS.map(item => {
           const isActive = pathname === item.href;
-          return <Link key={item.id} to={item.href} onClick={() => setMobileMenuOpen(false)} style={{
+          return <Link key={item.id} to={item.href}  style={{
             display: 'block',
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '16px',
@@ -428,7 +547,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</Link>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+          <a href="/summit"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -597,7 +716,7 @@ const SiteFooter = () => {
             gap: '12px',
             minWidth: isMobile ? '100%' : '260px'
           }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{

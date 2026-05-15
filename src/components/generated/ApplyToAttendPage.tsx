@@ -272,7 +272,7 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-        <a href="#" onClick={e => e.preventDefault()} style={{
+        <a href="#"  style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
@@ -314,7 +314,7 @@ const StickyNav = () => {
         alignItems: 'center',
         gap: '28px'
       }}>
-            {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
+            {NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           textDecoration: 'none',
@@ -334,7 +334,7 @@ const StickyNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/partnerships"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -355,7 +355,7 @@ const StickyNav = () => {
           }}>
                 <span>Partner With Us</span>
               </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/summit" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -421,10 +421,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: isMobile ? '20px 20px 24px' : '24px 32px 28px'
       }}>
-            {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
-          e.preventDefault();
-          setMobileMenuOpen(false);
-        }} style={{
+            {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -443,7 +440,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="/partnerships"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -452,7 +449,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-              <a href="#" onClick={e => e.preventDefault()} style={{
+              <a href="/summit"  style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -741,7 +738,7 @@ const ApplyHeroSection = () => {
           gap: '10px',
           flexWrap: 'wrap'
         }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="/summit" whileHover={{
             scale: 1.04,
             boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
           }} whileTap={{
@@ -764,7 +761,7 @@ const ApplyHeroSection = () => {
           }}>
               <span>Register Now</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="#"  whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -1266,7 +1263,7 @@ const PathwaysSection = () => {
     }}>
         {PATHWAY_ITEMS.map((item, i) => {
         const isOpen = activeId === item.id;
-        return <motion.div key={item.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={i * 0.1} onMouseEnter={() => !isMobile && !isTablet && setActiveId(item.id)} onClick={() => (isMobile || isTablet) && setActiveId(isOpen ? '' : item.id)} style={{
+        return <motion.div key={item.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={i * 0.1} onMouseEnter={() => !isMobile && !isTablet && setActiveId(item.id)}  style={{
           position: 'relative',
           overflow: 'hidden',
           cursor: 'pointer',
@@ -1395,7 +1392,7 @@ const PathwaysSection = () => {
                     padding: '4px 12px'
                   }}>{t}</span>)}
                       </div>
-                      <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+                      <motion.a href="/partnerships"  whileHover={{
                   scale: 1.04
                 }} whileTap={{
                   scale: 0.97
@@ -1839,7 +1836,7 @@ const FinalCtaSection = () => {
             flexDirection: 'column',
             gap: '12px'
           }}>
-              {CTA_BUTTONS.map(btn => <motion.a key={btn.id} href="#" onClick={e => e.preventDefault()} variants={staggerChild} whileHover={{
+              {CTA_BUTTONS.map(btn => <motion.a key={btn.id} href="#"  variants={staggerChild} whileHover={{
               scale: 1.02,
               x: 4
             }} whileTap={{
@@ -2582,7 +2579,7 @@ const SiteFooter = () => {
             width: isMobile || isTablet ? '100%' : '260px',
             flexShrink: 0
           }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2605,7 +2602,7 @@ const SiteFooter = () => {
             }}>
                 <span>Register Now</span><ArrowIconDark />
               </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <motion.a href="/partnerships"  whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97

@@ -343,7 +343,7 @@ const SPEAKERS: Speaker[] = [{
   name: 'Dr. Amara Diallo',
   role: 'Managing Partner',
   company: 'Sahel Capital',
-  imageSrc: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80',
+  imageSrc: '/speakers/amara_diallo.png',
   topic: 'Catalytic Capital for African SMEs',
   accentColor: '#DE322D',
   tag: 'Keynote'
@@ -352,7 +352,7 @@ const SPEAKERS: Speaker[] = [{
   name: 'Kwame Asante',
   role: 'Investment Director',
   company: 'Pan-African Dev Fund',
-  imageSrc: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80',
+  imageSrc: '/speakers/kwame_asante.png',
   topic: 'DFI Mandates & the Funding Gap',
   accentColor: '#3B4E5F',
   tag: 'Panel'
@@ -361,7 +361,7 @@ const SPEAKERS: Speaker[] = [{
   name: 'Fatima El-Rashid',
   role: 'Founder & CEO',
   company: 'Zenith Agritech',
-  imageSrc: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80',
+  imageSrc: '/speakers/fatima_el_rashid.png',
   topic: 'Scaling Agri-Tech Across 10 Markets',
   accentColor: '#2D6A4F',
   tag: 'Fireside'
@@ -370,7 +370,7 @@ const SPEAKERS: Speaker[] = [{
   name: 'Tobenna Okafor',
   role: 'Venture Partner',
   company: 'Lagos Ventures',
-  imageSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80',
+  imageSrc: '/speakers/tobenna_okafor.png',
   topic: 'VC Thesis for Frontier Markets',
   accentColor: '#6B5E4A',
   tag: 'Workshop'
@@ -379,7 +379,7 @@ const SPEAKERS: Speaker[] = [{
   name: 'Nadia Mwangi',
   role: 'Chief Strategy Officer',
   company: 'AfriTech Holdings',
-  imageSrc: 'https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=600&q=80',
+  imageSrc: '/speakers/nadia_mwangi.png',
   topic: 'Building Billion-Dollar African Brands',
   accentColor: '#7B3F8A',
   tag: 'Keynote'
@@ -388,7 +388,7 @@ const SPEAKERS: Speaker[] = [{
   name: 'Samuel Adeyemi',
   role: 'Co-Founder',
   company: 'HealthStack Africa',
-  imageSrc: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80',
+  imageSrc: '/speakers/samuel_adeyemi.png',
   topic: 'Health-Tech Infrastructure at Scale',
   accentColor: '#C47F17',
   tag: 'Panel'
@@ -433,7 +433,7 @@ export const SpeakerCarousel = () => {
   const [activeTab, setActiveTab] = useState('All');
   const isMobile = useIsMobile();
   const trackRef = useRef<HTMLDivElement>(null);
-  const cardWidth = isMobile ? 280 : 380;
+  const cardWidth = isMobile ? 240 : 300;
   const cardGap = 16;
   const filteredSpeakers = activeTab === 'All' ? SPEAKERS : SPEAKERS.filter(sp => sp.tag === activeTab);
   const scrollToIdx = (idx: number) => {
@@ -736,7 +736,7 @@ export const SpeakerCarousel = () => {
             transform: hoveredId === speaker.id ? 'translateY(-10px)' : 'translateY(0)'
           }}>
                   <div style={{
-              height: isMobile ? '260px' : '320px',
+              height: isMobile ? '180px' : '220px',
               overflow: 'hidden',
               position: 'relative'
             }}>
@@ -784,10 +784,10 @@ export const SpeakerCarousel = () => {
               }} />
                   </div>
                   <div style={{
-              padding: '28px 28px 32px',
+              padding: '20px 20px 24px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '16px',
+              gap: '12px',
               background: '#FFFFFF'
             }}>
                     <div>
@@ -816,7 +816,7 @@ export const SpeakerCarousel = () => {
                     <div style={{
                 background: '#F7F6F3',
                 borderRadius: '12px',
-                padding: '14px 16px'
+                padding: '10px 14px'
               }}>
                       <div style={{
                   fontFamily: 'Inter, sans-serif',
