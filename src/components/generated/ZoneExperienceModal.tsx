@@ -70,7 +70,7 @@ export const ZoneExperienceModal = ({ isOpen, onClose, zoneName = "" }: { isOpen
           input_1: name,
           input_3: company,
           input_4: email,
-          input_5: selectedZone,
+          input_7: selectedZone,
           input_6: message
         }),
       });
