@@ -4,7 +4,7 @@ import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTr
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
 
-// ─── Responsive hook — three breakpoints ──────────────────────────────────────
+// ─── Responsive hook - three breakpoints ──────────────────────────────────────
 type Breakpoint = {
   isMobile: boolean;
   isTablet: boolean;
@@ -754,7 +754,7 @@ const HeroSection = () => {
       pointerEvents: 'none',
       zIndex: 3
     }} />
-      {/* Corner accents — hide on very small screens */}
+      {/* Corner accents - hide on very small screens */}
       {!isMobile && <div aria-hidden="true" style={{
       position: 'absolute',
       top: '88px',
@@ -818,7 +818,7 @@ const HeroSection = () => {
             color: '#DE322D',
             fontWeight: 600
           }}>EmpowaEntrepreneurs</span>
-            <span> · Pitch Perfect 2026 — </span>
+            <span> · Pitch Perfect 2026 - </span>
             <span style={{
             color: '#DE322D',
             fontWeight: 600
@@ -1037,7 +1037,7 @@ const PILLARS: Pillar[] = [{
   index: '01',
   title: 'Elite Access',
   accentColor: '#DE322D',
-  description: 'The Pitching Festival assembles the most serious capital allocators on the continent — DFIs, institutional VCs, angel syndicates, and family offices who arrive with genuine deployment mandates.',
+  description: 'The Pitching Festival assembles the most serious capital allocators on the continent - DFIs, institutional VCs, angel syndicates, and family offices who arrive with genuine deployment mandates.',
   imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80',
   imageAlt: 'Elite access to serious capital allocators'
 }, {
@@ -1053,7 +1053,7 @@ const PILLARS: Pillar[] = [{
   index: '03',
   title: 'Investor Exclusivity',
   accentColor: '#6B5E4A',
-  description: 'Funders at the Pitching Festival are vetted and exclusive. No casual observers — every investor participant commits to active deal engagement, ensuring founders receive undivided, actionable attention.',
+  description: 'Funders at the Pitching Festival are vetted and exclusive. No casual observers - every investor participant commits to active deal engagement, ensuring founders receive undivided, actionable attention.',
   imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80',
   imageAlt: 'Exclusive investor panels'
 }, {
@@ -1171,7 +1171,7 @@ const PillarsSection = () => {
             </motion.p>}
         </div>
 
-        {/* Cards grid — 1-col mobile, 2-col tablet+desktop */}
+        {/* Cards grid - 1-col mobile, 2-col tablet+desktop */}
         <div style={{
         display: 'grid',
         gridTemplateColumns: isNarrow ? '1fr' : 'repeat(2, 1fr)',
@@ -1312,7 +1312,7 @@ const ELIGIBILITY_CRITERIA: EligCriterion[] = [{
   category: 'Stage',
   title: 'Proven Traction',
   status: 'required',
-  description: 'Your business must demonstrate measurable market traction — revenue, users, or validated pilots. Pre-idea applicants will not be considered.'
+  description: 'Your business must demonstrate measurable market traction - revenue, users, or validated pilots. Pre-idea applicants will not be considered.'
 }, {
   id: 'ec-invite',
   category: 'Selection Mode',
@@ -1342,7 +1342,7 @@ const ELIGIBILITY_CRITERIA: EligCriterion[] = [{
   category: 'Notice',
   title: 'Application Window is Limited',
   status: 'notice',
-  description: 'Only 100 pitching slots are available across the entire festival. Applications close 60 days before the event or upon capacity — whichever comes first. Early application is strongly advised.'
+  description: 'Only 100 pitching slots are available across the entire festival. Applications close 60 days before the event or upon capacity - whichever comes first. Early application is strongly advised.'
 }];
 const EligibilitySection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -1452,7 +1452,7 @@ const EligibilitySection = () => {
           </motion.p>
         </div>
 
-        {/* Required cards — 1-col mobile, 2-col tablet, 3-col desktop */}
+        {/* Required cards - 1-col mobile, 2-col tablet, 3-col desktop */}
         <div style={{
         marginBottom: isMobile ? '20px' : '16px'
       }}>
@@ -1570,7 +1570,7 @@ const EligibilitySection = () => {
           </div>
         </div>
 
-        {/* Preferred cards — 1-col mobile, 2-col tablet+ */}
+        {/* Preferred cards - 1-col mobile, 2-col tablet+ */}
         <div style={{
         marginBottom: isMobile ? '20px' : '16px'
       }}>
@@ -1851,7 +1851,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [{
   index: '01',
   title: 'Real Capital',
   subtitle: 'No simulation. No feedback loops.',
-  description: "Investors at the Pitching Festival arrive with active deployment mandates. This is not a practice round — founders who qualify face funders with the authority and appetite to wire funds. Every seat in the room represents a potential term sheet.",
+  description: "Investors at the Pitching Festival arrive with active deployment mandates. This is not a practice round - founders who qualify face funders with the authority and appetite to wire funds. Every seat in the room represents a potential term sheet.",
   badge: 'Live Deployment',
   imageSrc: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80',
   imageAlt: 'Real capital deployment at the Pitching Festival'
@@ -1860,7 +1860,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [{
   index: '02',
   title: 'Real Deals',
   subtitle: 'Structured for conversion, not content.',
-  description: "The festival's architecture is engineered for deal closure — not networking cocktails and panel opinions. Private pitch rooms, back-to-back investor rotations, and structured follow-up sessions mean that deal pipelines are built in real-time.",
+  description: "The festival's architecture is engineered for deal closure - not networking cocktails and panel opinions. Private pitch rooms, back-to-back investor rotations, and structured follow-up sessions mean that deal pipelines are built in real-time.",
   badge: 'Deal Infrastructure',
   imageSrc: 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=800&q=80',
   imageAlt: 'Real deals closing at the festival'
@@ -1976,7 +1976,7 @@ const ExperienceSection = () => {
           </div>
         </div>
 
-        {/* Tab + image layout — stack on mobile/tablet, side-by-side on desktop */}
+        {/* Tab + image layout - stack on mobile/tablet, side-by-side on desktop */}
         <div style={{
         display: 'grid',
         gridTemplateColumns: showImagePanel ? '1fr 1fr' : '1fr',
@@ -2117,7 +2117,7 @@ const ExperienceSection = () => {
               </motion.div>)}
           </div>
 
-          {/* Image panel — desktop only */}
+          {/* Image panel - desktop only */}
           {showImagePanel && <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.2} style={{
           borderRadius: '24px',
           overflow: 'hidden',
@@ -2494,7 +2494,7 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
           </motion.div>
         </div>
 
-        {/* Bottom strip — 2-col mobile, 4-col tablet+ */}
+        {/* Bottom strip - 2-col mobile, 4-col tablet+ */}
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.55} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
@@ -2859,7 +2859,7 @@ const SiteFooter = () => {
             </p>
           </div>
 
-          {/* Link columns — 2-col mobile, 3-col tablet+ */}
+          {/* Link columns - 2-col mobile, 3-col tablet+ */}
           <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',

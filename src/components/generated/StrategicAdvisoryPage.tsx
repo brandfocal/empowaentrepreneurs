@@ -754,7 +754,7 @@ const HeroSection = () => {
             color: '#DE322D',
             fontWeight: 600
           }}>EmpowaEntrepreneurs</span>
-            <span> Funding Summit — </span>
+            <span> Funding Summit - </span>
             <span style={{
             color: 'rgba(247,246,243,0.55)',
             fontWeight: 500
@@ -859,7 +859,7 @@ const HeroSection = () => {
         fontWeight: 300,
         maxWidth: '520px'
       }}>
-          We move businesses from survival to scale and from ideas to investment-ready enterprises — combining global best practices in venture finance, incubation, and strategic growth advisory.
+          We move businesses from survival to scale and from ideas to investment-ready enterprises - combining global best practices in venture finance, incubation, and strategic growth advisory.
         </motion.p>
 
         {/* CTAs */}
@@ -1010,7 +1010,7 @@ const HeroSection = () => {
     </section>;
 };
 
-// ─── Section 2 — Intro Statement ──────────────────────────────────────────────
+// ─── Section 2 - Intro Statement ──────────────────────────────────────────────
 const INTRO_STATS = [{
   id: 'is-1',
   value: 'Investment-Grade',
@@ -1165,7 +1165,7 @@ const IntroSection = () => {
     </section>;
 };
 
-// ─── Section 3 — Strategic Offerings ─────────────────────────────────────────
+// ─── Section 3 - Strategic Offerings ─────────────────────────────────────────
 const OFFERINGS = [{
   id: 'of-1',
   num: '01',
@@ -1286,7 +1286,7 @@ const OfferingsSection = () => {
             margin: 0,
             fontWeight: 300
           }}>
-              Each solution is engineered to deliver measurable commercial outcomes — connecting organisations to capital, markets, and enterprise growth ecosystems at the highest level.
+              Each solution is engineered to deliver measurable commercial outcomes - connecting organisations to capital, markets, and enterprise growth ecosystems at the highest level.
             </p>
             <a href="#"  style={{
             display: 'inline-flex',
@@ -1377,7 +1377,7 @@ const OfferingsSection = () => {
     </section>;
 };
 
-// ─── Section 4 — Competitive Edge ────────────────────────────────────────────
+// ─── Section 4 - Competitive Edge ────────────────────────────────────────────
 const EDGE_ITEMS = [{
   id: 'ed-1',
   title: 'Venture Creation',
@@ -1533,7 +1533,7 @@ const EdgeSection = () => {
     </section>;
 };
 
-// ─── Section 5 — Africa Expansion Roadmap ─────────────────────────────────────
+// ─── Section 5 - Africa Expansion Roadmap ─────────────────────────────────────
 const SA_TIMELINE = [{
   id: 'sa-1',
   province: 'KwaZulu-Natal',
@@ -1661,7 +1661,7 @@ const RoadmapSection = () => {
         gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
         gap: isMobile ? '56px' : '80px'
       }}>
-          {/* LEFT — SA */}
+          {/* LEFT - SA */}
           <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.2}>
             <div style={{
             fontFamily: 'Montserrat, sans-serif',
@@ -1748,7 +1748,7 @@ const RoadmapSection = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT — Pan-African */}
+          {/* RIGHT - Pan-African */}
           <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3}>
             <div style={{
             fontFamily: 'Montserrat, sans-serif',
@@ -1831,7 +1831,7 @@ const RoadmapSection = () => {
     </section>;
 };
 
-// ─── Section 6 — Strategic Value Proposition ──────────────────────────────────
+// ─── Section 6 - Strategic Value Proposition ──────────────────────────────────
 const VALUE_PROPS = [{
   id: 'vp-1',
   title: "Africa's Leading Ecosystem",

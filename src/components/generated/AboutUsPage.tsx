@@ -655,7 +655,7 @@ const HeroSection = () => {
       zIndex: 2,
       opacity: 0.5
     }} />
-      {/* Red orb top-right — parallax */}
+      {/* Red orb top-right - parallax */}
       <motion.div aria-hidden="true" style={{
       y: orbY,
       position: 'absolute',
@@ -753,7 +753,7 @@ const HeroSection = () => {
             color: '#DE322D',
             fontWeight: 600
           }}>EmpowaEntrepreneurs</span>
-            <span> Funding Summit — </span>
+            <span> Funding Summit - </span>
             <span style={{
             color: 'rgba(247,246,243,0.55)',
             fontWeight: 500
@@ -866,7 +866,7 @@ const HeroSection = () => {
         fontWeight: 300,
         maxWidth: '520px'
       }}>
-          We exist to accelerate the meeting of ambitious African founders and the catalytic capital that unlocks their full potential — shaping economies, communities, and the continent's next chapter.
+          We exist to accelerate the meeting of ambitious African founders and the catalytic capital that unlocks their full potential - shaping economies, communities, and the continent's next chapter.
         </motion.p>
 
         {/* CTA buttons */}
@@ -1132,7 +1132,7 @@ const MissionSection = () => {
             margin: '0 0 48px',
             fontWeight: 300
           }}>
-              We are not a conference. We are a capital movement — a high-conviction ecosystem where ambitious founders, institutional funders, DFIs, venture capital firms, and ecosystem builders converge with one shared mandate: unlock growth.
+              We are not a conference. We are a capital movement - a high-conviction ecosystem where ambitious founders, institutional funders, DFIs, venture capital firms, and ecosystem builders converge with one shared mandate: unlock growth.
             </motion.p>
 
             {/* Stat row */}
@@ -1186,7 +1186,7 @@ const MissionSection = () => {
             </motion.div>
           </div>
 
-          {/* Right column — images */}
+          {/* Right column - images */}
           <div style={{
           display: 'flex',
           flexDirection: 'column',
@@ -1327,7 +1327,7 @@ const MissionSection = () => {
     </section>;
 };
 
-// ─── Who We Convene — Founders ────────────────────────────────────────────────
+// ─── Who We Convene - Founders ────────────────────────────────────────────────
 type FounderCard = {
   id: string;
   index: string;
@@ -1342,7 +1342,7 @@ const FOUNDER_CARDS: FounderCard[] = [{
   id: 'fc-1',
   index: '01',
   title: 'Visionary Builders',
-  description: 'Founders architecting the next generation of scalable African enterprises — from seed stage to market leaders who dominate continental markets.',
+  description: 'Founders architecting the next generation of scalable African enterprises - from seed stage to market leaders who dominate continental markets.',
   tag: 'Pre-Seed to Series B',
   accent: 'Builders',
   img: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=80',
@@ -1351,7 +1351,7 @@ const FOUNDER_CARDS: FounderCard[] = [{
   id: 'fc-2',
   index: '02',
   title: 'Problem Solvers',
-  description: "Entrepreneurs tackling Africa's most pressing challenges across fintech, agritech, health, and infrastructure — turning friction into opportunity.",
+  description: "Entrepreneurs tackling Africa's most pressing challenges across fintech, agritech, health, and infrastructure - turning friction into opportunity.",
   tag: 'Cross-Industry',
   accent: 'Solvers',
   img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80',
@@ -1369,7 +1369,7 @@ const FOUNDER_CARDS: FounderCard[] = [{
   id: 'fc-4',
   index: '04',
   title: 'Ecosystem Leaders',
-  description: 'Founders who lead with purpose — building businesses that generate economic influence and lasting impact far beyond their own organisations.',
+  description: 'Founders who lead with purpose - building businesses that generate economic influence and lasting impact far beyond their own organisations.',
   tag: 'Continental Reach',
   accent: 'Leaders',
   img: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80',
@@ -1547,7 +1547,7 @@ const FoundersSection = () => {
         alignItems: 'stretch'
       }}>
 
-            {/* Left: Featured card — animated crossfade */}
+            {/* Left: Featured card - animated crossfade */}
             <div style={{
           borderRadius: '24px',
           overflow: 'hidden',
@@ -1908,7 +1908,7 @@ const FoundersSection = () => {
           </div>)}
       </div>
 
-      {/* Stat band — full width flush bottom */}
+      {/* Stat band - full width flush bottom */}
       <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.65} style={{
       display: 'grid',
       gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
@@ -2105,7 +2105,7 @@ const CapitalPartnersSection = () => {
           lineHeight: '1.75',
           margin: 0
         }}>
-              Four categories of capital converge at EmpowaEntrepreneurs Funding Summit 2026 — each representing a distinct mandate to invest in Africa's future.
+              Four categories of capital converge at EmpowaEntrepreneurs Funding Summit 2026 - each representing a distinct mandate to invest in Africa's future.
             </motion.p>}
         </div>
 
@@ -2387,7 +2387,7 @@ const IMPACT_CARDS: ImpactCard[] = [{
   suffix: '+',
   prefix: '',
   label: 'Economic Influence',
-  description: 'Verified investors — VCs, angels, and institutional capital allocators — present and ready to commit to Africa\'s next wave.',
+  description: 'Verified investors - VCs, angels, and institutional capital allocators - present and ready to commit to Africa\'s next wave.',
   accent: true
 }, {
   id: 'ic-3',
@@ -2405,7 +2405,7 @@ const IMPACT_CARDS: ImpactCard[] = [{
   suffix: 'h',
   prefix: '',
   label: 'Concentrated Momentum',
-  description: 'Hours of curated programming — keynotes, pitch sessions, power seat roundtables, and strategic showcases.',
+  description: 'Hours of curated programming - keynotes, pitch sessions, power seat roundtables, and strategic showcases.',
   accent: false
 }];
 const ImpactStatNumber = ({

@@ -607,7 +607,7 @@ const ContactHero = () => {
       zIndex: 2,
       opacity: 0.5
     }} />
-      {/* Red orb top-right — clamped to prevent overflow */}
+      {/* Red orb top-right - clamped to prevent overflow */}
       <motion.div aria-hidden="true" style={{
       y: orbY,
       position: 'absolute',
@@ -632,7 +632,7 @@ const ContactHero = () => {
       pointerEvents: 'none',
       zIndex: 3
     }} />
-      {/* Corner brackets — hidden on very small screens */}
+      {/* Corner brackets - hidden on very small screens */}
       {!isMobile && <div aria-hidden="true" style={{
       position: 'absolute',
       top: '88px',
@@ -703,7 +703,7 @@ const ContactHero = () => {
             color: '#DE322D',
             fontWeight: 600
           }}>EmpowaEntrepreneurs</span>
-            <span> Funding Summit — </span>
+            <span> Funding Summit - </span>
             <span style={{
             color: 'rgba(247,246,243,0.55)',
             fontWeight: 500
@@ -796,7 +796,7 @@ const ContactHero = () => {
         fontWeight: 300,
         maxWidth: '520px'
       }}>
-          Whether you're a founder seeking catalytic capital, an investor exploring Africa's growth frontier, or a brand looking to align with continental impact — we're ready to connect.
+          Whether you're a founder seeking catalytic capital, an investor exploring Africa's growth frontier, or a brand looking to align with continental impact - we're ready to connect.
         </motion.p>
 
         {/* CTA row */}
@@ -895,7 +895,7 @@ const PATHWAY_ITEMS: PathwayItem[] = [{
   index: '01',
   title: 'Strategic Partnership',
   subtitle: 'Corporate & Brand Alignment',
-  description: "Align your brand with Africa's most ambitious capital movement. Strategic partners gain direct access to 4,000+ founders, investors, and ecosystem builders — and the platform to shape the continent's enterprise narrative.",
+  description: "Align your brand with Africa's most ambitious capital movement. Strategic partners gain direct access to 4,000+ founders, investors, and ecosystem builders - and the platform to shape the continent's enterprise narrative.",
   features: ['Exhibition & Branding Rights', 'Keynote & Panel Placement', 'Exclusive Networking Access', 'Co-Branding Opportunities', 'Post-Summit Report Inclusion'],
   icon: '◈'
 }, {
@@ -2178,7 +2178,7 @@ const InquiryFormSection = () => {
               </motion.div>}
           </div>
 
-          {/* Aside — stacked on tablet/mobile, sidebar on desktop */}
+          {/* Aside - stacked on tablet/mobile, sidebar on desktop */}
           <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isTablet || isMobile ? fadeUpVariants : slideFromRight} custom={0.3} style={{
           display: 'grid',
           gridTemplateColumns: isTablet ? 'repeat(3, 1fr)' : '1fr',
@@ -2595,7 +2595,7 @@ const CTABand = () => {
         }}>
             <span>EmpowaEntrepreneurs Funding Summit · EmpowaWorx House · May 28, 2026</span>
             <br />
-            <span>Africa's Premier Capital Movement — Connecting Founders with Catalytic Capital</span>
+            <span>Africa's Premier Capital Movement - Connecting Founders with Catalytic Capital</span>
           </p>
         </motion.div>
       </div>

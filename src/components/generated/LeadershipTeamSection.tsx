@@ -343,11 +343,11 @@ export const LeadershipTeamSection: React.FC = () => {
             margin: 0
           }}>
               The executive team engineering every dimension of the EmpowaEntrepreneurs Funding
-              Summit™ — from strategy and partnerships to speaker relations and brand experience.
+              Summit™ - from strategy and partnerships to speaker relations and brand experience.
             </motion.p>
           </div>
 
-          {/* RIGHT SIDE — PREV / NEXT BUTTONS */}
+          {/* RIGHT SIDE - PREV / NEXT BUTTONS */}
           <motion.div initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.55} style={{
           display: 'flex',
           gap: '8px',
@@ -487,7 +487,7 @@ export const LeadershipTeamSection: React.FC = () => {
                 height: '3px',
                 background: 'linear-gradient(90deg, #DE322D, transparent)'
               }} />
-                  {/* Number badge — top left */}
+                  {/* Number badge - top left */}
                   <div style={{
                 position: 'absolute',
                 top: '14px',
@@ -660,7 +660,7 @@ export const LeadershipTeamSection: React.FC = () => {
           marginLeft: 0,
           marginBottom: 0
         }}>
-            — EmpowaEntrepreneurs Funding Summit™ 2026
+            - EmpowaEntrepreneurs Funding Summit™ 2026
           </motion.p>
         </div>
       </div>
