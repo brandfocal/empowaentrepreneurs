@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
 
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -417,7 +418,7 @@ const StickyNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="#"  whileHover={{
+          <motion.a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openPartnershipModal')); }} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -511,7 +512,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <a href="#"  style={{
+          <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openPartnershipModal')); }} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -778,7 +779,7 @@ const HeroSection = () => {
           gap: '12px',
           flexWrap: 'wrap'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openPartnershipModal')); }} whileHover={{
             scale: 1.04,
             boxShadow: '0 16px 52px rgba(222,50,45,0.7)'
           }} whileTap={{
@@ -2462,7 +2463,7 @@ const CtaSection = () => {
           y: magneticBtn.springY,
           display: 'inline-flex'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openPartnershipModal')); }} whileHover={{
             scale: 1.04,
             boxShadow: '0 16px 52px rgba(222,50,45,0.7)'
           }} whileTap={{
@@ -2756,7 +2757,7 @@ const SiteFooter = () => {
             minWidth: isMobile ? '100%' : isTablet ? '220px' : '240px',
             width: isMobile ? '100%' : 'auto'
           }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openPartnershipModal')); }} whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2975,6 +2976,14 @@ const SiteFooter = () => {
 
 // ─── PartnershipsPage ─────────────────────────────────────────────────────────
 export const PartnershipsPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleOpen = () => setIsModalOpen(true);
+    window.addEventListener('openPartnershipModal', handleOpen);
+    return () => window.removeEventListener('openPartnershipModal', handleOpen);
+  }, []);
+
   return <div className="w-full min-h-screen" style={{
     background: '#141210',
     overflowX: 'hidden'
@@ -2984,5 +2993,6 @@ export const PartnershipsPage = () => {
     <SpecialisedPackagesSection />
     <WhyPartnerSection />
     <CtaSection />
+    {isModalOpen && <PartnershipEnquiryModal onClose={() => setIsModalOpen(false)} />}
   </div>;
 };
