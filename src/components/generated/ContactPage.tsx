@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { StrategicEnquiryModal } from './StrategicEnquiryModal';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -1776,22 +1776,23 @@ const InquiryFormSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const handleChange = (field: keyof FormData, value: string) => setFormData(prev => ({
     ...prev,
     [field]: value
   }));
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!recaptchaToken) {
-      setError('Please complete the reCAPTCHA to submit your inquiry.');
+    if (!executeRecaptcha) {
+      setError('Security verification is loading. Please wait a moment and try again.');
       return;
     }
     setIsSubmitting(true);
     setError(null);
 
     try {
+      const recaptchaToken = await executeRecaptcha('contact_form');
+
       const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/1/submissions', {
         method: 'POST',
         headers: {
@@ -1812,14 +1813,10 @@ const InquiryFormSection = () => {
         setSubmitted(true);
       } else {
         setError(data.validation_messages ? Object.values(data.validation_messages)[0] as string : 'Something went wrong. Please try again.');
-        recaptchaRef.current?.reset();
-        setRecaptchaToken(null);
       }
     } catch (err) {
       console.error('Gravity Forms submission error:', err);
       setError('A network error occurred. Please try again.');
-      recaptchaRef.current?.reset();
-      setRecaptchaToken(null);
     } finally {
       setIsSubmitting(false);
     }
@@ -2040,17 +2037,6 @@ const InquiryFormSection = () => {
               gap: '16px',
               marginTop: '12px'
             }}>
-                  <div style={{ marginBottom: '8px' }}>
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey="6LfZiggpAAAAACLC33h_h2jpw-YwDHMAHlTT08r-"
-                      onChange={(token) => {
-                        setRecaptchaToken(token);
-                        if (token) setError(null);
-                      }}
-                      theme="dark"
-                    />
-                  </div>
                   {error && <div style={{ color: '#DE322D', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>{error}</div>}
                   <div style={{
                     display: 'flex',
@@ -3113,14 +3099,16 @@ const SiteFooter = () => {
 
 // ─── ContactPage ──────────────────────────────────────────────────────────────
 export const ContactPage = () => {
-  return <div className="w-full min-h-screen" style={{
-    background: '#141210'
-  }}>
-      <ContactHero />
-      <EngagementSection />
-      <ContactDetailsSection />
-      <InquiryFormSection />
-      <CTABand />
-      <StrategicEnquiryModal />
-    </div>;
+  return <GoogleReCaptchaProvider reCaptchaKey="6LfZiggpAAAAACLC33h_h2jpw-YwDHMAHlTT08r-">
+      <div className="w-full min-h-screen" style={{
+        background: '#141210'
+      }}>
+        <ContactHero />
+        <EngagementSection />
+        <ContactDetailsSection />
+        <InquiryFormSection />
+        <CTABand />
+        <StrategicEnquiryModal />
+      </div>
+    </GoogleReCaptchaProvider>;
 };
