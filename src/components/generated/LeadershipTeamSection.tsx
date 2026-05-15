@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useInView, Variants } from 'framer-motion';
 
 /**
@@ -106,30 +106,6 @@ const lineWipe: Variants = {
     }
   })
 };
-const staggerContainer: Variants = {
-  hidden: {},
-  visible: (s = 0.1) => ({
-    transition: {
-      staggerChildren: s
-    }
-  })
-};
-const staggerChild: Variants = {
-  hidden: {
-    y: 48,
-    opacity: 0,
-    filter: 'blur(10px)'
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
 
 /**
  * DATA
@@ -183,132 +159,7 @@ const LEADERSHIP_TEAM = [{
   org: null,
   imageSrc: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80'
 }];
-
-/**
- * COMPONENT: LEADERSHIP TEAM CARD
- */
-const TeamCard = ({
-  member,
-  index,
-  hoveredTeam,
-  setHoveredTeam,
-  isMobile,
-  isTablet
-}: any) => {
-  const hovered = hoveredTeam === member.n;
-  return <motion.div variants={staggerChild} onMouseEnter={() => setHoveredTeam(member.n)} onMouseLeave={() => setHoveredTeam(null)} whileHover={{
-    y: -4
-  }} transition={{
-    duration: 0.3,
-    ease: [0.22, 1, 0.36, 1]
-  }} style={{
-    position: 'relative',
-    borderRadius: '20px',
-    overflow: 'hidden',
-    cursor: 'default',
-    transition: 'all 0.3s ease',
-    background: hovered ? 'linear-gradient(160deg, rgba(222,50,45,0.15) 0%, rgba(255,255,255,0.05) 100%)' : 'linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%)',
-    border: hovered ? '1px solid rgba(222,50,45,0.4)' : '1px solid rgba(255,255,255,0.12)',
-    boxShadow: hovered ? '0 20px 60px rgba(0,0,0,0.35)' : 'none',
-    display: 'flex',
-    flexDirection: 'column'
-  }}>
-      {/* PHOTO AREA */}
-      <div style={{
-      height: '200px',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-        <img src={member.imageSrc} alt={member.name} style={{
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        objectPosition: 'center top',
-        filter: 'brightness(0.88) saturate(0.85)',
-        transform: hovered ? 'scale(1.07)' : 'scale(1)',
-        transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1)'
-      }} />
-        <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(to top, rgba(36,48,64,0.9) 0%, transparent 55%)',
-        pointerEvents: 'none'
-      }} />
-        <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '2px',
-        background: 'linear-gradient(90deg, #DE322D, transparent)'
-      }} />
-        <div style={{
-        position: 'absolute',
-        top: '12px',
-        right: '12px',
-        background: 'rgba(222,50,45,0.15)',
-        border: '1px solid rgba(222,50,45,0.2)',
-        borderRadius: '100px',
-        padding: '3px 10px',
-        fontFamily: 'Inter, sans-serif',
-        fontSize: '10px',
-        color: '#DE322D',
-        fontWeight: 600,
-        letterSpacing: '0.1em'
-      }}>
-          {member.n < 10 ? `0${member.n}` : member.n}
-        </div>
-      </div>
-
-      {/* INFO AREA */}
-      <div style={{
-      padding: isMobile ? '18px 20px 20px' : '20px 24px 24px',
-      flexGrow: 1,
-      display: 'flex',
-      flexDirection: 'column'
-    }}>
-        <span style={{
-        fontFamily: 'Montserrat, sans-serif',
-        fontWeight: 700,
-        fontSize: isMobile ? '15px' : '16px',
-        color: hovered ? '#DE322D' : '#FFFFFF',
-        letterSpacing: '-0.3px',
-        lineHeight: 1.25,
-        marginBottom: '6px',
-        transition: 'color 0.3s',
-        display: 'block'
-      }}>
-          {member.name}
-        </span>
-        <span style={{
-        fontFamily: 'Inter, sans-serif',
-        fontWeight: 300,
-        fontSize: isMobile ? '11px' : '12px',
-        color: 'rgba(255,255,255,0.65)',
-        lineHeight: 1.55,
-        marginBottom: member.org ? '10px' : '0',
-        display: 'block'
-      }}>
-          {member.role}
-        </span>
-        {member.org && <div style={{
-        display: 'inline-block',
-        background: 'rgba(255,255,255,0.1)',
-        border: '1px solid rgba(255,255,255,0.15)',
-        borderRadius: '100px',
-        padding: '3px 10px',
-        fontFamily: 'Inter, sans-serif',
-        fontSize: '10px',
-        color: 'rgba(255,255,255,0.55)',
-        letterSpacing: '0.07em',
-        textTransform: 'uppercase',
-        width: 'fit-content'
-      }}>
-            {member.org}
-          </div>}
-      </div>
-    </motion.div>;
-};
+const cardGap = 16;
 
 /**
  * MAIN COMPONENT
@@ -317,11 +168,47 @@ export const LeadershipTeamSection: React.FC = () => {
   const isMobile = useIsMobile();
   const isTablet = useIsTablet();
   const [hoveredTeam, setHoveredTeam] = useState<number | null>(null);
-  const containerRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const containerRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, {
     once: true,
     margin: '-60px 0px'
   });
+  const cardWidth = isMobile ? 260 : isTablet ? 300 : 340;
+
+  // Drag-to-scroll
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragScrollLeft = useRef(0);
+  const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    isDragging.current = true;
+    dragStartX.current = e.pageX - (trackRef.current?.offsetLeft || 0);
+    dragScrollLeft.current = trackRef.current?.scrollLeft || 0;
+    if (trackRef.current) trackRef.current.style.cursor = 'grabbing';
+  }, []);
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging.current || !trackRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - (trackRef.current.offsetLeft || 0);
+    const walk = (x - dragStartX.current) * 1.5;
+    trackRef.current.scrollLeft = dragScrollLeft.current - walk;
+  }, []);
+  const handleMouseUp = useCallback(() => {
+    isDragging.current = false;
+    if (trackRef.current) trackRef.current.style.cursor = 'grab';
+  }, []);
+  const scrollToIdx = (idx: number) => {
+    setActiveIdx(idx);
+    trackRef.current?.scrollTo({
+      left: idx * (cardWidth + cardGap),
+      behavior: 'smooth'
+    });
+  };
+  const handlePrev = () => scrollToIdx(Math.max(0, activeIdx - 1));
+  const handleNext = () => scrollToIdx(Math.min(LEADERSHIP_TEAM.length - 1, activeIdx + 1));
+  const hPad = isMobile ? '0 20px' : isTablet ? '0 40px' : '0 64px';
+  const sectionBgFade = '#243040';
   return <section ref={containerRef} style={{
     position: 'relative',
     overflow: 'hidden',
@@ -335,7 +222,7 @@ export const LeadershipTeamSection: React.FC = () => {
     justifyContent: 'center'
   }}>
       {/* BACKGROUND LAYERS */}
-      <div style={{
+      <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -345,7 +232,7 @@ export const LeadershipTeamSection: React.FC = () => {
       opacity: 0.5,
       pointerEvents: 'none'
     }} />
-      <div style={{
+      <div aria-hidden="true" style={{
       position: 'absolute',
       top: '-15%',
       right: '-10%',
@@ -363,7 +250,7 @@ export const LeadershipTeamSection: React.FC = () => {
       zIndex: 1,
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: isMobile ? '0 20px' : isTablet ? '0 40px' : '0 64px',
+      padding: hPad,
       width: '100%',
       boxSizing: 'border-box'
     }}>
@@ -376,91 +263,371 @@ export const LeadershipTeamSection: React.FC = () => {
         originX: 0
       }} />
 
-        {/* SECTION LABEL ROW */}
-        <motion.div initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={rotateFade} custom={0.2} style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        marginBottom: '20px'
-      }}>
-          <PlusSquareIconLight />
-          <span style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: '11px',
-          fontWeight: 500,
-          textTransform: 'uppercase',
-          letterSpacing: '0.14em',
-          color: 'rgba(255,255,255,0.45)'
-        }}>
-            EXECUTIVE DELIVERY & LEADERSHIP TEAM
-          </span>
-        </motion.div>
-
-        {/* H2 HEADING */}
+        {/* HEADER ROW */}
         <div style={{
-        marginBottom: '24px'
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        flexWrap: 'wrap',
+        gap: '24px',
+        marginBottom: '40px'
+      }}>
+          {/* LEFT SIDE */}
+          <div>
+            {/* SECTION LABEL */}
+            <motion.div initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={rotateFade} custom={0.2} style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            marginBottom: '20px'
+          }}>
+              <PlusSquareIconLight />
+              <span style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: '11px',
+              fontWeight: 500,
+              textTransform: 'uppercase',
+              letterSpacing: '0.14em',
+              color: 'rgba(255,255,255,0.45)'
+            }}>
+                EXECUTIVE DELIVERY &amp; LEADERSHIP TEAM
+              </span>
+            </motion.div>
+
+            {/* H2 HEADING */}
+            <div style={{
+            marginBottom: '20px'
+          }}>
+              <div style={{
+              overflow: 'hidden'
+            }}>
+                <motion.h2 initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.3} style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 200,
+                lineHeight: 0.91,
+                letterSpacing: isMobile ? '-2px' : '-3px',
+                margin: 0,
+                fontSize: 'clamp(36px, 5vw, 68px)',
+                color: '#FFFFFF'
+              }}>
+                  The Team
+                </motion.h2>
+              </div>
+              <div style={{
+              overflow: 'hidden',
+              marginTop: '4px'
+            }}>
+                <motion.h2 initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.4} style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 300,
+                fontStyle: 'italic',
+                lineHeight: 0.91,
+                letterSpacing: isMobile ? '-2px' : '-3px',
+                margin: 0,
+                fontSize: 'clamp(36px, 5vw, 68px)',
+                color: '#DE322D'
+              }}>
+                  Behind the Summit.
+                </motion.h2>
+              </div>
+            </div>
+
+            {/* SUBTITLE */}
+            <motion.p initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.5} style={{
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 300,
+            fontSize: isMobile ? '15px' : '16px',
+            lineHeight: 1.75,
+            color: 'rgba(255,255,255,0.6)',
+            maxWidth: '540px',
+            margin: 0
+          }}>
+              The executive team engineering every dimension of the EmpowaEntrepreneurs Funding
+              Summit™ — from strategy and partnerships to speaker relations and brand experience.
+            </motion.p>
+          </div>
+
+          {/* RIGHT SIDE — PREV / NEXT BUTTONS */}
+          <motion.div initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.55} style={{
+          display: 'flex',
+          gap: '8px',
+          alignItems: 'center',
+          flexShrink: 0
+        }}>
+            <motion.button onClick={handlePrev} whileHover={activeIdx === 0 ? {} : {
+            scale: 1.08
+          }} whileTap={activeIdx === 0 ? {} : {
+            scale: 0.94
+          }} style={{
+            width: '52px',
+            height: '52px',
+            borderRadius: '50%',
+            border: '1px solid rgba(255,255,255,0.15)',
+            background: activeIdx === 0 ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.1)',
+            opacity: activeIdx === 0 ? 0.4 : 1,
+            cursor: activeIdx === 0 ? 'not-allowed' : 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0
+          }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 3L5 8L10 13" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </motion.button>
+            <motion.button onClick={handleNext} whileHover={activeIdx === LEADERSHIP_TEAM.length - 1 ? {} : {
+            scale: 1.08
+          }} whileTap={activeIdx === LEADERSHIP_TEAM.length - 1 ? {} : {
+            scale: 0.94
+          }} style={{
+            width: '52px',
+            height: '52px',
+            borderRadius: '50%',
+            border: '1px solid rgba(255,255,255,0.15)',
+            background: activeIdx === LEADERSHIP_TEAM.length - 1 ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.1)',
+            opacity: activeIdx === LEADERSHIP_TEAM.length - 1 ? 0.4 : 1,
+            cursor: activeIdx === LEADERSHIP_TEAM.length - 1 ? 'not-allowed' : 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0
+          }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 3L11 8L6 13" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </motion.button>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* FULL-WIDTH CAROUSEL TRACK */}
+      <motion.div initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.6} style={{
+      width: '100vw',
+      marginLeft: 'calc(-50vw + 50%)',
+      position: 'relative'
+    }}>
+        {/* Left fade mask */}
+        <div aria-hidden="true" style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '80px',
+        height: '100%',
+        background: `linear-gradient(to right, ${sectionBgFade}, transparent)`,
+        zIndex: 2,
+        pointerEvents: 'none'
+      }} />
+        {/* Right fade mask */}
+        <div aria-hidden="true" style={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: '80px',
+        height: '100%',
+        background: `linear-gradient(to left, ${sectionBgFade}, transparent)`,
+        zIndex: 2,
+        pointerEvents: 'none'
+      }} />
+
+        {/* Scrollable track */}
+        <div ref={trackRef} onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp} style={{
+        overflowX: 'auto',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
+        WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'],
+        cursor: 'grab',
+        userSelect: 'none',
+        padding: '0 64px'
       }}>
           <div style={{
-          overflow: 'hidden'
+          display: 'flex',
+          gap: `${cardGap}px`,
+          width: 'max-content',
+          padding: '16px 0 32px'
         }}>
-            <motion.h2 initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.3} style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 200,
-            lineHeight: 0.91,
-            letterSpacing: isMobile ? '-2px' : '-3px',
-            margin: 0,
-            fontSize: 'clamp(36px, 5vw, 68px)',
-            color: '#FFFFFF'
+            {LEADERSHIP_TEAM.map(member => <motion.div key={member.n} onMouseEnter={() => setHoveredTeam(member.n)} onMouseLeave={() => setHoveredTeam(null)} style={{
+            flexShrink: 0,
+            width: `${cardWidth}px`,
+            borderRadius: '24px',
+            overflow: 'hidden',
+            background: hoveredTeam === member.n ? 'linear-gradient(160deg, rgba(222,50,45,0.15) 0%, rgba(255,255,255,0.06) 100%)' : 'linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%)',
+            border: '1px solid',
+            borderColor: hoveredTeam === member.n ? 'rgba(222,50,45,0.4)' : 'rgba(255,255,255,0.12)',
+            boxShadow: hoveredTeam === member.n ? '0 32px 80px rgba(0,0,0,0.45)' : '0 4px 20px rgba(0,0,0,0.2)',
+            transform: hoveredTeam === member.n ? 'translateY(-10px)' : 'translateY(0)',
+            transition: 'border-color 0.3s ease, box-shadow 0.4s ease, transform 0.4s ease, background 0.3s ease'
           }}>
-              The Team
-            </motion.h2>
-          </div>
-          <div style={{
-          overflow: 'hidden',
-          marginTop: '4px'
-        }}>
-            <motion.h2 initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.4} style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 300,
-            fontStyle: 'italic',
-            lineHeight: 0.91,
-            letterSpacing: isMobile ? '-2px' : '-3px',
-            margin: 0,
-            fontSize: 'clamp(36px, 5vw, 68px)',
-            color: '#DE322D'
-          }}>
-              Behind the Summit.
-            </motion.h2>
+                {/* Photo area */}
+                <div style={{
+              height: isMobile ? 240 : 280,
+              overflow: 'hidden',
+              position: 'relative'
+            }}>
+                  <img src={member.imageSrc} alt={member.name} style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+                filter: 'brightness(0.85) saturate(0.8)',
+                transform: hoveredTeam === member.n ? 'scale(1.07)' : 'scale(1)',
+                transition: 'transform 0.8s cubic-bezier(0.22,1,0.36,1)',
+                display: 'block'
+              }} />
+                  <div aria-hidden="true" style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(36,48,64,0.92) 0%, transparent 55%)',
+                pointerEvents: 'none'
+              }} />
+                  <div aria-hidden="true" style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '3px',
+                background: 'linear-gradient(90deg, #DE322D, transparent)'
+              }} />
+                  {/* Number badge — top left */}
+                  <div style={{
+                position: 'absolute',
+                top: '14px',
+                left: '14px',
+                background: 'rgba(222,50,45,0.2)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                border: '1px solid rgba(222,50,45,0.3)',
+                borderRadius: '100px',
+                padding: '4px 12px',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '10px',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.9)',
+                fontWeight: 600
+              }}>
+                    <span>{member.n < 10 ? `0${member.n}` : member.n}</span>
+                  </div>
+                </div>
+
+                {/* Info area */}
+                <div style={{
+              padding: isMobile ? '18px 20px 20px' : '22px 26px 26px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px'
+            }}>
+                  <div>
+                    <h3 style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: isMobile ? '15px' : '17px',
+                  fontWeight: 700,
+                  letterSpacing: '-0.3px',
+                  color: hoveredTeam === member.n ? '#DE322D' : '#FFFFFF',
+                  margin: '0 0 5px',
+                  lineHeight: 1.2,
+                  transition: 'color 0.3s ease'
+                }}>
+                      {member.name}
+                    </h3>
+                    <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '12px',
+                  color: 'rgba(255,255,255,0.5)',
+                  margin: 0,
+                  lineHeight: 1.55
+                }}>
+                      {member.role}
+                    </p>
+                  </div>
+
+                  {/* Position box */}
+                  <div style={{
+                background: 'rgba(255,255,255,0.06)',
+                borderRadius: '10px',
+                padding: '10px 14px',
+                border: '1px solid rgba(255,255,255,0.07)'
+              }}>
+                    <div style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '9px',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.28)',
+                  marginBottom: '4px',
+                  fontWeight: 500
+                }}>
+                      Position
+                    </div>
+                    <div style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '11px',
+                  color: 'rgba(255,255,255,0.6)',
+                  lineHeight: 1.5,
+                  fontWeight: 500
+                }}>
+                      {member.role}
+                    </div>
+                  </div>
+
+                  {/* Bottom row */}
+                  <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between'
+              }}>
+                    <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '7px'
+                }}>
+                      <div style={{
+                    width: '7px',
+                    height: '7px',
+                    borderRadius: '50%',
+                    background: '#DE322D'
+                  }} />
+                      <span style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '11px',
+                    color: 'rgba(255,255,255,0.32)',
+                    letterSpacing: '0.03em'
+                  }}>
+                        Summit 2026
+                      </span>
+                    </div>
+                    <div style={{
+                  width: '30px',
+                  height: '30px',
+                  borderRadius: '50%',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 10L10 2M10 2H4M10 2V8" stroke="rgba(255,255,255,0.35)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>)}
           </div>
         </div>
+      </motion.div>
 
-        {/* SUBTITLE */}
-        <motion.p initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.5} style={{
-        fontFamily: 'Inter, sans-serif',
-        fontWeight: 300,
-        fontSize: isMobile ? '15px' : '16px',
-        lineHeight: 1.75,
-        color: 'rgba(255,255,255,0.6)',
-        maxWidth: '640px',
-        marginBottom: '56px',
-        marginRight: 0,
-        marginLeft: 0
-      }}>
-          The executive team engineering every dimension of the EmpowaEntrepreneurs Funding Summit™ — from strategy and partnerships to speaker relations and brand experience.
-        </motion.p>
-
-        {/* TEAM CARDS GRID */}
-        <motion.div initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.1} style={{
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-        gap: isMobile ? '16px' : '20px'
-      }}>
-          {LEADERSHIP_TEAM.map((member, idx) => <TeamCard key={member.n} member={member} index={idx} hoveredTeam={hoveredTeam} setHoveredTeam={setHoveredTeam} isMobile={isMobile} isTablet={isTablet} />)}
-        </motion.div>
-
-        {/* CLOSING QUOTE ROW */}
+      {/* CLOSING QUOTE ROW */}
+      <div style={{
+      position: 'relative',
+      zIndex: 1,
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: hPad,
+      width: '100%',
+      boxSizing: 'border-box'
+    }}>
         <div style={{
-        marginTop: '56px',
+        marginTop: '40px',
         textAlign: 'center'
       }}>
           <motion.div initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.8} style={{
@@ -479,7 +646,7 @@ export const LeadershipTeamSection: React.FC = () => {
           letterSpacing: '0.02em',
           margin: 0
         }}>
-            "Engineered for impact. Executed with precision."
+            &ldquo;Engineered for impact. Executed with precision.&rdquo;
           </motion.p>
           <motion.p initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={1.0} style={{
           fontFamily: 'Montserrat, sans-serif',
