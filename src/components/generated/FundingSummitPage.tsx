@@ -2685,7 +2685,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'Digital Innovation & Business Growth',
   tag: 'Keynote',
   accentColor: '#DE322D',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/gregg-barret-scaled.jpg',
+  imageSrc: '/speakers/Greg-Barrett.jpg',
   year: '2025'
 }, {
   id: 'sp-2',
@@ -2695,7 +2695,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'Development Finance & Capital Deployment',
   tag: 'Fire Chat',
   accentColor: '#2D6A4F',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/Hlengiwe-Makhathini-2.jpg',
+  imageSrc: '/speakers/Hlengiwe-Makhathini.jpg',
   year: '2025'
 }, {
   id: 'sp-3',
@@ -2705,7 +2705,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'Entrepreneurship, Franchising & Scale',
   tag: 'Keynote',
   accentColor: '#DE322D',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/ian-fuhr.jpg',
+  imageSrc: '/speakers/Ian-Fuhr.jpg',
   year: '2025'
 }, {
   id: 'sp-4',
@@ -2715,7 +2715,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'EmpowaEntrepreneurs Vision & Capital Access Mission',
   tag: 'Keynote',
   accentColor: '#DE322D',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/simphiwe-masiza-2.jpg',
+  imageSrc: '/speakers/Simphiwe-Masiza.jpeg',
   year: '2025'
 }, {
   id: 'sp-5',
@@ -2725,7 +2725,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'Enterprise Development & Supply Chain Capital',
   tag: 'Masterclass',
   accentColor: '#6B5E4A',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/Niall-Gahan.jpg',
+  imageSrc: '/speakers/Niall-Gahan.jpg',
   year: '2025'
 }, {
   id: 'sp-6',
@@ -2735,7 +2735,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'ESD & Supplier Development Capital',
   tag: 'Panel',
   accentColor: '#3B4E5F',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/Bongani-Ntombela.jpg',
+  imageSrc: '/speakers/Bongani-Ntombela.jpg',
   year: '2025'
 }, {
   id: 'sp-7',
@@ -2745,7 +2745,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'Venture Capital & Startup Funding',
   tag: 'Panel',
   accentColor: '#3B4E5F',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/mitchan-adams.jpg.jpeg',
+  imageSrc: '/speakers/Mitchan-Adams.png',
   year: '2025'
 }, {
   id: 'sp-8',
@@ -2755,7 +2755,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'Venture Capital & Impact Investment',
   tag: 'Panel',
   accentColor: '#3B4E5F',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/Sihle-Gumede-1.jpg',
+  imageSrc: '/speakers/Sihle-Gumede.jpg',
   year: '2025'
 }, {
   id: 'sp-9',
@@ -2765,7 +2765,7 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'Loan Finance & Programme Direction',
   tag: 'Panel',
   accentColor: '#3B4E5F',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/milton-nkosi.jpg',
+  imageSrc: '/speakers/Milton-Nkosi.jpg',
   year: '2025'
 }, {
   id: 'sp-10',
@@ -2775,108 +2775,8 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   topic: 'Impact Fund & Private Equity Conversations',
   tag: 'Panel',
   accentColor: '#3B4E5F',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/Khanyi-Mlambo.jpg.jpeg',
+  imageSrc: '/speakers/Khanyi-Mlambo.jpg',
   year: '2025'
-}, {
-  id: 'sp-11',
-  name: 'Clive Butkow',
-  role: 'Managing Partner',
-  company: 'Conducive Capital',
-  topic: 'Venture Capital: What Investors Really Look For',
-  tag: 'Keynote',
-  accentColor: '#DE322D',
-  imageSrc: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-12',
-  name: 'Keet van Zyl',
-  role: 'Founding Partner',
-  company: 'Knife Capital',
-  topic: 'Private Equity & Scaling African Ventures',
-  tag: 'Panel',
-  accentColor: '#3B4E5F',
-  imageSrc: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-13',
-  name: 'Bronwyn Nielsen',
-  role: 'CEO',
-  company: 'The Nielsen Network',
-  topic: 'Leadership, Media & Business Strategy',
-  tag: 'Keynote',
-  accentColor: '#DE322D',
-  imageSrc: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-14',
-  name: 'Tryphosa Ramano',
-  role: 'Board Member',
-  company: 'Public Investment Corporation (PIC)',
-  topic: 'Public Capital & Institutional Investment',
-  tag: 'Panel',
-  accentColor: '#3B4E5F',
-  imageSrc: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-15',
-  name: 'Cas Coovadia',
-  role: 'CEO',
-  company: 'Business Unity South Africa (BUSA)',
-  topic: 'Policy, Capital & Business Environment',
-  tag: 'Keynote',
-  accentColor: '#DE322D',
-  imageSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-16',
-  name: 'Audrey Verhaeghe',
-  role: 'CEO',
-  company: 'Anza Capital',
-  topic: 'Impact Investing & Gender-Lens Capital',
-  tag: 'Fire Chat',
-  accentColor: '#2D6A4F',
-  imageSrc: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-17',
-  name: 'Thandiwe Maqetuka',
-  role: 'VC Investment Associate',
-  company: 'HAVAIC',
-  topic: 'Venture Capital for High-Growth Startups',
-  tag: 'Panel',
-  accentColor: '#3B4E5F',
-  imageSrc: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-18',
-  name: 'Sibongile Zulu',
-  role: 'Founder & MD',
-  company: 'Capital Unlocked',
-  topic: 'Unlocking Capital for Black Entrepreneurs',
-  tag: 'Masterclass',
-  accentColor: '#6B5E4A',
-  imageSrc: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-19',
-  name: 'Kumaran Padayachee',
-  role: 'CEO',
-  company: 'Spartan SME Finance',
-  topic: 'SME Finance & Debt Capital for Growth',
-  tag: 'Fire Chat',
-  accentColor: '#2D6A4F',
-  imageSrc: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80',
-  year: '2024'
-}, {
-  id: 'sp-20',
-  name: 'Luyanda Jafta',
-  role: 'CEO & Co-Founder',
-  company: "The People's Fund",
-  topic: "Community Capital & People's Funding",
-  tag: 'Panel',
-  accentColor: '#3B4E5F',
-  imageSrc: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80',
-  year: '2024'
 }];
 const SPEAKER_TABS = [{
   id: 'tab-all',

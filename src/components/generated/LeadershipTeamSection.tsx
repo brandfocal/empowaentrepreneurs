@@ -115,7 +115,7 @@ const LEADERSHIP_TEAM = [{
   name: 'Simphiwe Masiza',
   role: 'Founder & Executive Producer',
   org: 'EmpowaEntrepreneurs Funding Summit™',
-  imageSrc: 'https://empowaentrepreneurs.co.za/wp-content/uploads/2025/05/simphiwe-masiza-2.jpg'
+  imageSrc: '/speakers/Simphiwe-Masiza.jpeg'
 }, {
   n: 2,
   name: 'Sechaba Motsieloa',
