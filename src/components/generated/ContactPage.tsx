@@ -1733,7 +1733,8 @@ const ContactDetailsSection = () => {
 
 // ─── Inquiry Form Section ─────────────────────────────────────────────────────
 type FormData = {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   subject: string;
   message: string;
@@ -1764,7 +1765,8 @@ const InquiryFormSection = () => {
   const isMobile = useIsMobile();
   const isTablet = useIsTablet();
   const [formData, setFormData] = useState<FormData>({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     subject: '',
     message: ''
@@ -1781,11 +1783,6 @@ const InquiryFormSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    
-    // Split name into first and last
-    const nameParts = formData.name.trim().split(' ');
-    const firstName = nameParts[0] || '';
-    const lastName = nameParts.slice(1).join(' ') || '';
 
     try {
       const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/1/submissions', {
@@ -1794,8 +1791,8 @@ const InquiryFormSection = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "3.3": firstName,
-          "3.6": lastName,
+          "3.3": formData.firstName,
+          "3.6": formData.lastName,
           "5": formData.email,
           "23": formData.subject,
           "24": formData.message
@@ -1992,18 +1989,28 @@ const InquiryFormSection = () => {
               gap: '14px'
             }}>
                   <div>
-                    <label htmlFor="contact-name" style={labelStyle}>Full Name</label>
-                    <input id="contact-name" type="text" placeholder="Your full name" value={formData.name} onChange={e => handleChange('name', e.target.value)} onFocus={() => setFocused('name')} onBlur={() => setFocused(null)} required style={inputStyle('name')} />
+                    <label htmlFor="contact-firstname" style={labelStyle}>First Name</label>
+                    <input id="contact-firstname" type="text" placeholder="Your first name" value={formData.firstName} onChange={e => handleChange('firstName', e.target.value)} onFocus={() => setFocused('firstName')} onBlur={() => setFocused(null)} required style={inputStyle('firstName')} />
                   </div>
+                  <div>
+                    <label htmlFor="contact-lastname" style={labelStyle}>Last Name</label>
+                    <input id="contact-lastname" type="text" placeholder="Your last name" value={formData.lastName} onChange={e => handleChange('lastName', e.target.value)} onFocus={() => setFocused('lastName')} onBlur={() => setFocused(null)} required style={inputStyle('lastName')} />
+                  </div>
+                </div>
+
+                <div style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+              gap: '14px'
+            }}>
                   <div>
                     <label htmlFor="contact-email" style={labelStyle}>Email Address</label>
                     <input id="contact-email" type="email" placeholder="info@empowaentrepreneurs.co.za" value={formData.email} onChange={e => handleChange('email', e.target.value)} onFocus={() => setFocused('email')} onBlur={() => setFocused(null)} required style={inputStyle('email')} />
                   </div>
-                </div>
-
-                <div>
-                  <label htmlFor="contact-subject" style={labelStyle}>Subject</label>
-                  <input id="contact-subject" type="text" placeholder="e.g. Strategic Partnership, General Inquiry" value={formData.subject} onChange={e => handleChange('subject', e.target.value)} onFocus={() => setFocused('subject')} onBlur={() => setFocused(null)} required style={inputStyle('subject')} />
+                  <div>
+                    <label htmlFor="contact-subject" style={labelStyle}>Subject</label>
+                    <input id="contact-subject" type="text" placeholder="e.g. Strategic Partnership, General Inquiry" value={formData.subject} onChange={e => handleChange('subject', e.target.value)} onFocus={() => setFocused('subject')} onBlur={() => setFocused(null)} required style={inputStyle('subject')} />
+                  </div>
                 </div>
 
                 <div>
