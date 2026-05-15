@@ -337,74 +337,121 @@ type Speaker = {
   topic: string;
   accentColor: string;
   tag: string;
+  year: string;
 };
 const SPEAKERS: Speaker[] = [{
   id: 'sp-1',
-  name: 'Dr. Amara Diallo',
-  role: 'Managing Partner',
-  company: 'Sahel Capital',
-  imageSrc: '/speakers/amara_diallo.png',
-  topic: 'Catalytic Capital for African SMEs',
+  name: 'Gregg Barrett',
+  role: 'CEO',
+  company: 'Cirrus',
+  topic: 'Digital Innovation & Business Growth',
+  tag: 'Keynote',
   accentColor: '#DE322D',
-  tag: 'Keynote'
+  imageSrc: '/speakers/Greg-Barrett.jpg',
+  year: '2025'
 }, {
   id: 'sp-2',
-  name: 'Kwame Asante',
-  role: 'Investment Director',
-  company: 'Pan-African Dev Fund',
-  imageSrc: '/speakers/kwame_asante.png',
-  topic: 'DFI Mandates & the Funding Gap',
-  accentColor: '#3B4E5F',
-  tag: 'Panel'
+  name: 'Hlengiwe Makhathini',
+  role: 'Group CIO',
+  company: 'IDF Capital',
+  topic: 'Development Finance & Capital Deployment',
+  tag: 'Fire Chat',
+  accentColor: '#2D6A4F',
+  imageSrc: '/speakers/Hlengiwe-Makhathini.jpg',
+  year: '2025'
 }, {
   id: 'sp-3',
-  name: 'Fatima El-Rashid',
-  role: 'Founder & CEO',
-  company: 'Zenith Agritech',
-  imageSrc: '/speakers/fatima_el_rashid.png',
-  topic: 'Scaling Agri-Tech Across 10 Markets',
-  accentColor: '#2D6A4F',
-  tag: 'Fireside'
+  name: 'Ian Fuhr',
+  role: 'Founder',
+  company: 'Sorbet Group',
+  topic: 'Entrepreneurship, Franchising & Scale',
+  tag: 'Keynote',
+  accentColor: '#DE322D',
+  imageSrc: '/speakers/Ian-Fuhr.jpg',
+  year: '2025'
 }, {
   id: 'sp-4',
-  name: 'Tobenna Okafor',
-  role: 'Venture Partner',
-  company: 'Lagos Ventures',
-  imageSrc: '/speakers/tobenna_okafor.png',
-  topic: 'VC Thesis for Frontier Markets',
-  accentColor: '#6B5E4A',
-  tag: 'Workshop'
+  name: 'Simphiwe Masiza',
+  role: 'CEO & Founder',
+  company: 'EmpowaWorx',
+  topic: 'EmpowaEntrepreneurs Vision & Capital Access Mission',
+  tag: 'Keynote',
+  accentColor: '#DE322D',
+  imageSrc: '/speakers/Simphiwe-Masiza.jpeg',
+  year: '2025'
 }, {
   id: 'sp-5',
-  name: 'Nadia Mwangi',
-  role: 'Chief Strategy Officer',
-  company: 'AfriTech Holdings',
-  imageSrc: '/speakers/nadia_mwangi.png',
-  topic: 'Building Billion-Dollar African Brands',
-  accentColor: '#7B3F8A',
-  tag: 'Keynote'
+  name: 'Niall Gahan',
+  role: 'Head of Enterprisefund',
+  company: 'Enterpriseroom',
+  topic: 'Enterprise Development & Supply Chain Capital',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Niall-Gahan.jpg',
+  year: '2025'
 }, {
   id: 'sp-6',
-  name: 'Samuel Adeyemi',
-  role: 'Co-Founder',
-  company: 'HealthStack Africa',
-  imageSrc: '/speakers/samuel_adeyemi.png',
-  topic: 'Health-Tech Infrastructure at Scale',
-  accentColor: '#C47F17',
-  tag: 'Panel'
+  name: 'Bongani Ntombela',
+  role: 'Executive: Programmes',
+  company: '22 On Sloane',
+  topic: 'ESD & Supplier Development Capital',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Bongani-Ntombela.jpg',
+  year: '2025'
+}, {
+  id: 'sp-7',
+  name: 'Mitchan Adams',
+  role: 'Partner & Venture Advisor',
+  company: 'Savant',
+  topic: 'Venture Capital & Startup Funding',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Mitchan-Adams.png',
+  year: '2025'
+}, {
+  id: 'sp-8',
+  name: 'Sihle Gumede',
+  role: 'Investment Director',
+  company: 'Sanari Capital',
+  topic: 'Venture Capital & Impact Investment',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Sihle-Gumede.jpg',
+  year: '2025'
+}, {
+  id: 'sp-9',
+  name: 'Milton Nkosi',
+  role: 'Programme Director',
+  company: 'EmpowaEntrepreneurs',
+  topic: 'Loan Finance & Programme Direction',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Milton-Nkosi.jpg',
+  year: '2025'
+}, {
+  id: 'sp-10',
+  name: 'Khanyi Mlambo',
+  role: 'Programme Director',
+  company: 'EmpowaEntrepreneurs',
+  topic: 'Impact Fund & Private Equity Conversations',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Khanyi-Mlambo.jpg',
+  year: '2025'
 }];
 const SPEAKER_TAG_COLORS: Record<string, string> = {
-  Keynote: 'rgba(222,50,45,0.18)',
-  Panel: 'rgba(59,78,95,0.22)',
-  Fireside: 'rgba(45,106,79,0.22)',
-  Workshop: 'rgba(107,94,74,0.22)'
+  'Keynote': 'rgba(222,50,45,0.18)',
+  'Panel': 'rgba(59,78,95,0.22)',
+  'Fire Chat': 'rgba(45,106,79,0.22)',
+  'Masterclass': 'rgba(107,94,74,0.22)'
 };
 const SPEAKER_TAB_ACCENT: Record<string, string> = {
-  All: '#DE322D',
-  Keynote: '#DE322D',
-  Panel: '#3B4E5F',
-  Fireside: '#2D6A4F',
-  Workshop: '#6B5E4A'
+  'All': '#DE322D',
+  'Keynote': '#DE322D',
+  'Panel': '#3B4E5F',
+  'Fire Chat': '#2D6A4F',
+  'Masterclass': '#6B5E4A'
 };
 const SPEAKER_TABS = [{
   id: 'tab-all',
@@ -416,11 +463,11 @@ const SPEAKER_TABS = [{
   id: 'tab-panel',
   label: 'Panel'
 }, {
-  id: 'tab-fireside',
-  label: 'Fireside'
+  id: 'tab-fc',
+  label: 'Fire Chat'
 }, {
-  id: 'tab-workshop',
-  label: 'Workshop'
+  id: 'tab-mc',
+  label: 'Masterclass'
 }];
 export const SpeakerCarousel = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -434,6 +481,7 @@ export const SpeakerCarousel = () => {
   const isMobile = useIsMobile();
   const trackRef = useRef<HTMLDivElement>(null);
   const cardWidth = isMobile ? 240 : 300;
+  const photoHeight = isMobile ? 180 : 220;
   const cardGap = 16;
   const filteredSpeakers = activeTab === 'All' ? SPEAKERS : SPEAKERS.filter(sp => sp.tag === activeTab);
   const scrollToIdx = (idx: number) => {
@@ -723,159 +771,202 @@ export const SpeakerCarousel = () => {
               color: 'rgba(20,18,16,0.35)',
               letterSpacing: '-0.1px'
             }}>No speakers in this session type</span>
-                </div> : filteredSpeakers.map((speaker, i) => <motion.article key={speaker.id} variants={scaleReveal} custom={i * 0.07} onMouseEnter={() => setHoveredId(speaker.id)} onMouseLeave={() => setHoveredId(null)} style={{
-            flexShrink: 0,
-            width: `${cardWidth}px`,
-            borderRadius: '24px',
-            overflow: 'hidden',
-            background: '#FFFFFF',
-            border: '1px solid',
-            borderColor: hoveredId === speaker.id ? 'rgba(20,18,16,0.14)' : 'rgba(20,18,16,0.07)',
-            transition: 'border-color 0.3s ease, box-shadow 0.4s ease, transform 0.4s ease',
-            boxShadow: hoveredId === speaker.id ? '0 32px 80px rgba(20,18,16,0.18)' : '0 4px 20px rgba(20,18,16,0.07)',
-            transform: hoveredId === speaker.id ? 'translateY(-10px)' : 'translateY(0)'
-          }}>
-                  <div style={{
-              height: isMobile ? '180px' : '220px',
+                </div> : filteredSpeakers.map((speaker, i) => {
+            const isHov = hoveredId === speaker.id;
+            return <motion.article key={speaker.id} variants={scaleReveal} custom={i * 0.07} onMouseEnter={() => setHoveredId(speaker.id)} onMouseLeave={() => setHoveredId(null)} style={{
+              flexShrink: 0,
+              width: `${cardWidth}px`,
+              borderRadius: '20px',
               overflow: 'hidden',
-              position: 'relative'
+              background: '#FFFFFF',
+              border: `1px solid ${isHov ? 'rgba(20,18,16,0.14)' : 'rgba(20,18,16,0.07)'}`,
+              transition: 'border-color 0.3s ease, box-shadow 0.4s ease, transform 0.4s ease',
+              boxShadow: isHov ? '0 32px 80px rgba(20,18,16,0.18)' : '0 4px 20px rgba(20,18,16,0.07)',
+              transform: isHov ? 'translateY(-10px)' : 'translateY(0)'
             }}>
-                    <img src={speaker.imageSrc} alt={`${speaker.name} — ${speaker.role} at ${speaker.company}`} style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-                filter: 'brightness(0.82) saturate(0.8)',
-                transform: hoveredId === speaker.id ? 'scale(1.07)' : 'scale(1)',
-                transition: 'transform 0.8s cubic-bezier(0.22,1,0.36,1)'
-              }} />
-                    <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(to top, rgba(10,9,8,0.5) 0%, transparent 55%)',
-                pointerEvents: 'none'
-              }} />
-                    <div style={{
-                position: 'absolute',
-                top: '16px',
-                left: '16px',
-                background: SPEAKER_TAG_COLORS[speaker.tag] ?? 'rgba(20,18,16,0.1)',
-                backdropFilter: 'blur(8px)',
-                WebkitBackdropFilter: 'blur(8px)',
-                border: `1px solid ${speaker.accentColor}44`,
-                borderRadius: '100px',
-                padding: '4px 12px',
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '10px',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'rgba(20,18,16,0.65)',
-                fontWeight: 500
-              }}>{speaker.tag}</div>
-                    <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: '3px',
-                background: `linear-gradient(90deg, ${speaker.accentColor}, transparent)`,
-                opacity: hoveredId === speaker.id ? 1 : 0.4,
-                transition: 'opacity 0.3s ease'
-              }} />
-                  </div>
-                  <div style={{
-              padding: '20px 20px 24px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-              background: '#FFFFFF'
-            }}>
-                    <div>
-                      <h3 style={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontSize: '19px',
-                  fontWeight: 500,
-                  letterSpacing: '-0.4px',
-                  color: '#141210',
-                  margin: '0 0 5px',
-                  lineHeight: 1.2
-                }}>{speaker.name}</h3>
-                      <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '12px',
-                  color: 'rgba(20,18,16,0.45)',
-                  margin: 0,
-                  letterSpacing: '0.02em'
-                }}>
-                        <span>{speaker.role}</span><span style={{
-                    color: 'rgba(20,18,16,0.2)',
-                    margin: '0 6px'
-                  }}>·</span><span>{speaker.company}</span>
-                      </p>
-                    </div>
-                    <div style={{
-                background: '#F7F6F3',
-                borderRadius: '12px',
-                padding: '10px 14px'
+              {/* Photo Area */}
+              <div style={{
+                height: `${photoHeight}px`,
+                overflow: 'hidden',
+                position: 'relative'
               }}>
-                      <div style={{
+                <img src={speaker.imageSrc} alt={speaker.name} style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  filter: 'brightness(0.82) saturate(0.8)',
+                  transform: isHov ? 'scale(1.07)' : 'scale(1)',
+                  transition: 'transform 0.8s cubic-bezier(0.22,1,0.36,1)',
+                  display: 'block'
+                }} />
+                {/* Bottom gradient overlay */}
+                <div aria-hidden="true" style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(10,9,8,0.5) 0%, transparent 55%)',
+                  pointerEvents: 'none'
+                }} />
+                {/* Tag badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: '14px',
+                  left: '14px',
+                  background: SPEAKER_TAG_COLORS[speaker.tag] || 'rgba(20,18,16,0.15)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  border: `1px solid ${speaker.accentColor}44`,
+                  borderRadius: '100px',
+                  padding: '4px 10px',
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'rgba(20,18,16,0.3)',
-                  marginBottom: '6px',
+                  color: 'rgba(20,18,16,0.65)',
                   fontWeight: 500
-                }}>Speaking On</div>
-                      <div style={{
+                }}>
+                  {speaker.tag}
+                </div>
+                {/* Year badge */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '14px',
+                  right: '14px',
+                  background: 'rgba(0,0,0,0.5)',
+                  backdropFilter: 'blur(6px)',
+                  WebkitBackdropFilter: 'blur(6px)',
+                  borderRadius: '100px',
+                  padding: '3px 10px',
                   fontFamily: 'Inter, sans-serif',
-                  fontSize: '14px',
-                  color: 'rgba(20,18,16,0.72)',
-                  lineHeight: 1.5,
-                  letterSpacing: '-0.1px'
-                }}>{speaker.topic}</div>
-                    </div>
-                    <div style={{
+                  fontSize: '10px',
+                  color: '#fff',
+                  fontWeight: 500,
+                  letterSpacing: '0.06em'
+                }}>
+                  {speaker.year}
+                </div>
+                {/* Bottom accent line */}
+                <div aria-hidden="true" style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '3px',
+                  background: `linear-gradient(90deg, ${speaker.accentColor}, transparent)`,
+                  opacity: isHov ? 1 : 0.4,
+                  transition: 'opacity 0.3s ease'
+                }} />
+              </div>
+
+              {/* Info Area */}
+              <div style={{
+                padding: '20px 20px 24px',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between'
+                flexDirection: 'column',
+                gap: '12px',
+                background: '#FFFFFF'
               }}>
-                      <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}>
-                        <div style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    background: speaker.accentColor,
-                    flexShrink: 0
-                  }} />
-                        <span style={{
+                <div>
+                  <h3 style={{
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: isMobile ? '16px' : '19px',
+                    fontWeight: 500,
+                    letterSpacing: '-0.4px',
+                    color: '#141210',
+                    margin: '0 0 5px',
+                    lineHeight: 1.2
+                  }}>
+                    {speaker.name}
+                  </h3>
+                  <p style={{
                     fontFamily: 'Inter, sans-serif',
-                    fontSize: '11px',
-                    color: 'rgba(20,18,16,0.35)',
-                    letterSpacing: '0.04em'
-                  }}>Summit 2026</span>
-                      </div>
-                      <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  border: '1px solid rgba(20,18,16,0.1)',
+                    fontSize: '12px',
+                    color: 'rgba(20,18,16,0.45)',
+                    margin: 0,
+                    letterSpacing: '0.02em'
+                  }}>
+                    <span>{speaker.role}</span>
+                    <span style={{
+                      color: 'rgba(20,18,16,0.2)',
+                      margin: '0 6px'
+                    }}>·</span>
+                    <span>{speaker.company}</span>
+                  </p>
+                </div>
+
+                {/* Speaking On box */}
+                <div style={{
+                  background: '#F7F6F3',
+                  borderRadius: '10px',
+                  padding: '10px 14px'
+                }}>
+                  <div style={{
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '10px',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(20,18,16,0.3)',
+                    marginBottom: '5px',
+                    fontWeight: 500
+                  }}>
+                    Speaking On
+                  </div>
+                  <div style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: isMobile ? '13px' : '14px',
+                    color: 'rgba(20,18,16,0.72)',
+                    lineHeight: 1.5,
+                    letterSpacing: '-0.1px'
+                  }}>
+                    {speaker.topic}
+                  </div>
+                </div>
+
+                {/* Bottom row */}
+                <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  background: hoveredId === speaker.id ? speaker.accentColor : 'transparent',
-                  borderColor: hoveredId === speaker.id ? speaker.accentColor : 'rgba(20,18,16,0.1)',
-                  transition: 'background 0.3s ease, border-color 0.3s ease'
+                  justifyContent: 'space-between'
                 }}>
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10.5L10.5 1.5M10.5 1.5H3.5M10.5 1.5V8.5" stroke={hoveredId === speaker.id ? '#fff' : 'rgba(20,18,16,0.4)'} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                      </div>
-                    </div>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}>
+                    <div style={{
+                      width: '8px',
+                      height: '8px',
+                      borderRadius: '50%',
+                      background: speaker.accentColor,
+                      flexShrink: 0
+                    }} />
+                    <span style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '12px',
+                      color: 'rgba(20,18,16,0.45)',
+                      letterSpacing: '0.02em'
+                    }}>
+                      Summit {speaker.year}
+                    </span>
                   </div>
-                </motion.article>)}
+                  <div style={{
+                    width: '32px',
+                    height: '32px',
+                    background: 'rgba(20,18,16,0.05)',
+                    border: '1px solid rgba(20,18,16,0.08)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 10L10 2M10 2H4M10 2V8" stroke="rgba(20,18,16,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          })}
           </div>
         </motion.div>
       </AnimatePresence>
