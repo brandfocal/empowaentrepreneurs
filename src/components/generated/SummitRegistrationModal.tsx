@@ -127,7 +127,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
                     <div>
                       <label htmlFor="modal-email" style={labelStyle}>Business Email</label>
-                      <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@company.co.za" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                      <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
                     </div>
                     <div>
                       <label htmlFor="modal-title" style={labelStyle}>Job Title</label>

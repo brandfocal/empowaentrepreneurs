@@ -1484,7 +1484,7 @@ const ContactDetailsSection = () => {
     id: 'cb-strategic',
     label: 'Strategic Inquiries',
     title: 'Thulisa Nkosi',
-    lines: ['info@empowaentrepreneurs.co.za', '+27 11 000 0000'],
+    lines: ['info@empowaentrepreneurs.co.za', '+27(0) 11 482 7256/7257'],
     accent: false,
     tag: 'Partnerships & Investor Relations',
     icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="rgba(247,246,243,0.4)" /></svg>
