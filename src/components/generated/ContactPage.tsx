@@ -1793,14 +1793,50 @@ const InquiryFormSection = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
   const handleChange = (field: keyof FormData, value: string) => setFormData(prev => ({
     ...prev,
     [field]: value
   }));
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
+    
+    // Split name into first and last
+    const nameParts = formData.name.trim().split(' ');
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    try {
+      const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/1/submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "3.3": firstName,
+          "3.6": lastName,
+          "5": formData.email,
+          "23": formData.pathway,
+          "24": formData.message
+        })
+      });
+      
+      const data = await response.json();
+      if (data.is_valid) {
+        setSubmitted(true);
+      } else {
+        setError(data.validation_messages ? Object.values(data.validation_messages)[0] as string : 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      console.error('Gravity Forms submission error:', err);
+      setError('A network error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   const inputStyle = (field: string): React.CSSProperties => ({
     width: '100%',
@@ -2048,34 +2084,42 @@ const InquiryFormSection = () => {
 
                 <div style={{
               display: 'flex',
-              alignItems: 'center',
+              flexDirection: 'column',
               gap: '16px',
-              flexWrap: 'wrap'
+              marginTop: '12px'
             }}>
-                  <motion.button type="submit" whileHover={{
-                scale: 1.04,
-                boxShadow: '0 12px 48px rgba(222,50,45,0.65)'
-              }} whileTap={{
-                scale: 0.97
-              }} style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
-                borderRadius: '44px',
-                padding: isMobile ? '14px 28px' : '16px 36px',
-                fontSize: '13px',
-                letterSpacing: '0.05em',
-                color: '#fff',
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 600,
-                boxShadow: '0 6px 28px rgba(222,50,45,0.45)',
-                border: 'none',
-                cursor: 'pointer'
-              }}>
-                    <span>Send Inquiry</span>
-                    <ArrowIconDark />
-                  </motion.button>
+                  {error && <div style={{ color: '#DE322D', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>{error}</div>}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    flexWrap: 'wrap'
+                  }}>
+                    <motion.button type="submit" disabled={isSubmitting} whileHover={{
+                      scale: isSubmitting ? 1 : 1.04,
+                      boxShadow: isSubmitting ? '0 6px 28px rgba(222,50,45,0.45)' : '0 12px 48px rgba(222,50,45,0.65)'
+                    }} whileTap={{
+                      scale: isSubmitting ? 1 : 0.97
+                    }} style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+                      borderRadius: '44px',
+                      padding: isMobile ? '14px 28px' : '16px 36px',
+                      fontSize: '13px',
+                      letterSpacing: '0.05em',
+                      color: '#fff',
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontWeight: 600,
+                      boxShadow: '0 6px 28px rgba(222,50,45,0.45)',
+                      border: 'none',
+                      cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                      opacity: isSubmitting ? 0.7 : 1
+                    }}>
+                      <span>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
+                      {!isSubmitting && <ArrowIconDark />}
+                    </motion.button>
                   <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '11px',
