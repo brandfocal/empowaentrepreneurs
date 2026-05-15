@@ -2111,6 +2111,7 @@ const InquiryFormSection = () => {
               }}>
                     We respond within 48 hours for strategic inquiries.
                   </p>
+                  </div>
                 </div>
               </form> : <motion.div initial={{
             opacity: 0,
