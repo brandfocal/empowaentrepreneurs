@@ -3181,7 +3181,7 @@ const PitchApplicationModal = ({
                 margin: 0,
                 lineHeight: '1.65'
               }}>
-                Submit your venture details. Our investment committee will review your application for the upcoming Pitch Power sessions.
+                Submit your venture details. Our investment committee will review your application for the upcoming Pitching Festival sessions.
               </p>
             </div>
             <form onSubmit={handleSubmit} style={{

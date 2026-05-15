@@ -21,26 +21,6 @@ const useBreakpoint = () => {
   };
 };
 
-// ─── Animated counter hook ─────────────────────────────────────────────────────
-const useCountUp = (target: number, duration = 1600, inView = false) => {
-  const [count, setCount] = useState(0);
-  const started = useRef(false);
-  useEffect(() => {
-    if (!inView || started.current) return;
-    started.current = true;
-    const startTime = performance.now();
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView, target, duration]);
-  return count;
-};
-
 // ─── Magnetic hover hook ───────────────────────────────────────────────────────
 const useMagnetic = (strength = 0.35) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -85,25 +65,11 @@ const PlusSquareIconDark = () => <svg width="20" height="20" viewBox="0 0 20 20"
 const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
   <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 </svg>;
-const CloseIcon = () => <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-  <path d="M12 4L4 12M4 4L12 12" stroke="rgba(247,246,243,0.55)" strokeWidth="1.5" strokeLinecap="round" />
+const CheckIcon = () => <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+  <path d="M2 6.5L5.5 10L11 3" stroke="#DE322D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 </svg>;
-const CheckIcon = ({
-  color = '#DE322D'
-}: {
-  color?: string;
-}) => <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-  <path d="M1 5L4.5 8.5L11 1" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-</svg>;
-const ChevronIcon = ({
-  open
-}: {
-  open: boolean;
-}) => <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{
-  transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-  transition: 'transform 0.4s ease'
-}}>
-  <path d="M3 6L8 11L13 6" stroke="rgba(247,246,243,0.45)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+const DownloadIcon = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+  <path d="M7 1v8M7 9l-3-3M7 9l3-3M2 12h10" stroke="#F7F6F3" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
 </svg>;
 
 // ─── Animation variants ───────────────────────────────────────────────────────
@@ -158,23 +124,6 @@ const rotateFade = {
     }
   })
 };
-const slideFromLeft = {
-  hidden: {
-    x: -72,
-    opacity: 0,
-    filter: 'blur(12px)'
-  },
-  visible: (delay = 0) => ({
-    x: 0,
-    opacity: 1,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.9,
-      delay,
-      ease: [0.22, 1, 0.36, 1] as const
-    }
-  })
-};
 const slideFromRight = {
   hidden: {
     x: 72,
@@ -192,23 +141,6 @@ const slideFromRight = {
     }
   })
 };
-const scaleReveal = {
-  hidden: {
-    scale: 0.88,
-    opacity: 0,
-    filter: 'blur(14px)'
-  },
-  visible: (delay = 0) => ({
-    scale: 1,
-    opacity: 1,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 1.0,
-      delay,
-      ease: [0.22, 1, 0.36, 1] as const
-    }
-  })
-};
 const lineWipe = {
   hidden: {
     scaleX: 0,
@@ -221,14 +153,6 @@ const lineWipe = {
       duration: 0.9,
       delay,
       ease: [0.76, 0, 0.24, 1] as const
-    }
-  })
-};
-const staggerContainer = {
-  hidden: {},
-  visible: (staggerDelay = 0.1) => ({
-    transition: {
-      staggerChildren: staggerDelay
     }
   })
 };
@@ -273,171 +197,25 @@ const ScrollProgressBar = () => {
   }} />;
 };
 
-// ─── Back To Top Button ────────────────────────────────────────────────────────
-const BackToTopButton = () => {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 600);
-    window.addEventListener('scroll', handleScroll, {
-      passive: true
-    });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  const scrollToTop = () => window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-  return <AnimatePresence>
-    {visible && <motion.button initial={{
-      opacity: 0,
-      y: 20,
-      scale: 0.85
-    }} animate={{
-      opacity: 1,
-      y: 0,
-      scale: 1
-    }} exit={{
-      opacity: 0,
-      y: 20,
-      scale: 0.85
-    }} transition={{
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1]
-    }} onClick={scrollToTop} whileHover={{
-      scale: 1.08,
-      boxShadow: '0 12px 40px rgba(222,50,45,0.6)'
-    }} whileTap={{
-      scale: 0.93
-    }} aria-label="Back to top" style={{
-      position: 'fixed',
-      bottom: '24px',
-      right: '24px',
-      zIndex: 150,
-      width: '44px',
-      height: '44px',
-      borderRadius: '50%',
-      background: 'linear-gradient(135deg, #DE322D, #c42823)',
-      border: 'none',
-      cursor: 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      boxShadow: '0 6px 28px rgba(222,50,45,0.5)'
-    }}>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M8 13V3M3 8L8 3L13 8" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </motion.button>}
-  </AnimatePresence>;
-};
-
-// ─── Animated Stat ─────────────────────────────────────────────────────────────
-const AnimatedStat = ({
-  value,
-  label,
-  color = '#F7F6F3',
-  fontSize,
-  inView
-}: {
-  value: string;
-  label: string;
-  color?: string;
-  fontSize: string;
-  inView: boolean;
-}) => {
-  const match = value.replace(/,/g, '').match(/^([0-9]+)(.*)$/);
-  const numericTarget = match ? parseInt(match[1], 10) : 0;
-  const suffix = match ? match[2] : '';
-  const isNumeric = !!match;
-  const counted = useCountUp(numericTarget, 1800, inView);
-  const display = isNumeric ? numericTarget >= 1000 ? counted.toLocaleString() + suffix : counted + suffix : value;
-  return <div style={{
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4px'
-  }}>
-    <div style={{
-      fontFamily: 'Montserrat, sans-serif',
-      fontSize,
-      fontWeight: 200,
-      letterSpacing: '-1.5px',
-      color,
-      fontVariantNumeric: 'tabular-nums',
-      lineHeight: 1
-    }}>{display}</div>
-    <div style={{
-      fontFamily: 'Inter, sans-serif',
-      fontSize: '10px',
-      letterSpacing: '0.14em',
-      textTransform: 'uppercase',
-      color: 'rgba(247,246,243,0.3)',
-      fontWeight: 500
-    }}>{label}</div>
-  </div>;
-};
-
-// ─── Animated Stat Card ───────────────────────────────────────────────────────
-const AnimatedStatCard = ({
-  value,
-  label,
-  inView
-}: {
-  value: string;
-  label: string;
-  inView: boolean;
-}) => {
-  const match = value.replace(/,/g, '').match(/^([0-9]+)(.*)$/);
-  const numericTarget = match ? parseInt(match[1], 10) : 0;
-  const suffix = match ? match[2] : '';
-  const isNumeric = !!match;
-  const counted = useCountUp(numericTarget, 1800, inView);
-  const display = isNumeric ? numericTarget >= 1000 ? counted.toLocaleString() + suffix : counted + suffix : value;
-  return <div style={{
-    background: 'rgba(247,246,243,0.04)',
-    border: '1px solid rgba(247,246,243,0.07)',
-    borderRadius: '14px',
-    padding: '18px 20px'
-  }}>
-    <div style={{
-      fontFamily: 'Montserrat, sans-serif',
-      fontSize: 'clamp(22px, 2.4vw, 32px)',
-      fontWeight: 200,
-      letterSpacing: '-1.2px',
-      color: '#F7F6F3',
-      lineHeight: 1,
-      fontVariantNumeric: 'tabular-nums',
-      marginBottom: '4px'
-    }}>{display}</div>
-    <div style={{
-      fontFamily: 'Inter, sans-serif',
-      fontSize: '10px',
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
-      color: 'rgba(247,246,243,0.28)',
-      fontWeight: 500
-    }}>{label}</div>
-  </div>;
-};
-
 // ─── Ticker ───────────────────────────────────────────────────────────────────
 const TICKER_ITEMS = [{
   id: 'tk-1',
-  label: 'Strategic Brand Positioning'
+  label: 'Strategic Partnerships'
 }, {
   id: 'tk-2',
-  label: 'High-Impact Access'
+  label: 'Ecosystem Ownership'
 }, {
   id: 'tk-3',
-  label: 'Thought Leadership'
+  label: 'Capital Access'
 }, {
   id: 'tk-4',
-  label: 'Authentic Engagement'
+  label: "Africa's Growth Frontier"
 }, {
   id: 'tk-5',
-  label: "Africa's Growth Economy"
+  label: 'Executive Influence'
 }, {
   id: 'tk-6',
-  label: 'Partner · Fund · Connect'
+  label: 'Market Leadership'
 }];
 const HeroTicker = ({
   light = false
@@ -510,7 +288,7 @@ const STICKY_NAV_ITEMS = [{
   label: 'Home'
 }, {
   id: 'about',
-  label: 'About Us'
+  label: 'About'
 }, {
   id: 'programme',
   label: 'Programme'
@@ -518,8 +296,18 @@ const STICKY_NAV_ITEMS = [{
   id: 'experience',
   label: 'Experience Zones'
 }, {
+  id: 'funding-summit',
+  label: 'Funding Summit'
+}, {
   id: 'partnerships',
-  label: 'Partnerships'
+  label: 'Partnerships',
+  active: true
+}, {
+  id: 'apply',
+  label: 'Apply to Attend'
+}, {
+  id: 'contact',
+  label: 'Contact Us'
 }];
 const StickyNav = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -566,7 +354,7 @@ const StickyNav = () => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: scrolled ? '10px 20px' : isMobile ? '16px 20px' : '20px 32px',
+      padding: scrolled ? isMobile ? '10px 20px' : '12px 32px' : isMobile ? '14px 20px' : '20px 32px',
       background: scrolled ? 'rgba(247,246,243,0.92)' : 'transparent',
       backdropFilter: scrolled ? 'blur(32px) saturate(2.5)' : 'none',
       WebkitBackdropFilter: scrolled ? 'blur(32px) saturate(2.5)' : 'none',
@@ -590,9 +378,12 @@ const StickyNav = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 4px 14px rgba(222,50,45,0.4)'
+          boxShadow: '0 4px 14px rgba(222,50,45,0.4)',
+          flexShrink: 0
         }}>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" /></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+          </svg>
         </motion.div>
         <span style={{
           fontFamily: 'Montserrat, sans-serif',
@@ -602,48 +393,67 @@ const StickyNav = () => {
           color: scrolled ? '#141210' : '#F7F6F3',
           fontWeight: 700,
           transition: 'color 0.35s ease'
-        }}>EmpowaSummit</span>
+        }}>EmpowaEntrepreneurs</span>
       </a>
       {!showHamburger && <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '28px'
+        gap: '22px'
       }}>
         {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
           fontFamily: 'Montserrat, sans-serif',
-          fontSize: '13px',
+          fontSize: '12px',
           textDecoration: 'none',
           letterSpacing: '0.04em',
           transition: 'color 0.2s',
-          color: item.id === 'partnerships' ? '#DE322D' : navLinkColor,
-          fontWeight: item.id === 'partnerships' ? 600 : 400
+          color: item.active ? '#DE322D' : navLinkColor,
+          fontWeight: item.active ? 600 : 400
         }} onMouseEnter={e => {
-          (e.currentTarget as HTMLAnchorElement).style.color = navLinkHoverColor;
+          (e.currentTarget as HTMLAnchorElement).style.color = item.active ? '#DE322D' : navLinkHoverColor;
         }} onMouseLeave={e => {
-          (e.currentTarget as HTMLAnchorElement).style.color = item.id === 'partnerships' ? '#DE322D' : navLinkColor;
-        }}>
-          {item.label}
-        </a>)}
-        <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
-          scale: 1.04
-        }} whileTap={{
-          scale: 0.97
-        }} style={{
+          (e.currentTarget as HTMLAnchorElement).style.color = item.active ? '#DE322D' : navLinkColor;
+        }}>{item.label}</a>)}
+        <div style={{
           display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-          background: 'linear-gradient(135deg, #DE322D, #c42823)',
-          borderRadius: '44px',
-          padding: '8px 18px',
-          fontSize: '12px',
-          letterSpacing: '0.06em',
-          color: '#fff',
-          textDecoration: 'none',
-          fontFamily: 'Montserrat, sans-serif',
-          boxShadow: '0 4px 16px rgba(222,50,45,0.38)'
+          gap: '8px'
         }}>
-          <span>Partner Now</span>
-        </motion.a>
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            scale: 1.04
+          }} whileTap={{
+            scale: 0.97
+          }} style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            border: scrolled ? '1px solid rgba(60,77,93,0.35)' : '1px solid rgba(247,246,243,0.25)',
+            borderRadius: '44px',
+            padding: '8px 16px',
+            fontSize: '12px',
+            letterSpacing: '0.04em',
+            color: scrolled ? '#3c4d5d' : 'rgba(247,246,243,0.8)',
+            textDecoration: 'none',
+            fontFamily: 'Montserrat, sans-serif',
+            transition: 'border-color 0.25s ease, color 0.25s ease'
+          }}><span>Become a Partner</span></motion.a>
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            scale: 1.04
+          }} whileTap={{
+            scale: 0.97
+          }} style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            background: 'linear-gradient(135deg, #DE322D, #c42823)',
+            borderRadius: '44px',
+            padding: '8px 16px',
+            fontSize: '12px',
+            letterSpacing: '0.06em',
+            color: '#fff',
+            textDecoration: 'none',
+            fontFamily: 'Montserrat, sans-serif',
+            boxShadow: '0 4px 16px rgba(222,50,45,0.38)'
+          }}><span>Register Now</span></motion.a>
+        </div>
       </div>}
       {showHamburger && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
         background: 'none',
@@ -682,7 +492,7 @@ const StickyNav = () => {
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
-        padding: '20px 24px 28px'
+        padding: isTablet ? '24px 32px 28px' : '20px 24px 24px'
       }}>
         {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
           e.preventDefault();
@@ -691,18 +501,28 @@ const StickyNav = () => {
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
-          color: item.id === 'partnerships' ? '#DE322D' : 'rgba(20,18,16,0.65)',
+          color: item.active ? '#DE322D' : 'rgba(20,18,16,0.65)',
           textDecoration: 'none',
           padding: '12px 0',
           borderBottom: '0.8px solid rgba(20,18,16,0.06)',
           letterSpacing: '0.02em',
-          fontWeight: item.id === 'partnerships' ? 600 : 400
+          fontWeight: item.active ? 600 : 400
         }}>{item.label}</a>)}
         <div style={{
           display: 'flex',
           gap: '10px',
-          marginTop: '20px'
+          marginTop: '20px',
+          flexWrap: 'wrap'
         }}>
+          <a href="#" onClick={e => e.preventDefault()} style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '13px',
+            border: '1px solid rgba(20,18,16,0.18)',
+            borderRadius: '44px',
+            padding: '10px 20px',
+            color: 'rgba(20,18,16,0.65)',
+            textDecoration: 'none'
+          }}>Become a Partner</a>
           <a href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
@@ -711,57 +531,32 @@ const StickyNav = () => {
             padding: '10px 20px',
             color: '#fff',
             textDecoration: 'none'
-          }}>Partner Now</a>
+          }}>Register Now</a>
         </div>
       </motion.div>}
     </AnimatePresence>
   </motion.nav>;
 };
 
-// ─── Hero Section ──────────────────────────────────────────────────────────────
-const HERO_BG_IMAGE = 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=1800&q=80';
-const HERO_STATS = [{
-  id: 'hs-1',
-  value: '4,000+',
-  label: 'Attendees',
-  highlight: true
-}, {
-  id: 'hs-2',
-  value: '120+',
-  label: 'Investors',
-  highlight: false
-}, {
-  id: 'hs-3',
-  value: '30+',
-  label: 'Markets',
-  highlight: false
-}, {
-  id: 'hs-4',
-  value: 'May 28',
-  label: 'Summit Date 2026',
-  highlight: false
-}];
+// ─── Hero Section ─────────────────────────────────────────────────────────────
+const HERO_BG = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80';
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
   const {
     isMobile,
     isTablet
   } = useBreakpoint();
-  const statsInView = useInView(statsRef, {
-    once: true,
-    margin: '-40px 0px'
-  });
   const {
     scrollYProgress
   } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start']
   });
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '8%']);
-  const orbY = useTransform(scrollYProgress, [0, 1], ['0%', '28%']);
-  const hPad = isMobile ? '24px' : isTablet ? '40px' : '64px';
+  const heroFontSize = isMobile ? 'clamp(38px, 10vw, 60px)' : isTablet ? 'clamp(48px, 8vw, 80px)' : 'clamp(56px, 6.5vw, 104px)';
+  const heroLetterSpacing = isMobile ? '-2px' : isTablet ? '-2.5px' : '-4px';
+  const heroPadding = isMobile ? '32px 20px 32px' : isTablet ? '40px 40px 40px' : '48px 64px 48px';
   return <section ref={heroRef} style={{
     minHeight: '100vh',
     background: '#141210',
@@ -777,10 +572,9 @@ const HeroSection = () => {
       y: imgY,
       position: 'absolute',
       inset: '-10% 0',
-      backgroundImage: `url(${HERO_BG_IMAGE})`,
+      backgroundImage: `url(${HERO_BG})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center top',
-      backgroundRepeat: 'no-repeat',
       pointerEvents: 'none',
       zIndex: 0,
       willChange: 'transform'
@@ -788,9 +582,9 @@ const HeroSection = () => {
     <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
-      background: 'linear-gradient(160deg, rgba(20,18,16,0.93) 0%, rgba(20,18,16,0.78) 40%, rgba(20,18,16,0.9) 100%)',
-      pointerEvents: 'none',
-      zIndex: 1
+      background: 'linear-gradient(155deg, rgba(20,18,16,0.97) 0%, rgba(20,18,16,0.85) 50%, rgba(20,18,16,0.93) 100%)',
+      zIndex: 1,
+      pointerEvents: 'none'
     }} />
     <div aria-hidden="true" style={{
       position: 'absolute',
@@ -804,62 +598,39 @@ const HeroSection = () => {
     }} />
     <div aria-hidden="true" style={{
       position: 'absolute',
-      inset: 0,
-      pointerEvents: 'none',
-      zIndex: 2
-    }}>
-      {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: `${pct}%`,
-        width: '1px',
-        background: 'rgba(247,246,243,0.022)'
-      }} />)}
-      <div style={{
-        position: 'absolute',
-        top: '88px',
-        left: '32px',
-        width: '40px',
-        height: '40px',
-        borderLeft: '1px solid rgba(222,50,45,0.3)',
-        borderTop: '1px solid rgba(222,50,45,0.3)'
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '52px',
-        right: '32px',
-        width: '40px',
-        height: '40px',
-        borderRight: '1px solid rgba(222,50,45,0.3)',
-        borderBottom: '1px solid rgba(222,50,45,0.3)'
-      }} />
-    </div>
-    <motion.div aria-hidden="true" style={{
-      y: orbY,
-      position: 'absolute',
-      top: '-10%',
-      right: '-8%',
-      width: 'clamp(300px, 55vw, 840px)',
-      height: 'clamp(300px, 55vw, 840px)',
+      top: '5%',
+      right: '-5%',
+      width: 'clamp(300px, 60vw, 920px)',
+      height: 'clamp(300px, 60vw, 920px)',
       borderRadius: '50%',
-      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.22) 0%, rgba(222,50,45,0.08) 45%, transparent 70%)',
+      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.28) 0%, rgba(222,50,45,0.08) 45%, transparent 70%)',
       pointerEvents: 'none',
       zIndex: 3
     }} />
-    <div aria-hidden="true" style={{
+    {!isMobile && <div aria-hidden="true" style={{
       position: 'absolute',
-      bottom: '10%',
-      left: '-5%',
-      width: '400px',
-      height: '400px',
-      borderRadius: '50%',
-      background: 'radial-gradient(circle, rgba(222,50,45,0.09) 0%, transparent 65%)',
-      pointerEvents: 'none',
-      zIndex: 3
-    }} />
+      top: '88px',
+      left: '32px',
+      width: '40px',
+      height: '40px',
+      borderLeft: '1px solid rgba(222,50,45,0.3)',
+      borderTop: '1px solid rgba(222,50,45,0.3)',
+      zIndex: 4,
+      pointerEvents: 'none'
+    }} />}
+    {!isMobile && <div aria-hidden="true" style={{
+      position: 'absolute',
+      bottom: '80px',
+      right: '32px',
+      width: '40px',
+      height: '40px',
+      borderRight: '1px solid rgba(222,50,45,0.3)',
+      borderBottom: '1px solid rgba(222,50,45,0.3)',
+      zIndex: 4,
+      pointerEvents: 'none'
+    }} />}
     <div style={{
-      height: '80px',
+      height: isMobile ? '70px' : '88px',
       flexShrink: 0,
       position: 'relative',
       zIndex: 4
@@ -867,27 +638,27 @@ const HeroSection = () => {
     <motion.div style={{
       y: textY,
       flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      padding: isMobile ? '32px 24px 36px' : isTablet ? '48px 40px 40px' : '60px 64px 40px',
+      padding: heroPadding,
       width: '100%',
       boxSizing: 'border-box',
       zIndex: 4,
-      position: 'relative'
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
     }}>
       <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
-        marginBottom: isMobile ? '24px' : '36px',
+        marginBottom: isMobile ? '28px' : '40px',
         flexWrap: 'wrap'
       }}>
         <PlusSquareIconLight />
         <span style={{
-          fontFamily: 'Montserrat, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           color: 'rgba(247,246,243,0.38)',
-          fontSize: '11px',
+          fontSize: isMobile ? '10px' : '11px',
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
           fontWeight: 500
@@ -896,25 +667,21 @@ const HeroSection = () => {
             color: '#DE322D',
             fontWeight: 600
           }}>EmpowaEntrepreneurs</span>
-          <span> Funding Summit 2026 — </span>
-          <span style={{
-            color: '#DE322D',
-            fontWeight: 600
-          }}>Partnerships</span>
+          <span> · Funding Summit</span>
         </span>
       </motion.div>
       <h1 style={{
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: 300,
-        margin: '0 0 32px',
-        lineHeight: 0.92,
-        letterSpacing: isMobile ? '-2px' : '-3px'
+        margin: `0 0 ${isMobile ? '32px' : '48px'}`,
+        lineHeight: 0.94,
+        letterSpacing: heroLetterSpacing
       }}>
         <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-          {['Shape', "Africa's"].map((word, i) => <motion.span key={`l1-${word}`} initial={{
+          {['Strategic', 'Partnership'].map((word, i) => <motion.span key={`h-${word}`} initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -922,11 +689,11 @@ const HeroSection = () => {
             opacity: 1
           }} transition={{
             duration: 0.9,
-            delay: 0.2 + i * 0.12,
+            delay: 0.2 + i * 0.1,
             ease: [0.22, 1, 0.36, 1]
           }} style={{
             display: 'inline-block',
-            fontSize: isMobile ? 'clamp(38px, 11vw, 64px)' : isTablet ? 'clamp(44px, 8vw, 80px)' : 'clamp(52px, 7.2vw, 116px)',
+            fontSize: heroFontSize,
             color: '#F7F6F3',
             marginRight: '0.22em'
           }}>{word}</motion.span>)}
@@ -935,7 +702,7 @@ const HeroSection = () => {
           overflow: 'hidden',
           display: 'block'
         }}>
-          <motion.span initial={{
+          <motion.em initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -943,15 +710,22 @@ const HeroSection = () => {
             opacity: 1
           }} transition={{
             duration: 0.9,
-            delay: 0.44,
+            delay: 0.42,
             ease: [0.22, 1, 0.36, 1]
           }} style={{
             display: 'inline-block',
-            fontSize: isMobile ? 'clamp(38px, 11vw, 64px)' : isTablet ? 'clamp(44px, 8vw, 80px)' : 'clamp(52px, 7.2vw, 116px)',
-            color: 'rgba(247,246,243,0.18)',
+            fontStyle: 'italic',
+            fontWeight: 300,
+            fontSize: heroFontSize,
+            color: '#DE322D',
             marginRight: '0.22em'
-          }}>Next</motion.span>
-          <motion.em initial={{
+          }}>Packages</motion.em>
+        </div>
+        <div style={{
+          overflow: 'hidden',
+          display: 'block'
+        }}>
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -963,56 +737,49 @@ const HeroSection = () => {
             ease: [0.22, 1, 0.36, 1]
           }} style={{
             display: 'inline-block',
-            fontStyle: 'italic',
+            fontSize: 'clamp(14px, 2vw, 20px)',
+            color: 'rgba(247,246,243,0.32)',
             fontWeight: 300,
-            fontSize: isMobile ? 'clamp(38px, 11vw, 64px)' : isTablet ? 'clamp(44px, 8vw, 80px)' : 'clamp(52px, 7.2vw, 116px)',
-            color: '#DE322D'
-          }}>Growth</motion.em>
-        </div>
-        <div style={{
-          overflow: 'hidden',
-          display: 'block'
-        }}>
-          <motion.span initial={{
-            y: '110%',
-            opacity: 0
-          }} animate={{
-            y: '0%',
-            opacity: 1
-          }} transition={{
-            duration: 0.9,
-            delay: 0.68,
-            ease: [0.22, 1, 0.36, 1]
-          }} style={{
-            display: 'inline-block',
-            fontSize: isMobile ? 'clamp(38px, 11vw, 64px)' : isTablet ? 'clamp(44px, 8vw, 80px)' : 'clamp(52px, 7.2vw, 116px)',
-            color: 'rgba(247,246,243,0.1)'
-          }}>Economy.</motion.span>
+            letterSpacing: isMobile ? '-0.3px' : '-0.5px',
+            lineHeight: 1.5,
+            maxWidth: isMobile ? '100%' : '680px'
+          }}>Where Africa's Boldest Entrepreneurs, Investors, Institutions &amp; Market-Makers Converge to Shape the Future Economy</motion.span>
         </div>
       </h1>
-      <div style={{
+      <motion.div custom={0.85} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
-        flexDirection: isMobile ? 'column' : 'row',
-        alignItems: isMobile ? 'flex-start' : 'center',
-        gap: isMobile ? '20px' : '32px',
-        maxWidth: '800px'
+        flexDirection: 'column',
+        gap: '24px',
+        maxWidth: isMobile ? '100%' : '580px'
       }}>
-        <motion.p custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+        <p style={{
           fontFamily: 'Inter, sans-serif',
-          fontSize: isMobile ? '14px' : 'clamp(14px, 1.3vw, 18px)',
-          lineHeight: '1.75',
-          color: 'rgba(247,246,243,0.65)',
-          margin: 0,
           fontWeight: 300,
-          maxWidth: '440px'
+          fontSize: isMobile ? '14px' : 'clamp(14px, 1.3vw, 16px)',
+          lineHeight: '1.8',
+          color: 'rgba(247,246,243,0.58)',
+          margin: 0
         }}>
-          Align your brand with the continent's most ambitious entrepreneurship platform. Partner. Fund. Connect.
-        </motion.p>
-        <motion.div custom={0.82} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+          The EmpowaEntrepreneurs Funding Summit is positioned as a premier entrepreneurial funding, innovation, investment, and economic activation platform engineered to unlock measurable commercial value, strategic partnerships, enterprise growth, investment pipelines, and ecosystem influence across Africa.
+        </p>
+        <p style={{
+          fontFamily: 'Inter, sans-serif',
+          fontWeight: 400,
+          fontStyle: 'italic',
+          fontSize: isMobile ? '14px' : '15px',
+          lineHeight: '1.75',
+          color: '#DE322D',
+          margin: 0,
+          borderLeft: '2px solid rgba(222,50,45,0.4)',
+          paddingLeft: '16px'
+        }}>
+          This is not visibility for visibility's sake. This is strategic positioning within Africa's next economic growth frontier.
+        </p>
+        <div style={{
           display: 'flex',
-          gap: '10px',
-          flexWrap: 'wrap',
-          flexShrink: 0
+          alignItems: 'center',
+          gap: '12px',
+          flexWrap: 'wrap'
         }}>
           <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04,
@@ -1034,7 +801,7 @@ const HeroSection = () => {
             fontWeight: 600,
             boxShadow: '0 8px 36px rgba(222,50,45,0.55)'
           }}>
-            <span>Partner With Us</span><ArrowIconDark />
+            <span>Become a Partner</span><ArrowIconDark />
           </motion.a>
           <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04
@@ -1062,18 +829,11 @@ const HeroSection = () => {
             el.style.borderColor = 'rgba(247,246,243,0.25)';
             el.style.color = 'rgba(247,246,243,0.75)';
           }}>
-            <span>Download Deck</span><ArrowIconDark />
+            <DownloadIcon /><span>Download Partnership Deck</span>
           </motion.a>
-        </motion.div>
-      </div>
-      <motion.div ref={statsRef} custom={0.92} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
-        display: 'flex',
-        gap: isMobile ? '20px' : '48px',
-        marginTop: isMobile ? '36px' : '64px',
-        flexWrap: 'wrap'
-      }}>
-        {HERO_STATS.map((stat, i) => <AnimatedStat key={stat.id} value={stat.value} label={stat.label} color={i === 0 ? '#DE322D' : '#F7F6F3'} fontSize={isMobile ? '20px' : 'clamp(22px, 2.4vw, 36px)'} inView={statsInView} />)}
+        </div>
       </motion.div>
+
     </motion.div>
     <motion.div initial={{
       opacity: 0
@@ -1093,67 +853,275 @@ const HeroSection = () => {
   </section>;
 };
 
-// ─── Partnership Benefits ─────────────────────────────────────────────────────
-type Benefit = {
-  id: string;
-  index: string;
-  title: string;
-  description: string;
-  tags: string[];
-  imageSrc: string;
-  imageAlt: string;
+// ─── Data: Partnership Tiers ──────────────────────────────────────────────────
+type BenefitGroup = {
+  heading: string;
+  items: string[];
 };
-const BENEFITS: Benefit[] = [{
-  id: 'ben-brand',
-  index: '01',
-  title: 'Strategic Brand Positioning',
-  description: "Anchor your brand at the heart of Africa's premier entrepreneurship and funding platform. Your identity becomes synonymous with continental growth, catalytic capital, and high-impact enterprise.",
-  tags: ['Brand Equity', 'Visibility', 'Credibility'],
-  imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1400&q=80',
-  imageAlt: 'Strategic brand positioning at Empowa Summit'
+type PartnerTier = {
+  id: string;
+  tier: string;
+  tabLabel: string;
+  tabBadge?: string;
+  tabBadgeStyle?: 'red' | 'slate';
+  label: string;
+  description: string;
+  roiBullets: string[];
+  benefitGroups: BenefitGroup[];
+  idealFor: string[];
+};
+const PARTNER_TIERS: PartnerTier[] = [{
+  id: 'pt-official',
+  tier: 'Official Partner',
+  tabLabel: 'Official Partner',
+  label: 'Official Strategic Ecosystem Partner',
+  description: "Designed for institutions seeking elevated ecosystem credibility, strategic alignment, executive visibility, and recognised positioning within Africa's entrepreneurial growth, innovation, and funding economy. This partnership positions your organisation as a recognised ecosystem enabler driving entrepreneurship, enterprise growth, innovation, investment access, and inclusive economic participation at scale.",
+  roiBullets: ['Premium executive and stakeholder visibility', 'Strategic ecosystem positioning', 'Enhanced ESG, ESD & transformation credibility', 'Access to founders, investors, and innovation ecosystems', 'Executive networking and relationship capital', 'Increased commercial exposure and lead generation', 'Brand trust acceleration and market authority', 'Long-term ecosystem relevance and influence'],
+  benefitGroups: [{
+    heading: 'Official Status & Brand Integration',
+    items: ['Official Partner designation', 'Premium logo placement', 'Priority visibility across digital and event platforms', 'Website and media integration', 'Main venue and stage branding visibility']
+  }, {
+    heading: 'Executive Access & Participation',
+    items: ['12 Executive Delegate Passes', 'Premium Exhibition Pavilion', 'VIP Networking & Executive Lounge Access', 'Access to curated investor and founder engagements']
+  }, {
+    heading: 'Thought Leadership & Influence',
+    items: ['Participation in strategic industry conversations', 'Featured executive interview opportunity', 'Integration into summit thought leadership ecosystem', 'Brand storytelling integration']
+  }, {
+    heading: 'Marketing & Amplification',
+    items: ['Integrated digital campaign visibility', 'Featured partner spotlight campaigns', 'PR and media inclusion opportunities', 'Strategic social media amplification']
+  }, {
+    heading: 'Data, Insights & Reporting',
+    items: ['Post-summit analytics summary', 'Audience engagement insights', 'Brand visibility performance reporting']
+  }],
+  idealFor: ['Banks', 'Telecommunications', 'Technology Companies', 'DFIs', 'Corporates', 'Professional Services Firms', 'Development Agencies', 'Innovation Ecosystems']
 }, {
-  id: 'ben-access',
-  index: '02',
-  title: 'High-Impact Access',
-  description: 'Connect directly with 4,000+ decision-makers — founders, institutional funders, DFIs, VCs, and ecosystem builders — in structured, high-value networking environments engineered for deal-making.',
-  tags: ['Deal Flow', 'Networking', 'Decision-Makers'],
-  imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=1400&q=80',
-  imageAlt: 'High-impact access and networking at EmpowaEntrepreneurs Funding Summit 2026'
+  id: 'pt-growth',
+  tier: 'Growth Partner',
+  tabLabel: 'Growth Partner',
+  tabBadge: 'Recommended',
+  tabBadgeStyle: 'red',
+  label: 'Market Access & Executive Engagement Partner',
+  description: "Designed for organisations seeking stronger commercial positioning, strategic stakeholder engagement, enhanced exhibition visibility, and integrated thought leadership opportunities within Africa's entrepreneurial ecosystem.",
+  roiBullets: ['Executive relationship acceleration', 'High-value entrepreneurial engagement', 'Qualified lead generation opportunities', 'Increased market visibility and authority', 'Ecosystem influence positioning', 'Strategic networking access', 'Enhanced brand relevance and stakeholder trust'],
+  benefitGroups: [{
+    heading: 'Enhanced Brand Visibility',
+    items: ['Premium logo positioning', 'Integrated marketing campaign exposure', 'Featured digital spotlight campaign', 'Inclusion across summit promotional ecosystem']
+  }, {
+    heading: 'Executive Access',
+    items: ['8 Executive Delegate Passes', 'Premium Exhibition Pavilion', 'VIP Networking Access', 'Executive hospitality inclusion']
+  }, {
+    heading: 'Thought Leadership Rights',
+    items: ['Participation in one strategic panel session', 'Industry expertise positioning', 'Brand representation within sector discussions']
+  }, {
+    heading: 'Commercial Engagement',
+    items: ['Lead generation opportunities', 'QR-enabled delegate interaction', 'Product and service showcase integration']
+  }, {
+    heading: 'Media & Storytelling',
+    items: ['Media interview opportunities', 'Inclusion in summit storytelling campaigns', 'Brand integration within summit content ecosystem']
+  }],
+  idealFor: ['Financial Institutions', 'Insurance Brands', 'Telecoms', 'Technology Companies', 'Consulting Firms', 'Corporate ESG Divisions']
 }, {
-  id: 'ben-thought',
-  index: '03',
-  title: 'Thought Leadership',
-  description: "Secure speaking slots, panel moderation, and keynote opportunities that establish your organisation as a defining voice in Africa's enterprise growth narrative.",
-  tags: ['Speaking Rights', 'Keynotes', 'Panels'],
-  imageSrc: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1400&q=80',
-  imageAlt: 'Thought leadership and speaking at Empowa Summit'
+  id: 'pt-strategic',
+  tier: 'Strategic Partner',
+  tabLabel: 'Strategic Partner',
+  label: 'Ecosystem Leadership & Influence Partner',
+  description: "Designed for institutions seeking category leadership, executive visibility, strategic influence, policy alignment, and deeper integration into Africa's entrepreneurial funding ecosystem.",
+  roiBullets: ['Sector leadership positioning', 'Executive and investor access', 'Thought leadership authority', 'Commercial pipeline generation', 'Transformation and ESG credibility', 'Policy ecosystem influence', 'Brand trust acceleration', 'Strategic stakeholder integration'],
+  benefitGroups: [{
+    heading: 'Strategic Brand Ownership',
+    items: ['Branded Experience Zone', 'Executive Lounge Branding', 'Premium Stage Integration', 'Sector category exclusivity opportunities']
+  }, {
+    heading: 'Executive Thought Leadership',
+    items: ['Keynote speaking opportunity', 'Strategic fireside conversation participation', 'Agenda topic influence participation', 'Executive roundtable integration']
+  }, {
+    heading: 'Commercial Activation Rights',
+    items: ['Curated B2B introductions', 'Investor and founder matchmaking', 'Product demonstration opportunities', 'Strategic networking integration']
+  }, {
+    heading: 'Data & Intelligence',
+    items: ['Audience analytics and engagement reporting', 'Entrepreneurial ecosystem insights', 'Sector intelligence reporting', 'Strategic stakeholder engagement data']
+  }, {
+    heading: 'Brand Storytelling',
+    items: ['Co-authored narrative positioning', 'Integrated PR and media visibility', 'Featured leadership content integration']
+  }],
+  idealFor: ['DFIs', 'Venture Capital Firms', 'Government Entities', 'Global Technology Companies', 'Development Agencies', 'Multinational Corporations', 'Investment Institutions']
 }, {
-  id: 'ben-engage',
-  index: '04',
-  title: 'Authentic Engagement',
-  description: 'Move beyond logos. Co-create curated activations, demonstration zones, and immersive brand experiences that generate genuine connection with the entrepreneurs and investors shaping Africa.',
-  tags: ['Activations', 'Co-creation', 'Immersive'],
-  imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&q=80',
-  imageAlt: 'Authentic engagement and brand activation at EmpowaEntrepreneurs Funding Summit 2026'
+  id: 'pt-title',
+  tier: 'Title Partner',
+  tabLabel: 'Title Partner',
+  tabBadge: 'Exclusive',
+  tabBadgeStyle: 'slate',
+  label: 'Summit Naming Rights & Ecosystem Co-Ownership Partner',
+  description: "The highest level of strategic partnership designed for visionary institutions seeking long-term ecosystem ownership, executive influence, national visibility, and category leadership within Africa's entrepreneurial funding economy.",
+  roiBullets: ['Category ownership and dominance', 'Long-term ecosystem influence', 'National and continental visibility', 'Executive and policy access', 'Commercial and investment pipeline development', 'Market leadership authority', 'Enhanced transformation credibility', 'Strategic stakeholder integration'],
+  benefitGroups: [{
+    heading: 'Naming Rights & Ownership',
+    items: ['Summit Naming Rights', 'Presented By ownership positioning', 'Co-branded summit identity integration', 'Dominant event branding visibility']
+  }, {
+    heading: 'Executive Influence & Access',
+    items: ['Exclusive Power Seat Roundtable', 'Private investor and executive engagements', 'Government and ecosystem introductions', 'Strategic stakeholder access']
+  }, {
+    heading: 'Programme Co-Design Rights',
+    items: ['Co-curation of summit programme', 'Strategic agenda collaboration', 'Sector narrative influence']
+  }, {
+    heading: 'Premium Multimedia Visibility',
+    items: ['Full-scale integrated marketing visibility', 'Main stage ownership integration', 'National media and PR integration', 'Year-round platform association']
+  }, {
+    heading: 'Legacy Ecosystem Integration',
+    items: ['Year-round ecosystem visibility', 'Strategic advisory participation opportunities', 'Long-term partnership integration', 'Leadership positioning across EmpowaWorx platforms']
+  }],
+  idealFor: ['Anchor Sponsors', 'Pan-African Institutions', 'Major Banks', 'Telecommunications Giants', 'Global Technology Brands', 'Government Agencies', 'Investment Institutions']
 }];
-const BenefitsSection = () => {
+
+// ─── Data: Specialised Packages ───────────────────────────────────────────────
+type SpecialisedPackage = {
+  id: string;
+  tier: string;
+  label: string;
+  description: string;
+  highlights: string[];
+  idealFor: string[];
+};
+const SPECIALISED_PACKAGES: SpecialisedPackage[] = [{
+  id: 'sp-media',
+  tier: 'Official Media Partner',
+  label: 'Strategic Media, Broadcasting & Amplification Partner',
+  description: 'For broadcasters, media houses, business publications, digital platforms, podcasts, and streaming services. Gain exclusive executive content access, premium interview opportunities, multi-platform storytelling, and business sector authority.',
+  highlights: ['Official Media Partner designation & co-branded media wall', 'Executive interview & speaker access rights', 'Live broadcasting & content capture access', 'Podcast and digital storytelling integration', 'Integrated amplification campaigns & social collaboration', 'VIP hospitality & full media accreditation'],
+  idealFor: ['Television Networks', 'Radio Stations', 'Podcasts', 'Digital Media Platforms', 'Business Publications', 'Streaming Platforms']
+}, {
+  id: 'sp-experience',
+  tier: 'Experience Partner',
+  label: 'Premium Delegate Experience & Hospitality Partner',
+  description: 'For hospitality, luxury, automotive, travel, wellness, beauty, lifestyle, and experiential brands seeking high-touch audience engagement, premium brand recall, and executive interaction opportunities.',
+  highlights: ['Premium experiential activation zone', 'VIP lounge branding rights', 'Product sampling and curated hospitality integration', 'Interactive delegate engagement activations', 'Networking and lifestyle integration', 'Social amplification and experiential positioning'],
+  idealFor: ['Hospitality Brands', 'Luxury & Automotive', 'Travel & Wellness', 'Lifestyle Brands', 'Experiential Agencies']
+}, {
+  id: 'sp-exhibition',
+  tier: 'Premium Exhibition Partner',
+  label: 'Executive Market Access Pavilion',
+  description: "Position your organisation at the centre of Africa's entrepreneurial, investment, and innovation ecosystem with direct lead generation, commercial pipeline development, and investor ecosystem exposure.",
+  highlights: ['Premium exhibition placement & branded activation', 'Lead capture integration', 'Investor and founder engagement access', 'Business matchmaking opportunities', 'Executive foot-traffic optimisation', 'Product showcase and service visibility'],
+  idealFor: ['Financial Services', 'Technology Companies', 'Consulting Firms', 'Professional Services', 'Innovation Hubs']
+}, {
+  id: 'sp-panel',
+  tier: 'Panel Sponsorship Partner',
+  label: 'Industry Conversation Leadership Package',
+  description: "Own and lead one of the summit's strategic high-impact industry conversations. Gain sector authority positioning, thought leadership visibility, and strategic narrative ownership.",
+  highlights: ['Naming rights to panel session', 'Executive panel participation & stage branding', 'Moderator brand mention', 'Media interview opportunities', 'Themes: Funding | AI & Tech | VC & Investment | ESG | Digital Transformation | Township Enterprise | ESD | Women-Led Enterprise | Youth Entrepreneurship'],
+  idealFor: ['Banks & DFIs', 'Technology Companies', 'Impact Investors', 'Government Agencies', 'Industry Bodies']
+}, {
+  id: 'sp-goodie',
+  tier: 'Premium Goodie Bag Partner',
+  label: 'Executive Brand Placement Package',
+  description: 'Integrate your brand directly into the executive delegate experience with premium product placement, branded inserts, QR-enabled engagement, and high-value audience visibility.',
+  highlights: ['Premium product placement within executive goodie bags', 'Branded inserts and catalogues', 'QR-enabled engagement opportunities', 'Exclusive promotional offers', 'Luxury sampling rights', 'Direct executive brand exposure'],
+  idealFor: ['Consumer Brands', 'Luxury Products', 'Tech Accessories', 'Financial Products', 'FMCG Brands']
+}];
+
+// ─── Data: Why Partner ────────────────────────────────────────────────────────
+const WHY_PARTNER_REASONS = [{
+  id: 'wp-1',
+  number: '01',
+  title: "Access Africa's Funding & Innovation Ecosystem",
+  description: "Connect directly with founders, investors, corporates, policymakers, innovators, DFIs, and high-growth entrepreneurs shaping Africa's economic future."
+}, {
+  id: 'wp-2',
+  number: '02',
+  title: 'Drive Measurable Commercial Outcomes',
+  description: 'Generate strategic partnerships, qualified business leads, investment opportunities, ecosystem relationships, and measurable engagement outcomes.'
+}, {
+  id: 'wp-3',
+  number: '03',
+  title: 'Activate ESG, ESD & Transformation Capital',
+  description: 'Align your organisation with inclusive economic growth, entrepreneurship development, innovation, and measurable impact priorities.'
+}, {
+  id: 'wp-4',
+  number: '04',
+  title: 'Shape Future Economy Conversations',
+  description: "Position your organisation at the centre of strategic discussions influencing Africa's entrepreneurial, investment, innovation, and digital economy landscape."
+}, {
+  id: 'wp-5',
+  number: '05',
+  title: 'Build Long-Term Influence',
+  description: 'Move beyond sponsorship into ecosystem leadership, influence capital, and sustained market positioning.'
+}];
+
+// ─── Partnership Tiers Section (Tabbed) ──────────────────────────────────────
+const tabPanelVariants = {
+  enter: {
+    opacity: 0,
+    y: 18,
+    filter: 'blur(6px)'
+  },
+  center: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1] as const
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    filter: 'blur(4px)',
+    transition: {
+      duration: 0.28,
+      ease: [0.22, 1, 0.36, 1] as const
+    }
+  }
+};
+const benefitBreakdownVariants = {
+  hidden: {
+    opacity: 0,
+    height: 0,
+    overflow: 'hidden' as const
+  },
+  visible: {
+    opacity: 1,
+    height: 'auto',
+    overflow: 'hidden' as const,
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1] as const
+    }
+  },
+  exit: {
+    opacity: 0,
+    height: 0,
+    overflow: 'hidden' as const,
+    transition: {
+      duration: 0.3,
+      ease: [0.22, 1, 0.36, 1] as const
+    }
+  }
+};
+const PartnershipTiersSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
-    margin: '-60px 0px'
+    margin: '-80px 0px'
   });
+  const [activeId, setActiveId] = useState('pt-official');
+  const [benefitOpen, setBenefitOpen] = useState(false);
   const {
     isMobile,
     isTablet
   } = useBreakpoint();
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-  // Mobile: stacked | Tablet: 2-col grid | Desktop: 4-col full-width row
-  const gridCols = isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)';
-  const cardMinHeight = isMobile ? '300px' : isTablet ? '380px' : '520px';
+  const hPad = isMobile ? '20px' : isTablet ? '40px' : '64px';
+  // Heading style matching WhyPartner section
+  const headingSize = isMobile ? 'clamp(28px, 8vw, 44px)' : isTablet ? 'clamp(32px, 5vw, 52px)' : 'clamp(36px, 4vw, 58px)';
+  const activeTier = PARTNER_TIERS.find(t => t.id === activeId) ?? PARTNER_TIERS[0];
+  const textSecondary = 'rgba(247,246,243,0.52)';
+  const textMuted = 'rgba(247,246,243,0.28)';
+  const tabColWidth = isMobile ? 0 : isTablet ? 180 : 240;
+  const handleTabChange = (id: string) => {
+    setActiveId(id);
+    setBenefitOpen(false);
+  };
   return <section ref={sectionRef} style={{
-    background: '#14202c',
-    paddingTop: isMobile ? '72px' : '152px',
-    paddingBottom: isMobile ? '0' : '0',
+    background: '#141210',
     width: '100%',
     boxSizing: 'border-box',
     overflow: 'hidden',
@@ -1166,432 +1134,691 @@ const BenefitsSection = () => {
       backgroundRepeat: 'repeat',
       backgroundSize: '128px 128px',
       pointerEvents: 'none',
-      zIndex: 0,
-      opacity: 0.6
+      opacity: 0.45
     }} />
-    <div aria-hidden="true" style={{
-      position: 'absolute',
-      top: '5%',
-      right: '-12%',
-      width: 'clamp(400px, 60vw, 900px)',
-      height: 'clamp(400px, 60vw, 900px)',
-      borderRadius: '50%',
-      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.07) 0%, rgba(222,50,45,0.02) 45%, transparent 70%)',
-      pointerEvents: 'none',
-      zIndex: 0
-    }} />
-    {/* Header */}
+
+    {/* Section Header */}
     <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: isMobile ? '0 24px' : isTablet ? '0 40px' : '0 64px',
+      padding: `${isMobile ? '80px' : isTablet ? '112px' : '144px'} ${hPad} ${isMobile ? '48px' : '72px'}`,
       position: 'relative',
       zIndex: 1,
-      paddingBottom: isMobile ? '40px' : '64px'
-    }}>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        gap: '40px',
-        flexWrap: 'wrap'
-      }}>
-        <div>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            marginBottom: '20px'
-          }}>
-            <PlusSquareIconLight />
-            <span style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: '12px',
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(247,246,243,0.35)',
-              fontWeight: 600
-            }}>Partnership Benefits</span>
-          </motion.div>
-          <div style={{
-            overflow: 'hidden'
-          }}>
-            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: isMobile ? 'clamp(28px, 8vw, 44px)' : 'clamp(32px, 4vw, 60px)',
-              fontWeight: 300,
-              letterSpacing: '-1.8px',
-              lineHeight: 1.04,
-              color: '#F7F6F3',
-              margin: 0,
-              maxWidth: '560px'
-            }}>
-              <span>{'Why brands '}</span>
-              <em style={{
-                fontStyle: 'italic',
-                color: '#DE322D'
-              }}>{'choose'}</em>
-              <span style={{
-                color: 'rgba(247,246,243,0.2)'
-              }}>{' Empowa.'}</span>
-            </motion.h2>
-          </div>
-        </div>
-        {!isMobile && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '14px',
-          color: 'rgba(247,246,243,0.3)',
-          maxWidth: '280px',
-          lineHeight: '1.7',
-          margin: 0
-        }}>
-          Four pillars of value that position partners as architects of Africa's economic future.
-        </motion.p>}
-      </div>
-    </div>
-    {/* Cards — full viewport width on desktop, contained grid on mobile/tablet */}
-    {isMobile || isTablet ? <div style={{
-      padding: isMobile ? '0 24px 72px' : '0 40px 80px',
       boxSizing: 'border-box'
     }}>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.07} style={{
-        display: 'grid',
-        gridTemplateColumns: gridCols,
-        gap: '3px',
-        width: '100%'
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        marginBottom: '28px'
       }}>
-          {BENEFITS.map((benefit, i) => {
-          const isHovered = hoveredId === benefit.id;
-          return <motion.div key={benefit.id} variants={clipReveal} custom={i * 0.08} onMouseEnter={() => setHoveredId(benefit.id)} onMouseLeave={() => setHoveredId(null)} style={{
-            position: 'relative',
-            minHeight: cardMinHeight,
-            overflow: 'hidden',
-            cursor: 'default',
-            borderRadius: '4px'
+        <PlusSquareIconLight />
+        <span style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '11px',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'rgba(247,246,243,0.35)',
+          fontWeight: 500
+        }}>Partnership Tiers</span>
+      </motion.div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? '20px' : '80px',
+        alignItems: 'flex-end'
+      }}>
+        <div>
+          {/* h2 heading — matched to WhyPartner style: Inter / weight 200 / -2px tracking / 1.04 lh */}
+          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: headingSize,
+            fontWeight: 200,
+            letterSpacing: '-2px',
+            lineHeight: 1.04,
+            color: '#F7F6F3',
+            margin: 0
           }}>
-              <img src={benefit.imageSrc} alt={benefit.imageAlt} style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              filter: isHovered ? 'brightness(0.6) saturate(0.9)' : 'brightness(0.5) saturate(0.7)',
-              transform: isHovered ? 'scale(1.06)' : 'scale(1)',
-              transition: 'filter 0.7s ease, transform 0.9s cubic-bezier(0.22,1,0.36,1)'
-            }} />
-              <div style={{
-              position: 'absolute',
-              inset: 0,
-              background: isHovered ? 'linear-gradient(to top, rgba(10,9,8,0.98) 0%, rgba(10,9,8,0.65) 50%, rgba(10,9,8,0.2) 100%)' : 'linear-gradient(to top, rgba(10,9,8,0.85) 0%, rgba(10,9,8,0.5) 55%, rgba(10,9,8,0.15) 100%)',
-              transition: 'background 0.6s ease',
-              pointerEvents: 'none'
-            }} />
-              <div style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: '3px',
-              background: isHovered ? 'linear-gradient(90deg, #DE322D, rgba(222,50,45,0.3))' : 'linear-gradient(90deg, rgba(222,50,45,0.35), transparent)',
-              transition: 'background 0.5s ease'
-            }} />
-              <div style={{
-              position: 'absolute',
-              inset: 0,
+            <span>{'Four tiers of '}</span>
+            <em style={{
+              fontStyle: 'italic',
+              color: '#DE322D',
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 300
+            }}>{'strategic'}</em>
+            <br />
+            <span style={{
+              color: 'rgba(247,246,243,0.18)',
+              fontWeight: 300
+            }}>{'ecosystem ownership.'}</span>
+          </motion.h2>
+        </div>
+        <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.28} style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: isMobile ? '14px' : '15px',
+          lineHeight: '1.82',
+          color: 'rgba(247,246,243,0.45)',
+          margin: 0,
+          fontWeight: 300
+        }}>
+          Designed in alignment with global best practices and leading international partnership architectures, these packages move beyond traditional sponsorship into strategic ecosystem ownership, executive influence, market access, and long-term brand relevance.
+        </motion.p>
+      </div>
+    </div>
+
+    {/* MOBILE: horizontal scrollable tab strip */}
+    {isMobile && <div style={{
+      position: 'relative',
+      zIndex: 1
+    }}>
+        <div style={{
+        padding: `0 ${hPad}`,
+        boxSizing: 'border-box'
+      }}>
+          <div style={{
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          borderBottom: '1px solid rgba(247,246,243,0.1)'
+        }}>
+            <div style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            gap: '2px',
+            minWidth: 'max-content',
+            paddingBottom: '0'
+          }}>
+              {PARTNER_TIERS.map(tier => {
+              const isActive = activeId === tier.id;
+              return <button key={tier.id} onClick={() => handleTabChange(tier.id)} style={{
+                position: 'relative',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '12px 14px 14px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '7px',
+                flexShrink: 0,
+                transition: 'opacity 0.2s ease'
+              }}>
+                  {isActive && <motion.div layoutId="tab-active-underline-mobile" style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: '#DE322D',
+                  borderRadius: '1px'
+                }} transition={{
+                  duration: 0.35,
+                  ease: [0.22, 1, 0.36, 1]
+                }} />}
+                  <span style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontWeight: 600,
+                  fontSize: '11px',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  color: isActive ? '#F7F6F3' : 'rgba(247,246,243,0.45)',
+                  transition: 'color 0.25s ease',
+                  whiteSpace: 'nowrap'
+                }}>{tier.tabLabel}</span>
+                  {tier.tabBadge && <span style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '8px',
+                  fontWeight: 700,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  padding: '3px 7px',
+                  borderRadius: '4px',
+                  background: tier.tabBadgeStyle === 'red' ? '#DE322D' : '#3c4d5d',
+                  color: '#F7F6F3',
+                  flexShrink: 0
+                }}>{tier.tabBadge}</span>}
+                </button>;
+            })}
+            </div>
+          </div>
+        </div>
+      </div>}
+
+    {/* DESKTOP/TABLET: vertical left tabs + right content */}
+    {!isMobile && <div style={{
+      position: 'relative',
+      zIndex: 1,
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: `0 ${hPad}`,
+      boxSizing: 'border-box'
+    }}>
+        <div style={{
+        display: 'flex',
+        gap: '0',
+        alignItems: 'flex-start',
+        borderTop: '1px solid rgba(247,246,243,0.08)'
+      }}>
+          {/* Left vertical tab column */}
+          <div style={{
+          width: `${tabColWidth}px`,
+          flexShrink: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          borderRight: '1px solid rgba(247,246,243,0.08)',
+          paddingTop: '8px',
+          paddingBottom: '8px'
+        }}>
+            {PARTNER_TIERS.map(tier => {
+            const isActive = activeId === tier.id;
+            return <button key={tier.id} onClick={() => handleTabChange(tier.id)} style={{
+              position: 'relative',
+              background: isActive ? 'rgba(247,246,243,0.06)' : 'none',
+              border: 'none',
+              borderLeft: isActive ? '3px solid #DE322D' : '3px solid transparent',
+              cursor: 'pointer',
+              padding: isTablet ? '18px 20px 18px 17px' : '20px 28px 20px 21px',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'flex-end',
-              padding: '28px 24px'
+              alignItems: 'flex-start',
+              gap: '7px',
+              textAlign: 'left',
+              transition: 'background 0.2s ease, border-color 0.2s ease',
+              boxSizing: 'border-box',
+              width: '100%'
+            }} onMouseEnter={e => {
+              if (!isActive) {
+                const btn = e.currentTarget as HTMLButtonElement;
+                btn.style.background = 'rgba(247,246,243,0.03)';
+              }
+            }} onMouseLeave={e => {
+              if (!isActive) {
+                const btn = e.currentTarget as HTMLButtonElement;
+                btn.style.background = 'none';
+              }
+            }}>
+                <span style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 600,
+                fontSize: '13px',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                color: isActive ? '#F7F6F3' : 'rgba(247,246,243,0.35)',
+                transition: 'color 0.25s ease',
+                lineHeight: 1.2
+              }}>{tier.tabLabel}</span>
+                {tier.tabBadge && <span style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '8px',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                padding: '3px 7px',
+                borderRadius: '4px',
+                background: tier.tabBadgeStyle === 'red' ? '#DE322D' : '#3c4d5d',
+                color: '#F7F6F3',
+                flexShrink: 0
+              }}>{tier.tabBadge}</span>}
+              </button>;
+          })}
+          </div>
+
+          {/* Right content panel */}
+          <div style={{
+          flex: 1,
+          minWidth: 0
+        }}>
+            <AnimatePresence mode="wait">
+              <motion.div key={activeId} variants={tabPanelVariants} initial="enter" animate="center" exit="exit" style={{
+              width: '100%'
+            }}>
+                <div style={{
+                padding: `${isTablet ? '40px' : '56px'} ${isTablet ? '32px' : '48px'} ${isTablet ? '48px' : '72px'}`,
+                boxSizing: 'border-box'
+              }}>
+                  {/* Top: tier meta + label + description */}
+                  <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: isTablet ? '1fr' : '1fr 1fr',
+                  gap: isTablet ? '24px' : '64px',
+                  marginBottom: isTablet ? '40px' : '56px'
+                }}>
+                    <div>
+                      <div style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '10px',
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      color: '#DE322D',
+                      fontWeight: 600,
+                      marginBottom: '12px'
+                    }}>{activeTier.tier}</div>
+                      <h3 style={{
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontSize: isTablet ? '17px' : 'clamp(17px, 1.7vw, 22px)',
+                      fontWeight: 600,
+                      letterSpacing: '-0.4px',
+                      lineHeight: 1.15,
+                      color: '#F7F6F3',
+                      margin: '0 0 18px'
+                    }}>{activeTier.label}</h3>
+                      <p style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '14px',
+                      lineHeight: '1.85',
+                      color: textSecondary,
+                      margin: 0,
+                      fontWeight: 300
+                    }}>{activeTier.description}</p>
+                    </div>
+                    <div>
+                      <div style={{
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontSize: '10px',
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      color: '#DE322D',
+                      fontWeight: 700,
+                      marginBottom: '16px'
+                    }}>Return on Partnership</div>
+                      <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(2, 1fr)',
+                      gap: '7px 24px'
+                    }}>
+                        {activeTier.roiBullets.map((bullet, bi) => <div key={`roi-${activeTier.id}-${bi}`} style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '8px'
+                      }}>
+                          <span style={{
+                          marginTop: '3px',
+                          flexShrink: 0
+                        }}><CheckIcon /></span>
+                          <span style={{
+                          fontFamily: 'Inter, sans-serif',
+                          fontSize: '13px',
+                          lineHeight: '1.6',
+                          color: textSecondary,
+                          fontWeight: 300
+                        }}>{bullet}</span>
+                        </div>)}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Benefit Breakdown — hidden by default */}
+                  <div style={{
+                  borderTop: '1px solid rgba(247,246,243,0.08)',
+                  paddingTop: isTablet ? '32px' : '44px',
+                  marginBottom: isTablet ? '32px' : '44px'
+                }}>
+                    <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: benefitOpen ? '24px' : '0'
+                  }}>
+                      <div style={{
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontSize: '10px',
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(247,246,243,0.28)',
+                      fontWeight: 700
+                    }}>Benefit Breakdown</div>
+                      <button onClick={() => setBenefitOpen(v => !v)} style={{
+                      background: 'none',
+                      border: '1px solid rgba(247,246,243,0.2)',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      padding: '6px 14px',
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      letterSpacing: '0.04em',
+                      color: '#F7F6F3',
+                      transition: 'border-color 0.2s ease, background 0.2s ease',
+                      whiteSpace: 'nowrap'
+                    }} onMouseEnter={e => {
+                      const btn = e.currentTarget as HTMLButtonElement;
+                      btn.style.borderColor = 'rgba(247,246,243,0.45)';
+                      btn.style.background = 'rgba(247,246,243,0.06)';
+                    }} onMouseLeave={e => {
+                      const btn = e.currentTarget as HTMLButtonElement;
+                      btn.style.borderColor = 'rgba(247,246,243,0.2)';
+                      btn.style.background = 'none';
+                    }}>
+                        <span>{benefitOpen ? 'Hide Benefit Breakdown' : 'View Benefit Breakdown'}</span>
+                      </button>
+                    </div>
+                    <AnimatePresence initial={false}>
+                      {benefitOpen && <motion.div key="benefit-breakdown" variants={benefitBreakdownVariants} initial="hidden" animate="visible" exit="exit">
+                          <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
+                        gap: isTablet ? '28px' : '20px'
+                      }}>
+                            {activeTier.benefitGroups.map((group, gi) => <div key={`bg-${activeTier.id}-${gi}`}>
+                              <div style={{
+                            fontFamily: 'Montserrat, sans-serif',
+                            fontSize: '10px',
+                            letterSpacing: '0.12em',
+                            textTransform: 'uppercase',
+                            fontWeight: 700,
+                            color: '#DE322D',
+                            marginBottom: '14px',
+                            paddingBottom: '10px',
+                            borderBottom: '1px solid rgba(222,50,45,0.2)'
+                          }}>{group.heading}</div>
+                              <ul style={{
+                            listStyle: 'none',
+                            margin: 0,
+                            padding: 0,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '8px'
+                          }}>
+                                {group.items.map((item, ii) => <li key={`item-${activeTier.id}-${gi}-${ii}`} style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '8px'
+                            }}>
+                                  <span style={{
+                                marginTop: '3px',
+                                flexShrink: 0
+                              }}><CheckIcon /></span>
+                                  <span style={{
+                                fontFamily: 'Inter, sans-serif',
+                                fontSize: '12px',
+                                lineHeight: '1.65',
+                                color: textSecondary,
+                                fontWeight: 300
+                              }}>{item}</span>
+                                </li>)}
+                              </ul>
+                            </div>)}
+                          </div>
+                        </motion.div>}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Ideal For */}
+                  <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  flexWrap: 'wrap'
+                }}>
+                    <span style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '9px',
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: textMuted,
+                    fontWeight: 600,
+                    flexShrink: 0
+                  }}>Ideal for</span>
+                    {activeTier.idealFor.map((org, oi) => <span key={`ideal-${activeTier.id}-${oi}`} style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '11px',
+                    padding: '4px 12px',
+                    background: 'rgba(60,77,93,0.7)',
+                    borderRadius: '100px',
+                    color: '#F7F6F3',
+                    border: '1px solid rgba(247,246,243,0.12)',
+                    letterSpacing: '0.01em'
+                  }}>{org}</span>)}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>}
+
+    {/* MOBILE: content panel below tabs */}
+    {isMobile && <div style={{
+      position: 'relative',
+      zIndex: 1,
+      minHeight: '520px'
+    }}>
+        <AnimatePresence mode="wait">
+          <motion.div key={activeId} variants={tabPanelVariants} initial="enter" animate="center" exit="exit" style={{
+          width: '100%'
+        }}>
+            <div style={{
+            padding: `40px ${hPad} 48px`,
+            boxSizing: 'border-box'
+          }}>
+              {/* Top: tier meta + label + description */}
+              <div style={{
+              marginBottom: '40px'
             }}>
                 <div style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'rgba(247,246,243,0.35)',
-                fontWeight: 500,
-                marginBottom: '10px'
-              }}>{benefit.index}</div>
+                color: '#DE322D',
+                fontWeight: 600,
+                marginBottom: '12px'
+              }}>{activeTier.tier}</div>
+                <h3 style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '17px',
+                fontWeight: 600,
+                letterSpacing: '-0.4px',
+                lineHeight: 1.15,
+                color: '#F7F6F3',
+                margin: '0 0 18px'
+              }}>{activeTier.label}</h3>
+                <p style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px',
+                lineHeight: '1.85',
+                color: textSecondary,
+                margin: '0 0 28px',
+                fontWeight: 300
+              }}>{activeTier.description}</p>
+                <div style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '10px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: '#DE322D',
+                fontWeight: 700,
+                marginBottom: '14px'
+              }}>Return on Partnership</div>
+                <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '7px'
+              }}>
+                  {activeTier.roiBullets.map((bullet, bi) => <div key={`roi-m-${activeTier.id}-${bi}`} style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '8px'
+                }}>
+                    <span style={{
+                    marginTop: '3px',
+                    flexShrink: 0
+                  }}><CheckIcon /></span>
+                    <span style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '13px',
+                    lineHeight: '1.6',
+                    color: textSecondary,
+                    fontWeight: 300
+                  }}>{bullet}</span>
+                  </div>)}
+                </div>
+              </div>
+
+              {/* Benefit Breakdown — hidden by default (mobile) */}
+              <div style={{
+              borderTop: '1px solid rgba(247,246,243,0.08)',
+              paddingTop: '32px',
+              marginBottom: '32px'
+            }}>
                 <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                marginBottom: '10px'
+                justifyContent: 'space-between',
+                marginBottom: benefitOpen ? '24px' : '0'
               }}>
                   <div style={{
-                  width: '5px',
-                  height: '5px',
-                  borderRadius: '50%',
-                  background: '#DE322D',
-                  flexShrink: 0,
-                  transition: 'transform 0.3s ease',
-                  transform: isHovered ? 'scale(1.6)' : 'scale(1)'
-                }} />
-                  <h3 style={{
                   fontFamily: 'Montserrat, sans-serif',
-                  fontSize: 'clamp(16px, 4vw, 22px)',
-                  fontWeight: isHovered ? 500 : 300,
-                  letterSpacing: '-0.5px',
+                  fontSize: '10px',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(247,246,243,0.28)',
+                  fontWeight: 700
+                }}>Benefit Breakdown</div>
+                  <button onClick={() => setBenefitOpen(v => !v)} style={{
+                  background: 'none',
+                  border: '1px solid rgba(247,246,243,0.2)',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  padding: '6px 12px',
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
                   color: '#F7F6F3',
-                  margin: 0,
-                  lineHeight: 1.15,
-                  transition: 'font-weight 0.3s ease'
-                }}>{benefit.title}</h3>
+                  whiteSpace: 'nowrap'
+                }}>
+                    <span>{benefitOpen ? 'Hide Benefit Breakdown' : 'View Benefit Breakdown'}</span>
+                  </button>
                 </div>
                 <AnimatePresence initial={false}>
-                  {isHovered && <motion.div key={`desc-${benefit.id}`} initial={{
-                  opacity: 0,
-                  y: 16
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} exit={{
-                  opacity: 0,
-                  y: 8
-                }} transition={{
-                  duration: 0.4,
-                  ease: [0.22, 1, 0.36, 1]
-                }}>
-                    <p style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '13px',
-                    lineHeight: '1.72',
-                    color: 'rgba(247,246,243,0.6)',
-                    margin: '0 0 12px',
-                    fontWeight: 300
-                  }}>{benefit.description}</p>
-                    <div style={{
+                  {benefitOpen && <motion.div key="benefit-breakdown-mobile" variants={benefitBreakdownVariants} initial="hidden" animate="visible" exit="exit">
+                      <div style={{
                     display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '5px'
+                    flexDirection: 'column',
+                    gap: '28px'
                   }}>
-                      {benefit.tags.map(tag => <span key={tag} style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '9px',
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      color: 'rgba(247,246,243,0.45)',
-                      border: '1px solid rgba(247,246,243,0.18)',
-                      borderRadius: '100px',
-                      padding: '3px 10px'
-                    }}>{tag}</span>)}
-                    </div>
-                  </motion.div>}
+                        {activeTier.benefitGroups.map((group, gi) => <div key={`bg-m-${activeTier.id}-${gi}`}>
+                          <div style={{
+                        fontFamily: 'Montserrat, sans-serif',
+                        fontSize: '10px',
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        fontWeight: 700,
+                        color: '#DE322D',
+                        marginBottom: '14px',
+                        paddingBottom: '10px',
+                        borderBottom: '1px solid rgba(222,50,45,0.2)'
+                      }}>{group.heading}</div>
+                          <ul style={{
+                        listStyle: 'none',
+                        margin: 0,
+                        padding: 0,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '8px'
+                      }}>
+                            {group.items.map((item, ii) => <li key={`item-m-${activeTier.id}-${gi}-${ii}`} style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '8px'
+                        }}>
+                              <span style={{
+                            marginTop: '3px',
+                            flexShrink: 0
+                          }}><CheckIcon /></span>
+                              <span style={{
+                            fontFamily: 'Inter, sans-serif',
+                            fontSize: '12px',
+                            lineHeight: '1.65',
+                            color: textSecondary,
+                            fontWeight: 300
+                          }}>{item}</span>
+                            </li>)}
+                          </ul>
+                        </div>)}
+                      </div>
+                    </motion.div>}
                 </AnimatePresence>
               </div>
-            </motion.div>;
-        })}
-        </motion.div>
-      </div> : <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.07} style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
-      gap: '3px',
-      width: '100%'
-    }}>
-        {BENEFITS.map((benefit, i) => {
-        const isHovered = hoveredId === benefit.id;
-        return <motion.div key={benefit.id} variants={clipReveal} custom={i * 0.08} onMouseEnter={() => setHoveredId(benefit.id)} onMouseLeave={() => setHoveredId(null)} style={{
-          position: 'relative',
-          minHeight: cardMinHeight,
-          overflow: 'hidden',
-          cursor: 'default'
-        }}>
-            <img src={benefit.imageSrc} alt={benefit.imageAlt} style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            display: 'block',
-            filter: isHovered ? 'brightness(0.6) saturate(0.9)' : 'brightness(0.5) saturate(0.7)',
-            transform: isHovered ? 'scale(1.06)' : 'scale(1)',
-            transition: 'filter 0.7s ease, transform 0.9s cubic-bezier(0.22,1,0.36,1)'
-          }} />
-            <div style={{
-            position: 'absolute',
-            inset: 0,
-            background: isHovered ? 'linear-gradient(to top, rgba(10,9,8,0.98) 0%, rgba(10,9,8,0.65) 50%, rgba(10,9,8,0.2) 100%)' : 'linear-gradient(to top, rgba(10,9,8,0.85) 0%, rgba(10,9,8,0.5) 55%, rgba(10,9,8,0.15) 100%)',
-            transition: 'background 0.6s ease',
-            pointerEvents: 'none'
-          }} />
-            <div style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '3px',
-            background: isHovered ? 'linear-gradient(90deg, #DE322D, rgba(222,50,45,0.3))' : 'linear-gradient(90deg, rgba(222,50,45,0.35), transparent)',
-            transition: 'background 0.5s ease'
-          }} />
-            {isHovered && <div aria-hidden="true" style={{
-            position: 'absolute',
-            bottom: '-10%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '280px',
-            height: '280px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(222,50,45,0.18) 0%, transparent 70%)',
-            pointerEvents: 'none'
-          }} />}
-            <div style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            padding: '32px 28px'
-          }}>
-              <div style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '10px',
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'rgba(247,246,243,0.35)',
-              fontWeight: 500,
-              marginBottom: '10px'
-            }}>{benefit.index}</div>
+
+              {/* Ideal For */}
               <div style={{
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              marginBottom: '12px'
+              flexWrap: 'wrap'
             }}>
-                <div style={{
-                width: '5px',
-                height: '5px',
-                borderRadius: '50%',
-                background: '#DE322D',
-                flexShrink: 0,
-                transition: 'transform 0.3s ease',
-                transform: isHovered ? 'scale(1.6)' : 'scale(1)'
-              }} />
-                <h3 style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: 'clamp(16px, 1.5vw, 22px)',
-                fontWeight: isHovered ? 500 : 300,
-                letterSpacing: '-0.5px',
+                <span style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '9px',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: textMuted,
+                fontWeight: 600,
+                flexShrink: 0
+              }}>Ideal for</span>
+                {activeTier.idealFor.map((org, oi) => <span key={`ideal-m-${activeTier.id}-${oi}`} style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '11px',
+                padding: '4px 12px',
+                background: 'rgba(60,77,93,0.7)',
+                borderRadius: '100px',
                 color: '#F7F6F3',
-                margin: 0,
-                lineHeight: 1.15,
-                transition: 'font-weight 0.3s ease'
-              }}>{benefit.title}</h3>
+                border: '1px solid rgba(247,246,243,0.12)',
+                letterSpacing: '0.01em'
+              }}>{org}</span>)}
               </div>
-              <AnimatePresence initial={false}>
-                {isHovered && <motion.div key={`desc-${benefit.id}`} initial={{
-                opacity: 0,
-                y: 16
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} exit={{
-                opacity: 0,
-                y: 8
-              }} transition={{
-                duration: 0.4,
-                ease: [0.22, 1, 0.36, 1]
-              }}>
-                  <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '13px',
-                  lineHeight: '1.72',
-                  color: 'rgba(247,246,243,0.6)',
-                  margin: '0 0 14px',
-                  fontWeight: 300
-                }}>{benefit.description}</p>
-                  <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '5px'
-                }}>
-                    {benefit.tags.map(tag => <span key={tag} style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '9px',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(247,246,243,0.45)',
-                    border: '1px solid rgba(247,246,243,0.18)',
-                    borderRadius: '100px',
-                    padding: '3px 10px'
-                  }}>{tag}</span>)}
-                  </div>
-                </motion.div>}
-              </AnimatePresence>
             </div>
-            <div aria-hidden="true" style={{
-            position: 'absolute',
-            top: '20px',
-            right: '20px',
-            fontFamily: 'Montserrat, sans-serif',
-            fontSize: '80px',
-            fontWeight: 800,
-            color: isHovered ? 'rgba(222,50,45,0.08)' : 'rgba(247,246,243,0.04)',
-            lineHeight: 1,
-            letterSpacing: '-4px',
-            userSelect: 'none',
-            transition: 'color 0.6s ease'
-          }}>{benefit.index}</div>
-          </motion.div>;
-      })}
-      </motion.div>}
+          </motion.div>
+        </AnimatePresence>
+      </div>}
   </section>;
 };
 
-// ─── Strategic Value Layer ─────────────────────────────────────────────────────
-type ValuePillar = {
-  id: string;
-  index: string;
-  title: string;
-  description: string;
-  metric: string;
-  metricLabel: string;
-};
-const VALUE_PILLARS: ValuePillar[] = [{
-  id: 'vp-narrative',
-  index: '01',
-  title: 'Marketing Narrative Rights',
-  description: "Co-author the official summit narrative. Your brand integrates into pre-summit communications, on-stage references, and post-event media reaching Africa's most influential business circles.",
-  metric: '1.2M+',
-  metricLabel: 'Media Impressions'
-}, {
-  id: 'vp-agenda',
-  index: '02',
-  title: 'Agenda Influence',
-  description: 'Shape the conversation that defines African enterprise for the year ahead. Senior partners influence track themes, panel compositions, and the keynote topics that drive EmpowaEntrepreneurs Funding Summit 2026 agenda.',
-  metric: '48h',
-  metricLabel: 'Programme Hours'
-}, {
-  id: 'vp-codesign',
-  index: '03',
-  title: 'Co-Design Rights',
-  description: 'Collaborate with the EmpowaEntrepreneurs curatorial team to design proprietary summit experiences, exclusive roundtables, and branded innovation zones that embody your strategic objectives.',
-  metric: '8+',
-  metricLabel: 'Co-Design Slots'
-}, {
-  id: 'vp-data',
-  index: '04',
-  title: 'Data Insights',
-  description: 'Gain exclusive access to post-summit analytics: attendee engagement data, investment activity reports, sector-level insights, and detailed outcome metrics — the intelligence that informs your next move.',
-  metric: '100%',
-  metricLabel: 'Verified Data Access'
-}];
-const StrategicValueSection = () => {
+// ─── Specialised Packages Section ────────────────────────────────────────────
+const SP_ACCENT_COLS = ['#3c4d5d', '#DE322D', '#3c4d5d', '#DE322D', '#3c4d5d'];
+const SP_ICONS_LIGHT = [<svg key="il-media" width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <circle cx="18" cy="18" r="13" stroke="#F7F6F3" strokeWidth="1.6" />
+    <circle cx="18" cy="18" r="5" fill="#F7F6F3" opacity="0.2" />
+    <path d="M10 18c0-4.4 3.6-8 8-8" stroke="#F7F6F3" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M26 18c0 4.4-3.6 8-8 8" stroke="#F7F6F3" strokeWidth="1.6" strokeLinecap="round" />
+    <circle cx="18" cy="18" r="2" fill="#F7F6F3" />
+  </svg>, <svg key="il-exp" width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <path d="M18 5L22 13L31 14.5L24.5 21L26 29L18 25L10 29L11.5 21L5 14.5L14 13L18 5Z" stroke="#F7F6F3" strokeWidth="1.6" strokeLinejoin="round" />
+  </svg>, <svg key="il-exhibit" width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <rect x="5" y="16" width="10" height="14" rx="1.5" stroke="#F7F6F3" strokeWidth="1.6" />
+    <rect x="21" y="10" width="10" height="20" rx="1.5" stroke="#F7F6F3" strokeWidth="1.6" />
+    <path d="M5 30h26" stroke="#F7F6F3" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M13 16V10l5-5 5 5v6" stroke="#F7F6F3" strokeWidth="1.6" strokeLinejoin="round" />
+  </svg>, <svg key="il-panel" width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <rect x="5" y="7" width="26" height="17" rx="2.5" stroke="#F7F6F3" strokeWidth="1.6" />
+    <path d="M13 30l5-5 5 5" stroke="#F7F6F3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M11 15h14M11 11h7" stroke="#F7F6F3" strokeWidth="1.6" strokeLinecap="round" />
+  </svg>, <svg key="il-goodie" width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <path d="M9 15h18l-2.5 15H11.5L9 15Z" stroke="#F7F6F3" strokeWidth="1.6" strokeLinejoin="round" />
+    <path d="M6 15h24" stroke="#F7F6F3" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M14 15c0-4 8-4 8 0" stroke="#F7F6F3" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M18 20v5" stroke="#F7F6F3" strokeWidth="1.6" strokeLinecap="round" />
+  </svg>];
+const PANEL_THEMES = ['Funding', 'AI & Tech', 'VC & Investment', 'ESG', 'Digital Transformation', 'Township Enterprise', 'ESD', 'Women-Led Enterprise', 'Youth Entrepreneurship'];
+const SpecialisedPackagesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
-    margin: '-60px 0px'
+    margin: '-80px 0px'
   });
   const {
     isMobile,
     isTablet
   } = useBreakpoint();
-  const [hoveredPillarId, setHoveredPillarId] = useState<string | null>(null);
-  const hPad = isMobile ? '0 24px' : isTablet ? '0 40px' : '0 64px';
+  const hPad = isMobile ? '20px' : isTablet ? '40px' : '64px';
+  // Heading style matching WhyPartner section
+  const headingSize = isMobile ? 'clamp(28px, 8vw, 44px)' : isTablet ? 'clamp(32px, 5vw, 52px)' : 'clamp(36px, 4vw, 58px)';
   return <section ref={sectionRef} style={{
-    background: '#F7F6F3',
-    paddingTop: isMobile ? '72px' : '152px',
-    paddingBottom: isMobile ? '72px' : '120px',
+    background: '#F4F1EB',
+    padding: isMobile ? '80px 0' : isTablet ? '112px 0' : '144px 0',
     width: '100%',
     boxSizing: 'border-box',
     overflow: 'hidden',
@@ -1604,29 +1831,372 @@ const StrategicValueSection = () => {
       backgroundRepeat: 'repeat',
       backgroundSize: '128px 128px',
       pointerEvents: 'none',
-      zIndex: 0,
-      opacity: 0.4
+      opacity: 0.3
     }} />
+    <div style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: `0 ${hPad}`,
+      position: 'relative',
+      zIndex: 1,
+      boxSizing: 'border-box'
+    }}>
+      {/* Header */}
+      <div style={{
+        marginBottom: isMobile ? '52px' : '80px'
+      }}>
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          marginBottom: '24px'
+        }}>
+          <PlusSquareIconDark />
+          <span style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '11px',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: 'rgba(20,18,16,0.45)',
+            fontWeight: 500
+          }}>Specialised Packages</span>
+        </motion.div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+          gap: isMobile ? '20px' : '64px',
+          alignItems: 'flex-end'
+        }}>
+          <div>
+            {/* h2 heading — matched to WhyPartner style: Inter / weight 200 / -2px tracking / 1.04 lh */}
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: headingSize,
+              fontWeight: 200,
+              letterSpacing: '-2px',
+              lineHeight: 1.04,
+              color: '#141210',
+              margin: 0
+            }}>
+              <span>{'Five purpose-built '}</span>
+              <em style={{
+                fontStyle: 'italic',
+                color: '#DE322D',
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 300
+              }}>{'packages.'}</em>
+              <br />
+              <span style={{
+                color: 'rgba(20,18,16,0.2)',
+                fontWeight: 300
+              }}>{'One summit.'}</span>
+            </motion.h2>
+          </div>
+          <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.28} style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: isMobile ? '14px' : '15px',
+            lineHeight: '1.8',
+            color: 'rgba(20,18,16,0.55)',
+            margin: 0,
+            fontWeight: 300
+          }}>
+            Targeted partnership opportunities beyond the main tiers — designed for specific brand objectives, commercial goals, and activation strategies.
+          </motion.p>
+        </div>
+      </div>
+
+      {/* Magazine Strip Cards */}
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '16px'
+      }}>
+        {SPECIALISED_PACKAGES.map((pkg, i) => {
+          const accentCol = SP_ACCENT_COLS[i];
+          const isRedAccent = accentCol === '#DE322D';
+          const isPanelPkg = pkg.id === 'sp-panel';
+          return <motion.div key={pkg.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={clipReveal} custom={i * 0.1} style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : `${isTablet ? '160px' : '220px'} 1fr`,
+            borderRadius: '18px',
+            overflow: 'hidden',
+            border: '1px solid rgba(20,18,16,0.1)',
+            boxSizing: 'border-box',
+            transition: 'box-shadow 0.3s ease, border-color 0.3s ease'
+          }} onMouseEnter={e => {
+            (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 40px rgba(60,77,93,0.22)';
+            (e.currentTarget as HTMLDivElement).style.borderColor = '#3c4d5d';
+          }} onMouseLeave={e => {
+            (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
+            (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(20,18,16,0.1)';
+          }}>
+            {/* LEFT accent column */}
+            {!isMobile && <div style={{
+              background: accentCol,
+              padding: isTablet ? '36px 24px' : '44px 32px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              position: 'relative',
+              overflow: 'hidden',
+              minHeight: '220px'
+            }}>
+              <div aria-hidden="true" style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: NOISE_SVG,
+                backgroundRepeat: 'repeat',
+                backgroundSize: '128px 128px',
+                pointerEvents: 'none',
+                opacity: 0.55
+              }} />
+              <div aria-hidden="true" style={{
+                position: 'absolute',
+                bottom: '-16px',
+                right: '-10px',
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: isTablet ? '100px' : '130px',
+                fontWeight: 800,
+                letterSpacing: '-6px',
+                lineHeight: 1,
+                color: 'rgba(255,255,255,0.06)',
+                pointerEvents: 'none',
+                userSelect: 'none'
+              }}>{String(i + 1).padStart(2, '0')}</div>
+              <div style={{
+                position: 'relative',
+                zIndex: 1
+              }}>
+                <div style={{
+                  marginBottom: '20px'
+                }}>{SP_ICONS_LIGHT[i]}</div>
+                <span style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: isTablet ? '13px' : '15px',
+                  fontWeight: 700,
+                  color: '#F7F6F3',
+                  letterSpacing: '-0.3px',
+                  lineHeight: 1.2,
+                  display: 'block'
+                }}>{pkg.tier}</span>
+              </div>
+              <div style={{
+                position: 'relative',
+                zIndex: 1
+              }}>
+                <span style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: isTablet ? '28px' : '40px',
+                  fontWeight: 800,
+                  letterSpacing: '-3px',
+                  color: 'rgba(247,246,243,0.12)',
+                  lineHeight: 1
+                }}>{String(i + 1).padStart(2, '0')}</span>
+              </div>
+            </div>}
+
+            {/* RIGHT content area */}
+            <div style={{
+              background: '#FFFFFF',
+              padding: isMobile ? '28px 24px' : isTablet ? '32px 28px' : '40px 44px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: isMobile ? '16px' : '20px'
+            }}>
+              {isMobile && <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                marginBottom: '4px'
+              }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '10px',
+                  background: accentCol,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  {SP_ICONS_LIGHT[i]}
+                </div>
+                <span style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '10px',
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: isRedAccent ? '#DE322D' : '#3c4d5d',
+                  fontWeight: 600
+                }}>{pkg.tier}</span>
+              </div>}
+
+              {!isMobile && <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                marginBottom: '-4px'
+              }}>
+                <span style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '10px',
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: isRedAccent ? '#DE322D' : '#3c4d5d',
+                  fontWeight: 600
+                }}>{pkg.tier}</span>
+              </div>}
+
+              {/* h3 label — matched to WhyPartner reason titles */}
+              <h3 style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: isMobile ? '17px' : 'clamp(17px, 1.7vw, 22px)',
+                fontWeight: 600,
+                letterSpacing: '-0.4px',
+                lineHeight: 1.15,
+                color: '#141210',
+                margin: 0
+              }}>{pkg.label}</h3>
+
+              <p style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '13px',
+                lineHeight: '1.78',
+                color: 'rgba(20,18,16,0.6)',
+                margin: 0,
+                fontWeight: 300
+              }}>{pkg.description}</p>
+
+              {/* 2-column includes list */}
+              <div>
+                <div style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '9px',
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(20,18,16,0.35)',
+                  fontWeight: 700,
+                  marginBottom: '10px'
+                }}>Includes</div>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+                  gap: '6px 24px'
+                }}>
+                  {pkg.highlights.map((h, hi) => <div key={`h-${pkg.id}-${hi}`} style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '7px'
+                  }}>
+                    <span style={{
+                      marginTop: '2px',
+                      flexShrink: 0
+                    }}><CheckIcon /></span>
+                    <span style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '12px',
+                      lineHeight: '1.6',
+                      color: 'rgba(20,18,16,0.55)',
+                      fontWeight: 300
+                    }}>{h}</span>
+                  </div>)}
+                </div>
+              </div>
+
+              {/* Panel themes tag cloud */}
+              {isPanelPkg && <div>
+                <div style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '9px',
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(20,18,16,0.35)',
+                  fontWeight: 700,
+                  marginBottom: '8px'
+                }}>Conversation Themes</div>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '6px'
+                }}>
+                  {PANEL_THEMES.map((theme, ti) => <span key={`pt-${ti}`} style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '11px',
+                    padding: '4px 10px',
+                    background: '#3c4d5d',
+                    borderRadius: '100px',
+                    color: '#F7F6F3',
+                    letterSpacing: '0.01em',
+                    fontWeight: 500
+                  }}>{theme}</span>)}
+                </div>
+              </div>}
+
+              {/* Ideal for */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '7px',
+                flexWrap: 'wrap',
+                paddingTop: '14px',
+                borderTop: '1px solid rgba(20,18,16,0.07)'
+              }}>
+                <span style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '9px',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(20,18,16,0.3)',
+                  fontWeight: 600,
+                  flexShrink: 0
+                }}>Ideal for</span>
+                {pkg.idealFor.map((org, oi) => <span key={`io-${pkg.id}-${oi}`} style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '10px',
+                  padding: '3px 10px',
+                  background: '#3c4d5d',
+                  borderRadius: '100px',
+                  color: '#F7F6F3',
+                  letterSpacing: '0.01em'
+                }}>{org}</span>)}
+              </div>
+            </div>
+          </motion.div>;
+        })}
+      </div>
+    </div>
+  </section>;
+};
+
+// ─── Why Partner Section ──────────────────────────────────────────────────────
+const WhyPartnerSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, {
+    once: true,
+    margin: '-80px 0px'
+  });
+  const {
+    isMobile,
+    isTablet
+  } = useBreakpoint();
+  const hPad = isMobile ? '0 20px' : isTablet ? '0 40px' : '0 64px';
+  const headingSize = isMobile ? 'clamp(28px, 8vw, 44px)' : isTablet ? 'clamp(32px, 5vw, 52px)' : 'clamp(36px, 4vw, 58px)';
+  return <section ref={sectionRef} style={{
+    background: '#F4F1EB',
+    padding: isMobile ? '80px 0' : isTablet ? '112px 0' : '144px 0',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    position: 'relative'
+  }}>
     <div aria-hidden="true" style={{
       position: 'absolute',
-      top: '-10%',
-      right: '-8%',
-      width: 'clamp(300px, 52vw, 820px)',
-      height: 'clamp(300px, 52vw, 820px)',
-      borderRadius: '50%',
-      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.06) 0%, rgba(222,50,45,0.02) 50%, transparent 70%)',
+      inset: 0,
+      backgroundImage: NOISE_SVG,
+      backgroundRepeat: 'repeat',
+      backgroundSize: '128px 128px',
       pointerEvents: 'none',
-      zIndex: 0
-    }} />
-    <motion.div aria-hidden="true" initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.4} style={{
-      position: 'absolute',
-      top: 0,
-      left: '50%',
-      bottom: 0,
-      width: '1px',
-      background: 'rgba(20,18,16,0.04)',
-      pointerEvents: 'none',
-      transformOrigin: 'top'
+      opacity: 0.4
     }} />
     <div style={{
       maxWidth: '1200px',
@@ -1637,12 +2207,14 @@ const StrategicValueSection = () => {
     }}>
       <div style={{
         display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-        gap: isMobile ? '36px' : '80px',
-        alignItems: 'flex-start',
-        marginBottom: isMobile ? '48px' : '72px'
+        gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr' : '420px 1fr',
+        gap: isMobile ? '48px' : '80px',
+        alignItems: 'flex-start'
       }}>
-        <div>
+        <div style={{
+          position: isMobile || isTablet ? 'static' : 'sticky',
+          top: '120px'
+        }}>
           <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
             display: 'flex',
             alignItems: 'center',
@@ -1651,1418 +2223,129 @@ const StrategicValueSection = () => {
           }}>
             <PlusSquareIconDark />
             <span style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: '12px',
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
               color: 'rgba(20,18,16,0.45)',
-              fontWeight: 600
-            }}>The Strategic Value Layer</span>
-          </motion.div>
-          <div style={{
-            overflow: 'hidden'
-          }}>
-            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.12} style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: isMobile ? 'clamp(26px, 8vw, 44px)' : 'clamp(32px, 4vw, 58px)',
-              fontWeight: 300,
-              letterSpacing: '-2px',
-              lineHeight: 1.04,
-              color: '#141210',
-              margin: 0
-            }}>
-              <span>{'Senior partner '}</span>
-              <em style={{
-                fontStyle: 'italic',
-                color: '#DE322D'
-              }}>{'advantages'}</em>
-              <span style={{
-                color: 'rgba(20,18,16,0.22)'
-              }}>{' that redefine'}</span>
-              <br /><span style={{
-                color: 'rgba(20,18,16,0.22)'
-              }}>{' your presence.'}</span>
-            </motion.h2>
-          </div>
-        </div>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.28} style={{
-          paddingTop: isMobile ? '0' : '12px'
-        }}>
-          <p style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: isMobile ? '15px' : '17px',
-            lineHeight: '1.82',
-            color: 'rgba(20,18,16,0.58)',
-            margin: '0 0 28px',
-            fontWeight: 300
-          }}>
-            Our senior partnership tiers unlock an exclusive layer of strategic influence. Beyond visibility — these advantages place your organisation at the table where Africa's most consequential business decisions are shaped.
-          </p>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'rgba(222,50,45,0.07)',
-            border: '1px solid rgba(222,50,45,0.2)',
-            borderRadius: '100px',
-            padding: '8px 16px 8px 12px'
-          }}>
-            <motion.div animate={{
-              opacity: [1, 0.3, 1]
-            }} transition={{
-              duration: 1.8,
-              repeat: Infinity
-            }} style={{
-              width: '6px',
-              height: '6px',
-              borderRadius: '50%',
-              background: '#DE322D',
-              boxShadow: '0 0 8px rgba(222,50,45,0.6)'
-            }} />
-            <span style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '11px',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'rgba(20,18,16,0.55)',
-              fontWeight: 600
-            }}>Senior Tier Access Only</span>
-          </div>
-        </motion.div>
-      </div>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-        gap: '12px'
-      }}>
-        {VALUE_PILLARS.map((pillar, i) => {
-          const isHov = hoveredPillarId === pillar.id;
-          return <motion.div key={pillar.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.2 + i * 0.1} onMouseEnter={() => setHoveredPillarId(pillar.id)} onMouseLeave={() => setHoveredPillarId(null)} style={{
-            background: isHov ? '#141210' : '#ffffff',
-            border: `1px solid ${isHov ? 'rgba(222,50,45,0.22)' : 'rgba(20,18,16,0.08)'}`,
-            borderRadius: '24px',
-            padding: isMobile ? '28px 24px' : '44px 40px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            position: 'relative',
-            overflow: 'hidden',
-            boxSizing: 'border-box',
-            cursor: 'default',
-            transition: 'background 0.55s cubic-bezier(0.22,1,0.36,1), border-color 0.55s ease, box-shadow 0.55s ease',
-            boxShadow: isHov ? '0 24px 80px rgba(20,18,16,0.18), 0 0 0 1px rgba(222,50,45,0.1)' : '0 2px 12px rgba(20,18,16,0.04)'
-          }}>
-            <div aria-hidden="true" style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '2px',
-              background: isHov ? 'linear-gradient(90deg, #DE322D, rgba(222,50,45,0.4))' : i < 2 ? 'linear-gradient(90deg, #DE322D, transparent)' : 'linear-gradient(90deg, rgba(20,18,16,0.1), transparent)',
-              transition: 'background 0.5s ease'
-            }} />
-            {isHov && <div aria-hidden="true" style={{
-              position: 'absolute',
-              top: '-30%',
-              right: '-20%',
-              width: '380px',
-              height: '380px',
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(222,50,45,0.12) 0%, transparent 70%)',
-              pointerEvents: 'none'
-            }} />}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start'
-            }}>
-              <div>
-                <div style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '10px',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: isHov ? 'rgba(247,246,243,0.3)' : 'rgba(20,18,16,0.3)',
-                  fontWeight: 500,
-                  marginBottom: '12px',
-                  transition: 'color 0.4s ease'
-                }}>{pillar.index}</div>
-                <h3 style={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontSize: isMobile ? '18px' : 'clamp(18px, 1.6vw, 24px)',
-                  fontWeight: isHov ? 500 : 400,
-                  letterSpacing: '-0.5px',
-                  color: isHov ? '#F7F6F3' : '#141210',
-                  margin: 0,
-                  lineHeight: 1.2,
-                  transition: 'color 0.4s ease, font-weight 0.3s ease'
-                }}>{pillar.title}</h3>
-              </div>
-              <div style={{
-                flexShrink: 0,
-                textAlign: 'right',
-                paddingLeft: '16px'
-              }}>
-                <div style={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontSize: 'clamp(24px, 2.8vw, 40px)',
-                  fontWeight: 200,
-                  letterSpacing: '-1.5px',
-                  color: '#DE322D',
-                  lineHeight: 1,
-                  fontVariantNumeric: 'tabular-nums'
-                }}>{pillar.metric}</div>
-                <div style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '9px',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: isHov ? 'rgba(247,246,243,0.35)' : 'rgba(20,18,16,0.35)',
-                  fontWeight: 500,
-                  marginTop: '4px',
-                  whiteSpace: 'nowrap',
-                  transition: 'color 0.4s ease'
-                }}>{pillar.metricLabel}</div>
-              </div>
-            </div>
-            <p style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '14px',
-              lineHeight: '1.78',
-              color: isHov ? 'rgba(247,246,243,0.55)' : 'rgba(20,18,16,0.55)',
-              margin: 0,
-              fontWeight: 300,
-              transition: 'color 0.4s ease'
-            }}>{pillar.description}</p>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              marginTop: '4px'
-            }}>
-              <div style={{
-                flex: 1,
-                height: '1px',
-                background: isHov ? 'rgba(247,246,243,0.1)' : 'rgba(20,18,16,0.07)',
-                transition: 'background 0.4s ease'
-              }} />
-              {isHov ? <PlusSquareIconLight /> : <PlusSquareIconDark />}
-            </div>
-          </motion.div>;
-        })}
-      </div>
-    </div>
-  </section>;
-};
-
-// ─── Custom Package Modal ─────────────────────────────────────────────────────
-const CustomPackageModal = ({
-  onClose,
-  initialTier = ''
-}: {
-  onClose: () => void;
-  initialTier?: string;
-}) => {
-  const [name, setName] = useState('');
-  const [org, setOrg] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [selectedTier, setSelectedTier] = useState(initialTier);
-  const [submitted, setSubmitted] = useState(false);
-  const {
-    isMobile
-  } = useBreakpoint();
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (name && email) setSubmitted(true);
-  };
-  const inputStyle: React.CSSProperties = {
-    width: '100%',
-    background: 'rgba(247,246,243,0.05)',
-    border: '1px solid rgba(247,246,243,0.1)',
-    borderRadius: '10px',
-    padding: '13px 16px',
-    fontFamily: 'Inter, sans-serif',
-    fontSize: '14px',
-    color: '#F7F6F3',
-    outline: 'none',
-    boxSizing: 'border-box',
-    transition: 'border-color 0.25s ease'
-  };
-  const labelStyle: React.CSSProperties = {
-    display: 'block',
-    fontFamily: 'Inter, sans-serif',
-    fontSize: '10px',
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-    color: 'rgba(247,246,243,0.35)',
-    fontWeight: 500,
-    marginBottom: '7px'
-  };
-  return <AnimatePresence>
-    <motion.div initial={{
-      opacity: 0
-    }} animate={{
-      opacity: 1
-    }} exit={{
-      opacity: 0
-    }} onClick={onClose} style={{
-      position: 'fixed',
-      inset: 0,
-      background: 'rgba(10,9,8,0.82)',
-      backdropFilter: 'blur(18px)',
-      WebkitBackdropFilter: 'blur(18px)',
-      zIndex: 300,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: isMobile ? '16px' : '32px',
-      boxSizing: 'border-box',
-      overflowY: 'auto'
-    }}>
-      <motion.div initial={{
-        opacity: 0,
-        y: 40,
-        scale: 0.95
-      }} animate={{
-        opacity: 1,
-        y: 0,
-        scale: 1
-      }} exit={{
-        opacity: 0,
-        y: 24,
-        scale: 0.97
-      }} transition={{
-        duration: 0.55,
-        ease: [0.22, 1, 0.36, 1]
-      }} onClick={e => e.stopPropagation()} style={{
-        background: '#0f1c28',
-        border: '1px solid rgba(247,246,243,0.1)',
-        borderRadius: '28px',
-        padding: isMobile ? '32px 20px' : '52px 52px',
-        width: '100%',
-        maxWidth: '560px',
-        boxSizing: 'border-box',
-        position: 'relative',
-        overflow: 'hidden',
-        boxShadow: '0 40px 120px rgba(0,0,0,0.6)',
-        margin: 'auto'
-      }}>
-        <div aria-hidden="true" style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '2px',
-          background: 'linear-gradient(90deg, #DE322D, transparent)'
-        }} />
-        <motion.div aria-hidden="true" animate={{
-          x: ['-100%', '220%']
-        }} transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: 'linear',
-          repeatDelay: 4
-        }} style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '55%',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, rgba(222,50,45,0.5), transparent)',
-          pointerEvents: 'none',
-          zIndex: 2
-        }} />
-        <div aria-hidden="true" style={{
-          position: 'absolute',
-          top: '-40%',
-          right: '-20%',
-          width: '400px',
-          height: '400px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(222,50,45,0.1) 0%, transparent 70%)',
-          pointerEvents: 'none'
-        }} />
-        <button onClick={onClose} style={{
-          position: 'absolute',
-          top: '20px',
-          right: '20px',
-          background: 'rgba(247,246,243,0.06)',
-          border: '1px solid rgba(247,246,243,0.1)',
-          borderRadius: '8px',
-          width: '34px',
-          height: '34px',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'background 0.2s ease'
-        }} onMouseEnter={e => {
-          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.12)';
-        }} onMouseLeave={e => {
-          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.06)';
-        }}>
-          <CloseIcon />
-        </button>
-        <AnimatePresence mode="wait">
-          {!submitted ? <motion.div key="modal-form" initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} exit={{
-            opacity: 0
-          }} transition={{
-            duration: 0.3
-          }}>
-            <div style={{
-              marginBottom: '32px'
-            }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                marginBottom: '12px'
-              }}>
-                <div style={{
-                  width: '5px',
-                  height: '5px',
-                  borderRadius: '50%',
-                  background: '#DE322D',
-                  boxShadow: '0 0 8px rgba(222,50,45,0.5)'
-                }} />
-                <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '10px',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(247,246,243,0.35)',
-                  fontWeight: 600
-                }}>Partnership Enquiry</span>
-              </div>
-              <h3 style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: isMobile ? '20px' : '26px',
-                fontWeight: 300,
-                letterSpacing: '-1px',
-                color: '#F7F6F3',
-                margin: '0 0 10px',
-                lineHeight: 1.15
-              }}>
-                <span>Build your </span>
-                <em style={{
-                  fontStyle: 'italic',
-                  color: '#DE322D'
-                }}>ideal</em>
-                <span style={{
-                  color: 'rgba(247,246,243,0.4)'
-                }}> partnership.</span>
-              </h3>
-              <p style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '13px',
-                color: 'rgba(247,246,243,0.38)',
-                margin: 0,
-                lineHeight: '1.65'
-              }}>
-                Tell us about your brand objectives. We'll craft a bespoke engagement strategy around your goals.
-              </p>
-            </div>
-            <form onSubmit={handleSubmit} style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '13px'
-            }}>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-                gap: '13px'
-              }}>
-                <div>
-                  <label htmlFor="modal-name" style={labelStyle}>Full Name</label>
-                  <input id="modal-name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your full name" required style={inputStyle} onFocus={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)';
-                  }} onBlur={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                  }} />
-                </div>
-                <div>
-                  <label htmlFor="modal-org" style={labelStyle}>Organisation</label>
-                  <input id="modal-org" type="text" value={org} onChange={e => setOrg(e.target.value)} placeholder="Your company" style={inputStyle} onFocus={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)';
-                  }} onBlur={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                  }} />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="modal-email" style={labelStyle}>Business Email</label>
-                <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => {
-                  (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)';
-                }} onBlur={e => {
-                  (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                }} />
-              </div>
-              <div>
-                <label htmlFor="modal-tier" style={labelStyle}>Partnership Tier</label>
-                <div style={{
-                  position: 'relative'
-                }}>
-                  <select id="modal-tier" value={selectedTier} onChange={e => setSelectedTier(e.target.value)} style={{
-                    ...inputStyle,
-                    appearance: 'none',
-                    WebkitAppearance: 'none',
-                    cursor: 'pointer',
-                    paddingRight: '40px',
-                    color: selectedTier ? '#F7F6F3' : 'rgba(247,246,243,0.3)'
-                  }} onFocus={e => {
-                    (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)';
-                  }} onBlur={e => {
-                    (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                  }}>
-                    <option value="" style={{
-                      background: '#0f1c28',
-                      color: 'rgba(247,246,243,0.4)'
-                    }}>Select a partnership tier</option>
-                    {TIERS.map(tier => <option key={tier.id} value={tier.id} style={{
-                      background: '#0f1c28',
-                      color: '#F7F6F3'
-                    }}>
-                        {tier.name} — {tier.tagline}
-                      </option>)}
-                    <option value="custom" style={{
-                      background: '#0f1c28',
-                      color: '#F7F6F3'
-                    }}>Custom Package</option>
-                  </select>
-                  <div style={{
-                    position: 'absolute',
-                    right: '14px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    pointerEvents: 'none'
-                  }}>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="modal-message" style={labelStyle}>Partnership Objectives</label>
-                <textarea id="modal-message" value={message} onChange={e => setMessage(e.target.value)} placeholder="Describe your brand objectives, target audience, and any specific requirements..." rows={4} style={{
-                  ...inputStyle,
-                  resize: 'none',
-                  lineHeight: '1.6'
-                }} onFocus={e => {
-                  (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(222,50,45,0.45)';
-                }} onBlur={e => {
-                  (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                }} />
-              </div>
-              <motion.button type="submit" whileHover={{
-                scale: 1.03,
-                boxShadow: '0 12px 40px rgba(222,50,45,0.6)'
-              }} whileTap={{
-                scale: 0.97
-              }} style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '10px',
-                background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
-                border: 'none',
-                borderRadius: '44px',
-                padding: '16px 32px',
-                fontSize: '13px',
-                letterSpacing: '0.05em',
-                color: '#fff',
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 600,
-                cursor: 'pointer',
-                marginTop: '4px',
-                boxShadow: '0 8px 32px rgba(222,50,45,0.45)'
-              }}>
-                <span>Submit Enquiry</span><ArrowIconDark />
-              </motion.button>
-            </form>
-            <p style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '11px',
-              color: 'rgba(247,246,243,0.2)',
-              margin: '14px 0 0',
-              letterSpacing: '0.02em'
-            }}>By submitting, you agree to our privacy policy. We never share your information.</p>
-          </motion.div> : <motion.div key="modal-success" initial={{
-            opacity: 0,
-            scale: 0.95
-          }} animate={{
-            opacity: 1,
-            scale: 1
-          }} exit={{
-            opacity: 0
-          }} transition={{
-            duration: 0.6,
-            ease: [0.22, 1, 0.36, 1]
-          }} style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '20px',
-            textAlign: 'center',
-            padding: '24px 0 16px'
-          }}>
-            <div style={{
-              width: '60px',
-              height: '60px',
-              borderRadius: '50%',
-              background: 'rgba(34,197,94,0.1)',
-              border: '1px solid rgba(34,197,94,0.25)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              <svg width="22" height="16" viewBox="0 0 22 16" fill="none"><path d="M1 8L8 15L21 1" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </div>
-            <div>
-              <h3 style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '22px',
-                fontWeight: 400,
-                letterSpacing: '-0.5px',
-                color: '#F7F6F3',
-                margin: '0 0 10px'
-              }}>Enquiry Received</h3>
-              <p style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '14px',
-                color: 'rgba(247,246,243,0.45)',
-                margin: 0,
-                lineHeight: '1.7',
-                maxWidth: '340px'
-              }}>
-                <span>{'Thank you, '}</span>
-                <strong style={{
-                  color: 'rgba(247,246,243,0.75)'
-                }}>{name}</strong>
-                <span>{'. Our partnerships team will reach out within 24 hours to design your custom package.'}</span>
-              </p>
-            </div>
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'rgba(34,197,94,0.07)',
-              border: '1px solid rgba(34,197,94,0.18)',
-              borderRadius: '100px',
-              padding: '7px 16px'
-            }}>
-              <motion.div animate={{
-                opacity: [1, 0.3, 1]
-              }} transition={{
-                duration: 2,
-                repeat: Infinity
-              }} style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                background: '#22c55e',
-                boxShadow: '0 0 8px rgba(34,197,94,0.5)'
-              }} />
-              <span style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '10px',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'rgba(247,246,243,0.4)',
-                fontWeight: 600
-              }}>Response within 24h</span>
-            </div>
-            <motion.button whileHover={{
-              scale: 1.04
-            }} whileTap={{
-              scale: 0.97
-            }} onClick={onClose} style={{
-              marginTop: '8px',
-              background: 'rgba(247,246,243,0.06)',
-              border: '1px solid rgba(247,246,243,0.12)',
-              borderRadius: '44px',
-              padding: '12px 28px',
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: '12px',
-              letterSpacing: '0.04em',
-              color: 'rgba(247,246,243,0.55)',
-              cursor: 'pointer'
-            }}>Close</motion.button>
-          </motion.div>}
-        </AnimatePresence>
-      </motion.div>
-    </motion.div>
-  </AnimatePresence>;
-};
-
-// ─── Partnership Tiers ─────────────────────────────────────────────────────────
-type Tier = {
-  id: string;
-  name: string;
-  tagline: string;
-  investment: string;
-  highlight: boolean;
-  perks: string[];
-  badge: string;
-};
-const TIERS: Tier[] = [{
-  id: 'tier-ecosystem',
-  name: 'Ecosystem Partner',
-  tagline: 'Brand presence & visibility',
-  investment: 'Entry',
-  highlight: false,
-  badge: 'Foundation',
-  perks: ['Logo placement on summit materials', 'Delegate passes (4)', 'Exhibition booth (standard)', 'Social media mention', 'Post-summit report']
-}, {
-  id: 'tier-growth',
-  name: 'Growth Partner',
-  tagline: 'Access & networking rights',
-  investment: 'Growth',
-  highlight: false,
-  badge: 'Standard',
-  perks: ['All Ecosystem benefits', 'Delegate passes (8)', 'Exhibition booth (premium)', 'Speaking slot (1 panel)', 'Brand integration in marketing', 'VIP networking access']
-}, {
-  id: 'tier-strategic',
-  name: 'Strategic Partner',
-  tagline: 'Influence & co-design rights',
-  investment: 'Premium',
-  highlight: true,
-  badge: 'Recommended',
-  perks: ['All Growth benefits', 'Delegate passes (16)', 'Branded experience zone', 'Keynote speaking opportunity', 'Marketing narrative co-authorship', 'Agenda topic influence', 'Post-summit data insights']
-}, {
-  id: 'tier-title',
-  name: 'Title Partner',
-  tagline: 'Summit co-ownership rights',
-  investment: 'Anchor',
-  highlight: false,
-  badge: 'Exclusive',
-  perks: ['All Strategic benefits', 'Unlimited delegate passes', 'Summit naming rights', 'Exclusive Power Seat roundtable', 'Co-design of summit programme', 'Full data & analytics access', 'Year-round brand integration']
-}];
-type CompareRow = {
-  id: string;
-  feature: string;
-  values: (boolean | string)[];
-};
-const COMPARE_ROWS: CompareRow[] = [{
-  id: 'cr-logo',
-  feature: 'Logo Placement',
-  values: [true, true, true, true]
-}, {
-  id: 'cr-booth',
-  feature: 'Exhibition Booth',
-  values: ['Standard', 'Premium', 'Branded Zone', 'Exclusive Zone']
-}, {
-  id: 'cr-passes',
-  feature: 'Delegate Passes',
-  values: ['4', '8', '16', 'Unlimited']
-}, {
-  id: 'cr-social',
-  feature: 'Social Media Feature',
-  values: [true, true, true, true]
-}, {
-  id: 'cr-speaking',
-  feature: 'Speaking Opportunity',
-  values: [false, '1 Panel', 'Keynote', 'Keynote + MC']
-}, {
-  id: 'cr-vip',
-  feature: 'VIP Networking Access',
-  values: [false, true, true, true]
-}, {
-  id: 'cr-narrative',
-  feature: 'Marketing Narrative Rights',
-  values: [false, false, true, true]
-}, {
-  id: 'cr-agenda',
-  feature: 'Agenda Influence',
-  values: [false, false, true, true]
-}, {
-  id: 'cr-roundtable',
-  feature: 'Power Seat Roundtable',
-  values: [false, false, false, true]
-}, {
-  id: 'cr-naming',
-  feature: 'Summit Naming Rights',
-  values: [false, false, false, true]
-}, {
-  id: 'cr-data',
-  feature: 'Full Data & Analytics',
-  values: [false, false, 'Partial', 'Full']
-}, {
-  id: 'cr-yearround',
-  feature: 'Year-Round Integration',
-  values: [false, false, false, true]
-}];
-const TiersSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, {
-    once: true,
-    margin: '-60px 0px'
-  });
-  const {
-    isMobile,
-    isTablet
-  } = useBreakpoint();
-  const [activeTier, setActiveTier] = useState<string>('tier-strategic');
-  const [hoveredTier, setHoveredTier] = useState<string | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalTier, setModalTier] = useState('');
-  const [tableOpen, setTableOpen] = useState(false);
-  const hPad = isMobile ? '0 24px' : isTablet ? '0 40px' : '0 64px';
-  // Tiers grid: 1 col mobile, 2 col tablet, 4 col desktop
-  const tiersGridCols = isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)';
-  return <section ref={sectionRef} style={{
-    background: '#0f1c28',
-    paddingTop: isMobile ? '72px' : '152px',
-    paddingBottom: isMobile ? '72px' : '120px',
-    width: '100%',
-    boxSizing: 'border-box',
-    overflow: 'hidden',
-    position: 'relative'
-  }}>
-    {modalOpen && <CustomPackageModal initialTier={modalTier} onClose={() => setModalOpen(false)} />}
-    <div aria-hidden="true" style={{
-      position: 'absolute',
-      inset: 0,
-      backgroundImage: NOISE_SVG,
-      backgroundRepeat: 'repeat',
-      backgroundSize: '128px 128px',
-      pointerEvents: 'none',
-      zIndex: 0,
-      opacity: 0.6
-    }} />
-    <div style={{
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: hPad,
-      position: 'relative',
-      zIndex: 1
-    }}>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        marginBottom: isMobile ? '40px' : '64px',
-        gap: '40px',
-        flexWrap: 'wrap'
-      }}>
-        <div>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            marginBottom: '20px'
-          }}>
-            <PlusSquareIconLight />
-            <span style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: '12px',
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(247,246,243,0.35)',
-              fontWeight: 600
-            }}>Partnership Tiers</span>
+              fontWeight: 500
+            }}>Why Partner</span>
           </motion.div>
           <div style={{
             overflow: 'hidden'
           }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: isMobile ? 'clamp(28px, 8vw, 44px)' : 'clamp(32px, 4vw, 60px)',
-              fontWeight: 300,
-              letterSpacing: '-1.8px',
+              fontFamily: 'Inter, sans-serif',
+              fontSize: headingSize,
+              fontWeight: 200,
+              letterSpacing: '-2px',
               lineHeight: 1.04,
-              color: '#F7F6F3',
-              margin: 0,
-              maxWidth: '560px'
+              color: '#141210',
+              margin: '0 0 24px'
             }}>
-              <span>{'How brands '}</span>
+              <span>{'Why leading'}</span>
+              <br />
               <em style={{
                 fontStyle: 'italic',
-                color: '#DE322D'
-              }}>{'engage.'}</em>
+                color: '#DE322D',
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 300
+              }}>{'brands'}</em>
+              <span style={{
+                color: 'rgba(20,18,16,0.22)'
+              }}>{' partner'}</span>
+              <br />
+              <span style={{
+                color: 'rgba(20,18,16,0.22)'
+              }}>{'with us.'}</span>
             </motion.h2>
           </div>
-        </div>
-        {!isMobile && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '14px',
-          color: 'rgba(247,246,243,0.3)',
-          maxWidth: '280px',
-          lineHeight: '1.7',
-          margin: 0
-        }}>
-          Choose the tier that aligns with your strategic ambitions. Custom packages available.
-        </motion.p>}
-      </div>
-      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.08} style={{
-        display: 'grid',
-        gridTemplateColumns: tiersGridCols,
-        gap: '10px'
-      }}>
-        {TIERS.map((tier, i) => {
-          const isActive = activeTier === tier.id;
-          const isHov = hoveredTier === tier.id;
-          const showActiveStyle = isActive || isHov;
-          return <motion.div key={tier.id} variants={clipReveal} custom={i * 0.1} onClick={() => setActiveTier(tier.id)} onMouseEnter={() => setHoveredTier(tier.id)} onMouseLeave={() => setHoveredTier(null)} style={{
-            background: showActiveStyle ? 'linear-gradient(160deg, #1a2a3a 0%, #0f1c28 100%)' : 'rgba(247,246,243,0.03)',
-            border: showActiveStyle ? '1px solid rgba(222,50,45,0.25)' : '1px solid rgba(247,246,243,0.07)',
-            borderRadius: '20px',
-            padding: isMobile ? '24px 20px' : '36px 28px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            cursor: 'pointer',
-            transition: 'background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease',
-            boxShadow: showActiveStyle ? '0 24px 80px rgba(5,12,20,0.5), 0 0 0 1px rgba(222,50,45,0.1)' : 'none',
-            position: 'relative',
-            overflow: 'hidden',
-            boxSizing: 'border-box'
+          <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.28} style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: isMobile ? '14px' : '15px',
+            lineHeight: '1.82',
+            color: 'rgba(20,18,16,0.55)',
+            margin: 0,
+            fontWeight: 300
           }}>
-            {showActiveStyle && <div aria-hidden="true" style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '2px',
-              background: 'linear-gradient(90deg, #DE322D, transparent)'
-            }} />}
-            {isHov && !isActive && <div aria-hidden="true" style={{
-              position: 'absolute',
-              bottom: '-30%',
-              right: '-20%',
-              width: '280px',
-              height: '280px',
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(222,50,45,0.1) 0%, transparent 70%)',
-              pointerEvents: 'none'
-            }} />}
-            <div>
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                background: showActiveStyle ? 'rgba(222,50,45,0.14)' : 'rgba(247,246,243,0.06)',
-                border: `1px solid ${showActiveStyle ? 'rgba(222,50,45,0.28)' : 'rgba(247,246,243,0.1)'}`,
-                borderRadius: '100px',
-                padding: '4px 10px',
-                marginBottom: '16px',
-                transition: 'background 0.35s ease, border-color 0.35s ease'
-              }}>
-                {showActiveStyle && <motion.div animate={{
-                  opacity: [1, 0.3, 1]
-                }} transition={{
-                  duration: 1.8,
-                  repeat: Infinity
-                }} style={{
-                  width: '5px',
-                  height: '5px',
-                  borderRadius: '50%',
-                  background: '#DE322D',
-                  boxShadow: '0 0 6px rgba(222,50,45,0.6)',
-                  flexShrink: 0
-                }} />}
-                <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '9px',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: showActiveStyle ? 'rgba(247,246,243,0.65)' : 'rgba(247,246,243,0.28)',
-                  fontWeight: 600,
-                  transition: 'color 0.35s ease'
-                }}>{tier.badge}</span>
-              </div>
-              <h3 style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: isMobile ? '18px' : 'clamp(16px, 1.4vw, 22px)',
-                fontWeight: showActiveStyle ? 500 : 300,
-                letterSpacing: '-0.4px',
-                color: showActiveStyle ? '#F7F6F3' : 'rgba(247,246,243,0.55)',
-                margin: '0 0 6px',
-                lineHeight: 1.2,
-                transition: 'color 0.35s ease, font-weight 0.35s ease'
-              }}>{tier.name}</h3>
-              <p style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '12px',
-                color: showActiveStyle ? 'rgba(247,246,243,0.4)' : 'rgba(247,246,243,0.2)',
-                margin: 0,
-                letterSpacing: '0.02em',
-                transition: 'color 0.35s ease'
-              }}>{tier.tagline}</p>
-            </div>
+            Five strategic reasons why the continent's most forward-thinking organisations choose EmpowaEntrepreneurs as their platform for ecosystem ownership.
+          </motion.p>
+        </div>
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.18} style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0'
+        }}>
+          {WHY_PARTNER_REASONS.map((reason, i) => <motion.div key={reason.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.15 + i * 0.1} style={{
+            display: 'grid',
+            gridTemplateColumns: '64px 1fr',
+            gap: '24px',
+            alignItems: 'flex-start',
+            padding: isMobile ? '28px 0' : '36px 0',
+            borderBottom: i < WHY_PARTNER_REASONS.length - 1 ? '1px solid rgba(20,18,16,0.08)' : 'none'
+          }}>
             <div style={{
-              height: '1px',
-              background: showActiveStyle ? 'rgba(247,246,243,0.1)' : 'rgba(247,246,243,0.05)',
-              transition: 'background 0.35s ease'
-            }} />
-            <ul style={{
-              listStyle: 'none',
-              margin: 0,
-              padding: 0,
               display: 'flex',
               flexDirection: 'column',
-              gap: '10px',
-              flex: 1
+              alignItems: 'flex-start',
+              gap: '6px'
             }}>
-              {tier.perks.map(perk => <li key={perk} style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '10px'
-              }}>
-                <span style={{
-                  width: '4px',
-                  height: '4px',
-                  borderRadius: '50%',
-                  background: showActiveStyle ? '#DE322D' : 'rgba(247,246,243,0.2)',
-                  flexShrink: 0,
-                  marginTop: '7px',
-                  transition: 'background 0.35s ease'
-                }} />
-                <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '12px',
-                  lineHeight: '1.6',
-                  color: showActiveStyle ? 'rgba(247,246,243,0.65)' : 'rgba(247,246,243,0.28)',
-                  transition: 'color 0.35s ease'
-                }}>{perk}</span>
-              </li>)}
-            </ul>
-            <motion.button onClick={e => {
-              e.stopPropagation();
-              setModalTier(tier.id);
-              setModalOpen(true);
-            }} whileHover={{
-              scale: 1.04
-            }} whileTap={{
-              scale: 0.97
-            }} style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              background: showActiveStyle ? 'linear-gradient(135deg, #DE322D, #c42823)' : 'rgba(247,246,243,0.06)',
-              border: showActiveStyle ? 'none' : '1px solid rgba(247,246,243,0.1)',
-              borderRadius: '44px',
-              padding: '12px 20px',
-              fontSize: '12px',
-              letterSpacing: '0.05em',
-              color: showActiveStyle ? '#fff' : 'rgba(247,246,243,0.45)',
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 600,
-              boxShadow: showActiveStyle ? '0 6px 24px rgba(222,50,45,0.4)' : 'none',
-              cursor: 'pointer',
-              transition: 'background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease'
-            }}>
-              <span>Enquire</span>
-              {showActiveStyle && <ArrowIconDark />}
-            </motion.button>
-          </motion.div>;
-        })}
-      </motion.div>
-
-      {/* Comparison Table Toggle */}
-      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.45} style={{
-        marginTop: '20px'
-      }}>
-        <button onClick={() => setTableOpen(v => !v)} style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          background: 'rgba(247,246,243,0.04)',
-          border: '1px solid rgba(247,246,243,0.1)',
-          borderRadius: '12px',
-          padding: '14px 22px',
-          cursor: 'pointer',
-          width: '100%',
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: isMobile ? '12px' : '13px',
-          letterSpacing: '0.04em',
-          color: 'rgba(247,246,243,0.6)',
-          transition: 'background 0.25s ease, border-color 0.25s ease',
-          boxSizing: 'border-box',
-          justifyContent: 'space-between'
-        }} onMouseEnter={e => {
-          const el = e.currentTarget as HTMLButtonElement;
-          el.style.background = 'rgba(247,246,243,0.07)';
-          el.style.borderColor = 'rgba(247,246,243,0.18)';
-        }} onMouseLeave={e => {
-          const el = e.currentTarget as HTMLButtonElement;
-          el.style.background = 'rgba(247,246,243,0.04)';
-          el.style.borderColor = 'rgba(247,246,243,0.1)';
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px'
-          }}>
-            <div style={{
-              width: '28px',
-              height: '28px',
-              borderRadius: '8px',
-              background: 'rgba(222,50,45,0.12)',
-              border: '1px solid rgba(222,50,45,0.2)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0
-            }}>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <rect x="1" y="1" width="4" height="4" rx="0.5" stroke="#DE322D" strokeWidth="1.2" />
-                <rect x="7" y="1" width="4" height="4" rx="0.5" stroke="#DE322D" strokeWidth="1.2" />
-                <rect x="1" y="7" width="4" height="4" rx="0.5" stroke="#DE322D" strokeWidth="1.2" />
-                <rect x="7" y="7" width="4" height="4" rx="0.5" stroke="#DE322D" strokeWidth="1.2" />
-              </svg>
+              <span style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: 'clamp(28px, 3.5vw, 44px)',
+                fontWeight: 200,
+                letterSpacing: '-2px',
+                color: 'rgba(20,18,16,0.12)',
+                lineHeight: 1
+              }}>{reason.number}</span>
             </div>
-            <span>Compare all tiers side by side</span>
-          </div>
-          <ChevronIcon open={tableOpen} />
-        </button>
-        <AnimatePresence initial={false}>
-          {tableOpen && <motion.div key="compare-table" initial={{
-            height: 0,
-            opacity: 0
-          }} animate={{
-            height: 'auto',
-            opacity: 1
-          }} exit={{
-            height: 0,
-            opacity: 0
-          }} transition={{
-            duration: 0.55,
-            ease: [0.22, 1, 0.36, 1]
-          }} style={{
-            overflow: 'hidden'
-          }}>
-            {/* On mobile/tablet: horizontally scrollable */}
-            <div style={{
-              marginTop: '3px',
-              background: 'rgba(247,246,243,0.02)',
-              border: '1px solid rgba(247,246,243,0.08)',
-              borderRadius: '16px',
-              overflow: isMobile ? 'auto' : 'hidden',
-              boxSizing: 'border-box',
-              WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling']
-            }}>
-              <div style={{
-                minWidth: isMobile ? '560px' : 'auto'
-              }}>
-                {/* Table header */}
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr repeat(4, minmax(80px, 1fr))',
-                  borderBottom: '1px solid rgba(247,246,243,0.07)',
-                  background: 'rgba(247,246,243,0.03)'
-                }}>
-                  <div style={{
-                    padding: '16px 16px'
-                  }}>
-                    <span style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '10px',
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      color: 'rgba(247,246,243,0.25)',
-                      fontWeight: 600
-                    }}>Feature</span>
-                  </div>
-                  {TIERS.map(tier => <div key={tier.id} style={{
-                    padding: '16px 12px',
-                    textAlign: 'center',
-                    borderLeft: '1px solid rgba(247,246,243,0.06)',
-                    background: tier.id === activeTier ? 'rgba(222,50,45,0.06)' : 'transparent'
-                  }}>
-                    <div style={{
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontSize: '11px',
-                      fontWeight: 600,
-                      color: tier.id === activeTier ? '#DE322D' : 'rgba(247,246,243,0.5)',
-                      letterSpacing: '-0.2px'
-                    }}>{tier.name.replace(' Partner', '')}</div>
-                    <div style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '10px',
-                      color: 'rgba(247,246,243,0.25)',
-                      marginTop: '2px'
-                    }}>{tier.investment}</div>
-                  </div>)}
-                </div>
-                {/* Rows */}
-                {COMPARE_ROWS.map((row, ri) => <div key={row.id} style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr repeat(4, minmax(80px, 1fr))',
-                  borderBottom: ri < COMPARE_ROWS.length - 1 ? '1px solid rgba(247,246,243,0.04)' : 'none',
-                  background: ri % 2 === 0 ? 'rgba(247,246,243,0.01)' : 'transparent'
-                }}>
-                  <div style={{
-                    padding: '13px 16px',
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}>
-                    <span style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '12px',
-                      color: 'rgba(247,246,243,0.55)',
-                      fontWeight: 300
-                    }}>{row.feature}</span>
-                  </div>
-                  {row.values.map((val, vi) => {
-                    const tierId = TIERS[vi].id;
-                    const isColActive = tierId === activeTier;
-                    return <div key={`${row.id}-${vi}`} style={{
-                      padding: '13px 12px',
-                      textAlign: 'center',
-                      borderLeft: '1px solid rgba(247,246,243,0.04)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: isColActive ? 'rgba(222,50,45,0.03)' : 'transparent'
-                    }}>
-                      {val === true ? <CheckIcon color={isColActive ? '#DE322D' : 'rgba(247,246,243,0.45)'} /> : val === false ? <span style={{
-                        width: '8px',
-                        height: '1.5px',
-                        background: 'rgba(247,246,243,0.12)',
-                        display: 'block',
-                        borderRadius: '1px'
-                      }} /> : <span style={{
-                        fontFamily: 'Inter, sans-serif',
-                        fontSize: '11px',
-                        color: isColActive ? '#DE322D' : 'rgba(247,246,243,0.5)',
-                        fontWeight: isColActive ? 600 : 400,
-                        letterSpacing: '-0.1px'
-                      }}>{val}</span>}
-                    </div>;
-                  })}
-                </div>)}
-              </div>
+            <div>
+              <h3 style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: isMobile ? '17px' : 'clamp(17px, 1.7vw, 22px)',
+                fontWeight: 600,
+                letterSpacing: '-0.4px',
+                lineHeight: 1.15,
+                color: '#141210',
+                margin: '0 0 10px'
+              }}>{reason.title}</h3>
+              <p style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px',
+                lineHeight: '1.8',
+                color: 'rgba(20,18,16,0.58)',
+                margin: 0,
+                fontWeight: 300
+              }}>{reason.description}</p>
             </div>
-            {isMobile && <p style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '10px',
-              color: 'rgba(247,246,243,0.25)',
-              margin: '8px 0 0',
-              letterSpacing: '0.04em',
-              textAlign: 'center'
-            }}>← Scroll to compare all tiers →</p>}
-          </motion.div>}
-        </AnimatePresence>
-      </motion.div>
-
-      {/* Custom package banner */}
-      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.5} style={{
-        marginTop: '12px',
-        background: 'rgba(247,246,243,0.03)',
-        border: '1px solid rgba(247,246,243,0.07)',
-        borderRadius: '16px',
-        padding: isMobile ? '20px' : '28px 36px',
-        display: 'flex',
-        alignItems: isMobile ? 'flex-start' : 'center',
-        gap: '20px',
-        flexDirection: isMobile ? 'column' : 'row',
-        boxSizing: 'border-box'
-      }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-          flex: 1
-        }}>
-          <div style={{
-            width: '36px',
-            height: '36px',
-            borderRadius: '10px',
-            background: 'rgba(222,50,45,0.12)',
-            border: '1px solid rgba(222,50,45,0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0
-          }}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 5L12.5 5L9.25 7.75L10.5 12L7 9.5L3.5 12L4.75 7.75L1.5 5L5.5 5L7 1Z" fill="#DE322D" /></svg>
-          </div>
-          <div>
-            <div style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: '13px',
-              fontWeight: 600,
-              color: '#F7F6F3',
-              letterSpacing: '-0.1px',
-              marginBottom: '3px'
-            }}>Custom Partnership Packages Available</div>
-            <div style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '12px',
-              color: 'rgba(247,246,243,0.35)',
-              letterSpacing: '0.01em'
-            }}>We work closely with partners to design bespoke engagement strategies tailored to your brand objectives.</div>
-          </div>
-        </div>
-        <motion.button onClick={() => {
-          setModalTier('custom');
-          setModalOpen(true);
-        }} whileHover={{
-          scale: 1.04
-        }} whileTap={{
-          scale: 0.97
-        }} style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          border: '1px solid rgba(247,246,243,0.2)',
-          borderRadius: '44px',
-          padding: isMobile ? '11px 18px' : '12px 22px',
-          fontSize: '12px',
-          letterSpacing: '0.04em',
-          color: 'rgba(247,246,243,0.7)',
-          background: 'transparent',
-          fontFamily: 'Montserrat, sans-serif',
-          flexShrink: 0,
-          cursor: 'pointer',
-          whiteSpace: 'nowrap',
-          transition: 'border-color 0.3s ease, color 0.3s ease',
-          width: isMobile ? '100%' : 'auto',
-          justifyContent: isMobile ? 'center' : 'flex-start'
-        }} onMouseEnter={e => {
-          const el = e.currentTarget as HTMLButtonElement;
-          el.style.borderColor = 'rgba(247,246,243,0.45)';
-          el.style.color = '#F7F6F3';
-        }} onMouseLeave={e => {
-          const el = e.currentTarget as HTMLButtonElement;
-          el.style.borderColor = 'rgba(247,246,243,0.2)';
-          el.style.color = 'rgba(247,246,243,0.7)';
-        }}>
-          <span>Discuss Custom Package</span>
-          <ArrowIconDark />
-        </motion.button>
-      </motion.div>
+          </motion.div>)}
+        </motion.div>
+      </div>
     </div>
   </section>;
 };
 
 // ─── CTA Section ──────────────────────────────────────────────────────────────
-const CTA_STATS = [{
-  id: 'cta-s1',
-  value: '4,000+',
-  label: 'Attendees'
-}, {
-  id: 'cta-s2',
-  value: '120+',
-  label: 'Verified Investors'
-}, {
-  id: 'cta-s3',
-  value: '30+',
-  label: 'African Markets'
-}, {
-  id: 'cta-s4',
-  value: '48h',
-  label: 'Programming'
-}];
-const CTA_INFO_ITEMS = [{
-  id: 'cs-1',
-  label: 'Summit Date',
-  value: 'May 28, 2026',
-  sub: 'EmpowaWorx House'
-}, {
-  id: 'cs-2',
-  label: 'Deadline',
-  value: 'Applications Open',
-  sub: 'Limited senior tier slots'
-}, {
-  id: 'cs-3',
-  label: 'Contact',
-  value: 'info@empowaentrepreneurs.co.za',
-  sub: 'Direct partnership enquiries'
-}];
 const CtaSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
-    margin: '-60px 0px'
-  });
-  const statsInView = useInView(statsRef, {
-    once: true,
-    margin: '-40px 0px'
+    margin: '-80px 0px'
   });
   const {
     isMobile,
     isTablet
   } = useBreakpoint();
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, {
-    stiffness: 160,
-    damping: 28
-  });
-  const springY = useSpring(mouseY, {
-    stiffness: 160,
-    damping: 28
-  });
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  }, [mouseX, mouseY]);
-  const magnetic = useMagnetic(0.28);
-  const [formEmail, setFormEmail] = useState('');
-  const [formName, setFormName] = useState('');
-  const [formOrg, setFormOrg] = useState('');
-  const [formTier, setFormTier] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (formEmail && formName) setSubmitted(true);
-  };
-  const hPad = isMobile ? '0 24px' : isTablet ? '0 40px' : '0 64px';
-  const inputBase: React.CSSProperties = {
-    width: '100%',
-    background: 'rgba(247,246,243,0.05)',
-    border: '1px solid rgba(247,246,243,0.1)',
-    borderRadius: '10px',
-    padding: '14px 16px',
-    fontFamily: 'Inter, sans-serif',
-    fontSize: '14px',
-    color: '#F7F6F3',
-    outline: 'none',
-    boxSizing: 'border-box',
-    transition: 'border-color 0.25s ease'
-  };
-  const labelBase: React.CSSProperties = {
-    display: 'block',
-    fontFamily: 'Inter, sans-serif',
-    fontSize: '10px',
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-    color: 'rgba(247,246,243,0.35)',
-    fontWeight: 500,
-    marginBottom: '8px'
-  };
-  return <section id="partner-form" ref={sectionRef} onMouseMove={handleMouseMove} style={{
-    background: '#0f1c28',
+  const hPad = isMobile ? '0 20px' : isTablet ? '0 40px' : '0 64px';
+  const magneticBtn = useMagnetic(0.28);
+  return <section ref={sectionRef} style={{
+    background: '#141210',
+    padding: isMobile ? '80px 0' : isTablet ? '120px 0' : '160px 0',
     width: '100%',
     boxSizing: 'border-box',
     overflow: 'hidden',
-    paddingTop: isMobile ? '80px' : '168px',
-    paddingBottom: isMobile ? '80px' : '168px',
     position: 'relative'
   }}>
-    <motion.div aria-hidden="true" style={{
-      left: springX,
-      top: springY,
-      x: '-50%',
-      y: '-50%',
-      position: 'absolute',
-      width: '800px',
-      height: '800px',
-      borderRadius: '50%',
-      background: 'radial-gradient(circle, rgba(222,50,45,0.13) 0%, transparent 65%)',
-      pointerEvents: 'none',
-      zIndex: 0
-    }} />
     <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
@@ -3070,15 +2353,25 @@ const CtaSection = () => {
       backgroundRepeat: 'repeat',
       backgroundSize: '128px 128px',
       pointerEvents: 'none',
-      zIndex: 0,
       opacity: 0.5
+    }} />
+    <div aria-hidden="true" style={{
+      position: 'absolute',
+      top: '-20%',
+      right: '-10%',
+      width: 'clamp(400px, 65vw, 1000px)',
+      height: 'clamp(400px, 65vw, 1000px)',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle at 40% 40%, rgba(222,50,45,0.22) 0%, rgba(222,50,45,0.06) 45%, transparent 70%)',
+      pointerEvents: 'none',
+      zIndex: 0
     }} />
     <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '-4%',
       left: '-2%',
       fontFamily: 'Montserrat, sans-serif',
-      fontSize: 'clamp(60px, 12vw, 220px)',
+      fontSize: 'clamp(60px, 12vw, 200px)',
       fontWeight: 800,
       letterSpacing: '-8px',
       lineHeight: 1,
@@ -3099,364 +2392,131 @@ const CtaSection = () => {
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
-        marginBottom: '48px'
+        marginBottom: '40px'
       }}>
         <PlusSquareIconLight />
         <span style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: '12px',
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '11px',
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
           color: 'rgba(247,246,243,0.35)',
-          fontWeight: 600
-        }}>Join the Movement</span>
+          fontWeight: 500
+        }}>Partner with Us</span>
       </motion.div>
       <div style={{
-        display: 'grid',
-        gridTemplateColumns: isMobile || isTablet ? '1fr' : '1fr 1fr',
-        gap: isMobile ? '40px' : '80px',
-        alignItems: 'center'
+        overflow: 'hidden',
+        marginBottom: isMobile ? '16px' : '24px'
       }}>
-        <div>
-          <div style={{
-            overflow: 'hidden'
-          }}>
-            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 200,
-              fontSize: isMobile ? 'clamp(40px, 11vw, 64px)' : 'clamp(44px, 6vw, 96px)',
-              lineHeight: 0.91,
-              letterSpacing: isMobile ? '-2px' : '-4px',
-              color: '#F7F6F3',
-              margin: '0 0 36px'
-            }}>
-              <span>{'Partner.'}</span><br />
-              <em style={{
-                fontStyle: 'italic',
-                color: '#DE322D'
-              }}>{'Fund.'}</em><br />
-              <span style={{
-                color: 'rgba(247,246,243,0.18)'
-              }}>{'Connect.'}</span>
-            </motion.h2>
-          </div>
-          <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.28} style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: isMobile ? '15px' : '16px',
-            lineHeight: '1.8',
-            color: 'rgba(247,246,243,0.55)',
-            margin: '0 0 36px',
+        <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 200,
+          fontSize: isMobile ? 'clamp(44px, 12vw, 68px)' : 'clamp(52px, 7vw, 112px)',
+          lineHeight: 0.91,
+          letterSpacing: isMobile ? '-2px' : '-4px',
+          color: '#F7F6F3',
+          margin: 0
+        }}>
+          <span>{"Don't Just"}</span><br />
+          <em style={{
+            fontStyle: 'italic',
+            color: '#DE322D',
             fontWeight: 300
-          }}>
-            Align your organisation with EmpowaEntrepreneurs Funding Summit 2026 that is reshaping African enterprise. Together, we build the infrastructure of the continent's next growth economy.
-          </motion.p>
-          <motion.div ref={statsRef} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.36} style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '12px',
-            marginBottom: '36px'
-          }}>
-            {CTA_STATS.map(stat => <AnimatedStatCard key={stat.id} value={stat.value} label={stat.label} inView={statsInView} />)}
-          </motion.div>
-          <motion.div ref={magnetic.ref} onMouseMove={magnetic.handleMouseMove} onMouseLeave={magnetic.handleMouseLeave} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.42} style={{
-            x: magnetic.springX,
-            y: magnetic.springY,
-            display: 'inline-flex',
+          }}>{'Sponsor'}</em>
+          <br />
+          <span style={{
+            color: 'rgba(247,246,243,0.18)',
+            fontWeight: 300
+          }}>{'The Future.'}</span>
+        </motion.h2>
+      </div>
+      <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.28} style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: isMobile ? '16px' : '22px',
+        lineHeight: '1.55',
+        color: 'rgba(247,246,243,0.65)',
+        margin: '0 0 16px',
+        fontWeight: 300,
+        maxWidth: '540px'
+      }}>
+        Help Fund It. Build It. <em style={{
+          color: '#DE322D',
+          fontStyle: 'italic'
+        }}>Lead It.</em>
+      </motion.p>
+      <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.36} style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: isMobile ? '14px' : '15px',
+        lineHeight: '1.8',
+        color: 'rgba(247,246,243,0.42)',
+        margin: '0 0 48px',
+        fontWeight: 300,
+        maxWidth: '480px'
+      }}>
+        Secure your partnership position at Africa's most consequential capital-access and entrepreneurial innovation summit. Limited strategic partnerships available.
+      </motion.p>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '12px'
+      }}>
+        <motion.div ref={magneticBtn.ref} onMouseMove={magneticBtn.handleMouseMove} onMouseLeave={magneticBtn.handleMouseLeave} style={{
+          x: magneticBtn.springX,
+          y: magneticBtn.springY,
+          display: 'inline-flex'
+        }}>
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+            scale: 1.04,
+            boxShadow: '0 16px 52px rgba(222,50,45,0.7)'
+          }} whileTap={{
+            scale: 0.97
+          }} style={{
+            display: 'flex',
             alignItems: 'center',
-            gap: '10px'
+            gap: '10px',
+            background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+            borderRadius: '44px',
+            padding: isMobile ? '13px 22px' : '17px 34px',
+            fontSize: '13px',
+            letterSpacing: '0.05em',
+            color: '#fff',
+            textDecoration: 'none',
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 600,
+            boxShadow: '0 8px 36px rgba(222,50,45,0.55)'
           }}>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
-              scale: 1.04,
-              boxShadow: '0 16px 52px rgba(222,50,45,0.7)'
-            }} whileTap={{
-              scale: 0.97
-            }} style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
-              borderRadius: '44px',
-              padding: isMobile ? '14px 24px' : '18px 36px',
-              fontSize: '13px',
-              letterSpacing: '0.05em',
-              color: '#fff',
-              textDecoration: 'none',
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 600,
-              boxShadow: '0 10px 40px rgba(222,50,45,0.55)'
-            }}>
-              <span>Download Partner Deck</span><ArrowIconDark />
-            </motion.a>
-          </motion.div>
-        </div>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.25}>
-          <AnimatePresence mode="wait">
-            {!submitted ? <motion.div key="form" initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} exit={{
-              opacity: 0,
-              y: -20
-            }} transition={{
-              duration: 0.5,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              background: 'rgba(247,246,243,0.04)',
-              border: '1px solid rgba(247,246,243,0.1)',
-              borderRadius: '28px',
-              padding: isMobile ? '28px 20px' : '52px 44px',
-              boxSizing: 'border-box',
-              position: 'relative',
-              overflow: 'hidden'
-            }}>
-              <div aria-hidden="true" style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '2px',
-                background: 'linear-gradient(90deg, #DE322D, transparent)'
-              }} />
-              <motion.div aria-hidden="true" animate={{
-                x: ['-100%', '220%']
-              }} transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'linear',
-                repeatDelay: 3
-              }} style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '55%',
-                height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(222,50,45,0.5), transparent)',
-                pointerEvents: 'none',
-                zIndex: 2
-              }} />
-              <div style={{
-                marginBottom: '28px'
-              }}>
-                <h3 style={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontSize: isMobile ? '18px' : '22px',
-                  fontWeight: 400,
-                  letterSpacing: '-0.5px',
-                  color: '#F7F6F3',
-                  margin: '0 0 8px',
-                  lineHeight: 1.2
-                }}>Start the Conversation</h3>
-                <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '13px',
-                  color: 'rgba(247,246,243,0.4)',
-                  margin: 0,
-                  lineHeight: '1.6'
-                }}>Our partnerships team will respond within 24 hours.</p>
-              </div>
-              <form onSubmit={handleSubmit} style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '14px'
-              }}>
-                <div>
-                  <label htmlFor="cta-name" style={labelBase}>Full Name</label>
-                  <input id="cta-name" type="text" value={formName} onChange={e => setFormName(e.target.value)} placeholder="Your full name" required style={inputBase} onFocus={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.4)';
-                  }} onBlur={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                  }} />
-                </div>
-                <div>
-                  <label htmlFor="cta-org" style={labelBase}>Organisation</label>
-                  <input id="cta-org" type="text" value={formOrg} onChange={e => setFormOrg(e.target.value)} placeholder="Your company or organisation" style={inputBase} onFocus={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.4)';
-                  }} onBlur={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                  }} />
-                </div>
-                <div>
-                  <label htmlFor="cta-email" style={labelBase}>Business Email</label>
-                  <input id="cta-email" type="email" value={formEmail} onChange={e => setFormEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputBase} onFocus={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.4)';
-                  }} onBlur={e => {
-                    (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                  }} />
-                </div>
-                <div>
-                  <label htmlFor="cta-tier" style={labelBase}>Partnership Tier</label>
-                  <div style={{
-                    position: 'relative'
-                  }}>
-                    <select id="cta-tier" value={formTier} onChange={e => setFormTier(e.target.value)} style={{
-                      ...inputBase,
-                      appearance: 'none',
-                      WebkitAppearance: 'none',
-                      cursor: 'pointer',
-                      paddingRight: '40px',
-                      color: formTier ? '#F7F6F3' : 'rgba(247,246,243,0.3)'
-                    }} onFocus={e => {
-                      (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.4)';
-                    }} onBlur={e => {
-                      (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)';
-                    }}>
-                      <option value="" style={{
-                        background: '#0f1c28',
-                        color: 'rgba(247,246,243,0.4)'
-                      }}>Select a partnership tier</option>
-                      {TIERS.map(tier => <option key={tier.id} value={tier.id} style={{
-                        background: '#0f1c28',
-                        color: '#F7F6F3'
-                      }}>
-                          {tier.name} — {tier.tagline}
-                        </option>)}
-                      <option value="custom" style={{
-                        background: '#0f1c28',
-                        color: '#F7F6F3'
-                      }}>Custom Package</option>
-                    </select>
-                    <div style={{
-                      position: 'absolute',
-                      right: '14px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      pointerEvents: 'none'
-                    }}>
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <motion.button type="submit" whileHover={{
-                  scale: 1.03,
-                  boxShadow: '0 12px 40px rgba(222,50,45,0.6)'
-                }} whileTap={{
-                  scale: 0.97
-                }} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
-                  border: 'none',
-                  borderRadius: '44px',
-                  padding: '16px 32px',
-                  fontSize: '13px',
-                  letterSpacing: '0.05em',
-                  color: '#fff',
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  marginTop: '8px',
-                  boxShadow: '0 8px 32px rgba(222,50,45,0.45)'
-                }}>
-                  <span>Submit Partnership Enquiry</span><ArrowIconDark />
-                </motion.button>
-              </form>
-              <p style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '11px',
-                color: 'rgba(247,246,243,0.22)',
-                margin: '16px 0 0',
-                letterSpacing: '0.02em'
-              }}>By submitting, you agree to our privacy policy. We never share your information.</p>
-            </motion.div> : <motion.div key="success" initial={{
-              opacity: 0,
-              scale: 0.95
-            }} animate={{
-              opacity: 1,
-              scale: 1
-            }} exit={{
-              opacity: 0
-            }} transition={{
-              duration: 0.6,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              background: 'rgba(247,246,243,0.04)',
-              border: '1px solid rgba(34,197,94,0.25)',
-              borderRadius: '28px',
-              padding: isMobile ? '44px 20px' : '64px 44px',
-              boxSizing: 'border-box',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '20px',
-              textAlign: 'center'
-            }}>
-              <div style={{
-                width: '60px',
-                height: '60px',
-                borderRadius: '50%',
-                background: 'rgba(34,197,94,0.1)',
-                border: '1px solid rgba(34,197,94,0.25)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <svg width="22" height="16" viewBox="0 0 22 16" fill="none"><path d="M1 8L8 15L21 1" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              </div>
-              <div>
-                <h3 style={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontSize: '20px',
-                  fontWeight: 400,
-                  letterSpacing: '-0.5px',
-                  color: '#F7F6F3',
-                  margin: '0 0 10px'
-                }}>Enquiry Received</h3>
-                <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '14px',
-                  color: 'rgba(247,246,243,0.45)',
-                  margin: 0,
-                  lineHeight: '1.7',
-                  maxWidth: '320px'
-                }}>
-                  <span>{'Thank you, '}</span>
-                  <strong style={{
-                    color: 'rgba(247,246,243,0.75)'
-                  }}>{formName}</strong>
-                  <span>{'. Our partnerships team will reach out within 24 hours to discuss how we can work together.'}</span>
-                </p>
-              </div>
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'rgba(34,197,94,0.07)',
-                border: '1px solid rgba(34,197,94,0.18)',
-                borderRadius: '100px',
-                padding: '7px 16px',
-                marginTop: '8px'
-              }}>
-                <motion.div animate={{
-                  opacity: [1, 0.3, 1]
-                }} transition={{
-                  duration: 2,
-                  repeat: Infinity
-                }} style={{
-                  width: '6px',
-                  height: '6px',
-                  borderRadius: '50%',
-                  background: '#22c55e',
-                  boxShadow: '0 0 8px rgba(34,197,94,0.5)'
-                }} />
-                <span style={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontSize: '10px',
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(247,246,243,0.4)',
-                  fontWeight: 600
-                }}>Response within 24h</span>
-              </div>
-            </motion.div>}
-          </AnimatePresence>
+            <span>Become a Partner</span><ArrowIconDark />
+          </motion.a>
         </motion.div>
+        <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          scale: 1.04
+        }} whileTap={{
+          scale: 0.97
+        }} style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          border: '1px solid rgba(247,246,243,0.22)',
+          borderRadius: '44px',
+          padding: isMobile ? '13px 18px' : '17px 28px',
+          fontSize: '13px',
+          letterSpacing: '0.04em',
+          color: 'rgba(247,246,243,0.72)',
+          textDecoration: 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 600,
+          transition: 'border-color 0.3s ease, color 0.3s ease'
+        }} onMouseEnter={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(247,246,243,0.5)';
+          el.style.color = '#F7F6F3';
+        }} onMouseLeave={e => {
+          const el = e.currentTarget as HTMLAnchorElement;
+          el.style.borderColor = 'rgba(247,246,243,0.22)';
+          el.style.color = 'rgba(247,246,243,0.72)';
+        }}>
+          <DownloadIcon /><span>Download Partnership Deck</span>
+        </motion.a>
       </div>
       <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.55} style={{
         display: 'grid',
@@ -3467,7 +2527,22 @@ const CtaSection = () => {
         borderTop: '0.8px solid rgba(247,246,243,0.07)',
         transformOrigin: 'left'
       }}>
-        {CTA_INFO_ITEMS.map((item, i) => <div key={item.id} style={{
+        {[{
+          id: 'ci-1',
+          label: 'Summit Date',
+          value: 'May 28, 2026',
+          sub: 'EmpowaWorx House · Johannesburg'
+        }, {
+          id: 'ci-2',
+          label: 'Partnership Enquiries',
+          value: 'partnerships@empowa.co',
+          sub: 'Direct partnership enquiries'
+        }, {
+          id: 'ci-3',
+          label: 'Status',
+          value: 'Now Open',
+          sub: 'Limited strategic partnerships available'
+        }].map((item, i) => <div key={item.id} style={{
           padding: isMobile ? '20px 0' : '28px 32px',
           borderLeft: !isMobile && i > 0 ? '0.8px solid rgba(247,246,243,0.07)' : 'none',
           borderTop: isMobile && i > 0 ? '0.8px solid rgba(247,246,243,0.07)' : 'none',
@@ -3488,8 +2563,7 @@ const CtaSection = () => {
             fontWeight: 300,
             letterSpacing: '-0.4px',
             color: '#F7F6F3',
-            marginBottom: '4px',
-            wordBreak: 'break-all'
+            marginBottom: '4px'
           }}>{item.value}</div>
           <div style={{
             fontFamily: 'Inter, sans-serif',
@@ -3503,43 +2577,58 @@ const CtaSection = () => {
   </section>;
 };
 
-// ─── Footer ───────────────────────────────────────────────────────────────────
-const FOOTER_SOCIAL_LINKS = [{
-  id: 'fsl-tw',
-  label: 'Twitter / X',
-  brand: 'x'
+// ─── Site Footer ──────────────────────────────────────────────────────────────
+const FOOTER_BANNER_BG = 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1800&q=80';
+const FOOTER_COLS = [{
+  id: 'fc-1',
+  heading: 'Summit',
+  links: [{
+    id: 'fl-1',
+    label: 'About'
+  }, {
+    id: 'fl-2',
+    label: 'Programme'
+  }, {
+    id: 'fl-3',
+    label: 'Experience Zones'
+  }, {
+    id: 'fl-4',
+    label: 'Funding Summit'
+  }]
 }, {
-  id: 'fsl-li',
-  label: 'LinkedIn',
-  brand: 'linkedin'
+  id: 'fc-2',
+  heading: 'Participate',
+  links: [{
+    id: 'fl-5',
+    label: 'Apply to Attend'
+  }, {
+    id: 'fl-6',
+    label: 'Apply to Pitch'
+  }, {
+    id: 'fl-7',
+    label: 'Become a Funder'
+  }, {
+    id: 'fl-8',
+    label: 'Partnerships'
+  }]
 }, {
-  id: 'fsl-yt',
-  label: 'YouTube',
-  brand: 'youtube'
-}, {
-  id: 'fsl-ig',
-  label: 'Instagram',
-  brand: 'instagram'
+  id: 'fc-3',
+  heading: 'Company',
+  links: [{
+    id: 'fl-9',
+    label: 'Contact Us'
+  }, {
+    id: 'fl-10',
+    label: 'Media Kit'
+  }, {
+    id: 'fl-11',
+    label: 'FAQs'
+  }, {
+    id: 'fl-12',
+    label: 'Register Now'
+  }]
 }];
-const FOOTER_LEGAL_LINKS = [{
-  id: 'leg-priv',
-  label: 'Privacy Policy'
-}, {
-  id: 'leg-terms',
-  label: 'Terms'
-}];
-const SocialIcon = ({
-  brand
-}: {
-  brand: string;
-}) => {
-  if (brand === 'x') return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" fill="rgba(247,246,243,0.55)" /></svg>;
-  if (brand === 'linkedin') return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" fill="rgba(247,246,243,0.55)" /></svg>;
-  if (brand === 'youtube') return <svg width="15" height="11" viewBox="0 0 24 17" fill="none" aria-hidden="true"><path d="M23.498 2.683A3.009 3.009 0 0 0 21.38.549C19.505 0 12 0 12 0S4.495 0 2.62.549A3.009 3.009 0 0 0 .502 2.683C0 4.566 0 8.5 0 8.5s0 3.934.502 5.817a3.009 3.009 0 0 0 2.118 2.134C4.495 17 12 17 12 17s7.505 0 9.38-.549a3.009 3.009 0 0 0 2.118-2.134C24 12.434 24 8.5 24 8.5s0-3.934-.502-5.817ZM9.545 12.068V4.932L15.818 8.5l-6.273 3.568Z" fill="rgba(247,246,243,0.55)" /></svg>;
-  if (brand === 'instagram') return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069Z" fill="rgba(247,246,243,0.55)" /></svg>;
-  return null;
-};
-const PartnershipsFooter = () => {
+const SiteFooter = () => {
   const {
     isMobile,
     isTablet
@@ -3549,17 +2638,8 @@ const PartnershipsFooter = () => {
     once: true,
     margin: '-80px 0px'
   });
-  const hPad = isMobile ? '0 24px 48px' : isTablet ? '0 40px 56px' : '0 80px 64px';
-  const scrollToForm = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const el = document.getElementById('partner-form');
-    if (el) {
-      el.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
+  const footerHeroFontSize = isMobile ? 'clamp(40px, 11vw, 60px)' : isTablet ? 'clamp(48px, 7.5vw, 80px)' : 'clamp(56px, 6.5vw, 96px)';
+  const footerHeroLetterSpacing = isMobile ? '-1.5px' : isTablet ? '-2.5px' : '-3.5px';
   return <footer ref={footerRef} style={{
     background: '#0A0906',
     width: '100%',
@@ -3570,34 +2650,26 @@ const PartnershipsFooter = () => {
     <div style={{
       position: 'relative',
       width: '100%',
-      minHeight: isMobile ? '380px' : '520px',
+      minHeight: isMobile ? '360px' : isTablet ? '440px' : '520px',
       overflow: 'hidden',
       display: 'flex',
-      alignItems: 'flex-end'
+      alignItems: 'flex-end',
+      background: '#0A0906'
     }}>
-      <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1800&q=80" alt="" aria-hidden="true" style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        objectPosition: 'center 30%',
-        display: 'block',
-        filter: 'brightness(0.22) saturate(0.55)'
-      }} />
+      {/* Background image */}
       <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(to top, #0A0906 0%, rgba(10,9,6,0.7) 55%, rgba(10,9,6,0.08) 100%)',
+        backgroundImage: `url(${FOOTER_BANNER_BG})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         pointerEvents: 'none'
       }} />
+      {/* Gradient overlay */}
       <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
-        backgroundImage: NOISE_SVG,
-        backgroundRepeat: 'repeat',
-        backgroundSize: '128px 128px',
-        opacity: 0.5,
+        background: 'linear-gradient(to top, #0A0906 0%, rgba(10,9,6,0.7) 50%, rgba(10,9,6,0.1) 100%)',
         pointerEvents: 'none'
       }} />
       <div aria-hidden="true" style={{
@@ -3609,16 +2681,25 @@ const PartnershipsFooter = () => {
         maxWidth: '720px',
         maxHeight: '720px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(222,50,45,0.2) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(222,50,45,0.25) 0%, transparent 65%)',
+        pointerEvents: 'none'
+      }} />
+      <div aria-hidden="true" style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: NOISE_SVG,
+        backgroundRepeat: 'repeat',
+        backgroundSize: '128px 128px',
+        opacity: 0.5,
         pointerEvents: 'none'
       }} />
       <div style={{
         position: 'relative',
         zIndex: 2,
         width: '100%',
-        padding: hPad,
+        padding: isMobile ? '0 20px 44px' : isTablet ? '0 40px 56px' : '0 64px 72px',
         boxSizing: 'border-box',
-        maxWidth: '1440px',
+        maxWidth: '1200px',
         margin: '0 auto'
       }}>
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
@@ -3635,14 +2716,14 @@ const PartnershipsFooter = () => {
             textTransform: 'uppercase',
             color: 'rgba(247,246,243,0.4)',
             fontWeight: 600
-          }}>Africa's Premier Funding Platform · 2026</span>
+          }}>Funding Summit 2026 · Africa's Capital Access Platform</span>
         </motion.div>
         <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: isMobile ? 'flex-start' : 'flex-end',
           justifyContent: 'space-between',
-          gap: isMobile ? '28px' : '40px'
+          gap: isMobile ? '32px' : '40px'
         }}>
           <div style={{
             overflow: 'hidden',
@@ -3650,33 +2731,35 @@ const PartnershipsFooter = () => {
           }}>
             <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
               fontFamily: 'Montserrat, sans-serif',
-              fontSize: isMobile ? 'clamp(36px, 11vw, 64px)' : 'clamp(56px, 6.5vw, 96px)',
+              fontSize: footerHeroFontSize,
               fontWeight: 700,
-              letterSpacing: isMobile ? '-2px' : '-3px',
+              letterSpacing: footerHeroLetterSpacing,
               lineHeight: 0.9,
               color: '#F7F6F3',
               margin: 0,
               textTransform: 'uppercase'
             }}>
-              <span>Partner</span><br />
+              <span>Join</span><br />
               <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D',
                 fontWeight: 400
-              }}>With Us.</em><br />
+              }}>The Summit.</em>
+              <br />
               <span style={{
                 color: 'rgba(247,246,243,0.18)',
                 fontWeight: 300
               }}>May 2026.</span>
             </motion.h2>
           </div>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.22} style={{
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.22} style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '10px',
-            minWidth: isMobile ? '100%' : '240px'
+            gap: '12px',
+            minWidth: isMobile ? '100%' : isTablet ? '220px' : '240px',
+            width: isMobile ? '100%' : 'auto'
           }}>
-            <motion.a href="#partner-form" onClick={scrollToForm} whileHover={{
+            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -3697,7 +2780,7 @@ const PartnershipsFooter = () => {
               fontWeight: 600,
               boxShadow: '0 8px 40px rgba(222,50,45,0.5)'
             }}>
-              <span>Partner With Us</span><ArrowIconDark />
+              <span>Become a Partner</span><ArrowIconDark />
             </motion.a>
             <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
               scale: 1.04
@@ -3726,96 +2809,156 @@ const PartnershipsFooter = () => {
               el.style.borderColor = 'rgba(247,246,243,0.22)';
               el.style.color = 'rgba(247,246,243,0.65)';
             }}>
-              <span>Download Deck</span>
+              <span>Download Partnership Deck</span>
             </motion.a>
           </motion.div>
         </div>
       </div>
     </div>
     <div style={{
-      height: '1px',
-      background: 'rgba(247,246,243,0.06)'
-    }} />
-    <div style={{
-      maxWidth: '1440px',
+      maxWidth: '1200px',
       margin: '0 auto',
-      padding: isMobile ? '32px 24px 28px' : '52px 80px 36px',
+      padding: isMobile ? '40px 20px 0' : isTablet ? '52px 40px 0' : '64px 64px 0',
       boxSizing: 'border-box'
     }}>
       <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'space-between',
-        alignItems: isMobile ? 'flex-start' : 'center',
-        gap: '20px'
+        gap: '40px',
+        paddingBottom: '48px',
+        borderBottom: '1px solid rgba(247,246,243,0.07)'
       }}>
         <div style={{
           display: 'flex',
-          alignItems: 'center',
-          gap: '12px'
-        }}>
-          <motion.div whileHover={{
-            scale: 1.1,
-            rotate: 8
-          }} style={{
-            width: '32px',
-            height: '32px',
-            borderRadius: '8px',
-            background: 'linear-gradient(135deg, #DE322D, #ff5a4f)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-            boxShadow: '0 4px 16px rgba(222,50,45,0.4)'
-          }}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" /></svg>
-          </motion.div>
-          <span style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '11px',
-            color: 'rgba(247,246,243,0.1)',
-            letterSpacing: '0.04em'
-          }}>© 2026 EmpowaEntrepreneurs. All rights reserved.</span>
-        </div>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-          flexWrap: 'wrap'
+          flexDirection: 'column',
+          gap: '20px',
+          maxWidth: isMobile ? '100%' : isTablet ? '220px' : '280px'
         }}>
           <div style={{
             display: 'flex',
-            gap: '8px'
+            alignItems: 'center',
+            gap: '12px'
           }}>
-            {FOOTER_SOCIAL_LINKS.map(soc => <motion.a key={soc.id} href="#" onClick={e => e.preventDefault()} whileHover={{
-              scale: 1.1,
-              y: -2
-            }} whileTap={{
-              scale: 0.92
-            }} title={soc.label} style={{
-              width: '34px',
-              height: '34px',
-              borderRadius: '4px',
-              border: '1px solid rgba(247,246,243,0.08)',
-              background: 'rgba(247,246,243,0.03)',
+            <div style={{
+              width: '36px',
+              height: '36px',
+              borderRadius: '8px',
+              background: 'linear-gradient(135deg, #DE322D, #ff5a4f)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              textDecoration: 'none',
-              transition: 'border-color 0.2s ease, background 0.2s ease'
-            }} onMouseEnter={e => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.28)';
-              el.style.background = 'rgba(247,246,243,0.08)';
-            }} onMouseLeave={e => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.08)';
-              el.style.background = 'rgba(247,246,243,0.03)';
+              boxShadow: '0 4px 20px rgba(222,50,45,0.4)',
+              flexShrink: 0
             }}>
-              <SocialIcon brand={soc.brand} />
-            </motion.a>)}
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" /></svg>
+            </div>
+            <div>
+              <div style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '13px',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                color: '#F7F6F3',
+                fontWeight: 700,
+                lineHeight: 1.1
+              }}>EmpowaEntrepreneurs</div>
+              <div style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '10px',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'rgba(247,246,243,0.22)',
+                marginTop: '2px'
+              }}>Funding Summit · 2026</div>
+            </div>
           </div>
-          {FOOTER_LEGAL_LINKS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
+          <p style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '13px',
+            lineHeight: '1.8',
+            color: 'rgba(247,246,243,0.28)',
+            margin: 0
+          }}>Africa's premier capital-access summit. Where vetted entrepreneurs meet high-impact funders.</p>
+        </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+          gap: isMobile ? '28px 16px' : isTablet ? '28px 24px' : '0',
+          flex: 1,
+          maxWidth: isMobile ? '100%' : isTablet ? '100%' : '600px'
+        }}>
+          {FOOTER_COLS.map((col, colIdx) => <div key={col.id} style={{
+            paddingLeft: !isMobile && !isTablet && colIdx > 0 ? '40px' : '0',
+            borderLeft: !isMobile && !isTablet && colIdx > 0 ? '1px solid rgba(247,246,243,0.06)' : 'none'
+          }}>
+            <span style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: '9px',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: 'rgba(247,246,243,0.15)',
+              fontWeight: 700,
+              display: 'block',
+              marginBottom: '20px'
+            }}>{col.heading}</span>
+            <ul style={{
+              listStyle: 'none',
+              margin: 0,
+              padding: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px'
+            }}>
+              {col.links.map(link => <li key={link.id}>
+                <a href="#" onClick={e => e.preventDefault()} style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '13px',
+                  color: 'rgba(247,246,243,0.3)',
+                  textDecoration: 'none',
+                  letterSpacing: '0.01em',
+                  transition: 'color 0.2s ease',
+                  display: 'block'
+                }} onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = '#F7F6F3';
+                }} onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.3)';
+                }}>{link.label}</a>
+              </li>)}
+            </ul>
+          </div>)}
+        </div>
+      </div>
+      <div style={{
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        justifyContent: 'space-between',
+        alignItems: isMobile ? 'flex-start' : 'center',
+        gap: '16px',
+        padding: '24px 0 40px'
+      }}>
+        <span style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '11px',
+          color: 'rgba(247,246,243,0.1)',
+          letterSpacing: '0.04em'
+        }}>© 2026 EmpowaEntrepreneurs. All rights reserved.</span>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '20px',
+          flexWrap: 'wrap'
+        }}>
+          {[{
+            id: 'leg-priv',
+            label: 'Privacy Policy'
+          }, {
+            id: 'leg-terms',
+            label: 'Terms of Service'
+          }, {
+            id: 'leg-cookie',
+            label: 'Cookie Settings'
+          }].map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
             color: 'rgba(247,246,243,0.12)',
@@ -3826,24 +2969,23 @@ const PartnershipsFooter = () => {
             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.45)';
           }} onMouseLeave={e => {
             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.12)';
-          }}>
-            {item.label}
-          </a>)}
+          }}>{item.label}</a>)}
         </div>
       </div>
     </div>
   </footer>;
 };
 
-// ─── PartnershipsPage ──────────────────────────────────────────────────────────
+// ─── PartnershipsPage ─────────────────────────────────────────────────────────
 export const PartnershipsPage = () => {
   return <div className="w-full min-h-screen" style={{
-    background: '#141210'
+    background: '#141210',
+    overflowX: 'hidden'
   }}>
     <HeroSection />
-    <BenefitsSection />
-    <StrategicValueSection />
-    <TiersSection />
+    <PartnershipTiersSection />
+    <SpecialisedPackagesSection />
+    <WhyPartnerSection />
     <CtaSection />
   </div>;
 };

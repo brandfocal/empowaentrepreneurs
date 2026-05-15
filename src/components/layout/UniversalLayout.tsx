@@ -120,16 +120,16 @@ const STICKY_NAV_ITEMS = [{
   label: 'Experience Zones',
   href: '/experience-zones'
 }, {
-  id: 'partnerships',
-  label: 'Partnerships',
-  href: '/partnerships'
+  id: 'strategic-advisory',
+  label: 'Strategic Advisory',
+  href: '/strategic-advisory'
 }, {
   id: 'apply',
   label: 'Apply to Attend',
   href: '/apply'
 }, {
   id: 'pitch-power',
-  label: 'Pitch Power',
+  label: 'Pitching Festival',
   href: '/pitch-power'
 }, {
   id: 'contact',
@@ -313,26 +313,28 @@ const StickyNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
-            scale: 1.04
-          }} whileTap={{
-            scale: 0.97
-          }} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            border: scrolled ? '1px solid rgba(60,77,93,0.35)' : '1px solid rgba(247,246,243,0.25)',
-            borderRadius: '44px',
-            padding: '8px 18px',
-            fontSize: '12px',
-            letterSpacing: '0.04em',
-            color: scrolled ? '#3c4d5d' : 'rgba(247,246,243,0.8)',
-            textDecoration: 'none',
-            fontFamily: 'Montserrat, sans-serif',
-            transition: 'border-color 0.25s ease, color 0.25s ease'
-          }}>
-            <span>Partner With Us</span>
-          </motion.a>
+          <Link to="/partnerships" style={{ textDecoration: 'none' }}>
+            <motion.div whileHover={{
+              scale: 1.04
+            }} whileTap={{
+              scale: 0.97
+            }} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              border: scrolled ? '1px solid rgba(60,77,93,0.35)' : '1px solid rgba(247,246,243,0.25)',
+              borderRadius: '44px',
+              padding: '8px 18px',
+              fontSize: '12px',
+              letterSpacing: '0.04em',
+              color: scrolled ? '#3c4d5d' : 'rgba(247,246,243,0.8)',
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+              transition: 'border-color 0.25s ease, color 0.25s ease'
+            }}>
+              <span>Partner With Us</span>
+            </motion.div>
+          </Link>
           <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04
           }} whileTap={{
@@ -417,7 +419,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <a href="#" onClick={e => e.preventDefault()} style={{
+          <Link to="/partnerships" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -425,7 +427,7 @@ const StickyNav = () => {
             padding: '10px 20px',
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
-          }}>Partner With Us</a>
+          }}>Partner With Us</Link>
           <a href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
@@ -618,35 +620,37 @@ const SiteFooter = () => {
             }}>
               <span>Register Now</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
-              scale: 1.04
-            }} whileTap={{
-              scale: 0.97
-            }} style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              border: '1px solid rgba(247,246,243,0.22)',
-              borderRadius: '44px',
-              padding: '18px 36px',
-              fontSize: '13px',
-              letterSpacing: '0.04em',
-              color: 'rgba(247,246,243,0.65)',
-              textDecoration: 'none',
-              fontFamily: 'Montserrat, sans-serif',
-              transition: 'border-color 0.3s ease, color 0.3s ease'
-            }} onMouseEnter={e => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.5)';
-              el.style.color = '#F7F6F3';
-            }} onMouseLeave={e => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = 'rgba(247,246,243,0.22)';
-              el.style.color = 'rgba(247,246,243,0.65)';
-            }}>
-              <span>Partner With Us</span>
-            </motion.a>
+            <Link to="/partnerships" style={{ textDecoration: 'none' }}>
+              <motion.div whileHover={{
+                scale: 1.04
+              }} whileTap={{
+                scale: 0.97
+              }} style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                border: '1px solid rgba(247,246,243,0.22)',
+                borderRadius: '44px',
+                padding: '18px 36px',
+                fontSize: '13px',
+                letterSpacing: '0.04em',
+                color: 'rgba(247,246,243,0.65)',
+                textDecoration: 'none',
+                fontFamily: 'Montserrat, sans-serif',
+                transition: 'border-color 0.3s ease, color 0.3s ease'
+              }} onMouseEnter={e => {
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.borderColor = 'rgba(247,246,243,0.5)';
+                el.style.color = '#F7F6F3';
+              }} onMouseLeave={e => {
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.borderColor = 'rgba(247,246,243,0.22)';
+                el.style.color = 'rgba(247,246,243,0.65)';
+              }}>
+                <span>Partner With Us</span>
+              </motion.div>
+            </Link>
           </motion.div>
         </div>
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.4} style={{

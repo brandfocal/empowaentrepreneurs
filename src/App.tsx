@@ -9,6 +9,7 @@ import { PartnershipsPage } from './components/generated/PartnershipsPage';
 import { ApplyToAttendPage } from './components/generated/ApplyToAttendPage';
 import { ContactPage } from './components/generated/ContactPage';
 import { PitchingFestivalPage } from './components/generated/PitchingFestivalPage';
+import { StrategicAdvisoryPage } from './components/generated/StrategicAdvisoryPage';
 import { UniversalLayout } from './components/layout/UniversalLayout';
 
 let theme: Theme = 'light';
@@ -40,6 +41,7 @@ function App() {
             <Route path="/apply" element={<ApplyToAttendPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/pitch-power" element={<PitchingFestivalPage />} />
+            <Route path="/strategic-advisory" element={<StrategicAdvisoryPage />} />
           </Routes>
         </UniversalLayout>
       </BrowserRouter>
