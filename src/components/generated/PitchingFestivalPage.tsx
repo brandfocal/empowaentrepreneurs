@@ -2973,7 +2973,7 @@ const SiteFooter = () => {
 };
 
 // ─── Custom Package Modal ─────────────────────────────────────────────────────
-const PitchApplicationModal = ({
+export const PitchApplicationModal = ({
   onClose,
   initialTier = ''
 }: {

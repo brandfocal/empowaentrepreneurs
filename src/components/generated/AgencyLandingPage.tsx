@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring, useDragControls } from 'framer-motion';
 import { VideoBanner, SpeakerCarousel } from './AgencyComponents';
+import { PitchApplicationModal } from './PitchingFestivalPage';
 
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -1872,6 +1873,7 @@ const AccordionSection = () => {
     margin: '-80px 0px'
   });
   const [activeId, setActiveId] = useState<string>('svc-brand');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const isMobile = useIsMobile();
   return <section ref={sectionRef} style={{
     background: '#0f1c28',
@@ -2071,11 +2073,19 @@ const AccordionSection = () => {
                     {t}
                   </span>)}
                 </div>
-                <motion.a href="#"  whileHover={{
-                  scale: 1.04
-                }} whileTap={{
-                  scale: 0.97
-                }} style={{
+                <motion.a 
+                  href={svc.id === 'svc-brand' ? '/summit' : '#'}
+                  onClick={(e) => {
+                    if (svc.id !== 'svc-brand') {
+                      e.preventDefault();
+                      setIsModalOpen(true);
+                    }
+                  }}
+                  whileHover={{
+                    scale: 1.04
+                  }} whileTap={{
+                    scale: 0.97
+                  }} style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
@@ -2106,6 +2116,7 @@ const AccordionSection = () => {
         </motion.div>;
       })}
     </div>
+    {isModalOpen && <PitchApplicationModal onClose={() => setIsModalOpen(false)} />}
   </section>;
 };
 
