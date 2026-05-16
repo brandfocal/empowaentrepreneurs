@@ -2994,6 +2994,14 @@ export const DetailedRegistrationPage = () => {
     <div className="w-full min-h-screen" style={{ background: '#141210' }}>
       <style>{`
         @keyframes spin { 100% { transform: rotate(360deg); } }
+        #registration-form input[type="date"]::-webkit-calendar-picker-indicator {
+          filter: invert(1);
+          cursor: pointer;
+        }
+        #registration-form select option {
+          background-color: #141210;
+          color: #F7F6F3;
+        }
       `}</style>
       <ApplyHeroSection />
       
