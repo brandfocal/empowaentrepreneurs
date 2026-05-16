@@ -1648,18 +1648,16 @@ const LifetimeLegacySection = () => {
           gap: isMobile ? '36px' : '64px',
           alignItems: 'start'
         }}>
-            <div>
-              <div style={{
+            <div style={{
               display: 'flex',
-              alignItems: 'center',
-              gap: '24px',
-              marginBottom: '28px',
-              flexWrap: 'wrap'
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: 'flex-start',
+              gap: isMobile ? '24px' : '40px'
             }}>
-                <div style={{
-                width: isMobile ? '56px' : '72px',
-                height: isMobile ? '56px' : '72px',
-                borderRadius: '50%',
+              <div style={{
+                width: isMobile ? '100px' : '140px',
+                height: isMobile ? '100px' : '140px',
+                borderRadius: '20px',
                 background: 'linear-gradient(135deg, #DE322D, #c42823)',
                 display: 'flex',
                 alignItems: 'center',
@@ -1668,9 +1666,10 @@ const LifetimeLegacySection = () => {
                 boxShadow: '0 0 0 4px rgba(222,50,45,0.15)',
                 overflow: 'hidden'
               }}>
-                  <img src="/team/Johnson-JJ-Njeke.jpg" alt="Johnson (JJ) Njeke" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <div>
+                <img src="/team/Johnson-JJ-Njeke.jpg" alt="Johnson (JJ) Njeke" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ marginBottom: '28px' }}>
                   <h3 style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontWeight: 700,
@@ -1691,36 +1690,36 @@ const LifetimeLegacySection = () => {
                     Lifetime Entrepreneurial Legacy Award · 2026
                   </span>
                 </div>
-              </div>
-              <div style={{
-              height: '1px',
-              background: 'linear-gradient(90deg, transparent, rgba(222,50,45,0.5), transparent)',
-              margin: '0 0 28px'
-            }} />
-              <p style={{
-              fontFamily: 'Lato, sans-serif',
-              fontSize: '16px',
-              color: 'rgba(247,246,243,0.65)',
-              lineHeight: 1.75,
-              margin: '0 0 24px'
-            }}>
-                More than three decades of transformative leadership and foundational belief in the EmpowaEntrepreneurs vision when it was only an idea. Johnson Njeke's legacy is measured not merely in transactions, but in the dreams, ecosystems, and generations he has helped unlock through principled capital deployment and unwavering mentorship of Africa's next generation of leaders.
-              </p>
-              <div style={{
-              borderLeft: '2px solid #DE322D',
-              paddingLeft: '20px'
-            }}>
+                <div style={{
+                height: '1px',
+                background: 'linear-gradient(90deg, transparent, rgba(222,50,45,0.5), transparent)',
+                margin: '0 0 28px'
+              }} />
                 <p style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontStyle: 'italic',
-                fontWeight: 300,
+                fontFamily: 'Lato, sans-serif',
                 fontSize: '16px',
-                color: 'rgba(247,246,243,0.75)',
-                margin: 0,
-                lineHeight: 1.6
+                color: 'rgba(247,246,243,0.65)',
+                lineHeight: 1.75,
+                margin: '0 0 24px'
               }}>
-                  "His life's work is a testament to what happens when capital is wielded with conscience, courage, and community at its core."
+                  More than three decades of transformative leadership and foundational belief in the EmpowaEntrepreneurs vision when it was only an idea. Johnson Njeke's legacy is measured not merely in transactions, but in the dreams, ecosystems, and generations he has helped unlock through principled capital deployment and unwavering mentorship of Africa's next generation of leaders.
                 </p>
+                <div style={{
+                borderLeft: '2px solid #DE322D',
+                paddingLeft: '20px'
+              }}>
+                  <p style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontStyle: 'italic',
+                  fontWeight: 300,
+                  fontSize: '16px',
+                  color: 'rgba(247,246,243,0.75)',
+                  margin: 0,
+                  lineHeight: 1.6
+                }}>
+                    "His life's work is a testament to what happens when capital is wielded with conscience, courage, and community at its core."
+                  </p>
+                </div>
               </div>
             </div>
             {!isMobile && <div style={{
