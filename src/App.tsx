@@ -12,6 +12,7 @@ import { PitchingFestivalPage } from './components/generated/PitchingFestivalPag
 import { StrategicAdvisoryPage } from './components/generated/StrategicAdvisoryPage';
 import { FundingAwardsPage } from './components/generated/FundingAwardsPage';
 import { FundingSummitPage } from './components/generated/FundingSummitPage';
+import { DetailedRegistrationPage } from './components/generated/DetailedRegistrationPage';
 import { UniversalLayout } from './components/layout/UniversalLayout';
 
 let theme: Theme = 'light';
@@ -46,6 +47,7 @@ function App() {
             <Route path="/strategic-advisory" element={<StrategicAdvisoryPage />} />
             <Route path="/awards" element={<FundingAwardsPage />} />
             <Route path="/summit" element={<FundingSummitPage />} />
+            <Route path="/detailed-registration-2026" element={<DetailedRegistrationPage />} />
           </Routes>
         </UniversalLayout>
       </BrowserRouter>
