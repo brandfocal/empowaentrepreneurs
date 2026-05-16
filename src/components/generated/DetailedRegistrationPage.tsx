@@ -2858,6 +2858,17 @@ const RADIO_LABEL_STYLE: React.CSSProperties = {
 export const DetailedRegistrationPage = () => {
   const { isMobile } = useBreakpoint();
   
+  const [step, setStep] = useState(1);
+  const totalSteps = 6;
+  const nextStep = () => {
+    setStep(s => Math.min(s + 1, totalSteps));
+    window.scrollTo({ top: document.getElementById('registration-form')?.offsetTop || 0, behavior: 'smooth' });
+  };
+  const prevStep = () => {
+    setStep(s => Math.max(s - 1, 1));
+    window.scrollTo({ top: document.getElementById('registration-form')?.offsetTop || 0, behavior: 'smooth' });
+  };
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [age, setAge] = useState('');
@@ -3011,6 +3022,20 @@ export const DetailedRegistrationPage = () => {
                 </div>
               )}
 
+              
+            <div style={{ marginBottom: '32px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '12px', fontWeight: 600, color: '#DE322D' }}>Step {step} of {totalSteps}</span>
+                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(247,246,243,0.4)' }}>
+                  {step === 1 ? 'Personal Info' : step === 2 ? 'Contact Details' : step === 3 ? 'Business Profile' : step === 4 ? 'Financials & Team' : step === 5 ? 'Detailed Questions' : 'Permissions & Consent'}
+                </span>
+              </div>
+              <div style={{ width: '100%', height: '4px', background: 'rgba(247,246,243,0.08)', borderRadius: '2px', overflow: 'hidden' }}>
+                <div style={{ width: `${(step / totalSteps) * 100}%`, height: '100%', background: 'linear-gradient(90deg, #DE322D, #ff4d48)', transition: 'width 0.3s ease' }} />
+              </div>
+            </div>
+
+              {step === 1 && (
               <div style={{ marginBottom: '40px' }}>
                 <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Personal Information</h3>
                 <div style={formGridStyle}>
@@ -3068,6 +3093,8 @@ export const DetailedRegistrationPage = () => {
                 </div>
               </div>
 
+                            )}
+              {step === 2 && (
               <div style={{ marginBottom: '40px' }}>
                 <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Contact Details</h3>
                 <div style={formGridStyle}>
@@ -3114,6 +3141,8 @@ export const DetailedRegistrationPage = () => {
                 </div>
               </div>
 
+                            )}
+              {step === 3 && (
               <div style={{ marginBottom: '40px' }}>
                 <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Business Profile</h3>
                 <div style={formGridStyle}>
@@ -3176,6 +3205,8 @@ export const DetailedRegistrationPage = () => {
                 </div>
               </div>
 
+                            )}
+              {step === 4 && (
               <div style={{ marginBottom: '40px' }}>
                 <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Financials & Team</h3>
                 <div style={formGridStyle}>
@@ -3214,6 +3245,8 @@ export const DetailedRegistrationPage = () => {
                 </div>
               </div>
 
+                            )}
+              {step === 5 && (
               <div style={{ marginBottom: '40px' }}>
                 <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Detailed Questions</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -3240,6 +3273,8 @@ export const DetailedRegistrationPage = () => {
                 </div>
               </div>
 
+                            )}
+              {step === 6 && (
               <div style={{ marginBottom: '40px' }}>
                 <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Permissions & Consent</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -3274,36 +3309,70 @@ export const DetailedRegistrationPage = () => {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '48px' }}>
-                <button type="submit" disabled={status === 'loading'} style={{
-                  background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
-                  color: '#fff',
-                  border: 'none',
+              )}
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(247,246,243,0.08)' }}>
+                <button type="button" onClick={prevStep} style={{
+                  visibility: step > 1 ? 'visible' : 'hidden',
+                  background: 'rgba(247,246,243,0.05)',
+                  color: '#F7F6F3',
+                  border: '1px solid rgba(247,246,243,0.15)',
                   borderRadius: '44px',
-                  padding: '16px 40px',
+                  padding: '14px 32px',
                   fontFamily: 'Montserrat, sans-serif',
-                  fontSize: '14px',
+                  fontSize: '13px',
                   fontWeight: 600,
-                  letterSpacing: '0.04em',
-                  cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-                  opacity: status === 'loading' ? 0.7 : 1,
-                  boxShadow: '0 8px 36px rgba(222,50,45,0.55)',
-                  transition: 'all 0.2s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px'
-                }}>
-                  {status === 'loading' ? (
-                    <>
-                      <div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-                      <span>Submitting...</span>
-                    </>
-                  ) : (
-                    <span>Submit Registration</span>
-                  )}
+                  cursor: 'pointer',
+                  transition: 'background 0.2s'
+                }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(247,246,243,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(247,246,243,0.05)'}>
+                  Back
                 </button>
+
+                {step < totalSteps ? (
+                  <button type="button" onClick={nextStep} style={{
+                    background: '#F7F6F3',
+                    color: '#141210',
+                    border: 'none',
+                    borderRadius: '44px',
+                    padding: '14px 32px',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s',
+                  }} onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
+                    Next Step
+                  </button>
+                ) : (
+                  <button type="submit" disabled={status === 'loading'} style={{
+                    background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '44px',
+                    padding: '14px 32px',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+                    opacity: status === 'loading' ? 0.7 : 1,
+                    boxShadow: '0 8px 36px rgba(222,50,45,0.55)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px'
+                  }}>
+                    {status === 'loading' ? (
+                      <>
+                        <div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <span>Submit Registration</span>
+                    )}
+                  </button>
+                )}
               </div>
             </form>
+
           )}
         </div>
       </section>
