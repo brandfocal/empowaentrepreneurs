@@ -215,7 +215,7 @@ export const ZoneExperienceModal = ({ isOpen, onClose, zoneName = "" }: { isOpen
                         <option value="" style={{ background: '#ffffff', color: '#141210' }}>Select a Zone</option>
                         <option value="The Funding Corner" style={{background:'#ffffff',color:'#141210'}}>The Funding Corner</option>
                         <option value="Women Only Dealmaker Room" style={{background:'#ffffff',color:'#141210'}}>Women Only Dealmaker Room</option>
-                        <option value="Dragons' Den Pitching Festival" style={{background:'#ffffff',color:'#141210'}}>Dragons' Den Pitching Festival</option>
+                        <option value="EmpowaEntrepreneurs Dragons’ Den Pitching Festival™" style={{background:'#ffffff',color:'#141210'}}>EmpowaEntrepreneurs Dragons’ Den Pitching Festival™</option>
                         <option value="Legal & Financial Intelligence Zone" style={{background:'#ffffff',color:'#141210'}}>Legal & Financial Intelligence Zone</option>
                         <option value="Funding Application Clinics" style={{background:'#ffffff',color:'#141210'}}>Funding Application Clinics</option>
                         <option value="Premium Industry Networking Exhibitions" style={{background:'#ffffff',color:'#141210'}}>Premium Industry Networking Exhibitions</option>

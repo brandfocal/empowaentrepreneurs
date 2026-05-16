@@ -216,7 +216,7 @@ const TICKER_ITEMS = [{
   label: 'Women Only Dealmaker Room'
 }, {
   id: 'tk-3',
-  label: "Dragons' Den Pitching Festival"
+  label: "EmpowaEntrepreneurs Dragons’ Den Pitching Festival™"
 }, {
   id: 'tk-4',
   label: 'Legal & Financial Intelligence Zone'
@@ -587,13 +587,13 @@ const ZONES: ZoneItem[] = [{
 }, {
   id: 'zone-dragons',
   index: '03',
-  name: "Dragons' Den Pitching Festival",
+  name: "EmpowaEntrepreneurs Dragons’ Den Pitching Festival™",
   theme: 'Commercially Prestigious Arena',
   purpose: 'Africa\'s most high-stakes, commercially structured pitch arena. Curated cohorts of investment-ready founders pitch to panels of serious capital allocators in front of a live summit audience.',
   commercialRelevance: 'Live capital commitments, immediate term sheet conversations, and the highest concentration of deal-ready investors in a single pitch environment on the continent.',
   tags: ['Live Pitching', 'Term Sheets', 'High Stakes', 'Capital Allocation'],
   imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80',
-  imageAlt: "Dragons' Den Pitching Festival - high-stakes pitch arena at EmpowaWorx House",
+  imageAlt: "EmpowaEntrepreneurs Dragons’ Den Pitching Festival™ - high-stakes pitch arena at EmpowaWorx House",
   variant: 'prestige',
   icon: '⬡'
 }, {
