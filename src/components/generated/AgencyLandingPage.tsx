@@ -3082,24 +3082,6 @@ const TestimonialsSection = () => {
               alignItems: 'center',
               gap: '16px'
             }}>
-              <div style={{
-                width: '52px',
-                height: '52px',
-                borderRadius: '50%',
-                background: `linear-gradient(135deg, ${active.accentColor}, ${active.accentColor}cc)`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: `0 4px 20px ${active.accentColor}55`,
-                overflow: 'hidden'
-              }}>
-                {active.imageSrc ? (
-                  <img src={active.imageSrc} alt={active.author} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                ) : (
-null
-                )}
-              </div>
               <div>
                 <cite style={{
                   fontFamily: 'Inter, sans-serif',
@@ -3166,25 +3148,6 @@ null
                 duration: 0
               }} />
             </div>}
-            <div style={{
-              width: '38px',
-              height: '38px',
-              borderRadius: '50%',
-              background: `linear-gradient(135deg, ${t.accentColor}, ${t.accentColor}cc)`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-              opacity: activeIdx === i ? 1 : 0.45,
-              transition: 'opacity 0.35s ease',
-              overflow: 'hidden'
-            }}>
-              {t.imageSrc ? (
-                <img src={t.imageSrc} alt={t.author} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              ) : (
-null
-              )}
-            </div>
             <div style={{
               textAlign: 'left'
             }}>
