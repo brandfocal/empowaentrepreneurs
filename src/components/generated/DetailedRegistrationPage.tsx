@@ -2908,6 +2908,20 @@ export const DetailedRegistrationPage = () => {
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loadingText, setLoadingText] = useState('Submitting...');
+
+  useEffect(() => {
+    if (status === 'loading') {
+      const texts = ['Submitting...', 'Uploading data...', 'Processing details...', 'Securing application...', 'Almost there...'];
+      let i = 0;
+      setLoadingText(texts[0]);
+      const interval = setInterval(() => {
+        i = (i + 1) % texts.length;
+        setLoadingText(texts[i]);
+      }, 2500);
+      return () => clearInterval(interval);
+    }
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -3374,7 +3388,7 @@ export const DetailedRegistrationPage = () => {
                     {status === 'loading' ? (
                       <>
                         <div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-                        <span>Submitting...</span>
+                        <span>{loadingText}</span>
                       </>
                     ) : (
                       <span>Submit Registration</span>
