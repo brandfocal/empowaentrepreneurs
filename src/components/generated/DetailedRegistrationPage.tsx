@@ -719,6 +719,32 @@ const ApplyHeroSection = () => {
           gap: '10px',
           flexWrap: 'wrap'
         }}>
+            <motion.a href="#registration-form" onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('registration-form')?.scrollIntoView({ behavior: 'smooth' });
+            }} whileHover={{
+            scale: 1.04,
+            boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
+          }} whileTap={{
+            scale: 0.97
+          }} style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+            borderRadius: '44px',
+            padding: isMobile ? '13px 24px' : '16px 32px',
+            fontSize: '13px',
+            letterSpacing: '0.05em',
+            color: '#fff',
+            textDecoration: 'none',
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 600,
+            boxShadow: '0 8px 36px rgba(222,50,45,0.55)',
+            transition: 'box-shadow 0.3s ease'
+          }}>
+              <span>Start Registration</span><ArrowIconDark />
+            </motion.a>
           </motion.div>
         </div>
       </motion.div>
@@ -2786,7 +2812,7 @@ export const DetailedRegistrationPage = () => {
     <div className="w-full min-h-screen" style={{ background: '#141210' }}>
       <ApplyHeroSection />
       
-      <section style={{ padding: '80px 20px', background: '#141210' }}>
+      <section id="registration-form" style={{ padding: '80px 20px', background: '#141210' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', background: 'rgba(247,246,243,0.03)', border: '1px solid rgba(247,246,243,0.08)', padding: '40px', borderRadius: '20px' }}>
           <h2 style={{ fontFamily: 'Montserrat, sans-serif', color: '#F7F6F3', fontSize: '24px', marginBottom: '16px' }}>Detailed Registration Form</h2>
           <p style={{ fontFamily: 'Inter, sans-serif', color: 'rgba(247,246,243,0.5)', fontSize: '14px' }}>Form fields loading...</p>
