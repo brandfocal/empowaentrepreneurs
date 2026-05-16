@@ -195,7 +195,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                     </div>
                     <div>
                       <label htmlFor="modal-phone" style={labelStyle}>Cell Phone</label>
-                      <input id="modal-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+27 00 000 0000" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
+                      <input id="modal-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="011 000 0000" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                   </div>
 

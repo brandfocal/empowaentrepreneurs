@@ -2292,7 +2292,7 @@ const CtaBannerSection = () => {
                 </div>
                 <div>
                   <label style={FIELD_LABEL_STYLE}>Cell Phone</label>
-                  <input type="tel" placeholder="+27 00 000 0000" value={phone} onChange={e => setPhone(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  <input type="tel" placeholder="011 000 0000" value={phone} onChange={e => setPhone(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
                 </div>
 
                 <div>
