@@ -2861,6 +2861,8 @@ export const DetailedRegistrationPage = () => {
   const [step, setStep] = useState(1);
   const totalSteps = 6;
   const nextStep = () => {
+    const form = document.getElementById('detailed-reg-form') as HTMLFormElement;
+    if (form && !form.reportValidity()) return;
     setStep(s => Math.min(s + 1, totalSteps));
     window.scrollTo({ top: document.getElementById('registration-form')?.offsetTop || 0, behavior: 'smooth' });
   };
@@ -3024,7 +3026,7 @@ export const DetailedRegistrationPage = () => {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form id="detailed-reg-form" onSubmit={handleSubmit}>
               {status === 'error' && (
                 <div style={{ marginBottom: '32px', padding: '16px', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.2)', borderRadius: '12px', color: '#DE322D', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>
                   {errorMessage}

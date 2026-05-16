@@ -58,6 +58,8 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
   const [step, setStep] = useState(1);
   const totalSteps = 6;
   const nextStep = () => {
+    const form = document.getElementById('pitch-modal-form') as HTMLFormElement;
+    if (form && !form.reportValidity()) return;
     setStep(s => Math.min(s + 1, totalSteps));
     if (modalRef.current) modalRef.current.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -334,7 +336,7 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                     </div>
                   )}
                   
-                  <form onSubmit={handleSubmit}>
+                  <form id="pitch-modal-form" onSubmit={handleSubmit}>
                     {step === 1 && (
                       <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h4 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', marginBottom: '24px', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px' }}>Business Details</h4>
