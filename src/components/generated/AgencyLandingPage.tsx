@@ -2837,6 +2837,7 @@ type Testimonial = {
   role: string;
   company: string;
   avatarInitials: string;
+  imageSrc?: string;
   accentColor: string;
 };
 const TESTIMONIALS: Testimonial[] = [{
@@ -3055,7 +3056,7 @@ const TestimonialsSection = () => {
                 ease: [0.22, 1, 0.36, 1]
               }} style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: isMobile ? '15px' : 'clamp(16px, 1.5vw, 20px)',
+                fontSize: isMobile ? '13px' : 'clamp(14px, 1.2vw, 16px)',
                 lineHeight: '1.65',
                 color: 'rgba(247,246,243,0.88)',
                 margin: 0,
@@ -3090,15 +3091,20 @@ const TestimonialsSection = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexShrink: 0,
-                boxShadow: `0 4px 20px ${active.accentColor}55`
+                boxShadow: `0 4px 20px ${active.accentColor}55`,
+                overflow: 'hidden'
               }}>
-                <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  color: '#fff',
-                  letterSpacing: '0.04em'
-                }}>{active.avatarInitials}</span>
+                {active.imageSrc ? (
+                  <img src={active.imageSrc} alt={active.author} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : (
+                  <span style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    color: '#fff',
+                    letterSpacing: '0.04em'
+                  }}>{active.avatarInitials}</span>
+                )}
               </div>
               <div>
                 <cite style={{
@@ -3131,7 +3137,7 @@ const TestimonialsSection = () => {
           flexDirection: 'column',
           gap: '12px'
         }}>
-          {TESTIMONIALS.map((t, i) => <button key={t.id}  onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => {
+          {TESTIMONIALS.map((t, i) => <button key={t.id}  onClick={() => handleSelect(i)} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => {
             setIsPaused(false);
             lastTickRef.current = Date.now();
           }} style={{
@@ -3176,14 +3182,19 @@ const TestimonialsSection = () => {
               justifyContent: 'center',
               flexShrink: 0,
               opacity: activeIdx === i ? 1 : 0.45,
-              transition: 'opacity 0.35s ease'
+              transition: 'opacity 0.35s ease',
+              overflow: 'hidden'
             }}>
-              <span style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '11px',
-                fontWeight: 700,
-                color: '#fff'
-              }}>{t.avatarInitials}</span>
+              {t.imageSrc ? (
+                <img src={t.imageSrc} alt={t.author} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                <span style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  color: '#fff'
+                }}>{t.avatarInitials}</span>
+              )}
             </div>
             <div style={{
               textAlign: 'left'
