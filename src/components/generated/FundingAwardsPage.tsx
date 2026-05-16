@@ -263,47 +263,141 @@ const EVENT_OVERVIEW_ITEMS = [{
   label: 'OCCASION',
   value: 'Global Entrepreneurship Week 2026'
 }];
-const AWARD_CATEGORIES = [{
-  id: 'ac-1',
-  num: '01',
-  title: 'Venture Capital Excellence',
-  description: 'For firms scaling high-growth startups and disruptive technologies'
-}, {
-  id: 'ac-2',
-  num: '02',
-  title: 'Development Finance Impact',
-  description: 'Honouring DFIs deploying catalytic capital for infrastructure and SME growth'
-}, {
-  id: 'ac-3',
-  num: '03',
-  title: "Women's Economic Empowerment Fund",
-  description: 'Celebrating institutions advancing gender equity and financial inclusion'
-}, {
-  id: 'ac-4',
-  num: '04',
-  title: 'Enterprise & Supplier Development (ESD) Impact',
-  description: 'Recognizing sustainable supplier ecosystems and procurement inclusion'
-}, {
-  id: 'ac-5',
-  num: '05',
-  title: 'Impact Investment Excellence',
-  description: 'Measurable social and environmental returns alongside financial sustainability'
-}, {
-  id: 'ac-6',
-  num: '06',
-  title: 'Fintech & Digital Financial Inclusion',
-  description: 'Innovators expanding digital commerce and payment access'
-}, {
-  id: 'ac-7',
-  num: '07',
-  title: 'Entrepreneurship Education & Training Excellence',
-  description: 'Platforms driving world-class business training and innovation readiness'
-}, {
-  id: 'ac-8',
-  num: '08',
-  title: 'Township & Rural Economic Impact',
-  description: 'Intentional capital deployment into underserved rural economies'
-}];
+const AWARD_CATEGORIES = [
+  {
+    id: 'ac-1',
+    num: '01',
+    title: 'THE VENTURE CAPITAL EXCELLENCE AWARD™',
+    description: 'Recognising a venture capital firm that has demonstrated exceptional commitment to scaling high-growth startups, innovation-led enterprises, disruptive technologies, and founder ecosystems across Africa.',
+    focusAreas: 'Innovation capital | Scale-up funding | Startup acceleration | Market expansion | Founder enablement'
+  },
+  {
+    id: 'ac-2',
+    num: '02',
+    title: 'THE DEVELOPMENT FINANCE IMPACT AWARD™',
+    description: 'Honouring a DFI that has deployed catalytic capital to unlock inclusive economic growth, industrialisation, infrastructure development, youth employment, and entrepreneurial sustainability.',
+    focusAreas: 'Economic transformation | Public value creation | Strategic financing | SME growth | Development impact'
+  },
+  {
+    id: 'ac-3',
+    num: '03',
+    title: 'THE WOMEN’S ECONOMIC EMPOWERMENT FUND AWARD™',
+    description: 'Celebrating institutions and funds advancing women-led enterprises, gender equity, financial inclusion, and women’s participation within the mainstream economy.',
+    focusAreas: 'Women entrepreneurship | Gender inclusion | Access to capital | Leadership development | Economic participation'
+  },
+  {
+    id: 'ac-4',
+    num: '04',
+    title: 'THE ENTERPRISE & SUPPLIER DEVELOPMENT IMPACT AWARD™',
+    description: 'Recognising corporates and ESD funds building sustainable supplier ecosystems, black industrialists, township enterprises, and scalable SME value chains.',
+    focusAreas: 'Supplier development | Transformation | Procurement inclusion | SME incubation | Shared value creation'
+  },
+  {
+    id: 'ac-5',
+    num: '05',
+    title: 'THE IMPACT INVESTMENT EXCELLENCE AWARD™',
+    description: 'Awarded to an impact investment institution demonstrating measurable social, environmental, and economic returns alongside financial sustainability.',
+    focusAreas: 'ESG impact | Sustainability | Social innovation | Inclusive growth | Climate resilience'
+  },
+  {
+    id: 'ac-6',
+    num: '06',
+    title: 'THE ENTREPRENEURIAL FINANCING INNOVATION AWARD™',
+    description: 'Recognising financial institutions innovating access to credit, flexible lending models, alternative financing, and scalable entrepreneurial funding solutions.',
+    focusAreas: 'SME lending | Financial innovation | Access to finance | Credit inclusion | Growth capital'
+  },
+  {
+    id: 'ac-7',
+    num: '07',
+    title: 'THE PRIVATE EQUITY & EQUITY CAPITAL AWARD™',
+    description: 'Honouring investors and firms deploying strategic equity capital to scale transformative businesses and unlock long-term enterprise value.',
+    focusAreas: 'Business scaling | Strategic investment | Market growth | Capital expansion | Entrepreneurial acceleration'
+  },
+  {
+    id: 'ac-8',
+    num: '08',
+    title: 'THE BLENDED FINANCE & GRANT FUNDING EXCELLENCE AWARD™',
+    description: 'Recognising institutions successfully combining grant funding, concessional finance, private investment, and catalytic funding models to unlock scalable impact.',
+    focusAreas: 'Blended finance innovation | Catalytic funding | Development partnerships | Sustainable growth'
+  },
+  {
+    id: 'ac-9',
+    num: '09',
+    title: 'THE YOUTH ECONOMIC EMPOWERMENT FUND AWARD™',
+    description: 'Celebrating institutions investing meaningfully in youth entrepreneurship, future economy participation, skills development, startup ecosystems, and youth-led innovation.',
+    focusAreas: 'Youth entrepreneurship | Innovation ecosystems | Economic inclusion | Employment creation | Future economy readiness'
+  },
+  {
+    id: 'ac-10',
+    num: '10',
+    title: 'THE LONG-TERM CAPITAL COMMITMENT AWARD™',
+    description: 'Recognising institutions that have demonstrated sustained long-term commitment toward entrepreneurial funding, ecosystem development, and enterprise sustainability over multiple years.',
+    focusAreas: 'Legacy financing | Sustainable capital deployment | Ecosystem longevity | Long-term impact'
+  },
+  {
+    id: 'ac-11',
+    num: '11',
+    title: 'THE EMPOWAENTREPRENEURS LIFETIME ENTREPRENEURIAL LEGACY AWARD™',
+    description: 'The highest individual honour of the evening, recognising an iconic entrepreneur, investor, or business leader whose contribution has fundamentally shifted entrepreneurship, economic participation, and business leadership across Africa.',
+    focusAreas: 'Legacy | Nation-building | Entrepreneurial excellence | Economic leadership | Generational impact'
+  },
+  {
+    id: 'ac-12',
+    num: '12',
+    title: 'THE FINTECH & DIGITAL FINANCIAL INCLUSION AWARD™',
+    description: 'Recognising fintech innovators expanding entrepreneurial access to financial systems, payments, funding, and digital commerce.',
+    focusAreas: ''
+  },
+  {
+    id: 'ac-13',
+    num: '13',
+    title: 'THE AFRICAN ENTREPRENEURIAL ECOSYSTEM BUILDER AWARD™',
+    description: 'Celebrating institutions or leaders creating scalable entrepreneurial ecosystems through partnerships, incubation, networks, and market access.',
+    focusAreas: ''
+  },
+  {
+    id: 'ac-14',
+    num: '14',
+    title: 'THE TOWNSHIP & RURAL ECONOMIC IMPACT AWARD™',
+    description: 'Recognising funding institutions intentionally deploying capital into underserved township and rural economies.',
+    focusAreas: ''
+  },
+  {
+    id: 'ac-15',
+    num: '15',
+    title: 'THE CLIMATE & GREEN ECONOMY FINANCING AWARD™',
+    description: 'Honouring investment institutions driving climate innovation, renewable energy entrepreneurship, and green industrialisation.',
+    focusAreas: ''
+  },
+  {
+    id: 'ac-16',
+    num: '16',
+    title: 'THE CORPORATE PARTNERSHIP FOR ENTREPRENEURIAL IMPACT AWARD™',
+    description: 'Recognising a corporate brand demonstrating exceptional commitment toward entrepreneurship development, funding, procurement inclusion, and SME market access.',
+    focusAreas: ''
+  },
+  {
+    id: 'ac-17',
+    num: '17',
+    title: 'THE EMERGING FUND OF THE YEAR AWARD™',
+    description: 'Recognising a rising investment or funding institution demonstrating exceptional innovation and early-stage entrepreneurial impact.',
+    focusAreas: ''
+  },
+  {
+    id: 'ac-18',
+    num: '18',
+    title: 'THE ENTREPRENEURSHIP EDUCATION & TRAINING EXCELLENCE AWARD™',
+    description: 'Recognising institutions, SETAs, universities, incubators, academies, and leadership platforms driving entrepreneurial growth through world-class training, future-fit business capability, innovation readiness, and enterprise development programmes. This award honours organisations equipping entrepreneurs, founders, youth, women, and emerging enterprises with the strategic, commercial, digital, and leadership skills required to build scalable and sustainable businesses.',
+    focusAreas: 'Entrepreneurship Training | Enterprise Development | Skills Development | Founder Education | Innovation Readiness | SME Growth | Youth Empowerment | Leadership Development'
+  },
+  {
+    id: 'ac-19',
+    num: '19',
+    title: 'THE IMPACT FUNDS EXCELLENCE AWARD™',
+    description: 'Recognising impact funds and investment institutions deploying catalytic capital to drive measurable economic, social, environmental, and entrepreneurial impact while advancing inclusive and sustainable growth across Africa. This award honours organisations funding scalable businesses, innovations, and transformative solutions delivering both financial returns and meaningful societal progress.',
+    focusAreas: 'Impact Investing | ESG Leadership | Social Innovation | Inclusive Growth | Sustainable Development | Climate Resilience | Entrepreneurial Funding | Economic Transformation'
+  }
+];
 const EXPERIENCE_PILLARS = [{
   id: 'ep-1',
   num: '01',
@@ -1531,6 +1625,42 @@ const AwardsArchitectureSection = () => {
           }}>
                 {cat.description}
               </p>
+              {cat.focusAreas && (
+                <div style={{
+                  marginTop: '16px',
+                  paddingTop: '16px',
+                  borderTop: '1px solid rgba(247,246,243,0.08)'
+                }}>
+                  <div style={{
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '9px',
+                    fontWeight: 600,
+                    color: 'rgba(247,246,243,0.3)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    marginBottom: '8px'
+                  }}>Focus Areas</div>
+                  <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '6px'
+                  }}>
+                    {cat.focusAreas.split('|').map((fa, i) => (
+                      <span key={i} style={{
+                        background: 'rgba(222,50,45,0.08)',
+                        border: '1px solid rgba(222,50,45,0.15)',
+                        borderRadius: '4px',
+                        padding: '4px 8px',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '10px',
+                        color: 'rgba(247,246,243,0.65)',
+                      }}>
+                        {fa.trim()}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>)}
         </motion.div>
       </div>
