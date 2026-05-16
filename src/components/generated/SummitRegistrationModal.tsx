@@ -19,18 +19,58 @@ const ArrowIconDark = () => (
 );
 
 export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) => {
-  const [name, setName] = useState('');
-  const [org, setOrg] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [company, setCompany] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [jobTitle, setJobTitle] = useState('');
-  const [message, setMessage] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [yearsInBusiness, setYearsInBusiness] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [absaContact, setAbsaContact] = useState('');
+  
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   
   const { isMobile } = useBreakpoint();
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && email) setSubmitted(true);
+    if (!firstName || !lastName || !email) return;
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/4/submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          input_49_3: firstName,
+          input_49_6: lastName,
+          input_1: company,
+          input_27: phone,
+          input_25: email,
+          input_6: yearsInBusiness,
+          input_46: paymentMethod,
+          input_47: absaContact
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.is_valid) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        setErrorMessage(data.validation_messages ? Object.values(data.validation_messages).join(', ') : 'An error occurred during submission.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('error');
+      setErrorMessage('A network error occurred. Please try again.');
+    }
   };
   
   const inputStyle: React.CSSProperties = {
@@ -98,7 +138,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
           </button>
           
           <AnimatePresence mode="wait">
-            {!submitted ? (
+            {status !== 'success' ? (
               <motion.div key="modal-form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                 <div style={{ marginBottom: '32px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
@@ -113,38 +153,82 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                   </p>
                 </div>
                 
+                {status === 'error' && (
+                  <div style={{ marginBottom: '20px', padding: '12px', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.2)', borderRadius: '8px', color: '#DE322D', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>
+                    {errorMessage}
+                  </div>
+                )}
+                
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
                     <div>
-                      <label htmlFor="modal-name" style={labelStyle}>Full Name</label>
-                      <input id="modal-name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your full name" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                      <label htmlFor="modal-fname" style={labelStyle}>First Name</label>
+                      <input id="modal-fname" type="text" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="First Name" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                     <div>
-                      <label htmlFor="modal-org" style={labelStyle}>Company / Startup</label>
-                      <input id="modal-org" type="text" value={org} onChange={e => setOrg(e.target.value)} placeholder="Your company name" style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                      <label htmlFor="modal-lname" style={labelStyle}>Last Name</label>
+                      <input id="modal-lname" type="text" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Last Name" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                   </div>
+                  
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
                     <div>
                       <label htmlFor="modal-email" style={labelStyle}>Business Email</label>
-                      <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                      <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                     <div>
-                      <label htmlFor="modal-title" style={labelStyle}>Job Title</label>
-                      <input id="modal-title" type="text" value={jobTitle} onChange={e => setJobTitle(e.target.value)} placeholder="e.g. Founder, CEO" style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                      <label htmlFor="modal-phone" style={labelStyle}>Cell Phone</label>
+                      <input id="modal-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+27 00 000 0000" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="modal-requests" style={labelStyle}>Dietary / Special Requests</label>
-                    <textarea id="modal-requests" value={message} onChange={e => setMessage(e.target.value)} placeholder="Any specific requirements or comments..." rows={2} style={{ ...inputStyle, resize: 'none', lineHeight: '1.6' }} onFocus={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} />
+                  <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
+                    <div>
+                      <label htmlFor="modal-org" style={labelStyle}>Name of Company</label>
+                      <input id="modal-org" type="text" value={company} onChange={e => setCompany(e.target.value)} placeholder="Your company name" style={inputStyle} required onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
+                    </div>
+                    <div>
+                      <label htmlFor="modal-years" style={labelStyle}>Years in Business</label>
+                      <input id="modal-years" type="number" min="0" value={yearsInBusiness} onChange={e => setYearsInBusiness(e.target.value)} placeholder="e.g. 3" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
+                    </div>
                   </div>
-                  <motion.button type="submit" whileHover={{ scale: 1.03, boxShadow: '0 12px 40px rgba(222,50,45,0.6)' }} whileTap={{ scale: 0.97 }} style={{
+
+                  <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
+                    <div>
+                      <label htmlFor="modal-payment" style={labelStyle}>Payment Method</label>
+                      <div style={{ position: 'relative' }}>
+                        <select id="modal-payment" value={paymentMethod} onChange={e => setPaymentMethod(e.target.value)} required style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: paymentMethod ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
+                          <option value="" style={{ background: '#ffffff', color: '#141210' }}>Select payment</option>
+                          <option value="Credit Card" style={{background:'#ffffff',color:'#141210'}}>Credit Card</option>
+                          <option value="EFT" style={{background:'#ffffff',color:'#141210'}}>EFT</option>
+                        </select>
+                        <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <label htmlFor="modal-absa" style={labelStyle}>ABSA Small Business Services?</label>
+                      <div style={{ position: 'relative' }}>
+                        <select id="modal-absa" value={absaContact} onChange={e => setAbsaContact(e.target.value)} required style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: absaContact ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
+                          <option value="" style={{ background: '#ffffff', color: '#141210' }}>Yes or No</option>
+                          <option value="Yes" style={{background:'#ffffff',color:'#141210'}}>Yes, please contact me</option>
+                          <option value="No" style={{background:'#ffffff',color:'#141210'}}>No, thank you</option>
+                        </select>
+                        <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <motion.button type="submit" disabled={status === 'loading'} whileHover={status !== 'loading' ? { scale: 1.03, boxShadow: '0 12px 40px rgba(222,50,45,0.6)' } : {}} whileTap={status !== 'loading' ? { scale: 0.97 } : {}} style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
                     border: 'none', borderRadius: '44px', padding: '16px 32px', fontSize: '13px', letterSpacing: '0.05em', color: '#fff',
-                    fontFamily: 'Montserrat, sans-serif', fontWeight: 600, cursor: 'pointer', marginTop: '4px', boxShadow: '0 8px 32px rgba(222,50,45,0.45)'
+                    fontFamily: 'Montserrat, sans-serif', fontWeight: 600, cursor: status === 'loading' ? 'not-allowed' : 'pointer', marginTop: '4px', boxShadow: '0 8px 32px rgba(222,50,45,0.45)',
+                    opacity: status === 'loading' ? 0.7 : 1
                   }}>
-                    <span>Confirm Registration</span><ArrowIconDark />
+                    <span>{status === 'loading' ? 'Processing...' : 'Confirm Registration'}</span>{status !== 'loading' && <ArrowIconDark />}
                   </motion.button>
                 </form>
                 <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.2)', margin: '14px 0 0', letterSpacing: '0.02em' }}>By registering, you agree to our terms and conditions. We process your data securely.</p>
@@ -157,7 +241,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                 <div>
                   <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '22px', fontWeight: 600, letterSpacing: '-0.5px', color: '#F7F6F3', margin: '0 0 10px' }}>Registration Received</h3>
                   <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: 'rgba(247,246,243,0.45)', margin: 0, lineHeight: '1.7', maxWidth: '340px' }}>
-                    <span>{'Thank you, '}</span><strong style={{ color: 'rgba(247,246,243,0.75)' }}>{name}</strong><span>{'. Your registration has been received. We will be in touch with access and event details.'}</span>
+                    <span>{'Thank you, '}</span><strong style={{ color: 'rgba(247,246,243,0.75)' }}>{firstName}</strong><span>{'. Your registration has been received. We will be in touch with access and event details.'}</span>
                   </p>
                 </div>
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={onClose} style={{ marginTop: '8px', background: 'rgba(247,246,243,0.06)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '12px 28px', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', letterSpacing: '0.04em', color: 'rgba(247,246,243,0.55)', cursor: 'pointer' }}>Close</motion.button>
