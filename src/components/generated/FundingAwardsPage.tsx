@@ -1651,12 +1651,12 @@ const LifetimeLegacySection = () => {
             <div style={{
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
-              alignItems: 'flex-start',
+              alignItems: 'stretch',
               gap: isMobile ? '24px' : '40px'
             }}>
               <div style={{
-                width: isMobile ? '100px' : '140px',
-                height: isMobile ? '100px' : '140px',
+                width: isMobile ? '100%' : '260px',
+                minHeight: isMobile ? '300px' : 'auto',
                 borderRadius: '20px',
                 background: 'linear-gradient(135deg, #DE322D, #c42823)',
                 display: 'flex',
