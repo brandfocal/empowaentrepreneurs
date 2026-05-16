@@ -1,6 +1,29 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence, Variants } from 'framer-motion';
 
+
+const PlusSquareIconLight = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
+</svg>;
+
+const rotateFade = {
+  hidden: {
+    rotate: -12,
+    opacity: 0,
+    scale: 0.7
+  },
+  visible: (delay = 0) => ({
+    rotate: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      delay,
+      ease: [0.22, 1, 0.36, 1] as const
+    }
+  })
+};
+
 // --- Data ---
 
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -526,12 +549,12 @@ export const SpecialisedPackagesSection: React.FC = () => {
         gap: '64px',
         alignItems: 'flex-end'
       }}>
-          <motion.h1 variants={headerVariants} initial="hidden" animate={isHeaderInView ? 'visible' : 'hidden'} custom={0.1} style={{
-          fontFamily: 'Inter, sans-serif',
+          <motion.h2 variants={headerVariants} initial="hidden" animate={isHeaderInView ? 'visible' : 'hidden'} custom={0.1} style={{
+          fontFamily: 'Montserrat, sans-serif',
           fontWeight: 200,
-          fontSize: 'clamp(44px, 5.5vw, 72px)',
-          letterSpacing: '-3px',
-          lineHeight: 0.98,
+          fontSize: 'clamp(36px, 4vw, 58px)',
+          letterSpacing: '-2px',
+          lineHeight: 1.04,
           color: '#F7F6F3',
           margin: 0
         }}>
@@ -551,7 +574,7 @@ export const SpecialisedPackagesSection: React.FC = () => {
             color: 'rgba(247,246,243,0.12)',
             fontWeight: 300
           }}>{'One summit.'}</span>
-          </motion.h1>
+          </motion.h2>
 
           <motion.p variants={headerVariants} initial="hidden" animate={isHeaderInView ? 'visible' : 'hidden'} custom={0.22} style={{
           fontFamily: 'Inter, sans-serif',
