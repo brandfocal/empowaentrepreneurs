@@ -1,4 +1,5 @@
 import { LogoBanner } from './AgencyComponents';
+import { StrategicOfferingsSection } from './StrategicOfferingsSection';
 import { AfricaExpansionRoadmap } from './AfricaExpansionRoadmap';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
@@ -1996,7 +1997,7 @@ export const StrategicAdvisoryPage = () => {
       <HeroSection />
       <LogoBanner />
       <IntroSection />
-      <OfferingsSection />
+      <StrategicOfferingsSection />
       <EdgeSection />
       <AfricaExpansionRoadmap />
       <ValueSection />
