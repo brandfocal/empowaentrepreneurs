@@ -1948,7 +1948,7 @@ const CtaBannerSection = () => {
         }
       } else {
         setStatus('error');
-        setErrorMessage(data.validation_messages ? Object.values(data.validation_messages).join(', ') : 'An error occurred during submission.');
+        setErrorMessage(data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => `[Field ${k}]: ${v}`).join(' | ') : 'An error occurred during submission.');
       }
     } catch (error) {
       console.error('Submission error:', error);
