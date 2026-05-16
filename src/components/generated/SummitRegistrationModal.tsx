@@ -64,6 +64,11 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
 
       if (data.is_valid) {
         setStatus('success');
+        if (paymentMethod === 'Credit Card') {
+          setTimeout(() => {
+            window.location.href = 'https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/?preview=t';
+          }, 2500);
+        }
       } else {
         setStatus('error');
         setErrorMessage(data.validation_messages ? Object.values(data.validation_messages).join(', ') : 'An error occurred during submission.');
@@ -261,7 +266,11 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                 <div>
                   <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '22px', fontWeight: 600, letterSpacing: '-0.5px', color: '#F7F6F3', margin: '0 0 10px' }}>Registration Received</h3>
                   <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: 'rgba(247,246,243,0.45)', margin: 0, lineHeight: '1.7', maxWidth: '340px' }}>
-                    <span>{'Thank you, '}</span><strong style={{ color: 'rgba(247,246,243,0.75)' }}>{firstName}</strong><span>{'. Your registration has been received. We will be in touch with access and event details.'}</span>
+                    <span>{'Thank you, '}</span><strong style={{ color: 'rgba(247,246,243,0.75)' }}>{firstName}</strong>
+                    {paymentMethod === 'Credit Card' 
+                      ? <span>{'. You are now being redirected to Quicket to complete your ticket purchase...'}</span>
+                      : <span>{'. Your registration has been received. We will be in touch with your invoice and event details.'}</span>
+                    }
                   </p>
                 </div>
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={onClose} style={{ marginTop: '8px', background: 'rgba(247,246,243,0.06)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '12px 28px', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', letterSpacing: '0.04em', color: 'rgba(247,246,243,0.55)', cursor: 'pointer' }}>Close</motion.button>
