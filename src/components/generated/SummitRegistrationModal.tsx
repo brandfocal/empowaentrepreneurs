@@ -26,6 +26,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
   const [email, setEmail] = useState('');
   const [yearsInBusiness, setYearsInBusiness] = useState('');
   const [pitching, setPitching] = useState('');
+  const [ticketQuantity, setTicketQuantity] = useState('1');
   const [paymentMethod, setPaymentMethod] = useState('');
   const [absaContact, setAbsaContact] = useState('');
   
@@ -55,6 +56,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
           input_25: email,
           input_6: yearsInBusiness,
           input_44: pitching,
+          input_45: ticketQuantity,
           input_46: paymentMethod,
           input_47: absaContact
         }),
@@ -191,9 +193,13 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
-                    <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2' }}>
+                    <div>
                       <label htmlFor="modal-org" style={labelStyle}>Name of Company</label>
                       <input id="modal-org" type="text" value={company} onChange={e => setCompany(e.target.value)} placeholder="Your company name" style={inputStyle} required onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
+                    </div>
+                    <div>
+                      <label htmlFor="modal-tickets" style={labelStyle}>Number of Tickets (R1,250.00 each)</label>
+                      <input id="modal-tickets" type="number" min="1" value={ticketQuantity} onChange={e => setTicketQuantity(e.target.value)} required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                   </div>
 
