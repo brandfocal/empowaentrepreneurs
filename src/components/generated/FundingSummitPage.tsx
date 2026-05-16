@@ -1895,6 +1895,67 @@ const CtaBannerSection = () => {
   const hPad = isMobile ? '0 20px' : isTablet ? '0 40px' : '0 64px';
   const magneticReg = useMagnetic(0.28);
   const [activeForm, setActiveForm] = useState<string | null>('cta-b1');
+  
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [company, setCompany] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [yearsInBusiness, setYearsInBusiness] = useState('');
+  const [pitching, setPitching] = useState('');
+  const [ticketQuantity, setTicketQuantity] = useState('1');
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [absaContact, setAbsaContact] = useState('');
+  
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!firstName || !lastName || !email) return;
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/4/submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          input_49_3: firstName,
+          input_49_6: lastName,
+          input_1: company,
+          input_27: phone,
+          input_25: email,
+          input_6: yearsInBusiness,
+          input_44: pitching,
+          input_45: ticketQuantity,
+          input_46: paymentMethod,
+          input_47: absaContact
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.is_valid) {
+        setStatus('success');
+        if (paymentMethod === 'Credit Card') {
+          setTimeout(() => {
+            window.location.href = 'https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/?preview=t';
+          }, 2500);
+        }
+      } else {
+        setStatus('error');
+        setErrorMessage(data.validation_messages ? Object.values(data.validation_messages).join(', ') : 'An error occurred during submission.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('error');
+      setErrorMessage('A network error occurred. Please try again.');
+    }
+  };
   const CTA_STATS = [{
     id: 'cs-1',
     label: 'Summit Date',
@@ -2185,30 +2246,110 @@ const CtaBannerSection = () => {
             fontFamily: 'Inter, sans-serif',
             fontSize: '13px',
             color: 'rgba(247,246,243,0.5)',
-            margin: '0'
+            margin: '0 0 20px'
           }}>Secure your seat at EmpowaEntrepreneurs Funding Summit 2026</p>
-          <form onSubmit={e => e.preventDefault()} style={formGridStyle}>
-            <div><label style={FIELD_LABEL_STYLE}><span>Full Name</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Email Address</span></label><input type="email" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Phone Number</span></label><input type="tel" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Organisation</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div><label style={FIELD_LABEL_STYLE}><span>Role / Title</span></label><input type="text" style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} /></div>
-            <div>
-              <label style={FIELD_LABEL_STYLE}><span>How did you hear about us?</span></label>
-              <select style={{
-                ...FIELD_INPUT_STYLE,
-                appearance: 'none',
-                cursor: 'pointer'
-              }} onFocus={handleFocus} onBlur={handleBlur}>
-                <option value="" style={{ color: '#141210', background: '#fff' }}>Select…</option>
-                <option value="social" style={{ color: '#141210', background: '#fff' }}>Social Media</option>
-                <option value="referral" style={{ color: '#141210', background: '#fff' }}>Referral</option>
-                <option value="newsletter" style={{ color: '#141210', background: '#fff' }}>Newsletter</option>
-                <option value="other" style={{ color: '#141210', background: '#fff' }}>Other</option>
-              </select>
+
+          {status === 'success' ? (
+            <div style={{ padding: '24px 0', textAlign: 'center' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                <svg width="18" height="13" viewBox="0 0 22 16" fill="none"><path d="M1 8L8 15L21 1" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </div>
+              <h4 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 8px' }}>Registration Received</h4>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(247,246,243,0.5)', margin: 0 }}>
+                {paymentMethod === 'Credit Card' 
+                  ? 'Thank you! Redirecting you to Quicket to complete your ticket purchase...'
+                  : 'Thank you! We will be in touch with your invoice and event details.'}
+              </p>
             </div>
-            <button type="submit" style={SUBMIT_BTN_STYLE}><span>Complete Registration</span></button>
-          </form>
+          ) : (
+            <>
+              {status === 'error' && (
+                <div style={{ marginBottom: '20px', padding: '12px', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.2)', borderRadius: '8px', color: '#DE322D', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>
+                  {errorMessage}
+                </div>
+              )}
+              <form onSubmit={handleSubmit} style={formGridStyle}>
+                <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2' }}>
+                  <label style={{...FIELD_LABEL_STYLE, marginBottom: '0'}}>Name of Owner</label>
+                </div>
+                <div>
+                  <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                </div>
+                <div>
+                  <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                </div>
+
+                <div>
+                  <label style={FIELD_LABEL_STYLE}>Email</label>
+                  <input type="email" placeholder="info@empowaentrepreneurs.co.za" value={email} onChange={e => setEmail(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                </div>
+                <div>
+                  <label style={FIELD_LABEL_STYLE}>Cell Phone</label>
+                  <input type="tel" placeholder="+27 00 000 0000" value={phone} onChange={e => setPhone(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                </div>
+
+                <div>
+                  <label style={FIELD_LABEL_STYLE}>Name of Company</label>
+                  <input type="text" placeholder="Your company name" value={company} onChange={e => setCompany(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                </div>
+                <div>
+                  <label style={FIELD_LABEL_STYLE}>Number of Tickets (R1,250.00 each)</label>
+                  <input type="number" min="1" placeholder="e.g. 2" value={ticketQuantity} onChange={e => setTicketQuantity(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                </div>
+
+                <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '16px', paddingTop: '8px' }}>
+                  <div>
+                    <label style={{...FIELD_LABEL_STYLE, marginBottom: '10px'}}>Years in Business</label>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {['1-5', '5-10', '10+'].map(option => (
+                        <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
+                          <input type="radio" name="yearsInBusiness-cta" value={option} checked={yearsInBusiness === option} onChange={e => setYearsInBusiness(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', width: '15px', height: '15px', cursor: 'pointer', margin: 0 }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label style={{...FIELD_LABEL_STYLE, marginBottom: '10px', textTransform: 'none', letterSpacing: '0.02em', fontSize: '11px', color: '#F7F6F3', fontWeight: 500}}>I would like to pitch at the EmpowaEntrepreneurs Pitching Festival</label>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
+                          <input type="radio" name="pitching-cta" value={option} checked={pitching === option} onChange={e => setPitching(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', width: '15px', height: '15px', cursor: 'pointer', margin: 0 }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label style={{...FIELD_LABEL_STYLE, marginBottom: '10px'}}>Payment Method</label>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {['EFT (Generate Invoice)', 'Credit Card'].map(option => (
+                        <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
+                          <input type="radio" name="paymentMethod-cta" value={option} checked={paymentMethod === option} onChange={e => setPaymentMethod(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', width: '15px', height: '15px', cursor: 'pointer', margin: 0 }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label style={{...FIELD_LABEL_STYLE, marginBottom: '10px', textTransform: 'none', letterSpacing: '0.02em', fontSize: '11px', color: '#F7F6F3', fontWeight: 500}}>Would you like ABSA to contact you concerning your Small Business Services?</label>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
+                          <input type="radio" name="absaContact-cta" value={option} checked={absaContact === option} onChange={e => setAbsaContact(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', width: '15px', height: '15px', cursor: 'pointer', margin: 0 }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" disabled={status === 'loading'} style={{...SUBMIT_BTN_STYLE, opacity: status === 'loading' ? 0.7 : 1, cursor: status === 'loading' ? 'not-allowed' : 'pointer'}}>
+                  <span>{status === 'loading' ? 'Processing...' : 'Complete Registration'}</span>
+                </button>
+              </form>
+            </>
+          )}
         </motion.div>}
       </AnimatePresence>
 
