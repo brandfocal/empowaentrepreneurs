@@ -25,6 +25,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [yearsInBusiness, setYearsInBusiness] = useState('');
+  const [pitching, setPitching] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
   const [absaContact, setAbsaContact] = useState('');
   
@@ -53,6 +54,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
           input_27: phone,
           input_25: email,
           input_6: yearsInBusiness,
+          input_44: pitching,
           input_46: paymentMethod,
           input_47: absaContact
         }),
@@ -184,43 +186,58 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
-                    <div>
+                    <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2' }}>
                       <label htmlFor="modal-org" style={labelStyle}>Name of Company</label>
                       <input id="modal-org" type="text" value={company} onChange={e => setCompany(e.target.value)} placeholder="Your company name" style={inputStyle} required onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
-                    <div>
-                      <label htmlFor="modal-years" style={labelStyle}>Years in Business</label>
-                      <input id="modal-years" type="number" min="0" value={yearsInBusiness} onChange={e => setYearsInBusiness(e.target.value)} placeholder="e.g. 3" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
-                    </div>
                   </div>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
-                      <div>
-                        <label htmlFor="modal-payment" style={labelStyle}>Payment Method</label>
-                        <div style={{ position: 'relative' }}>
-                          <select id="modal-payment" value={paymentMethod} onChange={e => setPaymentMethod(e.target.value)} required style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: paymentMethod ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
-                            <option value="" style={{ background: '#ffffff', color: '#141210' }}>Select payment</option>
-                            <option value="Credit Card" style={{background:'#ffffff',color:'#141210'}}>Credit Card</option>
-                            <option value="EFT" style={{background:'#ffffff',color:'#141210'}}>EFT</option>
-                          </select>
-                          <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                          </div>
-                        </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '20px', padding: '8px 0' }}>
+                    <div>
+                      <label style={{...labelStyle, marginBottom: '10px'}}>Years in Business</label>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        {['1-5', '5-10', '10+'].map(option => (
+                          <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
+                            <input type="radio" name="yearsInBusiness" value={option} checked={yearsInBusiness === option} onChange={e => setYearsInBusiness(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', width: '15px', height: '15px', cursor: 'pointer', margin: 0 }} />
+                            {option}
+                          </label>
+                        ))}
                       </div>
                     </div>
+                    
                     <div>
-                      <label htmlFor="modal-absa" style={{...labelStyle, textTransform: 'none', fontSize: '12px', letterSpacing: '0.02em', marginBottom: '10px', color: '#F7F6F3', fontWeight: 400}}>Would you like ABSA to contact you concerning your Small Business Services?</label>
-                      <div style={{ position: 'relative' }}>
-                        <select id="modal-absa" value={absaContact} onChange={e => setAbsaContact(e.target.value)} required style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: absaContact ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
-                          <option value="" style={{ background: '#ffffff', color: '#141210' }}>Yes or No</option>
-                          <option value="Yes" style={{background:'#ffffff',color:'#141210'}}>Yes</option>
-                          <option value="No" style={{background:'#ffffff',color:'#141210'}}>No</option>
-                        </select>
-                        <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                        </div>
+                      <label style={{...labelStyle, marginBottom: '10px', textTransform: 'none', letterSpacing: '0.02em', fontSize: '11px', color: '#F7F6F3', fontWeight: 500}}>I would like to pitch at the EmpowaEntrepreneurs Pitching Festival</label>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        {['Yes', 'No'].map(option => (
+                          <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
+                            <input type="radio" name="pitching" value={option} checked={pitching === option} onChange={e => setPitching(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', width: '15px', height: '15px', cursor: 'pointer', margin: 0 }} />
+                            {option}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{...labelStyle, marginBottom: '10px'}}>Payment Method</label>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        {['EFT (Generate Invoice)', 'Credit Card'].map(option => (
+                          <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
+                            <input type="radio" name="paymentMethod" value={option} checked={paymentMethod === option} onChange={e => setPaymentMethod(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', width: '15px', height: '15px', cursor: 'pointer', margin: 0 }} />
+                            {option}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{...labelStyle, marginBottom: '10px', textTransform: 'none', letterSpacing: '0.02em', fontSize: '11px', color: '#F7F6F3', fontWeight: 500}}>Would you like ABSA to contact you concerning your Small Business Services?</label>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        {['Yes', 'No'].map(option => (
+                          <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
+                            <input type="radio" name="absaContact" value={option} checked={absaContact === option} onChange={e => setAbsaContact(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', width: '15px', height: '15px', cursor: 'pointer', margin: 0 }} />
+                            {option}
+                          </label>
+                        ))}
                       </div>
                     </div>
                   </div>
