@@ -161,19 +161,20 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                 
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
+                    <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2' }}>
+                      <label style={{...labelStyle, marginBottom: '0'}}>Name of Owner</label>
+                    </div>
                     <div>
-                      <label htmlFor="modal-fname" style={labelStyle}>First Name</label>
                       <input id="modal-fname" type="text" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="First Name" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                     <div>
-                      <label htmlFor="modal-lname" style={labelStyle}>Last Name</label>
                       <input id="modal-lname" type="text" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Last Name" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                   </div>
                   
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
                     <div>
-                      <label htmlFor="modal-email" style={labelStyle}>Business Email</label>
+                      <label htmlFor="modal-email" style={labelStyle}>Email</label>
                       <input id="modal-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="info@empowaentrepreneurs.co.za" required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                     <div>
@@ -193,27 +194,29 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                     </div>
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
-                    <div>
-                      <label htmlFor="modal-payment" style={labelStyle}>Payment Method</label>
-                      <div style={{ position: 'relative' }}>
-                        <select id="modal-payment" value={paymentMethod} onChange={e => setPaymentMethod(e.target.value)} required style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: paymentMethod ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
-                          <option value="" style={{ background: '#ffffff', color: '#141210' }}>Select payment</option>
-                          <option value="Credit Card" style={{background:'#ffffff',color:'#141210'}}>Credit Card</option>
-                          <option value="EFT" style={{background:'#ffffff',color:'#141210'}}>EFT</option>
-                        </select>
-                        <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '13px' }}>
+                      <div>
+                        <label htmlFor="modal-payment" style={labelStyle}>Payment Method</label>
+                        <div style={{ position: 'relative' }}>
+                          <select id="modal-payment" value={paymentMethod} onChange={e => setPaymentMethod(e.target.value)} required style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: paymentMethod ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
+                            <option value="" style={{ background: '#ffffff', color: '#141210' }}>Select payment</option>
+                            <option value="Credit Card" style={{background:'#ffffff',color:'#141210'}}>Credit Card</option>
+                            <option value="EFT" style={{background:'#ffffff',color:'#141210'}}>EFT</option>
+                          </select>
+                          <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="modal-absa" style={labelStyle}>ABSA Small Business Services?</label>
+                      <label htmlFor="modal-absa" style={{...labelStyle, textTransform: 'none', fontSize: '12px', letterSpacing: '0.02em', marginBottom: '10px', color: '#F7F6F3', fontWeight: 400}}>Would you like ABSA to contact you concerning your Small Business Services?</label>
                       <div style={{ position: 'relative' }}>
                         <select id="modal-absa" value={absaContact} onChange={e => setAbsaContact(e.target.value)} required style={{ ...inputStyle, appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', paddingRight: '40px', color: absaContact ? '#F7F6F3' : 'rgba(247,246,243,0.3)' }} onFocus={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLSelectElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'}>
                           <option value="" style={{ background: '#ffffff', color: '#141210' }}>Yes or No</option>
-                          <option value="Yes" style={{background:'#ffffff',color:'#141210'}}>Yes, please contact me</option>
-                          <option value="No" style={{background:'#ffffff',color:'#141210'}}>No, thank you</option>
+                          <option value="Yes" style={{background:'#ffffff',color:'#141210'}}>Yes</option>
+                          <option value="No" style={{background:'#ffffff',color:'#141210'}}>No</option>
                         </select>
                         <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="rgba(247,246,243,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
