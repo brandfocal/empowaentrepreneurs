@@ -2784,8 +2784,6 @@ const SiteFooter = () => {
 export const DetailedRegistrationPage = () => {
   return (
     <div className="w-full min-h-screen" style={{ background: '#141210' }}>
-      <ScrollProgressBar />
-      <StickyNav />
       <ApplyHeroSection />
       
       <section style={{ padding: '80px 20px', background: '#141210' }}>
@@ -2795,8 +2793,6 @@ export const DetailedRegistrationPage = () => {
           {/* Form will go here once fields are provided */}
         </div>
       </section>
-
-      <SiteFooter />
     </div>
   );
 };
