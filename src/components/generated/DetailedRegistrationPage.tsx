@@ -2806,17 +2806,505 @@ const SiteFooter = () => {
     </footer>;
 };
 
-// ─── ApplyToAttendPage ─────────────────────────────────────────────────────────
+const FIELD_LABEL_STYLE: React.CSSProperties = {
+  display: 'block',
+  fontFamily: 'Montserrat, sans-serif',
+  fontSize: '11px',
+  letterSpacing: '0.14em',
+  textTransform: 'uppercase',
+  color: 'rgba(247,246,243,0.45)',
+  marginBottom: '8px',
+  fontWeight: 600
+};
+
+const FIELD_INPUT_STYLE: React.CSSProperties = {
+  width: '100%',
+  background: 'rgba(247,246,243,0.03)',
+  border: '1px solid rgba(247,246,243,0.08)',
+  borderRadius: '8px',
+  padding: '14px 16px',
+  color: '#F7F6F3',
+  fontFamily: 'Inter, sans-serif',
+  fontSize: '14px',
+  boxSizing: 'border-box',
+  outline: 'none',
+  transition: 'border-color 0.2s'
+};
+
+const handleFocus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  e.target.style.borderColor = 'rgba(222,50,45,0.45)';
+};
+
+const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  e.target.style.borderColor = 'rgba(247,246,243,0.08)';
+};
+
+const RADIO_GRID_STYLE: React.CSSProperties = {
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: '12px'
+};
+
+const RADIO_LABEL_STYLE: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+  fontFamily: 'Inter, sans-serif',
+  fontSize: '13px',
+  color: '#F7F6F3',
+  cursor: 'pointer'
+};
+
 export const DetailedRegistrationPage = () => {
+  const { isMobile } = useBreakpoint();
+  
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [age, setAge] = useState('');
+  const [race, setRace] = useState('');
+  const [gender, setGender] = useState('');
+  const [dob, setDob] = useState('');
+  const [identityNumber, setIdentityNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [province, setProvince] = useState('');
+  const [hearAboutUs, setHearAboutUs] = useState('');
+  const [saCitizen, setSaCitizen] = useState('');
+  const [newsletter, setNewsletter] = useState(false);
+  const [businessName, setBusinessName] = useState('');
+  const [ownBusiness, setOwnBusiness] = useState('');
+  const [registeredTrading, setRegisteredTrading] = useState('');
+  const [registrationNumber, setRegistrationNumber] = useState('');
+  const [businessStartDate, setBusinessStartDate] = useState('');
+  const [hasWebsite, setHasWebsite] = useState('');
+  const [past6MonthsTurnover, setPast6MonthsTurnover] = useState('');
+  const [averageMonthlyTurnover, setAverageMonthlyTurnover] = useState('');
+  const [fullTimeStaff, setFullTimeStaff] = useState('');
+  const [partTimeStaff, setPartTimeStaff] = useState('');
+  const [staffCompliment, setStaffCompliment] = useState('');
+  const [financialsAvailable, setFinancialsAvailable] = useState('');
+  const [businessPartners, setBusinessPartners] = useState('');
+  const [businessIsDoes, setBusinessIsDoes] = useState('');
+  const [businessDifferent, setBusinessDifferent] = useState('');
+  const [biggestChallenge, setBiggestChallenge] = useState('');
+  const [spend100k, setSpend100k] = useState('');
+  const [biggestObstacle, setBiggestObstacle] = useState('');
+  const [empowaContact, setEmpowaContact] = useState('');
+  const [absaContact, setAbsaContact] = useState('');
+  const [consent, setConsent] = useState('');
+
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!firstName || !lastName || !email || !consent) {
+      setErrorMessage('Please fill out all required fields.');
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/3/submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          input_3_3: firstName,
+          input_3_6: lastName,
+          input_45: age,
+          input_53: race,
+          input_55: gender,
+          input_47: dob,
+          input_48: identityNumber,
+          input_25: email,
+          input_4: phone,
+          input_54: province,
+          input_50: hearAboutUs,
+          input_51: saCitizen,
+          input_52_1: newsletter ? 'Yes' : '',
+          input_56: businessName,
+          input_57: ownBusiness,
+          input_6: registeredTrading,
+          input_31: registrationNumber,
+          input_59: businessStartDate,
+          input_60: hasWebsite,
+          input_58: past6MonthsTurnover,
+          input_61: averageMonthlyTurnover,
+          input_62: fullTimeStaff,
+          input_63: partTimeStaff,
+          input_35: staffCompliment,
+          input_36: financialsAvailable,
+          input_64: businessPartners,
+          input_40: businessIsDoes,
+          input_68: businessDifferent,
+          input_67: biggestChallenge,
+          input_66: spend100k,
+          input_69: biggestObstacle,
+          input_18: empowaContact,
+          input_70: absaContact,
+          input_44: consent
+        }),
+      });
+
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        const text = await response.text();
+        console.error('Failed to parse JSON. Server returned:', text);
+        throw new Error('Server returned invalid JSON. Check console.');
+      }
+
+      if (data.is_valid) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        setErrorMessage(data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => `[Field ${k}]: ${v}`).join(' | ') : 'An error occurred during submission.');
+      }
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      setStatus('error');
+      setErrorMessage(error.message || 'A network error occurred. Please try again.');
+    }
+  };
+
+  const formGridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+    gap: '24px',
+    marginTop: '32px'
+  };
+
   return (
     <div className="w-full min-h-screen" style={{ background: '#141210' }}>
+      <style>{`
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+      `}</style>
       <ApplyHeroSection />
       
-      <section id="registration-form" style={{ padding: '80px 20px', background: '#141210' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', background: 'rgba(247,246,243,0.03)', border: '1px solid rgba(247,246,243,0.08)', padding: '40px', borderRadius: '20px' }}>
-          <h2 style={{ fontFamily: 'Montserrat, sans-serif', color: '#F7F6F3', fontSize: '24px', marginBottom: '16px' }}>Detailed Registration Form</h2>
-          <p style={{ fontFamily: 'Inter, sans-serif', color: 'rgba(247,246,243,0.5)', fontSize: '14px' }}>Form fields loading...</p>
-          {/* Form will go here once fields are provided */}
+      <section id="registration-form" style={{ padding: isMobile ? '60px 20px' : '100px 20px', background: '#141210' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'rgba(247,246,243,0.03)', border: '1px solid rgba(247,246,243,0.08)', padding: isMobile ? '32px 20px' : '64px', borderRadius: '24px' }}>
+          <div style={{ marginBottom: '40px', textAlign: 'center' }}>
+            <h2 style={{ fontFamily: 'Montserrat, sans-serif', color: '#F7F6F3', fontSize: isMobile ? '28px' : '36px', fontWeight: 300, letterSpacing: '-1px', marginBottom: '16px' }}>Detailed Registration</h2>
+            <p style={{ fontFamily: 'Inter, sans-serif', color: 'rgba(247,246,243,0.5)', fontSize: '15px', lineHeight: 1.6, maxWidth: '600px', margin: '0 auto' }}>Please provide complete and accurate information. This data will be used to process your application for the EmpowaEntrepreneurs Funding Summit 2026.</p>
+          </div>
+          
+          {status === 'success' ? (
+            <div style={{ padding: '40px 0', textAlign: 'center' }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px' }}>
+                <svg width="24" height="18" viewBox="0 0 22 16" fill="none"><path d="M1 8L8 15L21 1" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </div>
+              <h4 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '24px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 12px' }}>Registration Submitted</h4>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(247,246,243,0.5)', margin: 0, maxWidth: '400px', marginInline: 'auto' }}>
+                Thank you! Your detailed registration has been successfully received. We will be in touch with further updates regarding your application.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              {status === 'error' && (
+                <div style={{ marginBottom: '32px', padding: '16px', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.2)', borderRadius: '12px', color: '#DE322D', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>
+                  {errorMessage}
+                </div>
+              )}
+
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Personal Information</h3>
+                <div style={formGridStyle}>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>First Name</label>
+                    <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Last Name</label>
+                    <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Age</label>
+                    <input type="number" value={age} onChange={e => setAge(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Date of Birth</label>
+                    <input type="date" value={dob} onChange={e => setDob(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Race</label>
+                    <select value={race} onChange={e => setRace(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'}>
+                      <option value="">Select an option</option>
+                      <option value="African">African</option>
+                      <option value="Asian">Asian</option>
+                      <option value="Coloured">Coloured</option>
+                      <option value="Indian">Indian</option>
+                      <option value="White">White</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Gender</label>
+                    <select value={gender} onChange={e => setGender(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'}>
+                      <option value="">Select an option</option>
+                      <option value="Female">Female</option>
+                      <option value="Male">Male</option>
+                      <option value="Non-binary">Non-binary</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Identity Number</label>
+                    <input type="text" value={identityNumber} onChange={e => setIdentityNumber(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Are you a South African citizen?</label>
+                    <div style={RADIO_GRID_STYLE}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={RADIO_LABEL_STYLE}>
+                          <input type="radio" name="saCitizen" value={option} checked={saCitizen === option} onChange={e => setSaCitizen(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer' }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Contact Details</h3>
+                <div style={formGridStyle}>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Email Address</label>
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Cellphone Number</label>
+                    <input type="tel" value={phone} placeholder="011 000 0000" onChange={e => setPhone(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Where do you live?</label>
+                    <select value={province} onChange={e => setProvince(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'}>
+                      <option value="">Select an option</option>
+                      <option value="Eastern Cape">Eastern Cape</option>
+                      <option value="Free State">Free State</option>
+                      <option value="Gauteng">Gauteng</option>
+                      <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                      <option value="Limpopo">Limpopo</option>
+                      <option value="Mpumalanga">Mpumalanga</option>
+                      <option value="Northern Cape">Northern Cape</option>
+                      <option value="North West">North West</option>
+                      <option value="Western Cape">Western Cape</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Where did you hear about us?</label>
+                    <select value={hearAboutUs} onChange={e => setHearAboutUs(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'}>
+                      <option value="">Select an option</option>
+                      <option value="Google">Google</option>
+                      <option value="Facebook">Facebook</option>
+                      <option value="Instagram">Instagram</option>
+                      <option value="LinkedIn">LinkedIn</option>
+                      <option value="X">X</option>
+                    </select>
+                  </div>
+                  <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2' }}>
+                    <label style={RADIO_LABEL_STYLE}>
+                      <input type="checkbox" checked={newsletter} onChange={e => setNewsletter(e.target.checked)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer', width: '16px', height: '16px' }} />
+                      I would like to subscribe to the EmpowaEntrepreneurs newsletter
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Business Profile</h3>
+                <div style={formGridStyle}>
+                  <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2' }}>
+                    <label style={FIELD_LABEL_STYLE}>Name of your business</label>
+                    <input type="text" value={businessName} onChange={e => setBusinessName(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Is it your own business?</label>
+                    <div style={RADIO_GRID_STYLE}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={RADIO_LABEL_STYLE}>
+                          <input type="radio" name="ownBusiness" value={option} checked={ownBusiness === option} onChange={e => setOwnBusiness(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer' }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Is your business registered and trading?</label>
+                    <div style={RADIO_GRID_STYLE}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={RADIO_LABEL_STYLE}>
+                          <input type="radio" name="registeredTrading" value={option} checked={registeredTrading === option} onChange={e => setRegisteredTrading(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer' }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Registration number</label>
+                    <input type="text" value={registrationNumber} onChange={e => setRegistrationNumber(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>When did you start your business?</label>
+                    <input type="date" value={businessStartDate} onChange={e => setBusinessStartDate(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Does it have a website?</label>
+                    <div style={RADIO_GRID_STYLE}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={RADIO_LABEL_STYLE}>
+                          <input type="radio" name="hasWebsite" value={option} checked={hasWebsite === option} onChange={e => setHasWebsite(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer' }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Do you have business partners?</label>
+                    <div style={RADIO_GRID_STYLE}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={RADIO_LABEL_STYLE}>
+                          <input type="radio" name="businessPartners" value={option} checked={businessPartners === option} onChange={e => setBusinessPartners(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer' }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Financials & Team</h3>
+                <div style={formGridStyle}>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Total turnover for the past 6 months?</label>
+                    <input type="text" value={past6MonthsTurnover} onChange={e => setPast6MonthsTurnover(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Average monthly turnover?</label>
+                    <p style={{fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.4)', marginTop: '-4px', marginBottom: '8px'}}>Minimum R20 000 p/m required</p>
+                    <input type="text" value={averageMonthlyTurnover} onChange={e => setAverageMonthlyTurnover(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Number of full-time staff</label>
+                    <input type="number" value={fullTimeStaff} onChange={e => setFullTimeStaff(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Number of part-time staff</label>
+                    <input type="number" value={partTimeStaff} onChange={e => setPartTimeStaff(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Staff compliment</label>
+                    <input type="text" value={staffCompliment} onChange={e => setStaffCompliment(e.target.value)} style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>Do you have financials available?</label>
+                    <div style={RADIO_GRID_STYLE}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={RADIO_LABEL_STYLE}>
+                          <input type="radio" name="financialsAvailable" value={option} checked={financialsAvailable === option} onChange={e => setFinancialsAvailable(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer' }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Detailed Questions</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>In 800 characters tell us what your business is/does</label>
+                    <textarea maxLength={800} value={businessIsDoes} onChange={e => setBusinessIsDoes(e.target.value)} style={{...FIELD_INPUT_STYLE, minHeight: '120px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>In 800 characters tell us what makes your business different</label>
+                    <textarea maxLength={800} value={businessDifferent} onChange={e => setBusinessDifferent(e.target.value)} style={{...FIELD_INPUT_STYLE, minHeight: '120px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>What is your biggest obstacle to grow your business?</label>
+                    <textarea value={biggestObstacle} onChange={e => setBiggestObstacle(e.target.value)} style={{...FIELD_INPUT_STYLE, minHeight: '80px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>In 1500 characters tell us about the biggest life challenge you have ever faced and how you dealt with it</label>
+                    <textarea maxLength={1500} value={biggestChallenge} onChange={e => setBiggestChallenge(e.target.value)} style={{...FIELD_INPUT_STYLE, minHeight: '160px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                  <div>
+                    <label style={FIELD_LABEL_STYLE}>In 1500 characters, if you were given R100 000 tomorrow, how would you spend it?</label>
+                    <textarea maxLength={1500} value={spend100k} onChange={e => setSpend100k(e.target.value)} style={{...FIELD_INPUT_STYLE, minHeight: '160px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', color: '#F7F6F3', borderBottom: '1px solid rgba(247,246,243,0.1)', paddingBottom: '12px', marginBottom: '24px' }}>Permissions & Consent</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  <div>
+                    <label style={{...FIELD_LABEL_STYLE, textTransform: 'none', letterSpacing: 'normal'}}>Would you like EmpowaEntrepreneurs to contact you concerning your Small Business Services?</label>
+                    <div style={{ display: 'flex', gap: '24px' }}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={RADIO_LABEL_STYLE}>
+                          <input type="radio" name="empowaContact" value={option} checked={empowaContact === option} onChange={e => setEmpowaContact(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer' }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label style={{...FIELD_LABEL_STYLE, textTransform: 'none', letterSpacing: 'normal'}}>Would you like ABSA to contact you concerning your Small Business Services?</label>
+                    <div style={{ display: 'flex', gap: '24px' }}>
+                      {['Yes', 'No'].map(option => (
+                        <label key={option} style={RADIO_LABEL_STYLE}>
+                          <input type="radio" name="absaContact" value={option} checked={absaContact === option} onChange={e => setAbsaContact(e.target.value)} disabled={status === 'loading'} style={{ accentColor: '#DE322D', cursor: 'pointer' }} />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ padding: '24px', background: 'rgba(222,50,45,0.05)', border: '1px solid rgba(222,50,45,0.15)', borderRadius: '12px' }}>
+                    <label style={RADIO_LABEL_STYLE}>
+                      <input type="radio" name="consent" value="I understand that if I have not been contacted by 11 May 2026, my application was unsuccessful." checked={consent !== ''} onChange={e => setConsent(e.target.value)} disabled={status === 'loading'} required style={{ accentColor: '#DE322D', cursor: 'pointer', width: '18px', height: '18px', flexShrink: 0, marginTop: '2px' }} />
+                      <span style={{ fontSize: '14px', lineHeight: 1.5 }}>I understand that if I have not been contacted by 11 May 2026, my application was unsuccessful.</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '48px' }}>
+                <button type="submit" disabled={status === 'loading'} style={{
+                  background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '44px',
+                  padding: '16px 40px',
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
+                  cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+                  opacity: status === 'loading' ? 0.7 : 1,
+                  boxShadow: '0 8px 36px rgba(222,50,45,0.55)',
+                  transition: 'all 0.2s',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px'
+                }}>
+                  {status === 'loading' ? (
+                    <>
+                      <div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                      <span>Submitting...</span>
+                    </>
+                  ) : (
+                    <span>Submit Registration</span>
+                  )}
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </section>
     </div>
