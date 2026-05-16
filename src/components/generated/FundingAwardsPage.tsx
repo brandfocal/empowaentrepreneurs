@@ -2,6 +2,8 @@ import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { FundingAwardsModal } from './FundingAwardsModal';
+import { ExecutiveExperienceSection } from './ExecutiveExperienceSection';
+
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -398,32 +400,7 @@ const AWARD_CATEGORIES = [
     focusAreas: 'Impact Investing | ESG Leadership | Social Innovation | Inclusive Growth | Sustainable Development | Climate Resilience | Entrepreneurial Funding | Economic Transformation'
   }
 ];
-const EXPERIENCE_PILLARS = [{
-  id: 'ep-1',
-  num: '01',
-  title: 'Executive Red Carpet Arrival',
-  icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-}, {
-  id: 'ep-2',
-  num: '02',
-  title: 'Investor & Founder Private Networking Lounge',
-  icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-}, {
-  id: 'ep-3',
-  num: '03',
-  title: 'Curated Culinary Experience',
-  icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><line x1="7" y1="2" x2="7" y2="11" /><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h4v6" /><path d="M21 21v-1" /></svg>
-}, {
-  id: 'ep-4',
-  num: '04',
-  title: 'High-Level Capital & Investment Conversations',
-  icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
-}, {
-  id: 'ep-5',
-  num: '05',
-  title: 'Legacy Tribute Segment',
-  icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="6" /><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" /></svg>
-}];
+
 const PROTOCOL_ITEMS = [{
   id: 'pr-1',
   key: 'ACCESS',
@@ -1897,114 +1874,6 @@ const LifetimeLegacySection = () => {
     </section>;
 };
 
-// ─── Executive Experience ─────────────────────────────────────────────────────
-const ExecutiveExperienceSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, {
-    once: true,
-    margin: '-60px 0px'
-  });
-  const isMobile = useIsMobile();
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-  return <section ref={sectionRef} style={{
-    background: '#F7F6F3',
-    paddingTop: isMobile ? '72px' : '100px',
-    paddingBottom: isMobile ? '72px' : '100px',
-    boxSizing: 'border-box',
-    overflow: 'hidden'
-  }}>
-      <div style={{
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: isMobile ? '0 24px' : '0 64px'
-    }}>
-        <div style={{
-        marginBottom: isMobile ? '40px' : '56px'
-      }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          marginBottom: '20px'
-        }}>
-            <PlusSquareIcon />
-            <span style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontSize: '12px',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: 'rgba(20,18,16,0.45)',
-            fontWeight: 500
-          }}>
-              Executive Experience
-            </span>
-          </motion.div>
-          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontWeight: 300,
-          fontSize: isMobile ? 'clamp(24px, 7vw, 36px)' : 'clamp(28px, 3.5vw, 44px)',
-          letterSpacing: '-1.5px',
-          color: '#141210',
-          margin: 0,
-          lineHeight: 1.1
-        }}>
-            A Curated Executive Ecosystem Experience
-          </motion.h2>
-        </div>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.09} style={{
-        display: 'grid',
-        gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
-        gap: '16px'
-      }}>
-          {EXPERIENCE_PILLARS.map(pillar => <motion.div key={pillar.id} variants={staggerChild} onMouseEnter={() => setHoveredId(pillar.id)} onMouseLeave={() => setHoveredId(null)} style={{
-          background: '#fff',
-          borderRadius: '16px',
-          padding: '28px 24px',
-          border: '1px solid rgba(20,18,16,0.06)',
-          boxShadow: hoveredId === pillar.id ? '0 12px 40px rgba(0,0,0,0.1)' : '0 2px 8px rgba(0,0,0,0.04)',
-          transition: 'box-shadow 0.3s ease, transform 0.3s ease',
-          transform: hoveredId === pillar.id ? 'translateY(-4px)' : 'translateY(0)',
-          position: 'relative',
-          cursor: 'default'
-        }}>
-              <div style={{
-            position: 'absolute',
-            top: '16px',
-            right: '16px',
-            background: '#DE322D',
-            borderRadius: '44px',
-            padding: '3px 10px',
-            fontFamily: 'Montserrat, sans-serif',
-            fontSize: '10px',
-            color: '#fff',
-            fontWeight: 700
-          }}>{pillar.num}</div>
-              <div style={{
-            width: '44px',
-            height: '44px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #DE322D, #c42823)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: '16px'
-          }}>
-                {pillar.icon}
-              </div>
-              <h3 style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 700,
-            fontSize: '15px',
-            color: '#3c4d5d',
-            letterSpacing: '-0.2px',
-            margin: 0,
-            lineHeight: 1.4
-          }}>{pillar.title}</h3>
-            </motion.div>)}
-        </motion.div>
-      </div>
-    </section>;
-};
 
 // ─── Registration & Attendance ────────────────────────────────────────────────
 const RegistrationSection = () => {
