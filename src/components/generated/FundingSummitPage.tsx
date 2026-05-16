@@ -1950,7 +1950,7 @@ const CtaBannerSection = () => {
         setStatus('success');
         if (paymentMethod === 'Credit Card') {
           setTimeout(() => {
-            window.location.href = 'https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/?preview=t';
+            window.location.href = 'https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/';
           }, 2500);
         }
       } else {
