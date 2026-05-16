@@ -1937,7 +1937,14 @@ const CtaBannerSection = () => {
         }),
       });
 
-      const data = await response.json();
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        const text = await response.text();
+        console.error('Failed to parse JSON. Server returned:', text);
+        throw new Error('Server returned invalid JSON. Check console.');
+      }
 
       if (data.is_valid) {
         setStatus('success');
@@ -1950,10 +1957,10 @@ const CtaBannerSection = () => {
         setStatus('error');
         setErrorMessage(data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => `[Field ${k}]: ${v}`).join(' | ') : 'An error occurred during submission.');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Submission error:', error);
       setStatus('error');
-      setErrorMessage('A network error occurred. Please try again.');
+      setErrorMessage(error.message || 'A network error occurred. Please try again.');
     }
   };
   const CTA_STATS = [{
