@@ -2974,7 +2974,8 @@ export const DetailedRegistrationPage = () => {
         setStatus('success');
       } else {
         setStatus('error');
-        setErrorMessage(data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => `[Field ${k}]: ${v}`).join(' | ') : 'An error occurred during submission.');
+        const labels: Record<string, string> = { '3.3': 'First Name', '3.6': 'Last Name', '45': 'Age', '53': 'Race', '55': 'Gender', '47': 'Date of Birth', '48': 'Identity Number', '25': 'Email Address', '4': 'Cellphone Number', '54': 'Province', '50': 'Hear About Us', '51': 'SA Citizen', '52.1': 'Newsletter', '56': 'Business Name', '57': 'Own Business', '6': 'Registered Trading', '31': 'Registration Number', '59': 'Business Start Date', '60': 'Has Website', '58': 'Past 6 Months Turnover', '61': 'Average Monthly Turnover', '62': 'Full Time Staff', '63': 'Part Time Staff', '35': 'Staff Compliment', '36': 'Financials Available', '64': 'Business Partners', '40': 'Business Description', '68': 'Differentiation', '67': 'Biggest Challenge', '66': 'Spend R100k', '69': 'Biggest Obstacle', '18': 'Empowa Contact Consent', '70': 'ABSA Contact Consent', '44': 'Application Consent' };
+        setErrorMessage(data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => `[${labels[k] || `Field ${k}`}] ${v}`).join(' | ') : 'An error occurred during submission.');
       }
     } catch (error: any) {
       console.error('Submission error:', error);

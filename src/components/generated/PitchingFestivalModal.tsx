@@ -241,7 +241,8 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
         setStatus('success');
       } else {
         setStatus('error');
-        setErrorMessage(data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => `[Field ${k}]: ${v}`).join(' | ') : 'An error occurred during submission.');
+        const labels: Record<string, string> = { '1': 'Business Name', '7': 'Registration Number', '47': 'Physical Address', '48': 'Postal Address', '3.3': 'Contact First Name', '3.6': 'Contact Last Name', '5': 'Email Address', '4': 'Phone Number', '49': 'Website', '33': 'Industry Sector', '39': 'B-BBEE Level', '17': 'Ownership Structure', '50.3': 'Founder First Name', '50.6': 'Founder Last Name', '52': 'ID Number', '53': 'Race', '54': 'Gender', '55': 'Educational Background', '56': 'Relevant Experience', '57': 'Problem', '58': 'Solution', '59': 'Value Proposition', '60': 'Target Market', '61': 'Competitive Advantage', '64': 'TAM', '65': 'SAM', '66': 'Current Market Share', '45': 'Marketing Strategy', '67': 'Annual Rev Year 1', '68': 'Annual Rev Year 2', '69': 'Profit Year 1', '70': 'Profit Year 2', '71': 'Funding Received', '72': 'Funding Request', '38': 'Use of Funds', '74': 'Key Team', '76': 'Org Chart', '78': 'Operational Capacity', '79': 'Growth Strategy', '81': 'Innovation Factor', '82': 'Social Impact', '83': 'B-BBEE Compliance', '85.1': 'Declaration', '86': 'Supporting Docs' };
+        setErrorMessage(data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => `[${labels[k] || `Field ${k}`}] ${v}`).join(' | ') : 'An error occurred during submission.');
       }
     } catch (error: any) {
       console.error('Submission error:', error);
