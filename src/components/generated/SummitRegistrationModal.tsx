@@ -32,6 +32,21 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
   
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loadingText, setLoadingText] = useState('Submitting...');
+
+  useEffect(() => {
+    if (status === 'loading') {
+      const texts = ['Submitting...', 'Uploading data...', 'Processing details...', 'Securing submission...', 'Almost there...'];
+      let i = 0;
+      setLoadingText(texts[0]);
+      const interval = setInterval(() => {
+        i = (i + 1) % texts.length;
+        setLoadingText(texts[i]);
+      }, 2500);
+      return () => clearInterval(interval);
+    }
+  }, [status]);
+
   
   const { isMobile } = useBreakpoint();
   
