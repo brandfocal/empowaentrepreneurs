@@ -1931,7 +1931,7 @@ const CtaBannerSection = () => {
           input_25: email,
           input_6: yearsInBusiness,
           input_44: pitching,
-          input_45: ticketQuantity,
+          input_45_3: ticketQuantity,
           input_46: paymentMethod,
           input_47: absaContact
         }),
