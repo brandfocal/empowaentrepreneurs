@@ -1665,15 +1665,10 @@ const LifetimeLegacySection = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexShrink: 0,
-                boxShadow: '0 0 0 4px rgba(222,50,45,0.15)'
+                boxShadow: '0 0 0 4px rgba(222,50,45,0.15)',
+                overflow: 'hidden'
               }}>
-                  <span style={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontWeight: 700,
-                  fontSize: isMobile ? '20px' : '26px',
-                  color: '#fff',
-                  letterSpacing: '-1px'
-                }}>JJ</span>
+                  <img src="/team/Johnson-JJ-Njeke.jpg" alt="Johnson (JJ) Njeke" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div>
                   <h3 style={{

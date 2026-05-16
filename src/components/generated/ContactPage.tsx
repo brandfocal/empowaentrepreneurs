@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { StrategicEnquiryModal } from './StrategicEnquiryModal';
@@ -3041,6 +3042,7 @@ export const ContactPage = () => {
     background: '#141210'
   }}>
       <ContactHero />
+      <LogoBanner />
       <EngagementSection />
       <ContactDetailsSection />
       <InquiryFormSection />

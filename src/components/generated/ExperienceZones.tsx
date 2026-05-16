@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ZoneExperienceModal } from './ZoneExperienceModal';
@@ -2408,6 +2409,7 @@ export const ExperienceZonesPage = () => {
     overflowX: 'hidden'
   }}>
       <HeroSection />
+      <LogoBanner />
       <ZoneNavigator />
       <ZonesSection onInquire={(zoneName) => {
         setSelectedZone(zoneName);

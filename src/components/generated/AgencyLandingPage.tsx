@@ -4,6 +4,7 @@ import { VideoBanner, SpeakerCarousel, LogoBanner } from './AgencyComponents';
 import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
 import { SummitRegistrationModal } from './SummitRegistrationModal';
 import { NewsletterForm } from './NewsletterForm';
+import { LeadershipTeamSection } from './LeadershipTeamSection';
 
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -830,9 +831,9 @@ const SERVICE_STRIP_ITEMS = [{
   id: 'ecosystem',
   label: 'Ecosystem Builders'
 }];
-const HERO_WORDS_LINE1 = ["Africa's", 'Premier'];
-const HERO_WORDS_LINE2 = ['Funding'];
-const HERO_WORD_PLATFORM = 'Platform';
+const HERO_WORDS_LINE1 = ["AFRICA'S", 'PREMIER'];
+const HERO_WORDS_LINE2 = ['FUNDING'];
+const HERO_WORD_PLATFORM = 'PLATFORM™';
 const HERO_BG_IMAGE = 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1800&q=80';
 const HeroGrid = () => <div aria-hidden="true" style={{
   position: 'absolute',
@@ -1092,7 +1093,7 @@ const HeroSection = () => {
             margin: 0,
             fontWeight: 300
           }}>
-            Where Africa's next generation of scalable businesses meets serious capital, strategic opportunity, and transformative growth.
+            Where Vetted Entrepreneurs Meet High Impact Capital.
           </motion.p>
           <motion.div custom={0.68} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
             display: 'flex',
@@ -2310,7 +2311,7 @@ const ProjectModal = ({
           </div>
           <p style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: isMobile ? '14px' : '16px',
+            fontSize: isMobile ? '13px' : '14px',
             lineHeight: '1.8',
             color: 'rgba(20,18,16,0.6)',
             margin: 0
@@ -4338,6 +4339,7 @@ export const AgencyLandingPage = () => {
     <CaseStudiesSection onOpenModal={() => { }} />
     <ScrollGallery />
     <StatsSection />
+    <LeadershipTeamSection />
     <TestimonialsSection />
     <DarkCtaSection />
 
