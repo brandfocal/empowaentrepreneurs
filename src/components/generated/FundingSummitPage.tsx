@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
@@ -932,7 +933,7 @@ const HeroSection = () => {
         }}>
           {[{
             id: 'hs-1',
-            value: '4,000+',
+            value: '400+',
             label: 'Attendees'
           }, {
             id: 'hs-2',
@@ -1019,7 +1020,7 @@ const EventLogisticsSection = () => {
   }, {
     id: 'ld-4',
     label: 'Attendance',
-    value: '4,000+ Attendees',
+    value: '400+ Attendees',
     sub: 'Entrepreneurs · Funders · Ecosystem builders'
   }];
   return <section ref={sectionRef} style={{
@@ -3450,154 +3451,154 @@ type ProgrammeSession = {
 };
 const ARENA_TABS: string[] = ['Opening & Keynotes', 'Equity & Growth Capital', 'Debt & Structured Finance', 'Impact, Inclusion & Women\'s Capital', 'Enterprise & Ecosystem Development'];
 const ARENA_SESSIONS: ProgrammeSession[][] = [[{
-  time: '07:30–08:30',
+  time: '07:30 - 08:30',
   session: 'Arrival, Registration & Networking Experience',
   speakers: ['All Delegates'],
   role: '',
   topic: 'Registration · Networking · Exhibition Engagement',
   isBreak: true
 }, {
-  time: '08:30–08:45',
+  time: '08:30 - 08:45',
   session: 'Exhibition Preview & Deal Desk Walkthrough',
   speakers: ['Investment & Ecosystem Teams'],
   role: '',
   topic: 'Exhibition Preview · Investor Networking · Deal Rooms',
   isBreak: true
 }, {
-  time: '08:45–09:00',
+  time: '08:45 - 09:00',
   session: 'Welcoming Remarks & Housekeeping',
   speakers: ['Programme Director'],
   role: '',
   topic: 'Event Flow · Housekeeping · Delegate Experience',
   isBreak: false
 }, {
-  time: '09:00–09:10',
+  time: '09:00 - 09:10',
   session: 'Official Welcome Address',
   speakers: ['Mr Simphiwe Masiza'],
   role: 'CEO & Founder, EmpowaWorx',
   topic: 'EmpowaWorx Vision · Capital Access Mission · 2026 Summit Purpose',
   isBreak: false
 }, {
-  time: '09:10–09:20',
+  time: '09:10 - 09:20',
   session: 'Strategic Partner Opening Address',
   speakers: ['ABSA Representative'],
   role: '',
   topic: '',
   isBreak: false
 }, {
-  time: '09:20–09:25',
+  time: '09:20 - 09:25',
   session: 'Strategic Partner Address',
   speakers: ['WR&SETA Representative'],
   role: '',
   topic: '',
   isBreak: false
 }, {
-  time: '09:25–09:30',
+  time: '09:25 - 09:30',
   session: 'Partner Address',
   speakers: ['Ndumiso Zulu'],
   role: 'CEO, Masisizane Fund: Old Mutual',
   topic: '',
   isBreak: false
 }, {
-  time: '09:30–10:00',
+  time: '09:30 - 10:00',
   session: 'Executive Fire Chat',
   speakers: ['Allon Raiz', 'Raj Dass'],
   role: 'CEO, Raizcorp · Founder/Managing Partner, Dass Capital',
   topic: 'The Full Equity Spectrum: From Seed to Buyout',
   isBreak: false
 }], [{
-  time: '10:00–10:20',
+  time: '10:00 - 10:20',
   session: 'Comfort Break, Exhibition & Investor Networking',
   speakers: [''],
   role: '',
   topic: 'Investor Matchmaking · Exhibition · Networking',
   isBreak: true
 }, {
-  time: '10:20–11:05',
+  time: '10:20 - 11:05',
   session: 'Executive Panel Discussion',
   speakers: ['Thabelo Ratshihule', 'Tyrone Moodley', 'Francisco Da Silva', 'Sherwin Sampson', 'Sihle Gumede'],
   role: 'CEO Savant Foundry · Principal HAVAIC · CEO Sizoba Group · Group CEO Samfield Capital · Investment Director Sanari Capital',
   topic: 'Venture Vision to Equity Evolution: What VCs & PE Funds Actually Back in 2026',
   isBreak: false
 }, {
-  time: '11:05–11:30',
+  time: '11:05 - 11:30',
   session: 'Strategic Workshop',
   speakers: ['Dion Mhlaba'],
   role: 'Executive Director, Energy Venture Capital',
   topic: 'Capital Crossroads: What Unlocks Equity & What Kills the Deal',
   isBreak: false
 }, {
-  time: '11:30–11:50',
+  time: '11:30 - 11:50',
   session: 'Networking & Deal-Making Sessions',
   speakers: ['Delegates & Investors'],
   role: '',
   topic: 'Investor Matchmaking · Exhibition · Networking',
   isBreak: true
 }], [{
-  time: '11:50–12:10',
+  time: '11:50 - 12:10',
   session: 'Executive Fire Chat',
   speakers: ['Hlengiwe Makhathini', 'ABSA Representative'],
   role: 'Group CIO, IDF Capital',
   topic: 'The DFI Mandate: Development Capital & Commercial Lending',
   isBreak: false
 }, {
-  time: '12:10–12:55',
+  time: '12:10 - 12:55',
   session: 'Executive Panel Discussion',
   speakers: ['Mokgome Mogoba', 'TBC (GEP CEO)', 'ABSA Representative', 'Mr. Mziwabantu Dayimani', 'Rajiv Daya'],
   role: 'Founder Kholo Capital · CEO GEP · CEO NEF · Head of Investments Keyo Ventures',
   topic: 'The Full Debt Stack: From DFI Facilities to Commercial Loans',
   isBreak: false
 }, {
-  time: '12:55–13:20',
+  time: '12:55 - 13:20',
   session: 'Strategic Masterclass',
   speakers: ['Brian Moyo'],
   role: 'Director of Investments-SSA, Strategix Capital',
   topic: 'Structuring Capital for Growth: How Project Finance, Debt Markets & Infrastructure Finance Unlock Large-Scale African Investment',
   isBreak: false
 }, {
-  time: '13:20–14:20',
+  time: '13:20 - 14:20',
   session: 'Executive Networking Lunch',
   speakers: ['Delegates, Funders & Partners'],
   role: '',
   topic: 'Lunch · Capital Conversations · Investor Networking',
   isBreak: true
 }], [{
-  time: '14:20–14:45',
+  time: '14:20 - 14:45',
   session: 'Executive Panel Discussion',
   speakers: ['Sifiso Skenjana (Facilitator)', 'ABSA Representative', 'Zandi Kogo', 'Futhi Mtoba', 'Joanna Govender'],
   role: 'Founder ESG Now News · Exec Director Rebosis · Co-Convenor Women Economic Assembly · CEO EPF Tech Fund',
   topic: 'Impact Capital, Gender-Lens Mandates & ESG Sectors: Where Smart Money Is Flowing in 2026',
   isBreak: false
 }, {
-  time: '14:45–15:00',
+  time: '14:45 - 15:00',
   session: 'Strategic Industry Keynote',
   speakers: ['Darlene Menzies'],
   role: 'CEO, FinFind',
   topic: 'AI, Digital Readiness & Funding Access: How SMEs Can Use Technology to Become Investment-Ready',
   isBreak: false
 }, {
-  time: '15:00–15:20',
+  time: '15:00 - 15:20',
   session: 'Networking & Funding Clinics',
   speakers: ['Delegates & Investors'],
   role: '',
   topic: 'Investor Matchmaking · Funding Clinics · Exhibition',
   isBreak: true
 }], [{
-  time: '15:20–15:45',
+  time: '15:20 - 15:45',
   session: 'Executive Panel',
   speakers: ['Amukelani Kweyama', 'Mr Bongani Ntombela', 'Ms Nandisile Khoza', 'Niall Gahan', 'Cleola Kunene'],
   role: 'Group ESD Tiger Brands · Exec 22 On Sloane · Procurement Unilever · Head Enterpriseroom · Head of SME JSE',
   topic: 'How Corporates Deploy Supply Chain Capital & How SMEs Capture It',
   isBreak: false
 }, {
-  time: '15:45–16:10',
+  time: '15:45 - 16:10',
   session: 'Industry Strategic Workshop',
   speakers: ['ABSA Representative'],
   role: '',
   topic: '',
   isBreak: false
 }, {
-  time: '16:10–16:15',
+  time: '16:10 - 16:15',
   session: 'Vote of Thanks',
   speakers: ['Mr Simphiwe Masiza'],
   role: 'CEO, Empowaworx',
@@ -4120,11 +4121,12 @@ export const FundingSummitPage = () => {
     overflowX: 'hidden'
   }}>
     <HeroSection />
+      <LogoBanner />
     <EventLogisticsSection />
     <ExperienceZonesSection />
     <PastSpeakersSection />
     <CapitalForceSection />
-    <EventProgrammeSection />
+    {/* <EventProgrammeSection /> */}
     <LeadershipTeamSection />
     <EligibilitySection />
     <CtaBannerSection />

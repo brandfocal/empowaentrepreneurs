@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring, useDragControls } from 'framer-motion';
-import { VideoBanner, SpeakerCarousel } from './AgencyComponents';
+import { VideoBanner, SpeakerCarousel, LogoBanner } from './AgencyComponents';
 import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
 import { SummitRegistrationModal } from './SummitRegistrationModal';
 import { NewsletterForm } from './NewsletterForm';
@@ -728,7 +728,7 @@ const StickyNav = () => {
 // ─── Hero Ticker ──────────────────────────────────────────────────────────────
 const TICKER_ITEMS = [{
   id: 'tk-1',
-  label: '4,000+ Attendees'
+  label: '400+ Attendees'
 }, {
   id: 'tk-2',
   label: 'High-Impact Capital'
@@ -740,7 +740,7 @@ const TICKER_ITEMS = [{
   label: 'Founders · Funders · DFIs · VCs'
 }, {
   id: 'tk-5',
-  label: "Africa's Premier Funding Platform"
+  label: "AFRICA'S Premier Funding Platform"
 }, {
   id: 'tk-6',
   label: 'Catalytic Capital · Enterprise Growth'
@@ -1363,7 +1363,7 @@ const MissionBand = () => {
             }, {
               id: 'ms-2',
               label: 'Attendees',
-              value: '4,000+'
+              value: '400+'
             }, {
               id: 'ms-3',
               label: 'Edition',
@@ -1397,136 +1397,6 @@ const MissionBand = () => {
       </div>
     </div>
   </section>;
-};
-
-// ─── Logo Marquee Banner ──────────────────────────────────────────────────────
-const LOGOS = [{
-  id: 'nef',
-  alt: 'National Empowerment Fund (NEF)',
-  src: '/partners/NEF.jpg'
-}, {
-  id: 'old-mutual',
-  alt: 'Old Mutual',
-  src: '/partners/old-mutual.png'
-}, {
-  id: 'wrseta',
-  alt: 'W&RSETA',
-  src: '/partners/WRSETA.png'
-}, {
-  id: 'absa',
-  alt: 'ABSA',
-  src: '/partners/absa.jpg'
-}, {
-  id: 'sedfa',
-  alt: 'SEDFA',
-  src: '/partners/SEDFA-Logo.png'
-}, {
-  id: 'african-bank',
-  alt: 'African Bank Limited',
-  src: '/partners/african-bank.jpg'
-}, {
-  id: 'idc',
-  alt: 'Industrial Development Corporation (IDC)',
-  src: '/partners/idc-logo.png'
-}];
-const MARQUEE_SPEED = 50;
-const MarqueeTrack = () => {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const xRef = useRef(0);
-  const [trackWidth, setTrackWidth] = useState(0);
-  useEffect(() => {
-    if (trackRef.current) {
-      const child = trackRef.current.querySelector('.logos-row') as HTMLElement | null;
-      if (child) setTrackWidth(child.scrollWidth);
-    }
-  }, []);
-  useAnimationFrame((_, delta) => {
-    if (trackWidth === 0) return;
-    xRef.current -= delta / 1000 * MARQUEE_SPEED;
-    if (Math.abs(xRef.current) >= trackWidth + 60) xRef.current = 0;
-    if (trackRef.current) trackRef.current.style.transform = `translateX(${xRef.current}px)`;
-  });
-  return <div ref={trackRef} style={{
-    display: 'flex',
-    gap: '60px',
-    alignItems: 'center',
-    willChange: 'transform'
-  }}>
-    {[0, 1, 2].map(r => <div key={r} className="logos-row" style={{
-      display: 'flex',
-      gap: '60px',
-      alignItems: 'center',
-      flexShrink: 0
-    }}>
-      {LOGOS.map(logo => <img key={logo.id} src={logo.src} alt={logo.alt} loading="eager" style={{
-        display: 'block',
-        height: '50px',
-        width: 'auto',
-        maxWidth: '160px',
-        objectFit: 'contain',
-        verticalAlign: 'middle'
-      }} />)}
-    </div>)}
-  </div>;
-};
-const LogoBanner = () => {
-  const isMobile = useIsMobile();
-  return <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    padding: isMobile ? '20px 24px' : '24px 64px',
-    columnGap: '50px',
-    borderTop: '0.8px solid rgba(20,18,16,0.06)',
-    borderBottom: '0.8px solid rgba(20,18,16,0.06)',
-    width: '100%',
-    overflow: 'hidden',
-    backgroundColor: '#ffffff',
-    boxSizing: 'border-box'
-  }}>
-    {!isMobile && <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '12px',
-      minWidth: '200px',
-      flexShrink: 0
-    }}>
-      <span style={{
-        fontWeight: 500,
-        textTransform: 'uppercase',
-        fontSize: '11px',
-        letterSpacing: '0.1em',
-        color: 'rgba(20,18,16,0.5)',
-        fontFamily: 'Montserrat, sans-serif',
-        whiteSpace: 'nowrap'
-      }}>Ecosystem Partners</span>
-    </div>}
-    <div style={{
-      flex: 1,
-      overflow: 'hidden',
-      position: 'relative',
-      minWidth: 0
-    }}>
-      <MarqueeTrack />
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        width: '140px',
-        backgroundImage: 'linear-gradient(270deg, #ffffff, transparent)',
-        pointerEvents: 'none'
-      }} />
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        width: '140px',
-        backgroundImage: 'linear-gradient(90deg, #ffffff, transparent)',
-        pointerEvents: 'none'
-      }} />
-    </div>
-  </div>;
 };
 
 // ─── Process Section ──────────────────────────────────────────────────────────
@@ -2154,7 +2024,7 @@ const CASE_STUDIES: CaseStudy[] = [{
   imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80',
   imageAlt: 'Catalytic Capital Track - funding sessions at EmpowaWorx House',
   span: 'wide',
-  outcome: '4,000+ Attendees',
+  outcome: '400+ Attendees',
   duration: 'EmpowaWorx House',
   role: 'Founders · Funders · DFIs',
   challenge: "Africa's next generation of high-growth businesses deserves direct access to serious capital. The Catalytic Capital Track is an engineered deal-making environment where vetted entrepreneurs pitch to institutional investors and leave with commitments, not just contacts."
@@ -2570,8 +2440,8 @@ type StatHighlight = {
 };
 const STAT_METRICS: StatMetric[] = [{
   id: 'sm-1',
-  value: '4,000+',
-  numericTarget: 4000,
+  value: '400+',
+  numericTarget: 400,
   suffix: '+',
   label: 'Summit Attendees',
   sublabel: 'Founders, funders, DFIs & ecosystem builders',
@@ -3108,7 +2978,7 @@ const TestimonialsSection = () => {
             }}>attended</em>
             <span style={{
               color: 'rgba(247,246,243,0.2)'
-            }}>{" and grew."}</span>
+            }}>{" ."}</span>
           </motion.h2>
         </div>
       </div>
@@ -3552,7 +3422,7 @@ const DarkCtaSection = () => {
             color: 'rgba(247,246,243,0.58)',
             margin: '0 0 28px'
           }}>
-            {"Join over 4,000 attendees - serious capital, transformative partnerships, and Africa's most ambitious founders in one room."}
+            {"Join over 400 attendees - serious capital, transformative partnerships, and Africa's most ambitious founders in one room."}
           </p>
           <div style={{
             display: 'flex',
@@ -3632,7 +3502,7 @@ const DarkCtaSection = () => {
         }, {
           id: 'ts-2',
           label: 'Attendees',
-          value: '4,000+',
+          value: '400+',
           sub: 'Founders · Funders · DFIs'
         }, {
           id: 'ts-3',
@@ -3969,7 +3839,7 @@ const SiteFooter = () => {
         }}>
           {[{
             id: 'fb-1',
-            num: '4,000+',
+            num: '400+',
             label: 'Attendees'
           }, {
             id: 'fb-2',

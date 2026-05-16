@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { FundingAwardsModal } from './FundingAwardsModal';
@@ -456,7 +457,7 @@ const TICKER_ITEMS = [{
   label: 'Catalytic Capital · Enterprise Growth'
 }, {
   id: 'tk-6',
-  label: '4,000+ Entrepreneurs & Investors'
+  label: '400+ Entrepreneurs & Investors'
 }];
 const SERVICE_STRIP_ITEMS = [{
   id: 'ssi-1',
@@ -2744,6 +2745,7 @@ export const FundingAwardsPage = () => {
     overflowX: 'hidden'
   }}>
       <HeroSection />
+      <LogoBanner />
       <EventOverviewBand />
       <AboutSection />
       <AwardsArchitectureSection />

@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
@@ -254,7 +255,7 @@ const TICKER_ITEMS = [{
   label: 'Catalytic Capital · Enterprise Growth'
 }, {
   id: 'tk-6',
-  label: '4,000+ Entrepreneurs & Investors'
+  label: '400+ Entrepreneurs & Investors'
 }];
 const HeroTicker = ({
   light = false
@@ -1150,7 +1151,7 @@ const MissionSection = () => {
             }, {
               id: 'ms-2',
               label: 'Attendees',
-              value: '4,000+'
+              value: '400+'
             }, {
               id: 'ms-3',
               label: 'Edition',
@@ -2373,8 +2374,8 @@ type ImpactCard = {
 };
 const IMPACT_CARDS: ImpactCard[] = [{
   id: 'ic-1',
-  number: '4,000+',
-  rawNumber: 4000,
+  number: '400+',
+  rawNumber: 400,
   suffix: '+',
   prefix: '',
   label: 'Unlocking Opportunity',
@@ -3426,6 +3427,7 @@ export const AboutUsPage = () => {
       <FloatingCTAPill />
       
       <HeroSection />
+      <LogoBanner />
       <MissionSection />
       <FoundersSection />
       <CapitalPartnersSection />

@@ -1881,7 +1881,7 @@ const FOOTER_LEGAL = [{
 const FOOTER_BANNER_BG = 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1800&q=80';
 const FOOTER_STATS = [{
   id: 'fb-1',
-  num: '4,000+',
+  num: '400+',
   label: 'Attendees'
 }, {
   id: 'fb-2',

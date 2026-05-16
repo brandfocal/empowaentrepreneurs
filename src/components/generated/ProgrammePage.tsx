@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { NewsletterForm } from './NewsletterForm';
@@ -2113,7 +2114,7 @@ const ProgrammeCtaSection = () => {
         }, {
           id: 'ps-4',
           label: 'Attendees',
-          value: '4,000+',
+          value: '400+',
           sub: 'Founders · Funders · DFIs · Builders'
         }].map((item, i) => <div key={item.id} style={{
           padding: isMobile ? '24px 0' : '28px 0',
@@ -2449,7 +2450,7 @@ const ProgrammeFooter = () => {
         }}>
             {[{
             id: 'fb-1',
-            num: '4,000+',
+            num: '400+',
             label: 'Attendees'
           }, {
             id: 'fb-2',
@@ -2783,6 +2784,7 @@ export const ProgrammePage = () => {
   }}>
       
       <ProgrammeHero />
+      <LogoBanner />
       <StagesSection />
       <SignatureExperiencesSection />
       <ZonesSection />

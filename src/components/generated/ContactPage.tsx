@@ -195,7 +195,7 @@ const TICKER_ITEMS = [{
   label: 'Catalytic Capital · Enterprise Growth'
 }, {
   id: 'tk-6',
-  label: '4,000+ Entrepreneurs & Investors'
+  label: '400+ Entrepreneurs & Investors'
 }];
 const HeroTicker = ({
   light = false
@@ -895,7 +895,7 @@ const PATHWAY_ITEMS: PathwayItem[] = [{
   index: '01',
   title: 'Strategic Partnership',
   subtitle: 'Corporate & Brand Alignment',
-  description: "Align your brand with Africa's most ambitious capital movement. Strategic partners gain direct access to 4,000+ founders, investors, and ecosystem builders - and the platform to shape the continent's enterprise narrative.",
+  description: "Align your brand with Africa's most ambitious capital movement. Strategic partners gain direct access to 400+ founders, investors, and ecosystem builders - and the platform to shape the continent's enterprise narrative.",
   features: ['Exhibition & Branding Rights', 'Keynote & Panel Placement', 'Exclusive Networking Access', 'Co-Branding Opportunities', 'Post-Summit Report Inclusion'],
   icon: '◈'
 }, {
@@ -1494,7 +1494,7 @@ const ContactDetailsSection = () => {
     id: 'cb-ticketing',
     label: 'Ticketing Support',
     title: 'Registration Desk',
-    lines: ['info@empowaentrepreneurs.co.za', 'Mon–Fri, 8:00–17:00 SAST'],
+    lines: ['info@empowaentrepreneurs.co.za', 'Mon - Fri, 8:00 - 17:00 SAST'],
     accent: false,
     tag: 'General & Delegate Support',
     icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 12c0-1.1.9-2 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v4c1.1 0 2 .9 2 2s-.9 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2z" fill="rgba(247,246,243,0.4)" /></svg>
@@ -1743,15 +1743,15 @@ type FormData = {
 const RESPONSE_TIMES = [{
   id: 'rt-1',
   label: 'Strategic Partnership',
-  time: '24–48h'
+  time: '24 - 48h'
 }, {
   id: 'rt-2',
   label: 'Investor Relations',
-  time: '24–48h'
+  time: '24 - 48h'
 }, {
   id: 'rt-3',
   label: 'General Inquiry',
-  time: '48–72h'
+  time: '48 - 72h'
 }, {
   id: 'rt-4',
   label: 'Media & Press',

@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
@@ -2989,6 +2990,7 @@ export const PartnershipsPage = () => {
     overflowX: 'hidden'
   }}>
     <HeroSection />
+      <LogoBanner />
     <PartnershipTiersSection />
     <SpecialisedPackagesSection />
     <WhyPartnerSection />

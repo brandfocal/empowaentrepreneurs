@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView, AnimatePresence, useAnimationFrame } from 'framer-motion';
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -118,7 +118,7 @@ const ArrowIconInk = () => <svg width="12" height="12" viewBox="0 0 12 12" fill=
 // ─── Video Banner ─────────────────────────────────────────────────────────────
 const VIDEO_BANNER_STATS = [{
   id: 'vb-s1',
-  value: '4,000+',
+  value: '400+',
   label: 'Attendees'
 }, {
   id: 'vb-s2',
@@ -1570,4 +1570,134 @@ export const AgendaTimeline = () => {
         </AnimatePresence>
       </div>
     </section>;
+};
+
+// ─── Logo Marquee Banner ──────────────────────────────────────────────────────
+const LOGOS = [{
+  id: 'nef',
+  alt: 'National Empowerment Fund (NEF)',
+  src: '/partners/NEF.jpg'
+}, {
+  id: 'old-mutual',
+  alt: 'Old Mutual',
+  src: '/partners/old-mutual.png'
+}, {
+  id: 'wrseta',
+  alt: 'W&RSETA',
+  src: '/partners/WRSETA.png'
+}, {
+  id: 'absa',
+  alt: 'ABSA',
+  src: '/partners/absa.jpg'
+}, {
+  id: 'sedfa',
+  alt: 'SEDFA',
+  src: '/partners/SEDFA-Logo.png'
+}, {
+  id: 'african-bank',
+  alt: 'African Bank Limited',
+  src: '/partners/african-bank.jpg'
+}, {
+  id: 'idc',
+  alt: 'Industrial Development Corporation (IDC)',
+  src: '/partners/idc-logo.png'
+}];
+const MARQUEE_SPEED = 50;
+const MarqueeTrack = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const xRef = useRef(0);
+  const [trackWidth, setTrackWidth] = useState(0);
+  useEffect(() => {
+    if (trackRef.current) {
+      const child = trackRef.current.querySelector('.logos-row') as HTMLElement | null;
+      if (child) setTrackWidth(child.scrollWidth);
+    }
+  }, []);
+  useAnimationFrame((_, delta) => {
+    if (trackWidth === 0) return;
+    xRef.current -= delta / 1000 * MARQUEE_SPEED;
+    if (Math.abs(xRef.current) >= trackWidth + 60) xRef.current = 0;
+    if (trackRef.current) trackRef.current.style.transform = `translateX(${xRef.current}px)`;
+  });
+  return <div ref={trackRef} style={{
+    display: 'flex',
+    gap: '60px',
+    alignItems: 'center',
+    willChange: 'transform'
+  }}>
+    {[0, 1, 2].map(r => <div key={r} className="logos-row" style={{
+      display: 'flex',
+      gap: '60px',
+      alignItems: 'center',
+      flexShrink: 0
+    }}>
+      {LOGOS.map(logo => <img key={logo.id} src={logo.src} alt={logo.alt} loading="eager" style={{
+        display: 'block',
+        height: '50px',
+        width: 'auto',
+        maxWidth: '160px',
+        objectFit: 'contain',
+        verticalAlign: 'middle'
+      }} />)}
+    </div>)}
+  </div>;
+};
+export const LogoBanner = () => {
+  const isMobile = useIsMobile();
+  return <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: isMobile ? '20px 24px' : '24px 64px',
+    columnGap: '50px',
+    borderTop: '0.8px solid rgba(20,18,16,0.06)',
+    borderBottom: '0.8px solid rgba(20,18,16,0.06)',
+    width: '100%',
+    overflow: 'hidden',
+    backgroundColor: '#ffffff',
+    boxSizing: 'border-box'
+  }}>
+    {!isMobile && <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '12px',
+      minWidth: '200px',
+      flexShrink: 0
+    }}>
+      <span style={{
+        fontWeight: 500,
+        textTransform: 'uppercase',
+        fontSize: '11px',
+        letterSpacing: '0.1em',
+        color: 'rgba(20,18,16,0.5)',
+        fontFamily: 'Montserrat, sans-serif',
+        whiteSpace: 'nowrap'
+      }}>Ecosystem Partners</span>
+    </div>}
+    <div style={{
+      flex: 1,
+      overflow: 'hidden',
+      position: 'relative',
+      minWidth: 0
+    }}>
+      <MarqueeTrack />
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        width: '140px',
+        backgroundImage: 'linear-gradient(270deg, #ffffff, transparent)',
+        pointerEvents: 'none'
+      }} />
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        width: '140px',
+        backgroundImage: 'linear-gradient(90deg, #ffffff, transparent)',
+        pointerEvents: 'none'
+      }} />
+    </div>
+  </div>;
 };

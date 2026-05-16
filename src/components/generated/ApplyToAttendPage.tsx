@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
@@ -820,7 +821,7 @@ const ApplyHeroSection = () => {
         label: 'EmpowaWorx House'
       }, {
         id: 'strip-3',
-        label: '4,000+ Attendees'
+        label: '400+ Attendees'
       }, {
         id: 'strip-4',
         label: 'Application Pathways Open'
@@ -866,7 +867,7 @@ const ELIGIBILITY_CARDS: EligibilityCard[] = [{
   number: '02',
   title: 'Strategic Clarity',
   description: 'Clarity of vision and market positioning is essential for serious investor engagement at EmpowaEntrepreneurs Funding Summit 2026.',
-  checks: ['Defined target market & customer segment', 'Clear competitive advantage & moat', 'Scalable business model across markets', 'Articulated 3–5 year growth roadmap']
+  checks: ['Defined target market & customer segment', 'Clear competitive advantage & moat', 'Scalable business model across markets', 'Articulated 3 - 5 year growth roadmap']
 }, {
   id: 'elig-3',
   number: '03',
@@ -1098,7 +1099,7 @@ const PATHWAY_ITEMS: PathwayItem[] = [{
   index: '01',
   title: 'General Delegate',
   subtitle: 'Full Summit Access',
-  description: 'Gain complete access to all summit programming - keynotes, panel discussions, networking sessions, the pitching festival audience, and the exhibition floor. Connect with 4,000+ founders, funders, DFIs, and ecosystem builders.',
+  description: 'Gain complete access to all summit programming - keynotes, panel discussions, networking sessions, the pitching festival audience, and the exhibition floor. Connect with 400+ founders, funders, DFIs, and ecosystem builders.',
   tag: 'All-Access · Networking · Ecosystem',
   cta: 'Register as Delegate',
   imageSrc: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&q=80',
@@ -1675,7 +1676,7 @@ const CTA_BUTTONS = [{
 }];
 const DIFF_STATS = [{
   id: 'diff-1',
-  stat: '4,000+',
+  stat: '400+',
   label: 'Summit Attendees',
   sub: 'Founders, Funders, DFIs, Corporates'
 }, {
@@ -2272,7 +2273,7 @@ const LocationFooterBand = () => {
 // ─── Ticker ─────────────────────────────────────────────────────────────────────
 const TICKER_ITEMS = [{
   id: 'tk-1',
-  label: '4,000+ Attendees'
+  label: '400+ Attendees'
 }, {
   id: 'tk-2',
   label: 'High-Impact Capital'
@@ -2856,6 +2857,7 @@ export const ApplyToAttendPage = () => {
     background: '#141210'
   }}>
       <ApplyHeroSection />
+      <LogoBanner />
       <div style={{
       borderTop: '0.8px solid rgba(247,246,243,0.07)',
       background: '#141210',

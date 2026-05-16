@@ -1,3 +1,4 @@
+import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
@@ -251,7 +252,7 @@ const TICKER_ITEMS = [{
   label: 'Catalytic Capital · Enterprise Growth'
 }, {
   id: 'tk-6',
-  label: '4,000+ Entrepreneurs & Investors'
+  label: '400+ Entrepreneurs & Investors'
 }];
 const HeroTicker = ({
   light = false
@@ -1629,7 +1630,7 @@ const RoadmapSection = () => {
           textTransform: 'uppercase' as const,
           color: 'rgba(20,18,16,0.45)',
           fontWeight: 500
-        }}>Africa Expansion Roadmap 2026–2027</span>
+        }}>Africa Expansion Roadmap 2026 - 2027</span>
         </motion.div>
         <div style={{
         overflow: 'hidden',
@@ -2290,6 +2291,7 @@ export const StrategicAdvisoryPage = () => {
     minHeight: '100vh'
   }}>
       <HeroSection />
+      <LogoBanner />
       <IntroSection />
       <OfferingsSection />
       <EdgeSection />
