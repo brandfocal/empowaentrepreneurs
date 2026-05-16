@@ -781,7 +781,7 @@ const SiteFooter = () => {
         }}>
           {[{
             id: 'fb-1',
-            num: '4,000+',
+            num: '400',
             label: 'Attendees'
           }, {
             id: 'fb-2',
