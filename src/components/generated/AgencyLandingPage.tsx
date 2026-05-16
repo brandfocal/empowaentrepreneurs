@@ -3097,13 +3097,7 @@ const TestimonialsSection = () => {
                 {active.imageSrc ? (
                   <img src={active.imageSrc} alt={active.author} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 ) : (
-                  <span style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    color: '#fff',
-                    letterSpacing: '0.04em'
-                  }}>{active.avatarInitials}</span>
+null
                 )}
               </div>
               <div>
@@ -3188,12 +3182,7 @@ const TestimonialsSection = () => {
               {t.imageSrc ? (
                 <img src={t.imageSrc} alt={t.author} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
-                <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  color: '#fff'
-                }}>{t.avatarInitials}</span>
+null
               )}
             </div>
             <div style={{
