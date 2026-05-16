@@ -488,7 +488,7 @@ const StickyNav = () => {
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)',
             transition: 'box-shadow 0.3s ease'
           }}>
-                <span>Register Now</span>
+                <span>Summit 2026</span>
               </motion.a>
             </div>
           </div>}
@@ -569,7 +569,7 @@ const StickyNav = () => {
             padding: '10px 20px',
             color: '#fff',
             textDecoration: 'none'
-          }}>Register Now</a>
+          }}>Summit 2026</a>
             </div>
           </motion.div>}
       </AnimatePresence>

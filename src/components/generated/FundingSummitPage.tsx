@@ -533,7 +533,7 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 600,
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)'
-          }}><span>Register Now</span></motion.a>
+          }}><span>Summit 2026</span></motion.a>
         </div>
       </div>}
 
@@ -617,7 +617,7 @@ const StickyNav = () => {
             textDecoration: 'none',
             fontWeight: 600,
             textAlign: 'center'
-          }}>Register Now</a>
+          }}>Summit 2026</a>
         </div>
       </motion.div>}
     </AnimatePresence>
@@ -897,7 +897,7 @@ const HeroSection = () => {
             display: 'inline-flex',
             width: isMobile ? '100%' : 'auto'
           }}>
-            <motion.a href="#registration-form" whileHover={{
+            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
               scale: 1.04,
               boxShadow: '0 16px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2153,7 +2153,7 @@ const CtaBannerSection = () => {
           display: 'inline-flex',
           width: isMobile ? '100%' : 'auto'
         }}>
-          <motion.a href="#registration-form" onClick={e => {
+          <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" onClick={e => {
             e.preventDefault();
             setActiveForm(prev => prev === 'cta-b1' ? null : 'cta-b1');
           }} whileHover={{
@@ -2590,7 +2590,7 @@ const SiteFooter = () => {
             gap: '12px',
             width: isMobile ? '100%' : isTablet ? '200px' : '240px'
           }}>
-            <motion.a href="/summit" whileHover={{
+            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{

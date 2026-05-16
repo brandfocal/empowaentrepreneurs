@@ -454,7 +454,7 @@ const StickyNav = () => {
             textDecoration: 'none',
             fontFamily: 'Montserrat, sans-serif',
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)'
-          }}><span>Register Now</span></motion.a>
+          }}><span>Summit 2026</span></motion.a>
         </div>
       </div>}
       {showHamburger && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
@@ -530,7 +530,7 @@ const StickyNav = () => {
             padding: '10px 20px',
             color: '#fff',
             textDecoration: 'none'
-          }}>Register Now</a>
+          }}>Summit 2026</a>
         </div>
       </motion.div>}
     </AnimatePresence>
