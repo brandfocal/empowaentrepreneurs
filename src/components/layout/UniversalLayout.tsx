@@ -147,63 +147,55 @@ const FOOTER_NAV_COLS = [{
   heading: 'Summit',
   links: [{
     id: 'fl-about',
-    label: 'About EmpowaEntrepreneurs Funding Summit 2026'
+    label: 'About Us',
+    href: '/about'
   }, {
-    id: 'fl-tracks',
-    label: 'Summit Tracks'
+    id: 'fl-summit',
+    label: 'Summit Registration',
+    href: '/summit'
   }, {
-    id: 'fl-speakers',
-    label: 'Speakers'
+    id: 'fl-programme',
+    label: 'Programme',
+    href: '/programme'
   }, {
-    id: 'fl-agenda',
-    label: 'Agenda'
+    id: 'fl-contact',
+    label: 'Contact Us',
+    href: '/contact'
+  }]
+}, {
+  id: 'fcol-ecosystem',
+  heading: 'Ecosystem',
+  links: [{
+    id: 'fl-experience',
+    label: 'Experience Zones',
+    href: '/experience-zones'
   }, {
-    id: 'fl-venue',
-    label: 'Venue'
+    id: 'fl-pitch',
+    label: 'Pitching Festival',
+    href: '/pitch-power'
+  }, {
+    id: 'fl-awards',
+    label: 'Funding Awards',
+    href: '/awards'
+  }, {
+    id: 'fl-strategic',
+    label: 'Strategic Advisory',
+    href: '/strategic-advisory'
   }]
 }, {
   id: 'fcol-attend',
-  heading: 'Attend',
+  heading: 'Attend & Partner',
   links: [{
-    id: 'fl-register',
-    label: 'Register Now'
-  }, {
     id: 'fl-apply',
-    label: 'Apply to Attend'
+    label: 'Apply to Attend',
+    href: '/apply'
   }, {
-    id: 'fl-powerseat',
-    label: 'Power Seat'
-  }, {
-    id: 'fl-groups',
-    label: 'Group Bookings'
-  }]
-}, {
-  id: 'fcol-partner',
-  heading: 'Partner',
-  links: [{
-    id: 'fl-sponsor',
-    label: 'Become a Sponsor'
-  }, {
-    id: 'fl-exhibitor',
-    label: 'Exhibitor Info'
-  }, {
-    id: 'fl-media',
-    label: 'Media Partners'
-  }, {
-    id: 'fl-dfi',
-    label: 'DFI & Corporate'
+    id: 'fl-partner',
+    label: 'Partner With Us',
+    href: '/partnerships'
   }]
 }];
-const FOOTER_LEGAL = [{
-  id: 'leg-priv',
-  label: 'Privacy Policy'
-}, {
-  id: 'leg-terms',
-  label: 'Terms of Service'
-}, {
-  id: 'leg-cookie',
-  label: 'Cookie Settings'
-}];
+const FOOTER_LEGAL: any[] = [];
 
 const ScrollProgressBar = () => {
   const {
@@ -517,8 +509,35 @@ const StickyNav = () => {
         padding: '24px 32px 28px'
       }}>
         {STICKY_NAV_ITEMS.map(item => {
+          if ('children' in item && item.children) {
+            return (
+              <div key={item.id} style={{ padding: '12px 0', borderBottom: '0.8px solid rgba(20,18,16,0.06)' }}>
+                <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px', color: 'rgba(20,18,16,0.65)', fontWeight: 600, marginBottom: '8px' }}>
+                  {item.label}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingLeft: '16px' }}>
+                  {item.children.map((child: any) => {
+                    const isChildActive = pathname === child.href;
+                    return (
+                      <Link key={child.id} to={child.href} onClick={() => setMobileMenuOpen(false)} style={{
+                        display: 'block',
+                        fontFamily: 'Montserrat, sans-serif',
+                        fontSize: '14px',
+                        color: isChildActive ? '#DE322D' : 'rgba(20,18,16,0.55)',
+                        fontWeight: isChildActive ? 600 : 400,
+                        textDecoration: 'none',
+                      }}>
+                        {child.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
           const isActive = pathname === item.href;
-          return <Link key={item.id} to={item.href}  style={{
+          return <Link key={item.id} to={item.href} onClick={() => setMobileMenuOpen(false)} style={{
             display: 'block',
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '16px',
@@ -538,7 +557,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <Link to="/partnerships" style={{
+          <Link to="/partnerships" onClick={() => setMobileMenuOpen(false)} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -547,7 +566,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</Link>
-          <a href="/summit"  style={{
+          <Link to="/summit" onClick={() => setMobileMenuOpen(false)} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -555,7 +574,7 @@ const StickyNav = () => {
             padding: '10px 20px',
             color: '#fff',
             textDecoration: 'none'
-          }}>Register Now</a>
+          }}>Register Now</Link>
         </div>
       </motion.div>}
     </AnimatePresence>
@@ -941,8 +960,8 @@ const SiteFooter = () => {
                 flexDirection: 'column',
                 gap: '12px'
               }}>
-                {col.links.map(link => <li key={link.id}>
-                  <a href="#" onClick={e => e.preventDefault()} style={{
+                {col.links.map((link: any) => <li key={link.id}>
+                  <Link to={link.href} style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '13px',
                     color: 'rgba(247,246,243,0.3)',
@@ -956,7 +975,7 @@ const SiteFooter = () => {
                     (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.3)';
                   }}>
                     {link.label}
-                  </a>
+                  </Link>
                 </li>)}
               </ul>
             </div>)}
