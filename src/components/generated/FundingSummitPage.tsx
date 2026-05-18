@@ -2828,6 +2828,7 @@ type SummitSpeaker = {
   accentColor: string;
   imageSrc: string;
   year: string;
+  bio?: string;
 };
 const SPEAKER_TAG_COLORS: Record<string, string> = {
   'Keynote': 'rgba(222,50,45,0.18)',
@@ -2942,6 +2943,162 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   accentColor: '#3B4E5F',
   imageSrc: '/speakers/Khanyi-Mlambo.jpg',
   year: '2025'
+}, {
+  id: 'sp-11',
+  name: 'Valter Adão',
+  role: 'Chief Executive',
+  company: 'Cadena Growth Partners',
+  topic: 'Disruptive Innovation & Business Re-imagination',
+  tag: 'Keynote',
+  accentColor: '#DE322D',
+  imageSrc: '/speakers/Keynote/valter-adao.jpg',
+  year: '2026',
+  bio: 'Valter is a corporate entrepreneur with extensive experience in venturing and commercialising businesses. He is a faculty member at SingularityU South Africa.'
+}, {
+  id: 'sp-12',
+  name: 'Dr. Audrey Verhaeghe',
+  role: 'CEO',
+  company: 'Anza Capital',
+  topic: 'Scaling Enterprises Across Africa',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/audrey-verhaeghe.jpg',
+  year: '2026',
+  bio: 'Dr. Verhaeghe is an active investor and ecosystem activist focused on innovation and scalable entrepreneurship. She leads Anza Holdings and the SA Innovation Summit.'
+}, {
+  id: 'sp-13',
+  name: 'Keshni Morar',
+  role: 'CEO & Founder',
+  company: 'Investable',
+  topic: 'Venture Capital & Tech Ecosystems',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/keshni-morar.jpg',
+  year: '2026',
+  bio: 'Keshni is a four-time founder, mentor, angel investor, and strategic board advisor with over 25 years of experience spanning M&A and management consulting.'
+}, {
+  id: 'sp-14',
+  name: 'Prof. Maurice Radebe',
+  role: 'Head & Director',
+  company: 'Wits Business School',
+  topic: 'Leadership Potential & Corporate Strategy',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/Prof-Maurice-Radebe.jpg',
+  year: '2026',
+  bio: 'Professor Radebe is a prominent energy industry executive and academic. He previously served as Executive Vice President at Sasol and founded the Unleashing Leadership Potential Foundation.'
+}, {
+  id: 'sp-15',
+  name: 'Elias Masilela',
+  role: 'Managing Director',
+  company: 'BuMa Investment Holdings',
+  topic: 'Impact Investing & Responsible Finance',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/elias-masilela.jpg',
+  year: '2026',
+  bio: 'Elias is a distinguished economist, investor, and policy strategist. He formerly served as CEO of the Public Investment Corporation (PIC) and Commissioner of the National Planning Commission.'
+}, {
+  id: 'sp-16',
+  name: 'Modise Motloba',
+  role: 'Founder & CEO',
+  company: 'Tysys Capital Group',
+  topic: 'SME Financing & Pan-African Development',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/modise-motloba.jpg',
+  year: '2026',
+  bio: 'Modise is a seasoned executive with over 34 years in investment banking, fund management, and financial regulation, leading SME financing initiatives.'
+}, {
+  id: 'sp-17',
+  name: 'Khanya Matshikwe',
+  role: 'Industry Leader',
+  company: 'Corporate Development',
+  topic: 'Future of African Enterprise',
+  tag: 'Keynote',
+  accentColor: '#DE322D',
+  imageSrc: '/speakers/Keynote/Khanya-Matshikwe.jpg',
+  year: '2026'
+}, {
+  id: 'sp-18',
+  name: 'Kgalaletso Tlhoaele',
+  role: 'Ecosystem Partner',
+  company: 'Growth Partners',
+  topic: 'Strategic Capital Alignment',
+  tag: 'Keynote',
+  accentColor: '#DE322D',
+  imageSrc: '/speakers/Keynote/kgalaletso-tlhoaele.jpg',
+  year: '2026'
+}, {
+  id: 'sp-19',
+  name: 'Sherwin Sampson',
+  role: 'Venture Specialist',
+  company: 'Innovation Labs',
+  topic: 'Catalyzing Startup Growth',
+  tag: 'Keynote',
+  accentColor: '#DE322D',
+  imageSrc: '/speakers/Keynote/sherwin-sampson.jpg',
+  year: '2026'
+}, {
+  id: 'sp-20',
+  name: 'Ajay Wasserman',
+  role: 'Investment Advisor',
+  company: 'Wealth Managers',
+  topic: 'Structuring Deals in Emerging Markets',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/Ajay-Wasserman.jpg',
+  year: '2026'
+}, {
+  id: 'sp-21',
+  name: 'Amanda John Ncube',
+  role: 'Impact Investor',
+  company: 'Africa Impact',
+  topic: 'ESG & Sustainable Finance',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/amanda-john-ncube.jpg',
+  year: '2026'
+}, {
+  id: 'sp-22',
+  name: 'Xolani Qubeka',
+  role: 'Policy Advisor',
+  company: 'Economic Council',
+  topic: 'Regulatory Frameworks for Growth',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/xolani-qubeka.jpg',
+  year: '2026'
+}, {
+  id: 'sp-23',
+  name: 'Julia Kupka',
+  role: 'Ecosystem Builder',
+  company: 'Innovation Network',
+  topic: 'Nurturing Early-Stage Ventures',
+  tag: 'Fire Chat',
+  accentColor: '#2D6A4F',
+  imageSrc: '/speakers/Fire Chat/julia-kupka.jpg',
+  year: '2026'
+}, {
+  id: 'sp-24',
+  name: 'Cleola Kunene',
+  role: 'Finance Executive',
+  company: 'Banking Sector',
+  topic: 'Debt vs Equity for Scale-ups',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/cleola-kunene.jpg',
+  year: '2026'
+}, {
+  id: 'sp-25',
+  name: 'Punki Modise',
+  role: 'Chief Financial Officer',
+  company: 'Corporate Leadership',
+  topic: 'Financial Resilience in the Enterprise',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/punki-modise.jpg',
+  year: '2026'
 }];
 const SPEAKER_TABS = [{
   id: 'tab-all',
@@ -3388,6 +3545,24 @@ export const PastSpeakersSection = () => {
                     {speaker.topic}
                   </div>
                 </div>
+
+                {/* Speaker Bio */}
+                {speaker.bio && (
+                  <p style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '12px',
+                    color: 'rgba(20,18,16,0.6)',
+                    lineHeight: 1.5,
+                    margin: '0',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
+                  }}>
+                    {speaker.bio}
+                  </p>
+                )}
 
                 {/* Bottom row */}
                 <div style={{
