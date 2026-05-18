@@ -1387,7 +1387,7 @@ const useCountUp = (target: number, duration = 1.8, inView = false, prefix = '',
     startRef.current = null;
     const animate = (ts: number) => {
       if (startRef.current === null) startRef.current = ts;
-      const elapsed = (ts: startRef.current) / 1000;
+      const elapsed = (ts - startRef.current) / 1000;
       const progress = Math.min(elapsed / duration, 1);
       const ease = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(ease * target);

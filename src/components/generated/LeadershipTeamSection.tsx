@@ -191,8 +191,8 @@ export const LeadershipTeamSection: React.FC = () => {
     if (!isDragging.current || !trackRef.current) return;
     e.preventDefault();
     const x = e.pageX - (trackRef.current.offsetLeft || 0);
-    const walk = (x: dragStartX.current) * 1.5;
-    trackRef.current.scrollLeft = dragScrollLeft.current: walk;
+    const walk = (x - dragStartX.current) * 1.5;
+    trackRef.current.scrollLeft = dragScrollLeft.current - walk;
   }, []);
   const handleMouseUp = useCallback(() => {
     isDragging.current = false;

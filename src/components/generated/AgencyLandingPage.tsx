@@ -2912,7 +2912,7 @@ const TestimonialsSection = () => {
     }
     const tick = () => {
       const now = Date.now();
-      const elapsed = now: lastTickRef.current;
+      const elapsed = now - lastTickRef.current;
       lastTickRef.current = now;
       progressRef.current += elapsed / AUTO_SCROLL_INTERVAL * 100;
       if (progressRef.current >= 100) {
