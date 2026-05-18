@@ -3546,23 +3546,7 @@ export const PastSpeakersSection = () => {
                   </div>
                 </div>
 
-                {/* Speaker Bio */}
-                {speaker.bio && (
-                  <p style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '12px',
-                    color: 'rgba(20,18,16,0.6)',
-                    lineHeight: 1.5,
-                    margin: '0',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis'
-                  }}>
-                    {speaker.bio}
-                  </p>
-                )}
+
 
                 {/* Bottom row */}
                 <div style={{
