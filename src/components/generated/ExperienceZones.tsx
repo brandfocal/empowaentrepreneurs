@@ -54,14 +54,14 @@ const useMagnetic = (strength = 0.35) => {
 
 // ─── Shared SVG helpers ─────────────────────────────────────────────────────────
 const PlusSquareIconLight = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
+</svg>;
 const PlusSquareIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
+</svg>;
 const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>;
+  <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
 
 // ─── Animation variants ──────────────────────────────────────────────────────────
 const slideUpBlur = {
@@ -257,18 +257,18 @@ const HeroTicker = ({
     overflow: 'hidden',
     width: '100%'
   }}>
-      <div ref={trackRef} style={{
+    <div ref={trackRef} style={{
       display: 'flex',
       alignItems: 'center',
       gap: '0',
       willChange: 'transform'
     }}>
-        {[0, 1, 2].map(r => <div key={r} className="ticker-row" style={{
+      {[0, 1, 2].map(r => <div key={r} className="ticker-row" style={{
         display: 'flex',
         alignItems: 'center',
         flexShrink: 0
       }}>
-            {TICKER_ITEMS.map(item => <div key={item.id} style={{
+        {TICKER_ITEMS.map(item => <div key={item.id} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '16px',
@@ -277,7 +277,7 @@ const HeroTicker = ({
           height: '52px',
           whiteSpace: 'nowrap'
         }}>
-                <span style={{
+          <span style={{
             width: '4px',
             height: '4px',
             borderRadius: '50%',
@@ -285,7 +285,7 @@ const HeroTicker = ({
             flexShrink: 0,
             display: 'block'
           }} />
-                <span style={{
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
@@ -293,12 +293,12 @@ const HeroTicker = ({
             color: light ? 'rgba(247,246,243,0.35)' : 'rgba(20,18,16,0.4)',
             fontWeight: 500
           }}>
-                  {item.label}
-                </span>
-              </div>)}
-          </div>)}
-      </div>
-    </div>;
+            {item.label}
+          </span>
+        </div>)}
+      </div>)}
+    </div>
+  </div>;
 };
 
 // ─── StickyNav ────────────────────────────────────────────────────────────────────
@@ -355,7 +355,7 @@ const StickyNav = () => {
     zIndex: 100,
     boxSizing: 'border-box'
   }}>
-      <div style={{
+    <div style={{
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -366,13 +366,13 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-        <a href="#"  style={{
+      <a href="#" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
         textDecoration: 'none'
       }}>
-          <motion.div whileHover={{
+        <motion.div whileHover={{
           scale: 1.08,
           rotate: 5
         }} style={{
@@ -385,11 +385,11 @@ const StickyNav = () => {
           justifyContent: 'center',
           boxShadow: '0 4px 14px rgba(222,50,45,0.4)'
         }}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
-            </svg>
-          </motion.div>
-          <span style={{
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+          </svg>
+        </motion.div>
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           letterSpacing: '0.08em',
@@ -398,13 +398,13 @@ const StickyNav = () => {
           fontWeight: 700,
           transition: 'color 0.35s ease'
         }}>EmpowaSummit</span>
-        </a>
-        {!isMobile && <div style={{
+      </a>
+      {!isMobile && <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '32px'
       }}>
-            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           textDecoration: 'none',
@@ -416,13 +416,13 @@ const StickyNav = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLAnchorElement).style.color = navLinkColor;
         }}>
-                {item.label}
-              </a>)}
-            <div style={{
+          {item.label}
+        </a>)}
+        <div style={{
           display: 'flex',
           gap: '8px'
         }}>
-              <motion.a href="/partnerships"  whileHover={{
+          <motion.a href="/partnerships" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -440,9 +440,9 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}>
-                <span>Partner With Us</span>
-              </motion.a>
-              <motion.a href="/summit" whileHover={{
+            <span>Partner With Us</span>
+          </motion.a>
+          <motion.a href="/summit" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -461,11 +461,11 @@ const StickyNav = () => {
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)',
             transition: 'box-shadow 0.3s ease'
           }}>
-                <span>Summit 2026</span>
-              </motion.a>
-            </div>
-          </div>}
-        {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
+            <span>Summit 2026</span>
+          </motion.a>
+        </div>
+      </div>}
+      {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
         background: 'none',
         border: 'none',
         cursor: 'pointer',
@@ -474,7 +474,7 @@ const StickyNav = () => {
         flexDirection: 'column',
         gap: '5px'
       }}>
-            {[0, 1, 2].map(i => <span key={i} style={{
+        {[0, 1, 2].map(i => <span key={i} style={{
           display: 'block',
           width: '22px',
           height: '1.5px',
@@ -482,10 +482,10 @@ const StickyNav = () => {
           borderRadius: '2px',
           transition: 'background 0.35s ease'
         }} />)}
-          </button>}
-      </div>
-      <AnimatePresence>
-        {isMobile && mobileMenuOpen && <motion.div initial={{
+      </button>}
+    </div>
+    <AnimatePresence>
+      {isMobile && mobileMenuOpen && <motion.div initial={{
         opacity: 0,
         y: -12
       }} animate={{
@@ -504,7 +504,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 16px 28px'
       }}>
-            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -514,15 +514,15 @@ const StickyNav = () => {
           borderBottom: '0.8px solid rgba(20,18,16,0.06)',
           letterSpacing: '0.02em'
         }}>
-                {item.label}
-              </a>)}
-            <div style={{
+          {item.label}
+        </a>)}
+        <div style={{
           display: 'flex',
           gap: '10px',
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-              <a href="/partnerships"  style={{
+          <a href="/partnerships" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -531,7 +531,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-              <a href="/summit"  style={{
+          <a href="/summit" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -540,10 +540,10 @@ const StickyNav = () => {
             color: '#fff',
             textDecoration: 'none'
           }}>Summit 2026</a>
-            </div>
-          </motion.div>}
-      </AnimatePresence>
-    </motion.nav>;
+        </div>
+      </motion.div>}
+    </AnimatePresence>
+  </motion.nav>;
 };
 
 // ─── Zone data ────────────────────────────────────────────────────────────────────
@@ -592,7 +592,7 @@ const ZONES: ZoneItem[] = [{
   purpose: 'Africa\'s most high-stakes, commercially structured pitch arena. Curated cohorts of investment-ready founders pitch to panels of serious capital allocators in front of a live summit audience.',
   commercialRelevance: 'Live capital commitments, immediate term sheet conversations, and the highest concentration of deal-ready investors in a single pitch environment on the continent.',
   tags: ['Live Pitching', 'Term Sheets', 'High Stakes', 'Capital Allocation'],
-  imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80',
+  imageSrc: '/scale.jpg',
   imageAlt: "EmpowaEntrepreneurs Dragons’ Den Pitching Festival™ - high-stakes pitch arena at EmpowaWorx House",
   variant: 'prestige',
   icon: '⬡'
@@ -628,7 +628,7 @@ const ZONES: ZoneItem[] = [{
   purpose: 'A curated exhibition floor where Africa\'s leading enterprises, corporates, and service providers showcase offerings and forge strategic B2B partnerships, procurement relationships, and distribution alliances.',
   commercialRelevance: 'Opening continental market access, enterprise procurement pipelines, and strategic alliances that accelerate revenue growth and market penetration across African geographies.',
   tags: ['B2B', 'Procurement', 'Partnerships', 'Market Access'],
-  imageSrc: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&q=80',
+  imageSrc: '/corporate-dfi.jpg',
   imageAlt: 'Premium Industry Networking Exhibitions - elite B2B connections',
   variant: 'standard',
   icon: '◈'
@@ -681,8 +681,8 @@ const HeroSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      {/* BG Image */}
-      <motion.div aria-hidden="true" style={{
+    {/* BG Image */}
+    <motion.div aria-hidden="true" style={{
       y: imgY,
       position: 'absolute',
       inset: '-10% 0',
@@ -694,15 +694,15 @@ const HeroSection = () => {
       zIndex: 0,
       willChange: 'transform'
     }} />
-      {/* Overlays */}
-      <div aria-hidden="true" style={{
+    {/* Overlays */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       background: 'linear-gradient(160deg, rgba(15,28,40,0.96) 0%, rgba(15,28,40,0.82) 45%, rgba(15,28,40,0.92) 100%)',
       pointerEvents: 'none',
       zIndex: 1
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -712,14 +712,14 @@ const HeroSection = () => {
       zIndex: 2,
       opacity: 0.6
     }} />
-      {/* Grid lines */}
-      <div aria-hidden="true" style={{
+    {/* Grid lines */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       pointerEvents: 'none',
       zIndex: 2
     }}>
-        {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
+      {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
         position: 'absolute',
         top: 0,
         bottom: 0,
@@ -727,7 +727,7 @@ const HeroSection = () => {
         width: '1px',
         background: 'rgba(247,246,243,0.02)'
       }} />)}
-        <div style={{
+      <div style={{
         position: 'absolute',
         top: '88px',
         left: '32px',
@@ -736,7 +736,7 @@ const HeroSection = () => {
         borderLeft: '1px solid rgba(222,50,45,0.3)',
         borderTop: '1px solid rgba(222,50,45,0.3)'
       }} />
-        <div style={{
+      <div style={{
         position: 'absolute',
         bottom: '52px',
         right: '32px',
@@ -745,9 +745,9 @@ const HeroSection = () => {
         borderRight: '1px solid rgba(222,50,45,0.3)',
         borderBottom: '1px solid rgba(222,50,45,0.3)'
       }} />
-      </div>
-      {/* Red orb */}
-      <div aria-hidden="true" style={{
+    </div>
+    {/* Red orb */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '-8%',
       right: '-6%',
@@ -759,16 +759,16 @@ const HeroSection = () => {
       zIndex: 3
     }} />
 
-      {/* Nav spacer */}
-      <div style={{
+    {/* Nav spacer */}
+    <div style={{
       height: '88px',
       flexShrink: 0,
       position: 'relative',
       zIndex: 4
     }} />
 
-      {/* Hero content */}
-      <motion.div style={{
+    {/* Hero content */}
+    <motion.div style={{
       y: textY,
       flex: 1,
       display: 'flex',
@@ -780,15 +780,15 @@ const HeroSection = () => {
       zIndex: 4,
       position: 'relative'
     }}>
-        <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '40px',
         flexWrap: 'wrap'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           color: 'rgba(247,246,243,0.38)',
           fontSize: '11px',
@@ -796,30 +796,30 @@ const HeroSection = () => {
           textTransform: 'uppercase',
           fontWeight: 500
         }}>
-            <span style={{
+          <span style={{
             color: '#DE322D',
             fontWeight: 600
           }}>EmpowaEntrepreneurs</span>
-            <span> Funding Summit 2026 - </span>
-            <span style={{
+          <span> Funding Summit 2026 - </span>
+          <span style={{
             color: '#DE322D',
             fontWeight: 600
           }}>Experience Zones</span>
-          </span>
-        </motion.div>
+        </span>
+      </motion.div>
 
-        <h1 style={{
+      <h1 style={{
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: 200,
         margin: '0 0 32px',
         lineHeight: 0.91,
         letterSpacing: isMobile ? '-2px' : '-3.5px'
       }}>
-          <div style={{
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            <motion.span initial={{
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -841,14 +841,14 @@ const HeroSection = () => {
             WebkitBackgroundClip: "unset",
             WebkitTextFillColor: "unset"
           }}>
-              Experience
-            </motion.span>
-          </div>
-          <div style={{
+            Experience
+          </motion.span>
+        </div>
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            <motion.span initial={{
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -863,21 +863,21 @@ const HeroSection = () => {
             fontSize: isMobile ? 'clamp(48px, 13vw, 80px)' : 'clamp(60px, 8.5vw, 132px)',
             color: "rgb(247 246 243 / 0.25)"
           }}>
-              Zones
-              <em style={{
+            Zones
+            <em style={{
               fontStyle: 'italic',
               color: '#DE322D',
               marginLeft: '0.18em'
             }}>
-                &amp;
-              </em>
-            </motion.span>
-          </div>
-          <div style={{
+              &amp;
+            </em>
+          </motion.span>
+        </div>
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            <motion.span initial={{
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -892,12 +892,12 @@ const HeroSection = () => {
             fontSize: isMobile ? 'clamp(36px, 9.5vw, 60px)' : 'clamp(44px, 6.5vw, 100px)',
             color: "rgb(247 246 243 / 0.25)"
           }}>
-              EmpowaEntrepreneurs Funding Summit 2026 Journey
-            </motion.span>
-          </div>
-        </h1>
+            EmpowaEntrepreneurs Funding Summit 2026 Journey
+          </motion.span>
+        </div>
+      </h1>
 
-        <motion.p custom={0.6} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      <motion.p custom={0.6} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         fontFamily: 'Inter, sans-serif',
         fontSize: isMobile ? '15px' : 'clamp(15px, 1.4vw, 18px)',
         lineHeight: '1.75',
@@ -906,17 +906,17 @@ const HeroSection = () => {
         fontWeight: 300,
         maxWidth: '560px'
       }}>
-          Strategic Growth Engines for Africa's Next Era. Eight purpose-built zones designed to unlock funding
-          opportunities, market access, and transformative strategic partnerships.
-        </motion.p>
+        Strategic Growth Engines for Africa's Next Era. Eight purpose-built zones designed to unlock funding
+        opportunities, market access, and transformative strategic partnerships.
+      </motion.p>
 
-        <motion.div custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      <motion.div custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '12px',
         flexWrap: 'wrap'
       }}>
-          <motion.a href="#zones"  whileHover={{
+        <motion.a href="#zones" whileHover={{
           scale: 1.04,
           boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
         }} whileTap={{
@@ -936,14 +936,14 @@ const HeroSection = () => {
           fontWeight: 600,
           boxShadow: '0 8px 36px rgba(222,50,45,0.55)'
         }}>
-            <span>Explore All Zones</span>
-            <ArrowIconDark />
-          </motion.a>
-        </motion.div>
+          <span>Explore All Zones</span>
+          <ArrowIconDark />
+        </motion.a>
       </motion.div>
+    </motion.div>
 
-      {/* Ticker */}
-      <motion.div initial={{
+    {/* Ticker */}
+    <motion.div initial={{
       opacity: 0
     }} animate={{
       opacity: 1
@@ -956,11 +956,11 @@ const HeroSection = () => {
       overflow: 'hidden',
       position: 'relative'
     }}>
-        <HeroTicker light />
-      </motion.div>
+      <HeroTicker light />
+    </motion.div>
 
-      {/* Zone count strip */}
-      <motion.div initial={{
+    {/* Zone count strip */}
+    <motion.div initial={{
       opacity: 0
     }} animate={{
       opacity: 1
@@ -978,7 +978,7 @@ const HeroSection = () => {
       zIndex: 4,
       position: 'relative'
     }}>
-        {[{
+      {[{
         id: 'hs-1',
         label: '8 Experience Zones'
       }, {
@@ -1000,14 +1000,14 @@ const HeroSection = () => {
         alignItems: 'center',
         gap: '8px'
       }}>
-            <span style={{
+        <span style={{
           color: '#DE322D',
           fontSize: '13px'
         }}>+</span>
-            <span>{item.label}</span>
-          </div>)}
-      </motion.div>
-    </section>;
+        <span>{item.label}</span>
+      </div>)}
+    </motion.div>
+  </section>;
 };
 
 // ─── Zone Grid Section ──────────────────────────────────────────────────────────────
@@ -1040,14 +1040,14 @@ const ZoneCard = ({
     width: '100%',
     borderBottom: '1px solid rgba(247,246,243,0.07)'
   }}>
-      {/* Image side */}
-      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isReversed && !isMobile ? slideFromRight : slideFromLeft} custom={0.05} style={{
+    {/* Image side */}
+    <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isReversed && !isMobile ? slideFromRight : slideFromLeft} custom={0.05} style={{
       position: 'relative',
       overflow: 'hidden',
       order: isReversed && !isMobile ? 2 : 1,
       minHeight: isMobile ? '280px' : '520px'
     }}>
-        <img src={zone.imageSrc} alt={zone.imageAlt} style={{
+      <img src={zone.imageSrc} alt={zone.imageAlt} style={{
         position: 'absolute',
         inset: 0,
         width: '100%',
@@ -1056,15 +1056,15 @@ const ZoneCard = ({
         display: 'block',
         filter: isPrestige ? 'brightness(0.5) saturate(0.6)' : isPremium ? 'brightness(0.55) saturate(0.65)' : 'brightness(0.55) saturate(0.7)'
       }} />
-        {/* Gradient overlay */}
-        <div aria-hidden="true" style={{
+      {/* Gradient overlay */}
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         background: isPrestige ? 'linear-gradient(to right, rgba(6,8,10,0.85) 0%, rgba(6,8,10,0.4) 60%, transparent 100%)' : isPremium ? 'linear-gradient(to right, rgba(14,18,32,0.8) 0%, rgba(14,18,32,0.3) 60%, transparent 100%)' : 'linear-gradient(to right, rgba(15,28,40,0.8) 0%, rgba(15,28,40,0.3) 60%, transparent 100%)',
         pointerEvents: 'none'
       }} />
-        {/* Zone index */}
-        <div style={{
+      {/* Zone index */}
+      <div style={{
         position: 'absolute',
         top: '28px',
         left: '32px',
@@ -1076,16 +1076,16 @@ const ZoneCard = ({
         letterSpacing: '-6px',
         userSelect: 'none'
       }}>
-          {zone.index}
-        </div>
-        {/* Badge */}
-        <div style={{
+        {zone.index}
+      </div>
+      {/* Badge */}
+      <div style={{
         position: 'absolute',
         bottom: '28px',
         left: '28px',
         right: '28px'
       }}>
-          {(isPremium || isPrestige) && <div style={{
+        {(isPremium || isPrestige) && <div style={{
           display: 'inline-flex',
           alignItems: 'center',
           gap: '8px',
@@ -1095,7 +1095,7 @@ const ZoneCard = ({
           padding: '6px 14px 6px 10px',
           marginBottom: '12px'
         }}>
-              <motion.div animate={{
+          <motion.div animate={{
             opacity: [1, 0.35, 1]
           }} transition={{
             duration: 2,
@@ -1107,7 +1107,7 @@ const ZoneCard = ({
             background: isPremium ? 'rgba(180,160,255,0.9)' : '#DE322D',
             boxShadow: isPremium ? '0 0 8px rgba(180,160,255,0.7)' : '0 0 8px rgba(222,50,45,0.7)'
           }} />
-              <span style={{
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '10px',
             letterSpacing: '0.12em',
@@ -1115,14 +1115,14 @@ const ZoneCard = ({
             color: isPremium ? 'rgba(180,160,255,0.85)' : 'rgba(247,246,243,0.7)',
             fontWeight: 600
           }}>
-                {isPremium ? 'Exclusive Access' : 'Commercially Prestigious'}
-              </span>
-            </div>}
-        </div>
-      </motion.div>
+            {isPremium ? 'Exclusive Access' : 'Commercially Prestigious'}
+          </span>
+        </div>}
+      </div>
+    </motion.div>
 
-      {/* Content side */}
-      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isReversed && !isMobile ? slideFromLeft : slideFromRight} custom={0.15} style={{
+    {/* Content side */}
+    <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isReversed && !isMobile ? slideFromLeft : slideFromRight} custom={0.15} style={{
       background: cardBg,
       border: cardBorder,
       borderLeft: 'none',
@@ -1137,8 +1137,8 @@ const ZoneCard = ({
       overflow: 'hidden',
       boxSizing: 'border-box'
     }}>
-        {/* Noise */}
-        <div aria-hidden="true" style={{
+      {/* Noise */}
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         backgroundImage: NOISE_SVG,
@@ -1147,8 +1147,8 @@ const ZoneCard = ({
         pointerEvents: 'none',
         opacity: 0.5
       }} />
-        {/* Premium glow */}
-        {isPremium && <div aria-hidden="true" style={{
+      {/* Premium glow */}
+      {isPremium && <div aria-hidden="true" style={{
         position: 'absolute',
         top: '-20%',
         right: '-10%',
@@ -1158,7 +1158,7 @@ const ZoneCard = ({
         background: 'radial-gradient(circle, rgba(180,160,255,0.08) 0%, transparent 65%)',
         pointerEvents: 'none'
       }} />}
-        {isPrestige && <div aria-hidden="true" style={{
+      {isPrestige && <div aria-hidden="true" style={{
         position: 'absolute',
         bottom: '-20%',
         left: '-10%',
@@ -1169,18 +1169,18 @@ const ZoneCard = ({
         pointerEvents: 'none'
       }} />}
 
-        <div style={{
+      <div style={{
         position: 'relative',
         zIndex: 1
       }}>
-          {/* Zone number & icon */}
-          <div style={{
+        {/* Zone number & icon */}
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           marginBottom: '28px'
         }}>
-            <div style={{
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.16em',
@@ -1188,20 +1188,20 @@ const ZoneCard = ({
             color: 'rgba(247,246,243,0.25)',
             fontWeight: 500
           }}>
-              Zone {zone.index}
-            </div>
-            <div style={{
+            Zone {zone.index}
+          </div>
+          <div style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '22px',
             color: isPrestige ? 'rgba(222,50,45,0.6)' : isPremium ? 'rgba(180,160,255,0.5)' : 'rgba(247,246,243,0.15)',
             lineHeight: 1
           }}>
-              {zone.icon}
-            </div>
+            {zone.icon}
           </div>
+        </div>
 
-          {/* Theme tag */}
-          <div style={{
+        {/* Theme tag */}
+        <div style={{
           display: 'inline-block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '10px',
@@ -1214,10 +1214,10 @@ const ZoneCard = ({
           marginBottom: '20px',
           fontWeight: 600
         }}>
-            {zone.theme}
-          </div>
+          {zone.theme}
+        </div>
 
-          <h2 style={{
+        <h2 style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: isMobile ? 'clamp(22px, 6vw, 32px)' : 'clamp(24px, 2.6vw, 38px)',
           fontWeight: isPrestige ? 600 : 300,
@@ -1226,10 +1226,10 @@ const ZoneCard = ({
           color: '#F7F6F3',
           margin: '0 0 24px'
         }}>
-            {zone.name}
-          </h2>
+          {zone.name}
+        </h2>
 
-          <p style={{
+        <p style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '15px',
           lineHeight: '1.8',
@@ -1237,18 +1237,18 @@ const ZoneCard = ({
           margin: '0 0 28px',
           fontWeight: 300
         }}>
-            {zone.purpose}
-          </p>
+          {zone.purpose}
+        </p>
 
-          {/* Commercial relevance */}
-          <div style={{
+        {/* Commercial relevance */}
+        <div style={{
           background: isPrestige ? 'rgba(222,50,45,0.08)' : isPremium ? 'rgba(180,160,255,0.07)' : 'rgba(247,246,243,0.04)',
           border: isPrestige ? '1px solid rgba(222,50,45,0.16)' : isPremium ? '1px solid rgba(180,160,255,0.12)' : '1px solid rgba(247,246,243,0.08)',
           borderRadius: '16px',
           padding: '20px 22px',
           marginBottom: '32px'
         }}>
-            <div style={{
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
@@ -1257,9 +1257,9 @@ const ZoneCard = ({
             fontWeight: 600,
             marginBottom: '10px'
           }}>
-              Commercial Relevance
-            </div>
-            <p style={{
+            Commercial Relevance
+          </div>
+          <p style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '13px',
             lineHeight: '1.72',
@@ -1267,18 +1267,18 @@ const ZoneCard = ({
             margin: 0,
             fontStyle: 'italic'
           }}>
-              {zone.commercialRelevance}
-            </p>
-          </div>
+            {zone.commercialRelevance}
+          </p>
+        </div>
 
-          {/* Tags */}
-          <div style={{
+        {/* Tags */}
+        <div style={{
           display: 'flex',
           flexWrap: 'wrap',
           gap: '6px',
           marginBottom: '32px'
         }}>
-            {zone.tags.map(tag => <span key={tag} style={{
+          {zone.tags.map(tag => <span key={tag} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '10px',
             letterSpacing: '0.1em',
@@ -1288,25 +1288,25 @@ const ZoneCard = ({
             borderRadius: '100px',
             padding: '4px 12px'
           }}>
-                {tag}
-              </span>)}
-          </div>
+            {tag}
+          </span>)}
         </div>
+      </div>
 
-        {/* CTA */}
-        <div style={{
+      {/* CTA */}
+      <div style={{
         display: 'flex',
         gap: '10px',
         flexWrap: 'wrap',
         position: 'relative',
         zIndex: 1
       }}>
-          <motion.div ref={magnetic.ref} onMouseMove={magnetic.handleMouseMove} onMouseLeave={magnetic.handleMouseLeave} style={{
+        <motion.div ref={magnetic.ref} onMouseMove={magnetic.handleMouseMove} onMouseLeave={magnetic.handleMouseLeave} style={{
           x: magnetic.springX,
           y: magnetic.springY,
           display: 'inline-block'
         }}>
-            <motion.a onClick={(e) => { e.preventDefault(); onInquire(zone.name); }}  whileHover={{
+          <motion.a onClick={(e) => { e.preventDefault(); onInquire(zone.name); }} whileHover={{
             scale: 1.04,
             boxShadow: '0 12px 40px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -1328,13 +1328,13 @@ const ZoneCard = ({
             boxShadow: isPrestige ? '0 8px 32px rgba(222,50,45,0.45)' : '0 4px 20px rgba(222,50,45,0.3)',
             cursor: 'pointer'
           }}>
-              <span>Inquire About Zone</span>
-              <ArrowIconDark />
-            </motion.a>
-          </motion.div>
-        </div>
-      </motion.div>
-    </div>;
+            <span>Inquire About Zone</span>
+            <ArrowIconDark />
+          </motion.a>
+        </motion.div>
+      </div>
+    </motion.div>
+  </div>;
 };
 
 // ─── Zones Grid Wrapper ─────────────────────────────────────────────────────────────
@@ -1352,21 +1352,21 @@ const ZonesSection = ({ onInquire }: { onInquire: (zoneName: string) => void }) 
     overflow: 'hidden',
     position: 'relative'
   }}>
-      {/* Section header */}
-      <div ref={headerRef} style={{
+    {/* Section header */}
+    <div ref={headerRef} style={{
       padding: isMobile ? '80px 24px 56px' : '120px 64px 72px',
       maxWidth: '1200px',
       margin: '0 auto',
       boxSizing: 'border-box'
     }}>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '24px'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.14em',
@@ -1374,19 +1374,19 @@ const ZonesSection = ({ onInquire }: { onInquire: (zoneName: string) => void }) 
           color: 'rgba(247,246,243,0.35)',
           fontWeight: 600
         }}>
-            Eight Strategic Zones
-          </span>
-        </motion.div>
-        <div style={{
+          Eight Strategic Zones
+        </span>
+      </motion.div>
+      <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
         gap: '40px',
         alignItems: 'end'
       }}>
-          <div style={{
+        <div style={{
           overflow: 'hidden'
         }}>
-            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? 'clamp(32px, 9vw, 52px)' : 'clamp(44px, 5.5vw, 72px)',
             fontWeight: 200,
@@ -1395,18 +1395,18 @@ const ZonesSection = ({ onInquire }: { onInquire: (zoneName: string) => void }) 
             color: '#F7F6F3',
             margin: 0
           }}>
-              <span>Where every zone </span>
-              <em style={{
+            <span>Where every zone </span>
+            <em style={{
               fontStyle: 'italic',
               color: '#DE322D'
             }}>unlocks</em>
-              <br />
-              <span style={{
+            <br />
+            <span style={{
               color: 'rgba(247,246,243,0.2)'
             }}>strategic value.</span>
-            </motion.h2>
-          </div>
-          <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
+          </motion.h2>
+        </div>
+        <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '15px',
           color: 'rgba(247,246,243,0.38)',
@@ -1414,20 +1414,20 @@ const ZonesSection = ({ onInquire }: { onInquire: (zoneName: string) => void }) 
           margin: 0,
           fontWeight: 300
         }}>
-            Eight purpose-built experience zones - each designed as a distinct ecosystem for capital access, strategic
-            intelligence, and premium market connections across Africa's most dynamic sectors.
-          </motion.p>
-        </div>
+          Eight purpose-built experience zones - each designed as a distinct ecosystem for capital access, strategic
+          intelligence, and premium market connections across Africa's most dynamic sectors.
+        </motion.p>
       </div>
+    </div>
 
-      {/* Zone cards */}
-      <div style={{
+    {/* Zone cards */}
+    <div style={{
       width: '100%',
       borderTop: '1px solid rgba(247,246,243,0.07)'
     }}>
-        {ZONES.map((zone, i) => <ZoneCard key={zone.id} zone={zone} index={i} isReversed={i % 2 === 1} onInquire={onInquire} />)}
-      </div>
-    </section>;
+      {ZONES.map((zone, i) => <ZoneCard key={zone.id} zone={zone} index={i} isReversed={i % 2 === 1} onInquire={onInquire} />)}
+    </div>
+  </section>;
 };
 
 // ─── Strategic Question CTA Section ─────────────────────────────────────────────────
@@ -1448,8 +1448,8 @@ const StrategicCTASection = () => {
     paddingBottom: isMobile ? '96px' : '144px',
     position: 'relative'
   }}>
-      {/* Noise */}
-      <div aria-hidden="true" style={{
+    {/* Noise */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1458,8 +1458,8 @@ const StrategicCTASection = () => {
       pointerEvents: 'none',
       opacity: 0.35
     }} />
-      {/* Subtle red orb */}
-      <div aria-hidden="true" style={{
+    {/* Subtle red orb */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '-10%',
       right: '-8%',
@@ -1470,7 +1470,7 @@ const StrategicCTASection = () => {
       pointerEvents: 'none'
     }} />
 
-      <div style={{
+    <div style={{
       maxWidth: '1100px',
       margin: '0 auto',
       padding: isMobile ? '0 24px' : '0 64px',
@@ -1478,15 +1478,15 @@ const StrategicCTASection = () => {
       zIndex: 1,
       textAlign: 'center'
     }}>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         gap: '10px',
         marginBottom: '40px'
       }}>
-          <PlusSquareIcon />
-          <span style={{
+        <PlusSquareIcon />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.14em',
@@ -1494,11 +1494,11 @@ const StrategicCTASection = () => {
           color: 'rgba(20,18,16,0.4)',
           fontWeight: 600
         }}>
-            The Defining Question
-          </span>
-        </motion.div>
+          The Defining Question
+        </span>
+      </motion.div>
 
-        <motion.blockquote initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.12} style={{
+      <motion.blockquote initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.12} style={{
         fontFamily: 'Montserrat, sans-serif',
         fontSize: isMobile ? 'clamp(24px, 7vw, 40px)' : 'clamp(32px, 4.5vw, 62px)',
         fontWeight: 200,
@@ -1509,23 +1509,23 @@ const StrategicCTASection = () => {
         maxWidth: '940px',
         fontStyle: 'normal'
       }}>
-          <span style={{
+        <span style={{
           color: 'rgba(20,18,16,0.3)'
         }}>"</span>
-          <span>What strategic value, funding opportunity, or market access</span>
-          <em style={{
+        <span>What strategic value, funding opportunity, or market access</span>
+        <em style={{
           fontStyle: 'italic',
           color: '#DE322D'
         }}> does this unlock</em>
-          <span style={{
+        <span style={{
           color: 'rgba(20,18,16,0.28)'
         }}> for you?</span>
-          <span style={{
+        <span style={{
           color: 'rgba(20,18,16,0.3)'
         }}>"</span>
-        </motion.blockquote>
+      </motion.blockquote>
 
-        <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.3} style={{
+      <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.3} style={{
         fontFamily: 'Inter, sans-serif',
         fontSize: isMobile ? '15px' : '17px',
         lineHeight: '1.8',
@@ -1534,13 +1534,13 @@ const StrategicCTASection = () => {
         fontWeight: 300,
         maxWidth: '620px'
       }}>
-          Each zone at EmpowaEntrepreneurs Funding Summit 2026 is a strategic tool - not a passive session.
-          Every experience is architected to generate measurable outcomes: capital commitments, partnerships,
-          procurement contracts, and the intelligence to scale across African markets.
-        </motion.p>
+        Each zone at EmpowaEntrepreneurs Funding Summit 2026 is a strategic tool - not a passive session.
+        Every experience is architected to generate measurable outcomes: capital commitments, partnerships,
+        procurement contracts, and the intelligence to scale across African markets.
+      </motion.p>
 
-        {/* Zone metrics */}
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.45} style={{
+      {/* Zone metrics */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.45} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
         gap: '1px',
@@ -1550,7 +1550,7 @@ const StrategicCTASection = () => {
         marginBottom: '52px',
         transformOrigin: 'left'
       }}>
-          {[{
+        {[{
           id: 'qm-1',
           number: '8',
           label: 'Experience Zones',
@@ -1578,7 +1578,7 @@ const StrategicCTASection = () => {
           alignItems: 'center',
           gap: '4px'
         }}>
-              <div style={{
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? 'clamp(28px, 7vw, 44px)' : 'clamp(32px, 3.5vw, 52px)',
             fontWeight: 700,
@@ -1586,9 +1586,9 @@ const StrategicCTASection = () => {
             color: '#141210',
             lineHeight: 1
           }}>
-                {metric.number}
-              </div>
-              <div style={{
+            {metric.number}
+          </div>
+          <div style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '12px',
             fontWeight: 600,
@@ -1596,33 +1596,33 @@ const StrategicCTASection = () => {
             letterSpacing: '-0.1px',
             marginTop: '6px'
           }}>
-                {metric.label}
-              </div>
-              <div style={{
+            {metric.label}
+          </div>
+          <div style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
             color: 'rgba(20,18,16,0.38)',
             letterSpacing: '0.02em',
             textAlign: 'center'
           }}>
-                {metric.sub}
-              </div>
-            </div>)}
-        </motion.div>
+            {metric.sub}
+          </div>
+        </div>)}
+      </motion.div>
 
-        {/* CTA buttons */}
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.55} style={{
+      {/* CTA buttons */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.55} style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         gap: '12px',
         flexWrap: 'wrap'
       }}>
-          <motion.div ref={magnetic.ref} onMouseMove={magnetic.handleMouseMove} onMouseLeave={magnetic.handleMouseLeave} style={{
+        <motion.div ref={magnetic.ref} onMouseMove={magnetic.handleMouseMove} onMouseLeave={magnetic.handleMouseLeave} style={{
           x: magnetic.springX,
           y: magnetic.springY
         }}>
-            <motion.a href="/summit"  whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04,
             boxShadow: '0 20px 60px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -1642,11 +1642,11 @@ const StrategicCTASection = () => {
             fontWeight: 600,
             boxShadow: '0 12px 48px rgba(222,50,45,0.45)'
           }}>
-              <span>Reserve Your Summit Seat</span>
-              <ArrowIconDark />
-            </motion.a>
-          </motion.div>
-          <motion.a href="/partnerships"  whileHover={{
+            <span>Reserve Your Summit Seat</span>
+            <ArrowIconDark />
+          </motion.a>
+        </motion.div>
+        <motion.a href="/partnerships" whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -1672,11 +1672,11 @@ const StrategicCTASection = () => {
           el.style.borderColor = 'rgba(20,18,16,0.2)';
           el.style.color = 'rgba(20,18,16,0.65)';
         }}>
-            <span>Partner With Us</span>
-          </motion.a>
-        </motion.div>
-      </div>
-    </section>;
+          <span>Partner With Us</span>
+        </motion.a>
+      </motion.div>
+    </div>
+  </section>;
 };
 
 // ─── Mini Zone Navigator ──────────────────────────────────────────────────────────────
@@ -1695,7 +1695,7 @@ const ZoneNavigator = () => {
     position: 'relative',
     overflow: 'hidden'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1704,20 +1704,20 @@ const ZoneNavigator = () => {
       pointerEvents: 'none',
       opacity: 0.5
     }} />
-      <div style={{
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       position: 'relative',
       zIndex: 1
     }}>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '36px'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.14em',
@@ -1725,10 +1725,10 @@ const ZoneNavigator = () => {
           color: 'rgba(247,246,243,0.35)',
           fontWeight: 600
         }}>
-            All Eight Zones at a Glance
-          </span>
-        </motion.div>
-        <div style={{
+          All Eight Zones at a Glance
+        </span>
+      </motion.div>
+      <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
         gap: '1px',
@@ -1736,7 +1736,7 @@ const ZoneNavigator = () => {
         borderRadius: '20px',
         overflow: 'hidden'
       }}>
-          {ZONES.map((zone, i) => <motion.a key={zone.id} href="#"  initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={i * 0.06} whileHover={{
+        {ZONES.map((zone, i) => <motion.a key={zone.id} href="#" initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={i * 0.06} whileHover={{
           scale: 1.02
         }} style={{
           background: zone.variant === 'prestige' ? 'rgba(20,8,8,0.85)' : zone.variant === 'premium' ? 'rgba(12,10,22,0.85)' : 'rgba(15,28,40,0.85)',
@@ -1753,7 +1753,7 @@ const ZoneNavigator = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLAnchorElement).style.background = zone.variant === 'prestige' ? 'rgba(20,8,8,0.85)' : zone.variant === 'premium' ? 'rgba(12,10,22,0.85)' : 'rgba(15,28,40,0.85)';
         }}>
-              <div style={{
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
@@ -1761,9 +1761,9 @@ const ZoneNavigator = () => {
             color: zone.variant === 'prestige' ? 'rgba(222,50,45,0.7)' : zone.variant === 'premium' ? 'rgba(180,160,255,0.5)' : 'rgba(247,246,243,0.2)',
             fontWeight: 600
           }}>
-                Zone {zone.index}
-              </div>
-              <div style={{
+            Zone {zone.index}
+          </div>
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? '12px' : '14px',
             fontWeight: zone.variant === 'prestige' ? 600 : 400,
@@ -1771,21 +1771,21 @@ const ZoneNavigator = () => {
             lineHeight: 1.3,
             letterSpacing: '-0.2px'
           }}>
-                {zone.name}
-              </div>
-              <div style={{
+            {zone.name}
+          </div>
+          <div style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '10px',
             color: 'rgba(247,246,243,0.22)',
             letterSpacing: '0.04em',
             lineHeight: 1.4
           }}>
-                {zone.theme}
-              </div>
-            </motion.a>)}
-        </div>
+            {zone.theme}
+          </div>
+        </motion.a>)}
       </div>
-    </div>;
+    </div>
+  </div>;
 };
 
 // ─── Footer ─────────────────────────────────────────────────────────────────────────
@@ -2060,7 +2060,7 @@ const SiteFooter = () => {
             }}>
               <span>Register Now</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="/partnerships"  whileHover={{
+            <motion.a href="/partnerships" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2408,19 +2408,19 @@ export const ExperienceZonesPage = () => {
     background: '#0f1c28',
     overflowX: 'hidden'
   }}>
-      <HeroSection />
-      <LogoBanner />
-      <ZoneNavigator />
-      <ZonesSection onInquire={(zoneName) => {
-        setSelectedZone(zoneName);
-        setIsModalOpen(true);
-      }} />
-      <StrategicCTASection />
-      
-      <ZoneExperienceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        zoneName={selectedZone} 
-      />
-    </div>;
+    <HeroSection />
+    <LogoBanner />
+    <ZoneNavigator />
+    <ZonesSection onInquire={(zoneName) => {
+      setSelectedZone(zoneName);
+      setIsModalOpen(true);
+    }} />
+    <StrategicCTASection />
+
+    <ZoneExperienceModal
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      zoneName={selectedZone}
+    />
+  </div>;
 };
