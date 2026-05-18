@@ -53,14 +53,14 @@ const useMagnetic = (strength = 0.35) => {
 
 // ─── Shared SVG helpers ────────────────────────────────────────────────────────
 const PlusSquareIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
+</svg>;
 const PlusSquareIconLight = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
+</svg>;
 const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>;
+  <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 const fadeUpVariants = {
@@ -274,17 +274,17 @@ const ProgrammeTicker = ({
     overflow: 'hidden',
     width: '100%'
   }}>
-      <div ref={trackRef} style={{
+    <div ref={trackRef} style={{
       display: 'flex',
       alignItems: 'center',
       willChange: 'transform'
     }}>
-        {[0, 1, 2].map(r => <div key={r} className="ticker-row" style={{
+      {[0, 1, 2].map(r => <div key={r} className="ticker-row" style={{
         display: 'flex',
         alignItems: 'center',
         flexShrink: 0
       }}>
-            {TICKER_ITEMS.map(item => <div key={item.id} style={{
+        {TICKER_ITEMS.map(item => <div key={item.id} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '16px',
@@ -293,7 +293,7 @@ const ProgrammeTicker = ({
           height: '52px',
           whiteSpace: 'nowrap'
         }}>
-                <span style={{
+          <span style={{
             width: '4px',
             height: '4px',
             borderRadius: '50%',
@@ -301,7 +301,7 @@ const ProgrammeTicker = ({
             flexShrink: 0,
             display: 'block'
           }} />
-                <span style={{
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
@@ -309,10 +309,10 @@ const ProgrammeTicker = ({
             color: light ? 'rgba(247,246,243,0.35)' : 'rgba(20,18,16,0.4)',
             fontWeight: 500
           }}>{item.label}</span>
-              </div>)}
-          </div>)}
-      </div>
-    </div>;
+        </div>)}
+      </div>)}
+    </div>
+  </div>;
 };
 
 // ─── StickyNav ────────────────────────────────────────────────────────────────
@@ -369,7 +369,7 @@ const ProgrammeNav = () => {
     zIndex: 100,
     boxSizing: 'border-box'
   }}>
-      <div style={{
+    <div style={{
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -380,13 +380,13 @@ const ProgrammeNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-        <a href="#"  style={{
+      <a href="#" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
         textDecoration: 'none'
       }}>
-          <motion.div whileHover={{
+        <motion.div whileHover={{
           scale: 1.08,
           rotate: 5
         }} style={{
@@ -399,11 +399,11 @@ const ProgrammeNav = () => {
           justifyContent: 'center',
           boxShadow: '0 4px 14px rgba(222,50,45,0.4)'
         }}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
-            </svg>
-          </motion.div>
-          <span style={{
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+          </svg>
+        </motion.div>
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           letterSpacing: '0.08em',
@@ -412,13 +412,13 @@ const ProgrammeNav = () => {
           fontWeight: 700,
           transition: 'color 0.35s ease'
         }}>EmpowaSummit</span>
-        </a>
-        {!isMobile && <div style={{
+      </a>
+      {!isMobile && <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '32px'
       }}>
-            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           textDecoration: 'none',
@@ -430,13 +430,13 @@ const ProgrammeNav = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLAnchorElement).style.color = navLinkColor;
         }}>
-                {item.label}
-              </a>)}
-            <div style={{
+          {item.label}
+        </a>)}
+        <div style={{
           display: 'flex',
           gap: '8px'
         }}>
-              <motion.a href="/partnerships"  whileHover={{
+          <motion.a href="/partnerships" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -454,9 +454,9 @@ const ProgrammeNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}>
-                <span>Partner With Us</span>
-              </motion.a>
-              <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <span>Partner With Us</span>
+          </motion.a>
+          <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -475,11 +475,11 @@ const ProgrammeNav = () => {
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)',
             transition: 'box-shadow 0.3s ease'
           }}>
-                <span>Register Now</span>
-              </motion.a>
-            </div>
-          </div>}
-        {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
+            <span>Register Now</span>
+          </motion.a>
+        </div>
+      </div>}
+      {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
         background: 'none',
         border: 'none',
         cursor: 'pointer',
@@ -488,7 +488,7 @@ const ProgrammeNav = () => {
         flexDirection: 'column',
         gap: '5px'
       }}>
-            {[0, 1, 2].map(i => <span key={i} style={{
+        {[0, 1, 2].map(i => <span key={i} style={{
           display: 'block',
           width: '22px',
           height: '1.5px',
@@ -496,10 +496,10 @@ const ProgrammeNav = () => {
           borderRadius: '2px',
           transition: 'background 0.35s ease'
         }} />)}
-          </button>}
-      </div>
-      <AnimatePresence>
-        {isMobile && mobileMenuOpen && <motion.div initial={{
+      </button>}
+    </div>
+    <AnimatePresence>
+      {isMobile && mobileMenuOpen && <motion.div initial={{
         opacity: 0,
         y: -12
       }} animate={{
@@ -518,7 +518,7 @@ const ProgrammeNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 32px 28px'
       }}>
-            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -528,13 +528,13 @@ const ProgrammeNav = () => {
           borderBottom: '0.8px solid rgba(20,18,16,0.06)',
           letterSpacing: '0.02em'
         }}>{item.label}</a>)}
-            <div style={{
+        <div style={{
           display: 'flex',
           gap: '10px',
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-              <a href="/partnerships"  style={{
+          <a href="/partnerships" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -543,7 +543,7 @@ const ProgrammeNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-              <a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/"  style={{
+          <a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -552,10 +552,10 @@ const ProgrammeNav = () => {
             color: '#fff',
             textDecoration: 'none'
           }}>Register Now</a>
-            </div>
-          </motion.div>}
-      </AnimatePresence>
-    </motion.nav>;
+        </div>
+      </motion.div>}
+    </AnimatePresence>
+  </motion.nav>;
 };
 
 // ─── Programme Hero ────────────────────────────────────────────────────────────
@@ -582,7 +582,7 @@ const ProgrammeHero = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <motion.div aria-hidden="true" style={{
+    <motion.div aria-hidden="true" style={{
       y: imgY,
       position: 'absolute',
       inset: '-10% 0',
@@ -594,14 +594,14 @@ const ProgrammeHero = () => {
       zIndex: 0,
       willChange: 'transform'
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       background: 'linear-gradient(160deg, rgba(20,18,16,0.94) 0%, rgba(20,18,16,0.78) 40%, rgba(20,18,16,0.9) 100%)',
       pointerEvents: 'none',
       zIndex: 1
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -611,15 +611,15 @@ const ProgrammeHero = () => {
       zIndex: 2,
       opacity: 0.5
     }} />
-      {/* Grid lines */}
-      <div aria-hidden="true" style={{
+    {/* Grid lines */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       pointerEvents: 'none',
       zIndex: 2,
       overflow: 'hidden'
     }}>
-        {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
+      {[16, 33, 50, 66, 83].map(pct => <div key={`vl-${pct}`} style={{
         position: 'absolute',
         top: 0,
         bottom: 0,
@@ -627,7 +627,7 @@ const ProgrammeHero = () => {
         width: '1px',
         background: 'rgba(247,246,243,0.025)'
       }} />)}
-        <div style={{
+      <div style={{
         position: 'absolute',
         top: '88px',
         left: '32px',
@@ -636,7 +636,7 @@ const ProgrammeHero = () => {
         borderLeft: '1px solid rgba(222,50,45,0.3)',
         borderTop: '1px solid rgba(222,50,45,0.3)'
       }} />
-        <div style={{
+      <div style={{
         position: 'absolute',
         bottom: '52px',
         right: '32px',
@@ -645,9 +645,9 @@ const ProgrammeHero = () => {
         borderRight: '1px solid rgba(222,50,45,0.3)',
         borderBottom: '1px solid rgba(222,50,45,0.3)'
       }} />
-      </div>
-      {/* Orbs */}
-      <div aria-hidden="true" style={{
+    </div>
+    {/* Orbs */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '-5%',
       right: '-8%',
@@ -658,13 +658,13 @@ const ProgrammeHero = () => {
       pointerEvents: 'none',
       zIndex: 3
     }} />
-      <div style={{
+    <div style={{
       height: '88px',
       flexShrink: 0,
       position: 'relative',
       zIndex: 4
     }} />
-      <motion.div style={{
+    <motion.div style={{
       y: textY,
       flex: 1,
       display: 'flex',
@@ -676,15 +676,15 @@ const ProgrammeHero = () => {
       zIndex: 4,
       position: 'relative'
     }}>
-        <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '36px',
         flexWrap: 'wrap'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           color: 'rgba(247,246,243,0.38)',
           fontSize: '11px',
@@ -692,25 +692,25 @@ const ProgrammeHero = () => {
           textTransform: 'uppercase',
           fontWeight: 500
         }}>
-            <span style={{
+          <span style={{
             color: '#DE322D',
             fontWeight: 600
           }}>Programme</span>
-            <span> - EmpowaEntrepreneurs Funding Summit 2026</span>
-          </span>
-        </motion.div>
-        <h1 style={{
+          <span> - EmpowaEntrepreneurs Funding Summit 2026</span>
+        </span>
+      </motion.div>
+      <h1 style={{
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: 300,
         margin: '0 0 36px',
         lineHeight: 0.93,
         letterSpacing: isMobile ? '-2px' : '-3px'
       }}>
-          <div style={{
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            <motion.span initial={{
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -726,7 +726,7 @@ const ProgrammeHero = () => {
             fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
             color: "#f7f6f3"
           }}>Where</motion.span>
-            <motion.span initial={{
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -742,7 +742,7 @@ const ProgrammeHero = () => {
             fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
             color: '#F7F6F3'
           }}>Africa's</motion.span>
-            <motion.span initial={{
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -758,12 +758,12 @@ const ProgrammeHero = () => {
             fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
             color: "rgb(247 246 243 / 0.25)"
           }}>Capital</motion.span>
-          </div>
-          <div style={{
+        </div>
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            <motion.em initial={{
+          <motion.em initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -781,7 +781,7 @@ const ProgrammeHero = () => {
             fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
             color: '#DE322D'
           }}>Forces</motion.em>
-            <motion.span initial={{
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -796,10 +796,10 @@ const ProgrammeHero = () => {
             fontSize: isMobile ? 'clamp(38px, 10vw, 60px)' : 'clamp(48px, 6.5vw, 104px)',
             color: "#f7f6f3"
           }}>Converge.</motion.span>
-          </div>
-        </h1>
-        {/* Core theme */}
-        <motion.div custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+        </div>
+      </h1>
+      {/* Core theme */}
+      <motion.div custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'inline-flex',
         alignItems: 'center',
         gap: '0',
@@ -809,7 +809,7 @@ const ProgrammeHero = () => {
         overflow: 'hidden',
         width: 'fit-content'
       }}>
-          {['REAL CAPITAL.', 'REAL DEALS.', 'REAL GROWTH.'].map((word, i) => <div key={word} style={{
+        {['REAL CAPITAL.', 'REAL DEALS.', 'REAL GROWTH.'].map((word, i) => <div key={word} style={{
           padding: isMobile ? '12px 16px' : '14px 24px',
           borderRight: i < 2 ? '1px solid rgba(222,50,45,0.3)' : 'none',
           fontFamily: 'Montserrat, sans-serif',
@@ -820,14 +820,14 @@ const ProgrammeHero = () => {
           fontWeight: 700,
           whiteSpace: 'nowrap'
         }}>{word}</div>)}
-        </motion.div>
-        <motion.div custom={0.82} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      </motion.div>
+      <motion.div custom={0.82} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '12px',
         flexWrap: 'wrap'
       }}>
-          <motion.a href="#stages"  whileHover={{
+        <motion.a href="#stages" whileHover={{
           scale: 1.04,
           boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
         }} whileTap={{
@@ -848,9 +848,9 @@ const ProgrammeHero = () => {
           boxShadow: '0 8px 36px rgba(222,50,45,0.55)',
           transition: 'box-shadow 0.3s ease'
         }}>
-            <span>Explore Programme</span><ArrowIconDark />
-          </motion.a>
-          <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+          <span>Explore Programme</span><ArrowIconDark />
+        </motion.a>
+        <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -876,11 +876,11 @@ const ProgrammeHero = () => {
           el.style.borderColor = 'rgba(247,246,243,0.25)';
           el.style.color = 'rgba(247,246,243,0.82)';
         }}>
-            <span>Register Now</span><ArrowIconDark />
-          </motion.a>
-        </motion.div>
+          <span>Register Now</span><ArrowIconDark />
+        </motion.a>
       </motion.div>
-      <motion.div initial={{
+    </motion.div>
+    <motion.div initial={{
       opacity: 0
     }} animate={{
       opacity: 1
@@ -893,9 +893,9 @@ const ProgrammeHero = () => {
       overflow: 'hidden',
       position: 'relative'
     }}>
-        <ProgrammeTicker light />
-      </motion.div>
-    </section>;
+      <ProgrammeTicker light />
+    </motion.div>
+  </section>;
 };
 
 // ─── Themed Stages Grid ────────────────────────────────────────────────────────
@@ -925,7 +925,7 @@ const STAGES: Stage[] = [{
   theme: 'Enterprise & Supplier Development',
   focus: "Bridging the gap between corporates and township enterprises. Facilitating supplier development mandates, mentorship pipelines, and procurement opportunities that drive Africa's informal economy forward.",
   accentColor: '#3c6d9a',
-  imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&q=80',
+  imageSrc: '/scale.jpg',
   imageAlt: 'ESD Stage - Enterprise Supplier Development sessions'
 }, {
   id: 'stage-pe',
@@ -961,7 +961,7 @@ const STAGES: Stage[] = [{
   theme: 'Impact Investing & Blended Finance',
   focus: 'Where purpose meets profit. Impact fund managers and ESG-driven investors source enterprises delivering environmental and social returns alongside financial performance.',
   accentColor: '#4a7a5a',
-  imageSrc: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80',
+  imageSrc: '/EmpowaEntrepreneur-banner4.jpg',
   imageAlt: 'Impact Funds Stage - sustainable investing sessions'
 }];
 const StagesSection = () => {
@@ -981,7 +981,7 @@ const StagesSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -991,7 +991,7 @@ const StagesSection = () => {
       zIndex: 0,
       opacity: 0.6
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '5%',
       right: '-12%',
@@ -1002,8 +1002,8 @@ const StagesSection = () => {
       pointerEvents: 'none',
       zIndex: 0
     }} />
-      {/* Heading - stays constrained */}
-      <div style={{
+    {/* Heading - stays constrained */}
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: isMobile ? '0 24px' : '0 64px',
@@ -1011,14 +1011,14 @@ const StagesSection = () => {
       zIndex: 1,
       marginBottom: '64px'
     }}>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '20px'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.14em',
@@ -1026,11 +1026,11 @@ const StagesSection = () => {
           color: 'rgba(247,246,243,0.35)',
           fontWeight: 600
         }}>Programme Stages</span>
-        </motion.div>
-        <div style={{
+      </motion.div>
+      <div style={{
         overflow: 'hidden'
       }}>
-          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+        <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: isMobile ? 'clamp(28px, 8vw, 42px)' : 'clamp(32px, 4vw, 58px)',
           fontWeight: 300,
@@ -1040,37 +1040,37 @@ const StagesSection = () => {
           margin: 0,
           maxWidth: '680px'
         }}>
-            <span>{'Six stages. '}</span>
-            <em style={{
+          <span>{'Six stages. '}</span>
+          <em style={{
             fontStyle: 'italic',
             color: '#DE322D'
           }}>Six capital</em>
-            <span style={{
+          <span style={{
             color: 'rgba(247,246,243,0.2)'
           }}>{' mandates.'}</span>
-          </motion.h2>
-        </div>
+        </motion.h2>
       </div>
-      {/* Cards grid - full viewport width, no max-width */}
-      <div style={{
+    </div>
+    {/* Cards grid - full viewport width, no max-width */}
+    <div style={{
       width: '100%',
       padding: isMobile ? '0 24px' : '0 32px',
       boxSizing: 'border-box',
       position: 'relative',
       zIndex: 1
     }}>
-        <div style={{
+      <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : 'repeat(6, 1fr)',
         gap: '10px'
       }}>
-          {STAGES.map((stage, i) => <motion.div key={stage.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={clipReveal} custom={i * 0.1} onMouseEnter={() => setHoveredId(stage.id)} onMouseLeave={() => setHoveredId(null)} style={{
+        {STAGES.map((stage, i) => <motion.div key={stage.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={clipReveal} custom={i * 0.1} onMouseEnter={() => setHoveredId(stage.id)} onMouseLeave={() => setHoveredId(null)} style={{
           borderRadius: '20px',
           overflow: 'hidden',
           position: 'relative',
           minHeight: isMobile ? '280px' : '560px'
         }}>
-              <img src={stage.imageSrc} alt={stage.imageAlt} style={{
+          <img src={stage.imageSrc} alt={stage.imageAlt} style={{
             position: 'absolute',
             inset: 0,
             width: '100%',
@@ -1081,14 +1081,14 @@ const StagesSection = () => {
             transform: hoveredId === stage.id ? 'scale(1.04)' : 'scale(1)',
             transition: 'filter 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1)'
           }} />
-              <div style={{
+          <div style={{
             position: 'absolute',
             inset: 0,
             background: hoveredId === stage.id ? 'linear-gradient(to top, rgba(10,9,8,0.94) 0%, rgba(10,9,8,0.38) 55%, rgba(10,9,8,0.12) 100%)' : 'linear-gradient(to top, rgba(10,9,8,0.65) 0%, rgba(10,9,8,0.18) 60%, rgba(10,9,8,0.04) 100%)',
             transition: 'background 0.6s ease',
             pointerEvents: 'none'
           }} />
-              {hoveredId === stage.id && <div aria-hidden="true" style={{
+          {hoveredId === stage.id && <div aria-hidden="true" style={{
             position: 'absolute',
             bottom: '-20%',
             left: '50%',
@@ -1099,7 +1099,7 @@ const StagesSection = () => {
             background: `radial-gradient(circle, ${stage.accentColor}33 0%, transparent 70%)`,
             pointerEvents: 'none'
           }} />}
-              <div style={{
+          <div style={{
             position: 'absolute',
             inset: 0,
             display: 'flex',
@@ -1107,7 +1107,7 @@ const StagesSection = () => {
             justifyContent: 'flex-end',
             padding: isMobile ? '24px 20px' : '32px 28px'
           }}>
-                <div style={{
+            <div style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.16em',
@@ -1117,7 +1117,7 @@ const StagesSection = () => {
               marginBottom: '12px',
               transition: 'color 0.4s ease'
             }}>{stage.number}</div>
-                <h3 style={{
+            <h3 style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? 'clamp(18px, 5vw, 24px)' : 'clamp(16px, 1.4vw, 22px)',
               fontWeight: hoveredId === stage.id ? 400 : 300,
@@ -1127,8 +1127,8 @@ const StagesSection = () => {
               lineHeight: 1.15,
               transition: 'font-weight 0.3s ease'
             }}>{stage.name}</h3>
-                <AnimatePresence initial={false}>
-                  {hoveredId === stage.id && <motion.div key={`s-${stage.id}`} initial={{
+            <AnimatePresence initial={false}>
+              {hoveredId === stage.id && <motion.div key={`s-${stage.id}`} initial={{
                 height: 0,
                 opacity: 0
               }} animate={{
@@ -1143,7 +1143,7 @@ const StagesSection = () => {
               }} style={{
                 overflow: 'hidden'
               }}>
-                      <div style={{
+                <div style={{
                   width: '32px',
                   height: '1px',
                   background: stage.accentColor,
@@ -1151,7 +1151,7 @@ const StagesSection = () => {
                   marginBottom: '12px',
                   borderRadius: '1px'
                 }} />
-                      <p style={{
+                <p style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: '11px',
                   fontWeight: 600,
@@ -1160,7 +1160,7 @@ const StagesSection = () => {
                   color: stage.accentColor,
                   margin: '0 0 8px'
                 }}>{stage.theme}</p>
-                      <p style={{
+                <p style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '12px',
                   lineHeight: '1.7',
@@ -1168,9 +1168,9 @@ const StagesSection = () => {
                   margin: 0,
                   fontWeight: 300
                 }}>{stage.focus}</p>
-                    </motion.div>}
-                </AnimatePresence>
-                <div style={{
+              </motion.div>}
+            </AnimatePresence>
+            <div style={{
               height: '2px',
               background: `linear-gradient(90deg, ${stage.accentColor}, transparent)`,
               marginTop: '24px',
@@ -1178,11 +1178,11 @@ const StagesSection = () => {
               transition: 'opacity 0.4s ease',
               borderRadius: '2px'
             }} />
-              </div>
-            </motion.div>)}
-        </div>
+          </div>
+        </motion.div>)}
       </div>
-    </section>;
+    </div>
+  </section>;
 };
 
 // ─── Signature Experiences ────────────────────────────────────────────────────
@@ -1256,7 +1256,7 @@ const SignatureExperiencesSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1265,24 +1265,24 @@ const SignatureExperiencesSection = () => {
       pointerEvents: 'none',
       opacity: 0.4
     }} />
-      <div style={{
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: isMobile ? '0 24px' : '0 64px',
       position: 'relative',
       zIndex: 1
     }}>
-        <div style={{
+      <div style={{
         marginBottom: isMobile ? '60px' : '96px'
       }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
           marginBottom: '20px'
         }}>
-            <PlusSquareIcon />
-            <span style={{
+          <PlusSquareIcon />
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.14em',
@@ -1290,11 +1290,11 @@ const SignatureExperiencesSection = () => {
             color: 'rgba(20,18,16,0.45)',
             fontWeight: 600
           }}>Signature Experiences</span>
-          </motion.div>
-          <div style={{
+        </motion.div>
+        <div style={{
           overflow: 'hidden'
         }}>
-            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? 'clamp(28px, 8vw, 42px)' : 'clamp(32px, 4vw, 58px)',
             fontWeight: 300,
@@ -1304,26 +1304,26 @@ const SignatureExperiencesSection = () => {
             margin: 0,
             maxWidth: '680px'
           }}>
-              <span>{'Moments that '}</span>
-              <em style={{
+            <span>{'Moments that '}</span>
+            <em style={{
               fontStyle: 'italic',
               color: '#DE322D'
             }}>define</em>
-              <span style={{
+            <span style={{
               color: 'rgba(20,18,16,0.2)'
             }}>{' EmpowaEntrepreneurs Funding Summit 2026.'}</span>
-            </motion.h2>
-          </div>
+          </motion.h2>
         </div>
-        <div style={{
+      </div>
+      <div style={{
         display: 'flex',
         flexDirection: 'column',
         gap: isMobile ? '80px' : '120px'
       }}>
-          {EXPERIENCES.map((exp, idx) => <ExperienceBlock key={exp.id} exp={exp} idx={idx} isMobile={isMobile} inView={inView} />)}
-        </div>
+        {EXPERIENCES.map((exp, idx) => <ExperienceBlock key={exp.id} exp={exp} idx={idx} isMobile={isMobile} inView={inView} />)}
       </div>
-    </section>;
+    </div>
+  </section>;
 };
 const ExperienceBlock = ({
   exp,
@@ -1348,35 +1348,35 @@ const ExperienceBlock = ({
     alignItems: 'center',
     direction: !isMobile && exp.reverse ? 'rtl' : 'ltr'
   }}>
-      <motion.div initial="hidden" animate={blockInView ? 'visible' : 'hidden'} variants={clipReveal} custom={0} style={{
+    <motion.div initial="hidden" animate={blockInView ? 'visible' : 'hidden'} variants={clipReveal} custom={0} style={{
       direction: 'ltr'
     }}>
-        <div style={{
+      <div style={{
         borderRadius: '28px',
         overflow: 'hidden',
         position: 'relative',
         height: isMobile ? '280px' : '520px'
       }}>
-          <img src={exp.imageSrc} alt={exp.imageAlt} style={{
+        <img src={exp.imageSrc} alt={exp.imageAlt} style={{
           width: '100%',
           height: '100%',
           objectFit: 'cover',
           display: 'block',
           filter: 'brightness(0.82) saturate(0.85)'
         }} />
-          <div style={{
+        <div style={{
           position: 'absolute',
           inset: 0,
           background: 'linear-gradient(to top, rgba(20,18,16,0.6) 0%, rgba(20,18,16,0.1) 55%, transparent 100%)',
           pointerEvents: 'none'
         }} />
-          <div style={{
+        <div style={{
           position: 'absolute',
           bottom: '24px',
           left: '24px',
           right: '24px'
         }}>
-            <div style={{
+          <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
@@ -1385,7 +1385,7 @@ const ExperienceBlock = ({
             borderRadius: '100px',
             padding: '6px 14px'
           }}>
-              <span style={{
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.12em',
@@ -1393,17 +1393,17 @@ const ExperienceBlock = ({
               color: 'rgba(247,246,243,0.7)',
               fontWeight: 500
             }}>{exp.label}</span>
-            </div>
           </div>
         </div>
-      </motion.div>
-      <motion.div initial="hidden" animate={blockInView ? 'visible' : 'hidden'} variants={exp.reverse ? slideFromLeft : slideFromRight} custom={0.18} style={{
+      </div>
+    </motion.div>
+    <motion.div initial="hidden" animate={blockInView ? 'visible' : 'hidden'} variants={exp.reverse ? slideFromLeft : slideFromRight} custom={0.18} style={{
       direction: 'ltr'
     }}>
-        <div style={{
+      <div style={{
         marginBottom: '24px'
       }}>
-          <div style={{
+        <div style={{
           display: 'inline-block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '10px',
@@ -1413,7 +1413,7 @@ const ExperienceBlock = ({
           fontWeight: 600,
           marginBottom: '16px'
         }}>{exp.label}</div>
-          <h3 style={{
+        <h3 style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: isMobile ? 'clamp(24px, 7vw, 36px)' : 'clamp(26px, 3vw, 46px)',
           fontWeight: 300,
@@ -1422,7 +1422,7 @@ const ExperienceBlock = ({
           margin: '0 0 8px',
           lineHeight: 1.1
         }}>{exp.title}</h3>
-          <p style={{
+        <p style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           fontWeight: 600,
@@ -1431,15 +1431,15 @@ const ExperienceBlock = ({
           textTransform: 'uppercase' as const,
           letterSpacing: '0.08em'
         }}>{exp.subtitle}</p>
-        </div>
-        <div style={{
+      </div>
+      <div style={{
         width: '40px',
         height: '1px',
         background: '#DE322D',
         marginBottom: '24px',
         borderRadius: '1px'
       }} />
-        <p style={{
+      <p style={{
         fontFamily: 'Inter, sans-serif',
         fontSize: isMobile ? '15px' : '17px',
         lineHeight: '1.78',
@@ -1447,7 +1447,7 @@ const ExperienceBlock = ({
         margin: '0 0 20px',
         fontWeight: 300
       }}>{exp.description}</p>
-        <p style={{
+      <p style={{
         fontFamily: 'Inter, sans-serif',
         fontSize: isMobile ? '13px' : '14px',
         lineHeight: '1.75',
@@ -1455,13 +1455,13 @@ const ExperienceBlock = ({
         margin: '0 0 32px',
         fontWeight: 300
       }}>{exp.detail}</p>
-        <div style={{
+      <div style={{
         display: 'flex',
         flexWrap: 'wrap',
         gap: '8px',
         marginBottom: '32px'
       }}>
-          {[exp.tag1, exp.tag2, exp.tag3].map(tag => <span key={tag} style={{
+        {[exp.tag1, exp.tag2, exp.tag3].map(tag => <span key={tag} style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '10px',
           letterSpacing: '0.1em',
@@ -1471,32 +1471,32 @@ const ExperienceBlock = ({
           borderRadius: '100px',
           padding: '6px 14px'
         }}>{tag}</span>)}
-        </div>
-        {idx === 1 && (
-        <motion.a href="/summit"  whileHover={{
-        scale: 1.04
-      }} whileTap={{
-        scale: 0.97
-      }} style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '8px',
-        background: 'linear-gradient(135deg, #DE322D, #c42823)',
-        borderRadius: '44px',
-        padding: '14px 28px',
-        fontSize: '12px',
-        letterSpacing: '0.06em',
-        color: '#fff',
-        textDecoration: 'none',
-        fontFamily: 'Montserrat, sans-serif',
-        fontWeight: 600,
-        boxShadow: '0 6px 24px rgba(222,50,45,0.35)'
-      }}>
+      </div>
+      {idx === 1 && (
+        <motion.a href="/summit" whileHover={{
+          scale: 1.04
+        }} whileTap={{
+          scale: 0.97
+        }} style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          background: 'linear-gradient(135deg, #DE322D, #c42823)',
+          borderRadius: '44px',
+          padding: '14px 28px',
+          fontSize: '12px',
+          letterSpacing: '0.06em',
+          color: '#fff',
+          textDecoration: 'none',
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 600,
+          boxShadow: '0 6px 24px rgba(222,50,45,0.35)'
+        }}>
           <span>Reserve Your Seat</span><ArrowIconDark />
         </motion.a>
-        )}
-      </motion.div>
-    </div>;
+      )}
+    </motion.div>
+  </div>;
 };
 
 // ─── Summit Journey Zones ──────────────────────────────────────────────────────
@@ -1560,7 +1560,7 @@ const ZonesSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1570,7 +1570,7 @@ const ZonesSection = () => {
       zIndex: 0,
       opacity: 0.5
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '20%',
       left: '-8%',
@@ -1581,24 +1581,24 @@ const ZonesSection = () => {
       pointerEvents: 'none',
       zIndex: 0
     }} />
-      <div style={{
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: isMobile ? '0 24px' : '0 64px',
       position: 'relative',
       zIndex: 1
     }}>
-        <div style={{
+      <div style={{
         marginBottom: isMobile ? '56px' : '80px'
       }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
           marginBottom: '20px'
         }}>
-            <PlusSquareIconLight />
-            <span style={{
+          <PlusSquareIconLight />
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.14em',
@@ -1606,17 +1606,17 @@ const ZonesSection = () => {
             color: 'rgba(247,246,243,0.35)',
             fontWeight: 600
           }}>Summit Journey Zones</span>
-          </motion.div>
-          <div style={{
+        </motion.div>
+        <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
           gap: '40px',
           alignItems: 'end'
         }}>
-            <div style={{
+          <div style={{
             overflow: 'hidden'
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? 'clamp(28px, 8vw, 42px)' : 'clamp(32px, 4vw, 58px)',
               fontWeight: 300,
@@ -1625,41 +1625,41 @@ const ZonesSection = () => {
               color: '#F7F6F3',
               margin: 0
             }}>
-                <span>{'Your strategic '}</span>
-                <em style={{
+              <span>{'Your strategic '}</span>
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D'
               }}>engine</em>
-                <span style={{
+              <span style={{
                 color: 'rgba(247,246,243,0.18)'
               }}>{' on the ground.'}</span>
-              </motion.h2>
-            </div>
-            {!isMobile && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
+            </motion.h2>
+          </div>
+          {!isMobile && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '15px',
             color: 'rgba(247,246,243,0.35)',
             lineHeight: '1.75',
             margin: 0
           }}>
-                Four purpose-built zones engineered to move you from conversation to commitment - every zone is a strategic instrument in your summit journey.
-              </motion.p>}
-          </div>
+            Four purpose-built zones engineered to move you from conversation to commitment - every zone is a strategic instrument in your summit journey.
+          </motion.p>}
         </div>
-        <div style={{
+      </div>
+      <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : '280px 1fr',
         gap: '20px',
         alignItems: 'stretch'
       }}>
-          {/* Zone selector */}
-          <div style={{
+        {/* Zone selector */}
+        <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'row' : 'column',
           gap: '10px',
           flexWrap: isMobile ? 'wrap' : 'nowrap'
         }}>
-            {ZONES.map((zone, i) => <motion.button key={zone.id} onClick={() => setActiveZone(zone.id)} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1}  style={{
+          {ZONES.map((zone, i) => <motion.button key={zone.id} onClick={() => setActiveZone(zone.id)} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1} style={{
             all: 'unset',
             cursor: 'pointer',
             display: 'flex',
@@ -1672,7 +1672,7 @@ const ZonesSection = () => {
             transition: 'background 0.35s ease, border-color 0.35s ease',
             flex: isMobile ? '1 0 calc(50% - 5px)' : 'none'
           }}>
-                <div style={{
+            <div style={{
               width: isMobile ? '28px' : '36px',
               height: isMobile ? '28px' : '36px',
               borderRadius: '10px',
@@ -1684,12 +1684,12 @@ const ZonesSection = () => {
               fontSize: isMobile ? '14px' : '18px',
               transition: 'background 0.35s ease'
             }}>
-                  <span>{zone.icon}</span>
-                </div>
-                <div style={{
+              <span>{zone.icon}</span>
+            </div>
+            <div style={{
               textAlign: 'left'
             }}>
-                  <div style={{
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.1em',
@@ -1699,7 +1699,7 @@ const ZonesSection = () => {
                 marginBottom: '3px',
                 transition: 'color 0.35s ease'
               }}>Zone {zone.number}</div>
-                  <div style={{
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: isMobile ? '11px' : '13px',
                 fontWeight: 500,
@@ -1708,12 +1708,12 @@ const ZonesSection = () => {
                 lineHeight: 1.3,
                 transition: 'color 0.35s ease'
               }}>{zone.name.split(' ').slice(0, 3).join(' ')}</div>
-                </div>
-              </motion.button>)}
-          </div>
-          {/* Zone detail */}
-          <AnimatePresence mode="wait">
-            <motion.div key={activeZone} initial={{
+            </div>
+          </motion.button>)}
+        </div>
+        {/* Zone detail */}
+        <AnimatePresence mode="wait">
+          <motion.div key={activeZone} initial={{
             opacity: 0,
             y: 24,
             filter: 'blur(8px)'
@@ -1736,7 +1736,7 @@ const ZonesSection = () => {
             position: 'relative',
             overflow: 'hidden'
           }}>
-              <div aria-hidden="true" style={{
+            <div aria-hidden="true" style={{
               position: 'absolute',
               top: '-30%',
               right: '-15%',
@@ -1746,7 +1746,7 @@ const ZonesSection = () => {
               background: `radial-gradient(circle, ${activeZoneData.accent}22 0%, transparent 65%)`,
               pointerEvents: 'none'
             }} />
-              <motion.div aria-hidden="true" animate={{
+            <motion.div aria-hidden="true" animate={{
               x: ['-100%', '220%']
             }} transition={{
               duration: 4.5,
@@ -1763,17 +1763,17 @@ const ZonesSection = () => {
               pointerEvents: 'none',
               zIndex: 2
             }} />
-              <div style={{
+            <div style={{
               position: 'relative',
               zIndex: 1
             }}>
-                <div style={{
+              <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '12px',
                 marginBottom: '28px'
               }}>
-                  <div style={{
+                <div style={{
                   width: '48px',
                   height: '48px',
                   borderRadius: '14px',
@@ -1784,10 +1784,10 @@ const ZonesSection = () => {
                   justifyContent: 'center',
                   fontSize: '22px'
                 }}>
-                    <span>{activeZoneData.icon}</span>
-                  </div>
-                  <div>
-                    <div style={{
+                  <span>{activeZoneData.icon}</span>
+                </div>
+                <div>
+                  <div style={{
                     fontFamily: 'Montserrat, sans-serif',
                     fontSize: '10px',
                     letterSpacing: '0.14em',
@@ -1796,7 +1796,7 @@ const ZonesSection = () => {
                     fontWeight: 600,
                     marginBottom: '4px'
                   }}>Zone {activeZoneData.number}</div>
-                    <h3 style={{
+                  <h3 style={{
                     fontFamily: 'Montserrat, sans-serif',
                     fontSize: isMobile ? 'clamp(16px, 4vw, 20px)' : 'clamp(18px, 1.8vw, 26px)',
                     fontWeight: 400,
@@ -1805,9 +1805,9 @@ const ZonesSection = () => {
                     margin: 0,
                     lineHeight: 1.2
                   }}>{activeZoneData.name}</h3>
-                  </div>
                 </div>
-                <p style={{
+              </div>
+              <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: isMobile ? '14px' : '16px',
                 lineHeight: '1.82',
@@ -1815,13 +1815,13 @@ const ZonesSection = () => {
                 margin: '0 0 36px',
                 fontWeight: 300
               }}>{activeZoneData.description}</p>
-                <div style={{
+              <div style={{
                 display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(2, 1fr)',
                 gap: '10px',
                 marginBottom: '36px'
               }}>
-                  {activeZoneData.services.map(service => <div key={service} style={{
+                {activeZoneData.services.map(service => <div key={service} style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
@@ -1830,27 +1830,27 @@ const ZonesSection = () => {
                   borderRadius: '12px',
                   padding: '14px 16px'
                 }}>
-                      <div style={{
+                  <div style={{
                     width: '6px',
                     height: '6px',
                     borderRadius: '50%',
                     background: activeZoneData.accent,
                     flexShrink: 0
                   }} />
-                      <span style={{
+                  <span style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '12px',
                     color: 'rgba(247,246,243,0.55)',
                     fontWeight: 400
                   }}>{service}</span>
-                    </div>)}
-                </div>
+                </div>)}
               </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
-    </section>;
+    </div>
+  </section>;
 };
 
 // ─── Programme CTA Section ─────────────────────────────────────────────────────
@@ -1886,7 +1886,7 @@ const ProgrammeCtaSection = () => {
     paddingBottom: isMobile ? '112px' : '168px',
     position: 'relative'
   }}>
-      <motion.div aria-hidden="true" style={{
+    <motion.div aria-hidden="true" style={{
       left: springX,
       top: springY,
       x: '-50%',
@@ -1899,7 +1899,7 @@ const ProgrammeCtaSection = () => {
       pointerEvents: 'none',
       zIndex: 0
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '-4%',
       left: '-2%',
@@ -1914,21 +1914,21 @@ const ProgrammeCtaSection = () => {
       whiteSpace: 'nowrap',
       zIndex: 0
     }}>PROGRAMME</div>
-      <div style={{
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: isMobile ? '0 24px' : '0 64px',
       position: 'relative',
       zIndex: 1
     }}>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '48px'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.14em',
@@ -1936,19 +1936,19 @@ const ProgrammeCtaSection = () => {
           color: 'rgba(247,246,243,0.35)',
           fontWeight: 600
         }}>Secure Your Place</span>
-        </motion.div>
-        <div style={{
+      </motion.div>
+      <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
         gap: isMobile ? '40px' : '80px',
         alignItems: 'center',
         marginBottom: '72px'
       }}>
-          <div>
-            <div style={{
+        <div>
+          <div style={{
             overflow: 'hidden'
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontWeight: 200,
               fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(48px, 7vw, 108px)',
@@ -1957,19 +1957,19 @@ const ProgrammeCtaSection = () => {
               color: '#F7F6F3',
               margin: '0 0 0'
             }}>
-                <span>{"Join Africa's"}</span><br />
-                <em style={{
+              <span>{"Join Africa's"}</span><br />
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D'
               }}>Capital Summit</em><br />
-                <span style={{
+              <span style={{
                 color: 'rgba(247,246,243,0.16)'
               }}>{"2026."}</span>
-              </motion.h2>
-            </div>
+            </motion.h2>
           </div>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3}>
-            <p style={{
+        </div>
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3}>
+          <p style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: isMobile ? '15px' : '17px',
             lineHeight: '1.78',
@@ -1977,15 +1977,15 @@ const ProgrammeCtaSection = () => {
             margin: '0 0 36px',
             fontWeight: 300
           }}>
-              Six funded stages. Three signature experiences. Four strategic zones. One summit that defines the trajectory of African enterprise for the decade ahead.
-            </p>
-            <div style={{
+            Six funded stages. Three signature experiences. Four strategic zones. One summit that defines the trajectory of African enterprise for the decade ahead.
+          </p>
+          <div style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: '12px',
             marginBottom: '40px'
           }}>
-              {[{
+            {[{
               id: 'pd-1',
               label: 'Summit Date',
               value: 'May 28, 2026'
@@ -2007,7 +2007,7 @@ const ProgrammeCtaSection = () => {
               borderRadius: '14px',
               padding: '16px 18px'
             }}>
-                  <div style={{
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.14em',
@@ -2016,21 +2016,21 @@ const ProgrammeCtaSection = () => {
                 fontWeight: 500,
                 marginBottom: '6px'
               }}>{detail.label}</div>
-                  <div style={{
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '14px',
                 fontWeight: 500,
                 color: '#F7F6F3',
                 letterSpacing: '-0.2px'
               }}>{detail.value}</div>
-                </div>)}
-            </div>
-            <div style={{
+            </div>)}
+          </div>
+          <div style={{
             display: 'flex',
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-              <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2051,9 +2051,9 @@ const ProgrammeCtaSection = () => {
               width: isMobile ? '100%' : 'auto',
               justifyContent: isMobile ? 'center' : 'flex-start'
             }}>
-                <span>Register Now</span><ArrowIconDark />
-              </motion.a>
-              <motion.a href="/partnerships"  whileHover={{
+              <span>Register Now</span><ArrowIconDark />
+            </motion.a>
+            <motion.a href="/partnerships" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2082,13 +2082,13 @@ const ProgrammeCtaSection = () => {
               el.style.borderColor = 'rgba(247,246,243,0.18)';
               el.style.color = 'rgba(247,246,243,0.75)';
             }}>
-                <span>Partner With Us</span>
-              </motion.a>
-            </div>
-          </motion.div>
-        </div>
-        {/* Bottom stats strip */}
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.55} style={{
+              <span>Partner With Us</span>
+            </motion.a>
+          </div>
+        </motion.div>
+      </div>
+      {/* Bottom stats strip */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.55} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
         gap: '1px',
@@ -2096,7 +2096,7 @@ const ProgrammeCtaSection = () => {
         borderTop: '0.8px solid rgba(247,246,243,0.07)',
         transformOrigin: 'left'
       }}>
-          {[{
+        {[{
           id: 'ps-1',
           label: 'Funding Stages',
           value: '6',
@@ -2123,7 +2123,7 @@ const ProgrammeCtaSection = () => {
           borderLeft: !isMobile && i > 0 ? '0.8px solid rgba(247,246,243,0.07)' : 'none',
           borderTop: isMobile && i > 1 ? '0.8px solid rgba(247,246,243,0.07)' : 'none'
         }}>
-              <div style={{
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? '28px' : 'clamp(32px, 3.5vw, 48px)',
             fontWeight: 200,
@@ -2132,7 +2132,7 @@ const ProgrammeCtaSection = () => {
             lineHeight: 1,
             marginBottom: '6px'
           }}>{item.value}</div>
-              <div style={{
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.08em',
@@ -2141,16 +2141,16 @@ const ProgrammeCtaSection = () => {
             fontWeight: 500,
             marginBottom: '4px'
           }}>{item.label}</div>
-              <div style={{
+          <div style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '10px',
             color: 'rgba(247,246,243,0.18)',
             letterSpacing: '0.02em'
           }}>{item.sub}</div>
-            </div>)}
-        </motion.div>
-      </div>
-    </section>;
+        </div>)}
+      </motion.div>
+    </div>
+  </section>;
 };
 
 // ─── Programme Footer ──────────────────────────────────────────────────────────
@@ -2259,8 +2259,8 @@ const ProgrammeFooter = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      {/* Banner hero area */}
-      <div style={{
+    {/* Banner hero area */}
+    <div style={{
       position: 'relative',
       width: '100%',
       minHeight: isMobile ? '480px' : '580px',
@@ -2268,7 +2268,7 @@ const ProgrammeFooter = () => {
       display: 'flex',
       alignItems: 'flex-end'
     }}>
-        <img src={FOOTER_BANNER_BG} alt="" aria-hidden="true" style={{
+      <img src={FOOTER_BANNER_BG} alt="" aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         width: '100%',
@@ -2278,13 +2278,13 @@ const ProgrammeFooter = () => {
         display: 'block',
         filter: 'brightness(0.28) saturate(0.6)'
       }} />
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         background: 'linear-gradient(to top, #0A0906 0%, rgba(10,9,6,0.7) 50%, rgba(10,9,6,0.1) 100%)',
         pointerEvents: 'none'
       }} />
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         backgroundImage: NOISE_SVG,
@@ -2293,7 +2293,7 @@ const ProgrammeFooter = () => {
         opacity: 0.5,
         pointerEvents: 'none'
       }} />
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         top: '-15%',
         right: '-5%',
@@ -2305,7 +2305,7 @@ const ProgrammeFooter = () => {
         background: 'radial-gradient(circle, rgba(222,50,45,0.22) 0%, transparent 65%)',
         pointerEvents: 'none'
       }} />
-        <motion.div aria-hidden="true" animate={{
+      <motion.div aria-hidden="true" animate={{
         x: ['-120%', '220%']
       }} transition={{
         duration: 6,
@@ -2322,7 +2322,7 @@ const ProgrammeFooter = () => {
         pointerEvents: 'none',
         zIndex: 2
       }} />
-        <div style={{
+      <div style={{
         position: 'relative',
         zIndex: 2,
         width: '100%',
@@ -2331,14 +2331,14 @@ const ProgrammeFooter = () => {
         maxWidth: '1440px',
         margin: '0 auto'
       }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
           marginBottom: '28px'
         }}>
-            <PlusSquareIconLight />
-            <span style={{
+          <PlusSquareIconLight />
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.14em',
@@ -2346,19 +2346,19 @@ const ProgrammeFooter = () => {
             color: 'rgba(247,246,243,0.4)',
             fontWeight: 600
           }}>Africa's Premier Funding Platform · 2026</span>
-          </motion.div>
-          <div style={{
+        </motion.div>
+        <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: isMobile ? 'flex-start' : 'flex-end',
           justifyContent: 'space-between',
           gap: '40px'
         }}>
-            <div style={{
+          <div style={{
             overflow: 'hidden',
             flex: 1
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? 'clamp(44px, 12vw, 72px)' : 'clamp(60px, 7vw, 104px)',
               fontWeight: 700,
@@ -2368,25 +2368,25 @@ const ProgrammeFooter = () => {
               margin: 0,
               textTransform: 'uppercase'
             }}>
-                <span>Secure</span><br />
-                <em style={{
+              <span>Secure</span><br />
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D',
                 fontWeight: 400
               }}>Your Seat.</em><br />
-                <span style={{
+              <span style={{
                 color: 'rgba(247,246,243,0.18)',
                 fontWeight: 300
               }}>May 2026.</span>
-              </motion.h2>
-            </div>
-            <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.22} style={{
+            </motion.h2>
+          </div>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.22} style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
             minWidth: isMobile ? '100%' : '260px'
           }}>
-              <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2407,9 +2407,9 @@ const ProgrammeFooter = () => {
               fontWeight: 600,
               boxShadow: '0 8px 40px rgba(222,50,45,0.5)'
             }}>
-                <span>Register Now</span><ArrowIconDark />
-              </motion.a>
-              <motion.a href="/partnerships"  whileHover={{
+              <span>Register Now</span><ArrowIconDark />
+            </motion.a>
+            <motion.a href="/partnerships" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2436,19 +2436,19 @@ const ProgrammeFooter = () => {
               el.style.borderColor = 'rgba(247,246,243,0.22)';
               el.style.color = 'rgba(247,246,243,0.65)';
             }}>
-                <span>Partner With Us</span>
-              </motion.a>
-            </motion.div>
-          </div>
-          {/* Stats strip */}
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.4} style={{
+              <span>Partner With Us</span>
+            </motion.a>
+          </motion.div>
+        </div>
+        {/* Stats strip */}
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.4} style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
           borderTop: '1px solid rgba(247,246,243,0.1)',
           marginTop: isMobile ? '44px' : '60px',
           transformOrigin: 'left'
         }}>
-            {[{
+          {[{
             id: 'fb-1',
             num: '400+',
             label: 'Attendees'
@@ -2471,7 +2471,7 @@ const ProgrammeFooter = () => {
             borderRight: !isMobile && i < 3 ? '1px solid rgba(247,246,243,0.08)' : 'none',
             borderTop: isMobile && i > 1 ? '1px solid rgba(247,246,243,0.08)' : 'none'
           }}>
-                <div style={{
+            <div style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? '22px' : 'clamp(28px, 3vw, 40px)',
               fontWeight: 700,
@@ -2480,7 +2480,7 @@ const ProgrammeFooter = () => {
               lineHeight: 1,
               marginBottom: '6px'
             }}>{s.num}</div>
-                <div style={{
+            <div style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.1em',
@@ -2488,27 +2488,27 @@ const ProgrammeFooter = () => {
               color: 'rgba(247,246,243,0.28)',
               fontWeight: 400
             }}>{s.label}</div>
-              </div>)}
-          </motion.div>
-        </div>
+          </div>)}
+        </motion.div>
       </div>
+    </div>
 
-      {/* Divider */}
-      <div style={{
+    {/* Divider */}
+    <div style={{
       height: '1px',
       background: 'rgba(247,246,243,0.06)',
       margin: '0'
     }} />
 
-      {/* Main footer body */}
-      <div style={{
+    {/* Main footer body */}
+    <div style={{
       maxWidth: '1440px',
       margin: '0 auto',
       padding: isMobile ? '52px 24px 0' : '72px 80px 0',
       boxSizing: 'border-box'
     }}>
-        {/* Top row: brand + nav cols */}
-        <div style={{
+      {/* Top row: brand + nav cols */}
+      <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'space-between',
@@ -2517,19 +2517,19 @@ const ProgrammeFooter = () => {
         paddingBottom: '52px',
         borderBottom: '1px solid rgba(247,246,243,0.07)'
       }}>
-          {/* Brand column */}
-          <div style={{
+        {/* Brand column */}
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '20px',
           maxWidth: isMobile ? '100%' : '320px'
         }}>
-            <div style={{
+          <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '12px'
           }}>
-              <motion.div whileHover={{
+            <motion.div whileHover={{
               scale: 1.1,
               rotate: 8
             }} style={{
@@ -2543,10 +2543,10 @@ const ProgrammeFooter = () => {
               flexShrink: 0,
               boxShadow: '0 4px 20px rgba(222,50,45,0.4)'
             }}>
-                <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" /></svg>
-              </motion.div>
-              <div>
-                <div style={{
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" /></svg>
+            </motion.div>
+            <div>
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '13px',
                 letterSpacing: '0.06em',
@@ -2555,7 +2555,7 @@ const ProgrammeFooter = () => {
                 fontWeight: 700,
                 lineHeight: 1.1
               }}>EmpowaEntrepreneurs</div>
-                <div style={{
+              <div style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.08em',
@@ -2564,18 +2564,18 @@ const ProgrammeFooter = () => {
                 fontWeight: 400,
                 marginTop: '2px'
               }}>Funding Summit · 2026</div>
-              </div>
             </div>
-            <p style={{
+          </div>
+          <p style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '13px',
             lineHeight: '1.8',
             color: 'rgba(247,246,243,0.28)',
             margin: 0
           }}>
-              Where Africa's next generation of scalable businesses meets serious capital and transformative growth.
-            </p>
-            <div style={{
+            Where Africa's next generation of scalable businesses meets serious capital and transformative growth.
+          </p>
+          <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
@@ -2585,7 +2585,7 @@ const ProgrammeFooter = () => {
             padding: '7px 14px',
             width: 'fit-content'
           }}>
-              <motion.div animate={{
+            <motion.div animate={{
               opacity: [1, 0.3, 1]
             }} transition={{
               duration: 2,
@@ -2598,7 +2598,7 @@ const ProgrammeFooter = () => {
               boxShadow: '0 0 8px rgba(34,197,94,0.5)',
               flexShrink: 0
             }} />
-              <span style={{
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.1em',
@@ -2606,10 +2606,10 @@ const ProgrammeFooter = () => {
               color: 'rgba(247,246,243,0.4)',
               fontWeight: 600
             }}>Registration Open</span>
-            </div>
           </div>
-          {/* Nav columns */}
-          <div style={{
+        </div>
+        {/* Nav columns */}
+        <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           gap: isMobile ? '36px' : '0',
@@ -2618,17 +2618,17 @@ const ProgrammeFooter = () => {
           justifyContent: 'flex-end',
           width: isMobile ? '100%' : undefined
         }}>
-            <div style={{
+          <div style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
             gap: isMobile ? '28px' : '0',
             flex: 1
           }}>
-              {FOOTER_NAV_COLS.map((col, colIdx) => <div key={col.id} style={{
+            {FOOTER_NAV_COLS.map((col, colIdx) => <div key={col.id} style={{
               paddingLeft: !isMobile && colIdx > 0 ? '40px' : '0',
               borderLeft: !isMobile && colIdx > 0 ? '1px solid rgba(247,246,243,0.06)' : 'none'
             }}>
-                  <span style={{
+              <span style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.2em',
@@ -2638,7 +2638,7 @@ const ProgrammeFooter = () => {
                 display: 'block',
                 marginBottom: '20px'
               }}>{col.heading}</span>
-                  <ul style={{
+              <ul style={{
                 listStyle: 'none',
                 margin: 0,
                 padding: 0,
@@ -2646,8 +2646,8 @@ const ProgrammeFooter = () => {
                 flexDirection: 'column',
                 gap: '12px'
               }}>
-                    {col.links.map(link => <li key={link.id}>
-                        <a href="#" onClick={e => e.preventDefault()} style={{
+                {col.links.map(link => <li key={link.id}>
+                  <a href="#" onClick={e => e.preventDefault()} style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '13px',
                     color: 'rgba(247,246,243,0.3)',
@@ -2660,17 +2660,17 @@ const ProgrammeFooter = () => {
                   }} onMouseLeave={e => {
                     (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.3)';
                   }}>
-                          {link.label}
-                        </a>
-                      </li>)}
-                  </ul>
-                </div>)}
-            </div>
+                    {link.label}
+                  </a>
+                </li>)}
+              </ul>
+            </div>)}
           </div>
         </div>
+      </div>
 
-        {/* Newsletter row */}
-        <div style={{
+      {/* Newsletter row */}
+      <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         alignItems: isMobile ? 'flex-start' : 'center',
@@ -2679,8 +2679,8 @@ const ProgrammeFooter = () => {
         padding: '36px 0',
         borderBottom: '1px solid rgba(247,246,243,0.07)'
       }}>
-          <div>
-            <div style={{
+        <div>
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             fontWeight: 700,
@@ -2688,18 +2688,18 @@ const ProgrammeFooter = () => {
             letterSpacing: '-0.1px',
             marginBottom: '4px'
           }}>Stay in the loop.</div>
-            <div style={{
+          <div style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '12px',
             color: 'rgba(247,246,243,0.22)',
             letterSpacing: '0.02em'
           }}>Summit updates, speaker reveals, and registration news.</div>
-          </div>
-          <NewsletterForm variant="square" isMobile={isMobile} />
         </div>
+        <NewsletterForm variant="square" isMobile={isMobile} />
+      </div>
 
-        {/* Bottom bar */}
-        <div style={{
+      {/* Bottom bar */}
+      <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'space-between',
@@ -2707,23 +2707,23 @@ const ProgrammeFooter = () => {
         gap: '20px',
         padding: '28px 0 40px'
       }}>
-          <span style={{
+        <span style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '11px',
           color: 'rgba(247,246,243,0.1)',
           letterSpacing: '0.04em'
         }}>© 2026 EmpowaEntrepreneurs. All rights reserved.</span>
-          <div style={{
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: isMobile ? '12px' : '20px',
           flexWrap: 'wrap'
         }}>
-            <div style={{
+          <div style={{
             display: 'flex',
             gap: '8px'
           }}>
-              {FOOTER_SOCIAL_LINKS.map(soc => <motion.a key={soc.id} href="#" onClick={e => e.preventDefault()} whileHover={{
+            {FOOTER_SOCIAL_LINKS.map(soc => <motion.a key={soc.id} href="#" onClick={e => e.preventDefault()} whileHover={{
               scale: 1.1,
               y: -2
             }} whileTap={{
@@ -2748,15 +2748,15 @@ const ProgrammeFooter = () => {
               el.style.borderColor = 'rgba(247,246,243,0.08)';
               el.style.background = 'rgba(247,246,243,0.03)';
             }}>
-                  <SocialIcon brand={soc.brand} />
-                </motion.a>)}
-            </div>
-            {!isMobile && <div style={{
+              <SocialIcon brand={soc.brand} />
+            </motion.a>)}
+          </div>
+          {!isMobile && <div style={{
             width: '1px',
             height: '20px',
             background: 'rgba(247,246,243,0.08)'
           }} />}
-            {FOOTER_LEGAL.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
+          {FOOTER_LEGAL.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
             color: 'rgba(247,246,243,0.12)',
@@ -2768,12 +2768,12 @@ const ProgrammeFooter = () => {
           }} onMouseLeave={e => {
             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.12)';
           }}>
-                {item.label}
-              </a>)}
-          </div>
+            {item.label}
+          </a>)}
         </div>
       </div>
-    </footer>;
+    </div>
+  </footer>;
 };
 
 // ─── ProgrammePage ─────────────────────────────────────────────────────────────
@@ -2782,13 +2782,13 @@ export const ProgrammePage = () => {
     background: '#141210',
     overflowX: 'hidden'
   }}>
-      
-      <ProgrammeHero />
-      <LogoBanner />
-      <StagesSection />
-      <SignatureExperiencesSection />
-      <ZonesSection />
-      <ProgrammeCtaSection />
-      
-    </div>;
+
+    <ProgrammeHero />
+    <LogoBanner />
+    <StagesSection />
+    <SignatureExperiencesSection />
+    <ZonesSection />
+    <ProgrammeCtaSection />
+
+  </div>;
 };

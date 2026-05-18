@@ -890,7 +890,7 @@ const HeroSection = () => {
           }} style={{
             display: 'inline-block',
             fontSize: isMobile ? 'clamp(36px, 9.5vw, 60px)' : 'clamp(44px, 6.5vw, 100px)',
-            color: "#f7f6f3"
+            color: "rgb(247 246 243 / 0.25)"
           }}>
               EmpowaEntrepreneurs Funding Summit 2026 Journey
             </motion.span>

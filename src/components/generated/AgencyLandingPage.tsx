@@ -835,7 +835,7 @@ const SERVICE_STRIP_ITEMS = [{
 const HERO_WORDS_LINE1 = ["AFRICA'S", 'PREMIER'];
 const HERO_WORDS_LINE2 = ['FUNDING'];
 const HERO_WORD_PLATFORM = 'PLATFORM™';
-const HERO_BG_IMAGE = 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1800&q=80';
+const HERO_BG_IMAGE = '/EmpowaEntrepreneur-banner2.jpg';
 const HeroGrid = () => <div aria-hidden="true" style={{
   position: 'absolute',
   inset: 0,
@@ -3323,7 +3323,7 @@ const DarkCtaSection = () => {
             marginBottom: '32px',
             position: 'relative'
           }}>
-            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80" alt="Empowa Summit - Power Seat Roundtables in session" style={{
+            <img src="/EmpowaEntrepreneur-banner6.jpg" alt="Empowa Summit - Power Seat Roundtables in session" style={{
               width: '100%',
               height: isMobile ? '200px' : '240px',
               objectFit: 'cover',
