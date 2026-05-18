@@ -3419,6 +3419,7 @@ export const PastSpeakersSection = () => {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
+                  objectPosition: 'top',
                   filter: 'brightness(0.82) saturate(0.8)',
                   transform: isHov ? 'scale(1.07)' : 'scale(1)',
                   transition: 'transform 0.8s cubic-bezier(0.22,1,0.36,1)',
