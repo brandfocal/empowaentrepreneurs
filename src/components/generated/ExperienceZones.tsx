@@ -1925,7 +1925,7 @@ const SiteFooter = () => {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-        objectPosition: 'center 30%',
+        objectPosition: 'center top',
         display: 'block',
         filter: 'brightness(0.28) saturate(0.6)'
       }} />

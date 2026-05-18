@@ -61,14 +61,14 @@ const useMagnetic = (strength = 0.35) => {
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 const PlusSquareIconLight = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
+</svg>;
 const PlusSquareIconDark = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
+</svg>;
 const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>;
+  <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 const slideUpBlur = {
@@ -400,7 +400,7 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-      <a href="#"  style={{
+      <a href="#" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
@@ -441,7 +441,7 @@ const StickyNav = () => {
         alignItems: 'center',
         gap: '16px'
       }}>
-        {TABLET_NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
+        {TABLET_NAV_ITEMS.map(item => <a key={item.id} href="#" style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '11px',
           textDecoration: 'none',
@@ -454,7 +454,7 @@ const StickyNav = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLAnchorElement).style.color = item.active ? '#DE322D' : navLinkColor;
         }}>{item.label}</a>)}
-        <motion.a href="#"  whileHover={{
+        <motion.a href="#" whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -481,7 +481,7 @@ const StickyNav = () => {
         alignItems: 'center',
         gap: '22px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           textDecoration: 'none',
@@ -498,7 +498,7 @@ const StickyNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="#"  whileHover={{
+          <motion.a href="#" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -598,7 +598,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexDirection: 'column'
         }}>
-          <a href="#"  style={{
+          <a href="#" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -608,7 +608,7 @@ const StickyNav = () => {
             textDecoration: 'none',
             textAlign: 'center'
           }}>Become a Funder</a>
-          <a href="#registration-form"  style={{
+          <a href="#registration-form" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -626,7 +626,7 @@ const StickyNav = () => {
 };
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
-const HERO_BG = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80';
+const HERO_BG = '/EmpowaEntrepreneur-banner10.jpg';
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
   const {
@@ -1897,7 +1897,7 @@ const CtaBannerSection = () => {
   const hPad = isMobile ? '0 20px' : isTablet ? '0 40px' : '0 64px';
   const magneticReg = useMagnetic(0.28);
   const [activeForm, setActiveForm] = useState<string | null>('cta-b1');
-  
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [company, setCompany] = useState('');
@@ -1908,7 +1908,7 @@ const CtaBannerSection = () => {
   const [ticketQuantity, setTicketQuantity] = useState('1');
   const [paymentMethod, setPaymentMethod] = useState('');
   const [absaContact, setAbsaContact] = useState('');
-  
+
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [loadingText, setLoadingText] = useState('Submitting...');
@@ -2002,7 +2002,7 @@ const CtaBannerSection = () => {
     gap: '16px',
     marginTop: '24px'
   };
-  const dismissBtn = <button  style={{
+  const dismissBtn = <button style={{
     position: 'absolute',
     top: '16px',
     right: '16px',
@@ -2280,7 +2280,7 @@ const CtaBannerSection = () => {
               </div>
               <h4 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 8px' }}>Registration Received</h4>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(247,246,243,0.5)', margin: 0 }}>
-                {paymentMethod === 'Credit Card' 
+                {paymentMethod === 'Credit Card'
                   ? 'Thank you! Redirecting you to Quicket to complete your ticket purchase...'
                   : 'Thank you! We will be in touch with your invoice and event details.'}
               </p>
@@ -2294,7 +2294,7 @@ const CtaBannerSection = () => {
               )}
               <form onSubmit={handleSubmit} style={formGridStyle}>
                 <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2' }}>
-                  <label style={{...FIELD_LABEL_STYLE, marginBottom: '0'}}>Name of Owner</label>
+                  <label style={{ ...FIELD_LABEL_STYLE, marginBottom: '0' }}>Name of Owner</label>
                 </div>
                 <div>
                   <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
@@ -2323,7 +2323,7 @@ const CtaBannerSection = () => {
 
                 <div style={{ gridColumn: isMobile ? 'span 1' : 'span 2', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '16px', paddingTop: '8px' }}>
                   <div>
-                    <label style={{...FIELD_LABEL_STYLE, marginBottom: '10px'}}>Years in Business</label>
+                    <label style={{ ...FIELD_LABEL_STYLE, marginBottom: '10px' }}>Years in Business</label>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {['1-5', '5-10', '10+'].map(option => (
                         <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
@@ -2334,7 +2334,7 @@ const CtaBannerSection = () => {
                     </div>
                   </div>
                   <div>
-                    <label style={{...FIELD_LABEL_STYLE, marginBottom: '10px', textTransform: 'none', letterSpacing: '0.02em', fontSize: '11px', color: '#F7F6F3', fontWeight: 500}}>I would like to pitch at the EmpowaEntrepreneurs Pitching Festival</label>
+                    <label style={{ ...FIELD_LABEL_STYLE, marginBottom: '10px', textTransform: 'none', letterSpacing: '0.02em', fontSize: '11px', color: '#F7F6F3', fontWeight: 500 }}>I would like to pitch at the EmpowaEntrepreneurs Pitching Festival</label>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {['Yes', 'No'].map(option => (
                         <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
@@ -2345,7 +2345,7 @@ const CtaBannerSection = () => {
                     </div>
                   </div>
                   <div>
-                    <label style={{...FIELD_LABEL_STYLE, marginBottom: '10px'}}>Payment Method</label>
+                    <label style={{ ...FIELD_LABEL_STYLE, marginBottom: '10px' }}>Payment Method</label>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {['EFT (Generate Invoice)', 'Credit Card'].map(option => (
                         <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
@@ -2356,7 +2356,7 @@ const CtaBannerSection = () => {
                     </div>
                   </div>
                   <div>
-                    <label style={{...FIELD_LABEL_STYLE, marginBottom: '10px', textTransform: 'none', letterSpacing: '0.02em', fontSize: '11px', color: '#F7F6F3', fontWeight: 500}}>Would you like ABSA to contact you concerning your Small Business Services?</label>
+                    <label style={{ ...FIELD_LABEL_STYLE, marginBottom: '10px', textTransform: 'none', letterSpacing: '0.02em', fontSize: '11px', color: '#F7F6F3', fontWeight: 500 }}>Would you like ABSA to contact you concerning your Small Business Services?</label>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {['Yes', 'No'].map(option => (
                         <label key={option} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F7F6F3', cursor: 'pointer' }}>
@@ -2368,7 +2368,7 @@ const CtaBannerSection = () => {
                   </div>
                 </div>
 
-                <button type="submit" disabled={status === 'loading'} style={{...SUBMIT_BTN_STYLE, opacity: status === 'loading' ? 0.7 : 1, cursor: status === 'loading' ? 'not-allowed' : 'pointer'}}>
+                <button type="submit" disabled={status === 'loading'} style={{ ...SUBMIT_BTN_STYLE, opacity: status === 'loading' ? 0.7 : 1, cursor: status === 'loading' ? 'not-allowed' : 'pointer' }}>
                   <span>{status === 'loading' ? 'Processing...' : 'Complete Registration'}</span>
                 </button>
               </form>
@@ -4480,7 +4480,7 @@ const EventProgrammeSection = () => {
 // ─── FundingSummitPage ─────────────────────────────────────────────────────────
 export const FundingSummitPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   useEffect(() => {
     const handleOpen = () => setIsModalOpen(true);
     window.addEventListener('openPartnershipModal', handleOpen);
@@ -4493,7 +4493,7 @@ export const FundingSummitPage = () => {
   }}>
     <HeroSection />
     <FundingPlatformAlert />
-      <LogoBanner />
+    <LogoBanner />
     <EventLogisticsSection />
     <ExperienceZonesSection />
     <PastSpeakersSection />

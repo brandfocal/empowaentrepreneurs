@@ -6,7 +6,7 @@ import { NewsletterForm } from './NewsletterForm';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
-const HERO_BG = 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1800&q=80';
+const HERO_BG = '/EmpowaEntrepreneur-banner8.jpg';
 const CONTACT_IMG = 'https://images.unsplash.com/photo-1560439513-74b037a25d84?w=900&q=80';
 
 // ─── Responsive hooks ──────────────────────────────────────────────────────────
@@ -146,14 +146,14 @@ const staggerChild = {
 
 // ─── SVG Helpers ──────────────────────────────────────────────────────────────
 const PlusSquareIconLight = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
+</svg>;
 const PlusSquareIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
+</svg>;
 const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>;
+  <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
 
 // ─── Scroll Progress Bar ──────────────────────────────────────────────────────
 const ScrollProgressBar = () => {
@@ -222,17 +222,17 @@ const HeroTicker = ({
     overflow: 'hidden',
     width: '100%'
   }}>
-      <div ref={trackRef} style={{
+    <div ref={trackRef} style={{
       display: 'flex',
       alignItems: 'center',
       willChange: 'transform'
     }}>
-        {[0, 1, 2].map(r => <div key={r} className="ticker-row" style={{
+      {[0, 1, 2].map(r => <div key={r} className="ticker-row" style={{
         display: 'flex',
         alignItems: 'center',
         flexShrink: 0
       }}>
-            {TICKER_ITEMS.map(item => <div key={item.id} style={{
+        {TICKER_ITEMS.map(item => <div key={item.id} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '16px',
@@ -241,7 +241,7 @@ const HeroTicker = ({
           height: '52px',
           whiteSpace: 'nowrap'
         }}>
-                <span style={{
+          <span style={{
             width: '4px',
             height: '4px',
             borderRadius: '50%',
@@ -249,7 +249,7 @@ const HeroTicker = ({
             flexShrink: 0,
             display: 'block'
           }} />
-                <span style={{
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
@@ -257,12 +257,12 @@ const HeroTicker = ({
             color: light ? 'rgba(247,246,243,0.35)' : 'rgba(20,18,16,0.4)',
             fontWeight: 500
           }}>
-                  {item.label}
-                </span>
-              </div>)}
-          </div>)}
-      </div>
-    </div>;
+            {item.label}
+          </span>
+        </div>)}
+      </div>)}
+    </div>
+  </div>;
 };
 
 // ─── Sticky Nav ───────────────────────────────────────────────────────────────
@@ -319,7 +319,7 @@ const StickyNav = () => {
     zIndex: 100,
     boxSizing: 'border-box'
   }}>
-      <div style={{
+    <div style={{
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -330,13 +330,13 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-        <a href="#"  style={{
+      <a href="#" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
         textDecoration: 'none'
       }}>
-          <motion.div whileHover={{
+        <motion.div whileHover={{
           scale: 1.08,
           rotate: 5
         }} style={{
@@ -350,11 +350,11 @@ const StickyNav = () => {
           justifyContent: 'center',
           boxShadow: '0 4px 14px rgba(222,50,45,0.4)'
         }}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
-            </svg>
-          </motion.div>
-          <span style={{
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+          </svg>
+        </motion.div>
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: isMobile ? '11px' : '13px',
           letterSpacing: '0.08em',
@@ -363,16 +363,16 @@ const StickyNav = () => {
           fontWeight: 700,
           transition: 'color 0.35s ease'
         }}>
-            EmpowaSummit
-          </span>
-        </a>
+          EmpowaSummit
+        </span>
+      </a>
 
-        {!isMobile && <div style={{
+      {!isMobile && <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '32px'
       }}>
-            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           textDecoration: 'none',
@@ -385,13 +385,13 @@ const StickyNav = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLAnchorElement).style.color = item.id === 'contact' ? '#DE322D' : navLinkColor;
         }}>
-                {item.label}
-              </a>)}
-            <div style={{
+          {item.label}
+        </a>)}
+        <div style={{
           display: 'flex',
           gap: '8px'
         }}>
-              <motion.a href="/partnerships"  whileHover={{
+          <motion.a href="/partnerships" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -409,9 +409,9 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}>
-                <span>Partner With Us</span>
-              </motion.a>
-              <motion.a href="/summit" whileHover={{
+            <span>Partner With Us</span>
+          </motion.a>
+          <motion.a href="/summit" whileHover={{
             scale: 1.04,
             boxShadow: '0 8px 32px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -431,12 +431,12 @@ const StickyNav = () => {
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)',
             transition: 'box-shadow 0.3s ease'
           }}>
-                <span>Summit 2026</span>
-              </motion.a>
-            </div>
-          </div>}
+            <span>Summit 2026</span>
+          </motion.a>
+        </div>
+      </div>}
 
-        {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
+      {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
         background: 'none',
         border: 'none',
         cursor: 'pointer',
@@ -446,7 +446,7 @@ const StickyNav = () => {
         gap: '5px',
         flexShrink: 0
       }}>
-            {[0, 1, 2].map(i => <span key={i} style={{
+        {[0, 1, 2].map(i => <span key={i} style={{
           display: 'block',
           width: '22px',
           height: '1.5px',
@@ -454,11 +454,11 @@ const StickyNav = () => {
           borderRadius: '2px',
           transition: 'background 0.35s ease'
         }} />)}
-          </button>}
-      </div>
+      </button>}
+    </div>
 
-      <AnimatePresence>
-        {isMobile && mobileMenuOpen && <motion.div initial={{
+    <AnimatePresence>
+      {isMobile && mobileMenuOpen && <motion.div initial={{
         opacity: 0,
         y: -12
       }} animate={{
@@ -477,7 +477,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 20px 28px'
       }}>
-            {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => { e.preventDefault(); setMobileMenuOpen(false); }} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -488,15 +488,15 @@ const StickyNav = () => {
           letterSpacing: '0.02em',
           fontWeight: item.id === 'contact' ? 600 : 400
         }}>
-                {item.label}
-              </a>)}
-            <div style={{
+          {item.label}
+        </a>)}
+        <div style={{
           display: 'flex',
           gap: '10px',
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-              <a href="/partnerships"  style={{
+          <a href="/partnerships" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -505,9 +505,9 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>
-                Partner With Us
-              </a>
-              <a href="/summit"  style={{
+            Partner With Us
+          </a>
+          <a href="/summit" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -516,10 +516,10 @@ const StickyNav = () => {
             color: '#fff',
             textDecoration: 'none'
           }}>Summit 2026</a>
-            </div>
-          </motion.div>}
-      </AnimatePresence>
-    </motion.nav>;
+        </div>
+      </motion.div>}
+    </AnimatePresence>
+  </motion.nav>;
 };
 
 // ─── Hero Grid Overlay ────────────────────────────────────────────────────────
@@ -532,7 +532,7 @@ const HeroGrid = () => <div aria-hidden="true" style={{
   zIndex: 0,
   overflow: 'hidden'
 }}>
-    {HERO_GRID_VLINES.map(pct => <div key={`vl-${pct}`} style={{
+  {HERO_GRID_VLINES.map(pct => <div key={`vl-${pct}`} style={{
     position: 'absolute',
     top: 0,
     bottom: 0,
@@ -540,7 +540,7 @@ const HeroGrid = () => <div aria-hidden="true" style={{
     width: '1px',
     background: 'rgba(247,246,243,0.025)'
   }} />)}
-    {HERO_GRID_HLINES.map(pct => <div key={`hl-${pct}`} style={{
+  {HERO_GRID_HLINES.map(pct => <div key={`hl-${pct}`} style={{
     position: 'absolute',
     left: 0,
     right: 0,
@@ -548,7 +548,7 @@ const HeroGrid = () => <div aria-hidden="true" style={{
     height: '1px',
     background: 'rgba(247,246,243,0.025)'
   }} />)}
-  </div>;
+</div>;
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 const ContactHero = () => {
@@ -574,29 +574,29 @@ const ContactHero = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      {/* Parallax BG */}
-      <motion.div aria-hidden="true" style={{
+    {/* Parallax BG */}
+    <motion.div aria-hidden="true" style={{
       y: imgY,
       position: 'absolute',
       inset: '-10% 0',
       backgroundImage: `url(${HERO_BG})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center 40%',
+      backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
       pointerEvents: 'none',
       zIndex: 0,
       willChange: 'transform'
     }} />
-      {/* Overlay */}
-      <div aria-hidden="true" style={{
+    {/* Overlay */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       background: 'linear-gradient(160deg, rgba(20,18,16,0.97) 0%, rgba(20,18,16,0.82) 45%, rgba(20,18,16,0.94) 100%)',
       pointerEvents: 'none',
       zIndex: 1
     }} />
-      {/* Noise */}
-      <div aria-hidden="true" style={{
+    {/* Noise */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -606,8 +606,8 @@ const ContactHero = () => {
       zIndex: 2,
       opacity: 0.5
     }} />
-      {/* Red orb top-right - clamped to prevent overflow */}
-      <motion.div aria-hidden="true" style={{
+    {/* Red orb top-right - clamped to prevent overflow */}
+    <motion.div aria-hidden="true" style={{
       y: orbY,
       position: 'absolute',
       top: '-10%',
@@ -619,8 +619,8 @@ const ContactHero = () => {
       pointerEvents: 'none',
       zIndex: 3
     }} />
-      {/* Red orb bottom-left */}
-      <div aria-hidden="true" style={{
+    {/* Red orb bottom-left */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '10%',
       left: '-5%',
@@ -631,8 +631,8 @@ const ContactHero = () => {
       pointerEvents: 'none',
       zIndex: 3
     }} />
-      {/* Corner brackets - hidden on very small screens */}
-      {!isMobile && <div aria-hidden="true" style={{
+    {/* Corner brackets - hidden on very small screens */}
+    {!isMobile && <div aria-hidden="true" style={{
       position: 'absolute',
       top: '88px',
       left: '32px',
@@ -642,7 +642,7 @@ const ContactHero = () => {
       borderTop: '1px solid rgba(222,50,45,0.3)',
       zIndex: 4
     }} />}
-      {!isMobile && <div aria-hidden="true" style={{
+    {!isMobile && <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '72px',
       right: '32px',
@@ -652,23 +652,23 @@ const ContactHero = () => {
       borderBottom: '1px solid rgba(222,50,45,0.3)',
       zIndex: 4
     }} />}
-      {/* Grid */}
-      <div style={{
+    {/* Grid */}
+    <div style={{
       position: 'relative',
       zIndex: 3
     }}>
-        <HeroGrid />
-      </div>
-      {/* Nav spacer */}
-      <div style={{
+      <HeroGrid />
+    </div>
+    {/* Nav spacer */}
+    <div style={{
       height: isMobile ? '72px' : '88px',
       flexShrink: 0,
       position: 'relative',
       zIndex: 4
     }} />
 
-      {/* Main content */}
-      <motion.div style={{
+    {/* Main content */}
+    <motion.div style={{
       y: textY,
       flex: 1,
       display: 'flex',
@@ -681,16 +681,16 @@ const ContactHero = () => {
       position: 'relative',
       paddingBottom: 0
     }}>
-        {/* Label */}
-        <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      {/* Label */}
+      <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '8px',
         marginBottom: '28px',
         flexWrap: 'wrap'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           color: 'rgba(247,246,243,0.38)',
           fontSize: isMobile ? '9px' : '11px',
@@ -698,20 +698,20 @@ const ContactHero = () => {
           textTransform: 'uppercase',
           fontWeight: 500
         }}>
-            <span style={{
+          <span style={{
             color: '#DE322D',
             fontWeight: 600
           }}>EmpowaEntrepreneurs</span>
-            <span> Funding Summit - </span>
-            <span style={{
+          <span> Funding Summit - </span>
+          <span style={{
             color: 'rgba(247,246,243,0.55)',
             fontWeight: 500
           }}>Contact Us</span>
-          </span>
-        </motion.div>
+        </span>
+      </motion.div>
 
-        {/* Main headline */}
-        <h1 style={{
+      {/* Main headline */}
+      <h1 style={{
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: 200,
         margin: '0 0 28px',
@@ -719,11 +719,11 @@ const ContactHero = () => {
         letterSpacing: isMobile ? '-1.5px' : '-4px',
         maxWidth: '960px'
       }}>
-          <div style={{
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            <motion.span initial={{
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -739,9 +739,9 @@ const ContactHero = () => {
             marginRight: '0.2em',
             fontSize: isMobile ? 'clamp(34px, 10vw, 56px)' : 'clamp(56px, 7vw, 112px)'
           }}>
-              Join the
-            </motion.span>
-            <motion.span initial={{
+            Join the
+          </motion.span>
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -756,14 +756,14 @@ const ContactHero = () => {
             color: 'rgba(247,246,243,0.18)',
             fontSize: isMobile ? 'clamp(34px, 10vw, 56px)' : 'clamp(56px, 7vw, 112px)'
           }}>
-              Capital
-            </motion.span>
-          </div>
-          <div style={{
+            Capital
+          </motion.span>
+        </div>
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            <motion.em initial={{
+          <motion.em initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -780,13 +780,13 @@ const ContactHero = () => {
             color: '#DE322D',
             fontSize: isMobile ? 'clamp(34px, 10vw, 56px)' : 'clamp(56px, 7vw, 112px)'
           }}>
-              Conversation.
-            </motion.em>
-          </div>
-        </h1>
+            Conversation.
+          </motion.em>
+        </div>
+      </h1>
 
-        {/* Subtitle */}
-        <motion.p custom={0.6} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      {/* Subtitle */}
+      <motion.p custom={0.6} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         fontFamily: 'Inter, sans-serif',
         fontSize: isMobile ? '14px' : 'clamp(15px, 1.3vw, 19px)',
         lineHeight: '1.78',
@@ -795,18 +795,18 @@ const ContactHero = () => {
         fontWeight: 300,
         maxWidth: '520px'
       }}>
-          Whether you're a founder seeking catalytic capital, an investor exploring Africa's growth frontier, or a brand looking to align with continental impact - we're ready to connect.
-        </motion.p>
+        Whether you're a founder seeking catalytic capital, an investor exploring Africa's growth frontier, or a brand looking to align with continental impact - we're ready to connect.
+      </motion.p>
 
-        {/* CTA row */}
-        <motion.div custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      {/* CTA row */}
+      <motion.div custom={0.72} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         flexWrap: 'wrap',
         marginBottom: '44px'
       }}>
-          <motion.a href="#inquiry-form"  whileHover={{
+        <motion.a href="#inquiry-form" whileHover={{
           scale: 1.04,
           boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
         }} whileTap={{
@@ -826,10 +826,10 @@ const ContactHero = () => {
           fontWeight: 600,
           boxShadow: '0 8px 36px rgba(222,50,45,0.55)'
         }}>
-            <span>Send an Inquiry</span>
-            <ArrowIconDark />
-          </motion.a>
-          <motion.a href="/partnerships"  whileHover={{
+          <span>Send an Inquiry</span>
+          <ArrowIconDark />
+        </motion.a>
+        <motion.a href="/partnerships" whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -855,13 +855,13 @@ const ContactHero = () => {
           el.style.borderColor = 'rgba(247,246,243,0.25)';
           el.style.color = 'rgba(247,246,243,0.82)';
         }}>
-            <span>Partner With Us</span>
-          </motion.a>
-        </motion.div>
+          <span>Partner With Us</span>
+        </motion.a>
       </motion.div>
+    </motion.div>
 
-      {/* Ticker */}
-      <motion.div initial={{
+    {/* Ticker */}
+    <motion.div initial={{
       opacity: 0
     }} animate={{
       opacity: 1
@@ -874,9 +874,9 @@ const ContactHero = () => {
       overflow: 'hidden',
       position: 'relative'
     }}>
-        <HeroTicker light />
-      </motion.div>
-    </section>;
+      <HeroTicker light />
+    </motion.div>
+  </section>;
 };
 
 // ─── Engagement Pathway Data ──────────────────────────────────────────────────
@@ -942,7 +942,7 @@ const EngagementSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -952,7 +952,7 @@ const EngagementSection = () => {
       opacity: 0.55,
       zIndex: 0
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '-5%',
       right: '-8%',
@@ -964,24 +964,24 @@ const EngagementSection = () => {
       zIndex: 0
     }} />
 
-      <div style={{
+    <div style={{
       maxWidth: '1280px',
       margin: '0 auto',
       position: 'relative',
       zIndex: 1
     }}>
-        {/* Header */}
-        <div style={{
+      {/* Header */}
+      <div style={{
         marginBottom: isMobile ? '40px' : '80px'
       }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
           marginBottom: '20px'
         }}>
-            <PlusSquareIconLight />
-            <span style={{
+          <PlusSquareIconLight />
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.14em',
@@ -989,13 +989,13 @@ const EngagementSection = () => {
             color: 'rgba(247,246,243,0.35)',
             fontWeight: 600
           }}>
-              Strategic Engagement
-            </span>
-          </motion.div>
-          <div style={{
+            Strategic Engagement
+          </span>
+        </motion.div>
+        <div style={{
           overflow: 'hidden'
         }}>
-            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? 'clamp(28px, 9vw, 48px)' : isTablet ? 'clamp(36px, 6vw, 60px)' : 'clamp(40px, 5vw, 78px)',
             fontWeight: 200,
@@ -1005,32 +1005,32 @@ const EngagementSection = () => {
             margin: 0,
             maxWidth: '700px'
           }}>
-              <span>Choose your </span>
-              <em style={{
+            <span>Choose your </span>
+            <em style={{
               fontStyle: 'italic',
               color: '#DE322D'
             }}>pathway</em>
-              <span style={{
+            <span style={{
               color: 'rgba(247,246,243,0.2)'
             }}> to impact.</span>
-            </motion.h2>
-          </div>
+          </motion.h2>
         </div>
+      </div>
 
-        {/* Desktop/tablet interactive layout */}
-        {!isMobile ? <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.2} style={{
+      {/* Desktop/tablet interactive layout */}
+      {!isMobile ? <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.2} style={{
         display: 'grid',
         gridTemplateColumns: isTablet ? '300px 1fr' : '380px 1fr',
         gap: '16px',
         alignItems: 'stretch'
       }}>
-            {/* Left: pathway selector */}
-            <div style={{
+        {/* Left: pathway selector */}
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '8px'
         }}>
-              {PATHWAY_ITEMS.map((item, i) => <motion.button key={item.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.2 + i * 0.08} onClick={() => setActiveId(item.id)} style={{
+          {PATHWAY_ITEMS.map((item, i) => <motion.button key={item.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.2 + i * 0.08} onClick={() => setActiveId(item.id)} style={{
             all: 'unset',
             cursor: 'pointer',
             borderRadius: '18px',
@@ -1056,7 +1056,7 @@ const EngagementSection = () => {
               (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(247,246,243,0.06)';
             }
           }}>
-                  {activeId === item.id && <motion.div aria-hidden="true" initial={{
+            {activeId === item.id && <motion.div aria-hidden="true" initial={{
               scaleY: 0
             }} animate={{
               scaleY: 1
@@ -1073,7 +1073,7 @@ const EngagementSection = () => {
               transformOrigin: 'top',
               borderRadius: '18px 0 0 18px'
             }} />}
-                  <div style={{
+            <div style={{
               width: '40px',
               height: '40px',
               borderRadius: '50%',
@@ -1087,15 +1087,15 @@ const EngagementSection = () => {
               fontSize: '15px',
               color: activeId === item.id ? '#DE322D' : 'rgba(247,246,243,0.3)'
             }}>
-                    <span style={{
+              <span style={{
                 fontFamily: 'Inter, sans-serif'
               }}>{item.icon}</span>
-                  </div>
-                  <div style={{
+            </div>
+            <div style={{
               flex: 1,
               minWidth: 0
             }}>
-                    <div style={{
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: isTablet ? '13px' : '15px',
                 fontWeight: 500,
@@ -1105,9 +1105,9 @@ const EngagementSection = () => {
                 lineHeight: 1.2,
                 transition: 'color 0.35s ease'
               }}>
-                      {item.title}
-                    </div>
-                    <div style={{
+                {item.title}
+              </div>
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.08em',
@@ -1116,10 +1116,10 @@ const EngagementSection = () => {
                 fontWeight: 500,
                 transition: 'color 0.35s ease'
               }}>
-                      {item.subtitle}
-                    </div>
-                  </div>
-                  <span style={{
+                {item.subtitle}
+              </div>
+            </div>
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.14em',
@@ -1128,13 +1128,13 @@ const EngagementSection = () => {
               transition: 'color 0.35s ease',
               flexShrink: 0
             }}>
-                    {item.index}
-                  </span>
-                </motion.button>)}
-            </div>
+              {item.index}
+            </span>
+          </motion.button>)}
+        </div>
 
-            {/* Right: detail panel */}
-            <div style={{
+        {/* Right: detail panel */}
+        <div style={{
           borderRadius: '24px',
           background: 'rgba(247,246,243,0.025)',
           border: '1px solid rgba(247,246,243,0.07)',
@@ -1144,26 +1144,26 @@ const EngagementSection = () => {
           display: 'flex',
           flexDirection: 'column'
         }}>
-              <div style={{
+          <div style={{
             height: '160px',
             position: 'relative',
             overflow: 'hidden',
             flexShrink: 0
           }}>
-                <img src={CONTACT_IMG} alt={`${activeItem.title} engagement pathway`} style={{
+            <img src={CONTACT_IMG} alt={`${activeItem.title} engagement pathway`} style={{
               width: '100%',
               height: '100%',
               objectFit: 'cover',
               display: 'block',
               filter: 'brightness(0.3) saturate(0.5)'
             }} />
-                <div aria-hidden="true" style={{
+            <div aria-hidden="true" style={{
               position: 'absolute',
               inset: 0,
               background: 'linear-gradient(to bottom, transparent 30%, rgba(20,18,16,0.95) 100%)',
               pointerEvents: 'none'
             }} />
-                <div style={{
+            <div style={{
               position: 'absolute',
               top: '16px',
               right: '24px',
@@ -1174,12 +1174,12 @@ const EngagementSection = () => {
               lineHeight: 1,
               letterSpacing: '-4px'
             }}>
-                  <span>{activeItem.index}</span>
-                </div>
-              </div>
+              <span>{activeItem.index}</span>
+            </div>
+          </div>
 
-              <AnimatePresence mode="wait">
-                <motion.div key={activeItem.id + '-detail'} initial={{
+          <AnimatePresence mode="wait">
+            <motion.div key={activeItem.id + '-detail'} initial={{
               opacity: 0,
               y: 20,
               filter: 'blur(8px)'
@@ -1201,8 +1201,8 @@ const EngagementSection = () => {
               flexDirection: 'column',
               gap: '20px'
             }}>
-                  <div>
-                    <div style={{
+              <div>
+                <div style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
@@ -1218,7 +1218,7 @@ const EngagementSection = () => {
                   fontWeight: 500,
                   marginBottom: '14px'
                 }}>
-                      <span style={{
+                  <span style={{
                     width: '4px',
                     height: '4px',
                     borderRadius: '50%',
@@ -1226,9 +1226,9 @@ const EngagementSection = () => {
                     display: 'block',
                     flexShrink: 0
                   }} />
-                      {activeItem.subtitle}
-                    </div>
-                    <h3 style={{
+                  {activeItem.subtitle}
+                </div>
+                <h3 style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: isTablet ? 'clamp(20px, 3vw, 28px)' : 'clamp(24px, 2.5vw, 36px)',
                   fontWeight: 200,
@@ -1237,11 +1237,11 @@ const EngagementSection = () => {
                   margin: 0,
                   lineHeight: 1.1
                 }}>
-                      {activeItem.title}
-                    </h3>
-                  </div>
+                  {activeItem.title}
+                </h3>
+              </div>
 
-                  <p style={{
+              <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: isTablet ? '13px' : '15px',
                 lineHeight: '1.78',
@@ -1249,15 +1249,15 @@ const EngagementSection = () => {
                 margin: 0,
                 fontWeight: 300
               }}>
-                    {activeItem.description}
-                  </p>
+                {activeItem.description}
+              </p>
 
-                  <div style={{
+              <div style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: '8px'
               }}>
-                    {activeItem.features.map((feat, idx) => <span key={`${activeItem.id}-feat-${idx}`} style={{
+                {activeItem.features.map((feat, idx) => <span key={`${activeItem.id}-feat-${idx}`} style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '7px',
@@ -1270,7 +1270,7 @@ const EngagementSection = () => {
                   color: 'rgba(247,246,243,0.6)',
                   fontWeight: 300
                 }}>
-                        <span style={{
+                  <span style={{
                     width: '4px',
                     height: '4px',
                     borderRadius: '50%',
@@ -1278,11 +1278,11 @@ const EngagementSection = () => {
                     display: 'block',
                     flexShrink: 0
                   }} />
-                        {feat}
-                      </span>)}
-                  </div>
+                  {feat}
+                </span>)}
+              </div>
 
-                  <motion.a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openStrategicModal', { detail: { pathway: activeItem.title.toLowerCase().includes('strategic') ? 'strategic' : activeItem.title.toLowerCase().includes('investor') ? 'investor' : activeItem.title.toLowerCase().includes('growth') ? 'founder' : 'general' }})); }} whileHover={{
+              <motion.a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openStrategicModal', { detail: { pathway: activeItem.title.toLowerCase().includes('strategic') ? 'strategic' : activeItem.title.toLowerCase().includes('investor') ? 'investor' : activeItem.title.toLowerCase().includes('growth') ? 'founder' : 'general' } })); }} whileHover={{
                 scale: 1.04,
                 boxShadow: '0 12px 48px rgba(222,50,45,0.6)'
               }} whileTap={{
@@ -1303,166 +1303,166 @@ const EngagementSection = () => {
                 boxShadow: '0 6px 28px rgba(222,50,45,0.4)',
                 alignSelf: 'flex-start'
               }}>
-                    <span>Explore This Pathway</span>
-                    <ArrowIconDark />
-                  </motion.a>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </motion.div> : (/* Mobile accordion */
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0'
-      }}>
-            {PATHWAY_ITEMS.map((item, i) => <motion.div key={item.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.15 + i * 0.08} style={{
-          borderTop: i === 0 ? '1px solid rgba(247,246,243,0.1)' : 'none',
-          borderBottom: '1px solid rgba(247,246,243,0.07)'
+                <span>Explore This Pathway</span>
+                <ArrowIconDark />
+              </motion.a>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </motion.div> : (/* Mobile accordion */
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0'
         }}>
-                <button  style={{
-            all: 'unset',
-            cursor: 'pointer',
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '20px 0',
-            boxSizing: 'border-box',
-            gap: '12px'
+          {PATHWAY_ITEMS.map((item, i) => <motion.div key={item.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.15 + i * 0.08} style={{
+            borderTop: i === 0 ? '1px solid rgba(247,246,243,0.1)' : 'none',
+            borderBottom: '1px solid rgba(247,246,243,0.07)'
           }}>
-                  <div style={{
+            <button style={{
+              all: 'unset',
+              cursor: 'pointer',
+              width: '100%',
               display: 'flex',
               alignItems: 'center',
-              gap: '14px'
+              justifyContent: 'space-between',
+              padding: '20px 0',
+              boxSizing: 'border-box',
+              gap: '12px'
             }}>
-                    <span style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '11px',
-                letterSpacing: '0.14em',
-                color: activeId === item.id ? '#DE322D' : 'rgba(247,246,243,0.2)',
-                fontWeight: 700,
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '14px'
+              }}>
+                <span style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '11px',
+                  letterSpacing: '0.14em',
+                  color: activeId === item.id ? '#DE322D' : 'rgba(247,246,243,0.2)',
+                  fontWeight: 700,
+                  flexShrink: 0,
+                  transition: 'color 0.35s ease'
+                }}>
+                  {item.index}
+                </span>
+                <span style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: 'clamp(15px, 4.5vw, 22px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.5px',
+                  color: activeId === item.id ? '#F7F6F3' : 'rgba(247,246,243,0.5)',
+                  transition: 'color 0.35s ease',
+                  lineHeight: 1.1
+                }}>
+                  {item.title}
+                </span>
+              </div>
+              <motion.div animate={{
+                rotate: activeId === item.id ? 45 : 0
+              }} transition={{
+                duration: 0.35,
+                ease: [0.22, 1, 0.36, 1]
+              }} style={{
+                width: '30px',
+                height: '30px',
+                borderRadius: '50%',
                 flexShrink: 0,
-                transition: 'color 0.35s ease'
+                border: `1px solid ${activeId === item.id ? 'rgba(222,50,45,0.4)' : 'rgba(247,246,243,0.12)'}`,
+                background: activeId === item.id ? 'rgba(222,50,45,0.1)' : 'transparent',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}>
-                      {item.index}
-                    </span>
-                    <span style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: 'clamp(15px, 4.5vw, 22px)',
-                fontWeight: 300,
-                letterSpacing: '-0.5px',
-                color: activeId === item.id ? '#F7F6F3' : 'rgba(247,246,243,0.5)',
-                transition: 'color 0.35s ease',
-                lineHeight: 1.1
-              }}>
-                      {item.title}
-                    </span>
-                  </div>
-                  <motion.div animate={{
-              rotate: activeId === item.id ? 45 : 0
-            }} transition={{
-              duration: 0.35,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              width: '30px',
-              height: '30px',
-              borderRadius: '50%',
-              flexShrink: 0,
-              border: `1px solid ${activeId === item.id ? 'rgba(222,50,45,0.4)' : 'rgba(247,246,243,0.12)'}`,
-              background: activeId === item.id ? 'rgba(222,50,45,0.1)' : 'transparent',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                      <path d="M7 2V12M2 7H12" stroke={activeId === item.id ? '#DE322D' : 'rgba(247,246,243,0.4)'} strokeWidth="1.5" strokeLinecap="round" />
-                    </svg>
-                  </motion.div>
-                </button>
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                  <path d="M7 2V12M2 7H12" stroke={activeId === item.id ? '#DE322D' : 'rgba(247,246,243,0.4)'} strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </motion.div>
+            </button>
 
-                <AnimatePresence initial={false}>
-                  {activeId === item.id && <motion.div key={item.id + '-mob-body'} initial={{
-              height: 0,
-              opacity: 0
-            }} animate={{
-              height: 'auto',
-              opacity: 1
-            }} exit={{
-              height: 0,
-              opacity: 0
-            }} transition={{
-              duration: 0.5,
-              ease: [0.22, 1, 0.36, 1]
-            }} style={{
-              overflow: 'hidden'
-            }}>
-                      <div style={{
-                paddingBottom: '24px'
+            <AnimatePresence initial={false}>
+              {activeId === item.id && <motion.div key={item.id + '-mob-body'} initial={{
+                height: 0,
+                opacity: 0
+              }} animate={{
+                height: 'auto',
+                opacity: 1
+              }} exit={{
+                height: 0,
+                opacity: 0
+              }} transition={{
+                duration: 0.5,
+                ease: [0.22, 1, 0.36, 1]
+              }} style={{
+                overflow: 'hidden'
               }}>
-                        <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '14px',
-                  lineHeight: '1.78',
-                  color: 'rgba(247,246,243,0.5)',
-                  margin: '0 0 16px',
-                  fontWeight: 300
+                <div style={{
+                  paddingBottom: '24px'
                 }}>
-                          {item.description}
-                        </p>
-                        <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '7px',
-                  marginBottom: '18px'
-                }}>
-                          {item.features.map((feat, idx) => <span key={`${item.id}-mob-feat-${idx}`} style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    background: 'rgba(247,246,243,0.04)',
-                    border: '1px solid rgba(247,246,243,0.1)',
-                    borderRadius: '44px',
-                    padding: '6px 12px',
+                  <p style={{
                     fontFamily: 'Inter, sans-serif',
-                    fontSize: '11px',
-                    color: 'rgba(247,246,243,0.55)',
+                    fontSize: '14px',
+                    lineHeight: '1.78',
+                    color: 'rgba(247,246,243,0.5)',
+                    margin: '0 0 16px',
                     fontWeight: 300
                   }}>
-                              <span style={{
-                      width: '3px',
-                      height: '3px',
-                      borderRadius: '50%',
-                      background: '#DE322D',
-                      display: 'block',
-                      flexShrink: 0
-                    }} />
-                              {feat}
-                            </span>)}
-                        </div>
-                        <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openStrategicModal', { detail: { pathway: item.title.toLowerCase().includes('strategic') ? 'strategic' : item.title.toLowerCase().includes('investor') ? 'investor' : item.title.toLowerCase().includes('growth') ? 'founder' : 'general' }})); }} style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'linear-gradient(135deg, #DE322D, #c42823)',
-                  borderRadius: '44px',
-                  padding: '11px 22px',
-                  fontSize: '12px',
-                  letterSpacing: '0.05em',
-                  color: '#fff',
-                  textDecoration: 'none',
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontWeight: 600
-                }}>
-                          <span>Explore Pathway</span>
-                          <ArrowIconDark />
-                        </a>
-                      </div>
-                    </motion.div>}
-                </AnimatePresence>
-              </motion.div>)}
-          </div>)}
-      </div>
-    </section>;
+                    {item.description}
+                  </p>
+                  <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '7px',
+                    marginBottom: '18px'
+                  }}>
+                    {item.features.map((feat, idx) => <span key={`${item.id}-mob-feat-${idx}`} style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      background: 'rgba(247,246,243,0.04)',
+                      border: '1px solid rgba(247,246,243,0.1)',
+                      borderRadius: '44px',
+                      padding: '6px 12px',
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '11px',
+                      color: 'rgba(247,246,243,0.55)',
+                      fontWeight: 300
+                    }}>
+                      <span style={{
+                        width: '3px',
+                        height: '3px',
+                        borderRadius: '50%',
+                        background: '#DE322D',
+                        display: 'block',
+                        flexShrink: 0
+                      }} />
+                      {feat}
+                    </span>)}
+                  </div>
+                  <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openStrategicModal', { detail: { pathway: item.title.toLowerCase().includes('strategic') ? 'strategic' : item.title.toLowerCase().includes('investor') ? 'investor' : item.title.toLowerCase().includes('growth') ? 'founder' : 'general' } })); }} style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'linear-gradient(135deg, #DE322D, #c42823)',
+                    borderRadius: '44px',
+                    padding: '11px 22px',
+                    fontSize: '12px',
+                    letterSpacing: '0.05em',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontWeight: 600
+                  }}>
+                    <span>Explore Pathway</span>
+                    <ArrowIconDark />
+                  </a>
+                </div>
+              </motion.div>}
+            </AnimatePresence>
+          </motion.div>)}
+        </div>)}
+    </div>
+  </section>;
 };
 
 // ─── Contact Details Section ──────────────────────────────────────────────────
@@ -1514,7 +1514,7 @@ const ContactDetailsSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1524,7 +1524,7 @@ const ContactDetailsSection = () => {
       opacity: 0.55,
       zIndex: 0
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '-8%',
       right: '-6%',
@@ -1536,13 +1536,13 @@ const ContactDetailsSection = () => {
       zIndex: 0
     }} />
 
-      <div style={{
+    <div style={{
       maxWidth: '1280px',
       margin: '0 auto',
       position: 'relative',
       zIndex: 1
     }}>
-        <div style={{
+      <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
@@ -1550,15 +1550,15 @@ const ContactDetailsSection = () => {
         flexWrap: 'wrap',
         gap: '24px'
       }}>
-          <div>
-            <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <div>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
             marginBottom: '20px'
           }}>
-              <PlusSquareIconLight />
-              <span style={{
+            <PlusSquareIconLight />
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '12px',
               letterSpacing: '0.14em',
@@ -1566,13 +1566,13 @@ const ContactDetailsSection = () => {
               color: 'rgba(247,246,243,0.35)',
               fontWeight: 600
             }}>
-                Contact Details
-              </span>
-            </motion.div>
-            <div style={{
+              Contact Details
+            </span>
+          </motion.div>
+          <div style={{
             overflow: 'hidden'
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? 'clamp(28px, 8vw, 44px)' : isTablet ? 'clamp(32px, 5.5vw, 52px)' : 'clamp(38px, 4.5vw, 68px)',
               fontWeight: 200,
@@ -1582,25 +1582,25 @@ const ContactDetailsSection = () => {
               margin: 0,
               maxWidth: '580px'
             }}>
-                <span>Get in </span>
-                <em style={{
+              <span>Get in </span>
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D'
               }}>touch</em>
-                <span style={{
+              <span style={{
                 color: 'rgba(247,246,243,0.2)'
               }}> with us.</span>
-              </motion.h2>
-            </div>
+            </motion.h2>
           </div>
         </div>
+      </div>
 
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.09} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.09} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
         gap: '12px'
       }}>
-          {contactBlocks.map(block => <motion.div key={block.id} variants={staggerChild} whileHover={{
+        {contactBlocks.map(block => <motion.div key={block.id} variants={staggerChild} whileHover={{
           y: -4,
           transition: {
             duration: 0.3,
@@ -1619,7 +1619,7 @@ const ContactDetailsSection = () => {
           overflow: 'hidden',
           boxShadow: block.accent ? '0 16px 60px rgba(222,50,45,0.28)' : 'none'
         }}>
-              {block.accent && <div aria-hidden="true" style={{
+          {block.accent && <div aria-hidden="true" style={{
             position: 'absolute',
             bottom: '-20%',
             right: '-10%',
@@ -1630,12 +1630,12 @@ const ContactDetailsSection = () => {
             pointerEvents: 'none'
           }} />}
 
-              <div style={{
+          <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '12px'
           }}>
-                <div style={{
+            <div style={{
               width: '38px',
               height: '38px',
               borderRadius: '50%',
@@ -1646,9 +1646,9 @@ const ContactDetailsSection = () => {
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-                  {block.icon}
-                </div>
-                <span style={{
+              {block.icon}
+            </div>
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.14em',
@@ -1656,16 +1656,16 @@ const ContactDetailsSection = () => {
               color: block.accent ? 'rgba(247,246,243,0.7)' : 'rgba(247,246,243,0.28)',
               fontWeight: 500
             }}>
-                  {block.label}
-                </span>
-              </div>
+              {block.label}
+            </span>
+          </div>
 
-              <div style={{
+          <div style={{
             height: '1px',
             background: block.accent ? 'rgba(255,255,255,0.12)' : 'rgba(247,246,243,0.07)'
           }} />
 
-              <h3 style={{
+          <h3 style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? '18px' : '24px',
             fontWeight: 400,
@@ -1676,10 +1676,10 @@ const ContactDetailsSection = () => {
             position: 'relative',
             zIndex: 1
           }}>
-                {block.title}
-              </h3>
+            {block.title}
+          </h3>
 
-              {block.tag && <div style={{
+          {block.tag && <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '6px',
@@ -1697,7 +1697,7 @@ const ContactDetailsSection = () => {
             position: 'relative',
             zIndex: 1
           }}>
-                  <span style={{
+            <span style={{
               width: '3px',
               height: '3px',
               borderRadius: '50%',
@@ -1705,30 +1705,30 @@ const ContactDetailsSection = () => {
               display: 'block',
               flexShrink: 0
             }} />
-                  {block.tag}
-                </div>}
+            {block.tag}
+          </div>}
 
-              <div style={{
+          <div style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '6px',
             position: 'relative',
             zIndex: 1
           }}>
-                {block.lines.map((line, idx) => <span key={`${block.id}-line-${idx}`} style={{
+            {block.lines.map((line, idx) => <span key={`${block.id}-line-${idx}`} style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '14px',
               color: block.accent ? 'rgba(247,246,243,0.8)' : 'rgba(247,246,243,0.45)',
               lineHeight: 1.5,
               fontWeight: 300
             }}>
-                    {line}
-                  </span>)}
-              </div>
-            </motion.div>)}
-        </motion.div>
-      </div>
-    </section>;
+              {line}
+            </span>)}
+          </div>
+        </motion.div>)}
+      </motion.div>
+    </div>
+  </section>;
 };
 
 // ─── Inquiry Form Section ─────────────────────────────────────────────────────
@@ -1798,7 +1798,7 @@ const InquiryFormSection = () => {
           "input_24": formData.message
         })
       });
-      
+
       const data = await response.json();
       if (data.is_valid) {
         setSubmitted(true);
@@ -1846,7 +1846,7 @@ const InquiryFormSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1856,7 +1856,7 @@ const InquiryFormSection = () => {
       opacity: 0.4,
       zIndex: 0
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '-10%',
       right: '-8%',
@@ -1868,14 +1868,14 @@ const InquiryFormSection = () => {
       zIndex: 0
     }} />
 
-      <div style={{
+    <div style={{
       maxWidth: '1280px',
       margin: '0 auto',
       position: 'relative',
       zIndex: 1
     }}>
-        {/* Header */}
-        <div style={{
+      {/* Header */}
+      <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
@@ -1883,15 +1883,15 @@ const InquiryFormSection = () => {
         flexWrap: 'wrap',
         gap: '24px'
       }}>
-          <div>
-            <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <div>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
             marginBottom: '20px'
           }}>
-              <PlusSquareIcon />
-              <span style={{
+            <PlusSquareIcon />
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '12px',
               letterSpacing: '0.14em',
@@ -1899,13 +1899,13 @@ const InquiryFormSection = () => {
               color: 'rgba(20,18,16,0.45)',
               fontWeight: 600
             }}>
-                Make an Inquiry
-              </span>
-            </motion.div>
-            <div style={{
+              Make an Inquiry
+            </span>
+          </motion.div>
+          <div style={{
             overflow: 'hidden'
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? 'clamp(28px, 8vw, 44px)' : isTablet ? 'clamp(32px, 5.5vw, 52px)' : 'clamp(38px, 4.5vw, 68px)',
               fontWeight: 300,
@@ -1915,18 +1915,18 @@ const InquiryFormSection = () => {
               margin: 0,
               maxWidth: '560px'
             }}>
-                <span>Tell us </span>
-                <em style={{
+              <span>Tell us </span>
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D'
               }}>how</em>
-                <span style={{
+              <span style={{
                 color: 'rgba(20,18,16,0.2)'
               }}> you want to engage.</span>
-              </motion.h2>
-            </div>
+            </motion.h2>
           </div>
-          {!isMobile && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.25} style={{
+        </div>
+        {!isMobile && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.25} style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '15px',
           color: 'rgba(20,18,16,0.4)',
@@ -1934,19 +1934,19 @@ const InquiryFormSection = () => {
           lineHeight: '1.75',
           margin: 0
         }}>
-              Every message is reviewed by our team. We typically respond within 48 hours for strategic inquiries.
-            </motion.p>}
-        </div>
+          Every message is reviewed by our team. We typically respond within 48 hours for strategic inquiries.
+        </motion.p>}
+      </div>
 
-        {/* Form + aside */}
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.2} style={{
+      {/* Form + aside */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.2} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr' : '1fr 340px',
         gap: isMobile ? '40px' : isTablet ? '40px' : '56px',
         alignItems: 'start'
       }}>
-          {/* Form card */}
-          <div style={{
+        {/* Form card */}
+        <div style={{
           background: '#141210',
           borderRadius: '24px',
           padding: isMobile ? '28px 20px' : isTablet ? '40px 40px' : '48px 48px',
@@ -1954,7 +1954,7 @@ const InquiryFormSection = () => {
           position: 'relative',
           overflow: 'hidden'
         }}>
-            <div aria-hidden="true" style={{
+          <div aria-hidden="true" style={{
             position: 'absolute',
             inset: 0,
             backgroundImage: NOISE_SVG,
@@ -1964,7 +1964,7 @@ const InquiryFormSection = () => {
             opacity: 0.5,
             zIndex: 0
           }} />
-            <div aria-hidden="true" style={{
+          <div aria-hidden="true" style={{
             position: 'absolute',
             top: '-20%',
             right: '-10%',
@@ -1976,103 +1976,103 @@ const InquiryFormSection = () => {
             zIndex: 0
           }} />
 
-            {!submitted ? <form onSubmit={handleSubmit} style={{
+          {!submitted ? <form onSubmit={handleSubmit} style={{
             position: 'relative',
             zIndex: 1,
             display: 'flex',
             flexDirection: 'column',
             gap: '24px'
           }}>
-                <div style={{
+            <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
               gap: '14px'
             }}>
-                  <div>
-                    <label htmlFor="contact-firstname" style={labelStyle}>First Name</label>
-                    <input id="contact-firstname" type="text" placeholder="Your first name" value={formData.firstName} onChange={e => handleChange('firstName', e.target.value)} onFocus={() => setFocused('firstName')} onBlur={() => setFocused(null)} required style={inputStyle('firstName')} />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-lastname" style={labelStyle}>Last Name</label>
-                    <input id="contact-lastname" type="text" placeholder="Your last name" value={formData.lastName} onChange={e => handleChange('lastName', e.target.value)} onFocus={() => setFocused('lastName')} onBlur={() => setFocused(null)} required style={inputStyle('lastName')} />
-                  </div>
-                </div>
+              <div>
+                <label htmlFor="contact-firstname" style={labelStyle}>First Name</label>
+                <input id="contact-firstname" type="text" placeholder="Your first name" value={formData.firstName} onChange={e => handleChange('firstName', e.target.value)} onFocus={() => setFocused('firstName')} onBlur={() => setFocused(null)} required style={inputStyle('firstName')} />
+              </div>
+              <div>
+                <label htmlFor="contact-lastname" style={labelStyle}>Last Name</label>
+                <input id="contact-lastname" type="text" placeholder="Your last name" value={formData.lastName} onChange={e => handleChange('lastName', e.target.value)} onFocus={() => setFocused('lastName')} onBlur={() => setFocused(null)} required style={inputStyle('lastName')} />
+              </div>
+            </div>
 
-                <div style={{
+            <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
               gap: '14px'
             }}>
-                  <div>
-                    <label htmlFor="contact-email" style={labelStyle}>Email Address</label>
-                    <input id="contact-email" type="email" placeholder="info@empowaentrepreneurs.co.za" value={formData.email} onChange={e => handleChange('email', e.target.value)} onFocus={() => setFocused('email')} onBlur={() => setFocused(null)} required style={inputStyle('email')} />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-subject" style={labelStyle}>Subject</label>
-                    <input id="contact-subject" type="text" placeholder="e.g. Strategic Partnership, General Inquiry" value={formData.subject} onChange={e => handleChange('subject', e.target.value)} onFocus={() => setFocused('subject')} onBlur={() => setFocused(null)} required style={inputStyle('subject')} />
-                  </div>
-                </div>
+              <div>
+                <label htmlFor="contact-email" style={labelStyle}>Email Address</label>
+                <input id="contact-email" type="email" placeholder="info@empowaentrepreneurs.co.za" value={formData.email} onChange={e => handleChange('email', e.target.value)} onFocus={() => setFocused('email')} onBlur={() => setFocused(null)} required style={inputStyle('email')} />
+              </div>
+              <div>
+                <label htmlFor="contact-subject" style={labelStyle}>Subject</label>
+                <input id="contact-subject" type="text" placeholder="e.g. Strategic Partnership, General Inquiry" value={formData.subject} onChange={e => handleChange('subject', e.target.value)} onFocus={() => setFocused('subject')} onBlur={() => setFocused(null)} required style={inputStyle('subject')} />
+              </div>
+            </div>
 
-                <div>
-                  <label htmlFor="contact-message" style={labelStyle}>Message</label>
-                  <textarea id="contact-message" placeholder="Tell us about your goals, interests, or how you'd like to engage..." value={formData.message} onChange={e => handleChange('message', e.target.value)} onFocus={() => setFocused('message')} onBlur={() => setFocused(null)} rows={5} style={{
+            <div>
+              <label htmlFor="contact-message" style={labelStyle}>Message</label>
+              <textarea id="contact-message" placeholder="Tell us about your goals, interests, or how you'd like to engage..." value={formData.message} onChange={e => handleChange('message', e.target.value)} onFocus={() => setFocused('message')} onBlur={() => setFocused(null)} rows={5} style={{
                 ...inputStyle('message'),
                 resize: 'vertical',
                 minHeight: '120px'
               }} />
-                </div>
+            </div>
 
-                <div style={{
+            <div style={{
               display: 'flex',
               flexDirection: 'column',
               gap: '16px',
               marginTop: '12px'
             }}>
-                  {error && <div style={{ color: '#DE322D', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>{error}</div>}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '16px',
-                    flexWrap: 'wrap'
-                  }}>
-                    <motion.button type="submit" disabled={isSubmitting} whileHover={{
-                      scale: isSubmitting ? 1 : 1.04,
-                      boxShadow: isSubmitting ? '0 6px 28px rgba(222,50,45,0.45)' : '0 12px 48px rgba(222,50,45,0.65)'
-                    }} whileTap={{
-                      scale: isSubmitting ? 1 : 0.97
-                    }} style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
-                      borderRadius: '44px',
-                      padding: isMobile ? '14px 28px' : '16px 36px',
-                      fontSize: '13px',
-                      letterSpacing: '0.05em',
-                      color: '#fff',
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontWeight: 600,
-                      boxShadow: '0 6px 28px rgba(222,50,45,0.45)',
-                      border: 'none',
-                      cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                      opacity: isSubmitting ? 0.7 : 1
-                    }}>
-                      <span>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
-                      {!isSubmitting && <ArrowIconDark />}
-                    </motion.button>
-                  <p style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '11px',
-                color: 'rgba(247,246,243,0.25)',
-                margin: 0,
-                letterSpacing: '0.02em',
-                lineHeight: '1.6'
+              {error && <div style={{ color: '#DE322D', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>{error}</div>}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                flexWrap: 'wrap'
               }}>
-                    We respond within 48 hours for strategic inquiries.
-                  </p>
-                  </div>
-                </div>
-              </form> : <motion.div initial={{
+                <motion.button type="submit" disabled={isSubmitting} whileHover={{
+                  scale: isSubmitting ? 1 : 1.04,
+                  boxShadow: isSubmitting ? '0 6px 28px rgba(222,50,45,0.45)' : '0 12px 48px rgba(222,50,45,0.65)'
+                }} whileTap={{
+                  scale: isSubmitting ? 1 : 0.97
+                }} style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+                  borderRadius: '44px',
+                  padding: isMobile ? '14px 28px' : '16px 36px',
+                  fontSize: '13px',
+                  letterSpacing: '0.05em',
+                  color: '#fff',
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontWeight: 600,
+                  boxShadow: '0 6px 28px rgba(222,50,45,0.45)',
+                  border: 'none',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  opacity: isSubmitting ? 0.7 : 1
+                }}>
+                  <span>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
+                  {!isSubmitting && <ArrowIconDark />}
+                </motion.button>
+                <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '11px',
+                  color: 'rgba(247,246,243,0.25)',
+                  margin: 0,
+                  letterSpacing: '0.02em',
+                  lineHeight: '1.6'
+                }}>
+                  We respond within 48 hours for strategic inquiries.
+                </p>
+              </div>
+            </div>
+          </form> : <motion.div initial={{
             opacity: 0,
             y: 24,
             filter: 'blur(10px)'
@@ -2095,7 +2095,7 @@ const InquiryFormSection = () => {
             textAlign: 'center',
             minHeight: '320px'
           }}>
-                <motion.div initial={{
+            <motion.div initial={{
               scale: 0,
               opacity: 0
             }} animate={{
@@ -2116,12 +2116,12 @@ const InquiryFormSection = () => {
               justifyContent: 'center',
               boxShadow: '0 0 40px rgba(222,50,45,0.2)'
             }}>
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <path d="M6 14L11 19L22 8" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </motion.div>
-                <div>
-                  <h3 style={{
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M6 14L11 19L22 8" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </motion.div>
+            <div>
+              <h3 style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: isMobile ? '24px' : '32px',
                 fontWeight: 300,
@@ -2130,13 +2130,13 @@ const InquiryFormSection = () => {
                 margin: '0 0 12px',
                 lineHeight: 1.1
               }}>
-                    <span>Inquiry </span>
-                    <em style={{
+                <span>Inquiry </span>
+                <em style={{
                   fontStyle: 'italic',
                   color: '#DE322D'
                 }}>received.</em>
-                  </h3>
-                  <p style={{
+              </h3>
+              <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '15px',
                 color: 'rgba(247,246,243,0.5)',
@@ -2145,15 +2145,15 @@ const InquiryFormSection = () => {
                 fontWeight: 300,
                 maxWidth: '380px'
               }}>
-                    <span>Thank you, </span>
-                    <strong style={{
+                <span>Thank you, </span>
+                <strong style={{
                   color: 'rgba(247,246,243,0.75)',
                   fontWeight: 500
                 }}>{formData.firstName || 'friend'}</strong>
-                    <span>. Our team will review your submission and be in touch within 48 hours.</span>
-                  </p>
-                </div>
-                <motion.button onClick={() => setSubmitted(false)} whileHover={{
+                <span>. Our team will review your submission and be in touch within 48 hours.</span>
+              </p>
+            </div>
+            <motion.button onClick={() => setSubmitted(false)} whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2172,19 +2172,19 @@ const InquiryFormSection = () => {
               cursor: 'pointer',
               marginTop: '8px'
             }}>
-                  <span>Send Another Inquiry</span>
-                </motion.button>
-              </motion.div>}
-          </div>
+              <span>Send Another Inquiry</span>
+            </motion.button>
+          </motion.div>}
+        </div>
 
-          {/* Aside - stacked on tablet/mobile, sidebar on desktop */}
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isTablet || isMobile ? fadeUpVariants : slideFromRight} custom={0.3} style={{
+        {/* Aside - stacked on tablet/mobile, sidebar on desktop */}
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isTablet || isMobile ? fadeUpVariants : slideFromRight} custom={0.3} style={{
           display: 'grid',
           gridTemplateColumns: isTablet ? 'repeat(3, 1fr)' : '1fr',
           gap: '14px'
         }}>
-            {/* Summit card */}
-            <div style={{
+          {/* Summit card */}
+          <div style={{
             background: '#141210',
             borderRadius: '20px',
             padding: '24px 24px',
@@ -2193,7 +2193,7 @@ const InquiryFormSection = () => {
             position: 'relative',
             overflow: 'hidden'
           }}>
-              <div aria-hidden="true" style={{
+            <div aria-hidden="true" style={{
               position: 'absolute',
               top: '-30%',
               right: '-20%',
@@ -2203,11 +2203,11 @@ const InquiryFormSection = () => {
               background: 'radial-gradient(circle, rgba(222,50,45,0.1) 0%, transparent 65%)',
               pointerEvents: 'none'
             }} />
-              <div style={{
+            <div style={{
               position: 'relative',
               zIndex: 1
             }}>
-                <div style={{
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: 'clamp(44px, 5vw, 64px)',
                 fontWeight: 200,
@@ -2216,9 +2216,9 @@ const InquiryFormSection = () => {
                 lineHeight: 1,
                 marginBottom: '10px'
               }}>
-                  <span>2026</span>
-                </div>
-                <div style={{
+                <span>2026</span>
+              </div>
+              <div style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.14em',
@@ -2226,9 +2226,9 @@ const InquiryFormSection = () => {
                 color: 'rgba(247,246,243,0.3)',
                 marginBottom: '6px'
               }}>
-                  <span>Summit Edition</span>
-                </div>
-                <div style={{
+                <span>Summit Edition</span>
+              </div>
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '15px',
                 fontWeight: 600,
@@ -2236,21 +2236,21 @@ const InquiryFormSection = () => {
                 letterSpacing: '-0.3px',
                 marginBottom: '4px'
               }}>
-                  <span>May 28, 2026</span>
-                </div>
-                <div style={{
+                <span>May 28, 2026</span>
+              </div>
+              <div style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '13px',
                 color: 'rgba(247,246,243,0.4)',
                 fontWeight: 300
               }}>
-                  <span>EmpowaWorx House, Johannesburg</span>
-                </div>
+                <span>EmpowaWorx House, Johannesburg</span>
               </div>
             </div>
+          </div>
 
-            {/* Response times */}
-            <div style={{
+          {/* Response times */}
+          <div style={{
             background: '#141210',
             borderRadius: '20px',
             padding: '22px 24px',
@@ -2260,7 +2260,7 @@ const InquiryFormSection = () => {
             flexDirection: 'column',
             gap: '10px'
           }}>
-              <span style={{
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.14em',
@@ -2268,35 +2268,35 @@ const InquiryFormSection = () => {
               color: 'rgba(247,246,243,0.28)',
               fontWeight: 500
             }}>
-                Response Times
-              </span>
-              {RESPONSE_TIMES.map(item => <div key={item.id} style={{
+              Response Times
+            </span>
+            {RESPONSE_TIMES.map(item => <div key={item.id} style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
               borderTop: '1px solid rgba(247,246,243,0.05)',
               paddingTop: '10px'
             }}>
-                  <span style={{
+              <span style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '12px',
                 color: 'rgba(247,246,243,0.4)',
                 fontWeight: 300
               }}>{item.label}</span>
-                  <span style={{
+              <span style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '12px',
                 fontWeight: 600,
                 color: '#DE322D',
                 letterSpacing: '-0.2px'
               }}>
-                    {item.time}
-                  </span>
-                </div>)}
-            </div>
+                {item.time}
+              </span>
+            </div>)}
+          </div>
 
-            {/* Stay Updated */}
-            <div style={{
+          {/* Stay Updated */}
+          <div style={{
             background: 'linear-gradient(145deg, #DE322D 0%, #8B1A17 100%)',
             borderRadius: '20px',
             padding: '22px 24px',
@@ -2305,7 +2305,7 @@ const InquiryFormSection = () => {
             overflow: 'hidden',
             boxShadow: '0 12px 48px rgba(222,50,45,0.25)'
           }}>
-              <div aria-hidden="true" style={{
+            <div aria-hidden="true" style={{
               position: 'absolute',
               bottom: '-20%',
               right: '-10%',
@@ -2315,14 +2315,14 @@ const InquiryFormSection = () => {
               background: 'rgba(255,255,255,0.07)',
               pointerEvents: 'none'
             }} />
-              <div style={{
+            <div style={{
               position: 'relative',
               zIndex: 1,
               display: 'flex',
               flexDirection: 'column',
               gap: '12px'
             }}>
-                <span style={{
+              <span style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.14em',
@@ -2330,9 +2330,9 @@ const InquiryFormSection = () => {
                 color: 'rgba(247,246,243,0.6)',
                 fontWeight: 500
               }}>
-                  Stay Updated
-                </span>
-                <div style={{
+                Stay Updated
+              </span>
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '17px',
                 fontWeight: 400,
@@ -2340,9 +2340,9 @@ const InquiryFormSection = () => {
                 letterSpacing: '-0.3px',
                 lineHeight: 1.2
               }}>
-                  <span>Follow the movement</span>
-                </div>
-                <p style={{
+                <span>Follow the movement</span>
+              </div>
+              <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '12px',
                 color: 'rgba(247,246,243,0.65)',
@@ -2350,15 +2350,15 @@ const InquiryFormSection = () => {
                 lineHeight: '1.6',
                 fontWeight: 300
               }}>
-                  Get programme updates, speaker announcements, and exclusive pre-summit insights.
-                </p>
-                <NewsletterForm variant="pill" isMobile={isMobile} />
-              </div>
+                Get programme updates, speaker announcements, and exclusive pre-summit insights.
+              </p>
+              <NewsletterForm variant="pill" isMobile={isMobile} />
             </div>
-          </motion.div>
+          </div>
         </motion.div>
-      </div>
-    </section>;
+      </motion.div>
+    </div>
+  </section>;
 };
 
 // ─── CTA Band ─────────────────────────────────────────────────────────────────
@@ -2394,7 +2394,7 @@ const CTABand = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -2404,7 +2404,7 @@ const CTABand = () => {
       opacity: 0.55,
       zIndex: 0
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '-10%',
       left: '-5%',
@@ -2415,7 +2415,7 @@ const CTABand = () => {
       pointerEvents: 'none',
       zIndex: 0
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '-10%',
       right: '-8%',
@@ -2426,23 +2426,23 @@ const CTABand = () => {
       pointerEvents: 'none',
       zIndex: 0
     }} />
-      <HeroGrid />
+    <HeroGrid />
 
-      <div style={{
+    <div style={{
       maxWidth: '1280px',
       margin: '0 auto',
       position: 'relative',
       zIndex: 1
     }}>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '36px',
         justifyContent: 'center'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.14em',
@@ -2450,16 +2450,16 @@ const CTABand = () => {
           color: 'rgba(247,246,243,0.35)',
           fontWeight: 600
         }}>
-            Take Action
-          </span>
-        </motion.div>
+          Take Action
+        </span>
+      </motion.div>
 
-        <div style={{
+      <div style={{
         overflow: 'hidden',
         textAlign: 'center',
         marginBottom: '20px'
       }}>
-          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
+        <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: isMobile ? 'clamp(32px, 10vw, 56px)' : isTablet ? 'clamp(44px, 8vw, 72px)' : 'clamp(52px, 6.5vw, 96px)',
           fontWeight: 200,
@@ -2468,19 +2468,19 @@ const CTABand = () => {
           color: '#F7F6F3',
           margin: 0
         }}>
-            <span>Lead Africa's </span>
-            <em style={{
+          <span>Lead Africa's </span>
+          <em style={{
             fontStyle: 'italic',
             color: '#DE322D'
           }}>Next</em>
-            <br />
-            <span style={{
+          <br />
+          <span style={{
             color: 'rgba(247,246,243,0.2)'
           }}>Growth Story.</span>
-          </motion.h2>
-        </div>
+        </motion.h2>
+      </div>
 
-        <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.2} style={{
+      <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.2} style={{
         fontFamily: 'Inter, sans-serif',
         fontSize: isMobile ? '14px' : '17px',
         lineHeight: '1.75',
@@ -2490,16 +2490,16 @@ const CTABand = () => {
         maxWidth: '520px',
         textAlign: 'center'
       }}>
-          Join Africa's most ambitious founders, institutional funders, and ecosystem builders at EmpowaWorx House, May 28, 2026.
-        </motion.p>
+        Join Africa's most ambitious founders, institutional funders, and ecosystem builders at EmpowaWorx House, May 28, 2026.
+      </motion.p>
 
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.1} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.1} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
         gap: '12px',
         marginBottom: '44px'
       }}>
-          {CTA_ACTIONS.map((action, i) => <motion.a key={action.id} href={action.href}  variants={staggerChild} whileHover={{
+        {CTA_ACTIONS.map((action, i) => <motion.a key={action.id} href={action.href} variants={staggerChild} whileHover={{
           y: -6,
           boxShadow: action.primary ? '0 20px 64px rgba(222,50,45,0.55)' : '0 16px 48px rgba(20,18,16,0.55)',
           transition: {
@@ -2521,7 +2521,7 @@ const CTABand = () => {
           boxShadow: action.primary ? '0 12px 48px rgba(222,50,45,0.35)' : 'none',
           gap: '28px'
         }}>
-              {action.primary && <div aria-hidden="true" style={{
+          {action.primary && <div aria-hidden="true" style={{
             position: 'absolute',
             bottom: '-20%',
             right: '-10%',
@@ -2531,23 +2531,23 @@ const CTABand = () => {
             background: 'rgba(255,255,255,0.07)',
             pointerEvents: 'none'
           }} />}
-              <div style={{
+          <div style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-start',
             position: 'relative',
             zIndex: 1
           }}>
-                <span style={{
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.14em',
               fontWeight: 700,
               color: action.primary ? 'rgba(247,246,243,0.5)' : 'rgba(247,246,243,0.2)'
             }}>
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div style={{
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div style={{
               width: '34px',
               height: '34px',
               borderRadius: '50%',
@@ -2558,14 +2558,14 @@ const CTABand = () => {
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-                  <ArrowIconDark />
-                </div>
-              </div>
-              <div style={{
+              <ArrowIconDark />
+            </div>
+          </div>
+          <div style={{
             position: 'relative',
             zIndex: 1
           }}>
-                <div style={{
+            <div style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? '20px' : 'clamp(18px, 2vw, 26px)',
               fontWeight: 300,
@@ -2573,18 +2573,18 @@ const CTABand = () => {
               color: action.primary ? '#F7F6F3' : 'rgba(247,246,243,0.75)',
               lineHeight: 1.1
             }}>
-                  <span>{action.label}</span>
-                </div>
-              </div>
-            </motion.a>)}
-        </motion.div>
+              <span>{action.label}</span>
+            </div>
+          </div>
+        </motion.a>)}
+      </motion.div>
 
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.45} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.45} style={{
         textAlign: 'center',
         borderTop: '1px solid rgba(247,246,243,0.06)',
         paddingTop: '36px'
       }}>
-          <p style={{
+        <p style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '12px',
           color: 'rgba(247,246,243,0.2)',
@@ -2592,13 +2592,13 @@ const CTABand = () => {
           letterSpacing: '0.02em',
           lineHeight: '1.7'
         }}>
-            <span>EmpowaEntrepreneurs Funding Summit · EmpowaWorx House · May 28, 2026</span>
-            <br />
-            <span>Africa's Premier Capital Movement - Connecting Founders with Catalytic Capital</span>
-          </p>
-        </motion.div>
-      </div>
-    </section>;
+          <span>EmpowaEntrepreneurs Funding Summit · EmpowaWorx House · May 28, 2026</span>
+          <br />
+          <span>Africa's Premier Capital Movement - Connecting Founders with Catalytic Capital</span>
+        </p>
+      </motion.div>
+    </div>
+  </section>;
 };
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
@@ -2680,7 +2680,7 @@ const SiteFooter = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div style={{
+    <div style={{
       position: 'relative',
       width: '100%',
       minHeight: isMobile ? '380px' : isTablet ? '460px' : '520px',
@@ -2688,23 +2688,23 @@ const SiteFooter = () => {
       display: 'flex',
       alignItems: 'flex-end'
     }}>
-        <img src={FOOTER_BANNER_BG} alt="" aria-hidden="true" style={{
+      <img src={FOOTER_BANNER_BG} alt="" aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-        objectPosition: 'center 30%',
+        objectPosition: 'center top',
         display: 'block',
         filter: 'brightness(0.22) saturate(0.5)'
       }} />
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         background: 'linear-gradient(to top, #0A0906 0%, rgba(10,9,6,0.7) 50%, rgba(10,9,6,0.1) 100%)',
         pointerEvents: 'none'
       }} />
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         backgroundImage: NOISE_SVG,
@@ -2713,7 +2713,7 @@ const SiteFooter = () => {
         opacity: 0.5,
         pointerEvents: 'none'
       }} />
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         top: '-15%',
         right: '-5%',
@@ -2724,7 +2724,7 @@ const SiteFooter = () => {
         pointerEvents: 'none'
       }} />
 
-        <div style={{
+      <div style={{
         position: 'relative',
         zIndex: 2,
         width: '100%',
@@ -2733,14 +2733,14 @@ const SiteFooter = () => {
         maxWidth: '1440px',
         margin: '0 auto'
       }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
           marginBottom: '24px'
         }}>
-            <PlusSquareIconLight />
-            <span style={{
+          <PlusSquareIconLight />
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? '10px' : '12px',
             letterSpacing: '0.14em',
@@ -2748,22 +2748,22 @@ const SiteFooter = () => {
             color: 'rgba(247,246,243,0.4)',
             fontWeight: 600
           }}>
-              Africa's Premier Capital Movement · 2026
-            </span>
-          </motion.div>
+            Africa's Premier Capital Movement · 2026
+          </span>
+        </motion.div>
 
-          <div style={{
+        <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: isMobile ? 'flex-start' : 'flex-end',
           justifyContent: 'space-between',
           gap: '32px'
         }}>
-            <div style={{
+          <div style={{
             overflow: 'hidden',
             flex: 1
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? 'clamp(40px, 11vw, 64px)' : isTablet ? 'clamp(48px, 9vw, 72px)' : 'clamp(56px, 7vw, 96px)',
               fontWeight: 700,
@@ -2773,29 +2773,29 @@ const SiteFooter = () => {
               margin: 0,
               textTransform: 'uppercase'
             }}>
-                <span>Secure</span>
-                <br />
-                <em style={{
+              <span>Secure</span>
+              <br />
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D',
                 fontWeight: 400
               }}>Your Seat.</em>
-                <br />
-                <span style={{
+              <br />
+              <span style={{
                 color: 'rgba(247,246,243,0.18)',
                 fontWeight: 300
               }}>May 2026.</span>
-              </motion.h2>
-            </div>
+            </motion.h2>
+          </div>
 
-            <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.22} style={{
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.22} style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '10px',
             width: isMobile ? '100%' : 'auto',
             minWidth: isMobile ? 'unset' : '220px'
           }}>
-              <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2816,10 +2816,10 @@ const SiteFooter = () => {
               fontWeight: 600,
               boxShadow: '0 8px 40px rgba(222,50,45,0.5)'
             }}>
-                <span>Register Now</span>
-                <ArrowIconDark />
-              </motion.a>
-              <motion.a href="/partnerships"  whileHover={{
+              <span>Register Now</span>
+              <ArrowIconDark />
+            </motion.a>
+            <motion.a href="/partnerships" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2846,25 +2846,25 @@ const SiteFooter = () => {
               el.style.borderColor = 'rgba(247,246,243,0.22)';
               el.style.color = 'rgba(247,246,243,0.65)';
             }}>
-                <span>Partner With Us</span>
-              </motion.a>
-            </motion.div>
-          </div>
+              <span>Partner With Us</span>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
+    </div>
 
-      <div style={{
+    <div style={{
       height: '1px',
       background: 'rgba(247,246,243,0.06)'
     }} />
 
-      <div style={{
+    <div style={{
       maxWidth: '1440px',
       margin: '0 auto',
       padding: isMobile ? '44px 20px 0' : isTablet ? '52px 40px 0' : '64px 80px 0',
       boxSizing: 'border-box'
     }}>
-        <div style={{
+      <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'space-between',
@@ -2873,18 +2873,18 @@ const SiteFooter = () => {
         paddingBottom: '48px',
         borderBottom: '1px solid rgba(247,246,243,0.07)'
       }}>
-          <div style={{
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '18px',
           maxWidth: isMobile ? '100%' : '280px'
         }}>
-            <div style={{
+          <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '12px'
           }}>
-              <motion.div whileHover={{
+            <motion.div whileHover={{
               scale: 1.1,
               rotate: 8
             }} style={{
@@ -2898,12 +2898,12 @@ const SiteFooter = () => {
               justifyContent: 'center',
               boxShadow: '0 4px 20px rgba(222,50,45,0.4)'
             }}>
-                <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-                  <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
-                </svg>
-              </motion.div>
-              <div>
-                <div style={{
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+              </svg>
+            </motion.div>
+            <div>
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '12px',
                 letterSpacing: '0.06em',
@@ -2912,9 +2912,9 @@ const SiteFooter = () => {
                 fontWeight: 700,
                 lineHeight: 1.1
               }}>
-                  EmpowaEntrepreneurs
-                </div>
-                <div style={{
+                EmpowaEntrepreneurs
+              </div>
+              <div style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.08em',
@@ -2923,22 +2923,22 @@ const SiteFooter = () => {
                 fontWeight: 400,
                 marginTop: '2px'
               }}>
-                  Funding Summit · 2026
-                </div>
+                Funding Summit · 2026
               </div>
             </div>
-            <p style={{
+          </div>
+          <p style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '13px',
             lineHeight: '1.8',
             color: 'rgba(247,246,243,0.28)',
             margin: 0
           }}>
-              Africa's premier capital movement connecting ambitious founders with catalytic capital and transformative growth.
-            </p>
-          </div>
+            Africa's premier capital movement connecting ambitious founders with catalytic capital and transformative growth.
+          </p>
+        </div>
 
-          <div style={{
+        <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
           gap: isMobile ? '24px' : '0',
@@ -2946,11 +2946,11 @@ const SiteFooter = () => {
           maxWidth: isMobile ? '100%' : '600px',
           width: isMobile ? '100%' : undefined
         }}>
-            {FOOTER_NAV_COLS.map((col, colIdx) => <div key={col.id} style={{
+          {FOOTER_NAV_COLS.map((col, colIdx) => <div key={col.id} style={{
             paddingLeft: !isMobile && colIdx > 0 ? '36px' : '0',
             borderLeft: !isMobile && colIdx > 0 ? '1px solid rgba(247,246,243,0.06)' : 'none'
           }}>
-                <span style={{
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '9px',
               letterSpacing: '0.2em',
@@ -2960,9 +2960,9 @@ const SiteFooter = () => {
               display: 'block',
               marginBottom: '16px'
             }}>
-                  {col.heading}
-                </span>
-                <ul style={{
+              {col.heading}
+            </span>
+            <ul style={{
               listStyle: 'none',
               margin: 0,
               padding: 0,
@@ -2970,8 +2970,8 @@ const SiteFooter = () => {
               flexDirection: 'column',
               gap: '10px'
             }}>
-                  {col.links.map(link => <li key={link.id}>
-                      <a href="#" onClick={e => e.preventDefault()} style={{
+              {col.links.map(link => <li key={link.id}>
+                <a href="#" onClick={e => e.preventDefault()} style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '13px',
                   color: 'rgba(247,246,243,0.3)',
@@ -2984,15 +2984,15 @@ const SiteFooter = () => {
                 }} onMouseLeave={e => {
                   (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.3)';
                 }}>
-                        {link.label}
-                      </a>
-                    </li>)}
-                </ul>
-              </div>)}
-          </div>
+                  {link.label}
+                </a>
+              </li>)}
+            </ul>
+          </div>)}
         </div>
+      </div>
 
-        <div style={{
+      <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'space-between',
@@ -3000,21 +3000,21 @@ const SiteFooter = () => {
         gap: '16px',
         padding: '24px 0 36px'
       }}>
-          <span style={{
+        <span style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '11px',
           color: 'rgba(247,246,243,0.1)',
           letterSpacing: '0.04em'
         }}>
-            © 2026 EmpowaEntrepreneurs. All rights reserved.
-          </span>
-          <div style={{
+          © 2026 EmpowaEntrepreneurs. All rights reserved.
+        </span>
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '18px',
           flexWrap: 'wrap'
         }}>
-            {LEGAL_LINKS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
+          {LEGAL_LINKS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
             color: 'rgba(247,246,243,0.12)',
@@ -3026,12 +3026,12 @@ const SiteFooter = () => {
           }} onMouseLeave={e => {
             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.12)';
           }}>
-                {item.label}
-              </a>)}
-          </div>
+            {item.label}
+          </a>)}
         </div>
       </div>
-    </footer>;
+    </div>
+  </footer>;
 };
 
 // ─── ContactPage ──────────────────────────────────────────────────────────────
@@ -3039,12 +3039,12 @@ export const ContactPage = () => {
   return <div className="w-full min-h-screen" style={{
     background: '#141210'
   }}>
-      <ContactHero />
-      <LogoBanner />
-      <EngagementSection />
-      <ContactDetailsSection />
-      <InquiryFormSection />
-      <CTABand />
-      <StrategicEnquiryModal />
-    </div>;
+    <ContactHero />
+    <LogoBanner />
+    <EngagementSection />
+    <ContactDetailsSection />
+    <InquiryFormSection />
+    <CTABand />
+    <StrategicEnquiryModal />
+  </div>;
 };

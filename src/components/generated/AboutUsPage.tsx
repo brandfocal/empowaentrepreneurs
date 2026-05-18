@@ -631,7 +631,7 @@ const HeroSection = () => {
       inset: '-10% 0',
       backgroundImage: `url(${HERO_BG})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center 30%',
+      backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
       pointerEvents: 'none',
       zIndex: 0,
@@ -2829,7 +2829,7 @@ const SiteFooter = () => {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-        objectPosition: 'center 30%',
+        objectPosition: 'center top',
         display: 'block',
         filter: 'brightness(0.22) saturate(0.5)'
       }} />

@@ -364,7 +364,7 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-      <a href="#"  style={{
+      <a href="#" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
@@ -403,7 +403,7 @@ const StickyNav = () => {
         alignItems: 'center',
         gap: '22px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#"  style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href="#" style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           textDecoration: 'none',
@@ -523,7 +523,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Become a Partner</a>
-          <a href="/summit"  style={{
+          <a href="/summit" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -539,7 +539,7 @@ const StickyNav = () => {
 };
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
-const HERO_BG = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80';
+const HERO_BG = '/EmpowaEntrepreneur-banner3.jpg';
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
   const {
@@ -1212,25 +1212,25 @@ const PartnershipTiersSection = () => {
       position: 'relative',
       zIndex: 1
     }}>
-        <div style={{
+      <div style={{
         padding: `0 ${hPad}`,
         boxSizing: 'border-box'
       }}>
-          <div style={{
+        <div style={{
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
           borderBottom: '1px solid rgba(247,246,243,0.1)'
         }}>
-            <div style={{
+          <div style={{
             display: 'flex',
             alignItems: 'flex-end',
             gap: '2px',
             minWidth: 'max-content',
             paddingBottom: '0'
           }}>
-              {PARTNER_TIERS.map(tier => {
+            {PARTNER_TIERS.map(tier => {
               const isActive = activeId === tier.id;
               return <button key={tier.id} onClick={() => handleTabChange(tier.id)} style={{
                 position: 'relative',
@@ -1244,7 +1244,7 @@ const PartnershipTiersSection = () => {
                 flexShrink: 0,
                 transition: 'opacity 0.2s ease'
               }}>
-                  {isActive && <motion.div layoutId="tab-active-underline-mobile" style={{
+                {isActive && <motion.div layoutId="tab-active-underline-mobile" style={{
                   position: 'absolute',
                   bottom: 0,
                   left: 0,
@@ -1256,7 +1256,7 @@ const PartnershipTiersSection = () => {
                   duration: 0.35,
                   ease: [0.22, 1, 0.36, 1]
                 }} />}
-                  <span style={{
+                <span style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontWeight: 600,
                   fontSize: '11px',
@@ -1266,7 +1266,7 @@ const PartnershipTiersSection = () => {
                   transition: 'color 0.25s ease',
                   whiteSpace: 'nowrap'
                 }}>{tier.tabLabel}</span>
-                  {tier.tabBadge && <span style={{
+                {tier.tabBadge && <span style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: '8px',
                   fontWeight: 700,
@@ -1278,12 +1278,12 @@ const PartnershipTiersSection = () => {
                   color: '#F7F6F3',
                   flexShrink: 0
                 }}>{tier.tabBadge}</span>}
-                </button>;
+              </button>;
             })}
-            </div>
           </div>
         </div>
-      </div>}
+      </div>
+    </div>}
 
     {/* DESKTOP/TABLET: vertical left tabs + right content */}
     {!isMobile && <div style={{
@@ -1294,14 +1294,14 @@ const PartnershipTiersSection = () => {
       padding: `0 ${hPad}`,
       boxSizing: 'border-box'
     }}>
-        <div style={{
+      <div style={{
         display: 'flex',
         gap: '0',
         alignItems: 'flex-start',
         borderTop: '1px solid rgba(247,246,243,0.08)'
       }}>
-          {/* Left vertical tab column */}
-          <div style={{
+        {/* Left vertical tab column */}
+        <div style={{
           width: `${tabColWidth}px`,
           flexShrink: 0,
           display: 'flex',
@@ -1310,7 +1310,7 @@ const PartnershipTiersSection = () => {
           paddingTop: '8px',
           paddingBottom: '8px'
         }}>
-            {PARTNER_TIERS.map(tier => {
+          {PARTNER_TIERS.map(tier => {
             const isActive = activeId === tier.id;
             return <button key={tier.id} onClick={() => handleTabChange(tier.id)} style={{
               position: 'relative',
@@ -1338,7 +1338,7 @@ const PartnershipTiersSection = () => {
                 btn.style.background = 'none';
               }
             }}>
-                <span style={{
+              <span style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontWeight: 600,
                 fontSize: '13px',
@@ -1348,7 +1348,7 @@ const PartnershipTiersSection = () => {
                 transition: 'color 0.25s ease',
                 lineHeight: 1.2
               }}>{tier.tabLabel}</span>
-                {tier.tabBadge && <span style={{
+              {tier.tabBadge && <span style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '8px',
                 fontWeight: 700,
@@ -1360,32 +1360,32 @@ const PartnershipTiersSection = () => {
                 color: '#F7F6F3',
                 flexShrink: 0
               }}>{tier.tabBadge}</span>}
-              </button>;
+            </button>;
           })}
-          </div>
+        </div>
 
-          {/* Right content panel */}
-          <div style={{
+        {/* Right content panel */}
+        <div style={{
           flex: 1,
           minWidth: 0
         }}>
-            <AnimatePresence mode="wait">
-              <motion.div key={activeId} variants={tabPanelVariants} initial="enter" animate="center" exit="exit" style={{
+          <AnimatePresence mode="wait">
+            <motion.div key={activeId} variants={tabPanelVariants} initial="enter" animate="center" exit="exit" style={{
               width: '100%'
             }}>
-                <div style={{
+              <div style={{
                 padding: `${isTablet ? '40px' : '56px'} ${isTablet ? '32px' : '48px'} ${isTablet ? '48px' : '72px'}`,
                 boxSizing: 'border-box'
               }}>
-                  {/* Top: tier meta + label + description */}
-                  <div style={{
+                {/* Top: tier meta + label + description */}
+                <div style={{
                   display: 'grid',
                   gridTemplateColumns: isTablet ? '1fr' : '1fr 1fr',
                   gap: isTablet ? '24px' : '64px',
                   marginBottom: isTablet ? '40px' : '56px'
                 }}>
-                    <div>
-                      <div style={{
+                  <div>
+                    <div style={{
                       fontFamily: 'Montserrat, sans-serif',
                       fontSize: '10px',
                       letterSpacing: '0.18em',
@@ -1394,7 +1394,7 @@ const PartnershipTiersSection = () => {
                       fontWeight: 600,
                       marginBottom: '12px'
                     }}>{activeTier.tier}</div>
-                      <h3 style={{
+                    <h3 style={{
                       fontFamily: 'Montserrat, sans-serif',
                       fontSize: isTablet ? '17px' : 'clamp(17px, 1.7vw, 22px)',
                       fontWeight: 600,
@@ -1403,7 +1403,7 @@ const PartnershipTiersSection = () => {
                       color: '#F7F6F3',
                       margin: '0 0 18px'
                     }}>{activeTier.label}</h3>
-                      <p style={{
+                    <p style={{
                       fontFamily: 'Inter, sans-serif',
                       fontSize: '14px',
                       lineHeight: '1.85',
@@ -1411,9 +1411,9 @@ const PartnershipTiersSection = () => {
                       margin: 0,
                       fontWeight: 300
                     }}>{activeTier.description}</p>
-                    </div>
-                    <div>
-                      <div style={{
+                  </div>
+                  <div>
+                    <div style={{
                       fontFamily: 'Montserrat, sans-serif',
                       fontSize: '10px',
                       letterSpacing: '0.14em',
@@ -1422,45 +1422,45 @@ const PartnershipTiersSection = () => {
                       fontWeight: 700,
                       marginBottom: '16px'
                     }}>Return on Partnership</div>
-                      <div style={{
+                    <div style={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(2, 1fr)',
                       gap: '7px 24px'
                     }}>
-                        {activeTier.roiBullets.map((bullet, bi) => <div key={`roi-${activeTier.id}-${bi}`} style={{
+                      {activeTier.roiBullets.map((bullet, bi) => <div key={`roi-${activeTier.id}-${bi}`} style={{
                         display: 'flex',
                         alignItems: 'flex-start',
                         gap: '8px'
                       }}>
-                          <span style={{
+                        <span style={{
                           marginTop: '3px',
                           flexShrink: 0
                         }}><CheckIcon /></span>
-                          <span style={{
+                        <span style={{
                           fontFamily: 'Inter, sans-serif',
                           fontSize: '13px',
                           lineHeight: '1.6',
                           color: textSecondary,
                           fontWeight: 300
                         }}>{bullet}</span>
-                        </div>)}
-                      </div>
+                      </div>)}
                     </div>
                   </div>
+                </div>
 
-                  {/* Benefit Breakdown - hidden by default */}
-                  <div style={{
+                {/* Benefit Breakdown - hidden by default */}
+                <div style={{
                   borderTop: '1px solid rgba(247,246,243,0.08)',
                   paddingTop: isTablet ? '32px' : '44px',
                   marginBottom: isTablet ? '32px' : '44px'
                 }}>
-                    <div style={{
+                  <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     marginBottom: benefitOpen ? '24px' : '0'
                   }}>
-                      <div style={{
+                    <div style={{
                       fontFamily: 'Montserrat, sans-serif',
                       fontSize: '10px',
                       letterSpacing: '0.14em',
@@ -1468,7 +1468,7 @@ const PartnershipTiersSection = () => {
                       color: 'rgba(247,246,243,0.28)',
                       fontWeight: 700
                     }}>Benefit Breakdown</div>
-                      <button onClick={() => setBenefitOpen(v => !v)} style={{
+                    <button onClick={() => setBenefitOpen(v => !v)} style={{
                       background: 'none',
                       border: '1px solid rgba(247,246,243,0.2)',
                       borderRadius: '4px',
@@ -1490,18 +1490,18 @@ const PartnershipTiersSection = () => {
                       btn.style.borderColor = 'rgba(247,246,243,0.2)';
                       btn.style.background = 'none';
                     }}>
-                        <span>{benefitOpen ? 'Hide Benefit Breakdown' : 'View Benefit Breakdown'}</span>
-                      </button>
-                    </div>
-                    <AnimatePresence initial={false}>
-                      {benefitOpen && <motion.div key="benefit-breakdown" variants={benefitBreakdownVariants} initial="hidden" animate="visible" exit="exit">
-                          <div style={{
+                      <span>{benefitOpen ? 'Hide Benefit Breakdown' : 'View Benefit Breakdown'}</span>
+                    </button>
+                  </div>
+                  <AnimatePresence initial={false}>
+                    {benefitOpen && <motion.div key="benefit-breakdown" variants={benefitBreakdownVariants} initial="hidden" animate="visible" exit="exit">
+                      <div style={{
                         display: 'grid',
                         gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
                         gap: isTablet ? '28px' : '20px'
                       }}>
-                            {activeTier.benefitGroups.map((group, gi) => <div key={`bg-${activeTier.id}-${gi}`}>
-                              <div style={{
+                        {activeTier.benefitGroups.map((group, gi) => <div key={`bg-${activeTier.id}-${gi}`}>
+                          <div style={{
                             fontFamily: 'Montserrat, sans-serif',
                             fontSize: '10px',
                             letterSpacing: '0.12em',
@@ -1512,7 +1512,7 @@ const PartnershipTiersSection = () => {
                             paddingBottom: '10px',
                             borderBottom: '1px solid rgba(222,50,45,0.2)'
                           }}>{group.heading}</div>
-                              <ul style={{
+                          <ul style={{
                             listStyle: 'none',
                             margin: 0,
                             padding: 0,
@@ -1520,38 +1520,38 @@ const PartnershipTiersSection = () => {
                             flexDirection: 'column',
                             gap: '8px'
                           }}>
-                                {group.items.map((item, ii) => <li key={`item-${activeTier.id}-${gi}-${ii}`} style={{
+                            {group.items.map((item, ii) => <li key={`item-${activeTier.id}-${gi}-${ii}`} style={{
                               display: 'flex',
                               alignItems: 'flex-start',
                               gap: '8px'
                             }}>
-                                  <span style={{
+                              <span style={{
                                 marginTop: '3px',
                                 flexShrink: 0
                               }}><CheckIcon /></span>
-                                  <span style={{
+                              <span style={{
                                 fontFamily: 'Inter, sans-serif',
                                 fontSize: '12px',
                                 lineHeight: '1.65',
                                 color: textSecondary,
                                 fontWeight: 300
                               }}>{item}</span>
-                                </li>)}
-                              </ul>
-                            </div>)}
-                          </div>
-                        </motion.div>}
-                    </AnimatePresence>
-                  </div>
+                            </li>)}
+                          </ul>
+                        </div>)}
+                      </div>
+                    </motion.div>}
+                  </AnimatePresence>
+                </div>
 
-                  {/* Ideal For */}
-                  <div style={{
+                {/* Ideal For */}
+                <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
                   flexWrap: 'wrap'
                 }}>
-                    <span style={{
+                  <span style={{
                     fontFamily: 'Montserrat, sans-serif',
                     fontSize: '9px',
                     letterSpacing: '0.15em',
@@ -1560,7 +1560,7 @@ const PartnershipTiersSection = () => {
                     fontWeight: 600,
                     flexShrink: 0
                   }}>Ideal for</span>
-                    {activeTier.idealFor.map((org, oi) => <span key={`ideal-${activeTier.id}-${oi}`} style={{
+                  {activeTier.idealFor.map((org, oi) => <span key={`ideal-${activeTier.id}-${oi}`} style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '11px',
                     padding: '4px 12px',
@@ -1570,13 +1570,13 @@ const PartnershipTiersSection = () => {
                     border: '1px solid rgba(247,246,243,0.12)',
                     letterSpacing: '0.01em'
                   }}>{org}</span>)}
-                  </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
-      </div>}
+      </div>
+    </div>}
 
     {/* MOBILE: content panel below tabs */}
     {isMobile && <div style={{
@@ -1584,19 +1584,19 @@ const PartnershipTiersSection = () => {
       zIndex: 1,
       minHeight: '520px'
     }}>
-        <AnimatePresence mode="wait">
-          <motion.div key={activeId} variants={tabPanelVariants} initial="enter" animate="center" exit="exit" style={{
+      <AnimatePresence mode="wait">
+        <motion.div key={activeId} variants={tabPanelVariants} initial="enter" animate="center" exit="exit" style={{
           width: '100%'
         }}>
-            <div style={{
+          <div style={{
             padding: `40px ${hPad} 48px`,
             boxSizing: 'border-box'
           }}>
-              {/* Top: tier meta + label + description */}
-              <div style={{
+            {/* Top: tier meta + label + description */}
+            <div style={{
               marginBottom: '40px'
             }}>
-                <div style={{
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.18em',
@@ -1605,7 +1605,7 @@ const PartnershipTiersSection = () => {
                 fontWeight: 600,
                 marginBottom: '12px'
               }}>{activeTier.tier}</div>
-                <h3 style={{
+              <h3 style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '17px',
                 fontWeight: 600,
@@ -1614,7 +1614,7 @@ const PartnershipTiersSection = () => {
                 color: '#F7F6F3',
                 margin: '0 0 18px'
               }}>{activeTier.label}</h3>
-                <p style={{
+              <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '14px',
                 lineHeight: '1.85',
@@ -1622,7 +1622,7 @@ const PartnershipTiersSection = () => {
                 margin: '0 0 28px',
                 fontWeight: 300
               }}>{activeTier.description}</p>
-                <div style={{
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.14em',
@@ -1631,44 +1631,44 @@ const PartnershipTiersSection = () => {
                 fontWeight: 700,
                 marginBottom: '14px'
               }}>Return on Partnership</div>
-                <div style={{
+              <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '7px'
               }}>
-                  {activeTier.roiBullets.map((bullet, bi) => <div key={`roi-m-${activeTier.id}-${bi}`} style={{
+                {activeTier.roiBullets.map((bullet, bi) => <div key={`roi-m-${activeTier.id}-${bi}`} style={{
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '8px'
                 }}>
-                    <span style={{
+                  <span style={{
                     marginTop: '3px',
                     flexShrink: 0
                   }}><CheckIcon /></span>
-                    <span style={{
+                  <span style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '13px',
                     lineHeight: '1.6',
                     color: textSecondary,
                     fontWeight: 300
                   }}>{bullet}</span>
-                  </div>)}
-                </div>
+                </div>)}
               </div>
+            </div>
 
-              {/* Benefit Breakdown - hidden by default (mobile) */}
-              <div style={{
+            {/* Benefit Breakdown - hidden by default (mobile) */}
+            <div style={{
               borderTop: '1px solid rgba(247,246,243,0.08)',
               paddingTop: '32px',
               marginBottom: '32px'
             }}>
-                <div style={{
+              <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 marginBottom: benefitOpen ? '24px' : '0'
               }}>
-                  <div style={{
+                <div style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.14em',
@@ -1676,7 +1676,7 @@ const PartnershipTiersSection = () => {
                   color: 'rgba(247,246,243,0.28)',
                   fontWeight: 700
                 }}>Benefit Breakdown</div>
-                  <button onClick={() => setBenefitOpen(v => !v)} style={{
+                <button onClick={() => setBenefitOpen(v => !v)} style={{
                   background: 'none',
                   border: '1px solid rgba(247,246,243,0.2)',
                   borderRadius: '4px',
@@ -1689,18 +1689,18 @@ const PartnershipTiersSection = () => {
                   color: '#F7F6F3',
                   whiteSpace: 'nowrap'
                 }}>
-                    <span>{benefitOpen ? 'Hide Benefit Breakdown' : 'View Benefit Breakdown'}</span>
-                  </button>
-                </div>
-                <AnimatePresence initial={false}>
-                  {benefitOpen && <motion.div key="benefit-breakdown-mobile" variants={benefitBreakdownVariants} initial="hidden" animate="visible" exit="exit">
-                      <div style={{
+                  <span>{benefitOpen ? 'Hide Benefit Breakdown' : 'View Benefit Breakdown'}</span>
+                </button>
+              </div>
+              <AnimatePresence initial={false}>
+                {benefitOpen && <motion.div key="benefit-breakdown-mobile" variants={benefitBreakdownVariants} initial="hidden" animate="visible" exit="exit">
+                  <div style={{
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '28px'
                   }}>
-                        {activeTier.benefitGroups.map((group, gi) => <div key={`bg-m-${activeTier.id}-${gi}`}>
-                          <div style={{
+                    {activeTier.benefitGroups.map((group, gi) => <div key={`bg-m-${activeTier.id}-${gi}`}>
+                      <div style={{
                         fontFamily: 'Montserrat, sans-serif',
                         fontSize: '10px',
                         letterSpacing: '0.12em',
@@ -1711,7 +1711,7 @@ const PartnershipTiersSection = () => {
                         paddingBottom: '10px',
                         borderBottom: '1px solid rgba(222,50,45,0.2)'
                       }}>{group.heading}</div>
-                          <ul style={{
+                      <ul style={{
                         listStyle: 'none',
                         margin: 0,
                         padding: 0,
@@ -1719,38 +1719,38 @@ const PartnershipTiersSection = () => {
                         flexDirection: 'column',
                         gap: '8px'
                       }}>
-                            {group.items.map((item, ii) => <li key={`item-m-${activeTier.id}-${gi}-${ii}`} style={{
+                        {group.items.map((item, ii) => <li key={`item-m-${activeTier.id}-${gi}-${ii}`} style={{
                           display: 'flex',
                           alignItems: 'flex-start',
                           gap: '8px'
                         }}>
-                              <span style={{
+                          <span style={{
                             marginTop: '3px',
                             flexShrink: 0
                           }}><CheckIcon /></span>
-                              <span style={{
+                          <span style={{
                             fontFamily: 'Inter, sans-serif',
                             fontSize: '12px',
                             lineHeight: '1.65',
                             color: textSecondary,
                             fontWeight: 300
                           }}>{item}</span>
-                            </li>)}
-                          </ul>
-                        </div>)}
-                      </div>
-                    </motion.div>}
-                </AnimatePresence>
-              </div>
+                        </li>)}
+                      </ul>
+                    </div>)}
+                  </div>
+                </motion.div>}
+              </AnimatePresence>
+            </div>
 
-              {/* Ideal For */}
-              <div style={{
+            {/* Ideal For */}
+            <div style={{
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
               flexWrap: 'wrap'
             }}>
-                <span style={{
+              <span style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.15em',
@@ -1759,7 +1759,7 @@ const PartnershipTiersSection = () => {
                 fontWeight: 600,
                 flexShrink: 0
               }}>Ideal for</span>
-                {activeTier.idealFor.map((org, oi) => <span key={`ideal-m-${activeTier.id}-${oi}`} style={{
+              {activeTier.idealFor.map((org, oi) => <span key={`ideal-m-${activeTier.id}-${oi}`} style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '11px',
                 padding: '4px 12px',
@@ -1769,11 +1769,11 @@ const PartnershipTiersSection = () => {
                 border: '1px solid rgba(247,246,243,0.12)',
                 letterSpacing: '0.01em'
               }}>{org}</span>)}
-              </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>}
   </section>;
 };
 
@@ -2271,7 +2271,7 @@ const SiteFooter = () => {
         inset: 0,
         backgroundImage: `url(${FOOTER_BANNER_BG})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center top',
         pointerEvents: 'none'
       }} />
       {/* Gradient overlay */}
@@ -2588,7 +2588,7 @@ const SiteFooter = () => {
 // ─── PartnershipsPage ─────────────────────────────────────────────────────────
 export const PartnershipsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   useEffect(() => {
     const handleOpen = () => setIsModalOpen(true);
     window.addEventListener('openPartnershipModal', handleOpen);
@@ -2600,7 +2600,7 @@ export const PartnershipsPage = () => {
     overflowX: 'hidden'
   }}>
     <HeroSection />
-      <LogoBanner />
+    <LogoBanner />
     <PartnershipTiersSection />
     <SpecialisedPackagesSection />
     <WhyPartnerSection />

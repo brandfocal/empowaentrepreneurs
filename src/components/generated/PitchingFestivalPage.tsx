@@ -73,14 +73,14 @@ const useMagnetic = (strength = 0.35) => {
 
 // ─── SVG Icons ─────────────────────────────────────────────────────────────────
 const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>;
+  <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
 const PlusSquareIconLight = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="rgba(247,246,243,0.35)" />
+</svg>;
 const PlusSquareIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
-  </svg>;
+  <path d="M16.25 2.5H3.75C3.41848 2.5 3.10054 2.6317 2.86612 2.86612C2.6317 3.10054 2.5 3.41848 2.5 3.75V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H16.25C16.5815 17.5 16.8995 17.3683 17.1339 17.1339C17.3683 16.8995 17.5 16.5815 17.5 16.25V3.75C17.5 3.41848 17.3683 3.10054 17.1339 2.86612C16.8995 2.6317 16.5815 2.5 16.25 2.5ZM13.125 10.625H10.625V13.125C10.625 13.2908 10.5592 13.4497 10.4419 13.5669C10.3247 13.6842 10.1658 13.75 10 13.75C9.83424 13.75 9.67527 13.6842 9.55806 13.5669C9.44085 13.4497 9.375 13.2908 9.375 13.125V10.625H6.875C6.70924 10.625 6.55027 10.5592 6.43306 10.4419C6.31585 10.3247 6.25 10.1658 6.25 10C6.25 9.83424 6.31585 9.67527 6.43306 9.55806C6.55027 9.44085 6.70924 9.375 6.875 9.375H9.375V6.875C9.375 6.70924 9.44085 6.55027 9.55806 6.43306C9.67527 6.31585 9.83424 6.25 10 6.25C10.1658 6.25 10.3247 6.31585 10.4419 6.43306C10.5592 6.55027 10.625 6.70924 10.625 6.875V9.375H13.125C13.2908 9.375 13.4497 9.44085 13.5669 9.55806C13.6842 9.67527 13.75 9.83424 13.75 10C13.75 10.1658 13.6842 10.3247 13.5669 10.4419C13.4497 10.5592 13.2908 10.625 13.125 10.625Z" fill="#DE322D" />
+</svg>;
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 const slideUpBlur = {
@@ -285,17 +285,17 @@ const HeroTicker = ({
     overflow: 'hidden',
     width: '100%'
   }}>
-      <div ref={trackRef} style={{
+    <div ref={trackRef} style={{
       display: 'flex',
       alignItems: 'center',
       willChange: 'transform'
     }}>
-        {[0, 1, 2].map(r => <div key={r} className="ticker-row" style={{
+      {[0, 1, 2].map(r => <div key={r} className="ticker-row" style={{
         display: 'flex',
         alignItems: 'center',
         flexShrink: 0
       }}>
-            {TICKER_ITEMS.map(item => <div key={item.id} style={{
+        {TICKER_ITEMS.map(item => <div key={item.id} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '16px',
@@ -304,7 +304,7 @@ const HeroTicker = ({
           height: '52px',
           whiteSpace: 'nowrap'
         }}>
-                <span style={{
+          <span style={{
             width: '4px',
             height: '4px',
             borderRadius: '50%',
@@ -312,7 +312,7 @@ const HeroTicker = ({
             flexShrink: 0,
             display: 'block'
           }} />
-                <span style={{
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.14em',
@@ -320,12 +320,12 @@ const HeroTicker = ({
             color: light ? 'rgba(247,246,243,0.35)' : 'rgba(20,18,16,0.4)',
             fontWeight: 500
           }}>
-                  {item.label}
-                </span>
-              </div>)}
-          </div>)}
-      </div>
-    </div>;
+            {item.label}
+          </span>
+        </div>)}
+      </div>)}
+    </div>
+  </div>;
 };
 
 // ─── StickyNav ────────────────────────────────────────────────────────────────
@@ -386,7 +386,7 @@ const StickyNav = () => {
     zIndex: 100,
     boxSizing: 'border-box'
   }}>
-      <div style={{
+    <div style={{
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -397,14 +397,14 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-        {/* Logo */}
-        <a href="#" onClick={e => e.preventDefault()} style={{
+      {/* Logo */}
+      <a href="#" onClick={e => e.preventDefault()} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
         textDecoration: 'none'
       }}>
-          <motion.div whileHover={{
+        <motion.div whileHover={{
           scale: 1.08,
           rotate: 5
         }} style={{
@@ -418,11 +418,11 @@ const StickyNav = () => {
           boxShadow: '0 4px 14px rgba(222,50,45,0.4)',
           flexShrink: 0
         }}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
-            </svg>
-          </motion.div>
-          <span style={{
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+          </svg>
+        </motion.div>
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
           letterSpacing: '0.08em',
@@ -431,17 +431,17 @@ const StickyNav = () => {
           fontWeight: 700,
           transition: 'color 0.35s ease'
         }}>
-            EmpowaSummit
-          </span>
-        </a>
+          EmpowaSummit
+        </span>
+      </a>
 
-        {/* Desktop nav links */}
-        {!showHamburger && <div style={{
+      {/* Desktop nav links */}
+      {!showHamburger && <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '28px'
       }}>
-            {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
+        {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => e.preventDefault()} style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           textDecoration: 'none',
@@ -453,13 +453,13 @@ const StickyNav = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLAnchorElement).style.color = navLinkColor;
         }}>
-                {item.label}
-              </a>)}
-            <div style={{
+          {item.label}
+        </a>)}
+        <div style={{
           display: 'flex',
           gap: '8px'
         }}>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+          <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -477,9 +477,9 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}>
-                <span>Become a Funder</span>
-              </motion.a>
-              <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
+            <span>Become a Funder</span>
+          </motion.a>
+          <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -497,13 +497,13 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             boxShadow: '0 4px 16px rgba(222,50,45,0.38)'
           }}>
-                <span>Apply to Pitch</span>
-              </motion.a>
-            </div>
-          </div>}
+            <span>Apply to Pitch</span>
+          </motion.a>
+        </div>
+      </div>}
 
-        {/* Hamburger (mobile + tablet) */}
-        {showHamburger && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
+      {/* Hamburger (mobile + tablet) */}
+      {showHamburger && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
         background: 'none',
         border: 'none',
         cursor: 'pointer',
@@ -512,7 +512,7 @@ const StickyNav = () => {
         flexDirection: 'column',
         gap: '5px'
       }}>
-            {[0, 1, 2].map(i => <span key={i} style={{
+        {[0, 1, 2].map(i => <span key={i} style={{
           display: 'block',
           width: '22px',
           height: '1.5px',
@@ -520,12 +520,12 @@ const StickyNav = () => {
           borderRadius: '2px',
           transition: 'background 0.35s ease'
         }} />)}
-          </button>}
-      </div>
+      </button>}
+    </div>
 
-      {/* Mobile/tablet dropdown */}
-      <AnimatePresence>
-        {showHamburger && mobileMenuOpen && <motion.div initial={{
+    {/* Mobile/tablet dropdown */}
+    <AnimatePresence>
+      {showHamburger && mobileMenuOpen && <motion.div initial={{
         opacity: 0,
         y: -12
       }} animate={{
@@ -544,7 +544,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: isTablet ? '24px 32px 28px' : '20px 24px 24px'
       }}>
-            {isTablet && <div style={{
+        {isTablet && <div style={{
           display: 'flex',
           flexWrap: 'wrap',
           gap: '8px 24px',
@@ -552,7 +552,7 @@ const StickyNav = () => {
           paddingBottom: '20px',
           borderBottom: '0.8px solid rgba(20,18,16,0.06)'
         }}>
-                {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
+          {NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
             e.preventDefault();
             setMobileMenuOpen(false);
           }} style={{
@@ -563,10 +563,10 @@ const StickyNav = () => {
             letterSpacing: '0.02em',
             padding: '4px 0'
           }}>
-                    {item.label}
-                  </a>)}
-              </div>}
-            {!isTablet && NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
+            {item.label}
+          </a>)}
+        </div>}
+        {!isTablet && NAV_ITEMS.map(item => <a key={item.id} href="#" onClick={e => {
           e.preventDefault();
           setMobileMenuOpen(false);
         }} style={{
@@ -579,15 +579,15 @@ const StickyNav = () => {
           borderBottom: '0.8px solid rgba(20,18,16,0.06)',
           letterSpacing: '0.02em'
         }}>
-                {item.label}
-              </a>)}
-            <div style={{
+          {item.label}
+        </a>)}
+        <div style={{
           display: 'flex',
           gap: '10px',
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-              <a href="/partnerships" style={{
+          <a href="/partnerships" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -596,9 +596,9 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>
-                Become a Funder
-              </a>
-              <a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} style={{
+            Become a Funder
+          </a>
+          <a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -607,12 +607,12 @@ const StickyNav = () => {
             color: '#fff',
             textDecoration: 'none'
           }}>
-                Apply to Pitch
-              </a>
-            </div>
-          </motion.div>}
-      </AnimatePresence>
-    </motion.nav>;
+            Apply to Pitch
+          </a>
+        </div>
+      </motion.div>}
+    </AnimatePresence>
+  </motion.nav>;
 };
 
 // ─── Magnetic Button ──────────────────────────────────────────────────────────
@@ -668,7 +668,7 @@ const MagneticButton = ({
     y: magnetic.springY,
     display: 'inline-flex'
   }}>
-      <motion.button whileHover={{
+    <motion.button whileHover={{
       scale: 1.05
     }} whileTap={{
       scale: 0.97
@@ -676,14 +676,14 @@ const MagneticButton = ({
       ...baseStyle,
       ...variantStyles[variant]
     }}>
-        <span>{label}</span>
-        {variant === 'primary' && <ArrowIconDark />}
-      </motion.button>
-    </motion.div>;
+      <span>{label}</span>
+      {variant === 'primary' && <ArrowIconDark />}
+    </motion.button>
+  </motion.div>;
 };
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
-const HERO_BG = 'https://images.unsplash.com/photo-1560523159-4a9692d222ef?w=1800&q=80';
+const HERO_BG = '/EmpowaEntrepreneur-banner11.jpg';
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
   const {
@@ -714,8 +714,8 @@ const HeroSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      {/* BG image */}
-      <motion.div aria-hidden="true" style={{
+    {/* BG image */}
+    <motion.div aria-hidden="true" style={{
       y: imgY,
       position: 'absolute',
       inset: '-10% 0',
@@ -726,15 +726,15 @@ const HeroSection = () => {
       zIndex: 0,
       willChange: 'transform'
     }} />
-      {/* Overlays */}
-      <div aria-hidden="true" style={{
+    {/* Overlays */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       background: 'linear-gradient(155deg, rgba(20,18,16,0.96) 0%, rgba(20,18,16,0.82) 50%, rgba(20,18,16,0.92) 100%)',
       zIndex: 1,
       pointerEvents: 'none'
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -744,8 +744,8 @@ const HeroSection = () => {
       zIndex: 2,
       opacity: 0.5
     }} />
-      {/* Radial accent */}
-      <div aria-hidden="true" style={{
+    {/* Radial accent */}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       top: '5%',
       right: '-5%',
@@ -756,8 +756,8 @@ const HeroSection = () => {
       pointerEvents: 'none',
       zIndex: 3
     }} />
-      {/* Corner accents - hide on very small screens */}
-      {!isMobile && <div aria-hidden="true" style={{
+    {/* Corner accents - hide on very small screens */}
+    {!isMobile && <div aria-hidden="true" style={{
       position: 'absolute',
       top: '88px',
       left: '32px',
@@ -768,7 +768,7 @@ const HeroSection = () => {
       zIndex: 4,
       pointerEvents: 'none'
     }} />}
-      {!isMobile && <div aria-hidden="true" style={{
+    {!isMobile && <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '80px',
       right: '32px',
@@ -780,14 +780,14 @@ const HeroSection = () => {
       pointerEvents: 'none'
     }} />}
 
-      <div style={{
+    <div style={{
       height: isMobile ? '70px' : '88px',
       flexShrink: 0,
       position: 'relative',
       zIndex: 4
     }} />
 
-      <motion.div style={{
+    <motion.div style={{
       y: textY,
       flex: 1,
       padding: heroPadding,
@@ -799,16 +799,16 @@ const HeroSection = () => {
       flexDirection: 'column',
       justifyContent: 'center'
     }}>
-        {/* Eyebrow */}
-        <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      {/* Eyebrow */}
+      <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: isMobile ? '28px' : '40px',
         flexWrap: 'wrap'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           color: 'rgba(247,246,243,0.38)',
           fontSize: isMobile ? '10px' : '11px',
@@ -816,31 +816,31 @@ const HeroSection = () => {
           textTransform: 'uppercase',
           fontWeight: 500
         }}>
-            <span style={{
+          <span style={{
             color: '#DE322D',
             fontWeight: 600
           }}>EmpowaEntrepreneurs</span>
-            <span> · Pitch Perfect 2026 - </span>
-            <span style={{
+          <span> · Pitch Perfect 2026 - </span>
+          <span style={{
             color: '#DE322D',
             fontWeight: 600
           }}>Africa's Deal Arena</span>
-          </span>
-        </motion.div>
+        </span>
+      </motion.div>
 
-        {/* Headline */}
-        <h1 style={{
+      {/* Headline */}
+      <h1 style={{
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: 300,
         margin: `0 0 ${isMobile ? '32px' : '48px'}`,
         lineHeight: 0.92,
         letterSpacing: heroLetterSpacing
       }}>
-          <div style={{
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            {['The', 'Pitching'].map((word, i) => <motion.span key={`l1-${word}`} initial={{
+          {['The', 'Pitching'].map((word, i) => <motion.span key={`l1-${word}`} initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -856,14 +856,14 @@ const HeroSection = () => {
             color: '#F7F6F3',
             marginRight: '0.22em'
           }}>
-                {word}
-              </motion.span>)}
-          </div>
-          <div style={{
+            {word}
+          </motion.span>)}
+        </div>
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            <motion.em initial={{
+          <motion.em initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -881,14 +881,14 @@ const HeroSection = () => {
             color: '#DE322D',
             marginRight: '0.22em'
           }}>
-              Festival
-            </motion.em>
-          </div>
-          <div style={{
+            Festival
+          </motion.em>
+        </div>
+        <div style={{
           overflow: 'hidden',
           display: 'block'
         }}>
-            {["Africa's", 'Premier'].map((word, i) => <motion.span key={`l3-${word}`} initial={{
+          {["Africa's", 'Premier'].map((word, i) => <motion.span key={`l3-${word}`} initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -904,9 +904,9 @@ const HeroSection = () => {
             color: 'rgba(247,246,243,0.18)',
             marginRight: '0.22em'
           }}>
-                {word}
-              </motion.span>)}
-            <motion.span initial={{
+            {word}
+          </motion.span>)}
+          <motion.span initial={{
             y: '110%',
             opacity: 0
           }} animate={{
@@ -922,18 +922,18 @@ const HeroSection = () => {
             color: 'rgba(247,246,243,0.18)',
             marginRight: '0.22em'
           }}>
-              Deal-Making Arena
-            </motion.span>
-          </div>
-        </h1>
+            Deal-Making Arena
+          </motion.span>
+        </div>
+      </h1>
 
-        <motion.div custom={0.85} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      <motion.div custom={0.85} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
         display: 'flex',
         flexDirection: 'column',
         gap: '24px',
         maxWidth: isMobile ? '100%' : isTablet ? '520px' : '520px'
       }}>
-          <p style={{
+        <p style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: isMobile ? '14px' : isTablet ? '15px' : 'clamp(15px, 1.4vw, 17px)',
           lineHeight: '1.8',
@@ -941,19 +941,19 @@ const HeroSection = () => {
           margin: 0,
           fontWeight: 300
         }}>
-            Where Africa's most investment-ready founders face off before a panel of elite funders in the continent's
-            highest-stakes pitching environment. No presentations. No proposals. Just deals.
-          </p>
-          <div style={{
+          Where Africa's most investment-ready founders face off before a panel of elite funders in the continent's
+          highest-stakes pitching environment. No presentations. No proposals. Just deals.
+        </p>
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
           flexWrap: 'wrap'
         }}>
-            <MagneticButton label="Apply to Pitch" variant="primary" onClick={() => window.dispatchEvent(new Event('openPitchModal'))} />
-            <MagneticButton label="Become a Funder" variant="outline" onClick={() => window.location.href = '/partnerships'} />
-          </div>
-          <div style={{
+          <MagneticButton label="Apply to Pitch" variant="primary" onClick={() => window.dispatchEvent(new Event('openPitchModal'))} />
+          <MagneticButton label="Become a Funder" variant="outline" onClick={() => window.location.href = '/partnerships'} />
+        </div>
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '20px',
@@ -961,7 +961,7 @@ const HeroSection = () => {
           borderTop: '1px solid rgba(247,246,243,0.08)',
           flexWrap: 'wrap'
         }}>
-            {[{
+          {[{
             id: 'hs-1',
             value: '60+',
             label: 'Elite Funders'
@@ -980,7 +980,7 @@ const HeroSection = () => {
             paddingRight: i < 2 ? '20px' : '0',
             borderRight: i < 2 ? '1px solid rgba(247,246,243,0.1)' : 'none'
           }}>
-                <span style={{
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? '20px' : 'clamp(20px, 2.5vw, 28px)',
               fontWeight: 200,
@@ -988,9 +988,9 @@ const HeroSection = () => {
               color: '#F7F6F3',
               lineHeight: 1
             }}>
-                  {stat.value}
-                </span>
-                <span style={{
+              {stat.value}
+            </span>
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.12em',
@@ -998,15 +998,15 @@ const HeroSection = () => {
               color: 'rgba(247,246,243,0.28)',
               fontWeight: 500
             }}>
-                  {stat.label}
-                </span>
-              </div>)}
-          </div>
-        </motion.div>
+              {stat.label}
+            </span>
+          </div>)}
+        </div>
       </motion.div>
+    </motion.div>
 
-      {/* Ticker strip */}
-      <motion.div initial={{
+    {/* Ticker strip */}
+    <motion.div initial={{
       opacity: 0
     }} animate={{
       opacity: 1
@@ -1019,9 +1019,9 @@ const HeroSection = () => {
       overflow: 'hidden',
       position: 'relative'
     }}>
-        <HeroTicker light />
-      </motion.div>
-    </section>;
+      <HeroTicker light />
+    </motion.div>
+  </section>;
 };
 
 // ─── Core Pillars ─────────────────────────────────────────────────────────────
@@ -1093,7 +1093,7 @@ const PillarsSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1102,15 +1102,15 @@ const PillarsSection = () => {
       pointerEvents: 'none',
       opacity: 0.4
     }} />
-      <div style={{
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: innerPad,
       position: 'relative',
       zIndex: 1
     }}>
-        {/* Header */}
-        <div style={{
+      {/* Header */}
+      <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
@@ -1118,15 +1118,15 @@ const PillarsSection = () => {
         flexWrap: 'wrap',
         gap: '24px'
       }}>
-          <div>
-            <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <div>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
             marginBottom: '20px'
           }}>
-              <PlusSquareIcon />
-              <span style={{
+            <PlusSquareIcon />
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '12px',
               letterSpacing: '0.14em',
@@ -1134,13 +1134,13 @@ const PillarsSection = () => {
               color: 'rgba(20,18,16,0.45)',
               fontWeight: 600
             }}>
-                Why the Pitching Festival?
-              </span>
-            </motion.div>
-            <div style={{
+              Why the Pitching Festival?
+            </span>
+          </motion.div>
+          <div style={{
             overflow: 'hidden'
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: headingSize,
               fontWeight: 300,
@@ -1150,18 +1150,18 @@ const PillarsSection = () => {
               margin: 0,
               maxWidth: '640px'
             }}>
-                <span>Built for those who </span>
-                <em style={{
+              <span>Built for those who </span>
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D'
               }}>close deals</em>
-                <span style={{
+              <span style={{
                 color: 'rgba(20,18,16,0.2)'
               }}>, not just make them.</span>
-              </motion.h2>
-            </div>
+            </motion.h2>
           </div>
-          {!isNarrow && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
+        </div>
+        {!isNarrow && <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromRight} custom={0.3} style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '14px',
           color: 'rgba(20,18,16,0.4)',
@@ -1169,17 +1169,17 @@ const PillarsSection = () => {
           lineHeight: '1.75',
           margin: 0
         }}>
-              Four pillars that define the highest-stakes pitch environment on the African continent.
-            </motion.p>}
-        </div>
+          Four pillars that define the highest-stakes pitch environment on the African continent.
+        </motion.p>}
+      </div>
 
-        {/* Cards grid - 1-col mobile, 2-col tablet+desktop */}
-        <div style={{
+      {/* Cards grid - 1-col mobile, 2-col tablet+desktop */}
+      <div style={{
         display: 'grid',
         gridTemplateColumns: isNarrow ? '1fr' : 'repeat(2, 1fr)',
         gap: isMobile ? '12px' : '16px'
       }}>
-          {PILLARS.map((pillar, i) => <motion.div key={pillar.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={clipReveal} custom={i * 0.1} onMouseEnter={() => setHoveredId(pillar.id)} onMouseLeave={() => setHoveredId(null)} style={{
+        {PILLARS.map((pillar, i) => <motion.div key={pillar.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={clipReveal} custom={i * 0.1} onMouseEnter={() => setHoveredId(pillar.id)} onMouseLeave={() => setHoveredId(null)} style={{
           borderRadius: '20px',
           overflow: 'hidden',
           background: '#e8e6e0',
@@ -1187,7 +1187,7 @@ const PillarsSection = () => {
           minHeight: cardMinH,
           cursor: 'pointer'
         }}>
-              <img src={pillar.imageSrc} alt={pillar.imageAlt} style={{
+          <img src={pillar.imageSrc} alt={pillar.imageAlt} style={{
             position: 'absolute',
             inset: 0,
             width: '100%',
@@ -1198,14 +1198,14 @@ const PillarsSection = () => {
             transform: hoveredId === pillar.id ? 'scale(1.04)' : 'scale(1)',
             transition: 'filter 0.7s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1)'
           }} />
-              <div style={{
+          <div style={{
             position: 'absolute',
             inset: 0,
             background: hoveredId === pillar.id ? 'linear-gradient(to top, rgba(10,9,8,0.97) 0%, rgba(10,9,8,0.45) 60%, transparent 100%)' : 'linear-gradient(to top, rgba(10,9,8,0.72) 0%, rgba(10,9,8,0.18) 55%, rgba(232,230,224,0.12) 100%)',
             transition: 'opacity 0.6s ease',
             pointerEvents: 'none'
           }} />
-              {hoveredId === pillar.id && <div aria-hidden="true" style={{
+          {hoveredId === pillar.id && <div aria-hidden="true" style={{
             position: 'absolute',
             bottom: '-15%',
             left: '50%',
@@ -1216,7 +1216,7 @@ const PillarsSection = () => {
             background: `radial-gradient(circle, ${pillar.accentColor}28 0%, transparent 70%)`,
             pointerEvents: 'none'
           }} />}
-              <div style={{
+          <div style={{
             position: 'absolute',
             inset: 0,
             display: 'flex',
@@ -1224,7 +1224,7 @@ const PillarsSection = () => {
             justifyContent: 'space-between',
             padding: cardPad
           }}>
-                <div style={{
+            <div style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
               letterSpacing: '0.14em',
@@ -1232,23 +1232,23 @@ const PillarsSection = () => {
               color: 'rgba(247,246,243,0.35)',
               fontWeight: 500
             }}>
-                  {pillar.index}
-                </div>
-                <div>
-                  <div style={{
+              {pillar.index}
+            </div>
+            <div>
+              <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '10px',
                 marginBottom: '14px'
               }}>
-                    <div style={{
+                <div style={{
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
                   backgroundColor: pillar.accentColor,
                   flexShrink: 0
                 }} />
-                    <h3 style={{
+                <h3 style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: cardTitleSize,
                   fontWeight: 400,
@@ -1257,11 +1257,11 @@ const PillarsSection = () => {
                   margin: 0,
                   lineHeight: 1.1
                 }}>
-                      {pillar.title}
-                    </h3>
-                  </div>
-                  <AnimatePresence initial={false}>
-                    {(hoveredId === pillar.id || isNarrow) && <motion.p key={`desc-${pillar.id}`} initial={{
+                  {pillar.title}
+                </h3>
+              </div>
+              <AnimatePresence initial={false}>
+                {(hoveredId === pillar.id || isNarrow) && <motion.p key={`desc-${pillar.id}`} initial={{
                   height: 0,
                   opacity: 0
                 }} animate={{
@@ -1282,10 +1282,10 @@ const PillarsSection = () => {
                   fontWeight: 300,
                   overflow: 'hidden'
                 }}>
-                        {pillar.description}
-                      </motion.p>}
-                  </AnimatePresence>
-                  <div style={{
+                  {pillar.description}
+                </motion.p>}
+              </AnimatePresence>
+              <div style={{
                 height: '2px',
                 background: `linear-gradient(90deg, ${pillar.accentColor}, transparent)`,
                 marginTop: '20px',
@@ -1293,12 +1293,12 @@ const PillarsSection = () => {
                 transition: 'opacity 0.4s ease',
                 borderRadius: '2px'
               }} />
-                </div>
-              </div>
-            </motion.div>)}
-        </div>
+            </div>
+          </div>
+        </motion.div>)}
       </div>
-    </section>;
+    </div>
+  </section>;
 };
 
 // ─── Eligibility & Selection Section ─────────────────────────────────────────
@@ -1370,7 +1370,7 @@ const EligibilitySection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1379,7 +1379,7 @@ const EligibilitySection = () => {
       pointerEvents: 'none',
       opacity: 0.4
     }} />
-      <div style={{
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: innerPad,
@@ -1387,23 +1387,23 @@ const EligibilitySection = () => {
       zIndex: 1
     }}>
 
-        {/* Header */}
-        <div style={{
+      {/* Header */}
+      <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr' : '5fr 4fr',
         gap: isMobile ? '24px' : isTablet ? '24px' : '80px',
         alignItems: 'end',
         marginBottom: isMobile ? '48px' : isTablet ? '64px' : '88px'
       }}>
-          <div>
-            <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <div>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
             marginBottom: '24px'
           }}>
-              <PlusSquareIcon />
-              <span style={{
+            <PlusSquareIcon />
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '12px',
               letterSpacing: '0.14em',
@@ -1411,13 +1411,13 @@ const EligibilitySection = () => {
               color: 'rgba(20,18,16,0.45)',
               fontWeight: 600
             }}>
-                Eligibility & Selection
-              </span>
-            </motion.div>
-            <div style={{
+              Eligibility & Selection
+            </span>
+          </motion.div>
+          <div style={{
             overflow: 'hidden'
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: headingSize,
               fontWeight: 300,
@@ -1426,22 +1426,22 @@ const EligibilitySection = () => {
               color: '#141210',
               margin: 0
             }}>
-                <span>Entry </span>
-                <em style={{
+              <span>Entry </span>
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D'
               }}>protocol</em>
-                <span style={{
+              <span style={{
                 color: 'rgba(20,18,16,0.18)'
               }}> for serious</span>
-                <br />
-                <span style={{
+              <br />
+              <span style={{
                 color: 'rgba(20,18,16,0.18)'
               }}>founders only.</span>
-              </motion.h2>
-            </div>
+            </motion.h2>
           </div>
-          <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.3} style={{
+        </div>
+        <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.3} style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: isMobile ? '14px' : '15px',
           lineHeight: '1.8',
@@ -1449,29 +1449,29 @@ const EligibilitySection = () => {
           margin: 0,
           fontWeight: 300
         }}>
-            Selection is deliberately restrictive to ensure every pitch meeting converts to a meaningful conversation.
-            Here's exactly what it takes to qualify.
-          </motion.p>
-        </div>
+          Selection is deliberately restrictive to ensure every pitch meeting converts to a meaningful conversation.
+          Here's exactly what it takes to qualify.
+        </motion.p>
+      </div>
 
-        {/* Required cards - 1-col mobile, 2-col tablet, 3-col desktop */}
-        <div style={{
+      {/* Required cards - 1-col mobile, 2-col tablet, 3-col desktop */}
+      <div style={{
         marginBottom: isMobile ? '20px' : '16px'
       }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.15} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.15} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
           marginBottom: '16px'
         }}>
-            <div style={{
+          <div style={{
             width: '6px',
             height: '6px',
             borderRadius: '50%',
             background: '#DE322D',
             flexShrink: 0
           }} />
-            <span style={{
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.2em',
@@ -1479,16 +1479,16 @@ const EligibilitySection = () => {
             color: '#DE322D',
             fontWeight: 700
           }}>
-              Required to qualify
-            </span>
-          </motion.div>
+            Required to qualify
+          </span>
+        </motion.div>
 
-          <div style={{
+        <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
           gap: '12px'
         }}>
-            {requiredCriteria.map((crit, i) => <motion.div key={crit.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={clipReveal} custom={0.2 + i * 0.1} style={{
+          {requiredCriteria.map((crit, i) => <motion.div key={crit.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={clipReveal} custom={0.2 + i * 0.1} style={{
             background: '#3c4d5d',
             borderRadius: '20px',
             padding: isMobile ? '24px 20px' : isTablet ? '28px 24px' : '36px 32px',
@@ -1499,7 +1499,7 @@ const EligibilitySection = () => {
             position: 'relative',
             overflow: 'hidden'
           }}>
-                <div aria-hidden="true" style={{
+            <div aria-hidden="true" style={{
               position: 'absolute',
               top: '-20px',
               right: '-12px',
@@ -1512,15 +1512,15 @@ const EligibilitySection = () => {
               pointerEvents: 'none',
               userSelect: 'none'
             }}>
-                  {String(i + 1).padStart(2, '0')}
-                </div>
-                <div style={{
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <div style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               marginBottom: '24px'
             }}>
-                  <span style={{
+              <span style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.16em',
@@ -1528,9 +1528,9 @@ const EligibilitySection = () => {
                 color: 'rgba(247,246,243,0.22)',
                 fontWeight: 600
               }}>
-                    {crit.category}
-                  </span>
-                  <span style={{
+                {crit.category}
+              </span>
+              <span style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
                 letterSpacing: '0.14em',
@@ -1542,11 +1542,11 @@ const EligibilitySection = () => {
                 border: '1px solid rgba(222,50,45,0.3)',
                 color: '#DE322D'
               }}>
-                    Required
-                  </span>
-                </div>
-                <div>
-                  <h4 style={{
+                Required
+              </span>
+            </div>
+            <div>
+              <h4 style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: isMobile ? '20px' : isTablet ? '21px' : 'clamp(20px, 2vw, 26px)',
                 fontWeight: 500,
@@ -1555,9 +1555,9 @@ const EligibilitySection = () => {
                 margin: '0 0 12px',
                 lineHeight: 1.1
               }}>
-                    {crit.title}
-                  </h4>
-                  <p style={{
+                {crit.title}
+              </h4>
+              <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '13px',
                 lineHeight: '1.75',
@@ -1565,32 +1565,32 @@ const EligibilitySection = () => {
                 margin: 0,
                 fontWeight: 300
               }}>
-                    {crit.description}
-                  </p>
-                </div>
-              </motion.div>)}
-          </div>
+                {crit.description}
+              </p>
+            </div>
+          </motion.div>)}
         </div>
+      </div>
 
-        {/* Preferred cards - 1-col mobile, 2-col tablet+ */}
-        <div style={{
+      {/* Preferred cards - 1-col mobile, 2-col tablet+ */}
+      <div style={{
         marginBottom: isMobile ? '20px' : '16px'
       }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.38} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.38} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
           marginBottom: '16px',
           marginTop: isMobile ? '20px' : '0'
         }}>
-            <div style={{
+          <div style={{
             width: '6px',
             height: '6px',
             borderRadius: '50%',
             background: 'rgba(20,18,16,0.3)',
             flexShrink: 0
           }} />
-            <span style={{
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.2em',
@@ -1598,16 +1598,16 @@ const EligibilitySection = () => {
             color: 'rgba(20,18,16,0.4)',
             fontWeight: 700
           }}>
-              Strongly preferred
-            </span>
-          </motion.div>
+            Strongly preferred
+          </span>
+        </motion.div>
 
-          <div style={{
+        <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
           gap: '12px'
         }}>
-            {preferredCriteria.map((crit, i) => <motion.div key={crit.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.42 + i * 0.1} style={{
+          {preferredCriteria.map((crit, i) => <motion.div key={crit.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={0.42 + i * 0.1} style={{
             background: '#FFFFFF',
             border: '1px solid rgba(20,18,16,0.1)',
             borderRadius: '20px',
@@ -1616,7 +1616,7 @@ const EligibilitySection = () => {
             gap: isMobile ? '16px' : '28px',
             alignItems: 'flex-start'
           }}>
-                <div style={{
+            <div style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: isMobile ? '32px' : '48px',
               fontWeight: 800,
@@ -1627,20 +1627,20 @@ const EligibilitySection = () => {
               width: isMobile ? '44px' : '60px',
               marginTop: '-4px'
             }}>
-                  {String(i + 4).padStart(2, '0')}
-                </div>
-                <div style={{
+              {String(i + 4).padStart(2, '0')}
+            </div>
+            <div style={{
               flex: 1,
               minWidth: 0
             }}>
-                  <div style={{
+              <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 gap: '12px',
                 marginBottom: '10px'
               }}>
-                    <span style={{
+                <span style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: '9px',
                   letterSpacing: '0.14em',
@@ -1648,9 +1648,9 @@ const EligibilitySection = () => {
                   color: 'rgba(20,18,16,0.3)',
                   fontWeight: 600
                 }}>
-                      {crit.category}
-                    </span>
-                    <span style={{
+                  {crit.category}
+                </span>
+                <span style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: '9px',
                   letterSpacing: '0.14em',
@@ -1662,10 +1662,10 @@ const EligibilitySection = () => {
                   border: '1px solid rgba(20,18,16,0.1)',
                   color: 'rgba(20,18,16,0.4)'
                 }}>
-                      Preferred
-                    </span>
-                  </div>
-                  <h4 style={{
+                  Preferred
+                </span>
+              </div>
+              <h4 style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: isMobile ? '17px' : isTablet ? '19px' : '21px',
                 fontWeight: 500,
@@ -1674,9 +1674,9 @@ const EligibilitySection = () => {
                 margin: '0 0 10px',
                 lineHeight: 1.15
               }}>
-                    {crit.title}
-                  </h4>
-                  <p style={{
+                {crit.title}
+              </h4>
+              <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '13px',
                 lineHeight: '1.75',
@@ -1684,15 +1684,15 @@ const EligibilitySection = () => {
                 margin: 0,
                 fontWeight: 300
               }}>
-                    {crit.description}
-                  </p>
-                </div>
-              </motion.div>)}
-          </div>
+                {crit.description}
+              </p>
+            </div>
+          </motion.div>)}
         </div>
+      </div>
 
-        {/* Notice banner */}
-        {noticeCriteria.map((crit, i) => <motion.div key={crit.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.55 + i * 0.05} style={{
+      {/* Notice banner */}
+      {noticeCriteria.map((crit, i) => <motion.div key={crit.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.55 + i * 0.05} style={{
         background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
         borderRadius: '20px',
         padding: isMobile ? '24px 20px' : isTablet ? '28px 32px' : '36px 48px',
@@ -1703,16 +1703,16 @@ const EligibilitySection = () => {
         gap: isMobile ? '20px' : '48px',
         marginBottom: '16px'
       }}>
-            <div style={{
+        <div style={{
           flex: 1
         }}>
-              <div style={{
+          <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
             marginBottom: '10px'
           }}>
-                <span style={{
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '9px',
               letterSpacing: '0.2em',
@@ -1724,10 +1724,10 @@ const EligibilitySection = () => {
               borderRadius: '100px',
               padding: '4px 10px'
             }}>
-                  ⚠ Important Notice
-                </span>
-              </div>
-              <h4 style={{
+              ⚠ Important Notice
+            </span>
+          </div>
+          <h4 style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? '18px' : isTablet ? '22px' : 'clamp(20px, 2.2vw, 28px)',
             fontWeight: 700,
@@ -1736,9 +1736,9 @@ const EligibilitySection = () => {
             margin: '0 0 10px',
             lineHeight: 1.15
           }}>
-                {crit.title}
-              </h4>
-              <p style={{
+            {crit.title}
+          </h4>
+          <p style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '14px',
             lineHeight: '1.75',
@@ -1746,17 +1746,17 @@ const EligibilitySection = () => {
             margin: 0,
             fontWeight: 300
           }}>
-                {crit.description}
-              </p>
-            </div>
-            <div style={{
+            {crit.description}
+          </p>
+        </div>
+        <div style={{
           flexShrink: 0,
           display: 'flex',
           flexDirection: 'column',
           alignItems: isMobile ? 'flex-start' : 'flex-end',
           gap: '6px'
         }}>
-              <div style={{
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? '36px' : isTablet ? '44px' : '56px',
             fontWeight: 800,
@@ -1764,9 +1764,9 @@ const EligibilitySection = () => {
             lineHeight: 1,
             color: 'rgba(255,255,255,0.15)'
           }}>
-                100
-              </div>
-              <div style={{
+            100
+          </div>
+          <div style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.08em',
@@ -1774,13 +1774,13 @@ const EligibilitySection = () => {
             color: 'rgba(255,255,255,0.5)',
             whiteSpace: 'nowrap'
           }}>
-                Slots Total
-              </div>
-            </div>
-          </motion.div>)}
+            Slots Total
+          </div>
+        </div>
+      </motion.div>)}
 
-        {/* CTA row */}
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.62} style={{
+      {/* CTA row */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.62} style={{
         display: 'flex',
         alignItems: isMobile ? 'flex-start' : 'center',
         justifyContent: isMobile ? 'flex-start' : 'space-between',
@@ -1791,7 +1791,7 @@ const EligibilitySection = () => {
         borderTop: '1px solid rgba(20,18,16,0.08)',
         flexWrap: 'wrap'
       }}>
-          <p style={{
+        <p style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '13px',
           color: 'rgba(20,18,16,0.38)',
@@ -1799,16 +1799,16 @@ const EligibilitySection = () => {
           maxWidth: '440px',
           lineHeight: '1.7'
         }}>
-            Applications are reviewed on a rolling basis. Qualified applicants will receive an invitation confirmation
-            and pitch briefing pack within 7 business days.
-          </p>
-          <div style={{
+          Applications are reviewed on a rolling basis. Qualified applicants will receive an invitation confirmation
+          and pitch briefing pack within 7 business days.
+        </p>
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
           flexWrap: 'wrap'
         }}>
-            <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
+          <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -1826,15 +1826,15 @@ const EligibilitySection = () => {
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 600
           }}>
-              <span>Apply to Pitch</span>
-              <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#F7F6F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </motion.a>
-          </div>
-        </motion.div>
-      </div>
-    </section>;
+            <span>Apply to Pitch</span>
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+              <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#F7F6F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </motion.a>
+        </div>
+      </motion.div>
+    </div>
+  </section>;
 };
 
 // ─── Experience Section ───────────────────────────────────────────────────────
@@ -1899,7 +1899,7 @@ const ExperienceSection = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -1908,7 +1908,7 @@ const ExperienceSection = () => {
       pointerEvents: 'none',
       opacity: 0.45
     }} />
-      <div aria-hidden="true" style={{
+    <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '0%',
       right: '-8%',
@@ -1918,22 +1918,22 @@ const ExperienceSection = () => {
       background: 'radial-gradient(circle at 40% 60%, rgba(222,50,45,0.12) 0%, rgba(222,50,45,0.03) 50%, transparent 70%)',
       pointerEvents: 'none'
     }} />
-      <div style={{
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: innerPad,
       position: 'relative',
       zIndex: 1
     }}>
-        {/* Eyebrow */}
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+      {/* Eyebrow */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '20px'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.14em',
@@ -1941,10 +1941,10 @@ const ExperienceSection = () => {
           color: 'rgba(247,246,243,0.35)',
           fontWeight: 600
         }}>
-            Experience the Movement
-          </span>
-        </motion.div>
-        <div style={{
+          Experience the Movement
+        </span>
+      </motion.div>
+      <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
@@ -1952,11 +1952,11 @@ const ExperienceSection = () => {
         flexWrap: 'wrap',
         gap: '24px'
       }}>
-          <div style={{
+        <div style={{
           overflow: 'hidden',
           flex: 1
         }}>
-            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+          <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: headingSize,
             fontWeight: 300,
@@ -1966,32 +1966,32 @@ const ExperienceSection = () => {
             margin: 0,
             maxWidth: '680px'
           }}>
-              <span>Real </span>
-              <em style={{
+            <span>Real </span>
+            <em style={{
               fontStyle: 'italic',
               color: '#DE322D'
             }}>everything</em>
-              <span style={{
+            <span style={{
               color: 'rgba(247,246,243,0.18)'
             }}>. No exceptions.</span>
-            </motion.h2>
-          </div>
+          </motion.h2>
         </div>
+      </div>
 
-        {/* Tab + image layout - stack on mobile/tablet, side-by-side on desktop */}
-        <div style={{
+      {/* Tab + image layout - stack on mobile/tablet, side-by-side on desktop */}
+      <div style={{
         display: 'grid',
         gridTemplateColumns: showImagePanel ? '1fr 1fr' : '1fr',
         gap: '16px',
         alignItems: 'start'
       }}>
-          {/* Tab list */}
-          <div style={{
+        {/* Tab list */}
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '12px'
         }}>
-            {EXPERIENCE_ITEMS.map((item, i) => <motion.div key={item.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1} onClick={() => setActiveIdx(i)} style={{
+          {EXPERIENCE_ITEMS.map((item, i) => <motion.div key={item.id} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideFromLeft} custom={i * 0.1} onClick={() => setActiveIdx(i)} style={{
             cursor: 'pointer',
             padding: isMobile ? '20px 16px' : isTablet ? '24px 24px' : '32px 36px',
             borderRadius: '20px',
@@ -2001,7 +2001,7 @@ const ExperienceSection = () => {
             position: 'relative',
             overflow: 'hidden'
           }}>
-                {activeIdx === i && <div aria-hidden="true" style={{
+            {activeIdx === i && <div aria-hidden="true" style={{
               position: 'absolute',
               top: 0,
               left: 0,
@@ -2010,21 +2010,21 @@ const ExperienceSection = () => {
               background: 'linear-gradient(180deg, #DE322D, #ff7a70)',
               borderRadius: '20px 0 0 20px'
             }} />}
-                <div style={{
+            <div style={{
               display: 'flex',
               alignItems: 'flex-start',
               justifyContent: 'space-between',
               gap: '12px',
               marginBottom: activeIdx === i ? '16px' : '0'
             }}>
-                  <div>
-                    <div style={{
+              <div>
+                <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
                   marginBottom: '8px'
                 }}>
-                      <span style={{
+                  <span style={{
                     fontFamily: 'Montserrat, sans-serif',
                     fontSize: '10px',
                     letterSpacing: '0.14em',
@@ -2032,9 +2032,9 @@ const ExperienceSection = () => {
                     color: 'rgba(247,246,243,0.22)',
                     fontWeight: 500
                   }}>
-                        {item.index}
-                      </span>
-                      <span style={{
+                    {item.index}
+                  </span>
+                  <span style={{
                     fontFamily: 'Montserrat, sans-serif',
                     fontSize: '9px',
                     letterSpacing: '0.12em',
@@ -2047,10 +2047,10 @@ const ExperienceSection = () => {
                     padding: activeIdx === i ? '3px 10px' : '3px 0',
                     transition: 'all 0.3s ease'
                   }}>
-                        {item.badge}
-                      </span>
-                    </div>
-                    <h3 style={{
+                    {item.badge}
+                  </span>
+                </div>
+                <h3 style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: isMobile ? '20px' : isTablet ? '22px' : 'clamp(20px, 2vw, 26px)',
                   fontWeight: 400,
@@ -2060,9 +2060,9 @@ const ExperienceSection = () => {
                   lineHeight: 1.15,
                   transition: 'color 0.3s ease'
                 }}>
-                      {item.title}
-                    </h3>
-                    <p style={{
+                  {item.title}
+                </h3>
+                <p style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '12px',
                   color: activeIdx === i ? 'rgba(247,246,243,0.38)' : 'rgba(247,246,243,0.2)',
@@ -2070,10 +2070,10 @@ const ExperienceSection = () => {
                   fontStyle: 'italic',
                   transition: 'color 0.3s ease'
                 }}>
-                      {item.subtitle}
-                    </p>
-                  </div>
-                  <div style={{
+                  {item.subtitle}
+                </p>
+              </div>
+              <div style={{
                 width: '38px',
                 height: '38px',
                 borderRadius: '50%',
@@ -2085,14 +2085,14 @@ const ExperienceSection = () => {
                 background: activeIdx === i ? 'rgba(222,50,45,0.12)' : 'transparent',
                 transition: 'all 0.3s ease'
               }}>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M2 12L12 2M12 2H4M12 2V10" stroke={activeIdx === i ? '#DE322D' : 'rgba(247,246,243,0.25)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 12L12 2M12 2H4M12 2V10" stroke={activeIdx === i ? '#DE322D' : 'rgba(247,246,243,0.25)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </div>
 
-                <AnimatePresence initial={false}>
-                  {activeIdx === i && <motion.p key={`exp-desc-${item.id}`} initial={{
+            <AnimatePresence initial={false}>
+              {activeIdx === i && <motion.p key={`exp-desc-${item.id}`} initial={{
                 height: 0,
                 opacity: 0
               }} animate={{
@@ -2113,21 +2113,21 @@ const ExperienceSection = () => {
                 fontWeight: 300,
                 overflow: 'hidden'
               }}>
-                      {item.description}
-                    </motion.p>}
-                </AnimatePresence>
-              </motion.div>)}
-          </div>
+                {item.description}
+              </motion.p>}
+            </AnimatePresence>
+          </motion.div>)}
+        </div>
 
-          {/* Image panel - desktop only */}
-          {showImagePanel && <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.2} style={{
+        {/* Image panel - desktop only */}
+        {showImagePanel && <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={scaleReveal} custom={0.2} style={{
           borderRadius: '24px',
           overflow: 'hidden',
           position: 'relative',
           aspectRatio: '4/5'
         }}>
-              <AnimatePresence mode="wait">
-                <motion.img key={EXPERIENCE_ITEMS[activeIdx].id} src={EXPERIENCE_ITEMS[activeIdx].imageSrc} alt={EXPERIENCE_ITEMS[activeIdx].imageAlt} initial={{
+          <AnimatePresence mode="wait">
+            <motion.img key={EXPERIENCE_ITEMS[activeIdx].id} src={EXPERIENCE_ITEMS[activeIdx].imageSrc} alt={EXPERIENCE_ITEMS[activeIdx].imageAlt} initial={{
               opacity: 0,
               scale: 1.04
             }} animate={{
@@ -2146,20 +2146,20 @@ const ExperienceSection = () => {
               display: 'block',
               filter: 'brightness(0.72) saturate(0.75)'
             }} />
-              </AnimatePresence>
-              <div style={{
+          </AnimatePresence>
+          <div style={{
             position: 'absolute',
             inset: 0,
             background: 'linear-gradient(to top, rgba(10,9,8,0.88) 0%, rgba(10,9,8,0.2) 50%, transparent 100%)',
             pointerEvents: 'none'
           }} />
-              <div style={{
+          <div style={{
             position: 'absolute',
             bottom: '28px',
             left: '28px',
             right: '28px'
           }}>
-                <div style={{
+            <div style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.14em',
@@ -2167,9 +2167,9 @@ const ExperienceSection = () => {
               color: 'rgba(247,246,243,0.4)',
               marginBottom: '8px'
             }}>
-                  {EXPERIENCE_ITEMS[activeIdx].badge}
-                </div>
-                <div style={{
+              {EXPERIENCE_ITEMS[activeIdx].badge}
+            </div>
+            <div style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: 'clamp(22px, 2.4vw, 32px)',
               fontWeight: 300,
@@ -2177,10 +2177,10 @@ const ExperienceSection = () => {
               color: '#F7F6F3',
               lineHeight: 1.1
             }}>
-                  {EXPERIENCE_ITEMS[activeIdx].title}
-                </div>
-              </div>
-              <motion.div aria-hidden="true" animate={{
+              {EXPERIENCE_ITEMS[activeIdx].title}
+            </div>
+          </div>
+          <motion.div aria-hidden="true" animate={{
             x: ['-100%', '220%']
           }} transition={{
             duration: 3.5,
@@ -2196,10 +2196,10 @@ const ExperienceSection = () => {
             background: 'linear-gradient(90deg, transparent, rgba(222,50,45,0.5), transparent)',
             pointerEvents: 'none'
           }} />
-            </motion.div>}
-        </div>
+        </motion.div>}
       </div>
-    </section>;
+    </div>
+  </section>;
 };
 
 // ─── CTA Section ──────────────────────────────────────────────────────────────
@@ -2276,8 +2276,8 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      {/* Radial cursor glow */}
-      <motion.div aria-hidden="true" style={{
+    {/* Radial cursor glow */}
+    <motion.div aria-hidden="true" style={{
       left: springX,
       top: springY,
       x: '-50%',
@@ -2290,8 +2290,8 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
       pointerEvents: 'none',
       zIndex: 0
     }} />
-      {/* Watermark */}
-      {!isMobile && <div aria-hidden="true" style={{
+    {/* Watermark */}
+    {!isMobile && <div aria-hidden="true" style={{
       position: 'absolute',
       bottom: '-4%',
       left: '-2%',
@@ -2306,9 +2306,9 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
       whiteSpace: 'nowrap',
       zIndex: 0
     }}>
-          PITCHINGFESTIVAL
-        </div>}
-      <div aria-hidden="true" style={{
+      PITCHINGFESTIVAL
+    </div>}
+    <div aria-hidden="true" style={{
       position: 'absolute',
       inset: 0,
       backgroundImage: NOISE_SVG,
@@ -2318,21 +2318,21 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
       opacity: 0.55
     }} />
 
-      <div style={{
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: innerPad,
       position: 'relative',
       zIndex: 1
     }}>
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
         marginBottom: '40px'
       }}>
-          <PlusSquareIconLight />
-          <span style={{
+        <PlusSquareIconLight />
+        <span style={{
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.14em',
@@ -2340,22 +2340,22 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
           color: 'rgba(247,246,243,0.35)',
           fontWeight: 600
         }}>
-            Secure Your Place
-          </span>
-        </motion.div>
+          Secure Your Place
+        </span>
+      </motion.div>
 
-        <div style={{
+      <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr' : '1fr 1fr',
         gap: isMobile ? '40px' : isTablet ? '40px' : '80px',
         alignItems: 'center',
         marginBottom: isMobile ? '48px' : '72px'
       }}>
-          <div>
-            <div style={{
+        <div>
+          <div style={{
             overflow: 'hidden'
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontWeight: 200,
               fontSize: heroFontSize,
@@ -2364,19 +2364,19 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
               color: '#F7F6F3',
               margin: '0 0 32px'
             }}>
-                <span>The Arena</span>
-                <br />
-                <em style={{
+              <span>The Arena</span>
+              <br />
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D'
               }}>Awaits</em>
-                <br />
-                <span style={{
+              <br />
+              <span style={{
                 color: 'rgba(247,246,243,0.16)'
               }}>Your Pitch.</span>
-              </motion.h2>
-            </div>
-            <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.3} style={{
+            </motion.h2>
+          </div>
+          <motion.p initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.3} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: isMobile ? '14px' : '16px',
             lineHeight: '1.8',
@@ -2384,18 +2384,18 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
             margin: '0 0 40px',
             fontWeight: 300
           }}>
-              Three distinct entry points into the Pitching Festival. Choose your role and claim your seat before
-              capacity closes.
-            </motion.p>
-          </div>
+            Three distinct entry points into the Pitching Festival. Choose your role and claim your seat before
+            capacity closes.
+          </motion.p>
+        </div>
 
-          {/* Action cards */}
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.25} style={{
+        {/* Action cards */}
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.25} style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '12px'
         }}>
-            {CTA_CARDS.map((card, i) => <motion.div onClick={() => { if (card.id === 'cta-pitch') { onOpenModal(); } else if (card.id === 'cta-funder') { window.location.href = '/partnerships'; } }} key={card.id} initial={{
+          {CTA_CARDS.map((card, i) => <motion.div onClick={() => { if (card.id === 'cta-pitch') { onOpenModal(); } else if (card.id === 'cta-funder') { window.location.href = '/partnerships'; } }} key={card.id} initial={{
             opacity: 0,
             x: isMobile ? 0 : 40
           }} animate={inView ? {
@@ -2420,14 +2420,14 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
             cursor: 'pointer',
             transition: 'background 0.3s ease, border-color 0.3s ease'
           }}>
-                <div style={{
+            <div style={{
               display: 'flex',
               alignItems: 'center',
               gap: '14px',
               flex: 1,
               minWidth: 0
             }}>
-                  <div style={{
+              <div style={{
                 width: '40px',
                 height: '40px',
                 borderRadius: '12px',
@@ -2438,12 +2438,12 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
                 fontSize: '18px',
                 flexShrink: 0
               }}>
-                    {card.icon}
-                  </div>
-                  <div style={{
+                {card.icon}
+              </div>
+              <div style={{
                 minWidth: 0
               }}>
-                    <div style={{
+                <div style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: '9px',
                   letterSpacing: '0.14em',
@@ -2452,9 +2452,9 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
                   fontWeight: 600,
                   marginBottom: '3px'
                 }}>
-                      {card.role}
-                    </div>
-                    <div style={{
+                  {card.role}
+                </div>
+                <div style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontSize: '14px',
                   fontWeight: 600,
@@ -2462,9 +2462,9 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
                   letterSpacing: '-0.1px',
                   marginBottom: '2px'
                 }}>
-                      {card.cta}
-                    </div>
-                    <div style={{
+                  {card.cta}
+                </div>
+                <div style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '11px',
                   color: 'rgba(247,246,243,0.2)',
@@ -2473,11 +2473,11 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
                   overflow: 'hidden',
                   textOverflow: 'ellipsis'
                 }}>
-                      {card.desc}
-                    </div>
-                  </div>
+                  {card.desc}
                 </div>
-                <div style={{
+              </div>
+            </div>
+            <div style={{
               width: '36px',
               height: '36px',
               borderRadius: '50%',
@@ -2488,16 +2488,16 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
               justifyContent: 'center',
               background: card.variant === 'primary' ? 'linear-gradient(135deg, #DE322D, #c42823)' : 'transparent'
             }}>
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 12L12 2M12 2H4M12 2V10" stroke={card.variant === 'primary' ? '#fff' : 'rgba(247,246,243,0.35)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </motion.div>)}
-          </motion.div>
-        </div>
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H4M12 2V10" stroke={card.variant === 'primary' ? '#fff' : 'rgba(247,246,243,0.35)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          </motion.div>)}
+        </motion.div>
+      </div>
 
-        {/* Bottom strip - 2-col mobile, 4-col tablet+ */}
-        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.55} style={{
+      {/* Bottom strip - 2-col mobile, 4-col tablet+ */}
+      <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={lineWipe} custom={0.55} style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
         gap: '1px',
@@ -2505,13 +2505,13 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
         borderTop: '0.8px solid rgba(247,246,243,0.07)',
         transformOrigin: 'left'
       }}>
-          {BOTTOM_STRIP_ITEMS.map((item, i) => <div key={item.id} style={{
+        {BOTTOM_STRIP_ITEMS.map((item, i) => <div key={item.id} style={{
           padding: isMobile ? '20px 0' : isTablet ? '24px 20px' : '28px 32px',
           borderLeft: i > 0 && !isMobile ? '0.8px solid rgba(247,246,243,0.07)' : 'none',
           borderTop: isMobile && i > 1 ? '0.8px solid rgba(247,246,243,0.07)' : 'none',
           paddingLeft: i === 0 && !isMobile ? '0' : undefined
         }}>
-              <div style={{
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '9px',
             letterSpacing: '0.16em',
@@ -2520,9 +2520,9 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
             fontWeight: 600,
             marginBottom: '8px'
           }}>
-                {item.label}
-              </div>
-              <div style={{
+            {item.label}
+          </div>
+          <div style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: isMobile ? '13px' : isTablet ? '15px' : '17px',
             fontWeight: 300,
@@ -2530,20 +2530,20 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
             color: '#F7F6F3',
             marginBottom: '4px'
           }}>
-                {item.value}
-              </div>
-              <div style={{
+            {item.value}
+          </div>
+          <div style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
             color: 'rgba(247,246,243,0.25)',
             letterSpacing: '0.02em'
           }}>
-                {item.sub}
-              </div>
-            </div>)}
-        </motion.div>
-      </div>
-    </section>;
+            {item.sub}
+          </div>
+        </div>)}
+      </motion.div>
+    </div>
+  </section>;
 };
 
 // ─── Site Footer ──────────────────────────────────────────────────────────────
@@ -2617,8 +2617,8 @@ const SiteFooter = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-      {/* Footer hero */}
-      <div style={{
+    {/* Footer hero */}
+    <div style={{
       position: 'relative',
       width: '100%',
       minHeight: footerHeroMinH,
@@ -2627,13 +2627,13 @@ const SiteFooter = () => {
       alignItems: 'flex-end',
       background: '#141210'
     }}>
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         background: 'linear-gradient(to top, #0A0906 0%, rgba(10,9,6,0.7) 50%, rgba(10,9,6,0.1) 100%)',
         pointerEvents: 'none'
       }} />
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         top: '-15%',
         right: '-5%',
@@ -2645,7 +2645,7 @@ const SiteFooter = () => {
         background: 'radial-gradient(circle, rgba(222,50,45,0.25) 0%, transparent 65%)',
         pointerEvents: 'none'
       }} />
-        <div aria-hidden="true" style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
         backgroundImage: NOISE_SVG,
@@ -2655,7 +2655,7 @@ const SiteFooter = () => {
         pointerEvents: 'none'
       }} />
 
-        <div style={{
+      <div style={{
         position: 'relative',
         zIndex: 2,
         width: '100%',
@@ -2664,14 +2664,14 @@ const SiteFooter = () => {
         maxWidth: '1200px',
         margin: '0 auto'
       }}>
-          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={rotateFade} custom={0} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
           marginBottom: '24px'
         }}>
-            <PlusSquareIconLight />
-            <span style={{
+          <PlusSquareIconLight />
+          <span style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '12px',
             letterSpacing: '0.14em',
@@ -2679,22 +2679,22 @@ const SiteFooter = () => {
             color: 'rgba(247,246,243,0.4)',
             fontWeight: 600
           }}>
-              Pitching Festival 2026 · Africa's Deal Arena
-            </span>
-          </motion.div>
+            Pitching Festival 2026 · Africa's Deal Arena
+          </span>
+        </motion.div>
 
-          <div style={{
+        <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: isMobile ? 'flex-start' : 'flex-end',
           justifyContent: 'space-between',
           gap: isMobile ? '32px' : '40px'
         }}>
-            <div style={{
+          <div style={{
             overflow: 'hidden',
             flex: 1
           }}>
-              <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
+            <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.08} style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: footerHeroFontSize,
               fontWeight: 700,
@@ -2704,28 +2704,28 @@ const SiteFooter = () => {
               margin: 0,
               textTransform: 'uppercase'
             }}>
-                <span>Enter</span>
-                <br />
-                <em style={{
+              <span>Enter</span>
+              <br />
+              <em style={{
                 fontStyle: 'italic',
                 color: '#DE322D',
                 fontWeight: 400
               }}>The Arena.</em>
-                <br />
-                <span style={{
+              <br />
+              <span style={{
                 color: 'rgba(247,246,243,0.18)',
                 fontWeight: 300
               }}>May 2026.</span>
-              </motion.h2>
-            </div>
-            <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.22} style={{
+            </motion.h2>
+          </div>
+          <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.22} style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
             minWidth: isMobile ? '100%' : isTablet ? '220px' : '240px',
             width: isMobile ? '100%' : 'auto'
           }}>
-              <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
+            <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2746,10 +2746,10 @@ const SiteFooter = () => {
               fontWeight: 600,
               boxShadow: '0 8px 40px rgba(222,50,45,0.5)'
             }}>
-                <span>Apply to Pitch</span>
-                <ArrowIconDark />
-              </motion.a>
-              <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
+              <span>Apply to Pitch</span>
+              <ArrowIconDark />
+            </motion.a>
+            <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2776,21 +2776,21 @@ const SiteFooter = () => {
               el.style.borderColor = 'rgba(247,246,243,0.22)';
               el.style.color = 'rgba(247,246,243,0.65)';
             }}>
-                <span>Become a Funder</span>
-              </motion.a>
-            </motion.div>
-          </div>
+              <span>Become a Funder</span>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
+    </div>
 
-      {/* Footer nav */}
-      <div style={{
+    {/* Footer nav */}
+    <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
       padding: isMobile ? '40px 20px 0' : isTablet ? '52px 40px 0' : '64px 64px 0',
       boxSizing: 'border-box'
     }}>
-        <div style={{
+      <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'space-between',
@@ -2798,19 +2798,19 @@ const SiteFooter = () => {
         paddingBottom: '48px',
         borderBottom: '1px solid rgba(247,246,243,0.07)'
       }}>
-          {/* Brand blurb */}
-          <div style={{
+        {/* Brand blurb */}
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '20px',
           maxWidth: isMobile ? '100%' : isTablet ? '220px' : '280px'
         }}>
-            <div style={{
+          <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '12px'
           }}>
-              <div style={{
+            <div style={{
               width: '36px',
               height: '36px',
               borderRadius: '8px',
@@ -2821,12 +2821,12 @@ const SiteFooter = () => {
               boxShadow: '0 4px 20px rgba(222,50,45,0.4)',
               flexShrink: 0
             }}>
-                <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-                  <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
-                </svg>
-              </div>
-              <div>
-                <div style={{
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                <path d="M6 1L7.5 4.5L11 5L8.5 7.5L9 11L6 9.5L3 11L3.5 7.5L1 5L4.5 4.5L6 1Z" fill="white" />
+              </svg>
+            </div>
+            <div>
+              <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '13px',
                 letterSpacing: '0.06em',
@@ -2835,9 +2835,9 @@ const SiteFooter = () => {
                 fontWeight: 700,
                 lineHeight: 1.1
               }}>
-                  EmpowaSummit
-                </div>
-                <div style={{
+                EmpowaSummit
+              </div>
+              <div style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.08em',
@@ -2845,35 +2845,35 @@ const SiteFooter = () => {
                 color: 'rgba(247,246,243,0.22)',
                 marginTop: '2px'
               }}>
-                  Pitching Festival · 2026
-                </div>
+                Pitching Festival · 2026
               </div>
             </div>
-            <p style={{
+          </div>
+          <p style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '13px',
             lineHeight: '1.8',
             color: 'rgba(247,246,243,0.28)',
             margin: 0
           }}>
-              Africa's premier deal-making arena. Where the continent's most investment-ready founders face off before
-              elite funders.
-            </p>
-          </div>
+            Africa's premier deal-making arena. Where the continent's most investment-ready founders face off before
+            elite funders.
+          </p>
+        </div>
 
-          {/* Link columns - 2-col mobile, 3-col tablet+ */}
-          <div style={{
+        {/* Link columns - 2-col mobile, 3-col tablet+ */}
+        <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
           gap: isMobile ? '28px 16px' : isTablet ? '28px 24px' : '0',
           flex: 1,
           maxWidth: isMobile ? '100%' : isTablet ? '100%' : '600px'
         }}>
-            {FOOTER_COLS.map((col, colIdx) => <div key={col.id} style={{
+          {FOOTER_COLS.map((col, colIdx) => <div key={col.id} style={{
             paddingLeft: !isMobile && !isTablet && colIdx > 0 ? '40px' : '0',
             borderLeft: !isMobile && !isTablet && colIdx > 0 ? '1px solid rgba(247,246,243,0.06)' : 'none'
           }}>
-                <span style={{
+            <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '9px',
               letterSpacing: '0.2em',
@@ -2883,9 +2883,9 @@ const SiteFooter = () => {
               display: 'block',
               marginBottom: '20px'
             }}>
-                  {col.heading}
-                </span>
-                <ul style={{
+              {col.heading}
+            </span>
+            <ul style={{
               listStyle: 'none',
               margin: 0,
               padding: 0,
@@ -2893,8 +2893,8 @@ const SiteFooter = () => {
               flexDirection: 'column',
               gap: '12px'
             }}>
-                  {col.links.map(link => <li key={link.id}>
-                      <a href="#" onClick={e => e.preventDefault()} style={{
+              {col.links.map(link => <li key={link.id}>
+                <a href="#" onClick={e => e.preventDefault()} style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '13px',
                   color: 'rgba(247,246,243,0.3)',
@@ -2907,16 +2907,16 @@ const SiteFooter = () => {
                 }} onMouseLeave={e => {
                   (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.3)';
                 }}>
-                        {link.label}
-                      </a>
-                    </li>)}
-                </ul>
-              </div>)}
-          </div>
+                  {link.label}
+                </a>
+              </li>)}
+            </ul>
+          </div>)}
         </div>
+      </div>
 
-        {/* Legal row */}
-        <div style={{
+      {/* Legal row */}
+      <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'space-between',
@@ -2924,21 +2924,21 @@ const SiteFooter = () => {
         gap: '16px',
         padding: '24px 0 40px'
       }}>
-          <span style={{
+        <span style={{
           fontFamily: 'Inter, sans-serif',
           fontSize: '11px',
           color: 'rgba(247,246,243,0.1)',
           letterSpacing: '0.04em'
         }}>
-            © 2026 EmpowaEntrepreneurs. All rights reserved.
-          </span>
-          <div style={{
+          © 2026 EmpowaEntrepreneurs. All rights reserved.
+        </span>
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '20px',
           flexWrap: 'wrap'
         }}>
-            {[{
+          {[{
             id: 'leg-priv',
             label: 'Privacy Policy'
           }, {
@@ -2959,12 +2959,12 @@ const SiteFooter = () => {
           }} onMouseLeave={e => {
             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(247,246,243,0.12)';
           }}>
-                {item.label}
-              </a>)}
-          </div>
+            {item.label}
+          </a>)}
         </div>
       </div>
-    </footer>;
+    </div>
+  </footer>;
 };
 
 // ─── Custom Package Modal ─────────────────────────────────────────────────────
@@ -3114,7 +3114,7 @@ export const PitchApplicationModal = ({
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLButtonElement).style.background = 'rgba(247,246,243,0.06)';
         }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="rgba(247,246,243,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="rgba(247,246,243,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
         <AnimatePresence mode="wait">
           {!submitted ? <motion.div key="modal-form" initial={{
@@ -3235,7 +3235,7 @@ export const PitchApplicationModal = ({
                       background: '#0f1c28',
                       color: 'rgba(247,246,243,0.4)'
                     }}>Select your current funding stage</option>
-                    <option value="pre-seed" style={{background:'#0f1c28',color:'#F7F6F3'}}>Pre-Seed</option><option value="seed" style={{background:'#0f1c28',color:'#F7F6F3'}}>Seed</option><option value="series-a" style={{background:'#0f1c28',color:'#F7F6F3'}}>Series A</option><option value="series-b" style={{background:'#0f1c28',color:'#F7F6F3'}}>Series B+</option></select>
+                    <option value="pre-seed" style={{ background: '#0f1c28', color: '#F7F6F3' }}>Pre-Seed</option><option value="seed" style={{ background: '#0f1c28', color: '#F7F6F3' }}>Seed</option><option value="series-a" style={{ background: '#0f1c28', color: '#F7F6F3' }}>Series A</option><option value="series-b" style={{ background: '#0f1c28', color: '#F7F6F3' }}>Series B+</option></select>
                   <div style={{
                     position: 'absolute',
                     right: '14px',
@@ -3406,7 +3406,7 @@ export const PitchApplicationModal = ({
 // ─── PitchingFestivalPage ─────────────────────────────────────────────────────
 export const PitchingFestivalPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   useEffect(() => {
     const handleOpen = () => setIsModalOpen(true);
     window.addEventListener('openPitchModal', handleOpen);
@@ -3416,12 +3416,12 @@ export const PitchingFestivalPage = () => {
   return <div className="w-full min-h-screen" style={{
     background: '#141210'
   }}>
-      <HeroSection />
-      <LogoBanner />
-      <PillarsSection />
-      <EligibilitySection />
-      <ExperienceSection />
-      <CtaSection onOpenModal={() => setIsModalOpen(true)} />
-      <PitchingFestivalModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </div>;
+    <HeroSection />
+    <LogoBanner />
+    <PillarsSection />
+    <EligibilitySection />
+    <ExperienceSection />
+    <CtaSection onOpenModal={() => setIsModalOpen(true)} />
+    <PitchingFestivalModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+  </div>;
 };
