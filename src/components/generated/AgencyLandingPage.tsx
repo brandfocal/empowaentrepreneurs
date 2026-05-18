@@ -423,12 +423,12 @@ const DropdownNavItem = ({ item, scrolled, navLinkColor, navLinkHoverColor, path
         alignItems: 'center',
         gap: '4px'
       }}
-      onMouseEnter={e => {
-        if (!isActive) e.currentTarget.style.color = navLinkHoverColor;
-      }}
-      onMouseLeave={e => {
-        if (!isActive) e.currentTarget.style.color = navLinkColor;
-      }}>
+        onMouseEnter={e => {
+          if (!isActive) e.currentTarget.style.color = navLinkHoverColor;
+        }}
+        onMouseLeave={e => {
+          if (!isActive) e.currentTarget.style.color = navLinkColor;
+        }}>
         {item.label}
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{
           transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -480,18 +480,18 @@ const DropdownNavItem = ({ item, scrolled, navLinkColor, navLinkHoverColor, path
                     background: isChildActive ? (scrolled ? 'rgba(222,50,45,0.05)' : 'rgba(222,50,45,0.15)') : 'transparent',
                     transition: 'all 0.2s ease'
                   }}
-                  onMouseEnter={e => {
-                    if (!isChildActive) {
-                      e.currentTarget.style.background = scrolled ? 'rgba(20,18,16,0.04)' : 'rgba(247,246,243,0.08)';
-                      e.currentTarget.style.color = scrolled ? '#141210' : '#F7F6F3';
-                    }
-                  }}
-                  onMouseLeave={e => {
-                    if (!isChildActive) {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = scrolled ? 'rgba(20,18,16,0.65)' : 'rgba(247,246,243,0.7)';
-                    }
-                  }}
+                    onMouseEnter={e => {
+                      if (!isChildActive) {
+                        e.currentTarget.style.background = scrolled ? 'rgba(20,18,16,0.04)' : 'rgba(247,246,243,0.08)';
+                        e.currentTarget.style.color = scrolled ? '#141210' : '#F7F6F3';
+                      }
+                    }}
+                    onMouseLeave={e => {
+                      if (!isChildActive) {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = scrolled ? 'rgba(20,18,16,0.65)' : 'rgba(247,246,243,0.7)';
+                      }
+                    }}
                   >
                     {child.label}
                   </a>
@@ -554,7 +554,7 @@ const StickyNav = () => {
       borderBottom: scrolled ? '0.8px solid rgba(20,18,16,0.07)' : '0.8px solid transparent',
       transition: 'padding 0.35s ease, background 0.35s ease, border-color 0.35s ease'
     }}>
-      <a href="#"  style={{
+      <a href="#" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '9px',
@@ -564,9 +564,9 @@ const StickyNav = () => {
           src={scrolled ? "/logos/ee-logo.png" : "/logos/ee-logo-wh.png"}
           alt="EmpowaSummit Logo"
           whileHover={{ scale: 1.05 }}
-          style={{ 
-            height: '48px', 
-            width: 'auto', 
+          style={{
+            height: '48px',
+            width: 'auto',
             objectFit: 'contain',
             mixBlendMode: scrolled ? 'multiply' : 'screen'
           }}
@@ -603,7 +603,7 @@ const StickyNav = () => {
           display: 'flex',
           gap: '8px'
         }}>
-          <motion.a href="/partnerships"  whileHover={{
+          <motion.a href="/partnerships" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -685,7 +685,7 @@ const StickyNav = () => {
         borderBottom: '0.8px solid rgba(20,18,16,0.08)',
         padding: '24px 32px 28px'
       }}>
-        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href}  style={{
+        {STICKY_NAV_ITEMS.map(item => <a key={item.id} href={item.href} style={{
           display: 'block',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '16px',
@@ -703,7 +703,7 @@ const StickyNav = () => {
           marginTop: '20px',
           flexWrap: 'wrap'
         }}>
-          <a href="/partnerships"  style={{
+          <a href="/partnerships" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             border: '1px solid rgba(20,18,16,0.18)',
@@ -712,7 +712,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-          <a href="/summit"  style={{
+          <a href="/summit" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -1166,7 +1166,7 @@ const HeroSection = () => {
             }}>
               <span>Register Now</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="/partnerships"  whileHover={{
+            <motion.a href="/partnerships" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -1430,7 +1430,7 @@ const PROCESS_STEPS: ProcessStep[] = [{
   title: 'Scale',
   description: 'Access strategic partnerships, procurement opportunities, and the ecosystem support needed to accelerate growth across African markets.',
   icon: '',
-  imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&q=80'
+  imageSrc: '/public/scale.jpg'
 }, {
   id: 'step-lead',
   number: '04',
@@ -1725,7 +1725,7 @@ const SERVICES: ServiceItem[] = [{
   name: 'Corporates & DFIs',
   description: 'Development Finance Institutions and corporate leaders unlock procurement opportunities, co-investment mandates, and enterprise partnerships that drive continental impact.',
   tag: 'Procurement · DFIs · Co-Investment',
-  imageSrc: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&q=80',
+  imageSrc: '/public/corporate-dfi.jpg',
   imageAlt: 'Corporate and DFI partners at EmpowaEntrepreneurs Funding Summit 2026',
   bgColor: '#F3F0EA',
   tintColor: 'rgba(107,94,74,0.30)'
@@ -1948,7 +1948,7 @@ const AccordionSection = () => {
                     {t}
                   </span>)}
                 </div>
-                <motion.a 
+                <motion.a
                   href="#"
                   onClick={(e) => {
                     e.preventDefault();
@@ -1963,20 +1963,20 @@ const AccordionSection = () => {
                   }} whileTap={{
                     scale: 0.97
                   }} style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'linear-gradient(135deg, #DE322D, #c42823)',
-                  borderRadius: '44px',
-                  padding: '10px 22px',
-                  fontSize: '12px',
-                  letterSpacing: '0.06em',
-                  color: '#fff',
-                  textDecoration: 'none',
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontWeight: 600,
-                  boxShadow: '0 6px 24px rgba(222,50,45,0.4)'
-                }}>
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'linear-gradient(135deg, #DE322D, #c42823)',
+                    borderRadius: '44px',
+                    padding: '10px 22px',
+                    fontSize: '12px',
+                    letterSpacing: '0.06em',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontWeight: 600,
+                    boxShadow: '0 6px 24px rgba(222,50,45,0.4)'
+                  }}>
                   <span>Reserve Your Seat</span><ArrowIconDark />
                 </motion.a>
               </motion.div>}
@@ -2105,7 +2105,7 @@ const ProjectModal = ({
     opacity: 0
   }} transition={{
     duration: 0.3
-  }}  style={{
+  }} style={{
     position: 'fixed',
     inset: 0,
     zIndex: 300,
@@ -2132,7 +2132,7 @@ const ProjectModal = ({
     }} transition={{
       duration: 0.5,
       ease: [0.22, 1, 0.36, 1]
-    }}  style={{
+    }} style={{
       background: '#F7F6F3',
       borderRadius: isMobile ? '28px 28px 0 0' : '28px',
       maxWidth: '960px',
@@ -2196,7 +2196,7 @@ const ProjectModal = ({
             fontWeight: 500
           }}>{project.category}</span>
         </div>
-        <button  style={{
+        <button style={{
           position: 'absolute',
           top: '20px',
           right: '20px',
@@ -2344,7 +2344,7 @@ const ProjectModal = ({
               padding: '6px 14px'
             }}>{tag}</span>)}
           </div>
-          <motion.a href="#"  whileHover={{
+          <motion.a href="#" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -3114,7 +3114,7 @@ const TestimonialsSection = () => {
           flexDirection: 'column',
           gap: '12px'
         }}>
-          {TESTIMONIALS.map((t, i) => <button key={t.id}  onClick={() => handleSelect(i)} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => {
+          {TESTIMONIALS.map((t, i) => <button key={t.id} onClick={() => handleSelect(i)} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => {
             setIsPaused(false);
             lastTickRef.current = Date.now();
           }} style={{
@@ -3183,7 +3183,7 @@ const TestimonialsSection = () => {
           gap: '8px',
           marginTop: '8px'
         }}>
-          {TESTIMONIALS.map((t, i) => <button key={t.id}  style={{
+          {TESTIMONIALS.map((t, i) => <button key={t.id} style={{
             all: 'unset',
             cursor: 'pointer',
             width: activeIdx === i ? '24px' : '8px',
@@ -3394,7 +3394,7 @@ const DarkCtaSection = () => {
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-            <motion.a href="/partnerships"  whileHover={{
+            <motion.a href="/partnerships" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -3417,7 +3417,7 @@ const DarkCtaSection = () => {
             }}>
               <span>Reserve Your Power Seat</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="/partnerships"  whileHover={{
+            <motion.a href="/partnerships" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -3764,7 +3764,7 @@ const SiteFooter = () => {
             }}>
               <span>Register Now</span><ArrowIconDark />
             </motion.a>
-            <motion.a href="/partnerships"  whileHover={{
+            <motion.a href="/partnerships" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -3964,7 +3964,7 @@ const SiteFooter = () => {
                 gap: '12px'
               }}>
                 {col.links.map(link => <li key={link.id}>
-                  <a href="#"  style={{
+                  <a href="#" style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '13px',
                     color: 'rgba(247,246,243,0.3)',
@@ -4036,7 +4036,7 @@ const SiteFooter = () => {
             display: 'flex',
             gap: '8px'
           }}>
-            {FOOTER_SOCIAL_LINKS.map(soc => <motion.a key={soc.id} href="#"  whileHover={{
+            {FOOTER_SOCIAL_LINKS.map(soc => <motion.a key={soc.id} href="#" whileHover={{
               scale: 1.1,
               y: -2
             }} whileTap={{
@@ -4288,10 +4288,10 @@ export const AgencyLandingPage = () => {
 
     <HeroSection />
     <a href="/summit" style={{ display: 'block', width: '100%', cursor: 'pointer' }}>
-      <img 
-        src="/funding-summit-2026-banner.jpg" 
-        alt="EmpowaEntrepreneurs Funding Summit 2026" 
-        style={{ width: '100%', display: 'block', padding: 0, margin: 0 }} 
+      <img
+        src="/funding-summit-2026-banner.jpg"
+        alt="EmpowaEntrepreneurs Funding Summit 2026"
+        style={{ width: '100%', display: 'block', padding: 0, margin: 0 }}
       />
     </a>
     <MissionBand />
