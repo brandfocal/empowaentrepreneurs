@@ -917,7 +917,7 @@ const STAGES: Stage[] = [{
   focus: 'Connecting high-growth African startups with early and growth-stage venture capital firms deploying catalytic capital across the continent.',
   accentColor: '#DE322D',
   imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80',
-  imageAlt: 'VC Stage - Venture Capital sessions at EmpowaEntrepreneurs Funding Summit 2026'
+  imageAlt: 'VC Stage: Venture Capital sessions at EmpowaEntrepreneurs Funding Summit 2026'
 }, {
   id: 'stage-esd',
   number: '02',
@@ -926,7 +926,7 @@ const STAGES: Stage[] = [{
   focus: "Bridging the gap between corporates and township enterprises. Facilitating supplier development mandates, mentorship pipelines, and procurement opportunities that drive Africa's informal economy forward.",
   accentColor: '#3c6d9a',
   imageSrc: '/scale.jpg',
-  imageAlt: 'ESD Stage - Enterprise Supplier Development sessions'
+  imageAlt: 'ESD Stage: Enterprise Supplier Development sessions'
 }, {
   id: 'stage-pe',
   number: '03',
@@ -944,13 +944,13 @@ const STAGES: Stage[] = [{
   focus: 'Development Finance Institutions unlock co-investment mandates, blended finance structures, and concessional funding pipelines for enterprises delivering measurable development impact.',
   accentColor: '#2D6A4F',
   imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80',
-  imageAlt: 'DFI Stage - Development Finance sessions'
+  imageAlt: 'DFI Stage: Development Finance sessions'
 }, {
   id: 'stage-loan',
   number: '05',
   name: 'Loan Financing Stage',
   theme: 'Structured Debt & Loan Finance',
-  focus: 'For businesses beyond the equity curve - connecting revenue-generating SMEs with structured lenders, mezzanine financiers, and alternative credit providers offering bespoke debt solutions.',
+  focus: 'For businesses beyond the equity curve: connecting revenue-generating SMEs with structured lenders, mezzanine financiers, and alternative credit providers offering bespoke debt solutions.',
   accentColor: '#8a5a2a',
   imageSrc: 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=800&q=80',
   imageAlt: 'Loan Financing Stage at EmpowaEntrepreneurs Funding Summit 2026'
@@ -962,7 +962,7 @@ const STAGES: Stage[] = [{
   focus: 'Where purpose meets profit. Impact fund managers and ESG-driven investors source enterprises delivering environmental and social returns alongside financial performance.',
   accentColor: '#4a7a5a',
   imageSrc: '/EmpowaEntrepreneur-banner4.jpg',
-  imageAlt: 'Impact Funds Stage - sustainable investing sessions'
+  imageAlt: 'Impact Funds Stage: sustainable investing sessions'
 }];
 const StagesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -1002,7 +1002,7 @@ const StagesSection = () => {
       pointerEvents: 'none',
       zIndex: 0
     }} />
-    {/* Heading - stays constrained */}
+    {/* Heading: stays constrained */}
     <div style={{
       maxWidth: '1200px',
       margin: '0 auto',
@@ -1051,7 +1051,7 @@ const StagesSection = () => {
         </motion.h2>
       </div>
     </div>
-    {/* Cards grid - full viewport width, no max-width */}
+    {/* Cards grid: full viewport width, no max-width */}
     <div style={{
       width: '100%',
       padding: isMobile ? '0 24px' : '0 32px',
@@ -1206,9 +1206,9 @@ const EXPERIENCES: Experience[] = [{
   title: "The Women's Fund Room",
   subtitle: 'Where Women-Led Capital Meets Ambition',
   description: "A dedicated, curated space where women-led ventures and female founders access specialized funding pipelines, gender-lens investment mandates, and mentorship from Africa's most powerful women in capital.",
-  detail: "The Women's Fund Room is not a sidebar - it is a command center. With dedicated DFI mandates, gender-lens VC panelists, and structured pitch sessions specifically designed for women founders, it represents EmpowaEntrepreneurs' most intentional investment in parity capital.",
+  detail: "The Women's Fund Room is not a sidebar: it is a command center. With dedicated DFI mandates, gender-lens VC panelists, and structured pitch sessions specifically designed for women founders, it represents EmpowaEntrepreneurs' most intentional investment in parity capital.",
   imageSrc: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=1200&q=80',
-  imageAlt: "The Women's Fund Room - women founders and investors at EmpowaEntrepreneurs Funding Summit 2026",
+  imageAlt: "The Women's Fund Room: women founders and investors at EmpowaEntrepreneurs Funding Summit 2026",
   tag1: 'Gender-Lens Investing',
   tag2: 'Women Founders',
   tag3: 'DFI Mandates',
@@ -1218,8 +1218,8 @@ const EXPERIENCES: Experience[] = [{
   label: "Signature Experience · 02",
   title: "EmpowaEntrepreneurs Dragons’ Den Pitching Festival™",
   subtitle: 'High-Stakes. High-Impact. Real Capital.',
-  description: "Africa's most electrifying pitch format - vetted founders step into the arena and present before a panel of seasoned investors ready to deploy real capital. No theatrics. No formality. Just honest conviction meeting serious money.",
-  detail: "Inspired by the global format but forged for Africa - the EmpowaEntrepreneurs Dragons’ Den Pitching Festival™ features six rounds of structured pitches across all capital tracks. Founders who enter leave with either a term sheet, a warm introduction, or the most valuable feedback of their entrepreneurial journey.",
+  description: "Africa's most electrifying pitch format: vetted founders step into the arena and present before a panel of seasoned investors ready to deploy real capital. No theatrics. No formality. Just honest conviction meeting serious money.",
+  detail: "Inspired by the global format but forged for Africa: the EmpowaEntrepreneurs Dragons’ Den Pitching Festival™ features six rounds of structured pitches across all capital tracks. Founders who enter leave with either a term sheet, a warm introduction, or the most valuable feedback of their entrepreneurial journey.",
   imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80',
   imageAlt: "EmpowaEntrepreneurs Dragons’ Den Pitching Festival™ at EmpowaWorx House",
   tag1: "Live Pitching",
@@ -1231,8 +1231,8 @@ const EXPERIENCES: Experience[] = [{
   label: 'Signature Experience · 03',
   title: 'Executive Masterclasses',
   subtitle: 'Knowledge That Moves Capital',
-  description: 'Intimate, high-density sessions led by Africa\'s foremost capital allocators, legal architects, and business scaling veterans. No generic panels - every masterclass delivers frameworks you can action within 72 hours of leaving the room.',
-  detail: 'From term sheet negotiation masterclasses to scaling-across-borders operational playbooks, from ESG compliance frameworks to blended finance structuring - these sessions are the intellectual capital behind the financial capital.',
+  description: 'Intimate, high-density sessions led by Africa\'s foremost capital allocators, legal architects, and business scaling veterans. No generic panels: every masterclass delivers frameworks you can action within 72 hours of leaving the room.',
+  detail: 'From term sheet negotiation masterclasses to scaling-across-borders operational playbooks, from ESG compliance frameworks to blended finance structuring: these sessions are the intellectual capital behind the financial capital.',
   imageSrc: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200&q=80',
   imageAlt: 'Executive Masterclasses at EmpowaEntrepreneurs Summit',
   tag1: 'Capital Structuring',
@@ -1513,7 +1513,7 @@ const ZONES: Zone[] = [{
   id: 'zone-legal',
   number: '01',
   name: 'Legal & Financial Advisory Zone',
-  description: 'Dedicated legal and financial advisory booths staffed by leading law firms, auditors, and financial structuring specialists. Get your deal structures, shareholder agreements, and compliance frameworks right - on the spot.',
+  description: 'Dedicated legal and financial advisory booths staffed by leading law firms, auditors, and financial structuring specialists. Get your deal structures, shareholder agreements, and compliance frameworks right: on the spot.',
   services: ['Term Sheet Review', 'Share Structuring', 'Compliance Frameworks', 'Financial Modeling'],
   accent: '#DE322D',
   icon: '⚖'
@@ -1521,7 +1521,7 @@ const ZONES: Zone[] = [{
   id: 'zone-funding',
   number: '02',
   name: 'Funding Clinics',
-  description: 'One-on-one sessions between vetted founders and capital allocators. Structured 20-minute clinics designed for laser-focused deal conversations - not presentations, not panels. Pure deal dialogue.',
+  description: 'One-on-one sessions between vetted founders and capital allocators. Structured 20-minute clinics designed for laser-focused deal conversations: not presentations, not panels. Pure deal dialogue.',
   services: ['1-on-1 Investor Meetings', 'Pitch Coaching', 'Capital Matching', 'Due Diligence Prep'],
   accent: '#3c6d9a',
   icon: '💼'
@@ -1529,7 +1529,7 @@ const ZONES: Zone[] = [{
   id: 'zone-network',
   number: '03',
   name: 'Strategic Networking Lounge',
-  description: "Africa's most curated networking environment. Every conversation is intentional. Seating arranged for optimal deal-flow. Introductions facilitated by our Capital Connectors - specialists in matching the right founder with the right funder.",
+  description: "Africa's most curated networking environment. Every conversation is intentional. Seating arranged for optimal deal-flow. Introductions facilitated by our Capital Connectors: specialists in matching the right founder with the right funder.",
   services: ['Capital Connectors', 'Curated Introductions', 'Deal-Flow Facilitation', 'Partnership Matching'],
   accent: '#5a4a8a',
   icon: '🤝'
@@ -1642,7 +1642,7 @@ const ZonesSection = () => {
             lineHeight: '1.75',
             margin: 0
           }}>
-            Four purpose-built zones engineered to move you from conversation to commitment - every zone is a strategic instrument in your summit journey.
+            Four purpose-built zones engineered to move you from conversation to commitment: every zone is a strategic instrument in your summit journey.
           </motion.p>}
         </div>
       </div>

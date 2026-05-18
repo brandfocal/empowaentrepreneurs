@@ -873,7 +873,7 @@ const HeroSection = () => {
           color: 'rgba(247,246,243,0.7)',
           margin: 0
         }}>
-          Africa's most ambitious entrepreneurs come face-to-face with the continent's most active funders - DFIs, VCs, ESD funds, and impact investors deploying real capital into Africa's next generation.
+          Africa's most ambitious entrepreneurs come face-to-face with the continent's most active funders: DFIs, VCs, ESD funds, and impact investors deploying real capital into Africa's next generation.
         </p>
         <p style={{
           fontFamily: 'Inter, sans-serif',
@@ -1179,7 +1179,7 @@ const EXPERIENCE_ZONES: ZoneCard[] = [{
   id: 'ez-1',
   index: '01',
   title: 'The Funding Corner',
-  description: 'One-on-one sessions between entrepreneurs and active funders. Structured, time-bound, and results-focused - this is where real funding conversations happen.'
+  description: 'One-on-one sessions between entrepreneurs and active funders. Structured, time-bound, and results-focused: this is where real funding conversations happen.'
 }, {
   id: 'ez-2',
   index: '02',
@@ -1629,7 +1629,7 @@ const ELIGIBILITY_CRITERIA: EligCriteria[] = [{
   id: 'el-1',
   category: 'Financial Readiness',
   title: 'Funding Readiness',
-  description: 'Your business is investment-ready - you have a clear funding ask, can articulate your use of funds, and have financial records that withstand funder scrutiny. Minimum 12 months of trading history required.'
+  description: 'Your business is investment-ready: you have a clear funding ask, can articulate your use of funds, and have financial records that withstand funder scrutiny. Minimum 12 months of trading history required.'
 }, {
   id: 'el-2',
   category: 'Presentation Quality',
@@ -3392,7 +3392,7 @@ export const PastSpeakersSection = () => {
       position: 'relative',
       zIndex: 1
     }}>
-      {/* Header Row - stack on mobile */}
+      {/* Header Row: stack on mobile */}
       <div style={{
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
@@ -3451,7 +3451,7 @@ export const PastSpeakersSection = () => {
           </p>
         </div>
 
-        {/* Prev / Next buttons - shown below heading on mobile */}
+        {/* Prev / Next buttons: shown below heading on mobile */}
         <div style={{
           display: 'flex',
           gap: '8px',
@@ -3502,7 +3502,7 @@ export const PastSpeakersSection = () => {
         </div>
       </div>
 
-      {/* Filter Tabs Row - horizontal scroll on mobile */}
+      {/* Filter Tabs Row: horizontal scroll on mobile */}
       <div ref={tabsRef} style={{
         display: 'flex',
         gap: '8px',

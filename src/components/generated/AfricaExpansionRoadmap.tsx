@@ -648,7 +648,7 @@ export const AfricaExpansionRoadmap: React.FC = () => {
           </motion.h2>
         </div>
 
-        {/* ─── SECTION 1: SA National Expansion — Horizontal Stepper ─── */}
+        {/* ─── SECTION 1: SA National Expansion: Horizontal Stepper ─── */}
         <motion.div variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} custom={0.2} style={{
         marginBottom: isMobile ? '64px' : '80px'
       }}>
@@ -674,7 +674,7 @@ export const AfricaExpansionRoadmap: React.FC = () => {
         marginBottom: isMobile ? '52px' : '72px'
       }} />
 
-        {/* ─── SECTION 2: Pan-African Cities — Tabs ─── */}
+        {/* ─── SECTION 2: Pan-African Cities: Tabs ─── */}
         <motion.div variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} custom={0.4}>
           <h3 style={{
           fontFamily: "'Montserrat', sans-serif",

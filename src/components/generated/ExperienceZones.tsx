@@ -569,7 +569,7 @@ const ZONES: ZoneItem[] = [{
   commercialRelevance: 'Direct access to catalytic capital for high-growth African enterprises seeking seed, Series A, and growth-stage investment.',
   tags: ['VC', 'DFI', 'Angel Investors', 'Capital'],
   imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80',
-  imageAlt: 'The Funding Corner - capital access zone at EmpowaWorx House',
+  imageAlt: 'The Funding Corner: capital access zone at EmpowaWorx House',
   variant: 'standard',
   icon: '◈'
 }, {
@@ -577,11 +577,11 @@ const ZONES: ZoneItem[] = [{
   index: '02',
   name: 'Women Only Dealmaker Room',
   theme: 'Exclusive Female Founder Capital Circle',
-  purpose: 'An intimate, invitation-only space exclusively for women founders and women investors - a premium environment where gender lens investing meets Africa\'s most ambitious female-led enterprises.',
+  purpose: 'An intimate, invitation-only space exclusively for women founders and women investors: a premium environment where gender lens investing meets Africa\'s most ambitious female-led enterprises.',
   commercialRelevance: 'Unlocking gender lens investment mandates, procurement pipelines exclusively targeting women-led businesses, and elite mentorship from Africa\'s top female capital allocators.',
   tags: ['Women Founders', 'Gender Lens', 'Exclusive', 'Invitation Only'],
   imageSrc: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80',
-  imageAlt: 'Women Only Dealmaker Room - exclusive female founder capital circle',
+  imageAlt: 'Women Only Dealmaker Room: exclusive female founder capital circle',
   variant: 'premium',
   icon: '◇'
 }, {
@@ -605,7 +605,7 @@ const ZONES: ZoneItem[] = [{
   commercialRelevance: 'Building investment-ready businesses that pass institutional due diligence and can confidently negotiate term sheets, shareholder agreements, and regulatory frameworks.',
   tags: ['Legal Advisory', 'Financial Structuring', 'Due Diligence', 'Compliance'],
   imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&q=80',
-  imageAlt: 'Legal & Financial Intelligence Zone - enterprise advisory sessions',
+  imageAlt: 'Legal & Financial Intelligence Zone: enterprise advisory sessions',
   variant: 'standard',
   icon: '◉'
 }, {
@@ -617,7 +617,7 @@ const ZONES: ZoneItem[] = [{
   commercialRelevance: 'Dramatically increasing the quality and success rate of funding applications submitted to institutional funders and grant-making bodies operating across African markets.',
   tags: ['Grants', 'Applications', 'Blended Finance', 'Funding Readiness'],
   imageSrc: 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=900&q=80',
-  imageAlt: 'Funding Application Clinics - hands-on funding readiness sessions',
+  imageAlt: 'Funding Application Clinics: hands-on funding readiness sessions',
   variant: 'standard',
   icon: '◎'
 }, {
@@ -629,7 +629,7 @@ const ZONES: ZoneItem[] = [{
   commercialRelevance: 'Opening continental market access, enterprise procurement pipelines, and strategic alliances that accelerate revenue growth and market penetration across African geographies.',
   tags: ['B2B', 'Procurement', 'Partnerships', 'Market Access'],
   imageSrc: '/corporate-dfi.jpg',
-  imageAlt: 'Premium Industry Networking Exhibitions - elite B2B connections',
+  imageAlt: 'Premium Industry Networking Exhibitions: elite B2B connections',
   variant: 'standard',
   icon: '◈'
 }, {
@@ -637,11 +637,11 @@ const ZONES: ZoneItem[] = [{
   index: '07',
   name: 'Masterclasses & Investor Engagements',
   theme: 'Strategic Knowledge & Investor Access',
-  purpose: 'World-class masterclasses delivered by institutional investors, corporate leaders, and successful founders - covering growth strategy, fundraising, international expansion, and impact investing.',
+  purpose: 'World-class masterclasses delivered by institutional investors, corporate leaders, and successful founders: covering growth strategy, fundraising, international expansion, and impact investing.',
   commercialRelevance: 'Acquiring the strategic frameworks, investor relationships, and operational intelligence to move from growth stage to continental and global scale.',
   tags: ['Masterclasses', 'Investor Dialogue', 'Strategy', 'Scale'],
   imageSrc: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&q=80',
-  imageAlt: 'Masterclasses & Investor Engagements - strategic knowledge sessions',
+  imageAlt: 'Masterclasses & Investor Engagements: strategic knowledge sessions',
   variant: 'standard',
   icon: '◉'
 }, {
@@ -649,11 +649,11 @@ const ZONES: ZoneItem[] = [{
   index: '08',
   name: 'Entrepreneurial Odyssey Sessions',
   theme: 'Founder Journeys & Ecosystem Intelligence',
-  purpose: 'Intimate storytelling sessions where Africa\'s most successful entrepreneurs share their unfiltered journeys - the failures, breakthroughs, and pivotal decisions that defined their enterprises.',
+  purpose: 'Intimate storytelling sessions where Africa\'s most successful entrepreneurs share their unfiltered journeys: the failures, breakthroughs, and pivotal decisions that defined their enterprises.',
   commercialRelevance: 'Distilling actionable intelligence from lived entrepreneurial experience, compressed into transformative insights that accelerate decision-making and resilience-building.',
   tags: ['Founder Stories', 'Resilience', 'Ecosystem', 'Inspiration'],
   imageSrc: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=900&q=80',
-  imageAlt: 'Entrepreneurial Odyssey Sessions - founder journeys and ecosystem intelligence',
+  imageAlt: 'Entrepreneurial Odyssey Sessions: founder journeys and ecosystem intelligence',
   variant: 'standard',
   icon: '◇'
 }];
@@ -1414,7 +1414,7 @@ const ZonesSection = ({ onInquire }: { onInquire: (zoneName: string) => void }) 
           margin: 0,
           fontWeight: 300
         }}>
-          Eight purpose-built experience zones - each designed as a distinct ecosystem for capital access, strategic
+          Eight purpose-built experience zones: each designed as a distinct ecosystem for capital access, strategic
           intelligence, and premium market connections across Africa's most dynamic sectors.
         </motion.p>
       </div>
@@ -1534,7 +1534,7 @@ const StrategicCTASection = () => {
         fontWeight: 300,
         maxWidth: '620px'
       }}>
-        Each zone at EmpowaEntrepreneurs Funding Summit 2026 is a strategic tool - not a passive session.
+        Each zone at EmpowaEntrepreneurs Funding Summit 2026 is a strategic tool: not a passive session.
         Every experience is architected to generate measurable outcomes: capital commitments, partnerships,
         procurement contracts, and the intelligence to scale across African markets.
       </motion.p>

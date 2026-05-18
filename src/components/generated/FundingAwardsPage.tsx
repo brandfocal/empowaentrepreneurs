@@ -959,7 +959,7 @@ const HeroSection = () => {
       zIndex: 2,
       opacity: 0.5
     }} />
-    {/* Red orb top-right - parallax */}
+    {/* Red orb top-right: parallax */}
     <motion.div aria-hidden="true" style={{
       y: orbY,
       position: 'absolute',
@@ -1063,7 +1063,7 @@ const HeroSection = () => {
         </span>
       </motion.div>
 
-      {/* Main headline - word clip animation */}
+      {/* Main headline: word clip animation */}
       <h1 style={{
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: 200,
@@ -1467,7 +1467,7 @@ const AboutSection = () => {
               lineHeight: 1.65,
               margin: '0 0 20px'
             }}>
-              "Where capital meets consequence - recognizing those deploying not just money, but possibility. Honouring institutions that are funding the future architecture of Africa's entrepreneurial economy."
+              "Where capital meets consequence: recognizing those deploying not just money, but possibility. Honouring institutions that are funding the future architecture of Africa's entrepreneurial economy."
             </p>
             <div style={{
               fontFamily: 'Montserrat, sans-serif',
@@ -2404,7 +2404,7 @@ const SiteFooter = () => {
             color: 'rgba(247,246,243,0.28)',
             margin: 0
           }}>
-            Africa's premier capital and investment honours - recognizing those funding the future architecture of Africa's entrepreneurial economy.
+            Africa's premier capital and investment honours: recognizing those funding the future architecture of Africa's entrepreneurial economy.
           </p>
         </div>
 

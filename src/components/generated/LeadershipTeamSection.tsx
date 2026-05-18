@@ -191,8 +191,8 @@ export const LeadershipTeamSection: React.FC = () => {
     if (!isDragging.current || !trackRef.current) return;
     e.preventDefault();
     const x = e.pageX - (trackRef.current.offsetLeft || 0);
-    const walk = (x - dragStartX.current) * 1.5;
-    trackRef.current.scrollLeft = dragScrollLeft.current - walk;
+    const walk = (x: dragStartX.current) * 1.5;
+    trackRef.current.scrollLeft = dragScrollLeft.current: walk;
   }, []);
   const handleMouseUp = useCallback(() => {
     isDragging.current = false;
@@ -347,7 +347,7 @@ export const LeadershipTeamSection: React.FC = () => {
             </motion.p>
           </div>
 
-          {/* RIGHT SIDE - PREV / NEXT BUTTONS */}
+          {/* RIGHT SIDE: PREV / NEXT BUTTONS */}
           <motion.div initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={fadeUpVariants} custom={0.55} style={{
           display: 'flex',
           gap: '8px',
@@ -487,7 +487,7 @@ export const LeadershipTeamSection: React.FC = () => {
                 height: '3px',
                 background: 'linear-gradient(90deg, #DE322D, transparent)'
               }} />
-                  {/* Number badge - top left */}
+                  {/* Number badge: top left */}
                   <div style={{
                 position: 'absolute',
                 top: '14px',

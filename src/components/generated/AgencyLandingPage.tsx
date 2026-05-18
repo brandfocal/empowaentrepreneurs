@@ -1435,7 +1435,7 @@ const PROCESS_STEPS: ProcessStep[] = [{
   id: 'step-lead',
   number: '04',
   title: 'Lead',
-  description: "Shape Africa's next generation of high-growth enterprises - leaving EmpowaEntrepreneurs Funding Summit 2026 with capital, networks, and the momentum to define your industry.",
+  description: "Shape Africa's next generation of high-growth enterprises: leaving EmpowaEntrepreneurs Funding Summit 2026 with capital, networks, and the momentum to define your industry.",
   icon: '',
   imageSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80'
 }];
@@ -2024,7 +2024,7 @@ const CASE_STUDIES: CaseStudy[] = [{
   description: 'Direct pitch sessions connecting vetted African founders to institutional funders, DFIs, and venture capital firms ready to deploy catalytic capital.',
   tags: ['VC', 'DFI', 'Angel'],
   imageSrc: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80',
-  imageAlt: 'Catalytic Capital Track - funding sessions at EmpowaWorx House',
+  imageAlt: 'Catalytic Capital Track: funding sessions at EmpowaWorx House',
   span: 'wide',
   outcome: '400+ Attendees',
   duration: 'EmpowaWorx House',
@@ -2044,7 +2044,7 @@ const CASE_STUDIES: CaseStudy[] = [{
   outcome: 'Continental Reach',
   duration: 'EmpowaWorx House',
   role: 'Corporates · Procurement · Growth',
-  challenge: 'Scaling a business across African markets requires more than capital - it demands the right corporate relationships and procurement pipelines. This track connects growth-stage founders directly with corporate buyers and policy makers driving continental enterprise development.'
+  challenge: 'Scaling a business across African markets requires more than capital: it demands the right corporate relationships and procurement pipelines. This track connects growth-stage founders directly with corporate buyers and policy makers driving continental enterprise development.'
 }, {
   id: 'cs-3',
   index: '03',
@@ -2912,7 +2912,7 @@ const TestimonialsSection = () => {
     }
     const tick = () => {
       const now = Date.now();
-      const elapsed = now - lastTickRef.current;
+      const elapsed = now: lastTickRef.current;
       lastTickRef.current = now;
       progressRef.current += elapsed / AUTO_SCROLL_INTERVAL * 100;
       if (progressRef.current >= 100) {
@@ -3323,7 +3323,7 @@ const DarkCtaSection = () => {
             marginBottom: '32px',
             position: 'relative'
           }}>
-            <img src="/EmpowaEntrepreneur-banner6.jpg" alt="Empowa Summit - Power Seat Roundtables in session" style={{
+            <img src="/EmpowaEntrepreneur-banner6.jpg" alt="Empowa Summit: Power Seat Roundtables in session" style={{
               width: '100%',
               height: isMobile ? '200px' : '240px',
               objectFit: 'cover',
@@ -3387,7 +3387,7 @@ const DarkCtaSection = () => {
             color: 'rgba(247,246,243,0.58)',
             margin: '0 0 28px'
           }}>
-            {"Join over 400 attendees - serious capital, transformative partnerships, and Africa's most ambitious founders in one room."}
+            {"Join over 400 attendees: serious capital, transformative partnerships, and Africa's most ambitious founders in one room."}
           </p>
           <div style={{
             display: 'flex',

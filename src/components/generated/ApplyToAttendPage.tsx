@@ -730,7 +730,7 @@ const ApplyHeroSection = () => {
           margin: 0,
           fontWeight: 300
         }}>
-            The EmpowaEntrepreneurs Funding Summit 2026 is Africa's most high-impact convergence of ambitious founders, institutional investors, DFIs, and ecosystem builders. This is not a conference - it is a catalytic capital movement built to scale Africa's next generation of enterprise. Apply now to join.
+            The EmpowaEntrepreneurs Funding Summit 2026 is Africa's most high-impact convergence of ambitious founders, institutional investors, DFIs, and ecosystem builders. This is not a conference: it is a catalytic capital movement built to scale Africa's next generation of enterprise. Apply now to join.
           </motion.p>
 
           <motion.div custom={0.75} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
@@ -1099,7 +1099,7 @@ const PATHWAY_ITEMS: PathwayItem[] = [{
   index: '01',
   title: 'General Delegate',
   subtitle: 'Full Summit Access',
-  description: 'Gain complete access to all summit programming - keynotes, panel discussions, networking sessions, the pitching festival audience, and the exhibition floor. Connect with 400+ founders, funders, DFIs, and ecosystem builders.',
+  description: 'Gain complete access to all summit programming: keynotes, panel discussions, networking sessions, the pitching festival audience, and the exhibition floor. Connect with 400+ founders, funders, DFIs, and ecosystem builders.',
   tag: 'All-Access · Networking · Ecosystem',
   cta: 'Register as Delegate',
   imageSrc: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&q=80',
@@ -1438,7 +1438,7 @@ const PathwaysSection = () => {
 const NOTICE_ITEMS = [{
   id: 'n-1',
   label: "Dragons' Den Criteria Applied",
-  desc: 'Panelists may question, challenge, and decline - just like the show.'
+  desc: 'Panelists may question, challenge, and decline: just like the show.'
 }, {
   id: 'n-2',
   label: 'Early Application Advantage',
@@ -1604,7 +1604,7 @@ const ImportantNotice = () => {
                   color: 'rgba(247,246,243,0.5)',
                   margin: 0
                 }}>
-                    Only a limited number of pitching slots are available per session. Applications are reviewed on a rolling basis and the panel reserves the right to apply Dragons' Den-style criteria - meaning not all applicants will be accepted.
+                    Only a limited number of pitching slots are available per session. Applications are reviewed on a rolling basis and the panel reserves the right to apply Dragons' Den-style criteria: meaning not all applicants will be accepted.
                   </p>
                 </div>
               </div>
@@ -1829,7 +1829,7 @@ const FinalCtaSection = () => {
             color: 'rgba(247,246,243,0.5)',
             margin: '0 0 36px'
           }}>
-              Every serious African entrepreneur needs to be in this room. Capital, partnership, procurement, and continental growth - it all starts here. Registration is open, but space is limited.
+              Every serious African entrepreneur needs to be in this room. Capital, partnership, procurement, and continental growth: it all starts here. Registration is open, but space is limited.
             </motion.p>
 
             <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={staggerContainer} custom={0.12} style={{
@@ -1925,7 +1925,7 @@ const FinalCtaSection = () => {
                 color: 'rgba(247,246,243,0.4)',
                 margin: 0
               }}>
-                  This is not a networking cocktail. Every session, every matchmaking, every pitch slot is engineered for one outcome - capital and commercial growth for Africa's next enterprise generation.
+                  This is not a networking cocktail. Every session, every matchmaking, every pitch slot is engineered for one outcome: capital and commercial growth for Africa's next enterprise generation.
                 </p>
               </div>
               <div style={{

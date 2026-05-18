@@ -1170,7 +1170,7 @@ const PartnershipTiersSection = () => {
         alignItems: 'flex-end'
       }}>
         <div>
-          {/* h2 heading - matched to WhyPartner style: Inter / weight 200 / -2px tracking / 1.04 lh */}
+          {/* h2 heading: matched to WhyPartner style: Inter / weight 200 / -2px tracking / 1.04 lh */}
           <motion.h2 initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={slideUpBlur} custom={0.1} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: headingSize,
@@ -1448,7 +1448,7 @@ const PartnershipTiersSection = () => {
                   </div>
                 </div>
 
-                {/* Benefit Breakdown - hidden by default */}
+                {/* Benefit Breakdown: hidden by default */}
                 <div style={{
                   borderTop: '1px solid rgba(247,246,243,0.08)',
                   paddingTop: isTablet ? '32px' : '44px',
@@ -1656,7 +1656,7 @@ const PartnershipTiersSection = () => {
               </div>
             </div>
 
-            {/* Benefit Breakdown - hidden by default (mobile) */}
+            {/* Benefit Breakdown: hidden by default (mobile) */}
             <div style={{
               borderTop: '1px solid rgba(247,246,243,0.08)',
               paddingTop: '32px',

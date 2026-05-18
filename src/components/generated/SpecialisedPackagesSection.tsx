@@ -292,7 +292,7 @@ const DetailPanel: React.FC<DetailPanelProps> = ({
         {`0${pkg.index}`}
       </div>
 
-      {/* Actual content — sits above overlays */}
+      {/* Actual content: sits above overlays */}
       <div style={{
       position: 'relative',
       zIndex: 1
@@ -584,7 +584,7 @@ export const SpecialisedPackagesSection: React.FC = () => {
           fontWeight: 300,
           margin: 0
         }}>
-            Targeted partnership opportunities beyond the main tiers — designed for specific brand
+            Targeted partnership opportunities beyond the main tiers: designed for specific brand
             objectives, commercial goals, and activation strategies.
           </motion.p>
         </div>

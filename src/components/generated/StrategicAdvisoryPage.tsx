@@ -862,7 +862,7 @@ const HeroSection = () => {
         fontWeight: 300,
         maxWidth: '520px'
       }}>
-        We move businesses from survival to scale and from ideas to investment-ready enterprises - combining global best practices in venture finance, incubation, and strategic growth advisory.
+        We move businesses from survival to scale and from ideas to investment-ready enterprises: combining global best practices in venture finance, incubation, and strategic growth advisory.
       </motion.p>
 
       {/* CTAs */}
@@ -1289,7 +1289,7 @@ const OfferingsSection = () => {
             margin: 0,
             fontWeight: 300
           }}>
-            Each solution is engineered to deliver measurable commercial outcomes - connecting organisations to capital, markets, and enterprise growth ecosystems at the highest level.
+            Each solution is engineered to deliver measurable commercial outcomes: connecting organisations to capital, markets, and enterprise growth ecosystems at the highest level.
           </p>
           <a href="#" style={{
             display: 'inline-flex',

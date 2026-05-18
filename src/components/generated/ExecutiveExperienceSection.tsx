@@ -118,7 +118,7 @@ const EXPERIENCE_PILLARS: ExperiencePillar[] = [{
   id: 'ep-1',
   num: '01',
   title: 'Executive Red Carpet Arrival',
-  description: 'An immersive grand entrance designed to set the tone — curated ambiance, personalized welcome, and white-glove service from the first step.',
+  description: 'An immersive grand entrance designed to set the tone: curated ambiance, personalized welcome, and white-glove service from the first step.',
   tag: 'Grand Entrance',
   featured: true,
   icon: <StarIcon />
@@ -222,7 +222,7 @@ export const ExecutiveExperienceSection: React.FC = () => {
           margin: 0,
           maxWidth: '520px'
         }}>
-            Five precisely orchestrated moments that define a summit unlike any other — built for those who lead, invest, and leave a mark.
+            Five precisely orchestrated moments that define a summit unlike any other: built for those who lead, invest, and leave a mark.
           </motion.p>
         </div>
 

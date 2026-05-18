@@ -22,7 +22,7 @@ const GRID_COLUMNS = [{
   id: 'col-2',
   label: 'NO REGISTRATION. NO PITCH.',
   body1: 'Only officially registered entrepreneurs will be eligible for consideration. Final pitching decisions remain solely with participating funders and EmpowaWorx and are final.',
-  body2: 'This platform extends far beyond pitching — expect direct access to funding conversations, investment intelligence, and growth masterclasses.'
+  body2: 'This platform extends far beyond pitching: expect direct access to funding conversations, investment intelligence, and growth masterclasses.'
 }, {
   id: 'col-3',
   label: 'LIMITED SPACES AVAILABLE',
@@ -157,7 +157,7 @@ export const FundingPlatformAlert: React.FC = () => {
     overflowX: 'hidden'
   }}>
 
-      {/* ZONE 1 — Platform Identity Band */}
+      {/* ZONE 1: Platform Identity Band */}
       <div ref={zone1Ref} style={{
       background: `#0A0906`,
       backgroundImage: `${NOISE_SVG}, radial-gradient(ellipse 70% 60% at 20% 50%, rgba(222,50,45,0.14) 0%, transparent 70%)`,
@@ -319,7 +319,7 @@ export const FundingPlatformAlert: React.FC = () => {
         </div>
       </div>
 
-      {/* ZONE 2 — Full-Width Dark Callout Quote */}
+      {/* ZONE 2: Full-Width Dark Callout Quote */}
       <div ref={quoteRef} style={{
       background: '#141210',
       backgroundImage: `${NOISE_SVG}, radial-gradient(ellipse 50% 80% at 80% 50%, rgba(222,50,45,0.08) 0%, transparent 65%)`,
@@ -366,7 +366,7 @@ export const FundingPlatformAlert: React.FC = () => {
               letterSpacing: '-0.4px',
               margin: '0 0 16px'
             }}>
-                Pitch or not — position yourself where capital is deployed, partnerships are
+                Pitch or not: position yourself where capital is deployed, partnerships are
                 activated, and high-growth businesses are discovered.
               </p>
               <div style={{
@@ -380,7 +380,7 @@ export const FundingPlatformAlert: React.FC = () => {
         </div>
       </div>
 
-      {/* ZONE 3 — Notice Grid Section */}
+      {/* ZONE 3: Notice Grid Section */}
       <div ref={zone3Ref} style={{
       background: '#F7F3EC',
       paddingTop: isMobile ? '36px' : isTablet ? '52px' : '64px',
