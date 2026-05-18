@@ -227,7 +227,7 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
       }
 
       if (orgChart) {
-        formData.append('input_76', orgChart);
+        formData.append('input_76[]', orgChart);
       }
       
       if (supportingDocs && supportingDocs.length > 0) {
