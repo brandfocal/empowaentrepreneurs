@@ -1,4 +1,32 @@
-import { lazy, Suspense, useMemo } from 'react';
+import React, { lazy, Suspense, useMemo } from 'react';
+
+class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean}> {
+  constructor(props: {children: React.ReactNode}) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error: any) {
+    return { hasError: true };
+  }
+  componentDidCatch(error: any, errorInfo: any) {
+    console.error('Caught error:', error, errorInfo);
+    if (error.name === 'ChunkLoadError' || (error.message && error.message.includes('dynamically imported module'))) {
+      window.location.reload();
+    }
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '20px', textAlign: 'center', color: '#fff', background: '#0A0906', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <h2>A new version of this page is available.</h2>
+          <button onClick={() => window.location.reload()} style={{ padding: '10px 20px', background: '#DE322D', border: 'none', borderRadius: '4px', color: '#fff', cursor: 'pointer', marginTop: '20px' }}>Reload Page</button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Container, Theme } from './settings/types';
 import { UniversalLayout } from './components/layout/UniversalLayout';
@@ -34,7 +62,7 @@ function App() {
     return (
       <BrowserRouter>
         <UniversalLayout>
-          <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#0a1520', color: '#fff', fontFamily: 'Inter, sans-serif' }}>Loading...</div>}>
+          <ErrorBoundary><Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#0a1520', color: '#fff', fontFamily: 'Inter, sans-serif' }}>Loading...</div>}>
             <Routes>
               <Route path="/" element={<AgencyLandingPage />} />
               <Route path="/about" element={<AboutUsPage />} />
@@ -49,7 +77,7 @@ function App() {
               <Route path="/summit" element={<FundingSummitPage />} />
               <Route path="/detailed-registration-2026" element={<DetailedRegistrationPage />} />
             </Routes>
-          </Suspense>
+          </Suspense></ErrorBoundary>
         </UniversalLayout>
       </BrowserRouter>
     ); // %EXPORT_STATEMENT%
