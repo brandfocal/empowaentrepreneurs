@@ -3099,6 +3099,216 @@ const SUMMIT_SPEAKERS: SummitSpeaker[] = [{
   accentColor: '#6B5E4A',
   imageSrc: '/speakers/Masterclass/punki-modise.jpg',
   year: '2026'
+}, {
+  id: 'sp-26',
+  name: 'Dr. Alvin Chikamba',
+  role: 'Industry Expert',
+  company: 'EmpowaEntrepreneurs Ecosystem',
+  topic: 'Market Insights & Ecosystems',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/Dr-Alvin-Chikamba.jpg',
+  year: '2026'
+}, {
+  id: 'sp-27',
+  name: 'Jedd Harris',
+  role: 'Funding Partner',
+  company: 'Venture Network',
+  topic: 'Capital Access Models',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/Jedd-Harris.jpg',
+  year: '2026'
+}, {
+  id: 'sp-28',
+  name: 'Lebo Raolane',
+  role: 'Ecosystem Partner',
+  company: 'Enterprise Development',
+  topic: 'Building Scalable Frameworks',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/Lebo-Raolane.jpg',
+  year: '2026'
+}, {
+  id: 'sp-29',
+  name: 'Dimakatso Mphafudi',
+  role: 'Industry Leader',
+  company: 'Growth Advisors',
+  topic: 'Funding Readiness',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/dimakatso-mphafudi.jpg',
+  year: '2026'
+}, {
+  id: 'sp-30',
+  name: 'Dr. Paulina Mamogobo',
+  role: 'Strategic Advisor',
+  company: 'EmpowaGrowth',
+  topic: 'Navigating Corporate Funding',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/dr-paulina-mamogobo.jpg',
+  year: '2026'
+}, {
+  id: 'sp-31',
+  name: 'Graeme Wilkinson',
+  role: 'Finance Specialist',
+  company: 'Capital Group',
+  topic: 'Investment Structuring',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/graeme-wilkinson.jpg',
+  year: '2026'
+}, {
+  id: 'sp-32',
+  name: 'Gugu Mfuphi',
+  role: 'Media & Business Anchor',
+  company: 'Broadcasting',
+  topic: 'Conversations on Capital',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/gugu-mfuphi.jpg',
+  year: '2026'
+}, {
+  id: 'sp-33',
+  name: 'Kile Kwinana',
+  role: 'Investment Executive',
+  company: 'Private Equity',
+  topic: 'Equity Financing Strategies',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/kile-kwinana.jpg',
+  year: '2026'
+}, {
+  id: 'sp-34',
+  name: 'Maseabi Marageni',
+  role: 'Enterprise Development',
+  company: 'Corporate Ventures',
+  topic: 'Scaling through Procurement',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/maseabi-marageni.jpg',
+  year: '2026'
+}, {
+  id: 'sp-35',
+  name: 'Mzamo Myataza',
+  role: 'Financial Strategist',
+  company: 'Growth Funds',
+  topic: 'Unlocking Capital Flow',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/mzamo-myataza.jpg',
+  year: '2026'
+}, {
+  id: 'sp-36',
+  name: 'Naomi Ntshali',
+  role: 'Impact Advisor',
+  company: 'Sustainable Capital',
+  topic: 'Impact Investment Dynamics',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/naomi-ntshali.jpg',
+  year: '2026'
+}, {
+  id: 'sp-37',
+  name: 'Ndumiso Zulu',
+  role: 'Innovation Leader',
+  company: 'Tech Ecosystems',
+  topic: 'Funding Tech Scale-ups',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/ndumiso-zulu.jpg',
+  year: '2026'
+}, {
+  id: 'sp-38',
+  name: 'Salu Yekela',
+  role: 'Ecosystem Facilitator',
+  company: 'Venture Support',
+  topic: 'Bridging the Funding Gap',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/salu-yekela.jpg',
+  year: '2026'
+}, {
+  id: 'sp-39',
+  name: 'Stem Zwane',
+  role: 'Capital Advisor',
+  company: 'Financial Network',
+  topic: 'Navigating Alternative Funding',
+  tag: 'Panel',
+  accentColor: '#3B4E5F',
+  imageSrc: '/speakers/Panel/stem-zwane.jpg',
+  year: '2026'
+}, {
+  id: 'sp-40',
+  name: 'Anthony Govender',
+  role: 'Industry Expert',
+  company: 'EmpowaEntrepreneurs',
+  topic: 'Mastering Debt Finance',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/Anthony-Govender.jpg',
+  year: '2026'
+}, {
+  id: 'sp-41',
+  name: 'Nosipho Khonkwane',
+  role: 'Strategic Lead',
+  company: 'EmpowaGrowth',
+  topic: 'Enterprise Scalability',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/Nosipho-Khonkwane.jpg',
+  year: '2026'
+}, {
+  id: 'sp-42',
+  name: 'Sifeziwe Ndlovu',
+  role: 'Financial Analyst',
+  company: 'Market Insights',
+  topic: 'Valuation and Metrics',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/Sifeziwe-Ndlovu.jpg',
+  year: '2026'
+}, {
+  id: 'sp-43',
+  name: 'Saki Zamxaka',
+  role: 'Corporate Leader',
+  company: 'Investment Group',
+  topic: 'Corporate Venture Capital',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/saki-zamxaka.jpg',
+  year: '2026'
+}, {
+  id: 'sp-44',
+  name: 'Sibongile Zulu',
+  role: 'Ecosystem Partner',
+  company: 'Incubation Network',
+  topic: 'Readiness for Series A',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/sibongile-zulu.jpg',
+  year: '2026'
+}, {
+  id: 'sp-45',
+  name: 'Thabelo Ratshihole',
+  role: 'Venture Partner',
+  company: 'Growth Advisors',
+  topic: 'Structuring a Winning Pitch',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/thabelo-ratshihole.jpg',
+  year: '2026'
+}, {
+  id: 'sp-46',
+  name: 'Tshepo Moloi',
+  role: 'Founder & Investor',
+  company: 'Tech Ecosystems',
+  topic: 'Fintech and Innovation Funding',
+  tag: 'Masterclass',
+  accentColor: '#6B5E4A',
+  imageSrc: '/speakers/Masterclass/tshepo-moloi.jpg',
+  year: '2026'
 }];
 const SPEAKER_TABS = [{
   id: 'tab-all',
