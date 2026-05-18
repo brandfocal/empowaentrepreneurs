@@ -1430,7 +1430,7 @@ const PROCESS_STEPS: ProcessStep[] = [{
   title: 'Scale',
   description: 'Access strategic partnerships, procurement opportunities, and the ecosystem support needed to accelerate growth across African markets.',
   icon: '',
-  imageSrc: '/public/scale.jpg'
+  imageSrc: '/scale.jpg'
 }, {
   id: 'step-lead',
   number: '04',
@@ -1725,7 +1725,7 @@ const SERVICES: ServiceItem[] = [{
   name: 'Corporates & DFIs',
   description: 'Development Finance Institutions and corporate leaders unlock procurement opportunities, co-investment mandates, and enterprise partnerships that drive continental impact.',
   tag: 'Procurement · DFIs · Co-Investment',
-  imageSrc: '/public/corporate-dfi.jpg',
+  imageSrc: '/corporate-dfi.jpg',
   imageAlt: 'Corporate and DFI partners at EmpowaEntrepreneurs Funding Summit 2026',
   bgColor: '#F3F0EA',
   tintColor: 'rgba(107,94,74,0.30)'
