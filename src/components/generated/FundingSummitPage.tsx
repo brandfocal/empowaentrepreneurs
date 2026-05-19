@@ -3716,8 +3716,9 @@ export const PastSpeakersSection = () => {
                   fontSize: '10px',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'rgba(20,18,16,0.65)',
-                  fontWeight: 500
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  textShadow: '0px 1px 2px rgba(0,0,0,0.6)'
                 }}>
                   {speaker.tag}
                 </div>
