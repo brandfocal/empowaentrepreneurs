@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion';
 // --- CONSTANTS ---
 const STAT_PILLS = [{
   id: 'pill-1',
-  label: '800+ Entrepreneurs'
+  label: '400+ Entrepreneurs'
 }, {
   id: 'pill-2',
   label: '200+ Funders & Investors'
