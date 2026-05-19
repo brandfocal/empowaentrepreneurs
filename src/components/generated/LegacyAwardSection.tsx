@@ -335,7 +335,7 @@ export const LegacyAwardSection: React.FC = () => {
   const isStacked = isMobile || isTablet;
   return <section className="relative w-full bg-[#0A0906] flex items-center justify-center" style={{
     minHeight: '100vh',
-    overflowX: 'hidden',
+    overflow: 'hidden',
     paddingTop: isMobile ? '64px' : isTablet ? '88px' : '110px',
     paddingBottom: isMobile ? '64px' : isTablet ? '88px' : '110px',
     boxSizing: 'border-box'
