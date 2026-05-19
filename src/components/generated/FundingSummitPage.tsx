@@ -3338,7 +3338,7 @@ export const PastSpeakersSection = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const cardWidth = isMobile ? 240 : isTablet ? 280 : 300;
-  const photoHeight = isMobile ? 180 : isTablet ? 200 : 220;
+  const photoHeight = isMobile ? 320 : isTablet ? 360 : 400;
   const cardGap = 16;
   const filteredSpeakers = activeTab === 'All' ? SUMMIT_SPEAKERS : SUMMIT_SPEAKERS.filter(s => s.tag === activeTab);
   const scrollToIdx = (idx: number) => {
