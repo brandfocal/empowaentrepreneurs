@@ -1144,7 +1144,7 @@ const HeroSection = () => {
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
             }} whileTap={{
@@ -3742,7 +3742,7 @@ const SiteFooter = () => {
             gap: '12px',
             minWidth: isMobile ? '100%' : '260px'
           }}>
-            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -4230,7 +4230,7 @@ const StickyRegistrationBanner = () => {
           flexShrink: 0,
           flexWrap: 'nowrap'
         }}>
-          <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04,
             boxShadow: '0 8px 32px rgba(222,50,45,0.55)'
           }} whileTap={{

@@ -4,6 +4,7 @@ import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTr
 
 import { LeadershipTeamSection } from './LeadershipTeamSection';
 import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
+import { SummitRegistrationModal } from './SummitRegistrationModal';
 import { FundingPlatformAlert } from './FundingPlatformAlert';
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -898,7 +899,7 @@ const HeroSection = () => {
             display: 'inline-flex',
             width: isMobile ? '100%' : 'auto'
           }}>
-            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openSummitModal')); }} whileHover={{
               scale: 1.04,
               boxShadow: '0 16px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -2154,9 +2155,9 @@ const CtaBannerSection = () => {
           display: 'inline-flex',
           width: isMobile ? '100%' : 'auto'
         }}>
-          <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" onClick={e => {
+          <motion.a href="#" onClick={e => {
             e.preventDefault();
-            setActiveForm(prev => prev === 'cta-b1' ? null : 'cta-b1');
+            window.dispatchEvent(new CustomEvent('openSummitModal'));
           }} whileHover={{
             scale: 1.04,
             boxShadow: '0 16px 52px rgba(222,50,45,0.8)'
@@ -2591,7 +2592,7 @@ const SiteFooter = () => {
             gap: '12px',
             width: isMobile ? '100%' : isTablet ? '200px' : '240px'
           }}>
-            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openSummitModal')); }} whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
@@ -4467,11 +4468,17 @@ const EventProgrammeSection = () => {
 // ─── FundingSummitPage ─────────────────────────────────────────────────────────
 export const FundingSummitPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSummitModalOpen, setIsSummitModalOpen] = useState(false);
 
   useEffect(() => {
     const handleOpen = () => setIsModalOpen(true);
+    const handleSummitOpen = () => setIsSummitModalOpen(true);
     window.addEventListener('openPartnershipModal', handleOpen);
-    return () => window.removeEventListener('openPartnershipModal', handleOpen);
+    window.addEventListener('openSummitModal', handleSummitOpen);
+    return () => {
+      window.removeEventListener('openPartnershipModal', handleOpen);
+      window.removeEventListener('openSummitModal', handleSummitOpen);
+    };
   }, []);
 
   return <div className="w-full min-h-screen" style={{
@@ -4490,5 +4497,6 @@ export const FundingSummitPage = () => {
     <EligibilitySection />
     <CtaBannerSection />
     {isModalOpen && <PartnershipEnquiryModal onClose={() => setIsModalOpen(false)} />}
+    {isSummitModalOpen && <SummitRegistrationModal onClose={() => setIsSummitModalOpen(false)} />}
   </div>;
 };

@@ -2535,7 +2535,7 @@ const SiteFooter = () => {
             width: isMobile || isTablet ? '100%' : '260px',
             flexShrink: 0
           }}>
-              <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+              <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{

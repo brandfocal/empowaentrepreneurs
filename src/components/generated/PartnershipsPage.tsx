@@ -2144,7 +2144,7 @@ const CtaSection = () => {
         }, {
           id: 'ci-2',
           label: 'Partnership Enquiries',
-          value: 'partnerships@empowa.co',
+          value: 'partnerships@empowaentrepreneurs.co.za',
           sub: 'Direct partnership enquiries'
         }, {
           id: 'ci-3',

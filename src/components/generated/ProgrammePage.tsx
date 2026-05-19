@@ -456,7 +456,7 @@ const ProgrammeNav = () => {
           }}>
             <span>Partner With Us</span>
           </motion.a>
-          <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+          <motion.a href="/summit" whileHover={{
             scale: 1.04
           }} whileTap={{
             scale: 0.97
@@ -543,7 +543,7 @@ const ProgrammeNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</a>
-          <a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" style={{
+          <a href="/summit" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -850,7 +850,7 @@ const ProgrammeHero = () => {
         }}>
           <span>Explore Programme</span><ArrowIconDark />
         </motion.a>
-        <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+        <motion.a href="/summit" whileHover={{
           scale: 1.04
         }} whileTap={{
           scale: 0.97
@@ -2030,7 +2030,7 @@ const ProgrammeCtaSection = () => {
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="/summit" whileHover={{
               scale: 1.04
             }} whileTap={{
               scale: 0.97
@@ -2386,7 +2386,7 @@ const ProgrammeFooter = () => {
             gap: '12px',
             minWidth: isMobile ? '100%' : '260px'
           }}>
-            <motion.a href="https://www.quicket.co.za/events/312690-empowaentrepreneurs-funding-summit/" whileHover={{
+            <motion.a href="/summit" whileHover={{
               scale: 1.04,
               boxShadow: '0 12px 52px rgba(222,50,45,0.7)'
             }} whileTap={{
