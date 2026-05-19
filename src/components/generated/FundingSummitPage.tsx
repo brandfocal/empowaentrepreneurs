@@ -3639,7 +3639,7 @@ export const PastSpeakersSection = () => {
                 <div aria-hidden="true" style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(to top, rgba(10,9,8,0.5) 0%, transparent 55%)',
+                  background: 'linear-gradient(to top, rgba(10,9,8,0.9) 0%, rgba(10,9,8,0.4) 50%, transparent 80%)',
                   pointerEvents: 'none'
                 }} />
                 {/* Tag badge */}
@@ -3665,7 +3665,7 @@ export const PastSpeakersSection = () => {
                 {/* Year badge */}
                 <div style={{
                   position: 'absolute',
-                  bottom: '14px',
+                  top: '14px',
                   right: '14px',
                   background: 'rgba(0,0,0,0.5)',
                   backdropFilter: 'blur(6px)',
@@ -3680,6 +3680,43 @@ export const PastSpeakersSection = () => {
                 }}>
                   {speaker.year}
                 </div>
+                
+                {/* Speaker Info Area (Inside Image) */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '24px',
+                  left: '20px',
+                  right: '20px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '6px',
+                  zIndex: 2
+                }}>
+                  <h3 style={{
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: isMobile ? '18px' : '22px',
+                    fontWeight: 500,
+                    letterSpacing: '-0.4px',
+                    color: '#FFFFFF',
+                    margin: 0,
+                    lineHeight: 1.2
+                  }}>
+                    {speaker.name}
+                  </h3>
+                  <p style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '13px',
+                    color: 'rgba(255,255,255,0.75)',
+                    margin: 0,
+                    letterSpacing: '0.02em',
+                    lineHeight: 1.4
+                  }}>
+                    <span style={{ fontWeight: 500, color: '#FFFFFF' }}>{speaker.role}</span>
+                    <br />
+                    <span>{speaker.company}</span>
+                  </p>
+                </div>
+
                 {/* Bottom accent line */}
                 <div aria-hidden="true" style={{
                   position: 'absolute',
@@ -3691,117 +3728,6 @@ export const PastSpeakersSection = () => {
                   opacity: isHov ? 1 : 0.4,
                   transition: 'opacity 0.3s ease'
                 }} />
-              </div>
-
-              {/* Info Area */}
-              <div style={{
-                padding: '20px 20px 24px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-                background: '#FFFFFF'
-              }}>
-                <div>
-                  <h3 style={{
-                    fontFamily: 'Montserrat, sans-serif',
-                    fontSize: isMobile ? '16px' : '19px',
-                    fontWeight: 500,
-                    letterSpacing: '-0.4px',
-                    color: '#141210',
-                    margin: '0 0 5px',
-                    lineHeight: 1.2
-                  }}>
-                    {speaker.name}
-                  </h3>
-                  <p style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '12px',
-                    color: 'rgba(20,18,16,0.45)',
-                    margin: 0,
-                    letterSpacing: '0.02em'
-                  }}>
-                    <span>{speaker.role}</span>
-                    <span style={{
-                      color: 'rgba(20,18,16,0.2)',
-                      margin: '0 6px'
-                    }}>·</span>
-                    <span>{speaker.company}</span>
-                  </p>
-                </div>
-
-                {/* Speaking On box */}
-                <div style={{
-                  background: '#F7F6F3',
-                  borderRadius: '10px',
-                  padding: '10px 14px'
-                }}>
-                  <div style={{
-                    fontFamily: 'Montserrat, sans-serif',
-                    fontSize: '10px',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(20,18,16,0.3)',
-                    marginBottom: '5px',
-                    fontWeight: 500
-                  }}>
-                    Speaking On
-                  </div>
-                  <div style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: isMobile ? '13px' : '14px',
-                    color: 'rgba(20,18,16,0.72)',
-                    lineHeight: 1.5,
-                    letterSpacing: '-0.1px'
-                  }}>
-                    {speaker.topic}
-                  </div>
-                </div>
-
-
-
-                {/* Bottom row */}
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between'
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px'
-                  }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      borderRadius: '50%',
-                      background: speaker.accentColor,
-                      flexShrink: 0
-                    }} />
-                    <span style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '12px',
-                      color: 'rgba(20,18,16,0.45)',
-                      letterSpacing: '0.02em'
-                    }}>
-                      Summit {speaker.year}
-                    </span>
-                  </div>
-                  <div style={{
-                    width: '32px',
-                    height: '32px',
-                    background: 'rgba(20,18,16,0.05)',
-                    border: '1px solid rgba(20,18,16,0.08)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 10L10 2M10 2H4M10 2V8" stroke="rgba(20,18,16,0.4)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
               </div>
             </motion.article>;
           })}
