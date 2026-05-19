@@ -539,7 +539,7 @@ export const FundingPlatformAlert: React.FC = () => {
               gap: '10px',
               paddingTop: '4px'
             }}>
-                <motion.button whileHover={{
+                <motion.a href="/summit" whileHover={{
                 scale: 1.03
               }} whileTap={{
                 scale: 0.97
@@ -553,6 +553,7 @@ export const FundingPlatformAlert: React.FC = () => {
                 fontSize: '13px',
                 boxShadow: '0 4px 18px rgba(222,50,45,0.4)',
                 border: 'none',
+                textDecoration: 'none',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -565,8 +566,8 @@ export const FundingPlatformAlert: React.FC = () => {
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
-                </motion.button>
-                <motion.button whileHover={{
+                </motion.a>
+                <motion.a href="/summit" whileHover={{
                 scale: 1.03
               }} whileTap={{
                 scale: 0.97
@@ -579,11 +580,15 @@ export const FundingPlatformAlert: React.FC = () => {
                 fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 600,
                 fontSize: '13px',
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 cursor: 'pointer',
                 flex: isMobile ? 'unset' : 1
               }}>
                   Learn More
-                </motion.button>
+                </motion.a>
               </div>
             </div>
           </motion.div>
