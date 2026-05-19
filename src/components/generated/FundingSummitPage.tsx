@@ -3352,6 +3352,58 @@ export const PastSpeakersSection = () => {
   };
   const handlePrev = () => scrollToIdx(Math.max(0, activeIdx - 1));
   const handleNext = () => scrollToIdx(Math.min(filteredSpeakers.length - 1, activeIdx + 1));
+  
+  // Auto-scroll and Drag-to-scroll
+  const isPausedRef = useRef(false);
+  const lastTickRef = useRef<number>(Date.now());
+  const SCROLL_SPEED = 40; // pixels per second
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragScrollLeft = useRef(0);
+
+  useEffect(() => {
+    let animationId: number;
+    lastTickRef.current = Date.now();
+    const tick = () => {
+      const now = Date.now();
+      const elapsed = now - lastTickRef.current;
+      lastTickRef.current = now;
+      
+      if (!isPausedRef.current && !isDragging.current && trackRef.current) {
+        trackRef.current.scrollLeft += (elapsed / 1000) * SCROLL_SPEED;
+        // Loop back to start if reached the end
+        if (trackRef.current.scrollLeft >= trackRef.current.scrollWidth - trackRef.current.clientWidth - 1) {
+          trackRef.current.scrollLeft = 0;
+        }
+      }
+      animationId = requestAnimationFrame(tick);
+    };
+    animationId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animationId);
+  }, [activeTab]);
+
+  const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    isDragging.current = true;
+    isPausedRef.current = true;
+    dragStartX.current = e.pageX - (trackRef.current?.offsetLeft || 0);
+    dragScrollLeft.current = trackRef.current?.scrollLeft || 0;
+    if (trackRef.current) trackRef.current.style.cursor = 'grabbing';
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging.current || !trackRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - (trackRef.current.offsetLeft || 0);
+    const walk = (x - dragStartX.current) * 1.5;
+    trackRef.current.scrollLeft = dragScrollLeft.current - walk;
+  }, []);
+
+  const handleMouseUpOrLeave = useCallback(() => {
+    isDragging.current = false;
+    isPausedRef.current = false;
+    if (trackRef.current) trackRef.current.style.cursor = 'grab';
+  }, []);
+
   const hPad = isMobile ? '0 20px' : isTablet ? '0 40px' : '0 64px';
   const sectionBgFade = '#EDE8E0';
   return <section ref={sectionRef} style={{
@@ -3591,15 +3643,22 @@ export const PastSpeakersSection = () => {
         pointerEvents: 'none'
       }} />
       {/* Scrollable track */}
-      <div ref={trackRef} style={{
-        overflowX: 'auto',
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none',
-        WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'],
-        cursor: 'grab',
-        userSelect: 'none',
-        padding: isMobile ? '0 20px' : '0 64px'
-      }}>
+      <div 
+        ref={trackRef} 
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        onMouseEnter={() => { isPausedRef.current = true; }}
+        style={{
+          overflowX: 'auto',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'],
+          cursor: 'grab',
+          userSelect: 'none',
+          padding: isMobile ? '0 20px' : '0 64px'
+        }}>
         <div style={{
           display: 'flex',
           gap: '16px',
