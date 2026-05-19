@@ -176,7 +176,7 @@ const AccordionItem = ({
   onToggle: () => void;
 }) => <div className="border-t border-[#141210]/10 pt-4 mt-4">
     <button onClick={onToggle} className="flex items-center justify-between w-full text-left group cursor-pointer pb-2">
-      <span className="font-['Montserrat'] text-[10px] font-semibold tracking-[1px] uppercase text-[#141210]/40 group-hover:text-[#DE322D] transition-colors">
+      <span className="font-[Montserrat,_sans-serif] text-[10px] font-semibold tracking-[1px] uppercase text-[#141210]/40 group-hover:text-[#DE322D] transition-colors">
         {title}
       </span>
       <ChevronDown className={cn('w-3.5 h-3.5 text-[#141210]/45 transition-transform duration-300', isOpen && 'rotate-180')} />
@@ -211,12 +211,12 @@ export const AfricaExpansionRoadmap = () => {
             <div className="w-5 h-5 flex-shrink-0 bg-[#DE322D] flex items-center justify-center rounded-[2px]">
               <Plus className="text-white w-3.5 h-3.5" />
             </div>
-            <span className="font-['Montserrat'] text-[11px] font-medium tracking-[1.6px] uppercase text-[#141210]/45">
+            <span className="font-[Montserrat,_sans-serif] text-[11px] font-medium tracking-[1.6px] uppercase text-[#141210]/45">
               Africa Expansion Roadmap 2026–2027
             </span>
           </div>
 
-          <h1 className="font-['Montserrat'] text-[38px] md:text-[52px] font-light leading-[1.05] tracking-[-1.6px] text-[#141210] mb-6">
+          <h1 className="font-[Montserrat,_sans-serif] text-[38px] md:text-[52px] font-light leading-[1.05] tracking-[-1.6px] text-[#141210] mb-6">
             <span className="block">EmpowaEntrepreneurs</span>
             <span className="block">
               <em className="not-italic text-[#DE322D]">Funding Summit™</em>
@@ -224,11 +224,11 @@ export const AfricaExpansionRoadmap = () => {
             <span className="block text-[#141210]/22">Africa Expansion 2026–2027</span>
           </h1>
 
-          <p className="font-['Montserrat'] text-[14px] md:text-[16px] font-semibold tracking-[-0.2px] text-[#141210]/70 mb-4 max-w-[780px]">
+          <p className="font-[Montserrat,_sans-serif] text-[14px] md:text-[16px] font-semibold tracking-[-0.2px] text-[#141210]/70 mb-4 max-w-[780px]">
             Building Africa's Most Connected Entrepreneurial Funding &amp; Economic Activation Ecosystem
           </p>
 
-          <p className="font-['Inter'] text-[14px] md:text-[15px] font-light text-[#141210]/55 leading-[1.75] max-w-[820px]">
+          <p className="font-[Inter,_sans-serif] text-[14px] md:text-[15px] font-light text-[#141210]/55 leading-[1.75] max-w-[820px]">
             EmpowaEntrepreneurs Funding Summit is strategically positioned to evolve into a Pan-African
             entrepreneurial funding, venture creation, and economic activation platform connecting
             entrepreneurs, investors, DFIs, governments, corporates, and innovation ecosystems across
@@ -242,7 +242,7 @@ export const AfricaExpansionRoadmap = () => {
 
         {/* SA National Expansion — Horizontal Tab Interface */}
         <div className="mb-20">
-          <h3 className="font-['Montserrat'] text-[13px] font-semibold tracking-[1.4px] uppercase text-[#DE322D] mb-9">
+          <h3 className="font-[Montserrat,_sans-serif] text-[13px] font-semibold tracking-[1.4px] uppercase text-[#DE322D] mb-9">
             South Africa National Expansion
           </h3>
 
@@ -433,13 +433,13 @@ export const AfricaExpansionRoadmap = () => {
 
         {/* Pan-African Section */}
         <div className="mb-16">
-          <h3 className="font-['Montserrat'] text-[13px] font-semibold tracking-[1.4px] uppercase text-[#DE322D] mb-7">
+          <h3 className="font-[Montserrat,_sans-serif] text-[13px] font-semibold tracking-[1.4px] uppercase text-[#DE322D] mb-7">
             Pan-African Gateway Cities 2027
           </h3>
 
           {/* City Tabs */}
           <div className="flex flex-wrap gap-1 md:gap-2 mb-7">
-            {CITIES.map(city => <button key={city.id} onClick={() => setActiveCityId(city.id)} className={cn("px-4 py-2 rounded-lg font-['Montserrat'] text-[12px] font-semibold transition-all duration-300", activeCityId === city.id ? 'bg-[#DE322D] text-white' : 'bg-[#141210]/5 text-[#141210]/50 hover:bg-[#141210]/10')}>
+            {CITIES.map(city => <button key={city.id} onClick={() => setActiveCityId(city.id)} className={cn("px-4 py-2 rounded-lg font-[Montserrat,_sans-serif] text-[12px] font-semibold transition-all duration-300", activeCityId === city.id ? 'bg-[#DE322D] text-white' : 'bg-[#141210]/5 text-[#141210]/50 hover:bg-[#141210]/10')}>
                 {city.name}
               </button>)}
           </div>
@@ -461,27 +461,27 @@ export const AfricaExpansionRoadmap = () => {
             }}>
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
                   <div>
-                    <h4 className="font-['Montserrat'] text-[24px] font-bold text-[#141210] tracking-[-0.4px] mb-1">
+                    <h4 className="font-[Montserrat,_sans-serif] text-[24px] font-bold text-[#141210] tracking-[-0.4px] mb-1">
                       <span>{activeCity.name}</span>
                       <span className="font-light text-[#141210]/40 text-[18px] ml-2">
                         {activeCity.country}
                       </span>
                     </h4>
-                    <p className="font-['Inter'] text-[12px] text-[#141210]/40 italic">
+                    <p className="font-[Inter,_sans-serif] text-[12px] text-[#141210]/40 italic">
                       {activeCity.tagline}
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="bg-[#DE322D]/10 text-[#DE322D] font-['Montserrat'] text-[10px] font-semibold tracking-[0.6px] uppercase px-2.5 py-1 rounded-full">
+                    <span className="bg-[#DE322D]/10 text-[#DE322D] font-[Montserrat,_sans-serif] text-[10px] font-semibold tracking-[0.6px] uppercase px-2.5 py-1 rounded-full">
                       {activeCity.region}
                     </span>
-                    <span className="bg-[#141210]/5 text-[#141210]/50 font-['Montserrat'] text-[10px] font-semibold tracking-[0.4px] px-2.5 py-1 rounded-full">
+                    <span className="bg-[#141210]/5 text-[#141210]/50 font-[Montserrat,_sans-serif] text-[10px] font-semibold tracking-[0.4px] px-2.5 py-1 rounded-full">
                       {activeCity.launchDate}
                     </span>
                   </div>
                 </div>
 
-                <p className="font-['Inter'] text-[14px] md:text-[15px] font-light text-[#141210]/65 leading-[1.7] mb-6 max-w-[850px]">
+                <p className="font-[Inter,_sans-serif] text-[14px] md:text-[15px] font-light text-[#141210]/65 leading-[1.7] mb-6 max-w-[850px]">
                   {activeCity.description}
                 </p>
 
@@ -491,7 +491,7 @@ export const AfricaExpansionRoadmap = () => {
                         <div className="w-5 h-5 flex-shrink-0 bg-[#DE322D] flex items-center justify-center rounded-[2px] mt-0.5">
                           <Plus className="text-white w-3 h-3" strokeWidth={3} />
                         </div>
-                        <span className="font-['Inter'] text-[13px] text-[#141210]/60 font-light leading-snug">
+                        <span className="font-[Inter,_sans-serif] text-[13px] text-[#141210]/60 font-light leading-snug">
                           {opt}
                         </span>
                       </div>)}
@@ -502,7 +502,7 @@ export const AfricaExpansionRoadmap = () => {
                   <div className="flex flex-col gap-3 mt-1">
                     {activeCity.valueROI.map(roi => <div key={roi} className="flex items-center gap-3">
                         <div className="w-1.5 h-1.5 bg-[#DE322D] rounded-full flex-shrink-0" />
-                        <span className="font-['Inter'] text-[13px] text-[#141210]/60 font-light">
+                        <span className="font-[Inter,_sans-serif] text-[13px] text-[#141210]/60 font-light">
                           {roi}
                         </span>
                       </div>)}
@@ -522,12 +522,12 @@ export const AfricaExpansionRoadmap = () => {
             <div className="w-5 h-5 flex-shrink-0 bg-[#DE322D] flex items-center justify-center rounded-[2px]">
               <Plus className="text-white w-3.5 h-3.5" />
             </div>
-            <span className="font-['Montserrat'] text-[11px] font-medium tracking-[1.6px] uppercase text-[#141210]/45">
+            <span className="font-[Montserrat,_sans-serif] text-[11px] font-medium tracking-[1.6px] uppercase text-[#141210]/45">
               Strategic Expansion Value Proposition
             </span>
           </div>
 
-          <h2 className="font-['Montserrat'] text-[26px] md:text-[32px] font-light leading-[1.15] tracking-[-0.8px] text-[#141210] mb-10 max-w-[700px]">
+          <h2 className="font-[Montserrat,_sans-serif] text-[26px] md:text-[32px] font-light leading-[1.15] tracking-[-0.8px] text-[#141210] mb-10 max-w-[700px]">
             <span>The EmpowaEntrepreneurs™ Pan-African Expansion Strategy is </span>
             <em className="not-italic text-[#DE322D]">Designed To:</em>
           </h2>
@@ -537,7 +537,7 @@ export const AfricaExpansionRoadmap = () => {
                 <div className="w-6 h-6 flex-shrink-0 bg-[#DE322D] flex items-center justify-center rounded-[3px] mt-0.5">
                   <Plus className="text-white w-3.5 h-3.5" strokeWidth={3} />
                 </div>
-                <span className="font-['Inter'] text-[13px] md:text-[14px] text-[#141210]/65 font-light leading-[1.6]">
+                <span className="font-[Inter,_sans-serif] text-[13px] md:text-[14px] text-[#141210]/65 font-light leading-[1.6]">
                   {item.text}
                 </span>
               </div>)}
@@ -546,10 +546,10 @@ export const AfricaExpansionRoadmap = () => {
 
         {/* Closing Tagline */}
         <div className="mt-16 pb-4 text-center">
-          <p className="font-['Montserrat'] text-[15px] md:text-[17px] font-bold tracking-[-0.2px] text-[#141210] mb-2">
+          <p className="font-[Montserrat,_sans-serif] text-[15px] md:text-[17px] font-bold tracking-[-0.2px] text-[#141210] mb-2">
             EmpowaEntrepreneurs Funding Summit™ Africa
           </p>
-          <p className="font-['Montserrat'] text-[13px] md:text-[14px] font-light italic text-[#DE322D]">
+          <p className="font-[Montserrat,_sans-serif] text-[13px] md:text-[14px] font-light italic text-[#DE322D]">
             Connecting Capital. Creating Ventures. Powering Africa's Entrepreneurial Future.
           </p>
         </div>
