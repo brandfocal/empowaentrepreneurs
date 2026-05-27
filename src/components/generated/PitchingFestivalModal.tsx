@@ -51,7 +51,20 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | H
   e.target.style.borderColor = 'rgba(247,246,243,0.08)';
 };
 
+const REGISTRATION_DEADLINE = new Date("2026-05-27T19:59:00+02:00");
+
 export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
+  const [isClosed, setIsClosed] = useState(false);
+
+  useEffect(() => {
+    const checkDeadline = () => {
+      setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    };
+    checkDeadline();
+    const interval = setInterval(checkDeadline, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const { isMobile } = useBreakpoint();
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -307,7 +320,24 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
             </button>
             
             <AnimatePresence mode="wait">
-              {status === 'success' ? (
+              {isClosed ? (
+                <motion.div key="modal-closed" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center', padding: '60px 0' }}>
+                  <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 16px rgba(222,50,45,0.2)' }}>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 8V12" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 16H12.01" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <div>
+                    <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '28px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 16px' }}>Applications Closed</h3>
+                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(247,246,243,0.5)', margin: 0, lineHeight: '1.7', maxWidth: '480px' }}>
+                      Pitching Festival entry applications closed on <strong>May 27, 2026, at 19:59 SAST</strong>. We are no longer accepting new submissions for the 2026 event.
+                    </p>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '320px', marginTop: '16px' }}>
+                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(247,246,243,0.3)', margin: 0 }}>For late submissions or executive package queries, please email:</p>
+                    <a href="mailto:info@empowaentrepreneurs.co.za" style={{ background: 'rgba(247,246,243,0.05)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '12px 28px', fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.04em', color: '#F7F6F3', textDecoration: 'none', fontWeight: 600, transition: 'all 0.2s ease', display: 'inline-block' }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(247,246,243,0.1)'; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(247,246,243,0.05)'; }}>info@empowaentrepreneurs.co.za</a>
+                  </div>
+                  <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={onClose} style={{ marginTop: '24px', background: 'rgba(247,246,243,0.06)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '14px 40px', fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: 600, color: '#F7F6F3', cursor: 'pointer' }}>Close Window</motion.button>
+                </motion.div>
+              ) : status === 'success' ? (
                 <motion.div key="modal-success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center', padding: '60px 0' }}>
                   <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <svg width="32" height="24" viewBox="0 0 22 16" fill="none"><path d="M1 8L8 15L21 1" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>

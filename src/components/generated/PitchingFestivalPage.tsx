@@ -3,6 +3,8 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { PitchingFestivalModal } from './PitchingFestivalModal';
 
+const REGISTRATION_DEADLINE = new Date("2026-05-27T19:59:00+02:00");
+
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
 
@@ -346,6 +348,14 @@ const NAV_ITEMS = [{
   label: 'Apply Now'
 }];
 const StickyNav = () => {
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -479,25 +489,26 @@ const StickyNav = () => {
           }}>
             <span>Become a Funder</span>
           </motion.a>
-          <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
+          <motion.a href="#" onClick={e => { e.preventDefault(); if (!isClosed) window.dispatchEvent(new Event('openPitchModal')); }} whileHover={!isClosed ? {
             scale: 1.04
-          }} whileTap={{
+          } : {}} whileTap={!isClosed ? {
             scale: 0.97
-          }} style={{
+          } : {}} style={{
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            background: 'linear-gradient(135deg, #DE322D, #c42823)',
+            background: isClosed ? 'rgba(247,246,243,0.1)' : 'linear-gradient(135deg, #DE322D, #c42823)',
             borderRadius: '44px',
             padding: '8px 16px',
             fontSize: '12px',
             letterSpacing: '0.06em',
-            color: '#fff',
+            color: isClosed ? 'rgba(247,246,243,0.4)' : '#fff',
             textDecoration: 'none',
             fontFamily: 'Montserrat, sans-serif',
-            boxShadow: '0 4px 16px rgba(222,50,45,0.38)'
+            boxShadow: isClosed ? 'none' : '0 4px 16px rgba(222,50,45,0.38)',
+            cursor: isClosed ? 'default' : 'pointer'
           }}>
-            <span>Apply to Pitch</span>
+            <span>{isClosed ? 'Applications Closed' : 'Apply to Pitch'}</span>
           </motion.a>
         </div>
       </div>}
@@ -598,17 +609,16 @@ const StickyNav = () => {
           }}>
             Become a Funder
           </a>
-          <a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} style={{
+          <a href="#" onClick={e => { e.preventDefault(); if (!isClosed) window.dispatchEvent(new Event('openPitchModal')); }} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
-            background: 'linear-gradient(135deg, #DE322D, #c42823)',
+            background: isClosed ? 'rgba(20,18,16,0.1)' : 'linear-gradient(135deg, #DE322D, #c42823)',
             borderRadius: '44px',
             padding: '10px 20px',
-            color: '#fff',
-            textDecoration: 'none'
-          }}>
-            Apply to Pitch
-          </a>
+            color: isClosed ? 'rgba(20,18,16,0.4)' : '#fff',
+            textDecoration: 'none',
+            cursor: isClosed ? 'default' : 'pointer'
+          }}>{isClosed ? 'Applications Closed' : 'Apply to Pitch'}</a>
         </div>
       </motion.div>}
     </AnimatePresence>
@@ -620,11 +630,13 @@ type MagneticButtonProps = {
   label: string;
   variant?: 'primary' | 'outline' | 'ghost';
   onClick?: () => void;
+  disabled?: boolean;
 };
 const MagneticButton = ({
   label,
   variant = 'primary',
-  onClick
+  onClick,
+  disabled
 }: MagneticButtonProps) => {
   const magnetic = useMagnetic(0.3);
   const {
@@ -641,13 +653,18 @@ const MagneticButton = ({
     textDecoration: 'none',
     fontFamily: 'Montserrat, sans-serif',
     fontWeight: 600,
-    cursor: 'pointer',
+    cursor: disabled ? 'default' : 'pointer',
     border: 'none',
     outline: 'none',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    opacity: disabled ? 0.7 : 1
   };
   const variantStyles: Record<string, React.CSSProperties> = {
-    primary: {
+    primary: disabled ? {
+      background: 'rgba(247,246,243,0.1)',
+      color: 'rgba(247,246,243,0.4)',
+      boxShadow: 'none'
+    } : {
       background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
       color: '#fff',
       boxShadow: '0 8px 36px rgba(222,50,45,0.55), 0 2px 8px rgba(222,50,45,0.3)'
@@ -685,6 +702,14 @@ const MagneticButton = ({
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 const HERO_BG = '/EmpowaEntrepreneur-banner11.jpg';
 const HeroSection = () => {
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const heroRef = useRef<HTMLElement>(null);
   const {
     isMobile,
@@ -950,7 +975,7 @@ const HeroSection = () => {
           gap: '12px',
           flexWrap: 'wrap'
         }}>
-          <MagneticButton label="Apply to Pitch" variant="primary" onClick={() => window.dispatchEvent(new Event('openPitchModal'))} />
+          <MagneticButton label={isClosed ? "Applications Closed" : "Apply to Pitch"} variant="primary" disabled={isClosed} onClick={isClosed ? undefined : () => window.dispatchEvent(new Event('openPitchModal'))} />
           <MagneticButton label="Become a Funder" variant="outline" onClick={() => window.location.href = '/partnerships'} />
         </div>
         <div style={{
@@ -1347,6 +1372,14 @@ const ELIGIBILITY_CRITERIA: EligCriterion[] = [{
   description: 'Only 100 pitching slots are available across the entire festival. Applications close 60 days before the event or upon capacity: whichever comes first. Early application is strongly advised.'
 }];
 const EligibilitySection = () => {
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
@@ -1808,28 +1841,29 @@ const EligibilitySection = () => {
           gap: '12px',
           flexWrap: 'wrap'
         }}>
-          <motion.a href="#" onClick={e => { e.preventDefault(); window.dispatchEvent(new Event('openPitchModal')); }} whileHover={{
+          <motion.a href="#" onClick={e => { e.preventDefault(); if (!isClosed) window.dispatchEvent(new Event('openPitchModal')); }} whileHover={!isClosed ? {
             scale: 1.04
-          }} whileTap={{
+          } : {}} whileTap={!isClosed ? {
             scale: 0.97
-          }} style={{
+          } : {}} style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: '#141210',
+            background: isClosed ? 'rgba(247,246,243,0.1)' : '#141210',
             borderRadius: '44px',
             padding: '14px 28px',
             fontSize: '13px',
             letterSpacing: '0.05em',
-            color: '#F7F6F3',
+            color: isClosed ? 'rgba(247,246,243,0.4)' : '#F7F6F3',
             textDecoration: 'none',
             fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 600
+            fontWeight: 600,
+            cursor: isClosed ? 'default' : 'pointer'
           }}>
-            <span>Apply to Pitch</span>
-            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+            <span>{isClosed ? 'Applications Closed' : 'Apply to Pitch'}</span>
+            {!isClosed && <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
               <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#F7F6F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            </svg>}
           </motion.a>
         </div>
       </motion.div>
@@ -2240,6 +2274,14 @@ const BOTTOM_STRIP_ITEMS = [{
   sub: 'Close 60 days before'
 }];
 const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
@@ -2395,31 +2437,44 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
           flexDirection: 'column',
           gap: '12px'
         }}>
-          {CTA_CARDS.map((card, i) => <motion.div onClick={() => { if (card.id === 'cta-pitch') { onOpenModal(); } else if (card.id === 'cta-funder') { window.location.href = '/partnerships'; } }} key={card.id} initial={{
-            opacity: 0,
-            x: isMobile ? 0 : 40
-          }} animate={inView ? {
-            opacity: 1,
-            x: 0
-          } : {
-            opacity: 0,
-            x: isMobile ? 0 : 40
-          }} transition={{
-            duration: 0.7,
-            delay: 0.35 + i * 0.1,
-            ease: [0.22, 1, 0.36, 1]
-          }} style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '16px',
-            padding: isMobile ? '16px 16px' : isTablet ? '18px 22px' : '22px 28px',
-            background: card.variant === 'primary' ? 'rgba(222,50,45,0.08)' : card.variant === 'outline' ? 'rgba(247,246,243,0.04)' : 'rgba(247,246,243,0.02)',
-            border: `1px solid ${card.variant === 'primary' ? 'rgba(222,50,45,0.25)' : card.variant === 'outline' ? 'rgba(247,246,243,0.1)' : 'rgba(247,246,243,0.06)'}`,
-            borderRadius: '18px',
-            cursor: 'pointer',
-            transition: 'background 0.3s ease, border-color 0.3s ease'
-          }}>
+          {CTA_CARDS.map((card, i) => {
+            const cardDisabled = isClosed && card.id === 'cta-pitch';
+            return (
+              <motion.div 
+                onClick={() => { 
+                  if (card.id === 'cta-pitch') { 
+                    if (!cardDisabled) onOpenModal(); 
+                  } else if (card.id === 'cta-funder') { 
+                    window.location.href = '/partnerships'; 
+                  } 
+                }} 
+                key={card.id} 
+                initial={{
+                  opacity: 0,
+                  x: isMobile ? 0 : 40
+                }} animate={inView ? {
+                  opacity: 1,
+                  x: 0
+                } : {
+                  opacity: 0,
+                  x: isMobile ? 0 : 40
+                }} transition={{
+                  duration: 0.7,
+                  delay: 0.35 + i * 0.1,
+                  ease: [0.22, 1, 0.36, 1]
+                }} style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '16px',
+                  padding: isMobile ? '16px 16px' : isTablet ? '18px 22px' : '22px 28px',
+                  background: cardDisabled ? 'rgba(247,246,243,0.01)' : card.variant === 'primary' ? 'rgba(222,50,45,0.08)' : card.variant === 'outline' ? 'rgba(247,246,243,0.04)' : 'rgba(247,246,243,0.02)',
+                  border: `1px solid ${cardDisabled ? 'rgba(247,246,243,0.05)' : card.variant === 'primary' ? 'rgba(222,50,45,0.25)' : card.variant === 'outline' ? 'rgba(247,246,243,0.1)' : 'rgba(247,246,243,0.06)'}`,
+                  borderRadius: '18px',
+                  cursor: cardDisabled ? 'default' : 'pointer',
+                  transition: 'background 0.3s ease, border-color 0.3s ease',
+                  opacity: cardDisabled ? 0.6 : 1
+                }}>
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -2462,7 +2517,7 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
                   letterSpacing: '-0.1px',
                   marginBottom: '2px'
                 }}>
-                  {card.cta}
+                  {cardDisabled ? 'Applications Closed' : card.cta}
                 </div>
                 <div style={{
                   fontFamily: 'Inter, sans-serif',

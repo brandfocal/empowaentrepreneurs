@@ -8,6 +8,8 @@ import { LeadershipTeamSection } from './LeadershipTeamSection';
 import { FundingPlatformAlert } from './FundingPlatformAlert';
 import { AfricaExpansionRoadmap } from './AfricaExpansionRoadmap';
 import { PastSpeakersSection } from './FundingSummitPage';
+const REGISTRATION_DEADLINE = new Date("2026-05-27T19:59:00+02:00");
+
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
 
@@ -1742,6 +1744,14 @@ const SERVICES: ServiceItem[] = [{
   tintColor: 'rgba(45,106,79,0.26)'
 }];
 const AccordionSection = () => {
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
@@ -1954,31 +1964,32 @@ const AccordionSection = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     if (svc.id === 'svc-brand') {
-                      setIsSummitModalOpen(true);
+                      if (!isClosed) setIsSummitModalOpen(true);
                     } else {
                       setIsModalOpen(true);
                     }
                   }}
-                  whileHover={{
+                  whileHover={!(isClosed && svc.id === 'svc-brand') ? {
                     scale: 1.04
-                  }} whileTap={{
+                  } : {}} whileTap={!(isClosed && svc.id === 'svc-brand') ? {
                     scale: 0.97
-                  }} style={{
+                  } : {}} style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    background: 'linear-gradient(135deg, #DE322D, #c42823)',
+                    background: isClosed && svc.id === 'svc-brand' ? 'rgba(247,246,243,0.1)' : 'linear-gradient(135deg, #DE322D, #c42823)',
                     borderRadius: '44px',
                     padding: '10px 22px',
                     fontSize: '12px',
                     letterSpacing: '0.06em',
-                    color: '#fff',
+                    color: isClosed && svc.id === 'svc-brand' ? 'rgba(247,246,243,0.4)' : '#fff',
                     textDecoration: 'none',
                     fontFamily: 'Montserrat, sans-serif',
                     fontWeight: 600,
-                    boxShadow: '0 6px 24px rgba(222,50,45,0.4)'
+                    boxShadow: isClosed && svc.id === 'svc-brand' ? 'none' : '0 6px 24px rgba(222,50,45,0.4)',
+                    cursor: isClosed && svc.id === 'svc-brand' ? 'default' : 'pointer'
                   }}>
-                  <span>Reserve Your Seat</span><ArrowIconDark />
+                  <span>{isClosed && svc.id === 'svc-brand' ? 'Registrations Closed' : 'Reserve Your Seat'}</span>{!(isClosed && svc.id === 'svc-brand') && <ArrowIconDark />}
                 </motion.a>
               </motion.div>}
             </AnimatePresence>

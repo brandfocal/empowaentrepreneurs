@@ -18,7 +18,20 @@ const ArrowIconDark = () => (
   </svg>
 );
 
+const REGISTRATION_DEADLINE = new Date("2026-05-27T19:59:00+02:00");
+
 export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) => {
+  const [isClosed, setIsClosed] = useState(false);
+
+  useEffect(() => {
+    const checkDeadline = () => {
+      setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    };
+    checkDeadline();
+    const interval = setInterval(checkDeadline, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [company, setCompany] = useState('');
@@ -169,7 +182,24 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
           </button>
           
           <AnimatePresence mode="wait">
-            {status !== 'success' ? (
+            {isClosed ? (
+              <motion.div key="modal-closed" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center', padding: '24px 0 16px' }}>
+                <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 12px rgba(222,50,45,0.2)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 8V12" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 16H12.01" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '22px', fontWeight: 600, letterSpacing: '-0.5px', color: '#F7F6F3', margin: '0 0 10px' }}>Registrations Closed</h3>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: 'rgba(247,246,243,0.45)', margin: 0, lineHeight: '1.7', maxWidth: '340px' }}>
+                    Registrations for the EmpowaEntrepreneurs Funding Summit 2026 closed on <strong>May 27, 2026, at 19:59 SAST</strong>. Thank you for your interest!
+                  </p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', maxWidth: '280px', marginTop: '8px' }}>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.25)', margin: 0 }}>For enquiries, please contact our support team:</p>
+                  <a href="mailto:info@empowaentrepreneurs.co.za" style={{ background: 'rgba(247,246,243,0.05)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '10px 24px', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', letterSpacing: '0.04em', color: '#F7F6F3', textDecoration: 'none', fontWeight: 600, transition: 'background 0.2s ease', display: 'inline-block' }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(247,246,243,0.1)'; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(247,246,243,0.05)'; }}>Contact Support</a>
+                </div>
+                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={onClose} style={{ marginTop: '8px', background: 'rgba(247,246,243,0.06)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '12px 28px', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', letterSpacing: '0.04em', color: 'rgba(247,246,243,0.55)', cursor: 'pointer' }}>Close</motion.button>
+              </motion.div>
+            ) : status !== 'success' ? (
               <motion.div key="modal-form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                 <div style={{ marginBottom: '32px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
@@ -220,7 +250,7 @@ export const SummitRegistrationModal = ({ onClose }: { onClose: () => void }) =>
                       <input id="modal-org" type="text" value={company} onChange={e => setCompany(e.target.value)} placeholder="Your company name" style={inputStyle} required onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                     <div>
-                      <label htmlFor="modal-tickets" style={labelStyle}>Number of Tickets (R1,250.00 each)</label>
+                      <label htmlFor="modal-tickets" style={labelStyle}>Number of Tickets (R1 500 each)</label>
                       <input id="modal-tickets" type="number" min="1" value={ticketQuantity} onChange={e => setTicketQuantity(e.target.value)} required style={inputStyle} onFocus={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(222,50,45,0.45)'; }} onBlur={e => { (e.target as HTMLInputElement).style.borderColor = 'rgba(247,246,243,0.1)'; }} disabled={status === 'loading'} />
                     </div>
                   </div>

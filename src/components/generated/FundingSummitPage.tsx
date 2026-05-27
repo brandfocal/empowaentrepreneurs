@@ -2,6 +2,8 @@ import { LogoBanner } from './AgencyComponents';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
+const REGISTRATION_DEADLINE = new Date("2026-05-27T19:59:00+02:00");
+
 import { LeadershipTeamSection } from './LeadershipTeamSection';
 import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
 import { SummitRegistrationModal } from './SummitRegistrationModal';
@@ -350,6 +352,14 @@ const STICKY_NAV_ITEMS = [{
 // Nav items shown on tablet (first 4 only)
 const TABLET_NAV_ITEMS = STICKY_NAV_ITEMS.slice(0, 4);
 const StickyNav = () => {
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -517,25 +527,26 @@ const StickyNav = () => {
             fontFamily: 'Montserrat, sans-serif',
             transition: 'border-color 0.25s ease, color 0.25s ease'
           }}><span>Become a Funder</span></motion.a>
-          <motion.a href="#registration-form" whileHover={{
+          <motion.a href="#registration-form" whileHover={!isClosed ? {
             scale: 1.04
-          }} whileTap={{
+          } : {}} whileTap={!isClosed ? {
             scale: 0.97
-          }} style={{
+          } : {}} style={{
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            background: 'linear-gradient(135deg, #DE322D, #c42823)',
+            background: isClosed ? 'rgba(247,246,243,0.1)' : 'linear-gradient(135deg, #DE322D, #c42823)',
             borderRadius: '44px',
             padding: '8px 16px',
             fontSize: '12px',
             letterSpacing: '0.06em',
-            color: '#fff',
+            color: isClosed ? 'rgba(247,246,243,0.4)' : '#fff',
             textDecoration: 'none',
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 600,
-            boxShadow: '0 4px 16px rgba(222,50,45,0.38)'
-          }}><span>Summit 2026</span></motion.a>
+            boxShadow: isClosed ? 'none' : '0 4px 16px rgba(222,50,45,0.38)',
+            cursor: isClosed ? 'default' : 'pointer'
+          }}><span>{isClosed ? 'Registrations Closed' : 'Summit 2026'}</span></motion.a>
         </div>
       </div>}
 
@@ -612,14 +623,15 @@ const StickyNav = () => {
           <a href="#registration-form" style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
-            background: 'linear-gradient(135deg, #DE322D, #c42823)',
+            background: isClosed ? 'rgba(20,18,16,0.1)' : 'linear-gradient(135deg, #DE322D, #c42823)',
             borderRadius: '44px',
             padding: '12px 20px',
-            color: '#fff',
+            color: isClosed ? 'rgba(20,18,16,0.4)' : '#fff',
             textDecoration: 'none',
             fontWeight: 600,
-            textAlign: 'center'
-          }}>Summit 2026</a>
+            textAlign: 'center',
+            cursor: isClosed ? 'default' : 'pointer'
+          }}>{isClosed ? 'Registrations Closed' : 'Summit 2026'}</a>
         </div>
       </motion.div>}
     </AnimatePresence>
@@ -629,6 +641,14 @@ const StickyNav = () => {
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 const HERO_BG = '/EmpowaEntrepreneur-banner10.jpg';
 const HeroSection = () => {
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const heroRef = useRef<HTMLElement>(null);
   const {
     isMobile,
@@ -1886,6 +1906,14 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | H
   e.currentTarget.style.borderColor = 'rgba(247,246,243,0.12)';
 };
 const CtaBannerSection = () => {
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
@@ -2157,39 +2185,40 @@ const CtaBannerSection = () => {
         }}>
           <motion.a href="#" onClick={e => {
             e.preventDefault();
-            window.dispatchEvent(new CustomEvent('openSummitModal'));
-          }} whileHover={{
+            if (!isClosed) window.dispatchEvent(new CustomEvent('openSummitModal'));
+          }} whileHover={!isClosed ? {
             scale: 1.04,
             boxShadow: '0 16px 52px rgba(222,50,45,0.8)'
-          }} whileTap={{
+          } : {}} whileTap={!isClosed ? {
             scale: 0.97
-          }} style={{
+          } : {}} style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '10px',
-            background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+            background: isClosed ? 'rgba(247,246,243,0.1)' : 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
             borderRadius: '44px',
             padding: isMobile ? '14px 22px' : '17px 34px',
             fontSize: '13px',
             letterSpacing: '0.05em',
-            color: '#fff',
+            color: isClosed ? 'rgba(247,246,243,0.4)' : '#fff',
             textDecoration: 'none',
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 600,
-            boxShadow: activeForm === 'cta-b1' ? '0 8px 36px rgba(222,50,45,0.7), 0 2px 8px rgba(222,50,45,0.4)' : '0 8px 36px rgba(222,50,45,0.55)',
+            boxShadow: isClosed ? 'none' : activeForm === 'cta-b1' ? '0 8px 36px rgba(222,50,45,0.7), 0 2px 8px rgba(222,50,45,0.4)' : '0 8px 36px rgba(222,50,45,0.55)',
             opacity: 1,
             transition: 'box-shadow 0.25s ease',
             width: isMobile ? '100%' : 'auto',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            cursor: isClosed ? 'default' : 'pointer'
           }}>
-            {activeForm === 'cta-b1' && <span style={{
+            {activeForm === 'cta-b1' && !isClosed && <span style={{
               color: 'rgba(255,255,255,0.8)',
               fontSize: '11px',
               marginRight: '6px'
             }}>✓</span>}
-            <span>Register Now</span>
-            <ArrowIconDark />
+            <span>{isClosed ? 'Registrations Closed' : 'Register Now'}</span>
+            {!isClosed && <ArrowIconDark />}
           </motion.a>
         </motion.div>
         {CTA_BUTTONS.slice(1).map(btn => <motion.a key={btn.id} href="#" onClick={e => {
@@ -2260,21 +2289,20 @@ const CtaBannerSection = () => {
         }} style={formWrapStyle}>
           {accentBar}
           {dismissBtn}
-          <h3 style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontWeight: 700,
-            fontSize: '18px',
-            color: '#F7F6F3',
-            margin: '0 0 8px'
-          }}>Register for the Summit</h3>
-          <p style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '13px',
-            color: 'rgba(247,246,243,0.5)',
-            margin: '0 0 20px'
-          }}>Secure your seat at EmpowaEntrepreneurs Funding Summit 2026</p>
-
-          {status === 'success' ? (
+          {isClosed ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', textAlign: 'center', padding: '20px 0' }}>
+              <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 10px rgba(222,50,45,0.2)' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 8V12" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 16H12.01" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </div>
+              <div>
+                <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '18px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 6px' }}>Summit Registrations Closed</h3>
+                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(247,246,243,0.45)', margin: '0 auto', lineHeight: '1.6', maxWidth: '380px' }}>
+                  Registrations for the EmpowaEntrepreneurs Funding Summit 2026 closed on <strong>May 27, 2026, at 19:59 SAST</strong>.
+                </p>
+              </div>
+              <a href="mailto:info@empowaentrepreneurs.co.za" style={{ background: 'rgba(247,246,243,0.05)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '10px 24px', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', letterSpacing: '0.04em', color: '#F7F6F3', textDecoration: 'none', fontWeight: 600, display: 'inline-block', transition: 'background 0.2s' }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(247,246,243,0.1)'; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(247,246,243,0.05)'; }}>Contact Support</a>
+            </div>
+          ) : status === 'success' ? (
             <div style={{ padding: '24px 0', textAlign: 'center' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                 <svg width="18" height="13" viewBox="0 0 22 16" fill="none"><path d="M1 8L8 15L21 1" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -2318,7 +2346,7 @@ const CtaBannerSection = () => {
                   <input type="text" placeholder="Your company name" value={company} onChange={e => setCompany(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
                 </div>
                 <div>
-                  <label style={FIELD_LABEL_STYLE}>Number of Tickets (R1,250.00 each)</label>
+                  <label style={FIELD_LABEL_STYLE}>Number of Tickets (R1 500 each)</label>
                   <input type="number" min="1" placeholder="e.g. 2" value={ticketQuantity} onChange={e => setTicketQuantity(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} disabled={status === 'loading'} />
                 </div>
 
