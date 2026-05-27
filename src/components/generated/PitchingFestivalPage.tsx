@@ -2547,7 +2547,9 @@ const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
                 <path d="M2 12L12 2M12 2H4M12 2V10" stroke={card.variant === 'primary' ? '#fff' : 'rgba(247,246,243,0.35)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-          </motion.div>)}
+          </motion.div>
+            );
+          })}
         </motion.div>
       </div>
 
