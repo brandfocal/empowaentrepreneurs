@@ -1099,6 +1099,48 @@ const HeroSection = () => {
           }}>
             Where Vetted Entrepreneurs Meet High Impact Capital.
           </motion.p>
+          <motion.div custom={0.65} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            margin: '12px 0 4px',
+            padding: '8px 16px',
+            background: 'rgba(222,50,45,0.08)',
+            border: '1px solid rgba(222,50,45,0.3)',
+            borderRadius: '100px',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            width: 'fit-content',
+            boxShadow: '0 4px 20px rgba(222,50,45,0.12)'
+          }}>
+            <motion.span 
+              animate={{
+                opacity: [1, 0.4, 1],
+                scale: [1, 1.25, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: '#DE322D',
+                boxShadow: '0 0 8px #DE322D',
+                display: 'block'
+              }} 
+            />
+            <span style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: '11px',
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              color: '#fff',
+              fontWeight: 700
+            }}>Registration opens at 7am</span>
+          </motion.div>
           <motion.div custom={0.68} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
             display: 'flex',
             alignItems: 'center',
