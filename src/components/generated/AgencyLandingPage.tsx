@@ -961,7 +961,7 @@ const HeroSection = () => {
       zIndex: 3
     }} />
     <div style={{
-      height: '88px',
+      height: isMobile ? '64px' : '76px',
       flexShrink: 0,
       position: 'relative',
       zIndex: 4
@@ -971,9 +971,9 @@ const HeroSection = () => {
       flex: 1,
       display: 'grid',
       gridTemplateColumns: '1fr',
-      gap: isMobile ? '40px' : '48px',
+      gap: isMobile ? '24px' : '28px',
       alignItems: 'center',
-      padding: isMobile ? '32px 24px 32px' : '40px 64px 40px',
+      padding: isMobile ? '16px 20px 24px' : '20px 64px 28px',
       width: '100%',
       boxSizing: 'border-box',
       zIndex: 4,
@@ -987,7 +987,7 @@ const HeroSection = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
-          marginBottom: '40px',
+          marginBottom: '20px',
           flexWrap: 'wrap'
         }}>
           <PlusSquareIconLight />
@@ -1013,7 +1013,7 @@ const HeroSection = () => {
         <h1 style={{
           fontFamily: 'Montserrat, sans-serif',
           fontWeight: 300,
-          margin: '0 0 48px',
+          margin: '0 0 20px',
           lineHeight: 0.93,
           letterSpacing: isMobile ? '-2px' : '-3px'
         }}>
@@ -1033,7 +1033,7 @@ const HeroSection = () => {
               ease: [0.22, 1, 0.36, 1]
             }} style={{
               display: 'inline-block',
-              fontSize: isMobile ? 'clamp(43px, 12vw, 71px)' : 'clamp(53px, 7.5vw, 119px)',
+              fontSize: isMobile ? 'clamp(36px, 10vw, 56px)' : 'clamp(48px, 6.2vw, 96px)',
               color: '#F7F6F3',
               marginRight: '0.22em'
             }}>
@@ -1056,7 +1056,7 @@ const HeroSection = () => {
               ease: [0.22, 1, 0.36, 1]
             }} style={{
               display: 'inline-block',
-              fontSize: isMobile ? 'clamp(43px, 12vw, 71px)' : 'clamp(53px, 7.5vw, 119px)',
+              fontSize: isMobile ? 'clamp(36px, 10vw, 56px)' : 'clamp(48px, 6.2vw, 96px)',
               color: 'rgba(247,246,243,0.18)',
               marginRight: '0.22em'
             }}>
@@ -1076,7 +1076,7 @@ const HeroSection = () => {
               display: 'inline-block',
               fontStyle: 'italic',
               fontWeight: 300,
-              fontSize: isMobile ? 'clamp(43px, 12vw, 71px)' : 'clamp(53px, 7.5vw, 119px)',
+              fontSize: isMobile ? 'clamp(36px, 10vw, 56px)' : 'clamp(48px, 6.2vw, 96px)',
               color: '#DE322D'
             }}>
               {HERO_WORD_PLATFORM}
@@ -1086,7 +1086,7 @@ const HeroSection = () => {
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '28px',
+          gap: '16px',
           maxWidth: '480px'
         }}>
           <motion.p custom={0.62} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
@@ -1103,7 +1103,7 @@ const HeroSection = () => {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '10px',
-            margin: '12px 0 4px',
+            margin: '0',
             padding: '8px 16px',
             background: 'rgba(222,50,45,0.08)',
             border: '1px solid rgba(222,50,45,0.3)',
