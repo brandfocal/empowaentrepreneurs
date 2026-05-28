@@ -557,13 +557,13 @@ export const FundingSummitSurvey: React.FC = () => {
             }} style={{
               width: `${checkCircleSize}px`,
               height: `${checkCircleSize}px`,
-              background: `linear-gradient(135deg, ${PRIMARY_CORAL}, #c42823)`,
+              background: 'linear-gradient(135deg, #10b981, #047857)',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               marginBottom: '24px',
-              boxShadow: '0 8px 32px rgba(222,50,45,0.3)',
+              boxShadow: '0 8px 32px rgba(16,185,129,0.3)',
               flexShrink: 0
             }}>
                 <Check size={isMobile ? 28 : 36} color="#fff" strokeWidth={3} />
@@ -593,7 +593,7 @@ export const FundingSummitSurvey: React.FC = () => {
               fontWeight: 300,
               fontStyle: 'italic',
               fontSize: '14px',
-              color: PRIMARY_CORAL,
+              color: '#FFFFFF',
               marginTop: '24px'
             }}>
                 Connecting Capital. Creating Ventures. Powering Africa's Entrepreneurial Future.
