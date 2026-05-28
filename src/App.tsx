@@ -43,6 +43,7 @@ const StrategicAdvisoryPage = lazy(() => import('./components/generated/Strategi
 const FundingAwardsPage = lazy(() => import('./components/generated/FundingAwardsPage').then(module => ({ default: module.FundingAwardsPage })));
 const FundingSummitPage = lazy(() => import('./components/generated/FundingSummitPage').then(module => ({ default: module.FundingSummitPage })));
 const DetailedRegistrationPage = lazy(() => import('./components/generated/DetailedRegistrationPage').then(module => ({ default: module.DetailedRegistrationPage })));
+const FundingSummitSurvey = lazy(() => import('./components/generated/FundingSummitSurvey').then(module => ({ default: module.FundingSummitSurvey })));
 
 let theme: Theme = 'light';
 let container: Container = 'none';
@@ -76,6 +77,7 @@ function App() {
               <Route path="/awards" element={<FundingAwardsPage />} />
               <Route path="/summit" element={<FundingSummitPage />} />
               <Route path="/detailed-registration-2026" element={<DetailedRegistrationPage />} />
+              <Route path="/survey" element={<FundingSummitSurvey />} />
             </Routes>
           </Suspense></ErrorBoundary>
         </UniversalLayout>
