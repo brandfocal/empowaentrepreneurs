@@ -854,7 +854,7 @@ const ProgrammeHero = () => {
           <span>Explore Programme</span><ArrowIconDark />
         </motion.a>
         <motion.a 
-          href="/Draft Programme_EmpowaEntrepreneurs Funding Summit 2026.pdf"
+          href="/Draft_Programme_EmpowaEntrepreneurs_Funding_Summit_2026.pdf"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.04 }} 

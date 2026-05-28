@@ -65,6 +65,9 @@ const PlusSquareIconDark = () => <svg width="20" height="20" viewBox="0 0 20 20"
 const ArrowIconDark = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
     <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>;
+const DownloadIcon = () => <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+  <path d="M7 9.5V1.5M7 9.5L3.5 6M7 9.5L10.5 6M2 12.5H12" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 const slideUpBlur = {
@@ -924,6 +927,44 @@ const HeroSection = () => {
               boxSizing: 'border-box'
             }}><span>Register Now</span><ArrowIconDark /></motion.a>
           </motion.div>
+          <motion.a 
+            href="/Draft_Programme_EmpowaEntrepreneurs_Funding_Summit_2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.04 }} 
+            whileTap={{ scale: 0.97 }} 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              border: '1px solid rgba(222,50,45,0.4)',
+              background: 'rgba(222,50,45,0.06)',
+              borderRadius: '44px',
+              padding: isMobile ? '14px 24px' : '16px 30px',
+              fontSize: '13px',
+              letterSpacing: '0.04em',
+              color: '#F7F6F3',
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 600,
+              transition: 'all 0.3s ease',
+              width: isMobile ? '100%' : 'auto',
+              boxSizing: 'border-box'
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = 'rgba(222,50,45,0.15)';
+              el.style.borderColor = 'rgba(222,50,45,0.7)';
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = 'rgba(222,50,45,0.06)';
+              el.style.borderColor = 'rgba(222,50,45,0.4)';
+            }}
+          >
+            <span>Download Programme</span><DownloadIcon />
+          </motion.a>
           <motion.a href="#" onClick={e => e.preventDefault()} whileHover={{
             scale: 1.04
           }} whileTap={{
