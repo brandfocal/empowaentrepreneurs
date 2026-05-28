@@ -894,8 +894,8 @@ const SiteFooter = () => {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'rgba(34,197,94,0.07)',
-            border: '1px solid rgba(34,197,94,0.18)',
+            background: 'rgba(222,50,45,0.07)',
+            border: '1px solid rgba(222,50,45,0.22)',
             borderRadius: '4px',
             padding: '7px 14px',
             width: 'fit-content'
@@ -909,8 +909,8 @@ const SiteFooter = () => {
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              background: '#22c55e',
-              boxShadow: '0 0 8px rgba(34,197,94,0.5)',
+              background: '#DE322D',
+              boxShadow: '0 0 8px rgba(222,50,45,0.5)',
               flexShrink: 0
             }} />
             <span style={{
@@ -920,7 +920,7 @@ const SiteFooter = () => {
               textTransform: 'uppercase',
               color: 'rgba(247,246,243,0.4)',
               fontWeight: 600
-            }}>Registration Open</span>
+            }}>Registration Closed</span>
           </div>
         </div>
         <div style={{
