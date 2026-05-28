@@ -347,6 +347,55 @@ const StickyNav = () => {
   }, []);
   const navLinkColor = scrolled ? 'rgba(20,18,16,0.55)' : 'rgba(247,246,243,0.72)';
   const navLinkHoverColor = scrolled ? '#141210' : '#F7F6F3';
+  if (pathname === '/survey') {
+    return (
+      <motion.nav initial={{
+        y: -80,
+        opacity: 0
+      }} animate={{
+        y: visible ? 0 : -90,
+        opacity: visible ? 1 : 0
+      }} transition={{
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1]
+      }} style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        boxSizing: 'border-box'
+      }}>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '20px 32px',
+          background: 'transparent',
+          transition: 'padding 0.35s ease'
+        }}>
+          <Link to="/" style={{
+            display: 'flex',
+            alignItems: 'center',
+            textDecoration: 'none'
+          }}>
+            <motion.img 
+              src="/logos/ee-logo.png" 
+              alt="EmpowaSummit Logo"
+              whileHover={{ scale: 1.05 }} 
+              style={{ 
+                height: '48px', 
+                width: 'auto', 
+                objectFit: 'contain',
+                mixBlendMode: 'multiply'
+              }}
+            />
+          </Link>
+        </div>
+      </motion.nav>
+    );
+  }
+
   return <motion.nav initial={{
     y: -80,
     opacity: 0
@@ -596,12 +645,14 @@ const SocialIcon = ({
 };
 
 const SiteFooter = () => {
+  const { pathname } = useLocation();
   const isMobile = useIsMobile();
   const footerRef = useRef<HTMLElement>(null);
   const inView = useInView(footerRef, {
     once: true,
     margin: '-80px 0px'
   });
+  const isSurvey = pathname === '/survey';
   return <footer ref={footerRef} style={{
     background: '#0A0906',
     width: '100%',
@@ -609,7 +660,7 @@ const SiteFooter = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-    <div style={{
+    {!isSurvey && <div style={{
       position: 'relative',
       width: '100%',
       minHeight: isMobile ? '480px' : '580px',
@@ -841,7 +892,8 @@ const SiteFooter = () => {
           </div>)}
         </motion.div>
       </div>
-    </div>
+    </div>}
+    {isSurvey && <div style={{ height: '32px' }} />}
     <div style={{
       height: '1px',
       background: 'rgba(247,246,243,0.06)',
