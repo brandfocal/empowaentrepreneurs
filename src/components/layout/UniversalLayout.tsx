@@ -347,19 +347,20 @@ const StickyNav = () => {
   }, []);
   const navLinkColor = scrolled ? 'rgba(20,18,16,0.55)' : 'rgba(247,246,243,0.72)';
   const navLinkHoverColor = scrolled ? '#141210' : '#F7F6F3';
-  if (pathname === '/survey') {
+  if (pathname === '/survey' || pathname === '/dragons') {
+    const isDragons = pathname === '/dragons';
     return (
       <motion.nav initial={{
         y: -80,
         opacity: 0
       }} animate={{
-        y: visible ? 0 : -90,
-        opacity: visible ? 1 : 0
+        y: isDragons ? 0 : (visible ? 0 : -90),
+        opacity: 1
       }} transition={{
         duration: 0.4,
         ease: [0.22, 1, 0.36, 1]
       }} style={{
-        position: 'fixed',
+        position: isDragons ? 'absolute' : 'fixed',
         top: 0,
         left: 0,
         right: 0,
@@ -380,14 +381,14 @@ const StickyNav = () => {
             textDecoration: 'none'
           }}>
             <motion.img 
-              src="/logos/ee-logo.png" 
+              src={isDragons ? "/logos/ee-logo-wh.png" : "/logos/ee-logo.png"} 
               alt="EmpowaSummit Logo"
               whileHover={{ scale: 1.05 }} 
               style={{ 
                 height: '48px', 
                 width: 'auto', 
                 objectFit: 'contain',
-                mixBlendMode: 'multiply'
+                mixBlendMode: isDragons ? 'normal' : 'multiply'
               }}
             />
           </Link>
@@ -652,7 +653,7 @@ const SiteFooter = () => {
     once: true,
     margin: '-80px 0px'
   });
-  const isSurvey = pathname === '/survey';
+  const isSurvey = pathname === '/survey' || pathname === '/dragons';
   return <footer ref={footerRef} style={{
     background: '#0A0906',
     width: '100%',

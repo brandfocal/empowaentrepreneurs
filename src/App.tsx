@@ -44,6 +44,7 @@ const FundingAwardsPage = lazy(() => import('./components/generated/FundingAward
 const FundingSummitPage = lazy(() => import('./components/generated/FundingSummitPage').then(module => ({ default: module.FundingSummitPage })));
 const DetailedRegistrationPage = lazy(() => import('./components/generated/DetailedRegistrationPage').then(module => ({ default: module.DetailedRegistrationPage })));
 const FundingSummitSurvey = lazy(() => import('./components/generated/FundingSummitSurvey').then(module => ({ default: module.FundingSummitSurvey })));
+const DragonScoringPanel = lazy(() => import('./components/generated/DragonScoringPanel').then(module => ({ default: module.DragonScoringPanel })));
 
 let theme: Theme = 'light';
 let container: Container = 'none';
@@ -78,6 +79,7 @@ function App() {
               <Route path="/summit" element={<FundingSummitPage />} />
               <Route path="/detailed-registration-2026" element={<DetailedRegistrationPage />} />
               <Route path="/survey" element={<FundingSummitSurvey />} />
+              <Route path="/dragons" element={<DragonScoringPanel />} />
             </Routes>
           </Suspense></ErrorBoundary>
         </UniversalLayout>

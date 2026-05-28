@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmpowaEntrepreneurs 2026 - Gravity Forms Mapping Specification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #DE322D;
+      --primary-dark: #b92723;
+      --secondary: #121721;
+      --text: #1e293b;
+      --light-bg: #f8fafc;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 40px 20px;
+      background: #f1f5f9;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+
+    header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 30px;
+      margin-bottom: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-left h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      color: var(--secondary);
+      margin: 0 0 8px 0;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+
+    .badge {
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .confidential {
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .date {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .intro-box {
+      background: var(--light-bg);
+      border-left: 4px solid var(--secondary);
+      padding: 20px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 35px;
+      font-size: 14px;
+      color: #475569;
+    }
+
+    .intro-box p {
+      margin: 0 0 8px 0;
+    }
+
+    .intro-box p:last-child {
+      margin: 0;
+    }
+
+    .warning-note {
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      color: #c53030;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--secondary);
+      margin: 35px 0 18px 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 span {
+      background: var(--secondary);
+      color: #fff;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      font-size: 13px;
+    }
+
+    th {
+      background: var(--light-bg);
+      color: #475569;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: top;
+    }
+
+    tr:hover td {
+      background: #fafafb;
+    }
+
+    .id-badge {
+      font-family: monospace;
+      font-weight: 700;
+      background: #fee2e2;
+      color: var(--primary);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .type-badge {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .weight-badge {
+      font-weight: 600;
+      color: var(--primary-dark);
+      background: rgba(222, 50, 45, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    ul.choices-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #475569;
+    }
+
+    ul.choices-list li {
+      margin-bottom: 4px;
+    }
+
+    .instructions-card {
+      margin-top: 40px;
+      border: 1px solid #fed7d7;
+      background: #fff5f5;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .instructions-card h3 {
+      margin: 0 0 12px 0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-dark);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .instructions-card ol {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .instructions-card li {
+      margin-bottom: 8px;
+    }
+
+    .instructions-card li:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 11px;
+      color: #94a3b8;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+      }
+      .instructions-card {
+        page-break-inside: avoid;
+      }
+      tr {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="header-left">
+        <span class="badge">Gravity Forms Schema</span>
+        <h1>Dragon Scoring Panel</h1>
+        <p class="subtitle">EmpowaEntrepreneurs Funding Summit 2026 Evaluation Form</p>
+      </div>
+      <div class="header-right">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="date">May 28, 2026</div>
+      </div>
+    </header>
+
+    <div class="intro-box">
+      <p><strong>Purpose:</strong> This document maps out the specific fields, data types, and configurations required to build <strong>Form ID 11 (Dragon Scoring Panel)</strong> inside Gravity Forms.</p>
+      <p>By matching these precise input IDs, submissions from the custom React frontend scorecard will map correctly to your WordPress entry database.</p>
+      <div class="warning-note">
+        ⚠️ <strong>Note:</strong> Due to field modifications in Gravity Forms, <strong>Session Track is mapped to ID 3 (<code>input_3</code>)</strong>. Consequently, <code>input_2</code> is bypassed, and all subsequent field IDs are shifted up by 1 place.
+      </div>
+    </div>
+
+    <h2><span>1</span> General Information &amp; Metadata</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">Field ID</th>
+          <th style="width: 30%;">Frontend Label</th>
+          <th style="width: 20%;">Recommended Field Type</th>
+          <th>Configuration Details / Dropdown Choices</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="id-badge">input_1</span></td>
+          <td><strong>Dragon Name</strong></td>
+          <td><span class="type-badge">Single Line Text</span></td>
+          <td>Required. Captures the evaluator's name.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_2</span></td>
+          <td style="color: #94a3b8; text-decoration: line-through;"><em>Skipped / Unused</em></td>
+          <td style="color: #94a3b8;">N/A</td>
+          <td style="color: #94a3b8;">This ID is skipped to align with your Gravity Forms structure.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_3</span></td>
+          <td><strong>Session Track</strong></td>
+          <td><span class="type-badge">Dropdown</span></td>
+          <td>
+            <ul class="choices-list">
+              <li>Session 1: Catalytic Capital Pitch Arena</li>
+              <li>Session 2: Power Seat Investor Roundtables</li>
+              <li>Session 3: Early-Stage VC Pitching Showcase</li>
+              <li>Session 4: Seed & Growth Scaling Pitches</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_4</span></td>
+          <td><strong>Business Name</strong></td>
+          <td><span class="type-badge">Single Line Text</span></td>
+          <td>Required. Name of the pitching startup/business being scored.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_5</span></td>
+          <td><strong>Sector Category</strong></td>
+          <td><span class="type-badge">Dropdown</span></td>
+          <td>
+            <ul class="choices-list">
+              <li>Agri-Tech & Agribusiness</li>
+              <li>Fintech & Financial Services</li>
+              <li>Green Energy & Sustainability (ESG)</li>
+              <li>Automotive & Manufacturing</li>
+              <li>E-Commerce & Retail</li>
+              <li>Health-Tech & Biotech</li>
+              <li>Ed-Tech & Education</li>
+              <li>Logistics, Supply Chain & Transport</li>
+              <li>Creative Economy & Media</li>
+              <li>Public Sector & Growth Solutions</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_6</span></td>
+          <td><strong>Funding Sought</strong></td>
+          <td><span class="type-badge">Single Line Text</span></td>
+          <td>e.g. R2M, R500k, or Debt Facility.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2><span>2</span> Evaluation Criteria Scores &amp; Notes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">Field ID</th>
+          <th style="width: 30%;">Frontend Criteria Field</th>
+          <th style="width: 20%;">Recommended Field Type</th>
+          <th>Weight &amp; Formatting Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="id-badge">input_7</span></td>
+          <td><strong>Market Opportunity Score</strong></td>
+          <td><span class="type-badge">Number / Dropdown</span></td>
+          <td><span class="weight-badge">Weight: 20%</span> Range: 1 - 10. Size, TAM/SAM.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_8</span></td>
+          <td><strong>Market Opportunity Notes</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Qualitative comments on market opportunity.</td>
+        </tr>
+        
+        <tr>
+          <td><span class="id-badge">input_9</span></td>
+          <td><strong>Business Model Score</strong></td>
+          <td><span class="type-badge">Number / Dropdown</span></td>
+          <td><span class="weight-badge">Weight: 20%</span> Range: 1 - 10. Profitability, economics.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_10</span></td>
+          <td><strong>Business Model Notes</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Qualitative comments on business model.</td>
+        </tr>
+        
+        <tr>
+          <td><span class="id-badge">input_11</span></td>
+          <td><strong>Traction &amp; Validation Score</strong></td>
+          <td><span class="type-badge">Number / Dropdown</span></td>
+          <td><span class="weight-badge">Weight: 10%</span> Range: 1 - 10. Growth, revenue, retention.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_12</span></td>
+          <td><strong>Traction &amp; Validation Notes</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Qualitative comments on traction.</td>
+        </tr>
+        
+        <tr>
+          <td><span class="id-badge">input_13</span></td>
+          <td><strong>Team Capability Score</strong></td>
+          <td><span class="type-badge">Number / Dropdown</span></td>
+          <td><span class="weight-badge">Weight: 15%</span> Range: 1 - 10. Experience, execution.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_14</span></td>
+          <td><strong>Team Capability Notes</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Qualitative comments on team capability.</td>
+        </tr>
+        
+        <tr>
+          <td><span class="id-badge">input_15</span></td>
+          <td><strong>Financial Projections Score</strong></td>
+          <td><span class="type-badge">Number / Dropdown</span></td>
+          <td><span class="weight-badge">Weight: 10%</span> Range: 1 - 10. Trajectory, assumptions.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_16</span></td>
+          <td><strong>Financial Projections Notes</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Qualitative comments on financials.</td>
+        </tr>
+        
+        <tr>
+          <td><span class="id-badge">input_17</span></td>
+          <td><strong>Competitive Advantage Score</strong></td>
+          <td><span class="type-badge">Number / Dropdown</span></td>
+          <td><span class="weight-badge">Weight: 10%</span> Range: 1 - 10. IP, moats, barriers.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_18</span></td>
+          <td><strong>Competitive Advantage Notes</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Qualitative comments on competitive edge.</td>
+        </tr>
+        
+        <tr>
+          <td><span class="id-badge">input_19</span></td>
+          <td><strong>Investment Terms Score</strong></td>
+          <td><span class="type-badge">Number / Dropdown</span></td>
+          <td><span class="weight-badge">Weight: 10%</span> Range: 1 - 10. Reasonable valuation, deal structures.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_20</span></td>
+          <td><strong>Investment Terms Notes</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Qualitative comments on investment deal terms.</td>
+        </tr>
+        
+        <tr>
+          <td><span class="id-badge">input_21</span></td>
+          <td><strong>Social Impact Score</strong></td>
+          <td><span class="type-badge">Number / Dropdown</span></td>
+          <td><span class="weight-badge">Weight: 5%</span> Range: 1 - 10. Job creation, B-BBEE, ESG.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_22</span></td>
+          <td><strong>Social Impact Notes</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Qualitative comments on social/economic impact.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2><span>3</span> Totals &amp; Thesis</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">Field ID</th>
+          <th style="width: 30%;">Frontend Label</th>
+          <th style="width: 20%;">Recommended Field Type</th>
+          <th>Configuration Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="id-badge">input_23</span></td>
+          <td><strong>Total Score</strong></td>
+          <td><span class="type-badge">Number</span></td>
+          <td>Calculated automatically by the React frontend on a weighted scale out of **100**.</td>
+        </tr>
+        <tr>
+          <td><span class="id-badge">input_24</span></td>
+          <td><strong>Overall Investment Comment</strong></td>
+          <td><span class="type-badge">Paragraph Text</span></td>
+          <td>Final summary thesis, main concerns, or next step recommendations.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="instructions-card">
+      <h3>📋 Quick Setup Guide for Gravity Forms Dashboard</h3>
+      <ol>
+        <li>Create or edit your form inside Gravity Forms titled <strong>Dragon Scoring Panel</strong>. Make sure it corresponds to <strong>ID 11</strong>.</li>
+        <li>Arrange fields precisely matching the <strong>Field IDs</strong> table above. Note that `input_2` must remain unused or blank so that **Session Track** maps to **ID 3**.</li>
+        <li>For numeric score fields, set <strong>Minimum Value = 1</strong> and <strong>Maximum Value = 10</strong>.</li>
+        <li>Save and publish the form. React submissions will now bind seamlessly to your WordPress dashboard databases!</li>
+      </ol>
+    </div>
+
+    <footer>
+      EmpowaEntrepreneurs &copy; 2026 · Built in Partnership with ABSA Small Business Solutions
+    </footer>
+  </div>
+
+</body>
+</html>
