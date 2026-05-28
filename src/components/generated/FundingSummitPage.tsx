@@ -2022,7 +2022,7 @@ const CtaBannerSection = () => {
   }, {
     id: 'cs-3',
     label: 'Contact',
-    value: 'summit@empowa.co',
+    value: 'info@empowaentrepreneurs.co.za',
     sub: 'Direct summit enquiries'
   }];
   const formGridStyle: React.CSSProperties = {
