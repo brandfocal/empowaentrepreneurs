@@ -51,7 +51,7 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | H
   e.target.style.borderColor = 'rgba(247,246,243,0.08)';
 };
 
-const REGISTRATION_DEADLINE = new Date("2026-05-27T19:59:00+02:00");
+const REGISTRATION_DEADLINE = new Date("2026-11-22T23:59:59+02:00");
 
 export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
   const [isClosed, setIsClosed] = useState(false);
@@ -328,7 +328,7 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                   <div>
                     <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '28px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 16px' }}>Applications Closed</h3>
                     <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(247,246,243,0.5)', margin: 0, lineHeight: '1.7', maxWidth: '480px' }}>
-                      Pitching Festival entry applications closed on <strong>May 27, 2026, at 19:59 SAST</strong>. We are no longer accepting new submissions for the 2026 event.
+                      Pitching Festival entry applications closed on <strong>November 22, 2026, at 23:59 SAST</strong>. We are no longer accepting new submissions for the 2026 event.
                     </p>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '320px', marginTop: '16px' }}>
@@ -355,10 +355,10 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                   <div style={{ marginBottom: '32px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                       <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#DE322D', boxShadow: '0 0 8px rgba(222,50,45,0.5)' }} />
-                      <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(247,246,243,0.4)', fontWeight: 600 }}>Pitch Power Application</span>
+                      <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(247,246,243,0.4)', fontWeight: 600 }}>Pitching Festival Week 2026 Application</span>
                     </div>
                     <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: isMobile ? '24px' : '32px', fontWeight: 300, letterSpacing: '-1px', color: '#F7F6F3', margin: '0 0 12px', lineHeight: 1.15 }}>
-                      Pitching Festival <em style={{ fontStyle: 'italic', color: '#DE322D', fontWeight: 400 }}>Entry</em>
+                      Pitching Festival Week 2026 <em style={{ fontStyle: 'italic', color: '#DE322D', fontWeight: 400 }}>Application</em>
                     </h3>
                   </div>
 

@@ -496,27 +496,30 @@ const StickyNav = () => {
               <span>Partner With Us</span>
             </motion.div>
           </Link>
-          <motion.a href="/summit" whileHover={{
-            scale: 1.04
-          }} whileTap={{
-            scale: 0.97
-          }} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            background: 'linear-gradient(135deg, #DE322D, #c42823)',
-            borderRadius: '44px',
-            padding: '8px 18px',
-            fontSize: '12px',
-            letterSpacing: '0.06em',
-            color: '#fff',
-            textDecoration: 'none',
-            fontFamily: 'Montserrat, sans-serif',
-            boxShadow: '0 4px 16px rgba(222,50,45,0.38)',
-            transition: 'box-shadow 0.3s ease'
-          }}>
-            <span>Register Now</span>
-          </motion.a>
+          <Link to="/pitch-power" style={{ textDecoration: 'none' }}>
+            <motion.div whileHover={{
+              scale: 1.04
+            }} whileTap={{
+              scale: 0.97
+            }} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: 'linear-gradient(135deg, #DE322D, #c42823)',
+              borderRadius: '44px',
+              padding: '8px 18px',
+              fontSize: '12px',
+              letterSpacing: '0.06em',
+              color: '#fff',
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+              boxShadow: '0 4px 16px rgba(222,50,45,0.38)',
+              transition: 'box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <span>Apply to Pitch</span>
+            </motion.div>
+          </Link>
         </div>
       </div>}
       {isMobile && <button onClick={() => setMobileMenuOpen(v => !v)} style={{
@@ -616,7 +619,7 @@ const StickyNav = () => {
             color: 'rgba(20,18,16,0.65)',
             textDecoration: 'none'
           }}>Partner With Us</Link>
-          <Link to="/summit" onClick={() => setMobileMenuOpen(false)} style={{
+          <Link to="/pitch-power" onClick={() => setMobileMenuOpen(false)} style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '13px',
             background: 'linear-gradient(135deg, #DE322D, #c42823)',
@@ -624,7 +627,7 @@ const StickyNav = () => {
             padding: '10px 20px',
             color: '#fff',
             textDecoration: 'none'
-          }}>Register Now</Link>
+          }}>Apply to Pitch</Link>
         </div>
       </motion.div>}
     </AnimatePresence>

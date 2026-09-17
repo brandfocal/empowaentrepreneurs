@@ -260,7 +260,7 @@ const ScrollProgressBar = () => {
 };
 
 // ─── Countdown Timer ─────────────────────────────────────────────────────────
-const SUMMIT_DATE = new Date('2026-05-28T08:00:00');
+const FESTIVAL_DATE = new Date('2026-11-16T09:00:00+02:00');
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -270,7 +270,7 @@ const CountdownTimer = () => {
   });
   useEffect(() => {
     const calc = () => {
-      const diff = SUMMIT_DATE.getTime() - Date.now();
+      const diff = FESTIVAL_DATE.getTime() - Date.now();
       if (diff <= 0) return;
       setTimeLeft({
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -1102,48 +1102,36 @@ const HeroSection = () => {
           }}>
             Where Vetted Entrepreneurs Meet High Impact Capital.
           </motion.p>
-          <motion.div custom={0.65} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+          <motion.a href="/pitch-power" custom={0.65} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '10px',
-            margin: '0',
-            padding: '8px 16px',
-            background: 'rgba(222,50,45,0.08)',
-            border: '1px solid rgba(222,50,45,0.3)',
+            gap: '8px',
+            padding: '8px 18px',
+            background: 'rgba(222,50,45,0.14)',
+            border: '1px solid rgba(222,50,45,0.4)',
             borderRadius: '100px',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            width: 'fit-content',
-            boxShadow: '0 4px 20px rgba(222,50,45,0.12)'
+            textDecoration: 'none',
+            cursor: 'pointer',
+            boxShadow: '0 4px 16px rgba(222,50,45,0.2)',
+            width: 'fit-content'
           }}>
-            <motion.span 
-              animate={{
-                opacity: [1, 0.4, 1],
-                scale: [1, 1.25, 1]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                background: '#DE322D',
-                boxShadow: '0 0 8px #DE322D',
-                display: 'block'
-              }} 
-            />
+            <span style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: '#FF5A4F',
+              display: 'block'
+            }} />
             <span style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '11px',
-              letterSpacing: '0.14em',
+              letterSpacing: '0.12em',
               textTransform: 'uppercase',
               color: '#fff',
               fontWeight: 700
-            }}>Registration opens at 7am</span>
-          </motion.div>
+            }}>Festival Week: 16 - 22 Nov 2026</span>
+            <ArrowIconDark />
+          </motion.a>
           <motion.div custom={0.68} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
             display: 'flex',
             alignItems: 'center',
@@ -1168,7 +1156,7 @@ const HeroSection = () => {
                 textTransform: 'uppercase',
                 color: '#DE322D',
                 fontWeight: 600
-              }}>Summit Countdown</div>
+              }}>Festival Countdown</div>
               <div style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '9px',
@@ -1176,7 +1164,7 @@ const HeroSection = () => {
                 textTransform: 'uppercase',
                 color: 'rgba(247,246,243,0.3)',
                 fontWeight: 500
-              }}>May 28 · 2026</div>
+              }}>16 - 22 Nov · 2026</div>
             </div>
             <div style={{
               width: '1px',
@@ -1191,7 +1179,7 @@ const HeroSection = () => {
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-            <motion.a href="/summit" whileHover={{
+            <motion.a href="/pitch-power" whileHover={{
               scale: 1.04,
               boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
             }} whileTap={{
@@ -1208,46 +1196,11 @@ const HeroSection = () => {
               color: '#fff',
               textDecoration: 'none',
               fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 600,
+              fontWeight: 700,
               boxShadow: '0 8px 36px rgba(222,50,45,0.55), 0 2px 8px rgba(222,50,45,0.3)',
               transition: 'box-shadow 0.3s ease'
             }}>
-              <span>Register Now</span><ArrowIconDark />
-            </motion.a>
-            <motion.a 
-              href="/Draft_Programme_EmpowaEntrepreneurs_Funding_Summit_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.04 }} 
-              whileTap={{ scale: 0.97 }} 
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                border: '1px solid rgba(222,50,45,0.4)',
-                background: 'rgba(222,50,45,0.06)',
-                borderRadius: '44px',
-                padding: isMobile ? '14px 24px' : '18px 30px',
-                fontSize: '13px',
-                letterSpacing: '0.04em',
-                color: '#F7F6F3',
-                textDecoration: 'none',
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 600,
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.background = 'rgba(222,50,45,0.15)';
-                el.style.borderColor = 'rgba(222,50,45,0.7)';
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.background = 'rgba(222,50,45,0.06)';
-                el.style.borderColor = 'rgba(222,50,45,0.4)';
-              }}
-            >
-              <span>Download Programme</span><DownloadIcon />
+              <span>Apply to Pitch: Festival 2026</span><ArrowIconDark />
             </motion.a>
             <motion.a href="/partnerships" whileHover={{
               scale: 1.04
@@ -4290,7 +4243,7 @@ const StickyRegistrationBanner = () => {
               letterSpacing: '-0.1px',
               whiteSpace: 'nowrap'
             }}>
-              EmpowaEntrepreneurs Summit 2026
+              Pitching Festival Week 2026
             </span>
           </div>
           <span style={{
@@ -4300,12 +4253,12 @@ const StickyRegistrationBanner = () => {
             letterSpacing: '0.02em',
             whiteSpace: isMobile ? 'normal' : 'nowrap'
           }}>
-            <span>May 28, 2026 · EmpowaWorx House</span>
+            <span>16 - 22 Nov 2026 · EmpowaWorx House, Randburg</span>
             {!isMobile && <span style={{
               margin: '0 8px',
               color: 'rgba(247,246,243,0.2)'
             }}>·</span>}
-            {!isMobile && <span>Secure your seat before registration closes</span>}
+            {!isMobile && <span>GET CONNECTED | GET FUNDED · Africa Investment Week</span>}
           </span>
         </div>
         {!isMobile && <div style={{
@@ -4321,7 +4274,7 @@ const StickyRegistrationBanner = () => {
           flexShrink: 0,
           flexWrap: 'nowrap'
         }}>
-          <motion.a href="/summit" whileHover={{
+          <motion.a href="/pitch-power" whileHover={{
             scale: 1.04,
             boxShadow: '0 8px 32px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -4342,7 +4295,7 @@ const StickyRegistrationBanner = () => {
             boxShadow: '0 4px 20px rgba(222,50,45,0.4)',
             whiteSpace: 'nowrap'
           }}>
-            <span>Register Now</span><ArrowIconDark />
+            <span>Apply to Pitch</span><ArrowIconDark />
           </motion.a>
         </div>
         <button onClick={() => setDismissed(true)} aria-label="Dismiss registration banner" style={{

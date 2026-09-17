@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { PitchingFestivalModal } from './PitchingFestivalModal';
 
-const REGISTRATION_DEADLINE = new Date("2026-05-27T19:59:00+02:00");
+const REGISTRATION_DEADLINE = new Date("2026-11-22T23:59:59+02:00");
 
 // ─── Noise texture ─────────────────────────────────────────────────────────────
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
@@ -817,215 +817,392 @@ const HeroSection = () => {
       flex: 1,
       padding: heroPadding,
       width: '100%',
+      maxWidth: '1360px',
+      margin: '0 auto',
       boxSizing: 'border-box',
       zIndex: 4,
       position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center'
+      display: 'grid',
+      gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr' : '1.18fr 0.82fr',
+      gap: isMobile ? '36px' : '48px',
+      alignItems: 'center'
     }}>
-      {/* Eyebrow */}
-      <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        marginBottom: isMobile ? '28px' : '40px',
-        flexWrap: 'wrap'
-      }}>
-        <PlusSquareIconLight />
-        <span style={{
-          fontFamily: 'Montserrat, sans-serif',
-          color: 'rgba(247,246,243,0.38)',
-          fontSize: isMobile ? '10px' : '11px',
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          fontWeight: 500
-        }}>
-          <span style={{
-            color: '#DE322D',
-            fontWeight: 600
-          }}>EmpowaEntrepreneurs</span>
-          <span> · Pitch Perfect 2026 - </span>
-          <span style={{
-            color: '#DE322D',
-            fontWeight: 600
-          }}>Africa's Deal Arena</span>
-        </span>
-      </motion.div>
-
-      {/* Headline */}
-      <h1 style={{
-        fontFamily: 'Montserrat, sans-serif',
-        fontWeight: 300,
-        margin: `0 0 ${isMobile ? '32px' : '48px'}`,
-        lineHeight: 0.92,
-        letterSpacing: heroLetterSpacing
-      }}>
-        <div style={{
-          overflow: 'hidden',
-          display: 'block'
-        }}>
-          {['The', 'Pitching'].map((word, i) => <motion.span key={`l1-${word}`} initial={{
-            y: '110%',
-            opacity: 0
-          }} animate={{
-            y: '0%',
-            opacity: 1
-          }} transition={{
-            duration: 0.9,
-            delay: 0.2 + i * 0.1,
-            ease: [0.22, 1, 0.36, 1]
-          }} style={{
-            display: 'inline-block',
-            fontSize: heroFontSize,
-            color: '#F7F6F3',
-            marginRight: '0.22em'
-          }}>
-            {word}
-          </motion.span>)}
-        </div>
-        <div style={{
-          overflow: 'hidden',
-          display: 'block'
-        }}>
-          <motion.em initial={{
-            y: '110%',
-            opacity: 0
-          }} animate={{
-            y: '0%',
-            opacity: 1
-          }} transition={{
-            duration: 0.9,
-            delay: 0.42,
-            ease: [0.22, 1, 0.36, 1]
-          }} style={{
-            display: 'inline-block',
-            fontStyle: 'italic',
-            fontWeight: 300,
-            fontSize: heroFontSize,
-            color: '#DE322D',
-            marginRight: '0.22em'
-          }}>
-            Festival
-          </motion.em>
-        </div>
-        <div style={{
-          overflow: 'hidden',
-          display: 'block'
-        }}>
-          {["Africa's", 'Premier'].map((word, i) => <motion.span key={`l3-${word}`} initial={{
-            y: '110%',
-            opacity: 0
-          }} animate={{
-            y: '0%',
-            opacity: 1
-          }} transition={{
-            duration: 0.9,
-            delay: 0.58 + i * 0.1,
-            ease: [0.22, 1, 0.36, 1]
-          }} style={{
-            display: 'inline-block',
-            fontSize: heroFontSize,
-            color: 'rgba(247,246,243,0.18)',
-            marginRight: '0.22em'
-          }}>
-            {word}
-          </motion.span>)}
-          <motion.span initial={{
-            y: '110%',
-            opacity: 0
-          }} animate={{
-            y: '0%',
-            opacity: 1
-          }} transition={{
-            duration: 0.9,
-            delay: 0.78,
-            ease: [0.22, 1, 0.36, 1]
-          }} style={{
-            display: 'inline-block',
-            fontSize: heroFontSize,
-            color: 'rgba(247,246,243,0.18)',
-            marginRight: '0.22em'
-          }}>
-            Deal-Making Arena
-          </motion.span>
-        </div>
-      </h1>
-
-      <motion.div custom={0.85} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+      {/* Left Column: Brand, Headline, Subtitle, Dates, Actions & Partnership Card */}
+      <div style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: '24px',
-        maxWidth: isMobile ? '100%' : isTablet ? '520px' : '520px'
+        alignItems: 'flex-start'
       }}>
-        <p style={{
-          fontFamily: 'Inter, sans-serif',
-          fontSize: isMobile ? '14px' : isTablet ? '15px' : 'clamp(15px, 1.4vw, 17px)',
-          lineHeight: '1.8',
-          color: 'rgba(247,246,243,0.68)',
-          margin: 0,
-          fontWeight: 300
-        }}>
-          Where Africa's most investment-ready founders face off before a panel of elite funders in the continent's
-          highest-stakes pitching environment. No presentations. No proposals. Just deals.
-        </p>
-        <div style={{
+        {/* Brand Header */}
+        <motion.div custom={0.05} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
-          flexWrap: 'wrap'
+          marginBottom: '20px'
         }}>
-          <MagneticButton label={isClosed ? "Applications Closed" : "Apply to Pitch"} variant="primary" disabled={isClosed} onClick={isClosed ? undefined : () => window.dispatchEvent(new Event('openPitchModal'))} />
-          <MagneticButton label="Become a Funder" variant="outline" onClick={() => window.location.href = '/partnerships'} />
+          <div style={{
+            width: '42px',
+            height: '24px',
+            borderRadius: '16px',
+            border: '2.5px solid #DE322D',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 0 14px rgba(222,50,45,0.4)',
+            flexShrink: 0
+          }}>
+            <div style={{ width: '16px', height: '2.5px', background: '#DE322D', borderRadius: '2px' }} />
+          </div>
+          <div style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '13px',
+            fontWeight: 800,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: '#FFFFFF',
+            lineHeight: 1.15
+          }}>
+            <div>EMPOWA</div>
+            <div>ENTREPRENEURS</div>
+          </div>
+        </motion.div>
+
+        {/* Poster Headline with Dividing Lines */}
+        <div style={{ width: '100%', maxWidth: '640px', marginBottom: '22px' }}>
+          <div style={{ width: '100%', height: '1.5px', background: 'linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.4) 70%, transparent 100%)', marginBottom: '14px' }} />
+          <h1 style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 900,
+            margin: 0,
+            lineHeight: 0.92,
+            letterSpacing: isMobile ? '-1.5px' : '-2.5px',
+            textTransform: 'uppercase'
+          }}>
+            <div style={{ color: '#FFFFFF', fontSize: isMobile ? 'clamp(38px, 11vw, 52px)' : 'clamp(50px, 5.5vw, 76px)' }}>
+              PITCHING
+            </div>
+            <div style={{ color: '#DE322D', fontSize: isMobile ? 'clamp(38px, 11vw, 52px)' : 'clamp(50px, 5.5vw, 76px)' }}>
+              FESTIVAL
+            </div>
+            <div style={{ color: '#FFFFFF', fontSize: isMobile ? 'clamp(38px, 11vw, 52px)' : 'clamp(50px, 5.5vw, 76px)' }}>
+              WEEK 2026
+            </div>
+          </h1>
+          <div style={{ width: '100%', height: '1.5px', background: 'linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.4) 70%, transparent 100%)', marginTop: '14px' }} />
         </div>
+
+        {/* Sub-headline / Tagline */}
+        <motion.div custom={0.3} initial="hidden" animate="visible" variants={fadeUpVariants} style={{ marginBottom: '22px' }}>
+          <div style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: isMobile ? '16px' : '19px',
+            fontWeight: 800,
+            color: '#DE322D',
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            marginBottom: '4px'
+          }}>
+            GET CONNECTED | GET FUNDED
+          </div>
+          <div style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: isMobile ? '13px' : '15px',
+            color: 'rgba(247,246,243,0.85)',
+            fontWeight: 400,
+            letterSpacing: '0.02em'
+          }}>
+            Africa Investment Week by Sector
+          </div>
+        </motion.div>
+
+        {/* Date and Venue Badge */}
+        <motion.div custom={0.4} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+          padding: '14px 18px',
+          background: 'rgba(222,50,45,0.08)',
+          borderLeft: '4px solid #DE322D',
+          borderRadius: '0 12px 12px 0',
+          marginBottom: '26px',
+          maxWidth: '460px',
+          width: '100%',
+          boxSizing: 'border-box'
+        }}>
+          <div style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: isMobile ? '17px' : '20px',
+            fontWeight: 800,
+            color: '#DE322D',
+            letterSpacing: '0.04em',
+            marginBottom: '3px'
+          }}>
+            16 - 22ND NOVEMBER 2026
+          </div>
+          <div style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: isMobile ? '12px' : '13px',
+            fontWeight: 700,
+            color: '#FFFFFF',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase'
+          }}>
+            EMPOWAWORX HOUSE, RANDBURG
+          </div>
+        </motion.div>
+
+        {/* CTA Buttons */}
+        <motion.div custom={0.45} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          flexWrap: 'wrap',
+          marginBottom: '28px'
+        }}>
+          <MagneticButton
+            label="Apply to Pitch"
+            variant="primary"
+            disabled={false}
+            onClick={() => window.dispatchEvent(new Event('openPitchModal'))}
+          />
+          <a
+            href="#partnership-enquiries"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              borderRadius: '44px',
+              padding: isMobile ? '13px 22px' : '16px 28px',
+              fontSize: '13px',
+              letterSpacing: '0.05em',
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 600,
+              color: '#F7F6F3',
+              border: '1px solid rgba(222,50,45,0.45)',
+              background: 'rgba(222,50,45,0.08)',
+              transition: 'all 0.25s ease'
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = 'rgba(222,50,45,0.2)';
+              el.style.borderColor = 'rgba(222,50,45,0.7)';
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = 'rgba(222,50,45,0.08)';
+              el.style.borderColor = 'rgba(222,50,45,0.45)';
+            }}
+          >
+            <span>Partnership Enquiries</span>
+            <ArrowIconDark />
+          </a>
+          <MagneticButton
+            label="Become a Funder"
+            variant="ghost"
+            onClick={() => window.location.href = '/partnerships'}
+          />
+        </motion.div>
+
+        {/* Pitch Intro Description */}
+        <motion.p custom={0.5} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: isMobile ? '14px' : '15px',
+          color: 'rgba(247,246,243,0.72)',
+          lineHeight: 1.7,
+          maxWidth: '540px',
+          margin: 0,
+          fontWeight: 300
+        }}>
+          Where Africa's most investment-ready founders face off before a panel of elite funders in the continent's highest-stakes pitching environment. No presentations. No proposals. Just deals.
+        </motion.p>
+      </div>
+
+      {/* Right Column: Ecosystem Pillars, Stats & Sponsorship / Partnership Card */}
+      <motion.div custom={0.35} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: isMobile ? 'flex-start' : 'center',
+        gap: '20px',
+        width: '100%'
+      }}>
+        {/* Concentric Sectors Bar from Poster */}
+        <div style={{
+          width: '100%',
+          maxWidth: '440px',
+          background: 'rgba(247,246,243,0.03)',
+          border: '1px solid rgba(247,246,243,0.08)',
+          borderRadius: '16px',
+          padding: '18px 20px',
+          backdropFilter: 'blur(8px)',
+          boxSizing: 'border-box'
+        }}>
+          <div style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '11px',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: '#DE322D',
+            fontWeight: 700,
+            marginBottom: '12px'
+          }}>
+            Africa Investment Week by Sector
+          </div>
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '8px'
+          }}>
+            {['CAPITAL', 'MARKETS', 'PARTNERS', 'FOUNDERS', 'PROCUREMENT', 'INVESTORS'].map(sector => (
+              <span
+                key={sector}
+                style={{
+                  display: 'inline-block',
+                  padding: '5px 12px',
+                  background: 'rgba(222,50,45,0.1)',
+                  border: '1px solid rgba(222,50,45,0.3)',
+                  borderRadius: '100px',
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.06em',
+                  color: '#F7F6F3'
+                }}
+              >
+                {sector}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats Strip from Original Page */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '20px',
-          paddingTop: '20px',
-          borderTop: '1px solid rgba(247,246,243,0.08)',
-          flexWrap: 'wrap'
+          justifyContent: 'space-between',
+          width: '100%',
+          maxWidth: '440px',
+          padding: '14px 18px',
+          background: 'rgba(247,246,243,0.02)',
+          border: '1px solid rgba(247,246,243,0.06)',
+          borderRadius: '14px',
+          boxSizing: 'border-box'
         }}>
-          {[{
-            id: 'hs-1',
-            value: '60+',
-            label: 'Elite Funders'
-          }, {
-            id: 'hs-2',
-            value: '100',
-            label: 'Pitch Slots'
-          }, {
-            id: 'hs-3',
-            value: '30+',
-            label: 'African Markets'
-          }].map((stat, i) => <div key={stat.id} style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '2px',
-            paddingRight: i < 2 ? '20px' : '0',
-            borderRight: i < 2 ? '1px solid rgba(247,246,243,0.1)' : 'none'
+          {[
+            { value: '60+', label: 'Elite Funders' },
+            { value: '100', label: 'Pitch Slots' },
+            { value: '30+', label: 'African Markets' }
+          ].map((stat, i) => (
+            <div key={stat.label} style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '3px',
+              flex: 1,
+              borderRight: i < 2 ? '1px solid rgba(247,246,243,0.08)' : 'none'
+            }}>
+              <span style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '20px',
+                fontWeight: 800,
+                color: '#DE322D',
+                lineHeight: 1
+              }}>
+                {stat.value}
+              </span>
+              <span style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '9px',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'rgba(247,246,243,0.45)',
+                fontWeight: 600
+              }}>
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Partnership / Sponsorship Enquiries Card */}
+        <div id="partnership-enquiries" style={{
+          padding: '24px 26px',
+          background: 'rgba(15,28,40,0.88)',
+          border: '1px solid rgba(222,50,45,0.35)',
+          borderRadius: '20px',
+          maxWidth: '440px',
+          width: '100%',
+          boxSizing: 'border-box',
+          backdropFilter: 'blur(16px)',
+          boxShadow: '0 20px 48px rgba(0,0,0,0.5), 0 0 30px rgba(222,50,45,0.15)'
+        }}>
+          <div style={{
+            display: 'inline-block',
+            padding: '5px 14px',
+            background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+            borderRadius: '100px',
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '10px',
+            fontWeight: 700,
+            letterSpacing: '0.12em',
+            color: '#FFFFFF',
+            textTransform: 'uppercase',
+            marginBottom: '14px',
+            boxShadow: '0 4px 14px rgba(222,50,45,0.3)'
           }}>
-            <span style={{
+            FOR PARTNERSHIP ENQUIRIES
+          </div>
+          <div style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '20px',
+            fontWeight: 800,
+            color: '#DE322D',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            marginBottom: '4px'
+          }}>
+            THULISA SOSIBO
+          </div>
+          <div style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '14px',
+            color: 'rgba(247,246,243,0.9)',
+            marginBottom: '2px',
+            fontWeight: 500
+          }}>
+            Managing Executive and Project Lead
+          </div>
+          <div style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '13px',
+            fontWeight: 600,
+            color: 'rgba(247,246,243,0.6)',
+            marginBottom: '16px'
+          }}>
+            EmpowaEntrepreneurs™
+          </div>
+          <a
+            href="mailto:thulisa@empowaworx.co.za"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: '#DE322D',
               fontFamily: 'Montserrat, sans-serif',
-              fontSize: isMobile ? '20px' : 'clamp(20px, 2.5vw, 28px)',
-              fontWeight: 200,
-              letterSpacing: '-1px',
-              color: '#F7F6F3',
-              lineHeight: 1
-            }}>
-              {stat.value}
-            </span>
-            <span style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: '10px',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: 'rgba(247,246,243,0.28)',
-              fontWeight: 500
-            }}>
-              {stat.label}
-            </span>
-          </div>)}
+              fontSize: '14px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
+              background: 'rgba(222,50,45,0.1)',
+              padding: '10px 16px',
+              borderRadius: '10px',
+              border: '1px solid rgba(222,50,45,0.25)'
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = '#ff6b62'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = '#DE322D'; }}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+            <span>thulisa@empowaworx.co.za</span>
+          </a>
         </div>
       </motion.div>
     </motion.div>
@@ -1047,6 +1224,268 @@ const HeroSection = () => {
       <HeroTicker light />
     </motion.div>
   </section>;
+};
+
+// ─── Ecosystem Sectors Section (Africa Investment Week by Sector) ───────────
+type EcosystemSector = {
+  id: string;
+  index: string;
+  name: string;
+  description: string;
+  highlight: string;
+};
+
+const ECOSYSTEM_SECTORS: EcosystemSector[] = [
+  {
+    id: 'sec-capital',
+    index: '01',
+    name: 'CAPITAL',
+    description: 'Direct engagement with DFIs, institutional venture capital, family offices, and catalytic funds with active deployment mandates.',
+    highlight: 'Deployment Mandates'
+  },
+  {
+    id: 'sec-markets',
+    index: '02',
+    name: 'MARKETS',
+    description: 'Surfacing continental opportunity and cross-border expansion corridors across 30+ African markets.',
+    highlight: '30+ African Markets'
+  },
+  {
+    id: 'sec-partners',
+    index: '03',
+    name: 'PARTNERS',
+    description: 'Building strategic corporate alliances, enterprise enablers, and pan-African ecosystem partnerships.',
+    highlight: 'Ecosystem Alliances'
+  },
+  {
+    id: 'sec-founders',
+    index: '04',
+    name: 'FOUNDERS',
+    description: '100 vetted, investment-ready entrepreneurs presenting scalable ventures in high-stakes deal sessions.',
+    highlight: '100 Pitch Slots'
+  },
+  {
+    id: 'sec-procurement',
+    index: '05',
+    name: 'PROCUREMENT',
+    description: 'Commercial corporate linkages, preferential supply chain access, and enterprise development opportunities.',
+    highlight: 'Commercial Linkages'
+  },
+  {
+    id: 'sec-investors',
+    index: '06',
+    name: 'INVESTORS',
+    description: '60+ vetted and exclusive funder participants committed to active deal engagement and private due diligence sessions.',
+    highlight: '60+ Elite Funders'
+  }
+];
+
+const EcosystemSectorsSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: '-80px 0px' });
+  const { isMobile, isTablet } = useBreakpoint();
+  const [activeSector, setActiveSector] = useState(ECOSYSTEM_SECTORS[0].id);
+
+  return (
+    <section ref={sectionRef} style={{
+      background: '#0B1320',
+      padding: isMobile ? '80px 20px' : '110px 48px',
+      position: 'relative',
+      overflow: 'hidden',
+      borderTop: '1px solid rgba(222,50,45,0.25)',
+      borderBottom: '1px solid rgba(247,246,243,0.08)'
+    }}>
+      {/* Background radial glow */}
+      <div style={{
+        position: 'absolute',
+        top: '20%',
+        right: '-10%',
+        width: '600px',
+        height: '600px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(222,50,45,0.12) 0%, transparent 70%)',
+        pointerEvents: 'none'
+      }} />
+
+      <div style={{ maxWidth: '1240px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          justifyContent: 'space-between',
+          alignItems: isMobile ? 'flex-start' : 'flex-end',
+          marginBottom: '56px',
+          gap: '24px'
+        }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#DE322D', boxShadow: '0 0 10px #DE322D' }} />
+              <span style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '11px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: '#DE322D',
+                fontWeight: 700
+              }}>
+                Africa Investment Week by Sector
+              </span>
+            </div>
+            <h2 style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: isMobile ? '30px' : 'clamp(36px, 4vw, 52px)',
+              fontWeight: 800,
+              color: '#F7F6F3',
+              margin: 0,
+              letterSpacing: '-1.5px',
+              lineHeight: 1.05
+            }}>
+              GET CONNECTED | GET FUNDED
+            </h2>
+          </div>
+          <p style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '15px',
+            color: 'rgba(247,246,243,0.6)',
+            maxWidth: '440px',
+            lineHeight: 1.7,
+            margin: 0,
+            fontWeight: 300
+          }}>
+            Connecting Africa's investment ecosystem across six core sectors at EmpowaWorx House, Randburg: Capital, Markets, Partners, Founders, Procurement, and Investors.
+          </p>
+        </div>
+
+        {/* Sectors Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+          gap: '20px'
+        }}>
+          {ECOSYSTEM_SECTORS.map((sec, i) => {
+            const isHovered = activeSector === sec.id;
+            return (
+              <motion.div
+                key={sec.id}
+                onMouseEnter={() => setActiveSector(sec.id)}
+                initial={{ opacity: 0, y: 24 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                style={{
+                  background: isHovered ? 'rgba(222,50,45,0.08)' : 'rgba(247,246,243,0.03)',
+                  border: isHovered ? '1px solid rgba(222,50,45,0.45)' : '1px solid rgba(247,246,243,0.08)',
+                  borderRadius: '20px',
+                  padding: '28px 26px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  minHeight: '210px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: isHovered ? '0 16px 40px rgba(222,50,45,0.15)' : 'none'
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                    <span style={{
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontSize: '18px',
+                      fontWeight: 900,
+                      letterSpacing: '0.08em',
+                      color: isHovered ? '#DE322D' : '#F7F6F3',
+                      textTransform: 'uppercase',
+                      transition: 'color 0.25s ease'
+                    }}>
+                      {sec.name}
+                    </span>
+                    <span style={{
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      color: '#DE322D',
+                      background: 'rgba(222,50,45,0.12)',
+                      padding: '4px 10px',
+                      borderRadius: '100px'
+                    }}>
+                      {sec.index}
+                    </span>
+                  </div>
+                  <p style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '13px',
+                    color: 'rgba(247,246,243,0.68)',
+                    lineHeight: 1.7,
+                    margin: 0,
+                    fontWeight: 300
+                  }}>
+                    {sec.description}
+                  </p>
+                </div>
+
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginTop: '20px',
+                  paddingTop: '16px',
+                  borderTop: '1px solid rgba(247,246,243,0.06)'
+                }}>
+                  <span style={{
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '10px',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: isHovered ? '#DE322D' : 'rgba(247,246,243,0.4)',
+                    fontWeight: 600,
+                    transition: 'color 0.25s ease'
+                  }}>
+                    {sec.highlight}
+                  </span>
+                  <div style={{
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    background: isHovered ? '#DE322D' : 'rgba(247,246,243,0.2)'
+                  }} />
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Action strip under sectors */}
+        <div style={{
+          marginTop: '44px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '16px'
+        }}>
+          <button
+            onClick={onOpenModal}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              borderRadius: '44px',
+              padding: '15px 32px',
+              fontSize: '13px',
+              letterSpacing: '0.05em',
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 700,
+              color: '#FFFFFF',
+              background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 8px 32px rgba(222,50,45,0.45)'
+            }}
+          >
+            <span>Apply to Pitch</span>
+            <ArrowIconDark />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 // ─── Core Pillars ─────────────────────────────────────────────────────────────
@@ -1369,7 +1808,7 @@ const ELIGIBILITY_CRITERIA: EligCriterion[] = [{
   category: 'Notice',
   title: 'Application Window is Limited',
   status: 'notice',
-  description: 'Only 100 pitching slots are available across the entire festival. Applications close 60 days before the event or upon capacity: whichever comes first. Early application is strongly advised.'
+  description: 'Only 100 pitching slots are available across the entire festival. Applications close upon capacity for the 16 - 22 November 2026 cohort at EmpowaWorx House, Randburg. Early application is strongly advised.'
 }];
 const EligibilitySection = () => {
   const [isClosed, setIsClosed] = useState(false);
@@ -2264,14 +2703,14 @@ const BOTTOM_STRIP_ITEMS = [{
   sub: 'Rolling admission'
 }, {
   id: 'bs-3',
-  label: 'Summit Date',
-  value: 'May 28, 2026',
-  sub: 'EmpowaWorx House'
+  label: 'Festival Dates',
+  value: '16 - 22 Nov 2026',
+  sub: 'EmpowaWorx House, Randburg'
 }, {
   id: 'bs-4',
   label: 'Status',
   value: 'Applications Open',
-  sub: 'Close 60 days before'
+  sub: 'November 2026 Cohort'
 }];
 const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
   const [isClosed, setIsClosed] = useState(false);
@@ -2772,7 +3211,7 @@ const SiteFooter = () => {
               <span style={{
                 color: 'rgba(247,246,243,0.18)',
                 fontWeight: 300
-              }}>May 2026.</span>
+              }}>16 - 22 Nov 2026.</span>
             </motion.h2>
           </div>
           <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.22} style={{
@@ -3474,6 +3913,7 @@ export const PitchingFestivalPage = () => {
     background: '#141210'
   }}>
     <HeroSection />
+    <EcosystemSectorsSection onOpenModal={() => setIsModalOpen(true)} />
     <LogoBanner />
     <PillarsSection />
     <EligibilitySection />

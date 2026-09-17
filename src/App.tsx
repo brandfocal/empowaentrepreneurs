@@ -74,6 +74,7 @@ function App() {
               <Route path="/apply" element={<ApplyToAttendPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/pitch-power" element={<PitchingFestivalPage />} />
+              <Route path="/pitching-festival" element={<PitchingFestivalPage />} />
               <Route path="/strategic-advisory" element={<StrategicAdvisoryPage />} />
               <Route path="/awards" element={<FundingAwardsPage />} />
               <Route path="/summit" element={<FundingSummitPage />} />
