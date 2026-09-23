@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmpowaEntrepreneurs 2026 - Registration &amp; Pitch Festival User Journeys</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #DE322D;
+      --primary-hover: #f14c47;
+      --primary-glow: rgba(222, 50, 45, 0.4);
+      --bg-dark: #0A0906;
+      --card-bg: #141210;
+      --card-border: rgba(247, 246, 243, 0.08);
+      --text-light: #F7F6F3;
+      --text-muted: rgba(247, 246, 243, 0.5);
+      --text-dim: rgba(247, 246, 243, 0.25);
+      --success: #22c55e;
+      --success-glow: rgba(34, 197, 94, 0.2);
+      --info: #3b82f6;
+      --accent: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(222, 50, 45, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.04) 0%, transparent 40%);
+      color: var(--text-light);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header Styling */
+    header {
+      background: linear-gradient(135deg, var(--card-bg) 0%, #1e1b18 100%);
+      border: 1px solid var(--card-border);
+      border-top: 4px solid var(--primary);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(222, 50, 45, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-title h1 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      background: linear-gradient(to right, var(--text-light) 60%, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-title p {
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .badge {
+      background: var(--primary-glow);
+      border: 1px solid var(--primary);
+      color: var(--text-light);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    .confidential-stamp {
+      text-align: right;
+    }
+
+    .confidential-text {
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      text-shadow: 0 0 10px rgba(222, 50, 45, 0.3);
+    }
+
+    .doc-date {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: monospace;
+    }
+
+    /* Process Flow section */
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 24px;
+      background: var(--primary);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--primary);
+    }
+
+    .flowchart-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    /* Flex flowchart styling */
+    .flow-steps {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+    }
+
+    .flow-step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(247, 246, 243, 0.05);
+      border-radius: 16px;
+      padding: 24px;
+      flex: 1;
+      min-width: 210px;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .flow-step-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(222, 50, 45, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .step-icon-wrapper {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(247, 246, 243, 0.04);
+      border: 1px solid rgba(247, 246, 243, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+
+    .flow-step-card:hover .step-icon-wrapper {
+      background: var(--primary-glow);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .step-number {
+      font-size: 11px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .step-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Flow connector arrows */
+    .flow-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-size: 24px;
+      user-select: none;
+    }
+
+    @media (max-width: 900px) {
+      .flow-connector {
+        transform: rotate(90deg);
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+
+    /* Interactive Directory tabs styling */
+    .directory-container {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 800px) {
+      .directory-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .form-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(247, 246, 243, 0.15);
+      color: var(--text-light);
+    }
+
+    .form-tab-btn.active {
+      background: linear-gradient(135deg, var(--card-bg) 0%, #1c1514 100%);
+      border-color: var(--primary);
+      color: var(--text-light);
+      box-shadow: 0 5px 15px rgba(222, 50, 45, 0.1);
+    }
+
+    .form-tab-btn .form-id {
+      font-family: monospace;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+    }
+
+    .form-tab-btn.active .form-id {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .form-details-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px;
+      min-height: 500px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    .panel-header {
+      border-bottom: 1px solid rgba(247, 246, 243, 0.08);
+      padding-bottom: 24px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .panel-title-wrapper h2 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--text-light);
+      margin-bottom: 6px;
+    }
+
+    .panel-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .panel-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .panel-meta code {
+      background: rgba(255,255,255,0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-light);
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    /* Sub-sections inside details panel */
+    .info-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(247, 246, 243, 0.05);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .info-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card h3 svg {
+      color: var(--primary);
+    }
+
+    .info-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .flow-list {
+      list-style: none;
+    }
+
+    .flow-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .flow-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .flow-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Technical config table */
+    table.spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    table.spec-table th {
+      background: rgba(255,255,255,0.03);
+      color: var(--text-light);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(247, 246, 243, 0.1);
+    }
+
+    table.spec-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(247, 246, 243, 0.04);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    table.spec-table tr:hover td {
+      background: rgba(255, 255, 255, 0.01);
+      color: var(--text-light);
+    }
+
+    .badge-endpoint {
+      font-family: monospace;
+      font-size: 11px;
+      background: rgba(222, 50, 45, 0.1);
+      border: 1px solid rgba(222, 50, 45, 0.25);
+      color: #ff5d58;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Email templates grid */
+    .email-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .email-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .email-preview-box {
+      background: #0C0A09;
+      border: 1px solid rgba(247, 246, 243, 0.04);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #a8a29e;
+      overflow-x: auto;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .email-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* Footer styling */
+    footer {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(247, 246, 243, 0.08);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-panel {
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .highlight-glow {
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.2);
+    }
+
+    .highlight-icon {
+      color: var(--success);
+      background: rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.2);
+    }
+
+    .highlight-glow-alert {
+      box-shadow: 0 0 30px rgba(222, 50, 45, 0.08);
+      border-color: rgba(222, 50, 45, 0.2);
+    }
+
+    .highlight-icon-alert {
+      color: var(--primary);
+      background: var(--primary-glow);
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="header-left">
+        <span class="badge">Ecosystem Blueprint</span>
+        <div class="header-title">
+          <h1>Registration &amp; Pitch Festival User Journeys</h1>
+          <p>Data submission pipelines, email automations, and database schemas for EmpowaEntrepreneurs 2026</p>
+        </div>
+      </div>
+      <div class="confidential-stamp">
+        <div class="confidential-text">Internal Spec</div>
+        <div class="doc-date">v2.1 · June 2026</div>
+      </div>
+    </header>
+
+    <h2 class="section-title">End-to-End Submission Lifecycle</h2>
+    
+    <!-- Visual Flowchart -->
+    <div class="flowchart-container">
+      <div class="flow-steps">
+        
+        <!-- Step 1 -->
+        <div class="flow-step-card">
+          <div class="step-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+          </div>
+          <span class="step-number">Phase 1</span>
+          <h4 class="step-title">Frontend Interaction</h4>
+          <p class="step-desc">Applicant fills out a styled, multi-step React frontend form page or modal.</p>
+        </div>
+        
+        <div class="flow-connector">➔</div>
+        
+        <!-- Step 2 -->
+        <div class="flow-step-card">
+          <div class="step-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m2 12 10-10 10 10-10 10L2 12z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </div>
+          <span class="step-number">Phase 2</span>
+          <h4 class="step-title">API Gateway Post</h4>
+          <p class="step-desc">Secure JSON/FormData package transmitted to Gravity Forms endpoint.</p>
+        </div>
+        
+        <div class="flow-connector">➔</div>
+        
+        <!-- Step 3 -->
+        <div class="flow-step-card">
+          <div class="step-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+          </div>
+          <span class="step-number">Phase 3</span>
+          <h4 class="step-title">Database Storage</h4>
+          <p class="step-desc">Gravity Forms validates &amp; logs entry in the WordPress MySQL database.</p>
+        </div>
+        
+        <div class="flow-connector">➔</div>
+        
+        <!-- Step 4 -->
+        <div class="flow-step-card highlight-glow">
+          <div class="step-icon-wrapper highlight-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <span class="step-number" style="color: var(--success)">Phase 4</span>
+          <h4 class="step-title" style="color: var(--text-light)">Dual Email Routing</h4>
+          <p class="step-desc">Automated transactional emails dispatched: confirmation to applicant &amp; full details to admin.</p>
+        </div>
+        
+        <div class="flow-connector" style="color: var(--success)">➔</div>
+        
+        <!-- Step 5 -->
+        <div class="flow-step-card highlight-glow">
+          <div class="step-icon-wrapper highlight-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M15 9v12"/></svg>
+          </div>
+          <span class="step-number" style="color: var(--success)">Phase 5</span>
+          <h4 class="step-title" style="color: var(--text-light)">Spreadsheet Sync</h4>
+          <p class="step-desc">WordPress logs populate spreadsheets for admin tracking &amp; records sorting.</p>
+        </div>
+        
+      </div>
+    </div>
+
+    <h2 class="section-title">Ecosystem Form Directory</h2>
+
+    <div class="directory-container">
+      
+      <!-- Sidebar Tabs -->
+      <div class="form-sidebar" id="sidebar-tabs">
+        <!-- Buttons injected dynamically or hardcoded -->
+        <button class="form-tab-btn active" onclick="switchForm(3)">
+          <span>Detailed Registration</span>
+          <span class="form-id">ID 3</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(17)">
+          <span>Pitching Festival Entry</span>
+          <span class="form-id">ID 17</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(11)">
+          <span>Dragon Scoring Panel</span>
+          <span class="form-id">ID 11</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(4)">
+          <span>Summit Registration</span>
+          <span class="form-id">ID 4</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(7)">
+          <span>Zone Experience RSVP</span>
+          <span class="form-id">ID 7</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(8)">
+          <span>Funding Awards Form</span>
+          <span class="form-id">ID 8</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(10)">
+          <span>Funding Summit Survey</span>
+          <span class="form-id">ID 10</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(1)">
+          <span>Contact Enquiry</span>
+          <span class="form-id">ID 1</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(2)">
+          <span>Newsletter Subscribe</span>
+          <span class="form-id">ID 2</span>
+        </button>
+        <button class="form-tab-btn" onclick="switchForm(6)">
+          <span>Partnership Enquiry</span>
+          <span class="form-id">ID 6</span>
+        </button>
+      </div>
+
+      <!-- Main Display Details Panel -->
+      <div class="form-details-panel" id="details-panel">
+        <!-- Content will be swapped by JS -->
+      </div>
+
+    </div>
+
+    <footer>
+      EmpowaEntrepreneurs &copy; 2026 · Built in Partnership with ABSA Small Business Solutions · View Form Code in <a href="file:///c:/Users/kat95/OneDrive/Documents/React/EmpowaEntrepreneurs/src/components/generated/">src/components/generated/</a>
+    </footer>
+  </div>
+
+  <script>
+    // Comprehensive database of all forms and user journeys
+    const formsDatabase = {
+      1: {
+        name: "Contact Enquiry",
+        id: 1,
+        component: "ContactPage.tsx",
+        route: "/contact",
+        endpoint: "wp-json/gf/v2/forms/1/submissions",
+        description: "Standard enquiry form displayed on the Contact page for general questions, attendee queries, or speaker requests.",
+        steps: [
+          "User navigates to '/contact' page.",
+          "Completes Name, Email, Subject, and message textarea.",
+          "Submits the form; React client executes an asynchronous POST to Form ID 1.",
+          "Gravity Forms validates and logs the entry in the WordPress database.",
+          "Triggers notification routing: User gets an auto-acknowledgement; Admin group receives the full text.",
+          "Enquiry is recorded in the Wordpress Contact spreadsheet for general follow-up."
+        ],
+        emails: {
+          applicant: `Subject: We've received your enquiry - EmpowaEntrepreneurs 2026\n\nDear {Name},\n\nThank you for reaching out to us. We have received your enquiry regarding "Subject" and our team will review it shortly. We aim to respond to all general inquiries within 24-48 business hours.\n\nWarm regards,\nThe EmpowaHER Team`,
+          admin: `Subject: [New Enquiry] {Subject} - Form ID 1\n\nEnquiry Details:\n- Name: {Name}\n- Email: {Email}\n- Date: {Date}\n\nMessage:\n{Message}\n\n---\nManage this entry in WordPress: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=1`
+        },
+        fields: [
+          { id: "input_3_3", label: "First Name", type: "Text" },
+          { id: "input_3_6", label: "Last Name", type: "Text" },
+          { id: "input_2", label: "Email Address", type: "Email" },
+          { id: "input_4", label: "Subject", type: "Text" },
+          { id: "input_5", label: "Message", type: "Paragraph Text" }
+        ]
+      },
+      2: {
+        name: "Newsletter Subscribe",
+        id: 2,
+        component: "NewsletterForm.tsx",
+        route: "Global (Footer/Sidebar)",
+        endpoint: "wp-json/gf/v2/forms/2/submissions",
+        description: "Small, universal email subscription input box found on footer blocks to capture and aggregate newsletters signups.",
+        steps: [
+          "User types email address into newsletter subscription input.",
+          "Clicks subscribe; input validates email formatting locally.",
+          "Executes direct POST payload to Form ID 2.",
+          "Wordpress database registers entry.",
+          "Automated welcome email is dispatched to the subscriber's email inbox.",
+          "Email address is appended to the newsletter subscriber spreadsheet in WP."
+        ],
+        emails: {
+          applicant: `Subject: Welcome to the EmpowaEntrepreneurs Ecosystem!\n\nHi {Email},\n\nThank you for subscribing to our newsletter! You've joined a community of scale-up founders, elite investors, and corporate leaders. We'll send you bi-weekly ecosystem news, event reminders, and small business insights.\n\nBest,\nThe EmpowaTeam`,
+          admin: `Subject: [Newsletter Sign-up] {Email} added to newsletter queue.\n\nCaptured Email: {Email}\nTimestamp: {Timestamp}\nSource: Website Footer\nForm ID: 2`
+        },
+        fields: [
+          { id: "input_1", label: "Email Address", type: "Email" }
+        ]
+      },
+      3: {
+        name: "Detailed Registration",
+        id: 3,
+        component: "DetailedRegistrationPage.tsx",
+        route: "/detailed-registration-2026",
+        endpoint: "wp-json/gf/v2/forms/3/submissions",
+        description: "A extensive multi-step signup pipeline that gathers demographics, business operations metrics, staffing models, and financial structures of high-growth candidates.",
+        steps: [
+          "Founder visits '/detailed-registration-2026' registration route.",
+          "Completes Phase 1: Personal Info (demographics, citizenship status, DOB).",
+          "Completes Phase 2: Contact Info (address, direct contact methods).",
+          "Completes Phase 3: Business Profile (trading history, website status, registration number).",
+          "Completes Phase 4: Financials & Team (past turnover, full/part-time staff models, financials readiness).",
+          "Completes Phase 5: Essay Questions (business description, differentiators, challenge handling, R100k allocation strategy).",
+          "Completes Phase 6: Consents (Popi Act, Absa small business contact agreement, confirmation warnings).",
+          "Upon submit, a React async POST targets Detailed Form ID 3.",
+          "Email triggers: Applicant gets details copy; admin teams receive instant screening notifications.",
+          "Entry logs into the primary WP database and syncs instantly with the Applicant Screening Spreadsheet."
+        ],
+        emails: {
+          applicant: `Subject: Application Received - EmpowaEntrepreneurs Funding Summit 2026\n\nDear {First Name},\n\nThank you for submitting your detailed registration for the EmpowaEntrepreneurs Funding Summit 2026. We confirm receipt of your application for {Business Name}.\n\nApplication Details Review:\n- Registered trading status: {Trading Status}\n- Average Monthly Turnover: {Turnover}\n- Staff Compliment: {Staff}\n\nOur screening committee will review your business profiles and documents. If you have not been contacted by 11 May 2026, please consider your application unsuccessful for this cohort.\n\nWarm regards,\nEmpowaEntrepreneurs Admissions Committee`,
+          admin: `Subject: [NEW SUMMIT APPLICATION] {Business Name} (Form ID 3)\n\nAttention Admissions Group,\n\nA new detailed application has been received for the 2026 Funding Summit.\n\nFounder: {First Name} {Last Name} ({Email} / {Phone})\nBusiness: {Business Name} ({Registration Number})\nProvince: {Province}\n\nTurnover Profile:\n- Past 6 months: {Past 6 Months Turnover}\n- Monthly average: {Average Monthly Turnover}\nStaff: {Full-Time} FT / {Part-Time} PT\nFinancials Available: {Financials}\n\nFounder Challenges & Differentiators:\n{Differentiators}\n\nPOP Consent: {Consent}\n---\nReview and export entry: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=3`
+        },
+        fields: [
+          { id: "input_3_3", label: "First Name", type: "Text" },
+          { id: "input_3_6", label: "Last Name", type: "Text" },
+          { id: "input_25", label: "Email Address", type: "Email" },
+          { id: "input_4", label: "Phone Number", type: "Phone" },
+          { id: "input_45", label: "Age", type: "Number" },
+          { id: "input_47", label: "Date of Birth", type: "Date" },
+          { id: "input_55", label: "Gender", type: "Dropdown" },
+          { id: "input_56", label: "Business Name", type: "Text" },
+          { id: "input_6", label: "Is Registered Trading", type: "Radio" },
+          { id: "input_58", label: "Turnover (6m)", type: "Text" },
+          { id: "input_62", label: "Full Time Staff", type: "Number" },
+          { id: "input_40", label: "Business Summary", type: "Paragraph Text" },
+          { id: "input_70", label: "ABSA Contact Consent", type: "Radio" }
+        ]
+      },
+      4: {
+        name: "Summit Registration",
+        id: 4,
+        component: "SummitRegistrationModal.tsx",
+        route: "/summit (RSVP / Register)",
+        endpoint: "wp-json/gf/v2/forms/4/submissions",
+        description: "Primary attendee signup portal for the 2026 summit. Processes general public tickets, corporate attendees, and VIP invites.",
+        steps: [
+          "Attendee clicks 'Register to Attend' on '/summit' or homepage.",
+          "Modal triggers displaying Summit Registration Form (Form ID 4).",
+          "Applicant supplies name, contact details, company information, and role description.",
+          "Submitting triggers POST call to Form ID 4 database gateway.",
+          "Gravity Forms compiles credentials, logs attendee entry.",
+          "Dispatches attendee confirmation ticket to the inbox; sends copy to administrative registers.",
+          "Wordpress backend compiles list into the core Summit Attendance Spreadsheet for registration desks."
+        ],
+        emails: {
+          applicant: `Subject: Your Ticket is Confirmed! EmpowaEntrepreneurs Funding Summit 2026\n\nDear {Name},\n\nYour registration to attend the EmpowaEntrepreneurs Funding Summit 2026 has been successfully confirmed!\n\nEvent details:\n- Date: May 2026\n- Location: Johannesburg, South Africa\n- Attendee: {Name}\n- Company: {Company}\n- Designation: {Designation}\n\nPlease present a copy of this email (printed or digital) at the registration desk for badge printing.\n\nWe look forward to hosting you!\nWarmly,\nEcosystem Registration Desk`,
+          admin: `Subject: [New Ticket RSVPs] {Name} ({Company}) - Form ID 4\n\nRegistration desk alert:\nName: {Name}\nEmail: {Email}\nPhone: {Phone}\nCompany: {Company}\nDesignation: {Designation}\nTimestamp: {Timestamp}\n---\nCheck current attendance capacities: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=4`
+        },
+        fields: [
+          { id: "input_1_3", label: "First Name", type: "Text" },
+          { id: "input_1_6", label: "Last Name", type: "Text" },
+          { id: "input_2", label: "Email Address", type: "Email" },
+          { id: "input_3", label: "Phone Number", type: "Phone" },
+          { id: "input_4", label: "Company / Startup", type: "Text" },
+          { id: "input_5", label: "Designation / Role", type: "Text" }
+        ]
+      },
+      17: {
+        name: "Pitching Festival Entry",
+        id: 17,
+        component: "PitchingFestivalModal.tsx",
+        route: "/pitch-power (Apply)",
+        endpoint: "wp-json/gf/v2/forms/17/submissions",
+        description: "Highly exhaustive multi-stage venture profile form. Captures financials, product differentiation, TAM/SAM, cap tables, organizational charts, and B-BBEE certificates for evaluation.",
+        steps: [
+          "Founder opens '/pitch-power' page and triggers 'Apply to Pitch' modal.",
+          "Step 1 (Business): Captures business name, registration, sector, and core company addresses.",
+          "Step 2 (Founder): Demographics, direct contacts, ID numbers, and education/experience profiles.",
+          "Step 3 (Value Prop): Problem, solution, competition analysis, value prop, and social impact indicators.",
+          "Step 4 (Market): Targeted customers, TAM/SAM estimations, current market share, and marketing/growth strategies.",
+          "Step 5 (Financials): Year 1/2 revenues & profits, funding requests, use of funds, and files upload (Org Chart).",
+          "Step 6 (Docs & Declaration): B-BBEE status, supporting documents file uploads, and legal accuracy declarations.",
+          "Form submit initiates a Multipart FormData POST request to Form ID 17.",
+          "Gravity Forms validates files, stores uploaded documents, and generates DB entry records.",
+          "System triggers confirmation transaction emails to founder, alerts screening admins, and populates the master Pitching Festival evaluation database spreadsheet."
+        ],
+        emails: {
+          applicant: `Subject: Pitch Application Received - EmpowaEntrepreneurs Pitching Festival 2026\n\nDear {Founder Name},\n\nWe have successfully received your pitch application for the 2026 Pitching Festival. Thank you for taking the time to share your business details for {Business Name}.\n\nYour application has been logged for evaluation in the '{Industry Sector}' track. Our screening committee is review all materials including uploaded financial and organizational documents.\n\nSummary of Pitch metrics:\n- Funding sought: {Funding Request}\n- Target market description: {Target Market}\n\nWe will notify you within 14 business days concerning the status of your selection.\n\nBest of luck,\nThe Empowa Pitch Arena Team`,
+          admin: `Subject: [PITCH APPLICATION SUBMITTED] {Business Name} - ID 17\n\nHigh priority pitch entry received.\n\nBusiness Info:\n- Company: {Business Name}\n- Reg Num: {Reg Number}\n- Industry: {Industry Sector}\n- B-BBEE Level: {B-BBEE Level}\n\nContact founder: {Founder First} {Founder Last} ({Email} / {Phone})\n\nProposal details:\n- Funding Request: {Funding Request}\n- TAM: {TAM}\n- SAM: {SAM}\n- Use of Funds: {Use of Funds}\n\nUploaded Files:\n- Org Chart: {Org Chart Link}\n- Supporting Documents: {Supporting Docs Links}\n\n---\nReview and score in WordPress: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=17`
+        },
+        fields: [
+          { id: "input_1", label: "Business Name", type: "Text" },
+          { id: "input_7", label: "Registration Number", type: "Text" },
+          { id: "input_33", label: "Industry Sector", type: "Text" },
+          { id: "input_3_3", label: "Contact First Name", type: "Text" },
+          { id: "input_5", label: "Contact Email", type: "Email" },
+          { id: "input_52", label: "Founder ID Number", type: "Text" },
+          { id: "input_57", label: "Problem Statement", type: "Paragraph Text" },
+          { id: "input_58", label: "Solution", type: "Paragraph Text" },
+          { id: "input_72", label: "Funding Request", type: "Text" },
+          { id: "input_38", label: "Use of Funds", type: "Paragraph Text" },
+          { id: "input_76", label: "Org Chart Upload", type: "File Upload" },
+          { id: "input_86", label: "Supporting Docs", type: "File Upload" }
+        ]
+      },
+      6: {
+        name: "Partnership Enquiry",
+        id: 6,
+        component: "PartnershipEnquiryModal.tsx",
+        route: "/partnerships",
+        endpoint: "wp-json/gf/v2/forms/6/submissions",
+        description: "Enquiry pipeline tailored for corporate sponsors, venture funders, and commercial partners seeking corporate sponsorship options.",
+        steps: [
+          "Partner clicks 'Enquire Now' on '/partnerships' page.",
+          "Completes Name, Organization, Email, Message, and selects a targeted sponsorship tier.",
+          "Submits form; client performs POST call to Form ID 6.",
+          "Gravity Forms database processes entry.",
+          "Triggers customized corporate partnership confirmation to the applicant and high-priority email notification to directors.",
+          "Enquiry details sync to the Corporate Partnerships Spreadsheet."
+        ],
+        emails: {
+          applicant: `Subject: Partnership Enquiry Received - EmpowaEntrepreneurs 2026\n\nDear {Name},\n\nThank you for your interest in partnering with EmpowaEntrepreneurs for our 2026 Funding Summit. We have received your query regarding the {Sponsorship Tier} tier.\n\nA partnerships director will contact you directly within 24 hours to set up a preliminary discussion and share our partner packages.\n\nWarm regards,\nThe Partnerships Team`,
+          admin: `Subject: [PARTNERSHIP LEAD] {Organisation} ({Sponsorship Tier}) - ID 6\n\nNew corporate lead registered:\nName: {Name}\nCompany: {Organisation}\nEmail: {Email}\nTier Selected: {Sponsorship Tier}\n\nEnquiry Notes:\n{Message}\n\n---\nReview lead pipeline: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=6`
+        },
+        fields: [
+          { id: "input_1", label: "Full Name", type: "Text" },
+          { id: "input_2", label: "Organisation", type: "Text" },
+          { id: "input_3", label: "Email Address", type: "Email" },
+          { id: "input_4", label: "Sponsorship Tier", type: "Dropdown" },
+          { id: "input_5", label: "Message", type: "Paragraph Text" }
+        ]
+      },
+      7: {
+        name: "Zone Experience Reservation",
+        id: 7,
+        component: "ZoneExperienceModal.tsx",
+        route: "/experience-zones",
+        endpoint: "wp-json/gf/v2/forms/7/submissions",
+        description: "Seat RSVP form for particular experiences zones at the summit (e.g., Masterclass Rooms, Deal Rooms, Investor Lounge). Used to monitor seat limits.",
+        steps: [
+          "Attendee browses summit experience zones on '/experience-zones'.",
+          "Clicks 'Reserve Slot' on a specific zone card.",
+          "Fills name, email, and designated zone reservation in the popup modal.",
+          "Triggers POST payload to Form ID 7.",
+          "Gravity Forms tracks slot availability and logs entry.",
+          "Dispatches zone pass/reservation confirmation email to attendee.",
+          "Updates Zone Attendance Spreadsheet lists in WordPress."
+        ],
+        emails: {
+          applicant: `Subject: Reservation Confirmed: {Zone Choice} - Summit 2026\n\nDear {Name},\n\nThis email confirms your reserved seat/access for the {Zone Choice} zone at the upcoming EmpowaEntrepreneurs Summit.\n\nReservation Pass:\n- Access Zone: {Zone Choice}\n- Registrant: {Name}\n- Email: {Email}\n\nPlease arrive 10 minutes before session schedules to guarantee seating.\n\nBest,\nThe Event Ops Team`,
+          admin: `Subject: [Zone Reservation Pass] {Name} RSVP'd for {Zone Choice} - ID 7\n\nEcosystem Capacity Update:\nRegistrant: {Name}\nEmail: {Email}\nReserved Zone: {Zone Choice}\nTimestamp: {Timestamp}`
+        },
+        fields: [
+          { id: "input_1", label: "Full Name", type: "Text" },
+          { id: "input_2", label: "Email Address", type: "Email" },
+          { id: "input_3", label: "Zone Choice", type: "Text/Dropdown" }
+        ]
+      },
+      8: {
+        name: "Funding Awards Form",
+        id: 8,
+        component: "FundingAwardsModal.tsx",
+        route: "/awards",
+        endpoint: "wp-json/gf/v2/forms/8/submissions",
+        description: "Nomination form used to submit entries, details, and motivations for categories in the 2026 Small Business Awards.",
+        steps: [
+          "User visits '/awards' page and chooses to nominate a business.",
+          "Fills out Nominator Details, Nominee Business details, and writes Category Motivation.",
+          "Submits; React app triggers JSON POST to Form ID 8.",
+          "Wordpress database captures nomination details.",
+          "Nominator receives confirmation email; admin panel logs entry details.",
+          "Aggregates entry in the Nominations Spreadsheet in WP for judges."
+        ],
+        emails: {
+          applicant: `Subject: Nomination Submitted successfully - Small Business Awards 2026\n\nDear Nominator,\n\nWe have received your nomination submission for {Nominee Business} in the '{Nominated Category}' award track. Thank you for supporting entrepreneurial excellence.\n\nOur awards committee will compile all nominations for the judging panel.\n\nBest,\nThe Awards Committee`,
+          admin: `Subject: [NEW NOMINATION] {Nominee Business} - Category: {Nominated Category}\n\nAward nomination entry recorded:\nNominator: {Nominator Name} ({Nominator Email})\nNominee Business: {Nominee Business}\nNominee Founder: {Nominee Founder}\nNominated Category: {Nominated Category}\n\nMotivation Summary:\n{Motivation}\n\n---\nReview nominations in WordPress: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=8`
+        },
+        fields: [
+          { id: "input_1", label: "Nominator Name", type: "Text" },
+          { id: "input_2", label: "Nominator Email", type: "Email" },
+          { id: "input_3", label: "Nominee Business", type: "Text" },
+          { id: "input_4", label: "Nominee Founder", type: "Text" },
+          { id: "input_5", label: "Nominated Category", type: "Dropdown" },
+          { id: "input_6", label: "Motivation", type: "Paragraph Text" }
+        ]
+      },
+      10: {
+        name: "Funding Summit Survey",
+        id: 10,
+        component: "FundingSummitSurvey.tsx",
+        route: "/survey",
+        endpoint: "wp-json/gf/v2/forms/10/submissions",
+        description: "Post-summit feedback survey collecting scores (1-10) and commentary on speakers, logistics, and capital access opportunities.",
+        steps: [
+          "Attendee visits '/survey' route after summit sessions.",
+          "Completes satisfaction scores and open text suggestions.",
+          "Submits survey; frontend triggers POST payload to Form ID 10.",
+          "Gravity Forms processes feedback entry in the WP database.",
+          "A thank-you confirmation email is dispatched to the survey participant.",
+          "Data compiles into the Summit Feedback Analysis spreadsheet."
+        ],
+        emails: {
+          applicant: `Subject: Thank you for your feedback! - Summit 2026\n\nHi {First Name},\n\nThank you for participating in the EmpowaEntrepreneurs Funding Summit 2026 survey. Your feedback is highly valuable and will help us improve future summits.\n\nWe look forward to seeing you at our next event!\nWarmly,\nEmpowa Committee`,
+          admin: `Subject: [Survey Feedback Entry] Form ID 10\n\nAttendee Survey Complete:\nAttendee: {First Name} {Last Name} ({Email})\nSatisfaction Score: {Score}\n\nDetailed Comments:\n{Comments}\n---\nAnalyze feedback: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=10`
+        },
+        fields: [
+          { id: "input_1_3", label: "First Name", type: "Text" },
+          { id: "input_1_6", label: "Last Name", type: "Text" },
+          { id: "input_2", label: "Email Address", type: "Email" },
+          { id: "input_3", label: "Overall Satisfaction", type: "Radio/Score" },
+          { id: "input_4", label: "Ecosystem Comments", type: "Paragraph Text" }
+        ]
+      },
+      11: {
+        name: "Dragon Scoring Panel",
+        id: 11,
+        component: "DragonScoringPanel.tsx",
+        route: "/dragons",
+        endpoint: "wp-json/gf/v2/forms/11/submissions",
+        description: "Secure evaluator panel scorecard used by live judges ('Dragons') during the Pitching Festival sessions to score pitching startups in real time.",
+        steps: [
+          "Dragon logs into '/dragons' scoring route.",
+          "Inputs Dragon Name, selects pitching session track, and adds target startup business name.",
+          "Scores startup on 8 weighted criteria (Market Opportunity, Business Model, Traction, Team, Financials, Competitive Edge, Deal Terms, Social Impact). Adds written notes for each.",
+          "React scorecard computes the real-time weighted Total Score out of 100.",
+          "Submit executes POST request to Form ID 11.",
+          "Gravity Forms validates and logs the scorecard database entry.",
+          "System triggers score alert copy to directors; WordPress logs entry in the Dragon Scores spreadsheet to calculate live leaderboards."
+        ],
+        emails: {
+          applicant: `Subject: Pitch Evaluation Logged: {Business Name}\n\nDear Evaluator,\n\nThis email confirms that your scorecard evaluation for {Business Name} has been recorded in our scoring database.\n\nScorecard Summary:\n- Session Track: {Session Track}\n- Total Weighted Score: {Total Score}/100\n- Primary focus notes recorded: Yes\n\nThank you for your active participation on the Dragon Panel.\n\nWarmly,\nEmpowa Committee`,
+          admin: `Subject: [SCORECARD RECORDED] {Dragon Name} evaluated {Business Name} - Score: {Total Score}/100\n\nDragons Den Evaluation Summary:\n\nEvaluator: {Dragon Name}\nStartup Name: {Business Name}\nTrack: {Session Track}\nSector: {Sector Category}\nFunding Sought: {Funding Sought}\n\nWeighted Score breakdown:\n- Market Opportunity (20%): {Market Score}\n- Business Model (20%): {Model Score}\n- Traction & Validation (10%): {Traction Score}\n- Team Capability (15%): {Team Score}\n- Financial Projections (10%): {Financials Score}\n- Competitive Advantage (10%): {Competitive Score}\n- Investment Terms (10%): {Terms Score}\n- Social Impact (5%): {Impact Score}\n\nTotal Calculated Weighted Score: {Total Score} / 100\n\nDragon Comments:\n{Overall Comment}\n\n---\nAccess scoreboard logs: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=11`
+        },
+        fields: [
+          { id: "input_1", label: "Dragon Name", type: "Text" },
+          { id: "input_3", label: "Session Track", type: "Dropdown" },
+          { id: "input_4", label: "Business Name", type: "Text" },
+          { id: "input_5", label: "Sector Category", type: "Dropdown" },
+          { id: "input_6", label: "Funding Sought", type: "Text" },
+          { id: "input_7", label: "Market Opp Score", type: "Number" },
+          { id: "input_8", label: "Market Opp Notes", type: "Paragraph Text" },
+          { id: "input_23", label: "Total Score", type: "Number" },
+          { id: "input_24", label: "Overall Comment", type: "Paragraph Text" }
+        ]
+      }
+    };
+
+    // DOM Swapping function
+    function switchForm(formId) {
+      // Toggle button active classes
+      const buttons = document.querySelectorAll('#sidebar-tabs button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      
+      // Find exact button clicked
+      const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick') === 'switchForm(' + formId + ')');
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const data = formsDatabase[formId];
+      if (!data) return;
+
+      const panel = document.getElementById('details-panel');
+      panel.innerHTML = '';
+      
+      // Create HTML layout dynamically
+      const detailsHTML = `
+        <div class="animate-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrapper">
+              <h2>${data.name}</h2>
+              <div class="panel-meta">
+                <span><strong>Form ID:</strong> <code>${data.id}</code></span>
+                <span><strong>Component:</strong> <code>${data.component}</code></span>
+                ${data.route ? `<span><strong>Route:</strong> <code>${data.route}</code></span>` : ''}
+              </div>
+            </div>
+            <span class="badge-endpoint">POST /${data.endpoint}</span>
+          </div>
+
+          <div class="info-card">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              Overview &amp; Context
+            </h3>
+            <p>${data.description}</p>
+          </div>
+
+          <div class="info-card highlight-glow">
+            <h3>
+              <svg class="highlight-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              Step-by-Step User Journey
+            </h3>
+            <ul class="flow-list">
+              ${data.steps.map(step => `<li>${step}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Automated Email Routing &amp; Records
+            </h3>
+            <p style="margin-bottom: 20px;">When a user submits this form, the system dispatches two emails and appends a row to the database spreadsheet inside the WordPress backend dashboard.</p>
+            
+            <div class="email-grid">
+              <div>
+                <span class="email-label">📨 Applicant Confirmation Email</span>
+                <pre class="email-preview-box">${data.emails.applicant}</pre>
+              </div>
+              <div>
+                <span class="email-label">📥 Admin Notification Email</span>
+                <pre class="email-preview-box">${data.emails.admin}</pre>
+              </div>
+            </div>
+            
+            <p style="font-size: 12px; color: var(--success); margin-top: 20px; display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              WordPress Dashboard Sync: Application record automatically added to WordPress Gravity Forms sheets database for records, scoring, and follow-ups.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 9H3"/><path d="M21 15H3"/><path d="M12 3v18"/></svg>
+              Gravity Forms Schema Mapping
+            </h3>
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">GF Field ID</th>
+                  <th style="width: 45%;">Frontend Field Label</th>
+                  <th>Data Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.fields.map(f => `
+                  <tr>
+                    <td><code>${f.id}</code></td>
+                    <td><strong>${f.label}</strong></td>
+                    <td><code>${f.type}</code></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+      
+      panel.innerHTML = detailsHTML;
+    }
+
+    // Default load detailed registration
+    window.onload = function() {
+      switchForm(3);
+    }
+  </script>
+</body>
+</html>

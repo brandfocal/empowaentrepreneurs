@@ -252,7 +252,7 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
         }
       }
 
-      const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/5/submissions', {
+      const response = await fetch('https://forms.empowaentrepreneurs.co.za/wp-json/gf/v2/forms/17/submissions', {
         method: 'POST',
         body: formData,
       });
