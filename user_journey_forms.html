@@ -664,9 +664,9 @@
           <span>Detailed Registration</span>
           <span class="form-id">ID 3</span>
         </button>
-        <button class="form-tab-btn" onclick="switchForm(17)">
+        <button class="form-tab-btn" onclick="switchForm(12)">
           <span>Pitching Festival Entry</span>
-          <span class="form-id">ID 17</span>
+          <span class="form-id">ID 12</span>
         </button>
         <button class="form-tab-btn" onclick="switchForm(11)">
           <span>Dragon Scoring Panel</span>
@@ -835,12 +835,12 @@
           { id: "input_5", label: "Designation / Role", type: "Text" }
         ]
       },
-      17: {
+      12: {
         name: "Pitching Festival Entry",
-        id: 17,
+        id: 12,
         component: "PitchingFestivalModal.tsx",
         route: "/pitch-power (Apply)",
-        endpoint: "wp-json/gf/v2/forms/17/submissions",
+        endpoint: "wp-json/gf/v2/forms/12/submissions",
         description: "Highly exhaustive multi-stage venture profile form. Captures financials, product differentiation, TAM/SAM, cap tables, organizational charts, and B-BBEE certificates for evaluation.",
         steps: [
           "Founder opens '/pitch-power' page and triggers 'Apply to Pitch' modal.",
@@ -850,13 +850,13 @@
           "Step 4 (Market): Targeted customers, TAM/SAM estimations, current market share, and marketing/growth strategies.",
           "Step 5 (Financials): Year 1/2 revenues & profits, funding requests, use of funds, and files upload (Org Chart).",
           "Step 6 (Docs & Declaration): B-BBEE status, supporting documents file uploads, and legal accuracy declarations.",
-          "Form submit initiates a Multipart FormData POST request to Form ID 17.",
+          "Form submit initiates a Multipart FormData POST request to Form ID 12.",
           "Gravity Forms validates files, stores uploaded documents, and generates DB entry records.",
           "System triggers confirmation transaction emails to founder, alerts screening admins, and populates the master Pitching Festival evaluation database spreadsheet."
         ],
         emails: {
           applicant: `Subject: Pitch Application Received - EmpowaEntrepreneurs Pitching Festival 2026\n\nDear {Founder Name},\n\nWe have successfully received your pitch application for the 2026 Pitching Festival. Thank you for taking the time to share your business details for {Business Name}.\n\nYour application has been logged for evaluation in the '{Industry Sector}' track. Our screening committee is review all materials including uploaded financial and organizational documents.\n\nSummary of Pitch metrics:\n- Funding sought: {Funding Request}\n- Target market description: {Target Market}\n\nWe will notify you within 14 business days concerning the status of your selection.\n\nBest of luck,\nThe Empowa Pitch Arena Team`,
-          admin: `Subject: [PITCH APPLICATION SUBMITTED] {Business Name} - ID 17\n\nHigh priority pitch entry received.\n\nBusiness Info:\n- Company: {Business Name}\n- Reg Num: {Reg Number}\n- Industry: {Industry Sector}\n- B-BBEE Level: {B-BBEE Level}\n\nContact founder: {Founder First} {Founder Last} ({Email} / {Phone})\n\nProposal details:\n- Funding Request: {Funding Request}\n- TAM: {TAM}\n- SAM: {SAM}\n- Use of Funds: {Use of Funds}\n\nUploaded Files:\n- Org Chart: {Org Chart Link}\n- Supporting Documents: {Supporting Docs Links}\n\n---\nReview and score in WordPress: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=17`
+          admin: `Subject: [PITCH APPLICATION SUBMITTED] {Business Name} - ID 12\n\nHigh priority pitch entry received.\n\nBusiness Info:\n- Company: {Business Name}\n- Reg Num: {Reg Number}\n- Industry: {Industry Sector}\n- B-BBEE Level: {B-BBEE Level}\n\nContact founder: {Founder First} {Founder Last} ({Email} / {Phone})\n\nProposal details:\n- Funding Request: {Funding Request}\n- TAM: {TAM}\n- SAM: {SAM}\n- Use of Funds: {Use of Funds}\n\nUploaded Files:\n- Org Chart: {Org Chart Link}\n- Supporting Documents: {Supporting Docs Links}\n\n---\nReview and score in WordPress: https://forms.empowaentrepreneurs.co.za/wp-admin/admin.php?page=gf_entries&id=12`
         },
         fields: [
           { id: "input_1", label: "Business Name", type: "Text" },
