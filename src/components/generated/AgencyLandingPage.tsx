@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useInView, useAnimationFrame, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring, useDragControls } from 'framer-motion';
 import { VideoBanner, SpeakerCarousel, LogoBanner } from './AgencyComponents';
 import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
@@ -4332,13 +4333,13 @@ export const AgencyLandingPage = () => {
 
 
     <HeroSection />
-    <a href="/summit" style={{ display: 'block', width: '100%', cursor: 'pointer' }}>
+    <Link to="/pitch-power" style={{ display: 'block', width: '100%', cursor: 'pointer' }}>
       <img
-        src="/funding-summit-2026-banner.jpg"
-        alt="EmpowaEntrepreneurs Funding Summit 2026"
+        src="/pitch-festival-11-2026-mobile.jpg"
+        alt="EmpowaEntrepreneurs Pitching Festival Week 2026"
         style={{ width: '100%', display: 'block', padding: 0, margin: 0 }}
       />
-    </a>
+    </Link>
     <MissionBand />
     <FundingPlatformAlert />
     <LogoBanner />
