@@ -867,6 +867,29 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
+        {/* Postponement Notice Pill */}
+        <motion.div custom={0.08} initial="hidden" animate="visible" variants={fadeUpVariants} style={{ marginBottom: '16px' }}>
+          <a
+            href="/festival-moves-to-2027"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              background: 'rgba(222,50,45,0.18)',
+              border: '1px solid rgba(222,50,45,0.45)',
+              borderRadius: '100px',
+              padding: '8px 18px',
+              textDecoration: 'none',
+              boxShadow: '0 4px 16px rgba(222,50,45,0.25)',
+            }}
+          >
+            <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#DE322D', display: 'block' }} />
+            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#fff', fontWeight: 700 }}>
+              Official Announcement: Festival Moves to 2027 · Read Update →
+            </span>
+          </a>
+        </motion.div>
+
         {/* Poster Headline with Dividing Lines */}
         <div style={{ width: '100%', maxWidth: '640px', marginBottom: '22px' }}>
           <div style={{ width: '100%', height: '1.5px', background: 'linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.4) 70%, transparent 100%)', marginBottom: '14px' }} />
@@ -885,7 +908,7 @@ const HeroSection = () => {
               FESTIVAL
             </div>
             <div style={{ color: '#FFFFFF', fontSize: isMobile ? 'clamp(38px, 11vw, 52px)' : 'clamp(50px, 5.5vw, 76px)' }}>
-              WEEK 2026
+              MOVES TO 2027
             </div>
           </h1>
           <div style={{ width: '100%', height: '1.5px', background: 'linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.4) 70%, transparent 100%)', marginTop: '14px' }} />
@@ -934,7 +957,7 @@ const HeroSection = () => {
             letterSpacing: '0.04em',
             marginBottom: '3px'
           }}>
-            16 - 22ND NOVEMBER 2026
+            MOVING TO 2027
           </div>
           <div style={{
             fontFamily: 'Montserrat, sans-serif',
@@ -944,7 +967,7 @@ const HeroSection = () => {
             letterSpacing: '0.08em',
             textTransform: 'uppercase'
           }}>
-            EMPOWAWORX HOUSE, RANDBURG
+            REVISED DATES ANNOUNCED ONCE CONFIRMED
           </div>
         </motion.div>
 
@@ -956,9 +979,29 @@ const HeroSection = () => {
           flexWrap: 'wrap',
           marginBottom: '28px'
         }}>
+          <a
+            href="/festival-moves-to-2027"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+              borderRadius: '44px',
+              padding: isMobile ? '14px 24px' : '17px 34px',
+              fontSize: '13px',
+              letterSpacing: '0.05em',
+              color: '#fff',
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 700,
+              boxShadow: '0 8px 36px rgba(222,50,45,0.55), 0 2px 8px rgba(222,50,45,0.3)',
+            }}
+          >
+            <span>Read 2027 Announcement</span><ArrowIconDark />
+          </a>
           <MagneticButton
-            label="Apply to Pitch"
-            variant="primary"
+            label="Register Interest"
+            variant="outline"
             disabled={false}
             onClick={() => window.dispatchEvent(new Event('openPitchModal'))}
           />
@@ -2704,21 +2747,18 @@ const BOTTOM_STRIP_ITEMS = [{
 }, {
   id: 'bs-3',
   label: 'Festival Dates',
-  value: '16 - 22 Nov 2026',
-  sub: 'EmpowaWorx House, Randburg'
+  value: 'Moving to 2027',
+  sub: 'New Dates Announced Soon'
 }, {
   id: 'bs-4',
   label: 'Status',
-  value: 'Applications Open',
-  sub: 'November 2026 Cohort'
+  value: 'Moving to 2027',
+  sub: 'Applications Carry Over'
 }];
 const CtaSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
-  const [isClosed, setIsClosed] = useState(false);
+  const [isClosed, setIsClosed] = useState(true);
   useEffect(() => {
-    const check = () => setIsClosed(new Date() > REGISTRATION_DEADLINE);
-    check();
-    const id = setInterval(check, 1000);
-    return () => clearInterval(id);
+    setIsClosed(true);
   }, []);
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -3209,9 +3249,12 @@ const SiteFooter = () => {
               }}>The Arena.</em>
               <br />
               <span style={{
-                color: 'rgba(247,246,243,0.18)',
-                fontWeight: 300
-              }}>16 - 22 Nov 2026.</span>
+                color: 'rgba(247,246,243,0.3)',
+                fontWeight: 300,
+                fontSize: '0.65em',
+                display: 'block',
+                marginTop: '6px'
+              }}>Moving to 2027.</span>
             </motion.h2>
           </div>
           <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={isMobile ? fadeUpVariants : slideFromRight} custom={0.22} style={{

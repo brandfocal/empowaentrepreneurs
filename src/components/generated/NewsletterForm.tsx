@@ -4,9 +4,16 @@ import { motion } from 'framer-motion';
 interface NewsletterFormProps {
   variant?: 'pill' | 'square';
   isMobile?: boolean;
+  placeholder?: string;
+  buttonText?: string;
 }
 
-export const NewsletterForm: React.FC<NewsletterFormProps> = ({ variant = 'pill', isMobile = false }) => {
+export const NewsletterForm: React.FC<NewsletterFormProps> = ({
+  variant = 'pill',
+  isMobile = false,
+  placeholder = 'Your email address',
+  buttonText,
+}) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [loadingText, setLoadingText] = useState('Submitting...');
@@ -89,7 +96,7 @@ export const NewsletterForm: React.FC<NewsletterFormProps> = ({ variant = 'pill'
           </svg>
           <input 
             type="email" 
-            placeholder="Your email address" 
+            placeholder={placeholder} 
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={status === 'loading' || status === 'success'}
@@ -128,7 +135,7 @@ export const NewsletterForm: React.FC<NewsletterFormProps> = ({ variant = 'pill'
             opacity: status === 'loading' ? 0.7 : 1
           }}
         >
-          {status === 'loading' ? 'Subscribing...' : (status === 'success' ? 'Subscribed' : 'Subscribe')}
+          {status === 'loading' ? 'Subscribing...' : (status === 'success' ? 'Subscribed' : (buttonText || 'Subscribe'))}
         </motion.button>
       </div>
       {message && (

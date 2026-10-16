@@ -54,15 +54,11 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | H
 const REGISTRATION_DEADLINE = new Date("2026-11-22T23:59:59+02:00");
 
 export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
-  const [isClosed, setIsClosed] = useState(false);
+  const [isClosed, setIsClosed] = useState(true);
 
   useEffect(() => {
-    const checkDeadline = () => {
-      setIsClosed(new Date() > REGISTRATION_DEADLINE);
-    };
-    checkDeadline();
-    const interval = setInterval(checkDeadline, 1000);
-    return () => clearInterval(interval);
+    // Pitching festival has been postponed to 2027
+    setIsClosed(true);
   }, []);
 
   const { isMobile } = useBreakpoint();
@@ -70,19 +66,22 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
 
   const [step, setStep] = useState(1);
   const totalSteps = 6;
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const nextStep = () => {
     const form = document.getElementById('pitch-modal-form') as HTMLFormElement;
     if (form && !form.reportValidity()) return;
+
+    setErrorMessage('');
     setStep(s => Math.min(s + 1, totalSteps));
     if (modalRef.current) modalRef.current.scrollTo({ top: 0, behavior: 'smooth' });
   };
   const prevStep = () => {
+    setErrorMessage('');
     setStep(s => Math.max(s - 1, 1));
     if (modalRef.current) modalRef.current.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
   const [loadingText, setLoadingText] = useState('Submitting...');
 
   useEffect(() => {
@@ -271,7 +270,13 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
       } else {
         setStatus('error');
         const labels: Record<string, string> = { '1': 'Business Name', '7': 'Registration Number', '47': 'Physical Address', '48': 'Postal Address', '3.3': 'Contact First Name', '3.6': 'Contact Last Name', '5': 'Email Address', '4': 'Phone Number', '49': 'Website', '33': 'Industry Sector', '39': 'B-BBEE Level', '17': 'Ownership Structure', '50.3': 'Founder First Name', '50.6': 'Founder Last Name', '52': 'ID Number', '53': 'Race', '54': 'Gender', '55': 'Educational Background', '56': 'Relevant Experience', '57': 'Problem', '58': 'Solution', '59': 'Value Proposition', '60': 'Target Market', '61': 'Competitive Advantage', '64': 'TAM', '65': 'SAM', '66': 'Current Market Share', '45': 'Marketing Strategy', '67': 'Annual Rev Year 1', '68': 'Annual Rev Year 2', '69': 'Profit Year 1', '70': 'Profit Year 2', '71': 'Funding Received', '72': 'Funding Request', '38': 'Use of Funds', '74': 'Key Team', '76': 'Org Chart', '78': 'Operational Capacity', '79': 'Growth Strategy', '81': 'Innovation Factor', '82': 'Social Impact', '83': 'B-BBEE Compliance', '85.1': 'Declaration', '86': 'Supporting Docs' };
-        const validationErr = data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => `[${labels[k] || `Field ${k}`}] ${v}`).join(' | ') : null;
+        const validationErr = data.validation_messages ? Object.entries(data.validation_messages).map(([k, v]) => {
+          const fieldName = labels[k] || `Field ${k}`;
+          if (typeof v === 'string' && v.includes('exceeds the maximum number of characters')) {
+            return `[${fieldName}] Server character limit exceeded. Please remove the 'Maximum Characters' setting in Gravity Forms (Form 12) backend to accept unrestricted text.`;
+          }
+          return `[${fieldName}] ${v}`;
+        }).join(' | ') : null;
         const serverMsg = data.message ? data.message.replace(/<[^>]+>/g, '').trim() : null;
         setErrorMessage(validationErr || serverMsg || 'An error occurred during submission.');
       }
@@ -323,21 +328,68 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
             
             <AnimatePresence mode="wait">
               {isClosed ? (
-                <motion.div key="modal-closed" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center', padding: '60px 0' }}>
+                <motion.div key="modal-closed" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center', padding: '50px 20px' }}>
                   <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(222,50,45,0.1)', border: '1px solid rgba(222,50,45,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 16px rgba(222,50,45,0.2)' }}>
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 8V12" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 16H12.01" stroke="#DE322D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </div>
                   <div>
-                    <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '28px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 16px' }}>Applications Closed</h3>
-                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(247,246,243,0.5)', margin: 0, lineHeight: '1.7', maxWidth: '480px' }}>
-                      Pitching Festival entry applications closed on <strong>November 22, 2026, at 23:59 SAST</strong>. We are no longer accepting new submissions for the 2026 event.
+                    <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#DE322D', fontWeight: 700, marginBottom: '8px' }}>
+                      Official Notice
+                    </div>
+                    <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '26px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 16px' }}>
+                      Festival Moves to 2027
+                    </h3>
+                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: 'rgba(247,246,243,0.75)', margin: '0 auto 16px', lineHeight: '1.75', maxWidth: '520px' }}>
+                      The EmpowaEntrepreneurs Pitching Festival, originally scheduled for November 2026, will now take place in <strong>2027</strong>.
                     </p>
+                    <div style={{ background: 'rgba(247,246,243,0.04)', border: '1px solid rgba(247,246,243,0.08)', borderRadius: '12px', padding: '16px', maxWidth: '500px', margin: '0 auto 20px', textAlign: 'left' }}>
+                      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(247,246,243,0.85)', margin: 0, lineHeight: 1.6 }}>
+                        <strong>What this means for you:</strong> If you have already applied or registered, your application will automatically carry over to the 2027 festival. You will be contacted directly with next steps. No action is required now.
+                      </p>
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '320px', marginTop: '16px' }}>
-                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(247,246,243,0.3)', margin: 0 }}>For late submissions or executive package queries, please email:</p>
-                    <a href="mailto:info@empowaentrepreneurs.co.za" style={{ background: 'rgba(247,246,243,0.05)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '12px 28px', fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.04em', color: '#F7F6F3', textDecoration: 'none', fontWeight: 600, transition: 'all 0.2s ease', display: 'inline-block' }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(247,246,243,0.1)'; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(247,246,243,0.05)'; }}>info@empowaentrepreneurs.co.za</a>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '380px' }}>
+                    <a
+                      href="/festival-moves-to-2027"
+                      onClick={() => onClose()}
+                      style={{
+                        background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
+                        borderRadius: '44px',
+                        padding: '12px 28px',
+                        fontFamily: 'Montserrat, sans-serif',
+                        fontSize: '13px',
+                        letterSpacing: '0.04em',
+                        color: '#fff',
+                        textDecoration: 'none',
+                        fontWeight: 700,
+                        display: 'inline-block',
+                        boxShadow: '0 4px 16px rgba(222,50,45,0.4)'
+                      }}
+                    >
+                      Read Full 2027 Announcement & FAQ →
+                    </a>
+                    <a
+                      href="https://www.empowaher.co.za"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        background: 'rgba(247,246,243,0.06)',
+                        border: '1px solid rgba(247,246,243,0.14)',
+                        borderRadius: '44px',
+                        padding: '12px 28px',
+                        fontFamily: 'Montserrat, sans-serif',
+                        fontSize: '12px',
+                        letterSpacing: '0.04em',
+                        color: '#F7F6F3',
+                        textDecoration: 'none',
+                        fontWeight: 600,
+                        display: 'inline-block'
+                      }}
+                    >
+                      EmpowaHer™ Summit (29–31 Oct 2026) →
+                    </a>
                   </div>
-                  <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={onClose} style={{ marginTop: '24px', background: 'rgba(247,246,243,0.06)', border: '1px solid rgba(247,246,243,0.12)', borderRadius: '44px', padding: '14px 40px', fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: 600, color: '#F7F6F3', cursor: 'pointer' }}>Close Window</motion.button>
+                  <button onClick={onClose} style={{ marginTop: '12px', background: 'none', border: 'none', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', color: 'rgba(247,246,243,0.4)', cursor: 'pointer' }}>Close Window</button>
                 </motion.div>
               ) : status === 'success' ? (
                 <motion.div key="modal-success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center', padding: '60px 0' }}>
@@ -393,7 +445,16 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                           </div>
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Registration Number</label>
-                            <input type="text" value={regNumber} onChange={e => setRegNumber(e.target.value)} required style={FIELD_INPUT_STYLE} onFocus={handleFocus} onBlur={handleBlur} />
+                            <input
+                              type="text"
+                              value={regNumber}
+                              placeholder="e.g. 2021/123456/07"
+                              onChange={e => setRegNumber(e.target.value)}
+                              required
+                              style={FIELD_INPUT_STYLE}
+                              onFocus={handleFocus}
+                              onBlur={handleBlur}
+                            />
                           </div>
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Industry Sector</label>
@@ -518,11 +579,26 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Innovation Factor</label>
                             <p style={{fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.4)', marginTop: '-4px', marginBottom: '8px'}}>Describe innovative aspects (e.g., tech, process, model).</p>
-                            <textarea value={innovation} onChange={e => setInnovation(e.target.value)} style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} />
+                            <textarea
+                              value={innovation}
+                              placeholder="Describe innovative aspects..."
+                              onChange={e => setInnovation(e.target.value)}
+                              style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}}
+                              onFocus={handleFocus}
+                              onBlur={handleBlur}
+                            />
                           </div>
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Social/Environmental Impact</label>
-                            <textarea value={impact} onChange={e => setImpact(e.target.value)} style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} />
+                            <p style={{fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.4)', marginTop: '-4px', marginBottom: '8px'}}>Describe measurable community, job creation, or environmental outcomes.</p>
+                            <textarea
+                              value={impact}
+                              placeholder="Describe social or environmental impact..."
+                              onChange={e => setImpact(e.target.value)}
+                              style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}}
+                              onFocus={handleFocus}
+                              onBlur={handleBlur}
+                            />
                           </div>
                         </div>
                       </motion.div>
@@ -556,17 +632,41 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Marketing and Sales Strategy</label>
                             <p style={{fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.4)', marginTop: '-4px', marginBottom: '8px'}}>Outline your strategy for reaching the market.</p>
-                            <textarea value={marketingStrat} onChange={e => setMarketingStrat(e.target.value)} required style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} />
+                            <textarea
+                              value={marketingStrat}
+                              placeholder="Outline your strategy for reaching the market..."
+                              onChange={e => setMarketingStrat(e.target.value)}
+                              required
+                              style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}}
+                              onFocus={handleFocus}
+                              onBlur={handleBlur}
+                            />
                           </div>
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Growth Strategy</label>
                             <p style={{fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.4)', marginTop: '-4px', marginBottom: '8px'}}>Describe your plan for scaling your business.</p>
-                            <textarea value={growthStrat} onChange={e => setGrowthStrat(e.target.value)} required style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} />
+                            <textarea
+                              value={growthStrat}
+                              placeholder="Describe your plan for scaling your business..."
+                              onChange={e => setGrowthStrat(e.target.value)}
+                              required
+                              style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}}
+                              onFocus={handleFocus}
+                              onBlur={handleBlur}
+                            />
                           </div>
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Operational Capacity</label>
                             <p style={{fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.4)', marginTop: '-4px', marginBottom: '8px'}}>Explain how you will handle increased demand.</p>
-                            <textarea value={capacity} onChange={e => setCapacity(e.target.value)} required style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} />
+                            <textarea
+                              value={capacity}
+                              placeholder="Explain how you will handle increased demand..."
+                              onChange={e => setCapacity(e.target.value)}
+                              required
+                              style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}}
+                              onFocus={handleFocus}
+                              onBlur={handleBlur}
+                            />
                           </div>
                         </div>
                       </motion.div>
@@ -605,8 +705,16 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                         <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Proposed Use of Funds</label>
-                            <p style={{fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.4)', marginTop: '-4px', marginBottom: '8px'}}>Provide a detailed breakdown.</p>
-                            <textarea value={useOfFunds} onChange={e => setUseOfFunds(e.target.value)} required style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}} onFocus={handleFocus} onBlur={handleBlur} />
+                            <p style={{fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(247,246,243,0.4)', marginTop: '-4px', marginBottom: '8px'}}>Provide a detailed breakdown of how funds will be allocated.</p>
+                            <textarea
+                              value={useOfFunds}
+                              placeholder="Provide a detailed breakdown of how funds will be used..."
+                              onChange={e => setUseOfFunds(e.target.value)}
+                              required
+                              style={{...FIELD_INPUT_STYLE, minHeight: '100px', resize: 'vertical'}}
+                              onFocus={handleFocus}
+                              onBlur={handleBlur}
+                            />
                           </div>
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Key Team Members</label>
@@ -633,7 +741,7 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                           <div>
                             <label style={FIELD_LABEL_STYLE}>Supporting Documents Checklist (Multiple Upload)</label>
                             <p style={{fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(247,246,243,0.5)', marginTop: '-4px', marginBottom: '12px', lineHeight: 1.6}}>
-                              Please include: Pitch Deck (Max 10 slides), Business Model Canvas, 3-Year Financial Projections (Excel), Executive Summary (Max 5 pages), Company Registration (CIPC), B-BBEE Certificate (if applicable).
+                              Please include: Pitch Deck (Max 10 slides), Business Model Canvas, 3-Year Financial Projections (Excel), Executive Summary (Max 5 pages), Company Registration (CIPC), B-BBEE Certificate (if applicable), plus any full-length market strategies, roadmaps, or detailed budget models.
                             </p>
                             <input type="file" multiple onChange={e => setSupportingDocs(e.target.files)} required style={FIELD_INPUT_STYLE} />
                           </div>

@@ -1103,17 +1103,17 @@ const HeroSection = () => {
           }}>
             Where Vetted Entrepreneurs Meet High Impact Capital.
           </motion.p>
-          <motion.a href="/pitch-power" custom={0.65} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
+          <motion.a href="/festival-moves-to-2027" custom={0.65} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             padding: '8px 18px',
-            background: 'rgba(222,50,45,0.14)',
-            border: '1px solid rgba(222,50,45,0.4)',
+            background: 'rgba(222,50,45,0.18)',
+            border: '1px solid rgba(222,50,45,0.45)',
             borderRadius: '100px',
             textDecoration: 'none',
             cursor: 'pointer',
-            boxShadow: '0 4px 16px rgba(222,50,45,0.2)',
+            boxShadow: '0 4px 16px rgba(222,50,45,0.25)',
             width: 'fit-content'
           }}>
             <span style={{
@@ -1130,16 +1130,16 @@ const HeroSection = () => {
               textTransform: 'uppercase',
               color: '#fff',
               fontWeight: 700
-            }}>Festival Week: 16 - 22 Nov 2026</span>
+            }}>Notice: Festival Moves to 2027</span>
             <ArrowIconDark />
           </motion.a>
           <motion.div custom={0.68} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '20px',
-            padding: '16px 20px',
+            gap: '16px',
+            padding: '16px 22px',
             background: 'rgba(247,246,243,0.04)',
-            border: '1px solid rgba(247,246,243,0.1)',
+            border: '1px solid rgba(247,246,243,0.12)',
             borderRadius: '16px',
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
@@ -1148,31 +1148,41 @@ const HeroSection = () => {
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '2px'
+              gap: '3px'
             }}>
               <div style={{
                 fontFamily: 'Montserrat, sans-serif',
-                fontSize: '9px',
-                letterSpacing: '0.16em',
+                fontSize: '10px',
+                letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: '#DE322D',
-                fontWeight: 600
-              }}>Festival Countdown</div>
+                fontWeight: 700
+              }}>Pitching Festival 2027</div>
               <div style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '9px',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'rgba(247,246,243,0.3)',
-                fontWeight: 500
-              }}>16 - 22 Nov · 2026</div>
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '12px',
+                color: 'rgba(247,246,243,0.7)',
+                fontWeight: 400
+              }}>New dates coming soon · Applications carry over</div>
             </div>
             <div style={{
               width: '1px',
-              height: '36px',
-              background: 'rgba(247,246,243,0.1)'
+              height: '32px',
+              background: 'rgba(247,246,243,0.12)'
             }} />
-            <CountdownTimer />
+            <Link to="/festival-moves-to-2027" style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#fff',
+              textDecoration: 'none',
+              letterSpacing: '0.04em',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px'
+            }}>
+              <span>Read Update →</span>
+            </Link>
           </motion.div>
           <motion.div custom={0.75} initial="hidden" animate="visible" variants={fadeUpVariants} style={{
             display: 'flex',
@@ -1180,7 +1190,7 @@ const HeroSection = () => {
             gap: '12px',
             flexWrap: 'wrap'
           }}>
-            <motion.a href="/pitch-power" whileHover={{
+            <motion.a href="/festival-moves-to-2027" whileHover={{
               scale: 1.04,
               boxShadow: '0 16px 52px rgba(222,50,45,0.72), 0 4px 16px rgba(222,50,45,0.4)'
             }} whileTap={{
@@ -1201,7 +1211,7 @@ const HeroSection = () => {
               boxShadow: '0 8px 36px rgba(222,50,45,0.55), 0 2px 8px rgba(222,50,45,0.3)',
               transition: 'box-shadow 0.3s ease'
             }}>
-              <span>Apply to Pitch: Festival 2026</span><ArrowIconDark />
+              <span>Read Festival Update</span><ArrowIconDark />
             </motion.a>
             <motion.a href="/partnerships" whileHover={{
               scale: 1.04
@@ -4244,22 +4254,17 @@ const StickyRegistrationBanner = () => {
               letterSpacing: '-0.1px',
               whiteSpace: 'nowrap'
             }}>
-              Pitching Festival Week 2026
+              Pitching Festival Moving to 2027
             </span>
           </div>
           <span style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
-            color: 'rgba(247,246,243,0.5)',
+            color: 'rgba(247,246,243,0.65)',
             letterSpacing: '0.02em',
             whiteSpace: isMobile ? 'normal' : 'nowrap'
           }}>
-            <span>16 - 22 Nov 2026 · EmpowaWorx House, Randburg</span>
-            {!isMobile && <span style={{
-              margin: '0 8px',
-              color: 'rgba(247,246,243,0.2)'
-            }}>·</span>}
-            {!isMobile && <span>GET CONNECTED | GET FUNDED · Africa Investment Week</span>}
+            <span>New dates coming soon · Join us at EmpowaHer™ Leadership Summit, 29–31 Oct 2026</span>
           </span>
         </div>
         {!isMobile && <div style={{
@@ -4275,7 +4280,7 @@ const StickyRegistrationBanner = () => {
           flexShrink: 0,
           flexWrap: 'nowrap'
         }}>
-          <motion.a href="/pitch-power" whileHover={{
+          <motion.a href="/festival-moves-to-2027" whileHover={{
             scale: 1.04,
             boxShadow: '0 8px 32px rgba(222,50,45,0.55)'
           }} whileTap={{
@@ -4296,8 +4301,24 @@ const StickyRegistrationBanner = () => {
             boxShadow: '0 4px 20px rgba(222,50,45,0.4)',
             whiteSpace: 'nowrap'
           }}>
-            <span>Apply to Pitch</span><ArrowIconDark />
+            <span>Read Update</span><ArrowIconDark />
           </motion.a>
+          <a href="https://www.empowaher.co.za" target="_blank" rel="noopener noreferrer" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            border: '1px solid rgba(247,246,243,0.2)',
+            borderRadius: '44px',
+            padding: isMobile ? '10px 14px' : '11px 18px',
+            fontSize: '12px',
+            fontWeight: 600,
+            color: '#fff',
+            textDecoration: 'none',
+            fontFamily: 'Montserrat, sans-serif',
+            whiteSpace: 'nowrap'
+          }}>
+            <span>Summit 2026 →</span>
+          </a>
         </div>
         <button onClick={() => setDismissed(true)} aria-label="Dismiss registration banner" style={{
           flexShrink: 0,
@@ -4333,12 +4354,15 @@ export const AgencyLandingPage = () => {
 
 
     <HeroSection />
-    <Link to="/pitch-power" style={{ display: 'block', width: '100%', cursor: 'pointer' }}>
-      <img
-        src="/pitch-festival-11-2026-mobile.jpg"
-        alt="EmpowaEntrepreneurs Pitching Festival Week 2026"
-        style={{ width: '100%', display: 'block', padding: 0, margin: 0 }}
-      />
+    <Link to="/festival-moves-to-2027" style={{ display: 'block', width: '100%', cursor: 'pointer' }}>
+      <picture>
+        <source media="(max-width: 768px)" srcSet="/postponement-artwork-mobile.jpg" />
+        <img
+          src="/postponement-artwork.jpg"
+          alt="EmpowaEntrepreneurs Pitching Festival Moves to 2027 Announcement"
+          style={{ width: '100%', display: 'block', padding: 0, margin: 0 }}
+        />
+      </picture>
     </Link>
     <MissionBand />
     <FundingPlatformAlert />

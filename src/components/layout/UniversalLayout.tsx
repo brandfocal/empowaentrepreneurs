@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useInView, useSpring, AnimatePresence 
 import { useIsMobile } from '../../hooks/use-mobile';
 import { Link, useLocation } from 'react-router-dom';
 import { NewsletterForm } from '../generated/NewsletterForm';
+import { PostponementNotificationBanner } from '../generated/PostponementNotificationBanner';
 const FOOTER_BANNER_BG = 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1800&q=80';
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`;
 
@@ -401,7 +402,7 @@ const StickyNav = () => {
     y: -80,
     opacity: 0
   }} animate={{
-    y: visible ? 0 : -90,
+    y: visible ? 0 : -140,
     opacity: visible ? 1 : 0
   }} transition={{
     duration: 0.4,
@@ -414,6 +415,7 @@ const StickyNav = () => {
     zIndex: 100,
     boxSizing: 'border-box'
   }}>
+    <PostponementNotificationBanner />
     <div style={{
       display: 'flex',
       justifyContent: 'space-between',
@@ -656,7 +658,12 @@ const SiteFooter = () => {
     once: true,
     margin: '-80px 0px'
   });
-  const isSurvey = pathname === '/survey' || pathname === '/dragons';
+  const hidePrefooter =
+    pathname === '/survey' ||
+    pathname === '/dragons' ||
+    pathname === '/festival-moves-to-2027' ||
+    pathname === '/pitching-festival-update' ||
+    pathname === '/announcement/festival-moves-to-2027';
   return <footer ref={footerRef} style={{
     background: '#0A0906',
     width: '100%',
@@ -664,7 +671,7 @@ const SiteFooter = () => {
     overflow: 'hidden',
     position: 'relative'
   }}>
-    {!isSurvey && <div style={{
+    {!hidePrefooter && <div style={{
       position: 'relative',
       width: '100%',
       minHeight: isMobile ? '480px' : '580px',
@@ -897,7 +904,7 @@ const SiteFooter = () => {
         </motion.div>
       </div>
     </div>}
-    {isSurvey && <div style={{ height: '32px' }} />}
+    {hidePrefooter && <div style={{ height: '32px' }} />}
     <div style={{
       height: '1px',
       background: 'rgba(247,246,243,0.06)',
