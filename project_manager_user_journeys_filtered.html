@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmpowaEntrepreneurs 2026 - Registration &amp; Pitch Festival User Journeys (PM Guide - Filtered)</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #DE322D;
+      --secondary: #1C1917;
+      --text: #292524;
+      --text-muted: #57534E;
+      --bg-light: #FAFAF9;
+      --border: #E7E5E4;
+      --success: #15803d;
+      --success-bg: #f0fdf4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background-color: #F5F5F4;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    /* A4 Sheet Simulation on screen */
+    .sheet {
+      background: #FFFFFF;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      padding: 60px 80px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 800px;
+      padding-top: 100px;
+      padding-bottom: 50px;
+    }
+
+    .cover-header {
+      border-left: 6px solid var(--primary);
+      padding-left: 30px;
+    }
+
+    .cover-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 38px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .cover-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .cover-metadata {
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 2px solid var(--border);
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--secondary);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    /* Regular Page Layout */
+    .page-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .page-title span.page-number {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-family: monospace;
+    }
+
+    .section-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    .journey-block {
+      margin-bottom: 35px;
+    }
+
+    .journey-block h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .journey-badge {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .journey-badge.primary-badge {
+      background: rgba(222, 50, 45, 0.08);
+      border-color: rgba(222, 50, 45, 0.2);
+      color: var(--primary);
+    }
+
+    .journey-steps {
+      list-style: none;
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--border);
+      margin-left: 10px;
+    }
+
+    .journey-steps li {
+      position: relative;
+      margin-bottom: 20px;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    .journey-steps li:last-child {
+      margin-bottom: 0;
+    }
+
+    .journey-steps li::before {
+      content: '';
+      position: absolute;
+      left: -27px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 3px solid var(--primary);
+      box-sizing: border-box;
+    }
+
+    .journey-steps li.highlight-step::before {
+      border-color: var(--success);
+    }
+
+    .journey-steps li strong {
+      color: var(--secondary);
+    }
+
+    .journey-steps li p {
+      color: var(--text-muted);
+      font-size: 12.5px;
+      margin-top: 4px;
+    }
+
+    .card-callout {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    .card-callout h4 {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .card-callout.success-callout {
+      border-left-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    /* Print settings - For actual PDF save */
+    @media print {
+      body {
+        background: #FFFFFF;
+        padding: 0;
+      }
+      .sheet {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        page-break-after: always;
+        min-height: 297mm; /* Full A4 height */
+      }
+      .sheet:last-child {
+        page-break-after: avoid;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 20mm 15mm 20mm 15mm;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cover Page Sheet -->
+  <div class="sheet">
+    <div class="cover-page">
+      <div class="cover-header">
+        <h1 class="cover-title">EmpowaEntrepreneurs 2026<br>User Journey Specifications</h1>
+        <p class="cover-subtitle">Summit Registration and Pitching Festival Core Workflows</p>
+      </div>
+
+      <div style="max-width: 550px;">
+        <h3 style="font-size: 15px; margin-bottom: 10px; font-weight: 600;">Executive Summary</h3>
+        <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px;">
+          This specification outlines the business workflows for the core Summit Registration and the Pitching Festival. It describes how user submissions are processed, how confirmations are handled, and how records are aggregated for team administration.
+        </p>
+        <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.7;">
+          <strong>Target Audience:</strong> Project Managers, Event Coordinators, Operations Directors.
+        </p>
+      </div>
+
+      <div class="cover-metadata">
+        <div class="meta-item">
+          <strong>Prepared For</strong>
+          EmpowaEntrepreneurs Operations Team
+        </div>
+        <div class="meta-item">
+          <strong>Document Date</strong>
+          June 2026
+        </div>
+        <div class="meta-item">
+          <strong>Project Stage</strong>
+          Technical Integration Done
+        </div>
+        <div class="meta-item">
+          <strong>Author</strong>
+          Admissions &amp; Tech Directors Group
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 2: Registration User Journeys -->
+  <div class="sheet">
+    <div class="page-title">
+      <span>1. Registration User Journey</span>
+      <span class="page-number">Page 02</span>
+    </div>
+    <p class="section-desc">
+      EmpowaEntrepreneurs 2026 manages the primary event access registration channel for General Admission, corporate guests, and investors.
+    </p>
+
+    <!-- General Summit Ticket RSVP -->
+    <div class="journey-block">
+      <h3>
+        General Summit Registration
+        <span class="journey-badge primary-badge">Core Pipeline</span>
+      </h3>
+      <ul class="journey-steps">
+        <li>
+          <strong>Step 1: Attendee Sign-Up</strong>
+          <p>General attendees, investors, and corporate guests visit the 'Summit RSVP' modal on the website and fill out basic details (Name, Email, Cellphone, Company, Designation).</p>
+        </li>
+        <li>
+          <strong>Step 2: Instant Database Entry</strong>
+          <p>Submission securely logs attendee records directly inside the WordPress backend dashboard tables.</p>
+        </li>
+        <li class="highlight-step">
+          <strong>Step 3: Double Email Dispatch</strong>
+          <p>The system dispatches two emails: a styled ticket confirmation to the Attendee, and a notification containing full registration details to the Admins.</p>
+        </li>
+        <li class="highlight-step">
+          <strong>Step 4: Spreadsheet Accumulation</strong>
+          <p>The record is automatically loaded into the Summit Attendance Spreadsheet in the WordPress backend, allowing event managers to export the full attendee list for printing credentials.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Page 3: Pitching Festival Journeys -->
+  <div class="sheet">
+    <div class="page-title">
+      <span>2. Pitching Festival Journeys</span>
+      <span class="page-number">Page 03</span>
+    </div>
+    <p class="section-desc">
+      Details the entry process for founders pitching in the arena and the live evaluation scoring process by dragons during sessions.
+    </p>
+
+    <!-- Pitching Festival Entry -->
+    <div class="journey-block">
+      <h3>
+        Pitching Festival Entry Application
+        <span class="journey-badge primary-badge">Core Arena Pipeline</span>
+      </h3>
+      <ul class="journey-steps">
+        <li>
+          <strong>Step 1: Pitch Arena Audits</strong>
+          <p>Scale-up founders apply for pitching slots by filling out a thorough 6-step business assessment. This covers company registration, founder details, value proposition, TAM/SAM market size, financial figures, and document uploads (B-BBEE certificates, company structures, pitch decks).</p>
+        </li>
+        <li>
+          <strong>Step 2: File Attachment Safeguard</strong>
+          <p>Gravity Forms securely uploads all pitch files and documents to dedicated directories on the web server.</p>
+        </li>
+        <li class="highlight-step">
+          <strong>Step 3: Dual-Stream Email Triggers</strong>
+          <p>The founder receives a pitch application confirmation. Admins receive an instant screening notification containing links to the uploaded files.</p>
+        </li>
+        <li class="highlight-step">
+          <strong>Step 4: Evaluation Board Sync</strong>
+          <p>The details and file paths populate the Pitching Festival Admissions Spreadsheet in WordPress, ready for the Investment Committee to review and select pitching finalists.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Page 4: Dragon Scoring & Automations -->
+  <div class="sheet">
+    <div class="page-title">
+      <span>3. Live Scoring &amp; Backend Sheets</span>
+      <span class="page-number">Page 04</span>
+    </div>
+
+    <!-- Dragon Scoring Panel -->
+    <div class="journey-block">
+      <h3>
+        Dragon Scorecard Panel (Live Evaluation)
+        <span class="journey-badge primary-badge">Live Event Flow</span>
+      </h3>
+      <ul class="journey-steps">
+        <li>
+          <strong>Step 1: Dragon Live Review</strong>
+          <p>During live pitches, evaluators ("Dragons") use a secure, custom frontend panel to select the startup and rate them on 8 weighted criteria (TAM, Business Model, Traction, Team, Financials, Moats, Deal Terms, ESG).</p>
+        </li>
+        <li>
+          <strong>Step 2: Automated Score Calculation</strong>
+          <p>The custom page automatically calculates a weighted Total Score out of 100 on submission, saving the evaluator from manual math errors.</p>
+        </li>
+        <li class="highlight-step">
+          <strong>Step 3: Scorecard Database Storage</strong>
+          <p>The score and written feedback are sent via API to Form ID 11 inside Gravity Forms, where they are logged as a secure entry.</p>
+        </li>
+        <li class="highlight-step">
+          <strong>Step 4: Real-time Leaderboard Compilation</strong>
+          <p>The score and comments are appended to the Dragon Leaderboard Spreadsheet in WordPress, allowing directors to rank startups in real-time and select the winners of the funding commitments.</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Backend Spreadsheet Management Callout -->
+    <div class="card-callout success-callout" style="margin-top: 40px;">
+      <h4>📊 The WordPress Backend Spreadsheet System</h4>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 4px; line-height: 1.6;">
+        All user journey entries are saved directly inside WordPress in database-backed tables. Project managers do not need direct database access or developer support to view entries. You can view, filter, edit, or export submissions (e.g. as Excel spreadsheets) directly through the <strong>WordPress Admin Portal under Gravity Forms → Entries</strong>, or view them dynamically synced to Google Sheets or Excel plugins in the dashboard backend.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

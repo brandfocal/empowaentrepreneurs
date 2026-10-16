@@ -885,7 +885,7 @@ const HeroSection = () => {
           >
             <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#DE322D', display: 'block' }} />
             <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#fff', fontWeight: 700 }}>
-              Official Announcement: Festival Moves to 2027 · Read Update →
+              Official Announcement: Pitching Festival Week Moves to 2027 · Read Update →
             </span>
           </a>
         </motion.div>

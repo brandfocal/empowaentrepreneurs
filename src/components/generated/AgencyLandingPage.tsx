@@ -1157,13 +1157,13 @@ const HeroSection = () => {
                 textTransform: 'uppercase',
                 color: '#DE322D',
                 fontWeight: 700
-              }}>Pitching Festival 2027</div>
+              }}>Pitching Festival Moving to 2027</div>
               <div style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '12px',
                 color: 'rgba(247,246,243,0.7)',
                 fontWeight: 400
-              }}>New dates coming soon · Applications carry over</div>
+              }}>The EmpowaEntrepreneurs Pitching Festival is moving to 2027. New dates coming soon.</div>
             </div>
             <div style={{
               width: '1px',
@@ -4248,23 +4248,21 @@ const StickyRegistrationBanner = () => {
           }}>
             <span style={{
               fontFamily: 'Montserrat, sans-serif',
-              fontSize: isMobile ? '13px' : '14px',
+              fontSize: isMobile ? '12px' : '13px',
               fontWeight: 700,
               color: '#F7F6F3',
               letterSpacing: '-0.1px',
-              whiteSpace: 'nowrap'
             }}>
-              Pitching Festival Moving to 2027
+              The EmpowaEntrepreneurs Pitching Festival is moving to 2027.
             </span>
           </div>
           <span style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '11px',
-            color: 'rgba(247,246,243,0.65)',
+            color: 'rgba(247,246,243,0.7)',
             letterSpacing: '0.02em',
-            whiteSpace: isMobile ? 'normal' : 'nowrap'
           }}>
-            <span>New dates coming soon · Join us at EmpowaHer™ Leadership Summit, 29–31 Oct 2026</span>
+            <span>New dates coming soon. In the meantime, join us at the EmpowaHer™ Leadership Summit, 29–31 October 2026.</span>
           </span>
         </div>
         {!isMobile && <div style={{
@@ -4317,7 +4315,7 @@ const StickyRegistrationBanner = () => {
             fontFamily: 'Montserrat, sans-serif',
             whiteSpace: 'nowrap'
           }}>
-            <span>Summit 2026 →</span>
+            <span>Explore here →</span>
           </a>
         </div>
         <button onClick={() => setDismissed(true)} aria-label="Dismiss registration banner" style={{

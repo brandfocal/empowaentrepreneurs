@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { PartnershipEnquiryModal } from './PartnershipEnquiryModal';
@@ -21,7 +21,13 @@ const fadeUpVariants = {
   }),
 };
 
-const FAQ_ITEMS = [
+interface FaqItem {
+  id: string;
+  question: string;
+  answer: React.ReactNode;
+}
+
+const FAQ_ITEMS: FaqItem[] = [
   {
     id: 'faq-1',
     question: 'Why has the festival moved?',
@@ -38,25 +44,33 @@ const FAQ_ITEMS = [
     id: 'faq-3',
     question: "I've already applied. What happens now?",
     answer:
-      "Your application will carry over to the 2027 festival — no re-application is required. You will be contacted directly with next steps as dates and schedules are confirmed.",
+      "You don't need to take any action now. We will keep you informed as plans develop.",
   },
   {
     id: 'faq-4',
-    question: "I'm not a woman entrepreneur. Is there anything for me before 2027?",
-    answer:
-      'Register your interest to receive updates, investment-readiness resources, and announcements as they launch ahead of the 2027 festival.',
-  },
-  {
-    id: 'faq-5',
     question: 'How can my organisation partner with you?',
-    answer:
-      'Contact partnerships@empowaentrepreneurs.co.za or info@empowaentrepreneurs.co.za to discuss the EmpowaHer™ funding track or shaping the 2027 festival.',
+    answer: (
+      <span>
+        Contact{' '}
+        <a
+          href="mailto:bonnie@empowaworx.co.za?subject=EmpowaHer%20Funding%20Track%20%2F%202027%20Festival%20Partnership"
+          style={{ color: '#DE322D', textDecoration: 'underline', fontWeight: 500 }}
+        >
+          bonnie@empowaworx.co.za
+        </a>{' '}
+        to discuss the EmpowaHer™ funding track or the 2027 festival.
+      </span>
+    ),
   },
 ];
 
 export const FestivalPostponementPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<string | null>('faq-1');
   const [partnerModalOpen, setPartnerModalOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = 'EmpowaEntrepreneurs Pitching Festival Week Moves to 2027 | EmpowaEntrepreneurs';
+  }, []);
 
   return (
     <div
@@ -193,7 +207,7 @@ export const FestivalPostponementPage: React.FC = () => {
               color: '#FFFFFF',
             }}
           >
-            EmpowaEntrepreneurs Pitching Festival{' '}
+            EmpowaEntrepreneurs Pitching Festival Week{' '}
             <span style={{ fontStyle: 'italic', fontWeight: 300, color: PRIMARY_CORAL }}>
               Moves to 2027
             </span>
@@ -324,47 +338,10 @@ export const FestivalPostponementPage: React.FC = () => {
               }}
             >
               Our purpose is to connect scalable African businesses with the capital and growth
-              opportunities they need to thrive. Moving the festival to 2027 allows us to deliver it at
-              the scale, depth, and investor reach our entrepreneurs deserve. Revised dates will be
+              opportunities they need to thrive. Moving the PITCHFEST to 2027 allows us to deliver it at
+              the scale, depth and investor reach our entrepreneurs deserve. Revised dates will be
               announced once confirmed.
             </p>
-
-            <div
-              style={{
-                marginTop: 'auto',
-                paddingTop: '20px',
-                borderTop: '1px solid rgba(247,246,243,0.08)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-              }}
-            >
-              <div
-                style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  background: 'rgba(222,50,45,0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: PRIMARY_CORAL,
-                  flexShrink: 0,
-                }}
-              >
-                ✓
-              </div>
-              <span
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: '12px',
-                  color: 'rgba(247,246,243,0.6)',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                Tone: Confident, strategic, and planned for institutional scale.
-              </span>
-            </div>
           </motion.div>
 
           {/* What This Means for Entrepreneurs */}
@@ -447,22 +424,9 @@ export const FestivalPostponementPage: React.FC = () => {
                   fontWeight: 400,
                 }}
               >
-                If you have applied or registered, <strong>your application will carry over to the 2027 festival</strong> and you will be contacted directly with next steps.
+                If you have applied, you don't need to take any action now. We will keep you informed as plans develop.
               </p>
             </div>
-
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: '14px',
-                lineHeight: 1.75,
-                color: 'rgba(247,246,243,0.75)',
-                margin: 0,
-                fontWeight: 300,
-              }}
-            >
-              You don't need to take any action now. We will keep you informed as plans and dates develop.
-            </p>
 
             <div style={{ marginTop: 'auto', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <a
@@ -533,25 +497,11 @@ export const FestivalPostponementPage: React.FC = () => {
               margin: '0 0 16px',
             }}
           >
-            EmpowaHer™ Leadership Summit ·{' '}
+            Start your journey now:{' '}
             <span style={{ fontStyle: 'italic', fontWeight: 300, color: PRIMARY_CORAL }}>
-              29–31 October 2026
+              EmpowaHer™ Leadership Summit
             </span>
           </h2>
-
-          <div
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: '13px',
-              fontWeight: 600,
-              color: 'rgba(247,246,243,0.6)',
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              marginBottom: '24px',
-            }}
-          >
-            Under the Theme: <em style={{ color: '#fff', fontStyle: 'italic' }}>The Future Is Female™</em>
-          </div>
 
           <p
             style={{
@@ -559,13 +509,14 @@ export const FestivalPostponementPage: React.FC = () => {
               fontSize: '16px',
               lineHeight: 1.85,
               color: 'rgba(247,246,243,0.85)',
-              margin: '0 0 24px',
+              margin: '0 0 20px',
               fontWeight: 300,
               maxWidth: '900px',
             }}
           >
-            Our immediate focus is the <strong>EmpowaHer™ Leadership Summit</strong>, taking place from
-            <strong> 29–31 October 2026</strong>.
+            Our immediate focus is the <strong>EmpowaHer™ Leadership Summit</strong>, taking place from{' '}
+            <strong>29–31 October 2026</strong> under the theme{' '}
+            <em style={{ color: '#fff', fontStyle: 'italic', fontWeight: 400 }}>The Future Is Female™</em>.
           </p>
 
           <p
@@ -581,7 +532,7 @@ export const FestivalPostponementPage: React.FC = () => {
           >
             The summit opens with a dedicated <strong>Entrepreneurship, Innovation & Funding track</strong>. It
             is designed to advance investment readiness, share practical funding insights, and connect
-            emerging women entrepreneurs with the expertise, networks, and opportunities needed to build
+            emerging women entrepreneurs with the expertise, networks and opportunities needed to build
             commercially sustainable businesses. In short, it is a practical first step from entrepreneurial
             ambition to fundable enterprise.
           </p>
@@ -641,7 +592,7 @@ export const FestivalPostponementPage: React.FC = () => {
               onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = 'rgba(247,246,243,0.12)')}
               onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = 'rgba(247,246,243,0.06)')}
             >
-              <span>Register for the Summit →</span>
+              <span>Explore here →</span>
             </a>
           </div>
         </motion.section>
@@ -709,45 +660,68 @@ export const FestivalPostponementPage: React.FC = () => {
               Summit's funding track to shaping the 2027 Pitching Festival.
             </p>
 
-            <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <button
-                onClick={() => setPartnerModalOpen(true)}
+            <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <a
+                href="mailto:bonnie@empowaworx.co.za?subject=Partnership%20Enquiry%20-%20EmpowaHer%20%26%202027%20Pitching%20Festival"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  background: 'rgba(247,246,243,0.08)',
-                  border: '1px solid rgba(247,246,243,0.18)',
+                  background: 'linear-gradient(135deg, #DE322D 0%, #c42823 100%)',
                   borderRadius: '44px',
-                  padding: '12px 24px',
+                  padding: '13px 24px',
                   fontFamily: "'Montserrat', sans-serif",
                   fontSize: '12px',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   letterSpacing: '0.04em',
                   color: '#FFFFFF',
+                  textDecoration: 'none',
                   cursor: 'pointer',
-                  transition: 'background 0.2s ease',
+                  boxShadow: '0 4px 18px rgba(222,50,45,0.35)',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = 'rgba(247,246,243,0.18)')}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = 'rgba(247,246,243,0.08)')}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 24px rgba(222,50,45,0.55)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 18px rgba(222,50,45,0.35)';
+                }}
               >
                 <span>Contact our partnerships team →</span>
-              </button>
-              <a
-                href="mailto:partnerships@empowaentrepreneurs.co.za?subject=Pitching%20Festival%202027%20Partnership%20Enquiry"
+              </a>
+
+              <div
                 style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
                   fontFamily: "'Inter', sans-serif",
                   fontSize: '13px',
-                  color: 'rgba(247,246,243,0.5)',
-                  textDecoration: 'none',
+                  color: 'rgba(247,246,243,0.7)',
                   textAlign: 'center',
+                  flexWrap: 'wrap',
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = PRIMARY_CORAL)}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(247,246,243,0.5)')}
               >
-                Direct email: partnerships@empowaentrepreneurs.co.za
-              </a>
+                <span>Bonnie (</span>
+                <a
+                  href="mailto:bonnie@empowaworx.co.za?subject=Partnership%20Enquiry%20-%20EmpowaHer%20%26%202027%20Pitching%20Festival"
+                  style={{
+                    color: PRIMARY_CORAL,
+                    textDecoration: 'underline',
+                    fontWeight: 500,
+                    transition: 'color 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#ff7a70')}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = PRIMARY_CORAL)}
+                >
+                  bonnie@empowaworx.co.za
+                </a>
+                <span>)</span>
+              </div>
             </div>
           </motion.div>
 

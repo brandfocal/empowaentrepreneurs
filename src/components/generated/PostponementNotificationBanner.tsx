@@ -199,7 +199,7 @@ export const PostponementNotificationBanner: React.FC = () => {
                   whiteSpace: 'nowrap',
                 }}
               >
-                <span>Register for the Summit →</span>
+                <span>Explore here →</span>
               </a>
 
               {/* Close Button */}

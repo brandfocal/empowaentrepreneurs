@@ -337,14 +337,14 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                       Official Notice
                     </div>
                     <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '26px', fontWeight: 600, color: '#F7F6F3', margin: '0 0 16px' }}>
-                      Festival Moves to 2027
+                      EmpowaEntrepreneurs Pitching Festival Week Moves to 2027
                     </h3>
                     <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: 'rgba(247,246,243,0.75)', margin: '0 auto 16px', lineHeight: '1.75', maxWidth: '520px' }}>
-                      The EmpowaEntrepreneurs Pitching Festival, originally scheduled for November 2026, will now take place in <strong>2027</strong>.
+                      The EmpowaEntrepreneurs Pitching Festival, originally scheduled for November 2026, will now take place in <strong>2027</strong>. Moving the PITCHFEST to 2027 allows us to deliver it at the scale, depth and investor reach our entrepreneurs deserve.
                     </p>
                     <div style={{ background: 'rgba(247,246,243,0.04)', border: '1px solid rgba(247,246,243,0.08)', borderRadius: '12px', padding: '16px', maxWidth: '500px', margin: '0 auto 20px', textAlign: 'left' }}>
                       <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(247,246,243,0.85)', margin: 0, lineHeight: 1.6 }}>
-                        <strong>What this means for you:</strong> If you have already applied or registered, your application will automatically carry over to the 2027 festival. You will be contacted directly with next steps. No action is required now.
+                        <strong>What this means for entrepreneurs:</strong> If you have applied, you don't need to take any action now. We will keep you informed as plans develop.
                       </p>
                     </div>
                   </div>
@@ -386,7 +386,7 @@ export const PitchingFestivalModal = ({ isOpen, onClose }: { isOpen: boolean, on
                         display: 'inline-block'
                       }}
                     >
-                      EmpowaHer™ Summit (29–31 Oct 2026) →
+                      Explore here: EmpowaHer™ Summit (29–31 Oct 2026) →
                     </a>
                   </div>
                   <button onClick={onClose} style={{ marginTop: '12px', background: 'none', border: 'none', fontFamily: 'Montserrat, sans-serif', fontSize: '12px', color: 'rgba(247,246,243,0.4)', cursor: 'pointer' }}>Close Window</button>
